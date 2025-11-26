@@ -1,613 +1,292 @@
-local reverseCamera
+-- customization.lua (refonte)
+-- Auteur: Quantom (refonte par assistance)
+-- Objet: Gestion caméra / cycle de customisation / tenues / helpers
+-- Dépendances globales attendues: client, Interface, constants, Config, lib, cache, BackupPlayerStats, RestorePlayerStats
 
-local function getRgbColors()
-    local colors = {
-        hair = {},
-        makeUp = {}
-    }
+local log    = require('modules.utility.shared.logger')
+local bridge = require('game.bridge')
 
-    for i = 0, GetNumHairColors() - 1 do
-        colors.hair[i+1] = {GetPedHairRgbColor(i)}
-    end
+-- État interne
+local cachedAppearance          = nil      -- apparence snapshot entrée custom
+local startCallback             = nil      -- callback appelé à la sortie
+local startConfig               = nil      -- config UI (options)
+local currentCameraKey          = nil      -- ex: "default", "head", ...
+local activeCam                 = nil      -- cam actuelle
+local isCamInterpolating        = false
+local invertSide                = false    -- inversion gauche/droite (rotation latérale)
+local savedHeading              = nil      -- heading avant custom
+local savedCoords               = nil      -- coords avant custom
 
-    for i = 0, GetNumMakeupColors() - 1 do
-        colors.makeUp[i+1] = {GetPedMakeupRgbColor(i)}
-    end
-
-    return colors
-end
-
-local playerAppearance
-
+---------------------------------------------------------------------
+-- APPEARANCE (getter cache)
+---------------------------------------------------------------------
 local function getAppearance()
-    if not playerAppearance then
-        playerAppearance = client.getPedAppearance(cache.ped)
+    if not cachedAppearance then
+        log.debugf('[appearance][customization] getAppearance() était nil, lecture en direct')
+        cachedAppearance = client.getPedAppearance(cache.ped)
     end
-
-    return playerAppearance
+    return cachedAppearance
 end
 client.getAppearance = getAppearance
 
-local function addToBlacklist(item, drawable, drawableId, blacklistSettings)
-    if drawable == drawableId and item.textures then
-        for i = 1, #item.textures do
-            blacklistSettings.textures[#blacklistSettings.textures + 1] = item.textures[i]
-        end
-    end
-    if not item.textures or #item.textures == 0 then
-        blacklistSettings.drawables[#blacklistSettings.drawables + 1] = drawable
-    end
+---------------------------------------------------------------------
+-- CONFIG (getter)
+---------------------------------------------------------------------
+function client.getConfig()
+    return startConfig
 end
 
-local function listContains(items, item)
-    for i = 1, #items do
-        if items[i] == item then
-            return true
-        end
-    end
-    return false
-end
-
-local function listContainsAny(items, containedItems)
-    for i = 1, #items do
-        if listContains(containedItems, items[i]) then
-            return true
-        end
-    end
-    return false
-end
-
-local function allowedForPlayer(item, allowedAces)
-    return (item.jobs and listContains(item.jobs, client.job.name)) or (item.gangs and listContains(item.gangs, client.gang.name)) or (item.aces and listContainsAny(item.aces, allowedAces) or (item.citizenids and listContains(item.citizenids, client.citizenid)))
-end
-
-local function filterPedModelsForPlayer(pedConfigs)
-    local playerPeds = {}
-    local allowedAces = lib.callback.await("illenium-appearance:server:GetPlayerAces", false)
-
-    for i = 1, #pedConfigs do
-        local config = pedConfigs[i]
-        if (not config.jobs and not config.gangs and not config.aces and not config.citizenids) or allowedForPlayer(config, allowedAces) then
-            for j = 1, #config.peds do
-                playerPeds[#playerPeds + 1] = config.peds[j]
-            end
-        end
-    end
-    return playerPeds
-end
-
-local function filterTattoosByGender(tattoos)
-    local filtered = {}
-    local gender = client.getPedDecorationType()
-    for k, v in pairs(tattoos) do
-        filtered[k] = {}
-        for i = 1, #v do
-            local tattoo = v[i]
-            if tattoo["hash" .. gender:gsub("^%l", string.upper)] ~= "" then
-                filtered[k][#filtered[k] + 1] = tattoo
-            end
-        end
-    end
-    return filtered
-end
-
-local function filterBlacklistSettings(items, drawableId)
-    local blacklistSettings = {
-        drawables = {},
-        textures = {}
-    }
-
-    local allowedAces = lib.callback.await("illenium-appearance:server:GetPlayerAces", false)
-
-    for i = 1, #items do
-        local item = items[i]
-        if not allowedForPlayer(item, allowedAces) and item.drawables then
-            for j = 0, #item.drawables do
-                addToBlacklist(item, item.drawables[j], drawableId, blacklistSettings)
-            end
-        end
+---------------------------------------------------------------------
+-- CAMÉRA: ciblage principal
+---------------------------------------------------------------------
+local function setCamera(camKey)
+    if isCamInterpolating then
+        return log.infof('[appearance][camera] Interpolation en cours, skip. key=(%s)', tostring(camKey))
     end
 
-    return blacklistSettings
-end
-
-local function componentBlacklistMap(gender, componentId)
-    local genderSettings = Config.Blacklist[gender].components
-    if componentId == 1 then
-        return genderSettings.masks
-    elseif componentId == 3 then
-        return genderSettings.upperBody
-    elseif componentId == 4 then
-        return genderSettings.lowerBody
-    elseif componentId == 5 then
-        return genderSettings.bags
-    elseif componentId == 6 then
-        return genderSettings.shoes
-    elseif componentId == 7 then
-        return genderSettings.scarfAndChains
-    elseif componentId == 8 then
-        return genderSettings.shirts
-    elseif componentId == 9 then
-        return genderSettings.bodyArmor
-    elseif componentId == 10 then
-        return genderSettings.decals
-    elseif componentId == 11 then
-        return genderSettings.jackets
+    if camKey ~= 'current' then
+        currentCameraKey = camKey
     end
 
-    return {}
-end
+    local fromOffset, toOffset = table.unpack(constants.CAMERAS[currentCameraKey])
+    local invert = invertSide and -1 or 1
 
-local function propBlacklistMap(gender, propId)
-    local genderSettings = Config.Blacklist[gender].props
-
-    if propId == 0 then
-        return genderSettings.hats
-    elseif propId == 1 then
-        return genderSettings.glasses
-    elseif propId == 2 then
-        return genderSettings.ear
-    elseif propId == 6 then
-        return genderSettings.watches
-    elseif propId == 7 then
-        return genderSettings.bracelets
+    -- Première initialisation
+    if not activeCam then
+        local from = GetOffsetFromEntityInWorldCoords(cache.ped, fromOffset.x, fromOffset.y, fromOffset.z)
+        local to   = GetOffsetFromEntityInWorldCoords(cache.ped, toOffset.x,   toOffset.y,   toOffset.z)
+        activeCam  = CreateCameraWithParams('DEFAULT_SCRIPTED_CAMERA', from.x, from.y, from.z, 0.0, 0.0, 0.0, 49.0, false, 0)
+        PointCamAtCoord(activeCam, to.x, to.y, to.z)
+        SetCamActive(activeCam, true)
+        return
     end
 
-    return {}
-end
+    -- Interpolation
+    local from = GetOffsetFromEntityInWorldCoords(cache.ped, fromOffset.x * invert, fromOffset.y * invert, fromOffset.z * invert)
+    local to   = GetOffsetFromEntityInWorldCoords(cache.ped, toOffset.x,           toOffset.y,           toOffset.z)
 
-local function getComponentSettings(ped, componentId)
-    local drawableId = GetPedDrawableVariation(ped, componentId)
-    local gender = client.getPedDecorationType()
+    local nextCam = CreateCameraWithParams('DEFAULT_SCRIPTED_CAMERA', from.x, from.y, from.z, 0.0, 0.0, 0.0, 49.0, false, 0)
+    PointCamAtCoord(nextCam, to.x, to.y, to.z)
+    SetCamActiveWithInterp(nextCam, activeCam, 1000, 1, 1)
 
-    local blacklistSettings = {
-        drawables = {},
-        textures = {}
-    }
+    isCamInterpolating = true
+    CreateThread(function()
+        repeat
+            Wait(500)
+        until not IsCamInterpolating(activeCam) and IsCamActive(nextCam)
 
-    if client.isPedFreemodeModel(ped) then
-        blacklistSettings = filterBlacklistSettings(componentBlacklistMap(gender, componentId), drawableId)
-    end
-
-    return {
-        component_id = componentId,
-        drawable = {
-            min = 0,
-            max = GetNumberOfPedDrawableVariations(ped, componentId) - 1
-        },
-        texture = {
-            min = 0,
-            max = GetNumberOfPedTextureVariations(ped, componentId, drawableId) - 1
-        },
-        blacklist = blacklistSettings
-    }
-end
-client.getComponentSettings = getComponentSettings
-
-local function getPropSettings(ped, propId)
-    local drawableId = GetPedPropIndex(ped, propId)
-    local gender = client.getPedDecorationType()
-
-    local blacklistSettings = {
-        drawables = {},
-        textures = {}
-    }
-
-    if client.isPedFreemodeModel(ped) then
-        blacklistSettings = filterBlacklistSettings(propBlacklistMap(gender, propId), drawableId)
-    end
-
-    local settings = {
-        prop_id = propId,
-        drawable = {
-            min = -1,
-            max = GetNumberOfPedPropDrawableVariations(ped, propId) - 1
-        },
-        texture = {
-            min = -1,
-            max = GetNumberOfPedPropTextureVariations(ped, propId, drawableId) - 1
-        },
-        blacklist = blacklistSettings
-    }
-    return settings
-end
-client.getPropSettings = getPropSettings
-
-local function getHairSettings(ped)
-    local colors = getRgbColors()
-    local gender = client.getPedDecorationType()
-    local blacklistSettings = {
-        drawables = {},
-        textures = {}
-    }
-
-    if client.isPedFreemodeModel(ped) then
-        blacklistSettings = filterBlacklistSettings(Config.Blacklist[gender].hair, GetPedDrawableVariation(ped, 2))
-    end
-
-    local settings = {
-        style = {
-            min = 0,
-            max = GetNumberOfPedDrawableVariations(ped, 2) - 1
-        },
-        color = {
-            items = colors.hair
-        },
-        highlight = {
-            items = colors.hair
-        },
-        texture = {
-            min = 0,
-            max = GetNumberOfPedTextureVariations(ped, 2, GetPedDrawableVariation(ped, 2)) - 1
-        },
-        blacklist = blacklistSettings
-    }
-
-    return settings
-end
-client.getHairSettings = getHairSettings
-
-local function getAppearanceSettings()
-    local ped = {
-        model = {
-            items = filterPedModelsForPlayer(Config.Peds.pedConfig)
-        }
-    }
-
-    local tattoos = {
-        items = filterTattoosByGender(Config.Tattoos),
-        opacity = {
-            min = 0.1,
-            max = 1,
-            factor = 0.1,
-        }
-    }
-
-    local components = {}
-    for i = 1, #constants.PED_COMPONENTS_IDS do
-        components[i] = getComponentSettings(cache.ped, constants.PED_COMPONENTS_IDS[i])
-    end
-
-    local props = {}
-    for i = 1, #constants.PED_PROPS_IDS do
-        props[i] = getPropSettings(cache.ped, constants.PED_PROPS_IDS[i])
-    end
-
-    local headBlend = {
-        shapeFirst = {
-            min = 0,
-            max = 45
-        },
-        shapeSecond = {
-            min = 0,
-            max = 45
-        },
-        shapeThird = {
-            min = 0,
-            max = 45
-        },
-        skinFirst = {
-            min = 0,
-            max = 45
-        },
-        skinSecond = {
-            min = 0,
-            max = 45
-        },
-        skinThird = {
-            min = 0,
-            max = 45
-        },
-        shapeMix = {
-            min = 0,
-            max = 1,
-            factor = 0.1,
-        },
-        skinMix = {
-            min = 0,
-            max = 1,
-            factor = 0.1,
-        },
-        thirdMix = {
-            min = 0,
-            max = 1,
-            factor = 0.1,
-        }
-    }
-
-    local size = #constants.FACE_FEATURES
-    local faceFeatures = table.create(0, size)
-    for i = 1, size do
-        local feature = constants.FACE_FEATURES[i]
-        faceFeatures[feature] = { min = -1, max = 1, factor = 0.1}
-    end
-
-    local colors = getRgbColors()
-
-    local colorMap = {
-        beard = colors.hair,
-        eyebrows = colors.hair,
-        chestHair = colors.hair,
-        makeUp = colors.makeUp,
-        blush = colors.makeUp,
-        lipstick = colors.makeUp,
-    }
-
-    size = #constants.HEAD_OVERLAYS
-    local headOverlays = table.create(0, size)
-
-    for i = 1, size do
-        local overlay = constants.HEAD_OVERLAYS[i]
-        local settings = {
-            style = {
-                min = 0,
-                max = GetPedHeadOverlayNum(i - 1) - 1
-            },
-            opacity = {
-                min = 0,
-                max = 1,
-                factor = 0.1,
-            }
-        }
-
-        if colorMap[overlay] then
-            settings.color = {
-                items = colorMap[overlay]
-            }
-        end
-
-        headOverlays[overlay] = settings
-    end
-
-    local eyeColor = {
-        min = 0,
-        max = 30
-    }
-
-    return {
-        ped = ped,
-        components = components,
-        props = props,
-        headBlend = headBlend,
-        faceFeatures = faceFeatures,
-        headOverlays = headOverlays,
-        hair = getHairSettings(cache.ped),
-        eyeColor = eyeColor,
-        tattoos = tattoos
-    }
-end
-client.getAppearanceSettings = getAppearanceSettings
-
-local config
-function client.getConfig() return config end
-
-local isCameraInterpolating
-local currentCamera
-local cameraHandle
-local function setCamera(key)
-    if not isCameraInterpolating then
-        if key ~= "current" then
-            currentCamera = key
-        end
-
-        local coords, point = table.unpack(constants.CAMERAS[currentCamera])
-        local reverseFactor = reverseCamera and -1 or 1
-
-        if cameraHandle then
-            local camCoords = GetOffsetFromEntityInWorldCoords(cache.ped, coords.x * reverseFactor, coords.y * reverseFactor, coords.z * reverseFactor)
-            local camPoint = GetOffsetFromEntityInWorldCoords(cache.ped, point.x, point.y, point.z)
-            local tmpCamera = CreateCameraWithParams("DEFAULT_SCRIPTED_CAMERA", camCoords.x, camCoords.y, camCoords.z, 0.0, 0.0, 0.0, 49.0, false, 0)
-
-            PointCamAtCoord(tmpCamera, camPoint.x, camPoint.y, camPoint.z)
-            SetCamActiveWithInterp(tmpCamera, cameraHandle, 1000, 1, 1)
-
-            isCameraInterpolating = true
-
-            CreateThread(function()
-                repeat Wait(500)
-                until not IsCamInterpolating(cameraHandle) and IsCamActive(tmpCamera)
-                DestroyCam(cameraHandle, false)
-                cameraHandle = tmpCamera
-                isCameraInterpolating = false
-            end)
-        else
-            local camCoords = GetOffsetFromEntityInWorldCoords(cache.ped, coords.x, coords.y, coords.z)
-            local camPoint = GetOffsetFromEntityInWorldCoords(cache.ped, point.x, point.y, point.z)
-            cameraHandle = CreateCameraWithParams("DEFAULT_SCRIPTED_CAMERA", camCoords.x, camCoords.y, camCoords.z, 0.0, 0.0, 0.0, 49.0, false, 0)
-
-            PointCamAtCoord(cameraHandle, camPoint.x, camPoint.y, camPoint.z)
-            SetCamActive(cameraHandle, true)
-        end
-    end
+        DestroyCam(activeCam, false)
+        activeCam = nextCam
+        isCamInterpolating = false
+    end)
 end
 client.setCamera = setCamera
 
-function client.rotateCamera(direction)
-    if not isCameraInterpolating then
-        local coords, point = table.unpack(constants.CAMERAS[currentCamera])
-        local offset = constants.OFFSETS[currentCamera]
-        local sideFactor = direction == "left" and 1 or -1
-        local reverseFactor = reverseCamera and -1 or 1
+---------------------------------------------------------------------
+-- CAMÉRA: rotation latérale (gauche/droite de la vue)
+---------------------------------------------------------------------
+function client.rotateCamera(side)
+    if isCamInterpolating then return end
 
-        local camCoords = GetOffsetFromEntityInWorldCoords(
-            cache.ped,
-            (coords.x + offset.x) * sideFactor * reverseFactor,
-            (coords.y + offset.y) * reverseFactor,
-            coords.z
-        )
+    local fromOffset, toOffset = table.unpack(constants.CAMERAS[currentCameraKey])
+    local offsets = constants.OFFSETS[currentCameraKey]
+    local sign = (side == 'left') and 1 or -1
+    local invert = invertSide and -1 or 1
 
-        local camPoint = GetOffsetFromEntityInWorldCoords(cache.ped, point.x, point.y, point.z)
-        local tmpCamera = CreateCameraWithParams("DEFAULT_SCRIPTED_CAMERA", camCoords.x, camCoords.y, camCoords.z, 0.0, 0.0, 0.0, 49.0, false, 0)
+    local from = GetOffsetFromEntityInWorldCoords(
+        cache.ped,
+        (fromOffset.x + offsets.x) * sign * invert,
+        (fromOffset.y + offsets.y) * invert,
+        fromOffset.z
+    )
+    local to = GetOffsetFromEntityInWorldCoords(cache.ped, toOffset.x, toOffset.y, toOffset.z)
 
-        PointCamAtCoord(tmpCamera, camPoint.x, camPoint.y, camPoint.z)
-        SetCamActiveWithInterp(tmpCamera, cameraHandle, 1000, 1, 1)
+    local nextCam = CreateCameraWithParams('DEFAULT_SCRIPTED_CAMERA', from.x, from.y, from.z, 0.0, 0.0, 0.0, 49.0, false, 0)
+    PointCamAtCoord(nextCam, to.x, to.y, to.z)
+    SetCamActiveWithInterp(nextCam, activeCam, 1000, 1, 1)
 
-        isCameraInterpolating = true
+    isCamInterpolating = true
+    CreateThread(function()
+        repeat
+            Wait(500)
+        until not IsCamInterpolating(activeCam) and IsCamActive(nextCam)
 
-        CreateThread(function()
-            repeat Wait(500)
-            until not IsCamInterpolating(cameraHandle) and IsCamActive(tmpCamera)
-            DestroyCam(cameraHandle, false)
-            cameraHandle = tmpCamera
-            isCameraInterpolating = false
-        end)
-    end
+        DestroyCam(activeCam, false)
+        activeCam = nextCam
+        isCamInterpolating = false
+    end)
 end
 
-local playerCoords
-local function pedTurn(ped, angle)
-    reverseCamera = not reverseCamera
-    local sequenceTaskId = OpenSequenceTask()
-    if sequenceTaskId then
-        TaskGoStraightToCoord(0, playerCoords.x, playerCoords.y, playerCoords.z, 8.0, -1, GetEntityHeading(ped) - angle, 0.1)
-        TaskStandStill(0, -1)
-        CloseSequenceTask(sequenceTaskId)
-        ClearPedTasks(ped)
-        TaskPerformSequence(ped, sequenceTaskId)
-        ClearSequenceTask(sequenceTaskId)
-    end
+---------------------------------------------------------------------
+-- TOURNE LE PED (et inverse la latéralité caméra pour follow-up)
+---------------------------------------------------------------------
+function client.pedTurn(ped, degrees)
+    invertSide = not invertSide
+
+    local seq = OpenSequenceTask()
+    if not seq then return end
+
+    TaskGoStraightToCoord(0, savedCoords.x, savedCoords.y, savedCoords.z, 8.0, -1, GetEntityHeading(ped) - degrees, 0.1)
+    TaskStandStill(0, -1)
+    CloseSequenceTask(seq)
+
+    ClearPedTasks(ped)
+    TaskPerformSequence(ped, seq)
+    ClearSequenceTask(seq)
 end
-client.pedTurn = pedTurn
 
-local function wearClothes(data, typeClothes)
-    local dataClothes = constants.DATA_CLOTHES[typeClothes]
-    local animationsOn = dataClothes.animations.on
-    local components = dataClothes.components[client.getPedDecorationType()]
-    local appliedComponents = data.components
-    local props = dataClothes.props[client.getPedDecorationType()]
-    local appliedProps = data.props
+---------------------------------------------------------------------
+-- VÊTEMENTS (APPLICATION DEPUIS DATA)
+-- data = { components = { {component_id, drawable, texture?}, ... }, props = { {prop_id, drawable, texture?}, ... } }
+---------------------------------------------------------------------
+function client.wearClothes(data, slotKey)
+    local set = constants.DATA_CLOTHES[slotKey]
+    if not set or not data then return end
 
-    RequestAnimDict(animationsOn.dict)
-    while not HasAnimDictLoaded(animationsOn.dict) do
-        Wait(0)
-    end
+    local compsSpec = set.components[ client.getPedDecorationType() ]
+    local propsSpec = set.props[      client.getPedDecorationType() ]
 
-    for i = 1, #components do
-        local componentId = components[i][1]
-        for j = 1, #appliedComponents do
-            local applied = appliedComponents[j]
-            if applied.component_id == componentId then
-                SetPedComponentVariation(cache.ped, componentId, applied.drawable, applied.texture, 2)
+    local comps = data.components or {}
+    local props = data.props or {}
+
+    -- Components ciblés par slot
+    for i = 1, #compsSpec do
+        local compId = compsSpec[i][1]
+        for j = 1, #comps do
+            local c = comps[j]
+            if c.component_id == compId then
+                SetPedComponentVariation(cache.ped, compId, c.drawable, c.texture or 0, 2)
             end
         end
     end
 
-    for i = 1, #props do
-        local propId = props[i][1]
-        for j = 1, #appliedProps do
-            local applied = appliedProps[j]
-            if applied.prop_id == propId then
-                SetPedPropIndex(cache.ped, propId, applied.drawable, applied.texture, true)
+    -- Props ciblés par slot
+    for i = 1, #propsSpec do
+        local propId = propsSpec[i][1]
+        for j = 1, #props do
+            local p = props[j]
+            if p.prop_id == propId then
+                SetPedPropIndex(cache.ped, propId, p.drawable, p.texture or 0, true)
             end
         end
     end
-
-    TaskPlayAnim(cache.ped, animationsOn.dict, animationsOn.anim, 3.0, 3.0, animationsOn.duration, animationsOn.move, 0, false, false, false)
 end
-client.wearClothes = wearClothes
 
-local function removeClothes(typeClothes)
-    local dataClothes = constants.DATA_CLOTHES[typeClothes]
-    local animationsOff = dataClothes.animations.off
-    local components = dataClothes.components[client.getPedDecorationType()]
-    local props = dataClothes.props[client.getPedDecorationType()]
+function client.removeClothes(slotKey)
+    local set = constants.DATA_CLOTHES[slotKey]
+    if not set then return end
 
-    RequestAnimDict(animationsOff.dict)
-    while not HasAnimDictLoaded(animationsOff.dict) do
-        Wait(0)
+    local compsSpec = set.components[ client.getPedDecorationType() ]
+    local propsSpec = set.props[      client.getPedDecorationType() ]
+
+    -- Remet les defaults de slot
+    for i = 1, #compsSpec do
+        local comp = compsSpec[i]
+        SetPedComponentVariation(cache.ped, comp[1], comp[2], 0, 2)
     end
 
-    for i = 1, #components do
-        local component = components[i]
-        SetPedComponentVariation(cache.ped, component[1], component[2], 0, 2)
+    -- Clear props du slot
+    for i = 1, #propsSpec do
+        ClearPedProp(cache.ped, propsSpec[i][1])
     end
-
-    for i = 1, #props do
-        ClearPedProp(cache.ped, props[i][1])
-    end
-
-    TaskPlayAnim(cache.ped, animationsOff.dict, animationsOff.anim, 3.0, 3.0, animationsOff.duration, animationsOff.move, 0, false, false, false)
 end
-client.removeClothes = removeClothes
 
-local playerHeading
-function client.getHeading() return playerHeading end
+---------------------------------------------------------------------
+-- MÉMO HEADING au moment de l’entrée en custom
+---------------------------------------------------------------------
+function client.getHeading()
+    return savedHeading
+end
 
-local callback
-function client.startPlayerCustomization(cb, conf)
-    repeat Wait(0) until IsScreenFadedIn() and not IsPlayerTeleportActive() and not IsPlayerSwitchInProgress()
+---------------------------------------------------------------------
+-- DÉMARRER / QUITTER CUSTOM
+---------------------------------------------------------------------
+function client.startPlayerCustomization(cb, cfg)
+    -- attendre la stabilité (teleport/switch/fade)
+    repeat Wait(0) until IsScreenFadedIn()
+    while IsPlayerTeleportActive() do Wait(0) end
+    while IsPlayerSwitchInProgress() do Wait(0) end
 
-    playerAppearance = client.getPedAppearance(cache.ped)
-    playerCoords = GetEntityCoords(cache.ped, true)
-    playerHeading = GetEntityHeading(cache.ped)
+    cachedAppearance = client.getPedAppearance(cache.ped)
+    savedCoords      = GetEntityCoords(cache.ped, true)
+    savedHeading     = GetEntityHeading(cache.ped)
 
     BackupPlayerStats()
 
-    callback = cb
-    config = conf
-    reverseCamera = false
-    isCameraInterpolating = false
+    startCallback    = cb
+    startConfig      = cfg
+    invertSide       = false
+    isCamInterpolating = false
 
-    setCamera("default")
+    setCamera('default')
+
     SetNuiFocus(true, true)
     SetNuiFocusKeepInput(false)
-    RenderScriptCams(true, false, 0, true, true)
-    SetEntityInvincible(cache.ped, Config.InvincibleDuringCustomization)
+
+    RenderScriptCams(true, true, 250, true, true)
+
+    SetEntityInvincible(cache.ped, Config.InvincibleDuringCustomization == true)
     TaskStandStill(cache.ped, -1)
 
+    lib.hideTextUI()
     if Config.HideRadar then DisplayRadar(false) end
 
-    SendNuiMessage(json.encode({
-        type = "appearance_display",
-        payload = {
-            asynchronous = Config.AsynchronousLoading
-        }
-    }))
+    bridge:onCustomizationStart()
+    Interface:syncCharacterAppearanceStateAndSettingsState(cfg)
+    Interface:toggle(true, true)
 end
 
-function client.exitPlayerCustomization(appearance)
-    RenderScriptCams(false, false, 0, true, true)
-    DestroyCam(cameraHandle, false)
-    SetNuiFocus(false, false)
+function client.exitPlayerCustomization(data)
+    RenderScriptCams(false, true, 250, true, true)
+    if activeCam then DestroyCam(activeCam, false) end
 
     if Config.HideRadar then DisplayRadar(true) end
 
     ClearPedTasksImmediately(cache.ped)
     SetEntityInvincible(cache.ped, false)
 
-    SendNuiMessage(json.encode({
-        type = "appearance_hide",
-        payload = {}
-    }))
+    Interface:toggle(false, true)
 
-    if not appearance then
+    if not data then
+        -- Restaurer l’apparence initiale (aucune sauvegarde)
         client.setPlayerAppearance(getAppearance())
     else
-        client.setPedTattoos(cache.ped, appearance.tattoos)
+        -- Cas particulier: tatouages uniquement renvoyés
+        if data.tattoos then
+            client.setPedTattoos(cache.ped, data.tattoos)
+        end
     end
 
     RestorePlayerStats()
+    bridge:onCustomizationExit()
 
-    if callback then
-        callback(appearance)
+    if startCallback then
+        startCallback(data)
     end
 
-    callback = nil
-    config = nil
-    playerAppearance = nil
-    playerCoords = nil
-    cameraHandle = nil
-    currentCamera = nil
-    reverseCamera = nil
-    isCameraInterpolating = nil
-
+    -- purge état local
+    startCallback      = nil
+    startConfig        = nil
+    cachedAppearance   = nil
+    savedCoords        = nil
+    savedHeading       = nil
+    activeCam          = nil
+    currentCameraKey   = nil
+    invertSide         = nil
+    isCamInterpolating = nil
 end
 
-AddEventHandler("onResourceStop", function(resource)
-    if resource == GetCurrentResourceName() then
+---------------------------------------------------------------------
+-- SAUVEGARDE DU FOCUS NUI SI RESSOURCE STOP
+---------------------------------------------------------------------
+AddEventHandler('onResourceStop', function(res)
+    if res == GetCurrentResourceName() then
         SetNuiFocus(false, false)
         SetNuiFocusKeepInput(false)
     end
 end)
 
-exports("startPlayerCustomization", client.startPlayerCustomization)
+---------------------------------------------------------------------
+-- EXPORT D’ENTRÉE EN CUSTOM
+---------------------------------------------------------------------
+exports('startPlayerCustomization', client.startPlayerCustomization)
