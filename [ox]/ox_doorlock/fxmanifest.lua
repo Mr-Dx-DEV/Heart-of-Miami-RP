@@ -14,6 +14,7 @@ repository   'https://github.com/communityox/ox_doorlock'
 --[[ Manifest ]]--
 shared_scripts {
 	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua',
 	'config.lua',
 }
 

@@ -10,6 +10,7 @@ description "UM - Multi Character"
 
 shared_scripts {
 	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua',
 	'locales/*.lua',
 	'list/*.lua',
 	'config.lua',

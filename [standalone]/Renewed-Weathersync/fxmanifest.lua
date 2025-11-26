@@ -9,6 +9,7 @@ version '1.1.6'
 
 shared_scripts{
     '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
 }
 
 client_scripts {

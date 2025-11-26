@@ -9,6 +9,7 @@ ox_lib 'locale'
 
 shared_scripts {
 	'@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
 }
 
 server_script 'server/main.lua'

@@ -8,6 +8,7 @@ description 'A spawn menu beyond dreams'
 
 shared_scripts {
 	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua',
 	'config.lua',
 	'utils/*.lua',
 	'bridge/**'

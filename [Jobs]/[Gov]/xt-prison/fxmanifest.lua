@@ -8,7 +8,7 @@ description 'Prison for QB, QBX, OX, ND, & ESX'
 repository 'https://github.com/xT-Development/xt-prison'
 version '1.4.5'
 
-shared_scripts { '@ox_lib/init.lua' }
+shared_scripts { '@ox_lib/init.lua', '@prism_uipack/init.lua' }
 
 client_scripts {
     'bridge/client/*.lua',

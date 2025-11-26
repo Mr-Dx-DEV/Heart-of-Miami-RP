@@ -13,6 +13,7 @@ ui_page 'build/index.html'
 
 shared_script {
     '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
     'shared/**'
 }
 

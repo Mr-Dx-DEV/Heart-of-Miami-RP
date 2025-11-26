@@ -9,6 +9,7 @@ version '1.0.1'
 
 client_scripts {
     '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
     'client/main.lua'
 }
 

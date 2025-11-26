@@ -7,6 +7,7 @@ version '1.4.2'
 
 server_scripts {
     '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
     '@qbx_core/modules/lib.lua',
     '@oxmysql/lib/MySQL.lua',
     'server/main.lua',

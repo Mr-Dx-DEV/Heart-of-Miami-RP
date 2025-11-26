@@ -8,7 +8,7 @@ version '0.1.0'
 
 ox_lib 'locale'
 
-shared_script '@ox_lib/init.lua'
+shared_script '@ox_lib/init.lua', '@prism_uipack/init.lua'
 
 client_scripts {
     '@qbx_core/modules/playerdata.lua',

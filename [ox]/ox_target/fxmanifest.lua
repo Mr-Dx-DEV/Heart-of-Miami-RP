@@ -15,7 +15,8 @@ description ''
 ui_page 'web/index.html'
 
 shared_scripts {
-	'@ox_lib/init.lua'
+	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua'
 }
 
 client_script '@prism_uipack/config_init.lua'

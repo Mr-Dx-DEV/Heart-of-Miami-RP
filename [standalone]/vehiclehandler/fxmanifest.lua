@@ -15,7 +15,7 @@ files {
     'locales/*.json'
 }
 
-shared_script '@ox_lib/init.lua'
+shared_script '@ox_lib/init.lua', '@prism_uipack/init.lua'
 client_script 'client.lua'
 server_script 'server.lua'
 
