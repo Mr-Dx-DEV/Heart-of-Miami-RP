@@ -15,8 +15,10 @@ description ''
 ui_page 'web/index.html'
 
 shared_scripts {
-	'@ox_lib/init.lua',
+	'@ox_lib/init.lua'
 }
+
+client_script '@prism_uipack/config_init.lua'
 
 client_scripts {
 	'client/main.lua',
@@ -41,6 +43,15 @@ files {
 	'client/compat/qtarget.lua',
 }
 
+
+escrow_ignore {
+    'client/**',
+	'server/**',
+	'locales/**'
+}
+
 provide 'qtarget'
 
 dependency 'ox_lib'
+
+dependency '/assetpacks'

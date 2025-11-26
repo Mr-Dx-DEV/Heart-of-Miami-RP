@@ -1,16 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,600;1,600&display=swap');
 
 :root {
   --color-default: #cfd2da;
   --color-hover: white;
+  --color-primary: #BEEE11;
 }
 
 body {
+  opacity: 0;
   visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
   user-select: none;
   white-space: nowrap;
   margin: 0;
-  user-select: none;
   overflow: hidden;
 }
 
@@ -23,22 +26,43 @@ p {
 }
 
 #eye {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 22pt;
-  fill: black;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.eye-hover {
-  fill: var(--color-default);
+#eyeSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 49px;
+}
+
+#shareIcon {
+  position: absolute;
+  top: 48.6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  pointer-events: none;
 }
 
 #options-wrapper {
+  margin-left: 0.5rem;
   position: absolute;
-  top: calc(48.4%);
+  top: 0;
   left: calc(50% + 18pt);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .option-container {
@@ -48,44 +72,54 @@ p {
   justify-content: flex-start;
   align-items: center;
   font-family: "Nunito";
-  background: linear-gradient(
-    90deg,
-    rgba(20, 20, 20, 0.7) 0%,
-    rgba(20, 20, 20, 0.6) 66%,
-    rgba(47, 48, 53, 0) 100%
-  );
-  font-size: 11pt;
-  line-height: 22pt;
+  background: linear-gradient(90deg, rgba(18, 18, 18, 0.8448) 0%, rgba(18, 18, 18, 0.4992) 100%);
+  outline: 1px solid #16161671;
+  box-shadow: 0px 1px 8px 0px #00000033;
+  border-radius: 8px;
+  font-size: 14px;
   vertical-align: middle;
-  margin: 2pt;
-  transition: 300ms;
   transform-origin: left top;
   scale: 1;
-  height: 22pt;
-  width: 150pt;
+  height: 36px;
+  min-width: 156px;
+  max-width: 156px;
+  width: 100%;
+  transition: max-width 0.3s ease-in-out;
   top: 0;
+  padding-left: 16px;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .option-container:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(30, 30, 30, 0.7) 0%,
-    rgba(30, 30, 30, 0.6) 66%,
-    rgba(57, 58, 63, 0) 100%
-  );
-  transform-origin: left top;
-  color: var(--color-hover);
-  margin-left: 4pt;
+  max-width: 250px;
+  overflow: visible;
+  white-space: normal;
+  text-overflow: clip;
+}
+
+.option-container:hover .option-icon {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .option-icon {
-  font-size: 12pt;
-  line-height: 22pt;
-  width: 14pt;
-  margin: 5pt;
-  color: var(--color-default);
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--color-primary);
+  transition: color .3s ease-in-out;
 }
 
 .option-label {
-  font-weight: 500;
+  color: #fff;
+  font-weight: 600;
+  font-family: "Roboto";
+  font-size: clamp(12px, 1.2vw, 14px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  flex-shrink: 1;
+  min-width: 0;
 }

@@ -1,4 +1,5 @@
 import { createOptions } from "./createOptions.js";
+import { fetchNui } from "./fetchNui.js";
 
 const optionsWrapper = document.getElementById("options-wrapper");
 const body = document.body;
@@ -9,14 +10,23 @@ window.addEventListener("message", (event) => {
 
   switch (event.data.event) {
     case "visible": {
-      body.style.visibility = event.data.state ? "visible" : "hidden";
-      return eye.classList.remove("eye-hover");
+      if (event.data.state) {
+        body.style.visibility = "visible";
+        body.style.opacity = "1";
+      } else {
+        body.style.opacity = "0";
+        body.addEventListener(
+          "transitionend",
+          () => {
+            if (body.style.opacity === "0") {
+              body.style.visibility = "hidden";
+            }
+          },
+          { once: true }
+        );
+      }
+      break;
     }
-
-    case "leftTarget": {
-      return eye.classList.remove("eye-hover");
-    }
-
     case "setTarget": {
       eye.classList.add("eye-hover");
 
@@ -36,5 +46,25 @@ window.addEventListener("message", (event) => {
         }
       }
     }
+  }
+});
+
+window.addEventListener('DOMContentLoaded', async () => {
+  let primaryColor = await fetchNui('getConfigValue', 'primaryColor');
+  let targetIcon = await fetchNui('getConfigValue', 'targetIcon');
+
+  if (!primaryColor || primaryColor.trim() === '') {
+    primaryColor = '#BEEE11';
+  }
+
+  if (!targetIcon || targetIcon.trim() === '') {
+    targetIcon = 'fas fa-share';
+  }
+
+  document.documentElement.style.setProperty('--color-primary', primaryColor);
+
+  const eyeElement = document.getElementById('shareIcon');
+  if (eyeElement) {
+    eyeElement.className = targetIcon;
   }
 });
