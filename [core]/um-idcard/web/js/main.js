@@ -1,6 +1,7 @@
 import { fetchNui } from './fetchNui.js';
 import { Global } from '../../lang/global.js';
-import config from './config.js';
+
+let config;
 
 /**
  * Get element by id
@@ -9,13 +10,13 @@ import config from './config.js';
 const getElementById = (id) => document.getElementById(id);
 
 /**
- * Set visibility
+ * Set visibility 
  * @param visibility {string}
  **/
 const setVisibility = (visibility) => getElementById('um-idcard').style.visibility = visibility;
 
 /**
- * Set visibility of badge
+ * Set visibility of badge 
  * @param badge {string|Object|null}
  **/
 const setBadgeVisibility = (badge) => {
@@ -41,7 +42,7 @@ const closeFunction = () => {
  * @param playerData {Object}
  **/
 const openIdCard = (playerData) => {
-  const license = config.licenses[playerData.cardtype];
+  const license = config.Licenses[playerData.cardtype];
   const elements = {
     lastname: playerData.lastname,
     name: playerData.firstname,
@@ -58,7 +59,6 @@ const openIdCard = (playerData) => {
 
   getElementById('mugshot').src = playerData.mugShot;
   getElementById('smallmugshot').src = playerData.mugShot;
-  getElementById('um-idcard').style.backgroundImage = `url(${license.backgroundImage})`;
   getElementById('um-idcard').style.backgroundColor = license.background;
   getElementById('um-idcard').classList.add('animate__animated', 'animate__fadeInLeft', 'animate__faster');
   setBadgeVisibility(playerData.badge);
@@ -67,8 +67,8 @@ const openIdCard = (playerData) => {
 };
 
 const autoClose = () => {
-  if (!config.idCardSettings.autoClose.status) return;
-  setTimeout(closeFunction, config.idCardSettings.autoClose.time);
+  if (!config.IdCardSettings.autoClose.status) return;
+  setTimeout(closeFunction, config.IdCardSettings.autoClose.time);
 };
 
 window.addEventListener('message', (event) => {
@@ -76,7 +76,7 @@ window.addEventListener('message', (event) => {
   if (type === 'playerData') {
     openIdCard(playerData);
   } else if (type === 'configData') {
-    Object.assign(config, configData);
+    config = configData;
   }
 });
 
@@ -87,6 +87,6 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key !== config.idCardSettings.closeKey) return;
+  if (e.key !== config.IdCardSettings.closeKey) return;
   closeFunction();
 });

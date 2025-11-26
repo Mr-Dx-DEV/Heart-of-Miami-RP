@@ -1,6 +1,6 @@
 if GetResourceState('qbx_core') ~= 'started' then return end
 
-local sharedConfig = require 'config.shared'
+local metadata = {}
 
 --- Convert sex number to string M or F
 ---@param sex number
@@ -14,11 +14,11 @@ end
 ---@param itemName string
 ---@return string | table
 local function GetBadge(src, itemName)
-    if not sharedConfig.licenses[itemName].badge then return 'none' end
+    if not Config.Licenses[itemName].badge then return 'none' end
 
     local player = exports.qbx_core:GetPlayer(src)
     return {
-        img = sharedConfig.licenses[itemName].badge,
+        img = Config.Licenses[itemName].badge,
         grade = player.PlayerData.job.grade.name
     }
 end
@@ -35,7 +35,7 @@ local function CreateMetaLicense(src, itemTable)
 
     if type(itemTable) == "table" then
         for _, v in pairs(itemTable) do
-            local metadata = {
+            metadata = {
                 cardtype = v,
                 citizenid = player.PlayerData.citizenid,
                 firstname = player.PlayerData.charinfo.firstname,
@@ -43,10 +43,10 @@ local function CreateMetaLicense(src, itemTable)
                 birthdate = player.PlayerData.charinfo.birthdate,
                 sex =  GetStringSex(player.PlayerData.charinfo.gender),
                 nationality = player.PlayerData.charinfo.nationality,
+                mugShot = 'none',
                 badge = GetBadge(src, v)
             }
-
-            exports.ox_inventory:AddItem(src, v, 1, metadata)
+            player.Functions.AddItem(v, 1, false, metadata)
         end
     else
         print("Invalid parameter type")
@@ -66,8 +66,8 @@ local function GetMetaLicense(src, itemTable)
     end
 
     if type(itemTable) == "table" then
-        for _, v in pairs(itemTable) do --luacheck: ignore
-            local metadata = {
+        for _, v in pairs(itemTable) do
+            metadata = {
                 cardtype = v,
                 citizenid = player.PlayerData.citizenid,
                 firstname = player.PlayerData.charinfo.firstname,
@@ -75,6 +75,7 @@ local function GetMetaLicense(src, itemTable)
                 birthdate = player.PlayerData.charinfo.birthdate,
                 sex =  GetStringSex(player.PlayerData.charinfo.gender),
                 nationality = player.PlayerData.charinfo.nationality,
+                mugShot = 'none',
                 badge = GetBadge(src,v)
             }
             return metadata
@@ -90,6 +91,6 @@ exports('GetMetaLicense', GetMetaLicense)
 ---@param k string item name
 function CreateRegisterItem(k)
     exports.qbx_core:CreateUseableItem(k, function(source, item)
-        TriggerEvent('um-idcard:server:sendData', source, k, item.info or item.metadata)
+        TriggerEvent('um-idcard:server:sendData', source, item.info or item.metadata)
     end)
 end

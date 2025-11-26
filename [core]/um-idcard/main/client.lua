@@ -1,11 +1,10 @@
 local openID,dataReady = false,false
 local animDict,anim = 'paper_1_rcm_alt1-9','player_one_dual-9'
-local sharedConfig = require 'config.shared'
 
 -- Functions
 
 -- The state of the nui focus and openID control
----@param bool boolean
+---@param bool boolean 
 local function nuiFocus(bool)
     SetNuiFocusKeepInput(bool)
     SetNuiFocus(bool,false)
@@ -23,7 +22,7 @@ end
 
 -- Send config data to the nui
 local function sendConfigData()
-    SendNUIMessage({type = 'configData', configData = sharedConfig})
+    SendNUIMessage({type = 'configData', configData = Config})
 end
 
 -- Events
@@ -36,8 +35,8 @@ end)
 
 RegisterNetEvent('um-idcard:client:startAnim', function(cardType)
     if not cardType or cardType == nil then return print('No Card Type') end
-    if not sharedConfig.licenses[cardType].prop or sharedConfig.licenses[cardType].prop == nil then return print('Card Type: '..cardType..' No Prop') end
-    local prop = sharedConfig.licenses[cardType].prop
+    if not Config.Licenses[cardType].prop or Config.Licenses[cardType].prop == nil then return print('Card Type: '..cardType..' No Prop') end
+    local prop = Config.Licenses[cardType].prop
     if prop then
         local playerCoords = GetEntityCoords(cache.ped)
         local createProp = CreateObject(GetHashKey(prop), playerCoords.x, playerCoords.y, playerCoords.z + 0.2, true, true, true)
@@ -74,8 +73,10 @@ end)
 -- Loaded
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() sendConfigData() end)
 
+RegisterNetEvent('esx:playerLoaded', function() sendConfigData() end)
+
 AddEventHandler('onResourceStart', function(resourceName)
-    if GetCurrentResourceName() ~= resourceName then return end
+    if GetCurrentResourceName() ~= resourceName then return end 
     dataReady = true
     SetTimeout(2000, function()
         sendConfigData()
@@ -83,11 +84,3 @@ AddEventHandler('onResourceStart', function(resourceName)
         dataReady = false
      end)
 end)
-
-exports.ox_inventory:displayMetadata({
-    firstname = 'Firstname',
-    lastname = 'Lastname',
-    nationality = 'Nationality',
-    birthdate = 'Birthdate',
-    citizenid = 'eID'
-})
