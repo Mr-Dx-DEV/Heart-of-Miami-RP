@@ -14,10 +14,10 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
         Wait(0)
     end
 
-    local motd = GetConvar('qbx:motd', '')
-    if motd ~= '' then
-        exports.chat:addMessage({ template = motd })
-    end
+    -- local motd = GetConvar('qbx:motd', '')
+    -- if motd ~= '' then
+    --     exports.chat:addMessage({ template = motd })
+    -- end
 end)
 
 ---@param val PlayerData
