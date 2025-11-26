@@ -15,7 +15,7 @@ dependencies {
     'ox_lib',
 }
 
-shared_script '@ox_lib/init.lua', '@prism_uipack/init.lua'
+shared_script {'@ox_lib/init.lua', '@prism_uipack/init.lua'}
 
 ox_libs {
     'locale',
