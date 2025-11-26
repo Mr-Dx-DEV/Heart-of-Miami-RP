@@ -9,7 +9,7 @@ const UM = {
   MainSettings: {
     color: "#2C6EFF", // Todo: https://www.color-hex.com/
     opacity: 1, // 0 close background opacity, | 0.7 low background opacity,
-    logo: "assets/images/no-image.png",
+    logo: "assets/images/image.png",
     logowidth: 9,
     extra: {
       autoRGB: false,
