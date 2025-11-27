@@ -22,7 +22,7 @@ Config.jobRequirement = { -- Job requirement settings
     enabled = true, -- Require someone to have job to give tools / if false anyone can use(maybe bad idea)
     jobs = { -- Add or remove as many jobs as you would like
         'ambulance',
-        'police',
+       -- 'police',
     }
 }
 
@@ -49,4 +49,4 @@ Config.usableWheelchairItem = { -- Usable item settings
     item = 'wheelchair' -- Item to be in your items table
 }
 
-Config.CustomCarKeyScript = false -- Set to true if using wasabi_carlock or qb-vehiclekeys (Customize in wasabi_bridge/customize/cl_customize.lua)
+Config.CustomCarKeyScript = true -- Set to true if using wasabi_carlock or qb-vehiclekeys (Customize in wasabi_bridge/customize/cl_customize.lua)
