@@ -1,0 +1,32 @@
+shared_script '@vLife/ai_module_fg-obfuscated.lua'
+shared_script '@vLife/shared_fg-obfuscated.lua'
+
+
+fx_version 'cerulean'
+game 'gta5'
+
+author 'NukeRP'
+description 'Vehicle Rentals'
+version '1.0.0'
+
+
+shared_scripts {
+    'config.lua',
+    '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
+}
+
+client_scripts {
+    'client.lua',
+}
+
+server_script {
+    'server.lua'
+}
+
+dependencies {
+    'ox_inventory',
+    'ox_lib',
+}
+
+lua54 'yes'
