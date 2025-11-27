@@ -164,7 +164,7 @@ Config = {
         * discord
         ! You can add your own in custom/logs/
     ]]
-    Logs = "ox_lib",
+    Logs = "discord",
 
     -- Set the color theme in the config
     -- setr nolag:primaryColor violet
