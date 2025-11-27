@@ -72,16 +72,14 @@ return {
 			{ name = 'at_clip_extended_pistol', price = 0, grade = 9  },
 			{ name = 'at_clip_extended_shotgun', price = 0, grade = 9  },
 		}, locations = {
-			
-            vec3(468.37, -985.22, 26.09),   --- MRPD
-			vec3(2807.95, 4729.98, 47.89), --- SAHP
-			vec3(-448.252, 7103.879, 22.384), --- Roxwood Police Station
+
+            vec3(79.53, -362.18, 41.19),   --- MRPD
+
 		}, targets = {
-			
-			{ loc = vec3(468.37, -985.22, 26.09), length = 2.8, width = 3.0, heading = 66.45, minZ = 25.88, maxZ = 27.88, distance = 3 },
+
+			{ loc = vec3(79.53, -362.18, 41.19), length = 2.8, width = 3.0, heading = 70.60, minZ = 39.02, maxZ = 42.98, distance = 3 },
 		}
 	},
-
 	Medicine = {
 		name = 'Medicine Cabinet',
 		groups = {
@@ -145,8 +143,9 @@ return {
             { name = 'medikit', price = 0, grade = 0  },
 
 		}, locations = {
-			vec3(-309.75, -589.45, 32.78)
+			vec3(-456.98, -1000.03, 23.93)
 		}, targets = {
+            { loc = vec3(-456.98, -1000.03, 23.93), length = 2.8, width = 3.0, heading = 357.93, minZ = 22.02, maxZ = 24.40, distance = 3 },
 
 		}
 	},
