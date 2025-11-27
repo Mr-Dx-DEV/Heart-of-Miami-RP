@@ -1,6 +1,4 @@
-if not Radial.IsQBX() and not Radial.IsQB() then
-    return
-end
+if not Radial.IsQBX() and not Radial.IsQB() then return end
 
 function Radial.Add(title, event)
     exports[Radial.ResourceName]:AddOption({
@@ -9,7 +7,7 @@ function Radial.Add(title, event)
         icon = "shirt",
         type = "client",
         event = event,
-        shouldClose = true,
+        shouldClose = true
     }, Radial.MenuID)
 end
 

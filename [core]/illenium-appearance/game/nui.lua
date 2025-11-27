@@ -1,182 +1,144 @@
--- nui.lua (refonte)
--- Auteur: Quantom (refonte par assistance)
--- Objet: Callbacks NUI pour l’éditeur d’apparence/tenues/tatouages + caméra
--- Dépendances globales attendues: client, Interface, Locales, Config, constants, lib, cache, game.bridge
+local client = client
 
-local bridge = require('game.bridge')
-local log    = require('modules.utility.shared.logger')
-
--- Helpers
-local function ack(cb, ms)
-    -- par convention: 1 pour OK immédiat / 200 pour opération brève
-    cb(ms or 1)
-end
-
----------------------------------------------------------------------
--- ROTATION DU PERSONNAGE DEPUIS L'UI
----------------------------------------------------------------------
-Interface:on('callback::function::character::rotate', function(payload, cb)
-    local ped = PlayerPedId()
-    local delta = (payload and payload.deltaX) or 0.0
-    local newHeading = GetEntityHeading(ped) + (delta * 0.2)
-    SetEntityHeading(ped, newHeading)
-    ack(cb, 200)
+RegisterNUICallback("appearance_get_locales", function(_, cb)
+    cb(Locales[GetConvar("illenium-appearance:locale", "en")].UI)
 end)
 
----------------------------------------------------------------------
--- LOCALES UI
----------------------------------------------------------------------
-Interface:on('callback::function::locales::get', function(_, cb)
-    local locale = GetConvar('illenium-appearance:locale', 'en')
-    local ui = (Locales[locale] and Locales[locale].UI) or {}
-    cb(ui)
+RegisterNUICallback("appearance_get_settings", function(_, cb)
+    cb({ appearanceSettings = client.getAppearanceSettings() })
 end)
 
----------------------------------------------------------------------
--- CAMÉRA
----------------------------------------------------------------------
-Interface:on('callback::function::camera::set', function(key, cb)
-    ack(cb, 1)
-    client.setCamera(key) -- défini côté customization.lua
+RegisterNUICallback("appearance_get_data", function(_, cb)
+    local appearanceData = client.getAppearance()
+    if appearanceData.tattoos then
+        client.setPedTattoos(cache.ped, appearanceData.tattoos)
+    end
+    cb({ config = client.getConfig(), appearanceData = appearanceData })
 end)
 
----------------------------------------------------------------------
--- CHANGEMENT DE MODÈLE
----------------------------------------------------------------------
-Interface:on('callback::function::model::change', function(modelHash, cb)
-    local newPed = client.setPlayerModel(modelHash)
-    -- Repositionnement sur le heading sauvegardé par le module customization
-    SetEntityHeading(cache.ped, (client.getHeading() or GetEntityHeading(cache.ped)))
-    SetEntityInvincible(newPed, true)
-    TaskStandStill(newPed, -1)
+RegisterNUICallback("appearance_set_camera", function(camera, cb)
+    cb(1)
+    client.setCamera(camera)
+end)
+
+RegisterNUICallback("appearance_turn_around", function(_, cb)
+    cb(1)
+    client.pedTurn(cache.ped, 180.0)
+end)
+
+RegisterNUICallback("appearance_rotate_camera", function(direction, cb)
+    cb(1)
+    client.rotateCamera(direction)
+end)
+
+RegisterNUICallback('appearance_change_ped_scale', function(scale, cb)
+    client.setPedScale(cache.ped, scale)
+    cb(1)
+end)
+
+RegisterNUICallback("appearance_change_model", function(model, cb)
+    local playerPed = client.setPlayerModel(model)
+
+    SetEntityHeading(cache.ped, client.getHeading())
+    SetEntityInvincible(playerPed, true)
+    TaskStandStill(playerPed, -1)
 
     cb({
-        new_character_appearance = client.getPedAppearance(newPed),
-        new_game_appearance_data = bridge:getAppearanceSettings(),
+        appearanceSettings = client.getAppearanceSettings(),
+        appearanceData = client.getPedAppearance(playerPed)
     })
 end)
 
----------------------------------------------------------------------
--- COMPOSANTS (Vêtements “components”)
----------------------------------------------------------------------
-Interface:on('callback::function::component::change', function(data, cb)
-    client.setPedComponent(cache.ped, data)
-    bridge:onComponentChange(data)
-    local compSettings, maxDrawable, maxTexture, palettes = bridge:getComponentSettings(cache.ped, data.component_id)
-    cb(compSettings, maxDrawable, maxTexture, palettes)
+RegisterNUICallback("appearance_change_component", function(component, cb)
+    client.setPedComponent(cache.ped, component)
+    cb(client.getComponentSettings(cache.ped, component.component_id))
 end)
 
----------------------------------------------------------------------
--- PROPS (Chapeaux, lunettes, etc.)
----------------------------------------------------------------------
-Interface:on('callback::function::prop::change', function(data, cb)
-    client.setPedProp(cache.ped, data)
-    bridge:onPropChange(data)
-    local propSettings, maxDrawable, maxTexture, palettes = bridge:getPropSettings(cache.ped, data.prop_id)
-    cb(propSettings, maxDrawable, maxTexture, palettes)
+RegisterNUICallback("appearance_change_prop", function(prop, cb)
+    client.setPedProp(cache.ped, prop)
+    cb(client.getPropSettings(cache.ped, prop.prop_id))
 end)
 
----------------------------------------------------------------------
--- HEAD BLEND / FACE FEATURES / OVERLAYS / HAIR / EYE COLOR
----------------------------------------------------------------------
-Interface:on('callback::function::head_blend::change', function(data, cb)
-    ack(cb, 1)
-    client.setPedHeadBlend(cache.ped, data)
+RegisterNUICallback("appearance_change_head_blend", function(headBlend, cb)
+    cb(1)
+    client.setPedHeadBlend(cache.ped, headBlend)
 end)
 
-Interface:on('callback::function::face_feature::change', function(data, cb)
-    ack(cb, 1)
-    client.setPedFaceFeatures(cache.ped, data)
+RegisterNUICallback("appearance_change_face_feature", function(faceFeatures, cb)
+    cb(1)
+    client.setPedFaceFeatures(cache.ped, faceFeatures)
 end)
 
-Interface:on('callback::function::head_overlay::change', function(data, cb)
-    ack(cb, 200)
-    client.setPedHeadOverlays(cache.ped, data)
+RegisterNUICallback("appearance_change_head_overlay", function(headOverlays, cb)
+    cb(1)
+    client.setPedHeadOverlays(cache.ped, headOverlays)
 end)
 
-Interface:on('callback::function::hair::change', function(data, cb)
-    client.setPedHair(cache.ped, data)
-    local hair, maxDrawable, maxTexture = bridge:getHairSettings(cache.ped)
-    cb(hair, maxDrawable, maxTexture)
+RegisterNUICallback("appearance_change_hair", function(hair, cb)
+    client.setPedHair(cache.ped, hair)
+    cb(client.getHairSettings(cache.ped))
 end)
 
-Interface:on('callback::function::eye_color::change', function(data, cb)
-    ack(cb, 1)
-    client.setPedEyeColor(cache.ped, data)
+RegisterNUICallback("appearance_change_eye_color", function(eyeColor, cb)
+    cb(1)
+    client.setPedEyeColor(cache.ped, eyeColor)
 end)
 
----------------------------------------------------------------------
--- TATOUAGES
----------------------------------------------------------------------
-Interface:on('callback::function::tattoo::preview', function(payload, cb)
-    client.setPreviewTattoo(cache.ped, payload.data, payload.tattoo)
-    ack(cb, 200)
+RegisterNUICallback("appearance_apply_tattoo", function(data, cb)
+    local paid = not data.tattoo or not Config.ChargePerTattoo or lib.callback.await("illenium-appearance:server:payForTattoo", false, data.tattoo)
+    if paid then
+        client.addPedTattoo(cache.ped, data.updatedTattoos or data)
+    end
+    cb(paid)
 end)
 
-Interface:on('callback::function::tattoo::opacity::set', function(payload, cb)
-    ack(cb, 1)
-    client.addPedTattoo(cache.ped, payload.updatedTattoos or payload)
+RegisterNUICallback("appearance_preview_tattoo", function(previewTattoo, cb)
+    cb(1)
+    client.setPreviewTattoo(cache.ped, previewTattoo.data, previewTattoo.tattoo)
 end)
 
-Interface:on('callback::function::tattoo::delete', function(data, cb)
-    ack(cb, 1)
+RegisterNUICallback("appearance_delete_tattoo", function(data, cb)
+    cb(1)
     client.removePedTattoo(cache.ped, data)
 end)
 
-Interface:on('callback::function::tattoo::apply', function(payload, cb)
-    local shouldCharge = (Config.ChargePerTattoo == true)
-    local success = true
-
-    if shouldCharge then
-        success = lib.callback.await('illenium-appearance:server:payForTattoo', false, payload.tattoo) == true
-    end
-
-    if success then
-        log.verbosef('[appearance][nui][tattoo] Paiement OK (ou gratuit). Application du tattoo.')
-        client.addPedTattoo(cache.ped, payload.updatedTattoos or payload)
-    else
-        log.warnf('[appearance][nui][tattoo] Paiement KO. Tattoo non appliqué.')
-    end
-
-    cb(success)
+RegisterNUICallback("appearance_wear_clothes", function(dataWearClothes, cb)
+    cb(1)
+    client.wearClothes(dataWearClothes.data, dataWearClothes.key)
 end)
 
----------------------------------------------------------------------
--- TENUES: PORTER / ENLEVER / SAUVER (et quitter)
----------------------------------------------------------------------
-Interface:on('callback::function::wear_clothes', function(payload, cb)
-    ack(cb, 1)
-    client.wearClothes(payload.data, payload.key) -- “head”, “body”, “bottom”
+RegisterNUICallback("appearance_remove_clothes", function(clothes, cb)
+    cb(1)
+    client.removeClothes(clothes)
 end)
 
-Interface:on('callback::function::remove_clothes', function(key, cb)
-    ack(cb, 1)
-    client.removeClothes(key) -- “head”, “body”, “bottom”
+RegisterNUICallback("appearance_save", function(appearance, cb)
+    cb(1)
+    client.wearClothes(appearance, "head")
+    client.wearClothes(appearance, "body")
+    client.wearClothes(appearance, "bottom")
+    client.exitPlayerCustomization(appearance)
 end)
 
-Interface:on('callback::function::save', function(apparenceData, cb)
-    ack(cb, 1)
-    client.wearClothes(apparenceData, 'head')
-    client.wearClothes(apparenceData, 'body')
-    client.wearClothes(apparenceData, 'bottom')
-    client.exitPlayerCustomization(apparenceData)
-end)
-
-Interface:on('callback::function::exit', function(_, cb)
-    ack(cb, 1)
+RegisterNUICallback("appearance_exit", function(_, cb)
+    cb(1)
     client.exitPlayerCustomization()
 end)
 
----------------------------------------------------------------------
--- Intégration ox_inventory (client): porter une tenue depuis un item
--- A câbler côté serveur avec ox_inventory:useItem pour envoyer 'data' (metadata tenue)
----------------------------------------------------------------------
-RegisterNetEvent('illenium-appearance:client:wearClothesFromItem', function(data, slotKey)
-    -- data: { components = {...}, props = {...} } + éventuels champs métiers
-    client.wearClothes(data, slotKey or 'body')
+RegisterNUICallback("rotate_left", function(_, cb)
+    cb(1)
+    client.pedTurn(cache.ped, 10.0)
 end)
 
--- Export simple si un autre script client veut appliquer une tenue issue d’un item
-exports('WearClothesFromItem', function(data, slotKey)
-    client.wearClothes(data, slotKey or 'body')
+RegisterNUICallback("rotate_right", function(_, cb)
+    cb(1)
+    client.pedTurn(cache.ped, -10.0)
+end)
+
+RegisterNUICallback("get_theme_configuration", function(_, cb)
+    cb(Config.Theme)
+end)
+
+RegisterNUICallback("appearance_ready", function(_, cb)
+    cb(Config.PrimaryColor)
 end)
