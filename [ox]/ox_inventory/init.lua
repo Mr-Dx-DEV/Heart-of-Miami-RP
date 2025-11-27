@@ -94,7 +94,7 @@ else
         suppresspickups = GetConvarInt('inventory:suppresspickups', 1) == 1,
         disableweapons = GetConvarInt('inventory:disableweapons', 0) == 1,
         disablesetupnotification = GetConvarInt('inventory:disablesetupnotification', 0) == 1,
-        enablestealcommand = GetConvarInt('inventory:enablestealcommand', 1) == 1,
+        enablestealcommand = GetConvarInt('inventory:enablestealcommand', 1) == 0,
     }
 
     local ignoreweapons = table.create(0, (client.ignoreweapons and #client.ignoreweapons or 0) + 3)
@@ -227,7 +227,6 @@ if not LoadResourceFile(shared.resource, 'web/build/index.html') then
         'UI has not been built, refer to the documentation or download a release build.\n	^3https://coxdocs.dev/ox_inventory^0')
 end
 
--- No we're not going to support qtarget any longer.
 if shared.target and GetResourceState('ox_target') ~= 'started' then
     shared.target = false
     warn('ox_target is not loaded - it should start before ox_inventory')
@@ -237,5 +236,3 @@ if lib.context == 'server' then
     shared.ready = false
     return require 'server'
 end
-
-require 'client'

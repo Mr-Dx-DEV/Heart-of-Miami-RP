@@ -94,7 +94,17 @@ function Utils.ItemNotify(data)
         return
     end
 
-    SendNUIMessage({ action = 'itemNotify', data = data })
+    -- Use standard ox_inventory notification format instead of Prism-specific format
+    -- This prevents JavaScript errors in the standard web build
+    SendNUIMessage({
+        action = 'itemNotify',
+        data = {
+            data.item or data[1],
+            data.text or data[2],
+            data.count or data[3]
+            -- Removed Prism.ItemNotificationConfig to prevent JS errors
+        }
+    })
 end
 
 RegisterNetEvent('ox_inventory:itemNotify', Utils.ItemNotify)
@@ -209,22 +219,5 @@ function Utils.nearbyMarker(point)
         lib.hideTextUI()
     end
 end
-
-function Utils.blurIn()
-    if IsScreenblurFadeRunning() then
-        DisableScreenblurFade()
-    end
-
-    TriggerScreenblurFadeIn(100)
-end
-
-function Utils.blurOut()
-    if IsScreenblurFadeRunning() then
-        DisableScreenblurFade()
-    end
-
-    TriggerScreenblurFadeOut(250)
-end
-
 
 return Utils

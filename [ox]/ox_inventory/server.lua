@@ -231,13 +231,6 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 
 		if not right then return end
 
-        -- Security check to make sure the requested inventory type is the same as the found inventory
-        -- Only case where a missmatch is tolerated is for temporary stashes
-        if right.type ~= invType and not (right.type == 'temp' and invType == 'stash') then
-            DropPlayer(source, 'sussy')
-            return
-        end
-
 		if not ignoreSecurityChecks and right.groups and not server.hasGroup(left, right.groups) then return end
 
 		local hookPayload = {
@@ -308,7 +301,7 @@ lib.callback.register('ox_inventory:openInventory', function(source, invType, da
         if not isPolice and not isTargetStealable then return end
     end
 
-    return openInventory(source, invType, data)
+	return openInventory(source, invType, data)
 end)
 
 ---@param netId number
@@ -380,6 +373,64 @@ RegisterNetEvent('ox_inventory:usedItemInternal', function(slot)
     TriggerEvent('ox_inventory:usedItem', inventory.id, item.name, item.slot, next(item.metadata) and item.metadata)
 
     inventory.usingItem = nil
+end)
+
+lib.callback.register('ox_inventory:GetProfilePicture', function(source)
+	local result = promise.new()
+
+	if Prism.ProfileType == 'discord' then
+		local discordId = GetPlayerIdentifierByType(source, 'discord')
+
+		if discordId then
+			discordId = discordId:gsub('discord:', '')
+		end
+
+		local url = string.format("https://discord.com/api/v10/users/%s", discordId)
+
+		PerformHttpRequest(url, function(statusCode, response, headers)
+			if statusCode == 200 then
+				local data = json.decode(response)
+				if data and data.avatar then
+					local baseUrl = "https://cdn.discordapp.com/avatars/" .. discordId .. "/" .. data.avatar .. ".png"
+					result:resolve(baseUrl)
+				else
+					result:resolve('')
+				end
+			else
+				result:resolve('')
+			end
+		end, "GET", "", {
+			["Authorization"] = "Bot " .. Prism.DiscordBotToken,
+			["Content-Type"] = "application/json"
+		})
+	elseif Prism.ProfileType == 'steam' then
+		local steamId = GetPlayerIdentifierByType(source, 'steam')
+
+		if steamId then
+			steamId = steamId:gsub('steam:', '')
+		end
+
+		local steamId64 = tonumber(steamId)
+		if not steamId64 then
+			result:resolve('')
+			return
+		end
+		local url = string.format("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=%s&steamids=%s", Prism.SteamApiKey, steamId64)
+
+		PerformHttpRequest(url, function(statusCode, response, headers)
+			if statusCode == 200 then
+				local data = json.decode(response)
+				if data and data.response and data.response.players and data.response.players[1] and data.response.players[1].avatarfull then
+					result:resolve(data.response.players[1].avatarfull)
+				else
+					result:resolve('')
+				end
+			else
+				result:resolve('')
+			end
+		end, "GET", "", {["Content-Type"] = "application/json"})
+	end
+	return Citizen.Await(result)
 end)
 
 ---@param source number
@@ -586,9 +637,7 @@ lib.addCommand({'additem', 'giveitem'}, {
 
 		source = Inventory(source) or { label = 'console', owner = 'console' }
 
-		if server.loglevel > 0 then
-			lib.logger(source.owner, 'admin', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label))
-		end
+		TriggerEvent('NukeXD-Logs:CreateLog', 'playerinventoryadmin', 'Gave/Add', 'green', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label))
 	end
 end)
 
@@ -616,9 +665,7 @@ lib.addCommand('removeitem', {
 
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
-		if server.loglevel > 0 then
-			lib.logger(source.owner, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, count, item.name, inventory.label))
-		end
+		TriggerEvent('NukeXD-Logs:CreateLog', 'playerinventoryadmin', 'Removed Item', 'green', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label))
 	end
 end)
 
@@ -646,9 +693,7 @@ lib.addCommand('setitem', {
 
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
-		if server.loglevel > 0 then
-			lib.logger(source.owner, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, count))
-		end
+		TriggerEvent('NukeXD-Logs:CreateLog', 'playerinventoryadmin', 'Set Itenm', 'green', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count))
 	end
 end)
 

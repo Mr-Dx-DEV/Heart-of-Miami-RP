@@ -7,6 +7,20 @@ local Utils = require 'modules.utils.client'
 local Weapon = require 'modules.weapon.client'
 local currentWeapon
 
+-- Add cooldown system
+local ITEM_COOLDOWN = 5000 -- 1 second cooldown
+local lastItemAction = 0
+
+local function checkCooldown()
+    local currentTime = GetGameTimer()
+    if currentTime - lastItemAction < ITEM_COOLDOWN then
+        lib.notify({ type = 'error', description = 'Please wait before using or giving items again' })
+        return false
+    end
+    lastItemAction = currentTime
+    return true
+end
+
 exports('getCurrentWeapon', function()
 	return currentWeapon
 end)
@@ -43,6 +57,15 @@ plyState:set('invBusy', true, true)
 plyState:set('invHotkeys', false, false)
 plyState:set('canUseWeapons', false, false)
 
+local function GetProfilePicture()
+	if Prism.ProfileType == 'mugshot' then
+		return exports['MugShotBase64']:GetMugShotBase64(cache.ped, false)
+	else
+		local result = lib.callback.await('ox_inventory:GetProfilePicture', false)
+		return result
+	end
+end
+
 local function canOpenInventory()
     if not PlayerData.loaded then
         return shared.info('cannot open inventory', '(player inventory has not loaded)')
@@ -68,13 +91,16 @@ end
 ---@param ped number
 ---@return boolean
 local function canOpenTarget(ped)
-	return IsPedFatallyInjured(ped)
-	or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
-	or IsPedCuffed(ped)
-	or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
-	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)
-	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3)
-	or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
+    local player = NetworkGetPlayerIndexFromPed(ped)
+    local playerID = GetPlayerServerId(player)
+    return IsPedFatallyInjured(ped)
+    or Player(playerID).state.dead
+    or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
+    or IsPedCuffed(ped)
+    or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
+    or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)
+    or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3)
+    or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
 end
 
 local defaultInventory = {
@@ -178,7 +204,7 @@ function client.openInventory(inv, data)
 
         local targetCoords = targetPed and GetEntityCoords(targetPed)
 
-        if not targetCoords or #(targetCoords - GetEntityCoords(playerPed)) > 1.8 or (not client.hasGroup(shared.police) and not Player(serverId).state.canSteal) then
+        if not targetCoords or #(targetCoords - GetEntityCoords(playerPed)) > 1.8 or not (client.hasGroup(shared.police) or canOpenTarget(targetPed)) then
             return lib.notify({ id = 'inventory_right_access', type = 'error', description = locale('inventory_right_access') })
         end
     end
@@ -269,19 +295,13 @@ function client.openInventory(inv, data)
     SetNuiFocusKeepInput(true)
     closeTrunk()
 
-    if client.screenblur then Utils.blurIn() end
+    if client.screenblur then TriggerScreenblurFadeIn(0) end
 
     currentInventory = right or defaultInventory
     left.items = PlayerData.inventory
     left.groups = PlayerData.groups
 
-    SendNUIMessage({
-        action = 'setupInventory',
-        data = {
-            leftInventory = left,
-            rightInventory = currentInventory
-        }
-    })
+	SetupPrismInventory(left, currentInventory)
 
     if not currentInventory.coords and not inv == 'container' then
         currentInventory.coords = GetEntityCoords(playerPed)
@@ -326,7 +346,7 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 	SetNuiFocusKeepInput(true)
 	closeTrunk()
 
-	if client.screenblur then Utils.blurIn() end
+	if client.screenblur then TriggerScreenblurFadeIn(0) end
 
 	currentInventory = right or defaultInventory
 	currentInventory.ignoreSecurityChecks = true
@@ -744,8 +764,6 @@ local function registerCommands()
 	local function openGlovebox(vehicle)
 		if not IsPedInAnyVehicle(playerPed, false) or not NetworkGetEntityIsNetworked(vehicle) then return end
 
-		if IsEntityDead(vehicle) then return end
-
 		local vehicleHash = GetEntityModel(vehicle)
 		local vehicleClass = GetVehicleClass(vehicle)
 		local checkVehicle = Vehicles.Storage[vehicleHash]
@@ -885,7 +903,7 @@ function client.closeInventory(server)
 		invOpen = nil
 		SetNuiFocus(false, false)
 		SetNuiFocusKeepInput(false)
-		Utils.blurOut()
+		TriggerScreenblurFadeOut(0)
 		closeTrunk()
 		SendNUIMessage({ action = 'closeInventory' })
 		SetInterval(client.interval, 200)
@@ -1335,7 +1353,10 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			imagepath = client.imagepath
 		}
 	})
-
+	CreateThread(function ()
+		mugshot = GetProfilePicture()
+	end)
+	
 	PlayerData.loaded = true
 
 	if not client.disablesetupnotification then
@@ -1423,7 +1444,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			local weaponType = GetWeapontypeGroup(weaponHash)
 
 			if weaponType ~= 0 and weaponType ~= `GROUP_UNARMED` then
-				Weapon.Disarm(currentWeapon, true)
+				if not exports["pug-paintball"]:IsInPaintball() then
+					Weapon.Disarm(currentWeapon, true)
+				end
 			end
 		end
 	end, 200)
@@ -1462,7 +1485,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			end
 
 			if usingItem or invOpen or IsPedCuffed(playerPed) then
-				DisablePlayerFiring(playerId, true)
+				if not exports["pug-paintball"]:IsInPaintball() then
+        			DisablePlayerFiring(playerId, true)
+    			end
 			end
 
 			if not EnableWeaponWheel then
@@ -1586,7 +1611,7 @@ RegisterNetEvent('ox_inventory:viewInventory', function(left, right)
 	SetNuiFocusKeepInput(true)
 	closeTrunk()
 
-	if client.screenblur then Utils.blurIn() end
+	if client.screenblur then TriggerScreenblurFadeIn(0) end
 
 	currentInventory = right or defaultInventory
 	currentInventory.ignoreSecurityChecks = true
@@ -1613,7 +1638,10 @@ RegisterNUICallback('getItemData', function(itemName, cb)
 end)
 
 RegisterNUICallback('removeComponent', function(data, cb)
-	cb(1)
+
+    lib.notify({ id = 'cantremove', type = 'error', description = 'You Cant remove Attachment' })
+
+	--[[ cb(1)
 
 	if not currentWeapon then
 		return TriggerServerEvent('ox_inventory:updateWeapon', 'component', data)
@@ -1642,7 +1670,7 @@ RegisterNUICallback('removeComponent', function(data, cb)
 				end
 			end
 		end
-	end
+	end ]]
 end)
 
 RegisterNUICallback('removeAmmo', function(slot, cb)
@@ -1659,6 +1687,9 @@ RegisterNUICallback('removeAmmo', function(slot, cb)
 end)
 
 RegisterNUICallback('useItem', function(slot, cb)
+	if not checkCooldown() then
+		return cb(false)
+	end
 	useSlot(slot --[[@as number]])
 	cb(1)
 end)
@@ -1693,6 +1724,9 @@ local function isGiveTargetValid(ped, coords)
 end
 
 RegisterNUICallback('giveItem', function(data, cb)
+	if not checkCooldown() then
+		return cb(false)
+	end
 	cb(1)
 
     if usingItem then return end
