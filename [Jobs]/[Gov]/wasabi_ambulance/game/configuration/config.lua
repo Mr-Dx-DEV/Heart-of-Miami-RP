@@ -776,7 +776,7 @@ Config.Locations = {
         },
 
         MedicalSupplies = {                                                     -- EMS Shop for supplies
-            Enabled = true,                                                     -- If set to false, rest of this table do not matter
+            Enabled = false,                                                     -- If set to false, rest of this table do not matter
             locations = {                                                      -- Coords of ped/target
                 {
                     ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
