@@ -27,8 +27,12 @@ Config.GodRoles = {
 
 -- Original Permissions table for information on all possible available options
 Config.Permissions = {
-   ["license:dd7efc1d5db42797e8b4c351e1b536aee84c43e7"] = "god", -- the role god, admin or mod should be the key from Config.GodRoles which means the values that are added in square brackets.
-    -- ["fivem:1234"] = "god",
+   ["license:dd7efc1d5db42797e8b4c351e1b536aee84c43e7"] = "god", --- Dx
+   ["license:5cc8c5b96e0191be0d192c7b99d8103df84c53a0"] = "god",   --  sarivive
+   ["discord:1330310711586590833"] = "god",   -- h53d
+
+
+   -- ["fivem:1234"] = "god",
     -- ["steam:1234"] = "god",
     -- ["124584938326312"] = "god", -- discord roles (copy the role id and paste it here) (If you want to use the discord roles, you need to add the bot token and server id in sv_perms.lua at the top)
     -- ["XY123456"] = "god", -- citizenid for qbcore
