@@ -1,6 +1,9 @@
 return {
 
 
+
+
+
     ['vehicle_manual'] = {
     label = 'Vehicle manual',
     weight = 50,
@@ -9507,6 +9510,20 @@ return {
             image = "casino_sandwitch.png",
         }
     },
+    ["casino_sprite"] = {
+        label = "Casino Sprite",
+        weight = 0,
+        degrade = 1440,
+        allowArmed = true,
+        decay = true,
+        stack = false,
+        close = false,
+        description = "Casino Sprite",
+        client = {
+            image = "casino_sprite.png",
+        }
+    },
+
 
     ["casino_ego_chaser"] = {
         label = "Casino Ego Chaser",
