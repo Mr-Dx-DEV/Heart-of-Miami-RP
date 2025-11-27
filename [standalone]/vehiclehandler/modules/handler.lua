@@ -29,7 +29,7 @@ function Handler:constructor()
     self:setActive(false)
     self:setLimited(false)
     self:setControl(true)
-    self.private.oxfuel = GetResourceState('ox_fuel') == 'started' and true or false
+    self.private.oxfuel = GetResourceState('rcore_fuel') == 'started' and true or false
 end
 
 ---@return boolean active
