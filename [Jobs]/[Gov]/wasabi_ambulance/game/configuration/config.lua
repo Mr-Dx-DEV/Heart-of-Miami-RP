@@ -30,7 +30,7 @@ Config.CheckForUpdates = true -- Check for updates? Who would not want to know u
 -- If you would like us to add a language, join our discord and create a ticket!
 -- All locale strings can be found in /game/configuration/locales/
 Config.Language = 'en'
-Config.UIColor = '#e61f09' -- Can be 'red', 'blue', or a hex '#FF0000'
+Config.UIColor = '#1E90FF' -- Can be 'red', 'blue', or a hex '#FF0000'
 -- Config.DeathScreenEffects = true -- OBSOLETE RIGHT NOW
 
 -- Which style do you want to use for death UI?(Current options: 1, 2, 3, 4, 5)
@@ -81,12 +81,12 @@ Config.MobileMenu = {                    -- Enabling this will use menu rather t
     position =
     'bottom-right'                       -- Choose where menu is positioned. Options : 'top-left' or 'top-right' or 'bottom-left' or 'bottom-right'
 }
-Config.ProgressCircle = true             -- Set to false to use a progress bar, set to true for progress circle(For checking in, diagnosing, etc)
+Config.ProgressCircle = false             -- Set to false to use a progress bar, set to true for progress circle(For checking in, diagnosing, etc)
 Config.ProgressCircleLocation = 'bottom' -- Where you want the progress circle located (if enabled)
 -- Choices: 'bottom' and 'middle'
 
 Config.policeCanTreat = {
-    enabled = true, -- Police can treat patients?
+    enabled = false, -- Police can treat patients?
     jobs = {        -- Police / other jobs
         'police',
         --    'sheriff',
@@ -142,7 +142,7 @@ Config.AmbulanceOffsets = {
 }
 
 Config.GPSBlips = { -- Requires wasabi_gps, get it free here: https://wasabiscripts.com/product/7093977
-    enabled = false, -- Enabled?
+    enabled = true, -- Enabled?
     jobs = {        --- wasabi_gps job registration
         ['ambulance'] = {
             -- item = 'gps', -- optional item required to use gps
@@ -185,7 +185,7 @@ Config.DeathAnimation = {
 
 -- Knockout Feature (If you want players to be knocked out)
 Config.KnockoutFeature = {
-    enabled = false,           -- Enable knockout features? (player's can knock eachother out using fist fighting)
+    enabled = true,           -- Enable knockout features? (player's can knock eachother out using fist fighting)
     regainHealth = 20,      -- Amount of health to regain while knocked out (Set to false to disable)
     healthForKnockout = 150,   -- At what HP will player knockout from fist fighting
     fistDamageModifier = 0.25, -- How much damage will fist cause? (1.0 is default, 0.5 is half as strong, etc) Set to false to disable
@@ -248,20 +248,20 @@ Config.wasabi_crutch = { -- If you use wasabi_crutch:
 
     -- Crutch Settings
     crutchInMedbag = { -- Enabled? Item name? REQUIRES WASABI_CRUTCH
-        enabled = false,
+        enabled = true,
         item = 'crutch'
     },
-    crutchInJobMenu = false, -- Crutch menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
+    crutchInJobMenu = true, -- Crutch menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
     crutchOnCheckIn = {      -- Place crutch for certain amount of time if they visit the hospital or bleedout REQUIRES WASABI_CRUTCH
         enabled = false,     -- Requires wasabi_crutch
-        duration = 3         -- How long stuck with crutch after check-in(In minutes)
+        duration = 1         -- How long stuck with crutch after check-in(In minutes)
     },
     -- Chair settings
     chairInMedbag = { -- Enabled? Item name? REQUIRES WASABI_CRUTCH
-        enabled = false,
+        enabled = true,
         item = 'wheelchair'
     },
-    chairInJobMenu = false -- Chair menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
+    chairInJobMenu = true -- Chair menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
 }
 
 Config.EnviPrescriptions = {
@@ -359,10 +359,10 @@ Config.CompleteDeath = { --DOES NOT APPLY TO QBCORE --  When enabled players can
 }
 
 Config.Bandages = {
-    enabled = false,       -- Useable bandages? (Leave false if ox_inventory because they're built in)
+    enabled = true,       -- Useable bandages? (Leave false if ox_inventory because they're built in)
     item = 'bandage',      -- YOU MUST ADD THIS ITEM TO YOUR ITEMS, IT DOES NOT COME IN INSTALLATION(COMES WITH QBCORE BY DEFAULT AS ITEM)
     hpRegen = 30,          -- Percentage of health it replenishes (30% by default)
-    healBleed = false,     -- Heal bleed that is inflicted by injury system? (Requires injury system enabled)
+    healBleed = true,     -- Heal bleed that is inflicted by injury system? (Requires injury system enabled)
     duration = 7 * seconds -- Time to use
 }
 
@@ -476,7 +476,7 @@ Config.Locations = {
 
         Blip = {
             Enabled = true,
-            Coords = vec3(324.15, -583.14, 44.20),
+            Coords = vec3(-467.44, -996.57, 23.70),
             Sprite = 61,
             Color = 2,
             Scale = 1.0,
@@ -484,10 +484,10 @@ Config.Locations = {
         },
 
     clockInAndOut = {
-            enabled = false,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
+            enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
             locations = {                          -- Location of where to go on and off duty(If not using target)
                 {
-                    coords = vec3(334.75, -580.24, 43.28),
+                    coords = vec3(-460.55, -999.44, 23.74),
                     jobLock = false                 -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
                 -- Add more non-target locations here if needed (if target is not enabled)
@@ -499,12 +499,12 @@ Config.Locations = {
                 label = 'Go On/Off Duty',
                 locationsArray = {
                     {
-                        coords = vec3(334.75, -580.24, 43.28),
-                        heading = 337.07,
+                        coords = vec3(-460.55, -999.44, 23.74),
+                        heading = 177.09,
                         width = 2.0,
                         length = 1.0,
-                        minZ = 43.28 - 0.9,
-                        maxZ = 43.28 + 0.9,
+                        minZ = 23.02 - 0.9,
+                        maxZ = 23.99 + 0.9,
                         jobLock = false
                     },
 
@@ -582,17 +582,17 @@ Config.Locations = {
             locations = {
                 {
                     ped = 's_m_m_scientist_01',                     -- Check in ped (false for no ped)
-                    coords = vec3(308.58, -595.31, 43.28-0.9),
-                    heading = 63.26,
+                    coords = vec3(-452.69, -991.87, 29.42),
+                    heading = 268.75,
                     jobLock = false                      -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
 
-                {
-                    ped = 's_m_m_scientist_01',
-                    coords = vec3(311.45, -594.2, 43.28-0.9),
-                    heading = 335.87,
-                    jobLock = false
-                },
+                -- {
+                --     ped = 's_m_m_scientist_01',
+                --     coords = vec3(-467.44, -996.57, 23.70),
+                --     heading = 96.07,
+                --     jobLock = false
+                -- },
 
                 -- Add more non-target locations here if needed (if target is not enabled)
             },
@@ -611,47 +611,47 @@ Config.Locations = {
 
                     {
                         ped = 's_m_m_scientist_01',                     -- Check in ped (false for no ped)
-                        coords = vec3(308.58, -595.31, 43.28-0.9),
-                        heading = 63.26,
+                        coords = vec3(-467.44, -996.57, 23.02),
+                        heading = 96.07,
                         distance = 5.0,
                         width = 2.0,
                         length = 1.0,
-                        minZ = 43.28 - 0.9,
-                        maxZ = 43.28 + 0.9,
+                        minZ = 23.70 - 0.9,
+                        maxZ = 23.70 + 0.9,
                         jobLock = false
                     },
 
-                    {
-                        ped = 's_m_m_scientist_01',
-                        coords = vec3(311.45, -594.2, 43.28-0.9),
-                        heading = 335.87,
-                        distance = 5.0,
-                        width = 2.0,
-                        length = 1.0,
-                        minZ = 43.28 - 0.9,
-                        maxZ = 43.28 + 0.9,
-                        jobLock = false
-                    },
+                    -- {
+                    --     ped = 's_m_m_scientist_01',
+                    --     coords = vec3(311.45, -594.2, 43.28-0.9),
+                    --     heading = 335.87,
+                    --     distance = 5.0,
+                    --     width = 2.0,
+                    --     length = 1.0,
+                    --     minZ = 43.28 - 0.9,
+                    --     maxZ = 43.28 + 0.9,
+                    --     jobLock = false
+                    -- },
 
                     -- Add more locations here if needed
                 }
 
             },
             DisableHospitalBeds = false,                                                       -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-            RespawnNoBedLocation = { coords = vec3(316.66, -581.3, 43.28), heading = 339.02 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
+            RespawnNoBedLocation = { coords = vec3(-452.89, -996.57, 29.50), heading = 276.77 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
             HospitalBeds = {
                 --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-                { coords = vec3(317.67, -585.37, 42.84 + 0.3), heading = 160.0 },
-                { coords = vec3(319.41, -581.04, 42.84 + 0.3), heading = 340.0 },
-                { coords = vec3(314.47, -584.2, 42.84 + 0.3),  heading = 160.0 },
-                { coords = vec3(313.93, -579.04, 42.84 + 0.3), heading = 340.0 },
-                { coords = vec3(311.06, -582.96, 42.84 + 0.3), heading = 160.0 },
-                { coords = vec3(307.72, -581.75, 42.84 + 0.3), heading = 160.0 },
-                { coords = vec3(309.35, -577.38, 42.84 + 0.3), heading = 340.0 },
-                { coords = vec3(361.36, -581.3, 42.83 + 0.3),  heading = 250.0 },
-                { coords = vec3(359.54, -586.23, 42.84 + 0.3), heading = 250.0 },
-                { coords = vec3(354.44, -600.19, 42.85 + 0.3), heading = 250.0 },
-                { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 },
+                { coords = vec3(-452.89, -996.57, 29.50), heading = 276.77 },  
+                { coords = vec3(-452.69, -991.87, 29.42), heading = 268.75 },  
+                { coords = vec3(-453.05, -1001.80, 29.29),  heading = 273.32},  
+                { coords = vec3(-453.16, -1006.37, 29.28), heading = 272.22 },  
+                { coords = vec3(-459.80, -1006.84, 29.19), heading = 92.69 },
+                { coords = vec3(-459.87, -1002.04, 29.19), heading = 89.62 }, 
+                { coords = vec3(-459.81, -995.87, 29.16), heading = 98.44 }, 
+                { coords = vec3(-460.02, -991.23, 29.22),  heading = 88.83 }, 
+                -- { coords = vec3(359.54, -586.23, 42.84 + 0.3), heading = 250.0 },
+                -- { coords = vec3(354.44, -600.19, 42.85 + 0.3), heading = 250.0 },
+                -- { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 },
                 -- Stock qb-ambulance hospital bed coords:
                 --                { coords = vec3(353.1, -584.6, 43.11), heading = 152.08 },
                 --                { coords = vec3(356.79, -585.86, 43.11), heading = 152.08 },
@@ -666,7 +666,7 @@ Config.Locations = {
         },
 
         Cloakroom = {
-            Enabled = true,
+            Enabled = false,
             locations = {                                -- Coords of cloakroom
                 {
                     coords = vec3(308.58, -595.31, 43.28),
@@ -780,7 +780,7 @@ Config.Locations = {
             locations = {                                                      -- Coords of ped/target
                 {
                     ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
-                    coords = vec3(306.63, -601.44, 43.28 - 0.95),
+                    coords = vec3(306.63, -601.44, 43.02 - 0.95),
                     heading = 337.64,
                     jobLock = false                                             -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
@@ -793,13 +793,13 @@ Config.Locations = {
                 locationsArray = {
                     {
                         ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
-                        coords = vec3(306.63, -601.44, 43.28 - 0.95),
-                        heading = 337.64,
+                        coords = vec3(-457.93, -994.15, 23.02),
+                        heading = 194.05,
                         distance = 5.0,
                         width = 2.0,
                         length = 1.0,
-                        minZ = 43.28 - 0.9,
-                        maxZ = 43.28 + 0.9,
+                        minZ = 23.02 - 0.9,
+                        maxZ = 23.99 + 0.9,
                         jobLock = false
                     },
 
@@ -821,7 +821,7 @@ Config.Locations = {
         },
 
         Vehicles = {                                   -- Vehicle Garage
-            Enabled = true,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
+            Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
             
             locations = {
 
