@@ -128,8 +128,8 @@ html, body {
 }
 
 .server-logo img:hover {
-    border-color: #62106e;
-    box-shadow: 0 0 20px rgba(98, 16, 110, 0.3);
+    border-color: #4fc3f7;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.3);
 }
 
 .server-info {
@@ -141,7 +141,7 @@ html, body {
     font-family: 'Orbitron', monospace;
     font-size: 28px;
     font-weight: 900;
-    background: linear-gradient(45deg, #62106e, #ffffff);
+    background: linear-gradient(45deg, #4fc3f7, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -180,7 +180,7 @@ html, body {
 
 .social-btn.twitter {
     background: linear-gradient(135deg, rgba(29, 161, 242, 0.2), rgba(29, 161, 242, 0.1));
-    color: #62106e;
+    color: #4fc3f7;
 }
 
 .social-btn.youtube {
@@ -219,12 +219,12 @@ html, body {
     gap: 12px;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 2px solid rgba(98, 16, 110, 0.3);
+    border-bottom: 2px solid rgba(79, 195, 247, 0.3);
 }
 
 .section-header i {
     font-size: 20px;
-    color: #62106e;
+    color: #4fc3f7;
 }
 
 .section-header h2 {
@@ -264,8 +264,8 @@ html, body {
 }
 
 .staff-member:hover {
-    background: rgba(98, 16, 110, 0.1);
-    border-color: rgba(98, 16, 110, 0.3);
+    background: rgba(79, 195, 247, 0.1);
+    border-color: rgba(79, 195, 247, 0.3);
     transform: translateX(5px);
 }
 
@@ -279,8 +279,8 @@ html, body {
 }
 
 .staff-member:hover .staff-avatar {
-    border-color: #62106e;
-    box-shadow: 0 0 15px rgba(98, 16, 110, 0.3);
+    border-color: #4fc3f7;
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
 }
 
 .staff-info {
@@ -334,7 +334,7 @@ html, body {
     font-size: 42px;
     font-weight: 900;
     margin-bottom: 20px;
-    background: linear-gradient(45deg, #62106e, #ffffff, #62106e);
+    background: linear-gradient(45deg, #4fc3f7, #ffffff, #4fc3f7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -372,8 +372,8 @@ html, body {
 }
 
 .stat-item:hover {
-    background: rgba(98, 16, 110, 0.1);
-    border-color: rgba(98, 16, 110, 0.3);
+    background: rgba(79, 195, 247, 0.1);
+    border-color: rgba(79, 195, 247, 0.3);
     transform: translateY(-5px);
 }
 
@@ -381,7 +381,7 @@ html, body {
     font-family: 'Orbitron', monospace;
     font-size: 32px;
     font-weight: 900;
-    color: #62106e;
+    color: #4fc3f7;
     margin-bottom: 8px;
 }
 
@@ -418,14 +418,14 @@ html, body {
 }
 
 .news-item:hover {
-    background: rgba(98, 16, 110, 0.1);
-    border-color: rgba(98, 16, 110, 0.3);
+    background: rgba(79, 195, 247, 0.1);
+    border-color: rgba(79, 195, 247, 0.3);
     transform: translateX(-5px);
 }
 
 .news-date {
     font-size: 12px;
-    color: #62106e;
+    color: #4fc3f7;
     font-weight: 500;
     margin-bottom: 8px;
 }
@@ -477,11 +477,11 @@ html, body {
     font-family: 'Orbitron', monospace;
     font-size: 18px;
     font-weight: 700;
-    color: #62106e;
+    color: #4fc3f7;
 }
 
 .loading-dots {
-    color: #62106e;
+    color: #4fc3f7;
     animation: dots 1.5s ease-in-out infinite;
 }
 
@@ -518,7 +518,7 @@ html, body {
 .loading-progress-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #62106e, #c755d9);
+    background: linear-gradient(90deg, #4fc3f7, #81d4fa);
     border-radius: 10px;
     transition: width 0.3s ease;
     position: relative;
@@ -530,7 +530,7 @@ html, body {
     left: 0;
     width: 0%;
     height: calc(100% + 4px);
-    background: linear-gradient(90deg, transparent, rgba(98, 16, 110, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.6), transparent);
     border-radius: 10px;
     animation: glow 2s ease-in-out infinite;
 }
@@ -544,8 +544,8 @@ html, body {
     font-family: 'Orbitron', monospace;
     font-size: 24px;
     font-weight: 700;
-    color: #62106e;
-    text-shadow: 0 0 10px rgba(98, 16, 110, 0.5);
+    color: #4fc3f7;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
 }
 
 .music-player {
@@ -571,7 +571,7 @@ html, body {
 .music-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #62106e, #c755d9);
+    background: linear-gradient(135deg, #4fc3f7, #81d4fa);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -620,18 +620,18 @@ html, body {
 }
 
 .music-btn:hover {
-    background: rgba(98, 16, 110, 0.2);
-    color: #62106e;
+    background: rgba(79, 195, 247, 0.2);
+    color: #4fc3f7;
     transform: scale(1.1);
 }
 
 .music-btn.play-pause {
-    background: linear-gradient(135deg, #62106e, #c755d9);
+    background: linear-gradient(135deg, #4fc3f7, #81d4fa);
     color: white;
 }
 
 .music-btn.play-pause:hover {
-    background: linear-gradient(135deg, #c755d9, #c755d9);
+    background: linear-gradient(135deg, #81d4fa, #81d4fa);
     transform: scale(1.1);
 }
 
@@ -648,13 +648,13 @@ html, body {
 
 .staff-sidebar::-webkit-scrollbar-thumb,
 .news-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(98, 16, 110, 0.5);
+    background: rgba(79, 195, 247, 0.5);
     border-radius: 3px;
 }
 
 .staff-sidebar::-webkit-scrollbar-thumb:hover,
 .news-sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(98, 16, 110, 0.7);
+    background: rgba(79, 195, 247, 0.7);
 }
 
 @media screen and (max-width: 1600px) {

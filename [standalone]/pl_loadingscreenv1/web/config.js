@@ -155,8 +155,8 @@ const LoadingScreenConfig = {
     // Color Theme Configuration
     // ==========================================================================
     theme: {
-    primary: "#62106e",
-    secondary: "#5e096bff",
+    primary: "#4fc3f7",
+    secondary: "#81d4fa",
     accent: "#ffffff",
     background: "rgba(0, 0, 0, 0.8)",
     text: "#ffffff",
