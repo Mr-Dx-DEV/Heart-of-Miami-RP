@@ -1,0 +1,215 @@
+{
+	"LockSmithMenu": {
+		"Target": "Speak with Locksmith",
+		"Title": "Locksmith",
+		"OptionTitle1": "Purchase Replacement Key Fob",
+		"OptionTitle1Description": "Purchase a replacement key for a vehicle you own.",
+		"OptionTitle2": "Purchase Key Fob Module",
+		"OptionTitle2Description": "Purchase a module to upgrade a key fob.",
+		"OptionTitle3": "Purchase a Key Ring",
+		"OptionTitle3Description": "Purchase a key ring to store multiple keys.",
+		"icon": "fa-solid fa-key",
+		"color": "orange",
+		"paytype": "Purchase Method",
+		"cash": "Pay with Cash",
+		"bank": "Pay with Card",
+		"bankicon": "bank",
+		"cashicon": "fa-solid fa-money-bill-wave",
+		"currencytype": "$"
+	},
+	"KeyringItemMenu": {
+		"subtitle": "Add Keys to Key Ring",
+		"Description": "Add keys to the key ring.",
+		"submenutitle": "Add Key to Key Ring with Plate#",
+		"submenudescription": "This will attach the key fob to the key ring.",
+		"notfoundtitle": "No Keys Available",
+		"notfounddescription": "No keys available in inventory to attach.",
+		"icon": "fa-solid fa-key",
+		"color": "orange",
+		"MetgeAllKeysTitle": "Merge All Keys into Key Ring",
+		"MergeAllKeysDescription": "Merge all keys in inventory into the key ring."
+	},
+	"LockPick": {
+		"InsideVehicle": "You can't lockpick from inside the vehicle.",
+		"ToFarFromVehicle": "You are too far from the vehicle.",
+		"YouAlreadyHaveKeys": "You already have keys to this vehicle!",
+		"VehicleAlreadyUnlocked": "This vehicle is already unlocked.",
+		"Success": "You successfully lockpicked the vehicle.",
+		"VehicleIsHijackImmune": "This vehicle cannot be hijacked!",
+		"Fail": "You failed to lockpick the vehicle."
+	},
+	"LockSmithSubMenu": {
+		"Title": "Locksmith",
+		"OptionTitle1": "Purchase Replacement Key Fob",
+		"OptionTitle1Description": "Purchase a replacement key for a vehicle you own.",
+		"OptionTitle2": "Purchase Key Fob Module",
+		"OptionTitle2Description": "Purchase a module to upgrade a key fob.",
+		"PurchaseUpgrade": "Purchase Upgrade for this Fob",
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"KeyringSubMenu": {
+		"Title": "Manage Keys for",
+		"option1": "Give Keys to Closest Player",
+		"option1Description": "Give a copy of the key.",
+		"option2": "Remove Key",
+		"option2Description": "Remove keys from key ring.",
+		"option3": "Use Key Fob",
+		"option3Description": "Open vehicle’s key fob.",
+		"NoPlayers": "Nobody nearby.",
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"LockSmithKeyRingMenu": {
+		"Title": "Locksmith",
+		"Title1": "Purchase Key Ring with Cash",
+		"Title2": "Purchase Key Ring with Card",
+		"OptionTitle1": "Pay with Cash",
+		"OptionTitle2": "Pay with Card",
+		"icon": "fa-solid fa-key",
+		"color": "orange",
+		"bankicon": "fa-solid fa-building-columns",
+		"cashicon": "fa-solid fa-money-bill-wave",
+		"currencytype": "$"
+	},
+	"Vehiclestatus": {
+		"VehicleNotInRange": "Vehicle not in range.",
+		"NotResponsive": "Vehicle not responsive.",
+		"LowFuel": "Vehicle is out of fuel.",
+		"EngineStart": "You have to do it yourself.",
+		"NoAvailableSpots": "No available spots.",
+		"ParkingBlipText": "Parking vehicle.",
+		"VehicleOccupied": "Vehicle is occupied and cannot perform this action for safety reasons."
+	},
+	"HotWire": {
+		"Prompt": "[E] - Hotwire Vehicle",
+		"MaxAttempts": "You have used all hotwire attempts on this vehicle.",
+		"RegisterKeyBind": "Hotwire Vehicle",
+		"defualtkeybind": "e",
+		"Failed": "Failed to hotwire the vehicle.",
+		"ToSoon": "You are attempting this too quickly."
+	},
+	"GlobalTargetVehicle": {
+		"TurnOffEngine": "Turn Off Engine",
+		"StartEngine": "Start Engine",
+		"UnLockVehicle": "Unlock Vehicle",
+		"LockVehicle": "Lock Vehicle",
+		"ToggleRoof": "Toggle Roof",
+		"ForceUnlock": "Force Open Vehicle",
+		"unlockIcon": "fa-solid fa-screwdriver",
+		"color": "orange"
+	},
+	"KeyringMenu": {
+		"Title": "Manage Vehicle Keys",
+		"subtitle": "Keys for Plate",
+		"Description": "Give or remove keys.",
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"DispatchAlert": {
+		"HotwireAlert": "Someone was seen hotwiring a vehicle with plate:",
+		"LockpickAlert": "Someone was seen lockpicking a vehicle with plate:",
+		"HijackingAlert": "Someone was seen hijacking a vehicle at gunpoint with plate:"
+	},
+	"Locking": {
+		"Locked": "You locked the vehicle.",
+		"Unlocked": "You unlocked the vehicle.",
+		"MissingKeys": "You do not have keys to this vehicle."
+	},
+	"KeyModifications": {
+		"AddKey": "You received the key.",
+		"RemoveKey": "You removed the key.",
+		"GiveKey": "Give Key",
+		"TakeKey": "Take Key"
+	},
+	"LockSmithKeyReplacement": {
+		"SparePurchase": "Spare key purchased.",
+		"Description": "For plate number #",
+		"icon": "fa-solid fa-truck-pickup",
+		"color": "orange",
+		"AlreadyPurchased": "You already have this.",
+		"InvalidOption": "Invalid option."
+	},
+	"Keyringcommand": {
+		"RegisterKeyBindDesc": "A vehicle keyring for you to manage!",
+		"defualtkeybind": "k"
+	},
+	"GiveNearByKey": {
+		"GaveKey": "Key given.",
+		"RecivedKey": "Key received.",
+		"NotNearBy": "Nobody nearby."
+	},
+	"AutoPilot": {
+		"AutoPilotEnabled": "AutoPilot Enabled",
+		"Started": "AutoPilot Enabled.",
+		"NoTarget": "You must mark a destination on the GPS.",
+		"AutoPilotDisabled": "AutoPilot Cancelled.",
+		"NotInVehicle": "You must be in the driver's seat to enable AutoPilot.",
+		"AutoPilotOverrideOverdrive": "Overdrive Enabled",
+		"AutoPilotOverrideDeadly": "Warning: All safety systems disabled.",
+		"AutoPilotOverrideDisabled": "Override Disabled"
+	},
+	"KeyItemMetaData": {
+		"title": "Vehicle Keys for",
+		"subtitle": "Plate #"
+	},
+	"LockSmithFobModule": {
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"SummonVehicle": {
+		"VehicleOnWay": "Vehicle is on the way with plate#",
+		"ParkingSelf": "Vehicle is on its way."
+	},
+	"ExplosiveFobOption": "You have already used the explosive.",
+	"Accounts": {
+		"ToBrokeToBuy": "You are too broke to purchase this.",
+		"KeyFobModulePurchased": "You have purchased a key fob module.",
+		"KeyFobPurchased": "You have purchased a key fob.",
+		"KeyRingPurchased": "You have purchased a key ring."
+	},
+	"IgnitionChangeItem": {
+		"ProgressBarText": "Installing new ignition system."
+	},
+	"EngineToggle": {
+		"RegisterKeyBindDesc": "Toggle Engine",
+		"On": "Engine started.",
+		"Off": "Engine shut off."
+	},
+	"LockIdChange": {
+		"MustBeInCarInstall": "You must be inside a car to install this.",
+		"MustBeOwner": "You must be the vehicle owner to install this.",
+		"InstallSuccess": "You have successfully installed the new lock.",
+		"InstallFail": "Failed to install the new lock."
+	},
+	"ProximityLocks": {
+		"Enabled": "Proximity locks enabled.",
+		"Disabled": "Proximity locks disabled."
+	},
+	"FobPairStatus": {
+		"Unpaired": "Needs pairing."
+	},
+	"ForceUnlock": {
+		"ProgressBarText": "Forcing open vehicle..."
+	},
+	"LockVehicle": {
+		"RegisterKeyBindDesc": "Toggle Vehicle Lock"
+	},
+	"Hotwire": {
+		"RegisterKeyBindDesc": "Hotwire Vehicle"
+	},
+	"NoAccount": {
+		"NoAccount": "You do not have an account."
+	},
+	"CannotPurchase": {
+		"CannotPurchase": "Cannot purchase."
+	},
+	"AdminCommands": {
+		"NoVehicleNearby": "Unable to grant keys — no nearby vehicle.",
+		"KeyGranted": "You have been given a key!",
+		"NoPlayerWithID": "No player found with that ID."
+	},
+	"FallbackText": {
+		"UnknownModel": "Unknown model."
+	}
+}

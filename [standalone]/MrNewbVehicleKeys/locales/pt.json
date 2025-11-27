@@ -1,0 +1,215 @@
+{
+	"LockSmithMenu": {
+		"Target": "Falar com o Chaveiro",
+		"Title": "Chaveiro",
+		"OptionTitle1": "Comprar Cópia do Controle",
+		"OptionTitle1Description": "Compre uma chave reserva para um veículo que você possui.",
+		"OptionTitle2": "Comprar Módulo para Controle",
+		"OptionTitle2Description": "Compre um módulo para atualizar um controle.",
+		"OptionTitle3": "Comprar Chaveiro",
+		"OptionTitle3Description": "Compre um chaveiro para guardar várias chaves.",
+		"icon": "fa-solid fa-key",
+		"color": "orange",
+		"paytype": "Método de Pagamento",
+		"cash": "Pagar com Dinheiro",
+		"bank": "Pagar com Cartão",
+		"bankicon": "bank",
+		"cashicon": "fa-solid fa-money-bill-wave",
+		"currencytype": "$"
+	},
+	"KeyringItemMenu": {
+		"subtitle": "Adicionar Chaves ao Chaveiro",
+		"Description": "Adicione chaves ao chaveiro.",
+		"submenutitle": "Adicionar Chave ao Chaveiro com Placa#",
+		"submenudescription": "Isto irá anexar a chave ao chaveiro.",
+		"notfoundtitle": "Nenhuma Chave Disponível",
+		"notfounddescription": "Não há chaves no inventário para anexar.",
+		"icon": "fa-solid fa-key",
+		"color": "orange",
+		"MetgeAllKeysTitle": "Mesclar Todas as Chaves no Chaveiro",
+		"MergeAllKeysDescription": "Mescla todas as chaves do inventário no chaveiro."
+	},
+	"LockPick": {
+		"InsideVehicle": "Você não pode arrombar de dentro do veículo.",
+		"ToFarFromVehicle": "Você está muito longe do veículo.",
+		"YouAlreadyHaveKeys": "Você já tem as chaves deste veículo!",
+		"VehicleAlreadyUnlocked": "Este veículo já está destrancado.",
+		"Success": "Você arrombou o veículo com sucesso.",
+		"VehicleIsHijackImmune": "Este veículo não pode ser roubado!",
+		"Fail": "Você falhou ao arrombar o veículo."
+	},
+	"LockSmithSubMenu": {
+		"Title": "Chaveiro",
+		"OptionTitle1": "Comprar Cópia do Controle",
+		"OptionTitle1Description": "Compre uma chave reserva para um veículo que você possui.",
+		"OptionTitle2": "Comprar Módulo para Controle",
+		"OptionTitle2Description": "Compre um módulo para atualizar um controle.",
+		"PurchaseUpgrade": "Comprar Upgrade para este Controle",
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"KeyringSubMenu": {
+		"Title": "Gerenciar Chaves de",
+		"option1": "Dar Chaves ao Jogador Mais Próximo",
+		"option1Description": "Entregar uma cópia da chave.",
+		"option2": "Remover Chave",
+		"option2Description": "Remover chaves do chaveiro.",
+		"option3": "Usar Controle",
+		"option3Description": "Abrir o controle do veículo.",
+		"NoPlayers": "Ninguém por perto.",
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"LockSmithKeyRingMenu": {
+		"Title": "Chaveiro",
+		"Title1": "Comprar Chaveiro com Dinheiro",
+		"Title2": "Comprar Chaveiro com Cartão",
+		"OptionTitle1": "Pagar com Dinheiro",
+		"OptionTitle2": "Pagar com Cartão",
+		"icon": "fa-solid fa-key",
+		"color": "orange",
+		"bankicon": "fa-solid fa-building-columns",
+		"cashicon": "fa-solid fa-money-bill-wave",
+		"currencytype": "$"
+	},
+	"Vehiclestatus": {
+		"VehicleNotInRange": "Veículo fora de alcance.",
+		"NotResponsive": "Veículo sem resposta.",
+		"LowFuel": "Veículo sem combustível.",
+		"EngineStart": "Você precisa fazer isso manualmente.",
+		"NoAvailableSpots": "Sem vagas disponíveis.",
+		"ParkingBlipText": "Estacionando veículo.",
+		"VehicleOccupied": "Veículo ocupado. Ação não permitida por segurança."
+	},
+	"HotWire": {
+		"Prompt": "[E] - Ligar Fiação Direta",
+		"MaxAttempts": "Você usou todas as tentativas neste veículo.",
+		"RegisterKeyBind": "Fiação Direta",
+		"defualtkeybind": "e",
+		"Failed": "Falha ao tentar a fiação direta.",
+		"ToSoon": "Você está tentando muito rápido."
+	},
+	"GlobalTargetVehicle": {
+		"TurnOffEngine": "Desligar Motor",
+		"StartEngine": "Ligar Motor",
+		"UnLockVehicle": "Destrancar Veículo",
+		"LockVehicle": "Trancar Veículo",
+		"ToggleRoof": "Alternar Teto",
+		"ForceUnlock": "Forçar Abertura",
+		"unlockIcon": "fa-solid fa-screwdriver",
+		"color": "orange"
+	},
+	"KeyringMenu": {
+		"Title": "Gerenciar Chaves do Veículo",
+		"subtitle": "Chaves da Placa",
+		"Description": "Dar ou remover chaves.",
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"DispatchAlert": {
+		"HotwireAlert": "Alguém foi visto ligando um veículo com a placa:",
+		"LockpickAlert": "Alguém foi visto arrombando um veículo com a placa:",
+		"HijackingAlert": "Alguém foi visto roubando um veículo com arma com a placa:"
+	},
+	"Locking": {
+		"Locked": "Você trancou o veículo.",
+		"Unlocked": "Você destrancou o veículo.",
+		"MissingKeys": "Você não tem as chaves deste veículo."
+	},
+	"KeyModifications": {
+		"AddKey": "Você recebeu a chave.",
+		"RemoveKey": "Você removeu a chave.",
+		"GiveKey": "Dar Chave",
+		"TakeKey": "Pegar Chave"
+	},
+	"LockSmithKeyReplacement": {
+		"SparePurchase": "Chave reserva comprada.",
+		"Description": "Para placa número #",
+		"icon": "fa-solid fa-truck-pickup",
+		"color": "orange",
+		"AlreadyPurchased": "Você já possui isso.",
+		"InvalidOption": "Opção inválida."
+	},
+	"Keyringcommand": {
+		"RegisterKeyBindDesc": "Um chaveiro para gerenciar suas chaves!",
+		"defualtkeybind": "k"
+	},
+	"GiveNearByKey": {
+		"GaveKey": "Chave entregue.",
+		"RecivedKey": "Chave recebida.",
+		"NotNearBy": "Ninguém por perto."
+	},
+	"AutoPilot": {
+		"AutoPilotEnabled": "Piloto Automático Ativado",
+		"Started": "Piloto Automático Ativado.",
+		"NoTarget": "Você precisa marcar um destino no GPS.",
+		"AutoPilotDisabled": "Piloto Automático Cancelado.",
+		"NotInVehicle": "Você precisa estar no banco do motorista para ativar o piloto automático.",
+		"AutoPilotOverrideOverdrive": "Overdrive Ativado",
+		"AutoPilotOverrideDeadly": "Aviso: Todos os sistemas de segurança desativados.",
+		"AutoPilotOverrideDisabled": "Override Desativado"
+	},
+	"KeyItemMetaData": {
+		"title": "Chaves do Veículo para",
+		"subtitle": "Placa #"
+	},
+	"LockSmithFobModule": {
+		"icon": "fa-solid fa-key",
+		"color": "orange"
+	},
+	"SummonVehicle": {
+		"VehicleOnWay": "Veículo a caminho com a placa#",
+		"ParkingSelf": "Veículo está a caminho."
+	},
+	"ExplosiveFobOption": "Você já usou o explosivo.",
+	"Accounts": {
+		"ToBrokeToBuy": "Você está sem dinheiro para comprar isso.",
+		"KeyFobModulePurchased": "Você comprou um módulo de controle.",
+		"KeyFobPurchased": "Você comprou um controle.",
+		"KeyRingPurchased": "Você comprou um chaveiro."
+	},
+	"IgnitionChangeItem": {
+		"ProgressBarText": "Instalando novo sistema de ignição."
+	},
+	"EngineToggle": {
+		"RegisterKeyBindDesc": "Alternar Motor",
+		"On": "Motor ligado.",
+		"Off": "Motor desligado."
+	},
+	"LockIdChange": {
+		"MustBeInCarInstall": "Você deve estar dentro do veículo para instalar.",
+		"MustBeOwner": "Você deve ser o dono do veículo para instalar.",
+		"InstallSuccess": "Você instalou o novo sistema de trava com sucesso.",
+		"InstallFail": "Falha ao instalar o novo sistema de trava."
+	},
+	"ProximityLocks": {
+		"Enabled": "Trava por proximidade ativada.",
+		"Disabled": "Trava por proximidade desativada."
+	},
+	"FobPairStatus": {
+		"Unpaired": "Precisa de emparelhamento."
+	},
+	"ForceUnlock": {
+		"ProgressBarText": "Forçando abertura do veículo..."
+	},
+	"LockVehicle": {
+		"RegisterKeyBindDesc": "Alternar Trava do Veículo"
+	},
+	"Hotwire": {
+		"RegisterKeyBindDesc": "Ligar Fiação Direta"
+	},
+	"NoAccount": {
+		"NoAccount": "Você não possui uma conta."
+	},
+	"CannotPurchase": {
+		"CannotPurchase": "Não é possível comprar."
+	},
+	"AdminCommands": {
+		"NoVehicleNearby": "Não foi possível conceder chaves — nenhum veículo próximo.",
+		"KeyGranted": "Você recebeu uma chave!",
+		"NoPlayerWithID": "Nenhum jogador encontrado com esse ID."
+	},
+	"FallbackText": {
+		"UnknownModel": "Modelo desconhecido."
+	}
+}
