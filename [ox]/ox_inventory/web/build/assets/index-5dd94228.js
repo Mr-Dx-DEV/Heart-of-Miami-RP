@@ -19436,8 +19436,8 @@ const vm = ({
                 opacity: v ? .4 : 1,
                 backgroundImage: `url(${e?.name?So(e):"none"}`,
                 border: C ? "1px dashed rgba(255,255,255,0.4)" : "",
-                outline: d ? `0.8px solid ${i?.PrimaryColor||"#BEEE11"}` : "0.8px solid #FFFFFF1F",
-                backgroundColor: d ? `${i?.PrimaryColor||"#BEEE11"}0D` : "#B1B1B111"
+                outline: d ? `0.8px solid ${i?.PrimaryColor||"#7DF9FF"}` : "0.8px solid #FFFFFF1F",
+                backgroundColor: d ? `${i?.PrimaryColor||"#7DF9FF"}0D` : "#B1B1B111"
             },
             children: [n === "shop" && Gt(e) && e?.price !== void 0 && D($t, {
                 children: e?.currency !== "money" && e.currency !== "black_money" && e.price > 0 && e.currency ? K("div", {
@@ -19459,7 +19459,7 @@ const vm = ({
                     children: e.price > 0 && D("div", {
                         className: "item-slot-price-wrapper-topleft",
                         style: {
-                            color: e.currency === "money" || !e.currency ? "#BEEE11" : "#EE1111"
+                            color: e.currency === "money" || !e.currency ? "#7DF9FF" : "#7DF9FF"
                         },
                         children: K("p", {
                             children: [Ge.$ || "$", e.price.toLocaleString("en-us")]
@@ -26613,10 +26613,10 @@ const L$ = () => {
             g: 0,
             b: 0
         }), [f, d] = A.useState({
-            PrimaryColor: "#EE1111",
+            PrimaryColor: "#7DF9FF",
             buttonGradients: {
-                gradient: "linear-gradient(135deg, #D34242 0%, #D55858 100%)",
-                shadow: "rgba(205 50 50 / 0.4)",
+                gradient: "linear-gradient(135deg, #7DF9FF 0%, #00E5FF 100%)",
+                shadow: "rgba(125 249 255 / 0.4)",
                 text: "#000"
             }
         }), [p, g] = A.useState({
@@ -26886,10 +26886,10 @@ const U$ = (e = []) => {
             position: "right-center",
             duration: 2500
         }), [r, i] = A.useState({
-            PrimaryColor: "#EE1111",
+            PrimaryColor: "#7DF9FF",
             buttonGradients: {
-                gradient: "linear-gradient(135deg, #D34242 0%, #D55858 100%)",
-                shadow: "rgba(205 50 50 / 0.4)",
+                gradient: "linear-gradient(135deg, #7DF9FF 0%, #00E5FF 100%)",
+                shadow: "rgba(125 249 255 / 0.4)",
                 text: "#000"
             }
         }), l = U$(), s = a => {
