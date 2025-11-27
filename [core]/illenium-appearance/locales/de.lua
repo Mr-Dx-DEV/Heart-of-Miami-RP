@@ -162,11 +162,6 @@ Locales["de"] = {
           subTitle= "ANPASSEN",
           description=
             "Personalisieren Sie das Aussehen Ihres Charakters! Wählen Sie Frisuren, Hauttöne, Accessoires und mehr, um Ihren Spieler wirklich einzigartig zu machen.",
-            export = 'Exportieren',
-            import = 'Importieren',
-            head = 'Kopf',
-            body = 'Körper',
-            bottom = 'Unten',
         },
         closeButton= {
           title= "Schließen",

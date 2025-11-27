@@ -61,6 +61,7 @@ end)
 
 RegisterNUICallback("appearance_change_head_blend", function(headBlend, cb)
     cb(1)
+    print(json.encode(headBlend, { indent = true }))
     client.setPedHeadBlend(cache.ped, headBlend)
 end)
 

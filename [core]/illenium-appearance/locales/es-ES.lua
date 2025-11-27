@@ -162,11 +162,6 @@ Locales["es-ES"] = {
           subTitle= "PERSONALIZAR",
           description=
             "¡Personaliza la apariencia de tu personaje! Elige peinados, tonos de piel, accesorios y más para hacer que tu jugador sea realmente único.",
-            export = 'Exportar',
-            import = 'Importar',
-            head = 'Cabeza',
-            body = 'Cuerpo',
-            bottom = 'Inferior',
         },
         closeButton= {
           title= "Cerrar",

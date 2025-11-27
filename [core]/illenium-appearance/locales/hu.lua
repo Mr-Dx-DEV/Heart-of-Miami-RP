@@ -162,11 +162,6 @@ Locales["hu"] = {
           subTitle= "TESTRESZABÁS",
           description=
             "Személyre szabhatja karaktere megjelenését! Válasszon frizurákat, bőrszíneket, kiegészítőket és egyebeket, hogy játékosa igazán egyedi legyen.",
-            export = 'Exportálás',
-            import = 'Importálás',
-            head = 'Fej',
-            body = 'Test',
-            bottom = 'Alsó',
         },
         closeButton= {
           title= "Bezárás",

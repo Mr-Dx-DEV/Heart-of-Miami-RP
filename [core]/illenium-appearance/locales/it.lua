@@ -162,11 +162,6 @@ Locales["it"] = {
           subTitle= "PERSONALIZZA",
           description=
             "Personalizza l'aspetto del tuo personaggio! Scegli acconciature, tonalità della pelle, accessori e altro per rendere il tuo giocatore davvero unico.",
-            export = 'Esporta',
-            import = 'Importa',
-            head = 'Testa',
-            body = 'Corpo',
-            bottom = 'In basso',
         },
         closeButton= {
           title= "Chiudi",

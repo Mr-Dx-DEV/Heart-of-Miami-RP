@@ -160,12 +160,8 @@ Locales["pt-BR"] = {
         header= {
           mainTitle= "ROUPAS",
           subTitle= "PERSONALIZAR",
-        description = "Personalize a aparência do seu personagem! Escolha penteados, tons de pele, acessórios e mais para tornar seu jogador verdadeiramente único.",
-        export = 'Exportar',
-        import = 'Importar',
-        head = 'Cabeça',
-        body = 'Corpo',
-        bottom = 'Inferior',
+          description=
+            "Personalize a aparência do seu personagem! Escolha penteados, tons de pele, acessórios e mais para tornar seu jogador verdadeiramente único.",
         },
         closeButton= {
           title= "Fechar",

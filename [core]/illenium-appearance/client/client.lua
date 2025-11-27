@@ -107,16 +107,10 @@ function SetInitialClothes(initial)
     ClearPedDecorations(ped)
 end
 
-exports('SetInitialClothes', SetInitialClothes)
-
 function InitializeCharacter(gender, onSubmit, onCancel)
     SetInitialClothes(Config.InitialPlayerClothes[gender])
     local config = getNewCharacterConfig()
     TriggerServerEvent("illenium-appearance:server:ChangeRoutingBucket")
-    local location = vec3(-1037.74, -2737.806, 20.169)
-
-    SetEntityCoords(PlayerPedId(), location)
-    SetEntityHeading(PlayerPedId(), 329.333)
     client.startPlayerCustomization(function(appearance)
         if (appearance) then
             TriggerServerEvent("illenium-appearance:server:saveAppearance", appearance)
@@ -728,25 +722,14 @@ RegisterNetEvent("illenium-appearance:client:reloadSkin", function(bypassChecks)
     BackupPlayerStats()
 
     lib.callback("illenium-appearance:server:getAppearance", false, function(appearance)
-    if not appearance then return end
-    local playerPed = PlayerPedId()
+        if not appearance then
+            return
+        end
         client.setPlayerAppearance(appearance)
         if Config.PersistUniforms then
-            LoadPlayerUniform(true)
+            LoadPlayerUniform(bypassChecks)
         end
         RestorePlayerStats()
-    while playerPed == cache.ped do
-        Wait(100)
-    end
-    RequestAnimDict('clothingtie')
-    while not HasAnimDictLoaded('clothingtie') do
-        Wait(100)
-    end
-
-    TaskPlayAnim(cache.ped, 'clothingtie', 'try_tie_negative_a', 8.0, -8.0, 3000, 48, 0, false, false, false)
-    Wait(3500)
-
-    
     end)
 end)
 

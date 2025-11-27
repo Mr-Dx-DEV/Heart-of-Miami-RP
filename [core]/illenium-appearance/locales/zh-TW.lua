@@ -162,11 +162,6 @@ Locales["zh-TW"] = {
           subTitle= "客製化",
           description=
             "個人化您的角色外觀！選擇髮型、膚色、配件等，讓您的玩家真正獨特。",
-            export = '匯出',
-            import = '匯入',
-            head = '頭部',
-            body = '身體',
-            bottom = '下身',
         },
         closeButton= {
           title= "關閉",

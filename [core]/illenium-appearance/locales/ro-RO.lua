@@ -160,12 +160,8 @@ Locales["ro-RO"] = {
         header= {
           mainTitle= "ÎMBRĂCĂMINTE",
           subTitle= "PERSONALIZARE",
-          description= "Personalizează aspectul personajului tău! Alege coafuri, tonuri de piele, accesorii și multe altele pentru a face jucătorul tău cu adevărat unic.",
-          export = 'Exportă',
-          import = 'Importă',
-          head = 'Cap',
-          body = 'Corp',
-          bottom = 'Jos',
+          description=
+            "Personalizează aspectul personajului tău! Alege coafuri, tonuri de piele, accesorii și multe altele pentru a face jucătorul tău cu adevărat unic.",
         },
         closeButton= {
           title= "Închide",

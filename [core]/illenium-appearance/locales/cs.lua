@@ -160,12 +160,8 @@ Locales["cs"] = {
         header= {
           mainTitle= "OBLEČENÍ",
           subTitle= "PŘIZPŮSOBIT",
-          description= "Přizpůsobte vzhled své postavy! Vyberte účesy, odstíny kůže, doplňky a další, aby byla vaše postava skutečně jedinečná.",
-          export = 'Exportovat',
-          import = 'Importovat',
-          head = 'Hlava',
-          body = 'Tělo',
-          bottom = 'Spodní část',
+          description=
+            "Přizpůsobte vzhled své postavy! Vyberte účesy, odstíny kůže, doplňky a další, aby byla vaše postava skutečně jedinečná.",
         },
         closeButton= {
           title= "Zavřít",

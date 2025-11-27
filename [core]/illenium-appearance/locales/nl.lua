@@ -160,12 +160,8 @@ Locales["nl"] = {
         header= {
           mainTitle= "KLEDING",
           subTitle= "AANPASSEN",
-          description = "Personaliseer het uiterlijk van je personage! Kies kapsels, huidtinten, accessoires en meer om je speler echt uniek te maken.",
-          export = 'Exporteren',
-          import = 'Importeren',
-          head = 'Hoofd',
-          body = 'Lichaam',
-          bottom = 'Onderkant',
+          description=
+            "Personaliseer het uiterlijk van je personage! Kies kapsels, huidtinten, accessoires en meer om je speler echt uniek te maken.",
         },
         closeButton= {
           title= "Sluiten",

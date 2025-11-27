@@ -162,11 +162,6 @@ Locales["en"] = {
           subTitle= "CUSTOMIZE",
           description=
             "Personalize your character’s look! Choose hairstyles, skin tones, accessories, and more to make your player truly unique.",
-            export = 'Export',
-            import = 'Import',
-            head = 'Head',
-            body = 'Body',
-            bottom = 'Bottom',
         },
         closeButton= {
           title= "Close",
@@ -180,8 +175,8 @@ Locales["en"] = {
                 description = "Are you absolutely certain you want to purchase this? This action will be irreversible."
             },
             exit = {
-                title = "Exit Confirmation",
-                description = "Are you sure you want to exit? Any unsaved changes will be lost."
+                title = "Exit customization",
+                description = "No changes will be saved"
             },
             accept = "Yes",
             decline = "No"

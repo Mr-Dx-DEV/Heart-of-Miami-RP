@@ -382,28 +382,25 @@ local function getAppearanceSettings()
         location = getLocationSettings(),
         cdnImage = Config.CDN and Config.CDNLink or nil,
         disableImages = Config.DisableImages,
-        restrictPedScale = IsAllowedPedScale(),
+        restrictPedScale = Config.RestrictPedScale and IsAllowedPedScale() or nil,
     }
 end
 
 function IsAllowedPedScale()
-    if not Config.RestrictPedScale then
-        return false
-    end
     local playerIdentifiers = lib.callback.await("illenium-appearance:server:GetIdentifiers", false)
-    local isRestricted = true
+    local isAllowed = false
     if playerIdentifiers then
         for k,v in pairs(Config.AllowedPedScale) do
             for i,j in pairs(playerIdentifiers) do
                 if v == j then
-                    isRestricted = false
+                    isAllowed = true
                     break
                 end
             end
-            if not isRestricted then break end
+            if isAllowed then break end
         end
     end
-    return isRestricted
+    return isAllowed
 end
 
 client.getAppearanceSettings = getAppearanceSettings

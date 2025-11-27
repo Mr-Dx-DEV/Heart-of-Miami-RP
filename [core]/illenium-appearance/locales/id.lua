@@ -161,12 +161,7 @@ Locales["id"] = {
           mainTitle= "PAKAIAN",
           subTitle= "KUSTOMISASI",
           description=
-            "Personalisasikan penampilan karakter Anda! Pilih gaya rambut, warna kulit, aksesoris, dan lainnya untuk membuat karakter Anda benar-benar unik.",
-            export = 'Ekspor',
-            import = 'Impor',
-            head = 'Kepala',
-            body = 'Tubuh',
-            bottom = 'Bawah',
+            "Personalisasi penampilan karakter Anda! Pilih gaya rambut, warna kulit, aksesoris, dan lainnya untuk membuat pemain Anda benar-benar unik.",
         },
         closeButton= {
           title= "Tutup",

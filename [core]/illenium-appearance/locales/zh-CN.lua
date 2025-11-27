@@ -160,12 +160,8 @@ Locales["zh-CN"] = {
         header= {
           mainTitle= "服装",
           subTitle= "定制",
-          description= "个性化您的角色外观！选择发型、肤色、配饰等，让您的玩家真正独特。",
-          export = '导出',
-          import = '导入',
-          head = '头部',
-          body = '身体',
-          bottom = '底部',
+          description=
+            "个性化您的角色外观！选择发型、肤色、配饰等，让您的玩家真正独特。",
         },
         closeButton= {
           title= "关闭",

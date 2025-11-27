@@ -160,12 +160,8 @@ Locales["fr"] = {
         header= {
           mainTitle= "VÊTEMENTS",
           subTitle= "PERSONNALISER",
-          description= "Personnalisez l'apparence de votre personnage ! Choisissez des coiffures, des tons de peau, des accessoires et bien plus pour rendre votre joueur vraiment unique.",
-          export = 'Exporter',
-          import = 'Importer',
-          head = 'Tête',
-          body = 'Corps',
-          bottom = 'Bas',
+          description=
+            "Personnalisez l'apparence de votre personnage ! Choisissez des coiffures, des tons de peau, des accessoires et bien plus pour rendre votre joueur vraiment unique.",
         },
         closeButton= {
           title= "Fermer",

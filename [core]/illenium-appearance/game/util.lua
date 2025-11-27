@@ -329,7 +329,6 @@ local function setPedProps(ped, props)
 end
 
 local function setPedTattoos(ped, tattoos)
-    if ped ~= PlayerPedId() then return end
     PED_TATTOOS = tattoos
     setTattoos(ped, tattoos)
 end
