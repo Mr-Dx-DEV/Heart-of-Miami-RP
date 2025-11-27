@@ -9,7 +9,7 @@ Config = {}
 -- TO MODIFY NOTIFICATIONS TO YOUR OWN CUSTOM NOTIFICATIONS:-------
 ------ Navigate to wasabi_bridge/customize/cl_customize.lua -------
 -------------------------------------------------------------------
-Config.CheckForUpdates = false -- Check for updates? Who would not want to know updates!?
+Config.CheckForUpdates = true -- Check for updates? Who would not want to know updates!?
 
 -- Language Options are
 -- 'en' (English)
@@ -30,7 +30,7 @@ Config.CheckForUpdates = false -- Check for updates? Who would not want to know 
 -- If you would like us to add a language, join our discord and create a ticket!
 -- All locale strings can be found in /game/configuration/locales/
 Config.Language = 'en'
-Config.UIColor = '#A020F0' -- Can be 'red', 'blue', or a hex '#FF0000'
+Config.UIColor = '#e61f09' -- Can be 'red', 'blue', or a hex '#FF0000'
 -- Config.DeathScreenEffects = true -- OBSOLETE RIGHT NOW
 
 -- Which style do you want to use for death UI?(Current options: 1, 2, 3, 4, 5)
@@ -50,7 +50,7 @@ Config.ambulanceJobs = {       -- Jobs that are considered ambulance jobs (If un
     --'fire',
 }
 
-Config.MuteDeadPlayers = true -- If a player is dead, should he be muted?
+Config.MuteDeadPlayers = false -- If a player is dead, should he be muted?
 
 -- Logs
 Config.DeathLogs = false  -- Enable death logs via Discord webhook?(Set up in configuration/deathlogs.lua)
@@ -86,7 +86,7 @@ Config.ProgressCircleLocation = 'bottom' -- Where you want the progress circle l
 -- Choices: 'bottom' and 'middle'
 
 Config.policeCanTreat = {
-    enabled = false, -- Police can treat patients?
+    enabled = true, -- Police can treat patients?
     jobs = {        -- Police / other jobs
         'police',
         --    'sheriff',
@@ -141,22 +141,31 @@ Config.AmbulanceOffsets = {
     }
 }
 
-Config.GPSBlips = {
-    enabled = false,      -- Enabled?
-    item = false,        -- Item required? Note: You have to use it then
-    sprites = {
-        none = 443,        -- Blip for when not in a vehicle
-        car = 672,        -- Blip for when in vehicles
-        bike = 226,      -- Blip for when on bikes
-        boat = 427,      -- Blip for when in boats
-        helicopter = 43, -- Blip for when in helicopters
-        plane = 307,     -- Blip for when in planes
-    },
-    settings = {
-        color = 1,
-        scale = 0.75,
-        short = false,
-        category = 7
+Config.GPSBlips = { -- Requires wasabi_gps, get it free here: https://wasabiscripts.com/product/7093977
+    enabled = false, -- Enabled?
+    jobs = {        --- wasabi_gps job registration
+        ['ambulance'] = {
+            -- item = 'gps', -- optional item required to use gps
+            subscribers = { --- who can see these blips?
+                'ambulance',
+                -- 'fire'
+            },
+            blipSettings = { --- what does the blip look like?
+                color = 17, -- Orange
+                scale = 1.0,
+                short = true,
+                category = 7
+            }
+        },
+        -- ['fire'] = {
+        --     subscribers = { 'fire', 'ambulance' }, --- who can see these blips?
+        --     blipSettings = {
+        --         color = 17,                        -- Orange
+        --         scale = 1.0,
+        --         short = false,
+        --         category = 7
+        --     }
+        -- },
     }
 }
 
@@ -179,7 +188,7 @@ Config.KnockoutFeature = {
     enabled = false,           -- Enable knockout features? (player's can knock eachother out using fist fighting)
     regainHealth = 20,      -- Amount of health to regain while knocked out (Set to false to disable)
     healthForKnockout = 150,   -- At what HP will player knockout from fist fighting
-    fistDamageModifier = 0.25, -- How much damage will fist cause? (1.0 is default, 0.5 is half as strong, etc)
+    fistDamageModifier = 0.25, -- How much damage will fist cause? (1.0 is default, 0.5 is half as strong, etc) Set to false to disable
     duration = 7 * seconds     -- Time to be knocked out when occurs?
 }
 
@@ -196,8 +205,8 @@ Config.EnableLiveInjury = true                             -- Enable live injury
 Config.DamageDetectThreshold = { armour = 5, health = 10 } -- Damage threshold to detect injury (Default: {armour = 5, health = 10})
 
 Config.BleedMultiplier = {
-    shot = 4,    -- How much blood rate to loose when shot
-    stabbed = 4, -- How much blood rate to loose when stabbed
+    shot = 2,    -- How much blood rate to loose when shot
+    stabbed = 2, -- How much blood rate to loose when stabbed
     beat = 0,    -- How much blood rate to loose when beat
     burned = 0,  -- How much blood rate to loose when burned
 }
@@ -239,20 +248,20 @@ Config.wasabi_crutch = { -- If you use wasabi_crutch:
 
     -- Crutch Settings
     crutchInMedbag = { -- Enabled? Item name? REQUIRES WASABI_CRUTCH
-        enabled = true,
+        enabled = false,
         item = 'crutch'
     },
-    crutchInJobMenu = true, -- Crutch menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
+    crutchInJobMenu = false, -- Crutch menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
     crutchOnCheckIn = {      -- Place crutch for certain amount of time if they visit the hospital or bleedout REQUIRES WASABI_CRUTCH
         enabled = false,     -- Requires wasabi_crutch
         duration = 3         -- How long stuck with crutch after check-in(In minutes)
     },
     -- Chair settings
     chairInMedbag = { -- Enabled? Item name? REQUIRES WASABI_CRUTCH
-        enabled = true,
+        enabled = false,
         item = 'wheelchair'
     },
-    chairInJobMenu = true -- Chair menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
+    chairInJobMenu = false -- Chair menu accessible from job menu if true. REQUIRES WASABI_CRUTCH
 }
 
 Config.EnviPrescriptions = {
@@ -272,12 +281,28 @@ Config.EnviMedic = {
     enabled = false -- Enable to make Envi-Medic to work with wasabi_ambulance
 }
 
+Config.EnviZombies = {
+    ---------------------------------------------------
+    --            If you use Envi Zombies:           --
+    --         https://envi-scripts.tebex.io/        --
+    ---------------------------------------------------
+    autoDetect = false, -- Enable to make Envi-Zombies to work with wasabi_ambulance knockout loop
+}
+
 Config.NassPaintball = {
     ------------------------------------
     --   If you use Nass Paintball:   --
     --    https://store.nass.dev/     --
     ------------------------------------
     autoDetect = true -- Auto detect if player is in paintball area and disable injury/death system
+}
+
+Config.NassFighting = {
+    ------------------------------------
+    --   If you use Nass Fighting:   --
+    --    https://store.nass.dev/     --
+    ------------------------------------
+    autoDetect = true -- Auto detect if player is using fighting system and disable knockout loop
 }
 
 Config.mInsurance = {
@@ -289,7 +314,7 @@ Config.mInsurance = {
     checkInDiscount = 500 --The amount to deduct from the configured check-price if player has insurance
 }
 
-Config.phoneDistress = 'lb'        -- Options: 'gks' (GKS Phone - ESX ONLY) / 'qs' (qs-smartphone) / 'd-p' (d-phone) / 'lb' (lb-phone) / 'rcore_dispatch' (RCore Dispatch) / 'qs_dispatch' (qs-dispatch) / 'cd_dispatch' (cd_dispatch) / 'redutzu_dispatch' (redutzu_dispatch) WILL REPLACE BUILT IN DISPATCH WITH PHONE DISPATCH / Add additonal dispatch in client/cl_customize.lua
+Config.phoneDistress = false        -- Options: 'gks' (GKS Phone - ESX ONLY) / 'qs' (qs-smartphone) / 'd-p' (d-phone) / 'lb' (lb-phone) / 'rcore_dispatch' (RCore Dispatch) / 'qs_dispatch' (qs-dispatch) / 'cd_dispatch' (cd_dispatch) / 'redutzu_dispatch' (redutzu_dispatch) WILL REPLACE BUILT IN DISPATCH WITH PHONE DISPATCH / Add additonal dispatch in client/cl_customize.lua
 Config.customCarlock = false        -- If you use wasabi_carlock OR qb-carlock(Or want to add your own key system to wasabi_bridge/customize/cl_customize.lua)
 Config.MythicHospital = false       -- If you use that old injury script by mythic. (Added per request to reset injuries on respawn)
 Config.AdvancedParking = false      -- If you use AdvancedParking (Deletes vehicles with their exports)
@@ -334,10 +359,10 @@ Config.CompleteDeath = { --DOES NOT APPLY TO QBCORE --  When enabled players can
 }
 
 Config.Bandages = {
-    enabled = true,       -- Useable bandages? (Leave false if ox_inventory because they're built in)
+    enabled = false,       -- Useable bandages? (Leave false if ox_inventory because they're built in)
     item = 'bandage',      -- YOU MUST ADD THIS ITEM TO YOUR ITEMS, IT DOES NOT COME IN INSTALLATION(COMES WITH QBCORE BY DEFAULT AS ITEM)
     hpRegen = 30,          -- Percentage of health it replenishes (30% by default)
-    healBleed = true,     -- Heal bleed that is inflicted by injury system? (Requires injury system enabled)
+    healBleed = false,     -- Heal bleed that is inflicted by injury system? (Requires injury system enabled)
     duration = 7 * seconds -- Time to use
 }
 
@@ -390,7 +415,7 @@ Config.TreatmentItems = {
 }
 
 Config.lowHealthAlert = {
-    enabled = true,
+    enabled = false,
     health = 140, -- Notify when at HP (200 full health / 100 is death)
     notification = {
         title = 'ATTENTION',
@@ -400,9 +425,9 @@ Config.lowHealthAlert = {
 
 Config.EnableStandaloneCheckIns = false -- Enable stand-alone check-in locations? For grandmas, prisons, whatever
 Config.CheckIfJailed = {
-    enabled = true,                    -- Check if player is jailed before respawning? (If using standalone check-in)
+    enabled = false,                    -- Check if player is jailed before respawning? (If using standalone check-in)
     location = 'Prison',                -- If player is jailed, they will respawn on this location. Location name must be the table name from Config.StandaloneCheckIns below
-    resource = 'rcore_prison'                       -- Options: 'wasabi_police' (if you are using our police job's built-in jail system) / 'qb-prison' / 'rcore_prison' / 'tk_jail' / 'r_prison' / You can add your own in client/cl_customize.lua
+    resource = ''                       -- Options: 'wasabi_police' (if you are using our police job's built-in jail system) / 'qb-prison' / 'rcore_prison' / 'tk_jail' / 'r_prison' / You can add your own in client/cl_customize.lua
 }
 
 Config.StandaloneCheckIns = {
@@ -440,10 +465,10 @@ Config.StandaloneCheckIns = {
 }
 
 Config.Locations = {
-    Pillbox = {    ---- GN Hospital
+    Pillbox = {
         RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-            coords = vec3(-466.59481811523, -282.77166748047, 35.835079193115),
-            heading = 203.40788269043,
+            coords = vec3(317.8, -585.14, 44.2),
+            heading = 332.22,
             -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
             -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
             useCheckInInstead = true
@@ -451,76 +476,128 @@ Config.Locations = {
 
         Blip = {
             Enabled = true,
-            Coords = vec3(-467.45, -996.78, 23.70),
+            Coords = vec3(324.15, -583.14, 44.20),
             Sprite = 61,
             Color = 2,
-            Scale = 0.6,
-            String = 'Pilbox'
+            Scale = 1.0,
+            String = 'Pillbox Hospital'
         },
 
-        clockInAndOut = {
-            enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
-            coords = vec3(-430.08, -318.17, 34.91), -- Location of where to go on and off duty(If not using target)
+    clockInAndOut = {
+            enabled = false,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
+            locations = {                          -- Location of where to go on and off duty(If not using target)
+                {
+                    coords = vec3(334.75, -580.24, 43.28),
+                    jobLock = false                 -- Set to false to allow all jobs to access, or set to job name to restrict access
+                },
+                -- Add more non-target locations here if needed (if target is not enabled)
+            },
             label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
             distance = 3.0,                        -- Distance to display text UI(If not using target)
             target = {
-                enabled = false,                   -- If enabled, the location and distance above will be obsolete
+                enabled = true,                   -- If enabled, the location and distance above will be obsolete
                 label = 'Go On/Off Duty',
-                coords = vec3(-473.04, -1041.85, 24.29),
-                heading = 273.69,
-                width = 2.0,
-                length = 1.0,
-                minZ = 43.02 - 0.9,
-                maxZ = 43.38 + 0.9
+                locationsArray = {
+                    {
+                        coords = vec3(334.75, -580.24, 43.28),
+                        heading = 337.07,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.28 - 0.9,
+                        maxZ = 43.28 + 0.9,
+                        jobLock = false
+                    },
+
+                    -- Add more locations here if needed
+                },
             }
         },
         -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
         -- Custom inventories can easily be added in wasabi_bridge/inventories/
         PersonalLocker = {
-            enabled = true,                        -- Enable personal locker(stash) 
-            jobLock = 'ambulance',                   -- Job lock?
-            coords = vec(-443.788, -309.222, 35.347),   -- Location of where to access personal locker (If target is disabled)
+            enabled = false,                        -- Enable personal locker(stash)
+            locations = {                           -- Location of where to access personal locker (If target is disabled)
+                {
+                    coords = vec3(298.61, -598.28, 43.28),
+                    jobLock = false                 -- Set to false to allow all jobs to access, or set to job name to restrict access
+                },
+
+                -- Add more non-target locations here if needed (if target is not enabled)
+            },
             label = '[E] - Access Personal Locker', -- Text to display(If not using target)
-            maxWeight = 5000,                      -- Total Weight of the personalLocker
+            maxWeight = 5000,                       -- Total Weight of the personalLocker
             slots = 30,                             -- Number of slots available in the Personal Locker
             distance = 2.0,                         -- Distance to display text UI(If not using target)
             target = {
-                enabled = false,                    -- If enabled, the location and distance above will be obsolete
+                enabled = true,                    -- If enabled, the location and distance above will be obsolete
                 label = 'Access Locker',
-                coords = vector3(-470.19, -1042.95, 24.29),
-                heading = 19.03,
-                width = 2.0,
-                length = 1.0,
-                minZ = 43.02 - 0.9,
-                maxZ = 43.38 + 0.9
+                locationsArray = {
+                    {
+                        coords = vec3(283.27, -615.33, 43.38),
+                        heading = 70.18,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.38 - 0.9,
+                        maxZ = 43.38 + 0.9,
+                        jobLock = false
+                    },
+
+                    -- Add more locations here if needed
+                }
             }
         },
 
-
         BossMenu = {
-            Enabled = true,                        -- Enabled boss menu?
-            Coords = vec3(-504.44, -298.59, 42.32), -- Location of boss menu (If not using target)
+            Enabled = false,                        -- Enabled boss menu?
+            locations = {                          -- Location of boss menu (If not using target)
+                {
+                    coords = vec3(335.59, -594.33, 43.21),
+                    jobLock = false                 -- Set to false to allow all jobs to access, or set to job name to restrict access
+                },
+                -- Add more non-target locations here if needed (if target is not enabled)
+            },
             Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
             Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
             Target = {
-                enabled = false,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
+                enabled = true,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
                 label = 'Access Boss Menu',
-                coords = vec3(-447.05, -1041.26, 33.69),
-                heading = 254.53,
-                width = 2.0,
-                length = 1.0,
-                minZ = 43.02 - 0.9,
-                maxZ = 43.38 + 0.9
+                locationsArray = {
+                    {
+                        coords = vec3(335.59, -594.33, 43.21),
+                        heading = 269.85,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.21 - 0.9,
+                        maxZ = 43.21 + 0.9,
+                        jobLock = false
+                    },
+
+                    -- Add more locations here if needed
+                }
             }
         },
 
         CheckIn = {                                      -- Hospital check-in
             Enabled = true,                              -- Enable ped and check-in area?
-            Ped = 's_m_m_scientist_01',                  -- Check in ped
-            Coords = vec3(-435.28, -324.16, 34.91 - 0.9), -- Coords of ped
-            Distance = 3.85,                             -- Distance to show textUI (If target is not enabled below)
-            Heading = 165.1,                             -- Heading of ped
-            Cost = 500,                                 -- Cost of using hospital check-in. Set to false for free
+            locations = {
+                {
+                    ped = 's_m_m_scientist_01',                     -- Check in ped (false for no ped)
+                    coords = vec3(308.58, -595.31, 43.28-0.9),
+                    heading = 63.26,
+                    jobLock = false                      -- Set to false to allow all jobs to access, or set to job name to restrict access
+                },
+
+                {
+                    ped = 's_m_m_scientist_01',
+                    coords = vec3(311.45, -594.2, 43.28-0.9),
+                    heading = 335.87,
+                    jobLock = false
+                },
+
+                -- Add more non-target locations here if needed (if target is not enabled)
+            },
+            Distance = 4.85,                             -- Distance to show textUI (If target is not enabled below)
+            Cost = 500,                                  -- Cost of using hospital check-in. Set to false for free
             Duration = 15 * seconds,                     -- Time it takes to spend in hospital bed
             MaxOnDuty = 3,                               -- If this amount or less you can use, otherwise it will tell you that EMS is avaliable(Set to false to always enable check-in)
             PayAccount = 'bank',                         -- Account dead player pays from to check-in
@@ -528,21 +605,43 @@ Config.Locations = {
             Label = '[E] - Check In',                    -- label of text UI if target is not enabled below
             HotKey = 38,                                 -- Default: 38 (E) (If target below is not enabled)
             Target = {
-                enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
+                enabled = false,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
                 label = 'Check In',
-                coords = vec3(-435.28, -324.16, 34.9),
-                heading = 165.1,
-                distance = 5.0,
-                width = 2.0,
-                length = 1.0,
-                minZ = 33.02 - 0.9,
-                maxZ = 33.98 + 0.9
+                locationsArray = {
+
+                    {
+                        ped = 's_m_m_scientist_01',                     -- Check in ped (false for no ped)
+                        coords = vec3(308.58, -595.31, 43.28-0.9),
+                        heading = 63.26,
+                        distance = 5.0,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.28 - 0.9,
+                        maxZ = 43.28 + 0.9,
+                        jobLock = false
+                    },
+
+                    {
+                        ped = 's_m_m_scientist_01',
+                        coords = vec3(311.45, -594.2, 43.28-0.9),
+                        heading = 335.87,
+                        distance = 5.0,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.28 - 0.9,
+                        maxZ = 43.28 + 0.9,
+                        jobLock = false
+                    },
+
+                    -- Add more locations here if needed
+                }
+
             },
             DisableHospitalBeds = false,                                                       -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-            RespawnNoBedLocation = { coords = vec3(-466.59481811523, -282.77166748047, 35.835079193115), heading = 203.40788269043 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
+            RespawnNoBedLocation = { coords = vec3(316.66, -581.3, 43.28), heading = 339.02 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
             HospitalBeds = {
                 --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-               --[[  { coords = vec3(317.67, -585.37, 42.84 + 0.3), heading = 160.0 },
+                { coords = vec3(317.67, -585.37, 42.84 + 0.3), heading = 160.0 },
                 { coords = vec3(319.41, -581.04, 42.84 + 0.3), heading = 340.0 },
                 { coords = vec3(314.47, -584.2, 42.84 + 0.3),  heading = 160.0 },
                 { coords = vec3(313.93, -579.04, 42.84 + 0.3), heading = 340.0 },
@@ -552,15 +651,7 @@ Config.Locations = {
                 { coords = vec3(361.36, -581.3, 42.83 + 0.3),  heading = 250.0 },
                 { coords = vec3(359.54, -586.23, 42.84 + 0.3), heading = 250.0 },
                 { coords = vec3(354.44, -600.19, 42.85 + 0.3), heading = 250.0 },
-                { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 }, ]]
-
-                { coords = vec3(-466.59481811523, -282.77166748047, 35.835079193115 + 0.1), heading = 203.40788269043 },
-                { coords = vec3(-463.66650390625, -289.8073425293, 35.833221435547 + 0.1), heading = 21.860538482666 },
-                { coords = vec3(-462.86395263672, -281.32543945313, 35.835048675537 + 0.1), heading = 199.94317626953 },
-                { coords = vec3(-460.22265625, -288.69342041016, 35.833206176758 + 0.1), heading = 36.001201629639 },
-                { coords = vec3(-466.67175292969, -282.68228149414, 35.835094451904 + 0.1), heading = 201.47679138184 },
-                
-                
+                { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 },
                 -- Stock qb-ambulance hospital bed coords:
                 --                { coords = vec3(353.1, -584.6, 43.11), heading = 152.08 },
                 --                { coords = vec3(356.79, -585.86, 43.11), heading = 152.08 },
@@ -575,11 +666,35 @@ Config.Locations = {
         },
 
         Cloakroom = {
-            Enabled = false,
-            Coords = vec3(-443.101, -310.926, 34.911), -- Coords of cloakroom
+            Enabled = true,
+            locations = {                                -- Coords of cloakroom
+                {
+                    coords = vec3(308.58, -595.31, 43.28),
+                    jobLock = false                      -- Set to false to allow all jobs to access, or set to job name to restrict access
+                },
+                -- Add more non-target locations here if needed (if target is not enabled)
+            },
             Label = '[E] - Change Clothes',     -- String of text ui of cloakroom
             HotKey = 38,                        -- Default: 38 (E)
             Range = 1.5,                        -- Range away from coords you can use.
+            Target = {
+                enabled = false,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
+                label = 'Change Clothes',
+                locationsArray = {
+                    {
+                        coords = vec3(308.58, -595.31, 43.28),
+                        heading = 63.26,
+                        distance = 5.0,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.28 - 0.9,
+                        maxZ = 43.28 + 0.9,
+                        jobLock = false
+                    },
+
+                    -- Add more locations here if needed
+                }
+            },
             Uniforms = {                        -- Uniform choices
                 [1] = {                         -- Order it will display
                     label = 'Medic',            -- Name of outfit that will display in menu
@@ -662,13 +777,38 @@ Config.Locations = {
 
         MedicalSupplies = {                                                     -- EMS Shop for supplies
             Enabled = true,                                                     -- If set to false, rest of this table do not matter
-            Ped = 's_m_m_doctor_01',                                            -- Ped to target
-            Coords = vec3(-455.44, -311.03, 33.91),                       -- Coords of ped/target
-            Heading = 29.88,                                                   -- Heading of ped
+            locations = {                                                      -- Coords of ped/target
+                {
+                    ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
+                    coords = vec3(306.63, -601.44, 43.28 - 0.95),
+                    heading = 337.64,
+                    jobLock = false                                             -- Set to false to allow all jobs to access, or set to job name to restrict access
+                },
+                -- Add more non-target locations here if needed (if target is not enabled)
+            },
+            Distance = 2.5,                                                    -- Distance to show textUI (If target is not enabled below)
+            Target = {
+                enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
+                label = 'Access Medical Supplies',
+                locationsArray = {
+                    {
+                        ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
+                        coords = vec3(306.63, -601.44, 43.28 - 0.95),
+                        heading = 337.64,
+                        distance = 5.0,
+                        width = 2.0,
+                        length = 1.0,
+                        minZ = 43.28 - 0.9,
+                        maxZ = 43.28 + 0.9,
+                        jobLock = false
+                    },
+
+                    -- Add more locations here if needed
+                }
+            },
+
             Supplies = {                                                        -- Supplies
                 { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
-                { item = 'sedative',    label = 'Sedative', price = 250 },
-                { item = 'radio',    label = 'Radio', price = 250 },
                 { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
                 { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
                 { item = 'morphine15', label = 'Morphine 15MG', price = 45 },
@@ -677,1303 +817,119 @@ Config.Locations = {
                 { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
                 { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
                 { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
-                { item = 'bandage',      label = 'Bandage',  price = 30 },
-             --   { item = 'bobby_pin',      label = 'Pin',  price = 30 },
-                { item = 'handcuffs',      label = 'Handcuffs',  price = 30 },
-                { item = 'scuba_gear',      label = 'Scuba Gear',  price = 30 },
-                
             }
         },
 
         Vehicles = {                                   -- Vehicle Garage
-            Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
-            Zone = {
-                coords = vec3(298.54, -606.79, 43.27), -- Area to prompt vehicle garage
-                range = 5.5,                           -- Range it will prompt from coords above
-                label = '[E] - Access Garage',
-                return_label = '[E] - Return Vehicle'
-            },
-            Spawn = {
-                land = {
-                    coords = vec3(296.16, -607.67, 43.25),
-                    heading = 68.43
-                },
-                air = {
-                    coords = vec3(351.24, -587.67, 74.55),
-                    heading = 289.29
-                }
-            },
-            Options = {
-                [0] = {                    -- Job grade as table name
-                    ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Ambulance',
-                        category = 'land', -- Options are 'land' and 'air'
+            Enabled = true,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
+            
+            locations = {
+
+                {
+                    Zone = {
+                        coords = vec3(298.54, -606.79, 43.27), -- Area to prompt vehicle garage
+                        range = 5.5,                           -- Range it will prompt from coords above
+                        label = '[E] - Access Garage',
+                        return_label = '[E] - Return Vehicle'
                     },
-                    ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Dodge Charger',
-                        category = 'land', -- Options are 'land' and 'air'
+                    Spawn = {
+                        land = {
+                            coords = vec3(296.16, -607.67, 43.25),
+                            heading = 68.43
+                        },
+                        air = {
+                            coords = vec3(351.24, -587.67, 74.55),
+                            heading = 289.29
+                        }
                     },
-                    ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Maverick',
-                        category = 'air',  -- Options are 'land' and 'air'
-                    },
+                    jobLock = false,  -- Set to 'ambulance' or a table of jobs to restrict access to specific jobs
+                    Options = {
+                        [0] = {                    -- Job grade as table name
+                            ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Ambulance',
+                                category = 'land', -- Options are 'land' and 'air'
+                            },
+                            ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Dodge Charger',
+                                category = 'land', -- Options are 'land' and 'air'
+                            },
+                            ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Maverick',
+                                category = 'air',  -- Options are 'land' and 'air'
+                            },
+                        },
+
+                        [1] = {
+                            ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Ambulance',
+                                category = 'land', -- Options are 'land' and 'air'
+                            },
+                            ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Dodge Charger',
+                                category = 'land', -- Options are 'land' and 'air'
+                            },
+                            ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Maverick',
+                                category = 'air',  -- Options are 'land' and 'air'
+                            },
+                        },
+
+                        [2] = {
+                            ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Ambulance',
+                                category = 'land', -- Options are 'land' and 'air'
+                            },
+                            ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Dodge Charger',
+                                category = 'land', -- Options are 'land' and 'air'
+                            },
+                            ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                                label = 'Maverick',
+                                category = 'air',  -- Options are 'land' and 'air'
+                            },
+                        }
+                    }
                 },
 
-                [1] = {
-                    ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Ambulance',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Dodge Charger',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Maverick',
-                        category = 'air',  -- Options are 'land' and 'air'
-                    },
-                },
+                -- Add garages to this hospital here (example below)
 
-                [2] = {
-                    ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Ambulance',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Dodge Charger',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Maverick',
-                        category = 'air',  -- Options are 'land' and 'air'
-                    },
-                }
+                -- EXAMPLE: Add more garage locations here if needed
+                -- {
+                --     Zone = {
+                --         coords = vec3(0.0, 0.0, 0.0),  -- Different garage location
+                --         range = 5.5,
+                --         label = '[E] - Access Garage',
+                --         return_label = '[E] - Return Vehicle'
+                --     },
+                --     Spawn = {
+                --         land = {
+                --             coords = vec3(0.0, 0.0, 0.0),
+                --             heading = 0.0
+                --         },
+                --         air = {
+                --             coords = vec3(0.0, 0.0, 0.0),
+                --             heading = 0.0
+                --         }
+                --     },
+                --     jobLock = false,  -- Set to 'ambulance' or table of jobs to restrict
+                --     Options = {
+                --         [0] = {
+                --             ['ambulance'] = {
+                --                 label = 'Ambulance',
+                --                 category = 'land',
+                --             },
+                --         },
+                --         [1] = {
+                --             ['ambulance'] = {
+                --                 label = 'Ambulance',
+                --                 category = 'land',
+                --             },
+                --         },
+                --     }
+                -- },
             }
-        },
-    },
-    -- medicelcenter = {
-    --     RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-    --         coords = vec3(309.78, -1417.18, 30.02),
-    --         heading = 235.57,
-    --         -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
-    --         -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
-    --         useCheckInInstead = true
-    --     },
-
-    --     Blip = {
-    --         Enabled = true,
-    --         Coords = vec3(355.09, -1407.11, 32.51),
-    --         Sprite = 61,
-    --         Color = 2,
-    --         Scale = 0.8,
-    --         String = 'MEDICAL CENTER'
-    --     },
-
-    --     clockInAndOut = {
-    --         enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
-    --         coords = vec3(338.28, -1420.72, 32.58), -- Location of where to go on and off duty(If not using target)
-    --         label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
-    --         distance = 3.0,                        -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = true,                   -- If enabled, the location and distance above will be obsolete
-    --             label = 'Go On/Off Duty',
-    --             coords = vec3(338.28, -1420.72, 32.58),
-    --             heading = 306.78,
-    --             width = 2.0,
-    --             length = 2.0,
-    --             minZ = 305.02 - 0.9,
-    --             maxZ = 307.99 + 0.9
-    --         }
-    --     },
-    --     -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
-    --     -- Custom inventories can easily be added in wasabi_bridge/inventories/
-    --     PersonalLocker = {
-    --         enabled = true,                        -- Enable personal locker(stash) 
-    --         jobLock = 'ambulance',                   -- Job lock?
-    --         coords = vec3(351.46, -1449.29, 29.95),   -- Location of where to access personal locker (If target is disabled)
-    --         label = '[E] - Access Personal Locker', -- Text to display(If not using target)
-    --         maxWeight = 5000,                      -- Total Weight of the personalLocker
-    --         slots = 30,                             -- Number of slots available in the Personal Locker
-    --         distance = 2.0,                         -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = true,                    -- If enabled, the location and distance above will be obsolete
-    --             label = 'Access Locker',
-    --             coords = vector3(351.46, -1449.29, 29.95),
-    --             heading = 230.02,
-    --             width = 2.0,
-    --             length = 2.0,
-    --             minZ = 229.01 - 0.9,
-    --             maxZ = 231.99 + 0.9
-    --         }
-    --     },
-
-
-    --     BossMenu = {
-    --         Enabled = true,                        -- Enabled boss menu?
-    --         Coords = vec3(337.66, -1416.39, 32.51), -- Location of boss menu (If not using target)
-    --         Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
-    --         Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
-    --         Target = {
-    --             enabled = false,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Access Boss Menu',
-    --             coords = vec3(337.66, -1416.39, 32.51),
-    --             heading = 263.55,
-    --             width = 2.0,
-    --             length = 1.0,
-    --             minZ = 262.02 - 0.9,
-    --             maxZ = 264.99 + 0.9
-    --         }
-    --     },
-
-    --     CheckIn = {                                      -- Hospital check-in
-    --         Enabled = true,                              -- Enable ped and check-in area?
-    --         Ped = 's_m_m_scientist_01',                  -- Check in ped
-    --         Coords = vec3(355.09, -1407.11, 32.51 - 0.9), -- Coords of ped
-    --         Distance = 3.85,                             -- Distance to show textUI (If target is not enabled below)
-    --         Heading = 50.67,                             -- Heading of ped
-    --         Cost = 500,                                 -- Cost of using hospital check-in. Set to false for free
-    --         Duration = 15 * seconds,                     -- Time it takes to spend in hospital bed
-    --         MaxOnDuty = 3,                               -- If this amount or less you can use, otherwise it will tell you that EMS is avaliable(Set to false to always enable check-in)
-    --         PayAccount = 'bank',                         -- Account dead player pays from to check-in
-    --         PayHospital = false,                         -- Payments made to check-in go to the company society/account? (ex. 'society_ambulance' for ESX and 'ambulance' for QBCore or false for no)
-    --         Label = '[E] - Check In',                    -- label of text UI if target is not enabled below
-    --         HotKey = 38,                                 -- Default: 38 (E) (If target below is not enabled)
-    --         Target = {
-    --             enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Check In',
-    --             coords = vec3(355.09, -1407.11, 32.51),
-    --             heading = 50.67,
-    --             distance = 5.0,
-    --             width = 2.0,
-    --             length = 1.0,
-    --             minZ = 49.45 - 0.9,
-    --             maxZ = 51.43 + 0.9
-    --         },
-    --         DisableHospitalBeds = false,                                                       -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-    --         RespawnNoBedLocation = { coords = vec3(309.78, -1417.18, 30.02), heading = 235.57 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
-    --         HospitalBeds = {
-    --             --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-    --            --[[  { coords = vec3(317.67, -585.37, 42.84 + 0.3), heading = 160.0 },
-    --             { coords = vec3(319.41, -581.04, 42.84 + 0.3), heading = 340.0 },
-    --             { coords = vec3(314.47, -584.2, 42.84 + 0.3),  heading = 160.0 },
-    --             { coords = vec3(313.93, -579.04, 42.84 + 0.3), heading = 340.0 },
-    --             { coords = vec3(311.06, -582.96, 42.84 + 0.3), heading = 160.0 },
-    --             { coords = vec3(307.72, -581.75, 42.84 + 0.3), heading = 160.0 },
-    --             { coords = vec3(309.35, -577.38, 42.84 + 0.3), heading = 340.0 },
-    --             { coords = vec3(361.36, -581.3, 42.83 + 0.3),  heading = 250.0 },
-    --             { coords = vec3(359.54, -586.23, 42.84 + 0.3), heading = 250.0 },
-    --             { coords = vec3(354.44, -600.19, 42.85 + 0.3), heading = 250.0 },
-    --             { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 }, ]]
-
-    --             { coords = vec3(309.78, -1417.18, 30.02), heading = 235.57 },
-    --             { coords = vec3(307.38, -1419.59, 30.02), heading = 233.52 },
-    --             { coords = vec3(299.42, -1419.12, 30.02), heading = 53.11 },
-    --             { coords = vec3(301.76, -1416.32, 30.02), heading = 52.58 },
-    --             { coords = vec3(304.29, -1413.33, 30.02), heading = 56.08 },
-    --             { coords = vec3(306.73, -1410.38, 30.02), heading = 53.87 },
-
-
-                
-
-    --             -- { coords = vec3(-463.66650390625, -289.8073425293, 35.833221435547 + 0.1), heading = 21.860538482666 },
-    --             -- { coords = vec3(-462.86395263672, -281.32543945313, 35.835048675537 + 0.1), heading = 199.94317626953 },
-    --             -- { coords = vec3(-460.22265625, -288.69342041016, 35.833206176758 + 0.1), heading = 36.001201629639 },
-    --             -- { coords = vec3(-466.67175292969, -282.68228149414, 35.835094451904 + 0.1), heading = 201.47679138184 },
-                
-                
-    --             -- Stock qb-ambulance hospital bed coords:
-    --             --                { coords = vec3(353.1, -584.6, 43.11), heading = 152.08 },
-    --             --                { coords = vec3(356.79, -585.86, 43.11), heading = 152.08 },
-    --             --                { coords = vec3(354.12, -593.12, 43.1), heading = 336.32 },
-    --             --                { coords = vec3(350.79, -591.8, 43.1), heading = 336.32 },
-    --             --                { coords = vec3(346.99, -590.48, 43.1), heading = 336.32 },
-    --             --                { coords = vec3(360.32, -587.19, 43.02), heading = 152.08 },
-    --             --                { coords = vec3(349.82, -583.33, 43.02), heading = 152.08 },
-    --             --                { coords = vec3(326.98, -576.17, 43.02), heading = 152.08 }
-    --         }
-
-    --     },
-
-    --     Cloakroom = {
-    --         Enabled = true,
-    --         Coords = vec3(366.32, -1406.30, 38.03), -- Coords of cloakroom
-    --         Label = '[E] - Change Clothes',     -- String of text ui of cloakroom
-    --         HotKey = 38,                        -- Default: 38 (E)
-    --         Range = 1.5,                        -- Range away from coords you can use.
-    --         Uniforms = {                        -- Uniform choices
-    --             [1] = {                         -- Order it will display
-    --                 label = 'Medic',            -- Name of outfit that will display in menu
-    --                 minGrade = 0,               -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {                    -- Male variation
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --             [2] = {
-    --                 label = 'Doctor',
-    --                 minGrade = 1, -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --         }
-    --     },
-
-    --     MedicalSupplies = {                                                     -- EMS Shop for supplies
-    --         Enabled = true,                                                     -- If set to false, rest of this table do not matter
-    --         Ped = 's_m_m_doctor_01',                                            -- Ped to target
-    --         Coords = vec3(341.75, -1423.49, 32.51),                       -- Coords of ped/target
-    --         Heading = 323.60,                                                   -- Heading of ped
-    --         Supplies = {                                                        -- Supplies
-    --             { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
-    --             { item = 'sedative',    label = 'Sedative', price = 250 },
-    --             { item = 'radio',    label = 'Radio', price = 250 },
-    --             { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
-    --             { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
-    --             { item = 'morphine15', label = 'Morphine 15MG', price = 45 },
-    --             { item = 'perc30',     label = 'Percocet 30MG', price = 60 },
-    --             { item = 'perc10',     label = 'Percocet 10MG', price = 40 },
-    --             { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
-    --             { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
-    --             { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
-    --             { item = 'bandage',      label = 'Bandage',  price = 30 },
-    --          --   { item = 'bobby_pin',      label = 'Pin',  price = 30 },
-    --             { item = 'handcuffs',      label = 'Handcuffs',  price = 30 },
-    --             { item = 'scuba_gear',      label = 'Scuba Gear',  price = 30 },
-                
-    --         }
-    --     },
-
-    --     Vehicles = {                                   -- Vehicle Garage
-    --         Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
-    --         Zone = {
-    --             coords = vec3(298.54, -606.79, 43.27), -- Area to prompt vehicle garage
-    --             range = 5.5,                           -- Range it will prompt from coords above
-    --             label = '[E] - Access Garage',
-    --             return_label = '[E] - Return Vehicle'
-    --         },
-    --         Spawn = {
-    --             land = {
-    --                 coords = vec3(296.16, -607.67, 43.25),
-    --                 heading = 68.43
-    --             },
-    --             air = {
-    --                 coords = vec3(351.24, -587.67, 74.55),
-    --                 heading = 289.29
-    --             }
-    --         },
-    --         Options = {
-    --             [0] = {                    -- Job grade as table name
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [1] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [2] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             }
-    --         }
-    --     },
-    -- },
-    -- medicelcenter1 = {
-    --     RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-    --         coords = vec3(309.78, -1417.18, 30.02),
-    --         heading = 235.57,
-    --         -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
-    --         -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
-    --         useCheckInInstead = true
-    --     },
-
-    --     Blip = {
-    --         Enabled = false,
-    --         Coords = vec3(355.09, -1407.11, 32.51),
-    --         Sprite = 61,
-    --         Color = 2,
-    --         Scale = 0.8,
-    --         String = 'MEDICAL CENTER'
-    --     },
-
-    --     clockInAndOut = {
-    --         enabled = false,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
-    --         coords = vec3(338.28, -1420.72, 32.58), -- Location of where to go on and off duty(If not using target)
-    --         label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
-    --         distance = 3.0,                        -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = true,                   -- If enabled, the location and distance above will be obsolete
-    --             label = 'Go On/Off Duty',
-    --             coords = vec3(338.28, -1420.72, 32.58),
-    --             heading = 306.78,
-    --             width = 2.0,
-    --             length = 2.0,
-    --             minZ = 305.02 - 0.9,
-    --             maxZ = 307.99 + 0.9
-    --         }
-    --     },
-    --     -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
-    --     -- Custom inventories can easily be added in wasabi_bridge/inventories/
-    --     PersonalLocker = {
-    --         enabled = false,                        -- Enable personal locker(stash) 
-    --         jobLock = 'ambulance',                   -- Job lock?
-    --         coords = vec3(351.46, -1449.29, 29.95),   -- Location of where to access personal locker (If target is disabled)
-    --         label = '[E] - Access Personal Locker', -- Text to display(If not using target)
-    --         maxWeight = 5000,                      -- Total Weight of the personalLocker
-    --         slots = 30,                             -- Number of slots available in the Personal Locker
-    --         distance = 2.0,                         -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = true,                    -- If enabled, the location and distance above will be obsolete
-    --             label = 'Access Locker',
-    --             coords = vector3(351.46, -1449.29, 29.95),
-    --             heading = 230.02,
-    --             width = 2.0,
-    --             length = 2.0,
-    --             minZ = 229.01 - 0.9,
-    --             maxZ = 231.99 + 0.9
-    --         }
-    --     },
-
-
-    --     BossMenu = {
-    --         Enabled = false,                        -- Enabled boss menu?
-    --         Coords = vec3(337.66, -1416.39, 32.51), -- Location of boss menu (If not using target)
-    --         Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
-    --         Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
-    --         Target = {
-    --             enabled = false,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Access Boss Menu',
-    --             coords = vec3(337.66, -1416.39, 32.51),
-    --             heading = 263.55,
-    --             width = 2.0,
-    --             length = 1.0,
-    --             minZ = 262.02 - 0.9,
-    --             maxZ = 264.99 + 0.9
-    --         }
-    --     },
-
-    --     CheckIn = {                                      -- Hospital check-in
-    --         Enabled = true,                              -- Enable ped and check-in area?
-    --         Ped = 's_m_m_scientist_01',                  -- Check in ped
-    --         Coords = vec3(317.85, -1430.26, 29.97 - 0.9), -- Coords of ped
-    --         Distance = 3.85,                             -- Distance to show textUI (If target is not enabled below)
-    --         Heading = 136.73,                             -- Heading of ped
-    --         Cost = 500,                                 -- Cost of using hospital check-in. Set to false for free
-    --         Duration = 15 * seconds,                     -- Time it takes to spend in hospital bed
-    --         MaxOnDuty = 3,                               -- If this amount or less you can use, otherwise it will tell you that EMS is avaliable(Set to false to always enable check-in)
-    --         PayAccount = 'bank',                         -- Account dead player pays from to check-in
-    --         PayHospital = false,                         -- Payments made to check-in go to the company society/account? (ex. 'society_ambulance' for ESX and 'ambulance' for QBCore or false for no)
-    --         Label = '[E] - Check In',                    -- label of text UI if target is not enabled below
-    --         HotKey = 38,                                 -- Default: 38 (E) (If target below is not enabled)
-    --         Target = {
-    --             enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Check In',
-    --             coords = vec3(317.85, -1430.26, 29.97),
-    --             heading = 136.73,
-    --             distance = 5.0,
-    --             width = 2.0,
-    --             length = 1.0,
-    --             minZ = 135.45 - 0.9,
-    --             maxZ = 137.43 + 0.9
-    --         },
-    --         DisableHospitalBeds = false,                                                       -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-    --         RespawnNoBedLocation = { coords = vec3(309.78, -1417.18, 30.02), heading = 235.57 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
-    --         HospitalBeds = {
-    --             --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-    --            --[[  { coords = vec3(317.67, -585.37, 42.84 + 0.3), heading = 160.0 },
-    --             { coords = vec3(319.41, -581.04, 42.84 + 0.3), heading = 340.0 },
-    --             { coords = vec3(314.47, -584.2, 42.84 + 0.3),  heading = 160.0 },
-    --             { coords = vec3(313.93, -579.04, 42.84 + 0.3), heading = 340.0 },
-    --             { coords = vec3(311.06, -582.96, 42.84 + 0.3), heading = 160.0 },
-    --             { coords = vec3(307.72, -581.75, 42.84 + 0.3), heading = 160.0 },
-    --             { coords = vec3(309.35, -577.38, 42.84 + 0.3), heading = 340.0 },
-    --             { coords = vec3(361.36, -581.3, 42.83 + 0.3),  heading = 250.0 },
-    --             { coords = vec3(359.54, -586.23, 42.84 + 0.3), heading = 250.0 },
-    --             { coords = vec3(354.44, -600.19, 42.85 + 0.3), heading = 250.0 },
-    --             { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 }, ]]
-
-    --             { coords = vec3(309.78, -1417.18, 30.02), heading = 235.57 },
-    --             { coords = vec3(307.38, -1419.59, 30.02), heading = 233.52 },
-    --             { coords = vec3(299.42, -1419.12, 30.02), heading = 53.11 },
-    --             { coords = vec3(301.76, -1416.32, 30.02), heading = 52.58 },
-    --             { coords = vec3(304.29, -1413.33, 30.02), heading = 56.08 },
-    --             { coords = vec3(306.73, -1410.38, 30.02), heading = 53.87 },
-
-
-                
-
-    --             -- { coords = vec3(-463.66650390625, -289.8073425293, 35.833221435547 + 0.1), heading = 21.860538482666 },
-    --             -- { coords = vec3(-462.86395263672, -281.32543945313, 35.835048675537 + 0.1), heading = 199.94317626953 },
-    --             -- { coords = vec3(-460.22265625, -288.69342041016, 35.833206176758 + 0.1), heading = 36.001201629639 },
-    --             -- { coords = vec3(-466.67175292969, -282.68228149414, 35.835094451904 + 0.1), heading = 201.47679138184 },
-                
-                
-    --             -- Stock qb-ambulance hospital bed coords:
-    --             --                { coords = vec3(353.1, -584.6, 43.11), heading = 152.08 },
-    --             --                { coords = vec3(356.79, -585.86, 43.11), heading = 152.08 },
-    --             --                { coords = vec3(354.12, -593.12, 43.1), heading = 336.32 },
-    --             --                { coords = vec3(350.79, -591.8, 43.1), heading = 336.32 },
-    --             --                { coords = vec3(346.99, -590.48, 43.1), heading = 336.32 },
-    --             --                { coords = vec3(360.32, -587.19, 43.02), heading = 152.08 },
-    --             --                { coords = vec3(349.82, -583.33, 43.02), heading = 152.08 },
-    --             --                { coords = vec3(326.98, -576.17, 43.02), heading = 152.08 }
-    --         }
-
-    --     },
-
-    --     Cloakroom = {
-    --         Enabled = false,
-    --         Coords = vec3(366.32, -1406.30, 38.03), -- Coords of cloakroom
-    --         Label = '[E] - Change Clothes',     -- String of text ui of cloakroom
-    --         HotKey = 38,                        -- Default: 38 (E)
-    --         Range = 1.5,                        -- Range away from coords you can use.
-    --         Uniforms = {                        -- Uniform choices
-    --             [1] = {                         -- Order it will display
-    --                 label = 'Medic',            -- Name of outfit that will display in menu
-    --                 minGrade = 0,               -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {                    -- Male variation
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --             [2] = {
-    --                 label = 'Doctor',
-    --                 minGrade = 1, -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --         }
-    --     },
-
-    --     MedicalSupplies = {                                                     -- EMS Shop for supplies
-    --         Enabled = false,                                                     -- If set to false, rest of this table do not matter
-    --         Ped = 's_m_m_doctor_01',                                            -- Ped to target
-    --         Coords = vec3(341.75, -1423.49, 32.51),                       -- Coords of ped/target
-    --         Heading = 323.60,                                                   -- Heading of ped
-    --         Supplies = {                                                        -- Supplies
-    --             { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
-    --             { item = 'sedative',    label = 'Sedative', price = 250 },
-    --             { item = 'radio',    label = 'Radio', price = 250 },
-    --             { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
-    --             { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
-    --             { item = 'morphine15', label = 'Morphine 15MG', price = 45 },
-    --             { item = 'perc30',     label = 'Percocet 30MG', price = 60 },
-    --             { item = 'perc10',     label = 'Percocet 10MG', price = 40 },
-    --             { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
-    --             { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
-    --             { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
-    --             { item = 'bandage',      label = 'Bandage',  price = 30 },
-    --          --   { item = 'bobby_pin',      label = 'Pin',  price = 30 },
-    --             { item = 'handcuffs',      label = 'Handcuffs',  price = 30 },
-    --             { item = 'scuba_gear',      label = 'Scuba Gear',  price = 30 },
-    --             { item = 'gps_tracker',      label = 'GPS Tracker', price = 100 },
-                
-    --         }
-    --     },
-
-    --     Vehicles = {                                   -- Vehicle Garage
-    --         Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
-    --         Zone = {
-    --             coords = vec3(298.54, -606.79, 43.27), -- Area to prompt vehicle garage
-    --             range = 5.5,                           -- Range it will prompt from coords above
-    --             label = '[E] - Access Garage',
-    --             return_label = '[E] - Return Vehicle'
-    --         },
-    --         Spawn = {
-    --             land = {
-    --                 coords = vec3(296.16, -607.67, 43.25),
-    --                 heading = 68.43
-    --             },
-    --             air = {
-    --                 coords = vec3(351.24, -587.67, 74.55),
-    --                 heading = 289.29
-    --             }
-    --         },
-    --         Options = {
-    --             [0] = {                    -- Job grade as table name
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [1] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [2] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             }
-    --         }
-    --     },
-    -- },
-    -- Paleto = {
-    --     RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-    --         coords = vec3(-251.76, 6310.79, 32.01),
-    --         heading = 217.03,
-    --         -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
-    --         -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
-    --         useCheckInInstead = true
-    --     },
-
-    --     Blip = {
-    --         Enabled = true,
-    --         Coords = vec3(-260.038, 6325.333, 37.617),
-    --         Sprite = 61,
-    --         Color = 2,
-    --         Scale = 0.6,
-    --         String = 'Paleto Hospital'
-    --     },
-
-    --     clockInAndOut = {
-    --         enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
-    --         coords = vec3(-249.5, 6321.94, 32.45), -- Location of where to go on and off duty(If not using target)
-    --         label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
-    --         distance = 3.0,                        -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = false,                   -- If enabled, the location and distance above will be obsolete
-    --             label = 'Go On/Off Duty',
-    --             coords = vec3(-432.65, -318.23, 34.91),
-    --             heading = 292,
-    --             width = 1,
-    --             length = 2.2,
-    --             minZ = 34.11,
-    --             maxZ = 36.11
-    --         }
-    --     },
-
-    --     PersonalLocker = {
-    --         enabled = false,                        -- Enable personal locker(stash) - THIS IS CURRENTLY ONLY AVALIABLE IN QB-INVENTORY
-    --         coords = vec3(-248.53, 6322.82, 32.41),   -- Location of where to access personal locker (If target is disabled)
-    --         label = '[E] - Access Personal Locker', -- Text to display(If not using target)
-    --         distance = 1.5,                         -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = true,                    -- If enabled, the location and distance above will be obsolete
-    --             label = 'Access Locker',
-    --             coords = vec3(-248.53, 6322.82, 32.41),
-    --             heading = 45,
-    --             width = 0.6,
-    --             length = 1.3,
-    --             minZ = 29.26 - 0.9,
-    --             maxZ = 33.26 + 0.9
-    --         }
-    --     },
-
-
-    --     BossMenu = {
-    --         Enabled = false,                        -- Enabled boss menu?
-    --         Coords = vec3(-508.59, -300.65, 69.52), -- Location of boss menu (If not using target)
-    --         Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
-    --         Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
-    --         Target = {
-    --             enabled = true,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Access Boss Menu',
-    --             coords = vec3(-508.59, -300.65, 69.52),
-    --             heading = 30,
-    --             width = 2.0,
-    --             length = 1.0,
-    --             minZ = 66.02 - 0.9,
-    --             maxZ = 70.02 + 0.9
-    --         }
-    --     },
-
-    --     CheckIn = {                                      -- Hospital check-in
-    --         Enabled = true,                              -- Enable ped and check-in area?
-    --         Ped = 's_m_m_scientist_01',                  -- Check in ped
-    --         Coords = vec3(-251.89, 6337.16, 32.45 - 1.0), -- Coords of ped
-    --         Distance = 4.85,                             -- Distance to show textUI (If target is not enabled below)
-    --         Heading = 223.45,                             -- Heading of ped
-    --         Cost = 3000,                                 -- Cost of using hospital check-in. Set to false for free
-    --         Duration = 15 * seconds,                     -- Time it takes to spend in hospital bed
-    --         MaxOnDuty = 3,                               -- If this amount or less you can use, otherwise it will tell you that EMS is avaliable(Set to false to always enable check-in)
-    --         PayAccount = 'bank',                         -- Account dead player pays from to check-in
-    --         Label = '[E] - Check In',                    -- label of text UI if target is not enabled below
-    --         HotKey = 38,                                 -- Default: 38 (E) (If target below is not enabled)
-    --         Target = {
-    --             enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Check In',
-    --             coords = vec3(-251.89, 6337.16, 32.45),
-    --             heading = 223.45,
-    --             distance = 5.0,
-    --             width = 1.0,
-    --             length = 2.0,
-    --             minZ = 31.30 - 0.9,
-    --             maxZ = 33.55 + 0.9
-    --         },
-    --         DisableHospitalBeds = false,                                                     -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-    --         RespawnNoBedLocation = { coords = vec3(-251.76, 6310.79, 32.01), heading = 217.03 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
-    --         HospitalBeds = {
-    --             --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-    --             { coords = vec3(-251.76, 6310.79, 32.01 + 0.1), heading = 217.03 },
-    --             { coords = vec3(-247.93, 6314.34, 32.01 + 0.1), heading = 223.2 },
-    --             { coords = vec3(-244.69, 6317.94, 32.01 + 0.1 ), heading = 217.37 },
-    --           --  { coords = vec3(-267.86, 6317.68, 32.43), heading = 40 },
-
-    --         }
-
-    --     },
-
-    --     Cloakroom = {
-    --         Enabled = false,
-    --         Coords = vec3(300.6, -597.7, 42.1), -- Coords of cloakroom
-    --         Label = '[E] - Change Clothes',     -- String of text ui of cloakroom
-    --         HotKey = 38,                        -- Default: 38 (E)
-    --         Range = 1.5,                        -- Range away from coords you can use.
-    --         Uniforms = {                        -- Uniform choices
-    --             [1] = {                         -- Order it will display
-    --                 label = 'Medic',            -- Name of outfit that will display in menu
-    --                 minGrade = 0,               -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {                    -- Male variation
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --             [2] = {
-    --                 label = 'Doctor',
-    --                 minGrade = 1, -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --         }
-    --     },
-
-    --     MedicalSupplies = {                                                     -- EMS Shop for supplies
-    --         Enabled = true,                                                     -- If set to false, rest of this table do not matter
-    --         Ped = 's_m_m_doctor_01',                                             -- Ped to target
-    --         Coords = vec3(258.88, 6323.19, 32.45 - 0.95),                       -- Coords of ped/target
-    --         Heading = 227.44,                                                   -- Heading of ped
-    --         Supplies = {                                                        -- Supplies
-    --             -- { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
-    --             -- { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
-    --             -- { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
-    --             -- { item = 'morphine10', label = 'Morphine 10MG', price = 45 },
-    --             -- { item = 'perc30',     label = 'Percocet 30MG', price = 60 },
-    --             -- { item = 'perc10',     label = 'Percocet 10MG', price = 40 },
-    --             -- { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
-    --             -- { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
-    --             -- { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
-    --             { item = 'bandage',         label = 'Bandage',   price = 200 },
-    --             { item = 'gps_tracker',     label = 'GPS Tracker',   price = 100 },
-    --             { item = 'radio',           label = 'Radio',   price = 500 },
-    --             { item = 'handcuffs',       label = 'Handcuffs',   price = 200 },
-    --             { item = 'WEAPON_STUNGUN',  label = 'Tazer',   price = 1000 },
-    --             { item = 'defib',           label = 'Defib',   price = 500 },
-    --             { item = 'forceps',         label = 'Forceps',   price = 100 },
-    --             { item = 'gauze',           label = 'Gauze',   price = 100 },
-    --             { item = 'iodine',          label = 'Iodine',   price = 100 },
-    --             { item = 'pill',            label = 'Pill',   price = 100 },
-    --             { item = 'surgical_gloves', label = 'Surgical Gloves',   price = 100 },
-    --             { item = 'surgical_staple', label = 'Surgical Staple',   price = 100 },
-    --             { item = 'surgical_tray',   label = 'Surgical Tray',   price = 100 },
-    --             { item = 'syringe',         label = 'Syringe',   price = 100 },
-    --             { item = 'tape',            label = 'Tape',   price = 100 },
-    --         }
-    --     },
-
-    --     Vehicles = {                                   -- Vehicle Garage
-    --         Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
-    --         Zone = {
-    --             coords = vec3(-268.512, 6333.453, 32.426), -- Area to prompt vehicle garage
-    --             range = 5.5,                           -- Range it will prompt from coords above
-    --             label = '[E] - Access Garage',
-    --             return_label = '[E] - Return Vehicle'
-    --         },
-    --         Spawn = {
-    --             land = {
-    --                 coords = vec3(-271.761, 6329.766, 32.389),
-    --                 heading = 68.43
-    --             },
-    --             air = {
-    --                 coords = vec3(351.24, -587.67, 74.55),
-    --                 heading = 289.29
-    --             }
-    --         },
-    --         Options = {
-    --             [0] = {                    -- Job grade as table name
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [1] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [2] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             }
-    --         }
-    --     },
-    -- },
-    -- Sandy = {
-    --     RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-    --         coords = vec3(1671.61, 3644.94, 35.34),
-    --         heading = 26.56,
-    --         -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
-    --         -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
-    --         useCheckInInstead = true
-    --     },
-
-    --     Blip = {
-    --         Enabled = true,
-    --         Coords = vec3(1673.64, 3655.54, 35.34),
-    --         Sprite = 61,
-    --         Color = 2,
-    --         Scale = 0.6,
-    --         String = 'Sandy Hospital'
-    --     },
-
-    --     clockInAndOut = {
-    --         enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
-    --         coords = vec3(1671.22, 3653.86, 35.34), -- Location of where to go on and off duty(If not using target)
-    --         label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
-    --         distance = 3.0,                        -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = false,                   -- If enabled, the location and distance above will be obsolete
-    --             label = 'Go On/Off Duty',
-    --             coords = vec3(-432.65, -318.23, 34.91),
-    --             heading = 292,
-    --             width = 1,
-    --             length = 2.2,
-    --             minZ = 34.11,
-    --             maxZ = 36.11
-    --         }
-    --     },
-
-    --     PersonalLocker = {
-    --         enabled = true,                        -- Enable personal locker(stash) - THIS IS CURRENTLY ONLY AVALIABLE IN QB-INVENTORY
-    --         coords = vec3(1662.19, 3660.19, 35.34),   -- Location of where to access personal locker (If target is disabled)
-    --         label = '[E] - Access Personal Locker', -- Text to display(If not using target)
-    --         distance = 1.5,                         -- Distance to display text UI(If not using target)
-    --         target = {
-    --             enabled = true,                    -- If enabled, the location and distance above will be obsolete
-    --             label = 'Access Locker',
-    --             coords = vec3(1662.19, 3660.19, 35.34),
-    --             heading = 30,
-    --             width = 1.0,
-    --             length = 2.0,
-    --             minZ=34.34 - 0.9,
-    --             maxZ=38.34 + 0.9
-    --         }
-    --     },
-
-
-    --     BossMenu = {
-    --         Enabled = false,                        -- Enabled boss menu?
-    --         Coords = vec3(-508.59, -300.65, 69.52), -- Location of boss menu (If not using target)
-    --         Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
-    --         Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
-    --         Target = {
-    --             enabled = false,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Access Boss Menu',
-    --             coords = vec3(-508.59, -300.65, 69.52),
-    --             heading = 30,
-    --             width = 2.0,
-    --             length = 1.0,
-    --             minZ = 66.02 - 0.9,
-    --             maxZ = 70.02 + 0.9
-    --         }
-    --     },
-
-    --     CheckIn = {                                      -- Hospital check-in
-    --         Enabled = true,                              -- Enable ped and check-in area?
-    --         Ped = 's_m_m_scientist_01',                  -- Check in ped
-    --         Coords = vec3(1673.6, 3668.01, 35.34 - 1.0), -- Coords of ped
-    --         Distance = 4.85,                             -- Distance to show textUI (If target is not enabled below)
-    --         Heading = 211.43,                             -- Heading of ped
-    --         Cost = 3000,                                 -- Cost of using hospital check-in. Set to false for free
-    --         Duration = 15 * seconds,                     -- Time it takes to spend in hospital bed
-    --         MaxOnDuty = 3,                               -- If this amount or less you can use, otherwise it will tell you that EMS is avaliable(Set to false to always enable check-in)
-    --         PayAccount = 'bank',                         -- Account dead player pays from to check-in
-    --         Label = '[E] - Check In',                    -- label of text UI if target is not enabled below
-    --         HotKey = 38,                                 -- Default: 38 (E) (If target below is not enabled)
-    --         Target = {
-    --             enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-    --             label = 'Check In',
-    --             coords = vec3(1674.03, 3667.71, 35.34),
-    --             heading = 030,
-    --             distance = 5.0,
-    --             width = 1.1,
-    --             length = 2.1,
-    --             minZ = 34.34 - 0.9,
-    --             maxZ = 38.34 + 0.9
-    --         },
-    --         DisableHospitalBeds = false,                                                     -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-    --         RespawnNoBedLocation = { coords = vec3(1671.61, 3644.94, 35.34), heading = 26.56 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
-    --         HospitalBeds = {
-    --             --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-    --             { coords = vec3(1671.61, 3644.94, 35.34 + 0.1), heading = 26.56 },
-    --            -- { coords = vec3(-260.23, 6319.43, 32.41 + 0.1), heading = 220 },
-    --           --  { coords = vec3(-265.94, 6319.68, 32.41), heading = 40 },
-    --           --  { coords = vec3(-267.86, 6317.68, 32.43), heading = 40 },
-
-    --         }
-
-    --     },
-
-    --     Cloakroom = {
-    --         Enabled = false,
-    --         Coords = vec3(300.6, -597.7, 42.1), -- Coords of cloakroom
-    --         Label = '[E] - Change Clothes',     -- String of text ui of cloakroom
-    --         HotKey = 38,                        -- Default: 38 (E)
-    --         Range = 1.5,                        -- Range away from coords you can use.
-    --         Uniforms = {                        -- Uniform choices
-    --             [1] = {                         -- Order it will display
-    --                 label = 'Medic',            -- Name of outfit that will display in menu
-    --                 minGrade = 0,               -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {                    -- Male variation
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --             [2] = {
-    --                 label = 'Doctor',
-    --                 minGrade = 1, -- Min grade level that can access? Set to 0 or false for everyone to use
-    --                 male = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 },
-    --                 female = {
-    --                     clothing = {
-    --                         -- Components / 0: Face 1: Mask 2: Hair 3: Torso 4: Leg 5: Parachute / bag 6: Shoes 7: Accessory 8: Undershirt 9: Kevlar 10: Badge 11: Torso 2
-    --                         -- https://docs.fivem.net/natives/?_0xD4F7B05C
-    --                         { component = 11, drawable = 15, texture = 0 }, -- Torso
-    --                         { component = 8,  drawable = 58, texture = 0 }, -- Shirt
-    --                         { component = 4,  drawable = 35, texture = 0 }, -- Pants
-    --                         { component = 6,  drawable = 24, texture = 0 }, -- Shoes
-    --                         { component = 3,  drawable = 15, texture = 0 }, -- Arms
-    --                     },
-    --                     props = {
-    --                         -- Components / 0: Hats 1: Glasses 2: Ears 6: Watches 7: Bracelets
-    --                         -- https://docs.fivem.net/natives/?_0x93376B65A266EB5F
-
-    --                         --    { component = 0, drawable = 0, texture = 0 }, -- Hats
-    --                     }
-    --                 }
-    --             },
-    --         }
-    --     },
-
-    --     MedicalSupplies = {                                                     -- EMS Shop for supplies
-    --         Enabled = true,                                                     -- If set to false, rest of this table do not matter
-    --         Ped = 's_m_m_doctor_01',                                             -- Ped to target
-    --         Coords = vec3(1660.45, 3659.03, 35.34 - 0.95),                       -- Coords of ped/target
-    --         Heading = 30,                                                   -- Heading of ped
-    --         Supplies = {                                                        -- Supplies
-    --             -- { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
-    --             -- { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
-    --             -- { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
-    --             -- { item = 'morphine10', label = 'Morphine 10MG', price = 45 },
-    --             -- { item = 'perc30',     label = 'Percocet 30MG', price = 60 },
-    --             -- { item = 'perc10',     label = 'Percocet 10MG', price = 40 },
-    --             -- { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
-    --             -- { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
-    --             -- { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
-    --             { item = 'bandage',         label = 'Bandage',   price = 200 },
-    --             { item = 'gps_tracker',     label = 'GPS Tracker',   price = 100 },
-    --             { item = 'radio',           label = 'Radio',   price = 500 },
-    --             { item = 'handcuffs',       label = 'Handcuffs',   price = 200 },
-    --             { item = 'WEAPON_STUNGUN',  label = 'Tazer',   price = 1000 },
-    --             { item = 'defib',           label = 'Defib',   price = 500 },
-    --             { item = 'forceps',         label = 'Forceps',   price = 100 },
-    --             { item = 'gauze',           label = 'Gauze',   price = 100 },
-    --             { item = 'iodine',          label = 'Iodine',   price = 100 },
-    --             { item = 'pill',            label = 'Pill',   price = 100 },
-    --             { item = 'surgical_gloves', label = 'Surgical Gloves',   price = 100 },
-    --             { item = 'surgical_staple', label = 'Surgical Staple',   price = 100 },
-    --             { item = 'surgical_tray',   label = 'Surgical Tray',   price = 100 },
-    --             { item = 'syringe',         label = 'Syringe',   price = 100 },
-    --             { item = 'tape',            label = 'Tape',   price = 100 },
-    --         }
-    --     },
-
-    --     Vehicles = {                                   -- Vehicle Garage
-    --         Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
-    --         Zone = {
-    --             coords = vec3(-268.512, 6333.453, 32.426), -- Area to prompt vehicle garage
-    --             range = 5.5,                           -- Range it will prompt from coords above
-    --             label = '[E] - Access Garage',
-    --             return_label = '[E] - Return Vehicle'
-    --         },
-    --         Spawn = {
-    --             land = {
-    --                 coords = vec3(-271.761, 6329.766, 32.389),
-    --                 heading = 68.43
-    --             },
-    --             air = {
-    --                 coords = vec3(351.24, -587.67, 74.55),
-    --                 heading = 289.29
-    --             }
-    --         },
-    --         Options = {
-    --             [0] = {                    -- Job grade as table name
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [1] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             },
-
-    --             [2] = {
-    --                 ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Ambulance',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Dodge Charger',
-    --                     category = 'land', -- Options are 'land' and 'air'
-    --                 },
-    --                 ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-    --                     label = 'Maverick',
-    --                     category = 'air',  -- Options are 'land' and 'air'
-    --                 },
-    --             }
-    --         }
-    --     },
-    -- },
+        }
+    }
 }
 
 --[[ IMPORTANT THIS COULD BREAK SOMETHING ]]

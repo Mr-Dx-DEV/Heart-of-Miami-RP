@@ -4,6 +4,15 @@
 if Config.Language ~= 'pl' then return end
 
 Strings = {
+    
+    kick_checkin_cooldown = 'Twoje działania zostały uznane za podejrzane.',
+    kick_checkin_cooldown_print = '%s próbował uruchomić zdarzenie wasabi_ambulance:tryRevive przed upływem czasu oczekiwania.',
+    kick_checkin_standalone_cooldown_print = '%s próbował uruchomić zdarzenie wasabi_ambulance:tryStandaloneRevive przed upływem czasu oczekiwania.',
+    toggle_duty_cooldown = 'Czas oczekiwania na zmianę służby',
+    toggle_duty_cooldown_desc = 'Musisz poczekać co najmniej 2 sekundy przed ponowną zmianą służby.',
+    kick_print_duty_cooldown = '%s próbował uruchomić zdarzenie wasabi_ambulance:svToggleDuty przed zakończeniem czasu oczekiwania.',
+    kick_duty_cooldown = 'Musisz poczekać co najmniej 1 sekundę przed ponowną zmianą służby.',
+
     no_society_account = '[^3OSTRZEŻENIE^0] Konto społeczne nie istnieje dla: %s',
     ems_worker = 'Pracownik karetki',
     not_authorized = 'Nieautoryzowany',

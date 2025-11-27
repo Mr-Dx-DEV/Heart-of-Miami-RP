@@ -4,6 +4,15 @@
 if Config.Language ~= 'es' then return end
 
 Strings = {
+    
+    kick_checkin_cooldown = 'Tus acciones se han considerado sospechosas.',
+    kick_checkin_cooldown_print = '%s intentó activar el evento wasabi_ambulance:tryRevive antes del tiempo de enfriamiento.',
+    kick_checkin_standalone_cooldown_print = '%s intentó activar el evento wasabi_ambulance:tryStandaloneRevive antes del tiempo de enfriamiento.',
+    toggle_duty_cooldown = 'Enfriamiento para cambiar de servicio',
+    toggle_duty_cooldown_desc = 'Debes esperar al menos 2 segundos antes de cambiar de servicio nuevamente.',
+    kick_print_duty_cooldown = '%s intentó activar el evento wasabi_ambulance:svToggleDuty antes de que termine el enfriamiento.',
+    kick_duty_cooldown = 'Debes esperar al menos 1 segundo antes de cambiar de servicio nuevamente.',
+
     no_society_account = '[^3ADVERTENCIA^0] La cuenta de la sociedad no existe para: %s',
     ems_worker = 'Trabajador de ambulancia',
     not_authorized = 'No autorizado',

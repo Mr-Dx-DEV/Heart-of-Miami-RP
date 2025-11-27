@@ -4,6 +4,15 @@
 if Config.Language ~= 'jp' then return end
 
 Strings = {
+    
+    kick_checkin_cooldown = 'あなたの行動は不審と見なされました。',
+    kick_checkin_cooldown_print = '%s がクールダウン前に wasabi_ambulance:tryRevive イベントを発動しようとしました。',
+    kick_checkin_standalone_cooldown_print = '%s がクールダウン前に wasabi_ambulance:tryStandaloneRevive イベントを発動しようとしました。',
+    toggle_duty_cooldown = '勤務切替クールダウン',
+    toggle_duty_cooldown_desc = '再度勤務を切り替えるには少なくとも2秒待つ必要があります。',
+    kick_print_duty_cooldown = '%sがクールダウン終了前にwasabi_ambulance:svToggleDutyイベントを発生させようとしました。',
+    kick_duty_cooldown = '再度勤務を切り替えるには少なくとも1秒待つ必要があります。',
+
     no_society_account = '[^3警告^0] 社会アカウントが存在しません: %s',
     ems_worker = '救急隊員',
     not_authorized = '権限がありません',

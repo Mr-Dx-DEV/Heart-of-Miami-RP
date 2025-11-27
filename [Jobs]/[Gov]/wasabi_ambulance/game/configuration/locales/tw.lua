@@ -4,6 +4,15 @@
 if Config.Language ~= 'tw' then return end
 
 Strings = {
+
+    kick_checkin_cooldown = '您的操作被判定為可疑行為。',
+    kick_checkin_cooldown_print = '%s 嘗試在冷卻時間結束前觸發 wasabi_ambulance:tryRevive 事件。',
+    kick_checkin_standalone_cooldown_print = '%s 嘗試在冷卻時間結束前觸發 wasabi_ambulance:tryStandaloneRevive 事件。',
+    toggle_duty_cooldown = '值班冷卻時間',
+    toggle_duty_cooldown_desc = '您需要等待至少2秒才能再次切換值班。',
+    kick_print_duty_cooldown = '%s 嘗試在冷卻結束前觸發 wasabi_ambulance:svToggleDuty 事件。',
+    kick_duty_cooldown = '您需要等待至少1秒才能再次切換值班。',
+
     no_society_account = '[^3警告^0] 社會賬戶不存在: %s',
     ems_worker = '救護車工作人員',
     not_authorized = '未授權',

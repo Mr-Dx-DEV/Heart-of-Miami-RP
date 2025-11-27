@@ -18,14 +18,11 @@ end
 function ChargePlayer(src, account, cost, PayHospital)
     local newCost = cost
     if Config.mInsurance and Config.mInsurance.enabled then
-        local column = wsb.framework == 'qb' and 'citizenid' or 'char_id'
-        local hasInsurance = MySQL.single.await(
-            'SELECT `' .. column .. '` FROM `m_insurance_health` WHERE `' .. column .. '` = ? LIMIT 1',
-            { wsb.getIdentifier(src) }
-        )
-        if hasInsurance then
-            newCost = newCost - Config.mInsurance.checkInDiscount
-        end
+        exports['m-Insurance']:HasHealthInsurance(wsb.getIdentifier(src), function(hasInsurance)
+            if hasInsurance then
+                newCost = newCost - Config.mInsurance.checkInDiscount
+            end
+        end)
     end
 
     local funds = wsb.getPlayerAccountFunds(src, account)
@@ -52,7 +49,7 @@ function ChargePlayer(src, account, cost, PayHospital)
                         return true
                     end
                     -- if account doesn't exist, try adding society_ prefix
-                    TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..PayHospital, function(societyAccount)
+                    TriggerEvent('esx_addonaccount:getSharedAccount', 'society_' .. PayHospital, function(societyAccount)
                         if not societyAccount then
                             print(Strings.no_society_account:format(PayHospital))
                             return false
@@ -60,7 +57,6 @@ function ChargePlayer(src, account, cost, PayHospital)
                         societyAccount.addMoney(newCost)
                     end)
                 end)
-
             end
         end
         return true
@@ -134,12 +130,13 @@ RegisterNetEvent('wasabi_ambulance:removeItemsOnDeath', function()
     if not wsb.inventorySystem then
         if GetResourceState('mf-inventory') == 'started' then
             exports['mf-inventory']:clearInventory(identifier)
-            exports['mf-inventory']:clearLoadout(identifier)        
+            exports['mf-inventory']:clearLoadout(identifier)
         else
-            print('NO INVENTORY FOUND CONFIG YOUR INV IN SV_CUSTOMIZE.LUA')      
+            print('NO INVENTORY FOUND CONFIG YOUR INV IN SV_CUSTOMIZE.LUA')
         end
-    else 
-        wsb.inventory.clearInventory(source, identifier, Config.keepItemsOnDeath.enabled and Config.keepItemsOnDeath.items or {})
+    else
+        wsb.inventory.clearInventory(source, identifier,
+            Config.keepItemsOnDeath.enabled and Config.keepItemsOnDeath.items or {})
     end
 end)
 

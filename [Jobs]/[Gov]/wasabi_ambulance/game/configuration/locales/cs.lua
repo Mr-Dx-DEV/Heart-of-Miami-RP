@@ -4,6 +4,15 @@
 if Config.Language ~= 'cs' then return end
 
 Strings = {
+
+    kick_checkin_cooldown = 'Vaše akce byly vyhodnoceny jako podezřelé.',
+    kick_checkin_cooldown_print = '%s se pokusil spustit událost wasabi_ambulance:tryRevive před skončením čekací doby.',
+    kick_checkin_standalone_cooldown_print = '%s se pokusil spustit událost wasabi_ambulance:tryStandaloneRevive před skončením čekací doby.',
+    toggle_duty_cooldown = 'Cooldown pro změnu služby',
+    toggle_duty_cooldown_desc = 'Musíte počkat alespoň 2 sekundy, než budete moci znovu změnit službu.',
+    kick_print_duty_cooldown = '%s se pokusil spustit událost wasabi_ambulance:svToggleDuty před vypršením cooldownu.',
+    kick_duty_cooldown = 'Musíte počkat alespoň 1 sekundu, než budete moci znovu změnit službu.',
+
     no_society_account = '[^3VAROVÁNÍ^0] Společenský účet neexistuje: %s',
     ems_worker = 'Zdravotník',
     not_authorized = 'Neoprávněný',

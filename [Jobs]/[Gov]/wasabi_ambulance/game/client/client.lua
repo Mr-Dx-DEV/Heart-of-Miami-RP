@@ -11,6 +11,78 @@ currentDrugEffect, nodOutRunning = false, false
 local targetedVehicle = nil
 local isPlayerLoaded = false
 
+local spawnedPeds = {}
+
+---Normalize the locations format to the new locations format
+---@param config table - The config table
+---@param defaultJobLock  string|nil - The default job lock
+---@return table - The normalized locations
+local function normalizeLocations(config, defaultJobLock)
+    if config.locations then
+        return config.locations
+    end
+    local locations = {}
+    local coords = config.coords or config.Coords
+    local heading = config.heading or config.Heading
+    local ped = config.ped or config.Ped or false
+    if coords then
+        locations[#locations + 1] = {
+            coords = coords,
+            heading = heading,
+            ped = ped or false,
+            jobLock = config.jobLock or defaultJobLock or false
+        }        
+    end
+    return locations
+end
+
+---Normalize the target locations format to the new locations array format
+---@param target table - The target table
+---@param defaultJobLock string|nil - The default job lock
+---@param medicalPed string|nil|false - The medical ped (false for no ped)
+---@return table - The normalized target locations array
+local function normalizeTargetLocations(target, defaultJobLock, medicalPed)
+    if target.locationsArray then
+        return target.locationsArray
+    end
+    local locationsArray = {}
+    if  target.coords or target.Coords then
+        local coords = target.coords or target.Coords
+        locationsArray[#locationsArray + 1] = {
+            coords = coords,
+            heading = target.heading or target.Heading,
+            width = target.width,
+            length = target.length,
+            minZ = target.minZ or coords.z - 0.9,
+            maxZ = target.maxZ or coords.z + 0.9,
+            ped = target.ped or medicalPed or false,
+            jobLock = defaultJobLock or false
+        }
+    end
+    return locationsArray
+end
+
+---Normalize vehicle locations for backward compatibility
+---@param vehiclesConfig table - The Vehicles config table
+---@return table - Array of normalized vehicle location configurations
+local function normalizeVehicleLocations(vehiclesConfig)
+
+    if vehiclesConfig.locations then
+        return vehiclesConfig.locations
+    end
+    
+    local locations = {}
+    if vehiclesConfig.Zone then
+        locations[#locations + 1] = {
+            Zone = vehiclesConfig.Zone,
+            Spawn = vehiclesConfig.Spawn,
+            Options = vehiclesConfig.Options,
+            jobLock = vehiclesConfig.jobLock or false
+        }
+    end
+    return locations
+end
+
 CreateThread(function()
     while not wsb.playerLoaded do Wait(1000) end
     isPlayerLoaded = true
@@ -184,7 +256,16 @@ end)
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() ~= resourceName or not wsb or not wsb.playerLoaded then return end
     if Config.UseRadialMenu then AddRadialItems() end
-    TriggerServerEvent('wasabi_ambulance:requestSync', true)
+end)
+
+AddEventHandler('onResourceStop', function(resourceName)
+    if GetCurrentResourceName() ~= resourceName then return end
+    for _, ped in pairs(spawnedPeds) do
+        if DoesEntityExist(ped) then
+            DeleteEntity(ped)
+        end
+    end
+    spawnedPeds = {}
 end)
 
 AddEventHandler('onClientMapStart', function()
@@ -374,6 +455,14 @@ AddEventHandler('wasabi_bridge:onPlayerDeath', function(data)
     if not isPlayerLoaded then return end
     if NassPaintball then
         if exports.nass_paintball:inGame() then return end
+    end
+    -- bcs_housing compatibility (for teleporting players outside their home if in IPL, Shell or MLO, you can add your own housing script as well)
+    local inArea = LocalPlayer.state.isInsideArea or LocalPlayer.state.isInsideHome
+    if inArea then
+        local home = LocalPlayer.state.CurrentHome
+        if home and home.properties.type ~= 'mlo' then -- skip MLO, just check if Shell or IPL
+            TriggerEvent('Housing:client:ExitHome', home.identifier)
+        end
     end
     if OccupyingStretcher then
         local occupyingStretcher = OccupyingStretcher
@@ -852,8 +941,13 @@ if Config.EnablePainPills then
     end)
 end
 
-
+local toggleDutyCooldown = GetGameTimer()
 AddEventHandler('wasabi_ambulance:toggleDuty', function()
+    if GetGameTimer() - toggleDutyCooldown < 2000 then
+        TriggerEvent('wasabi_bridge:notify', Strings.toggle_duty_cooldown or 'Toggle Duty Cooldown', Strings.toggle_duty_cooldown_desc or 'You must wait 2 seconds before toggling duty again.', 'error')
+        return
+    end
+    toggleDutyCooldown = GetGameTimer()
     local job, grade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
     if not job then
         if wsb.framework == 'esx' then
@@ -900,6 +994,45 @@ AddEventHandler('wasabi_ambulance:enterBackVehicle', function()
 end)
 
 
+local function createPersistentPed(model, coords, heading)
+    CreateThread(function(threadId)
+        local ped, pedSpawned = nil, false
+        while true do
+            local sleep = 1500
+            local playerPed = wsb.cache.ped
+
+            if playerPed then
+                local playerCoords = GetEntityCoords(playerPed)
+                local dist = #(vector3(playerCoords.x, playerCoords.y, playerCoords.z) - vector3(coords.x, coords.y, coords.z))
+
+                if dist <= 30 and not pedSpawned then
+                    wsb.stream.animDict('mini@strip_club@idles@bouncer@base')
+                    wsb.stream.model(model, 7000)
+                    ped = CreatePed(28, model, coords.x, coords.y, coords.z, heading, false, false)
+                    FreezeEntityPosition(ped, true)
+                    SetEntityInvincible(ped, true)
+                    SetBlockingOfNonTemporaryEvents(ped, true)
+                    TaskPlayAnim(ped, 'mini@strip_club@idles@bouncer@base', 'base', 8.0, 0.0, -1, 1,
+                        0, false, false, false)
+                    spawnedPeds[threadId] = ped
+                    pedSpawned = true
+                elseif dist >= 31 and pedSpawned and ped and DoesEntityExist(ped) then
+                    local model = GetEntityModel(ped)
+                    SetModelAsNoLongerNeeded(model)
+                    DeleteEntity(ped)
+                    ped = nil
+                    spawnedPeds[threadId] = nil
+                    pedSpawned = false
+                end
+            end
+
+            Wait(sleep)
+        end
+    
+    end)
+
+end
+
 -- I am monster thread
 CreateThread(function()
     while not wsb?.playerData?.job do Wait(500) end
@@ -908,469 +1041,626 @@ CreateThread(function()
             CreateBlip(v.Blip.Coords, v.Blip.Sprite, v.Blip.Color, v.Blip.String, v.Blip.Scale, false, 'coords', true)
         end
         if v?.clockInAndOut?.enabled then
-            if v.clockInAndOut.target.enabled then
-                if wsb.framework == 'esx' then
-                    if not Config.ambulanceJobs or #Config.ambulanceJobs == 0 then
-                        Config.ambulanceJobs = Config.ambulances
-                    else
-                        for i = 1, #Config.ambulanceJobs do
-                            Config.ambulanceJobs[#Config.ambulanceJobs + 1] = 'off' .. Config.ambulanceJobs[i]
-                        end
-                    end
-                end
-                wsb.target.boxZone(k .. '_toggleduty', v.clockInAndOut.target.coords, v.clockInAndOut.target.width,
-                    v.clockInAndOut.target.length, {
-                        heading = v.clockInAndOut.target.heading,
-                        minZ = v.clockInAndOut.target.minZ,
-                        maxZ = v.clockInAndOut.target.maxZ,
-                        job = Config.ambulanceJob or JobArrayToTarget(true),
-                        distance = 2.0,
-                        options = {
-                            {
-                                event = 'wasabi_ambulance:toggleDuty',
-                                icon = 'fa-solid fa-business-time',
-                                label = v.clockInAndOut.target.label,
-                                groups = Config.ambulanceJob or JobArrayToTarget()
-                            }
-                        }
-                    })
-            else
-                CreateThread(function()
-                    local textUI
-                    while true do
-                        local sleep = 1500
-                        local hasJob
-                        local jobName, jobGrade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
-                        if jobName then
-                            hasJob = jobName
-                        elseif wsb.framework == 'esx' then
-                            local jobs = Config.ambulanceJobs or Config.ambulanceJob
-                            if type(jobs) == 'table' then
-                                for i = 1, #jobs do
-                                    jobName, jobGrade = wsb.hasGroup('off' .. jobs[i])
-                                    if jobName then
-                                        hasJob = jobName
-                                        break
-                                    end
-                                end
-                            else
-                                jobName, jobGrade = wsb.hasGroup('off' .. jobs)
-                                if jobName then hasJob = jobName end
-                            end
-                        end
-                        if hasJob then
-                            local coords = GetEntityCoords(wsb.cache.ped)
-                            local dist = #(coords - v.clockInAndOut.coords)
-                            if dist <= v.clockInAndOut.distance then
-                                if not textUI then
-                                    wsb.showTextUI(v.clockInAndOut.label)
-                                    textUI = true
-                                end
-                                sleep = 0
-                                if IsControlJustReleased(0, 38) then
-                                    TriggerServerEvent('wasabi_ambulance:svToggleDuty', k)
-                                end
-                            elseif textUI then
-                                wsb.hideTextUI()
-                                textUI = nil
-                            end
-                        end
-                        Wait(sleep)
-                    end
-                end)
-            end
-        end
-        if v?.PersonalLocker?.enabled then
-            if v.PersonalLocker.target.enabled then
-                if wsb.framework == 'esx' then
+            if wsb.framework == 'esx' then
+                if not Config.ambulanceJobs or #Config.ambulanceJobs == 0 then
+                    Config.ambulanceJobs = Config.ambulances
+                else
                     for i = 1, #Config.ambulanceJobs do
                         Config.ambulanceJobs[#Config.ambulanceJobs + 1] = 'off' .. Config.ambulanceJobs[i]
                     end
                 end
-                wsb.target.boxZone(k .. '_personallocker', v.PersonalLocker.target.coords, v.PersonalLocker.target.width,
-                    v.PersonalLocker.target.length, {
-                        heading = v.PersonalLocker.target.heading,
-                        minZ = v.PersonalLocker.target.minZ,
-                        maxZ = v.PersonalLocker.target.maxZ,
-                        job = Config.ambulanceJob or JobArrayToTarget(),
-                        distance = 2.0,
-                        options = {
-                            {
-                                event = 'wasabi_ambulance:personalLocker',
-                                icon = 'fa-solid fa-archive',
-                                label = v.PersonalLocker.target.label,
-                                job = Config.ambulanceJob or JobArrayToTarget(),
-                                groups = Config.ambulanceJob or JobArrayToTarget(),
-                                station = k
+            end
+            if v.clockInAndOut.target.enabled then
+                local locationsArray = normalizeTargetLocations(v.clockInAndOut.target)
+                local function createClockInOutTarget(i, location)
+                    local jobRestriction = location.jobLock or Config.ambulanceJob or JobArrayToTarget(true)
+                    print(location.coords)
+                    wsb.target.boxZone(k .. '_toggleduty_' .. i, location.coords,
+                        location.width,
+                        location.length, {
+                            heading = location.heading,
+                            minZ = location.minZ,
+                            maxZ = location.maxZ,
+                            job = jobRestriction,
+                            distance = 2.0,
+                            options = {
+                                {
+                                    event = 'wasabi_ambulance:toggleDuty',
+                                    icon = 'fa-solid fa-business-time',
+                                    label = v.clockInAndOut.target.label,
+                                    groups = jobRestriction
+                                }
                             }
-                        }
-                    })
+                        })
+                end
+                for i = 1, #locationsArray do
+                    createClockInOutTarget(i, locationsArray[i])
+                end
             else
-                CreateThread(function()
-                    local textUI
-                    wsb.points.new({
-                        coords = v.PersonalLocker.coords,
-                        distance = v.PersonalLocker.distance,
-                        nearby = function(self)
-                            if not self.isClosest or (self.currentDistance > v.PersonalLocker.distance) then return end
-                            local hasJob
-                            local jobName, jobGrade = wsb.hasGroup(Config.ambulanceJobs)
-                            if jobName then hasJob = jobName end
-                            if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
-                                if not wsb.playerData.job.onduty then hasJob = nil end
-                            end
-                            if hasJob and v.PersonalLocker.jobLock then
-                                if hasJob == v.PersonalLocker.jobLock then
-                                    if not textUI then
-                                        wsb.showTextUI(v.PersonalLocker.label)
-                                        textUI = true
+                local locations = normalizeLocations(v.clockInAndOut)
+                local function createClockInOutPoint(location)
+                     CreateThread(function()
+                            local textUI
+                            local dutyCooldown = GetGameTimer()
+                            wsb.points.new({
+                                coords = location.coords,
+                                distance = v.clockInAndOut.distance or 2.0 ,
+                                nearby = function(self)
+                                    if not self.isClosest or (self.currentDistance > v.clockInAndOut.distance) then return end
+                                    local hasJob, jobCheck
+                                    if location.jobLock and location.jobLock ~= false then
+                                        jobCheck = {location.jobLock,'off'..location.jobLock}                              
+                                    else
+                                        jobCheck = Config.ambulanceJobs
                                     end
-                                    if IsControlJustReleased(0, 38) then
-                                        OpenPersonalStash(k)
+                                    local jobName, jobGrade = wsb.hasGroup(jobCheck)
+                                    if jobName then hasJob = jobName end
+                                    if location.jobLock and location.jobLock ~= false then
+                                        if hasJob == location.jobLock then
+                                            if not textUI then
+                                                wsb.showTextUI(v.clockInAndOut.label)
+                                                textUI = true
+                                            end
+                                            if IsControlJustReleased(0, 38) then
+                                                if GetGameTimer() - dutyCooldown < 2000 then
+                                                    TriggerEvent('wasabi_bridge:notify', Strings.toggle_duty_cooldown or 'Toggle Duty Cooldown', Strings.toggle_duty_cooldown_desc or 'You must wait 2 seconds before toggling duty again.', 'error')
+                                                else
+                                                    dutyCooldown = GetGameTimer()
+                                                    TriggerServerEvent('wasabi_ambulance:svToggleDuty', v)
+                                                end
+                                            end
+                                        end
+                                    elseif hasJob then
+                                        if not textUI then
+                                            wsb.showTextUI(v.clockInAndOut.label)
+                                            textUI = true
+                                        end
+                                        if IsControlJustReleased(0, 38) then
+                                            if GetGameTimer() - dutyCooldown < 2000 then
+                                                TriggerEvent('wasabi_bridge:notify', Strings.toggle_duty_cooldown or 'Toggle Duty Cooldown', Strings.toggle_duty_cooldown_desc or 'You must wait 2 seconds before toggling duty again.', 'error')
+                                            else
+                                                dutyCooldown = GetGameTimer()
+                                                TriggerServerEvent('wasabi_ambulance:svToggleDuty', v)
+                                            end
+                                        end
+                                    end
+                                end,
+                                onExit = function()
+                                    if textUI then
+                                        wsb.hideTextUI()
+                                        textUI = nil
                                     end
                                 end
-                            elseif hasJob and not v.PersonalLocker.jobLock then
-                                if not textUI then
-                                    wsb.showTextUI(v.PersonalLocker.label)
-                                    textUI = true
+                            })
+                        end)
+                end
+                for i = 1, #locations do
+                    createClockInOutPoint(locations[i])
+                end
+            end
+        end
+        if v?.PersonalLocker?.enabled then
+             if wsb.framework == 'esx' then
+                    for i = 1, #Config.ambulanceJobs do
+                        Config.ambulanceJobs[#Config.ambulanceJobs + 1] = 'off' .. Config.ambulanceJobs[i]
+                    end
+                end
+            if v.PersonalLocker.target.enabled then
+                local locationsArray = normalizeTargetLocations(v.PersonalLocker.target)
+                local function createPersonalLockerTarget(i, location)
+                    local jobRestriction = location.jobLock or Config.ambulanceJob or JobArrayToTarget()
+                    wsb.target.boxZone(k .. '_personallocker_' .. i, location.coords,
+                            location.width,
+                            location.length, {
+                                heading = location.heading,
+                                minZ = location.minZ,
+                                maxZ = location.maxZ,
+                                job = jobRestriction,
+                                distance = 2.0,
+                                options = {
+                                    {
+                                        event = 'wasabi_ambulance:personalLocker',
+                                        icon = 'fa-solid fa-archive',
+                                        label = v.PersonalLocker.target.label,
+                                        job = jobRestriction,
+                                        groups = jobRestriction,
+                                        station = k
+                                    }
+                                }
+                            })
+               end
+                for i = 1, #locationsArray do
+                    createPersonalLockerTarget(i, locationsArray[i])
+                end
+            else
+                local locations = normalizeLocations(v.PersonalLocker)
+                local function createPersonalLockerPoint(location)
+                     CreateThread(function()
+                            local textUI
+                            wsb.points.new({
+                                coords = location.coords,
+                                distance = v.PersonalLocker.distance or 2.0,
+                                nearby = function(self)
+                                    if not self.isClosest or (self.currentDistance > v.PersonalLocker.distance) then return end
+                                    local hasJob, jobCheck
+                                    if location.jobLock and location.jobLock ~= false then
+                                        jobCheck = {location.jobLock,'off'..location.jobLock}                              
+                                    else
+                                        jobCheck = Config.ambulanceJobs
+                                    end
+                                    local jobName, jobGrade = wsb.hasGroup(jobCheck)
+                                    if jobName then hasJob = jobName end
+                                    if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
+                                        if not wsb.playerData.job.onduty then hasJob = nil end
+                                    end
+                                    if location.jobLock and location.jobLock ~= false then
+                                        if hasJob == location.jobLock then
+                                            if not textUI then
+                                                wsb.showTextUI(v.PersonalLocker.label)
+                                                textUI = true
+                                            end
+                                            if IsControlJustReleased(0, 38) then
+                                                OpenPersonalStash(k)
+                                            end
+                                        end
+                                    elseif hasJob then
+                                        if not textUI then
+                                            wsb.showTextUI(v.PersonalLocker.label)
+                                            textUI = true
+                                        end
+                                        if IsControlJustReleased(0, 38) then
+                                            OpenPersonalStash(k)
+                                        end
+                                    end
+                                end,
+                                onExit = function()
+                                    if textUI then
+                                        wsb.hideTextUI()
+                                        textUI = nil
+                                    end
                                 end
-                                if IsControlJustReleased(0, 38) then
-                                    OpenPersonalStash(k)
-                                end
-                            end
-                        end,
-                        onExit = function()
-                            if textUI then
-                                wsb.hideTextUI()
-                                textUI = nil
-                            end
-                        end
-                    })
-                end)
+                            })
+                        end)
+                end
+                for i = 1, #locations do
+                    createPersonalLockerPoint(locations[i])
+                end
             end
         end
         if v.BossMenu.Enabled then
             if v.BossMenu?.Target?.enabled then
-                wsb.target.boxZone(k .. '_emsboss', v.BossMenu.Target.coords, v.BossMenu.Target.width,
-                    v.BossMenu.Target.length, {
-                        heading = v.BossMenu.Target.heading,
-                        minZ = v.BossMenu.Target.minZ,
-                        maxZ = v.BossMenu.Target.maxZ,
-                        job = Config.ambulanceJob or JobArrayToTarget(),
-                        distance = 2.0,
-                        options = {
-                            {
-                                name = k .. 'ems_boss',
-                                event = 'wasabi_ambulance:openBossMenu',
-                                icon = 'fa-solid fa-suitcase-medical',
-                                distance = 2.0,
-                                label = v.BossMenu.Target.label,
-                                job = Config.ambulanceJob or JobArrayToTarget(),
-                                groups = Config.ambulanceJob or JobArrayToTarget()
+                local locationsArray = normalizeTargetLocations(v.BossMenu.Target)
+                local function createBossMenuTarget(index, location)
+                    local jobRestriction = location.jobLock or Config.ambulanceJob or JobArrayToTarget()
+                    wsb.target.boxZone(k .. '_emsboss_' .. index, location.coords,
+                        location.width,
+                        location.length, {
+                            heading = location.heading,
+                            minZ = location.minZ,
+                            maxZ = location.maxZ,
+                            job = jobRestriction,
+                            distance = 2.0,
+                            options = {
+                                {
+                                    name = k .. 'ems_boss_' .. index,
+                                    event = 'wasabi_ambulance:openBossMenu',
+                                    icon = 'fa-solid fa-suitcase-medical',
+                                    distance = 2.0,
+                                    label = v.BossMenu.Target.label,
+                                    job = jobRestriction,
+                                    groups = jobRestriction
+                                }
                             }
-                        }
-                    })
+                        })
+                end
+                for i = 1, #locationsArray do
+                    createBossMenuTarget(i, locationsArray[i])
+                end
             else
-                CreateThread(function()
-                    local textUI
-                    while true do
-                        local sleep = 1500
-                        local hasJob, _grade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
-                        if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
-                            if not wsb.isOnDuty() then hasJob = nil end
-                        end
-                        if hasJob then
-                            local coords = GetEntityCoords(wsb.cache.ped)
-                            local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(v.BossMenu.Coords.x, v.BossMenu.Coords.y, v.BossMenu.Coords.z))
-                            if dist <= v.BossMenu.Distance then
-                                if not textUI then
-                                    wsb.showTextUI(v.BossMenu.Label)
-                                    textUI = true
+                local locations = normalizeLocations(v.BossMenu)
+                local function createBossMenuPoint(location)
+                    CreateThread(function()
+                        local textUI
+                        wsb.points.new({
+                            coords = location.coords,
+                            distance = v.BossMenu.Distance or 2.0,
+                            nearby = function(self)
+                                if not self.isClosest or (self.currentDistance > v.BossMenu.Distance) then return end
+                                local hasJob, jobCheck
+                                if location.jobLock and location.jobLock ~= false then
+                                    jobCheck = {location.jobLock,'off'..location.jobLock}                              
+                                else
+                                    jobCheck = Config.ambulanceJobs
                                 end
-                                sleep = 0
-                                if IsControlJustReleased(0, 38) then
-                                    wsb.openBossMenu(hasJob)
+                                local jobName, jobGrade = wsb.hasGroup(jobCheck)
+                                if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
+                                    if not wsb.playerData.job.onduty then hasJob = nil end
                                 end
-                            else
+                                if location.jobLock and location.jobLock ~= false then
+                                    if hasJob == location.jobLock then
+                                        if not textUI then
+                                            wsb.showTextUI(v.BossMenu.Label)
+                                            textUI = true
+                                        end
+                                        if IsControlJustReleased(0, 38) then
+                                            wsb.openBossMenu(hasJob)
+                                        end
+                                    end
+                                elseif hasJob then
+                                    if not textUI then
+                                        wsb.showTextUI(v.BossMenu.Label)
+                                        textUI = true
+                                    end
+                                    if IsControlJustReleased(0, 38) then
+                                        wsb.openBossMenu(hasJob)
+                                    end
+                                end
+                            end,
+                            onExit = function()
                                 if textUI then
                                     wsb.hideTextUI()
                                     textUI = nil
                                 end
                             end
+                        })
+                    end)
+                end
+                for i = 1, #locations do
+                    createBossMenuPoint(locations[i])
+                end
+            end
+        end
+        if v.CheckIn.Enabled then
+            if v.CheckIn?.Target?.enabled then
+                local locationsArray = normalizeTargetLocations(v.CheckIn.Target, nil, v.CheckIn.Ped or false)
+                local function createCheckInTarget(index, location)
+                    if location.ped then
+                        createPersistentPed(location.ped, location.coords, location.heading)
+                    end
+                    wsb.target.boxZone(k .. '_emscheckin_' .. index, location.coords,
+                        location.width,
+                        location.length, {
+                            heading = location.heading,
+                            minZ = location.minZ,
+                            maxZ = location.maxZ,
+                            distance = location.distance,
+                            options = {
+                                {
+                                    name = k .. 'ems_checkin_' .. index,
+                                    event = 'wasabi_ambulance:attemptCheckin',
+                                    icon = 'fa-solid fa-suitcase-medical',
+                                    distance = location.distance,
+                                    label = v.CheckIn.Target.label,
+                                    hospital = k,
+                                    coordsId = index,
+                                }
+                            }
+                        })
+                end
+                for i = 1, #locationsArray do
+                    createCheckInTarget(i, locationsArray[i])
+                end
+            else
+                local locations = normalizeLocations(v.CheckIn)
+                local function createCheckInPoint(index, location)
+                    local checkInTimer = GetGameTimer()
+                    CreateThread(function()
+                        local textUI
+                        if location.ped then
+                            createPersistentPed(location.ped, location.coords, location.heading)
+                        end
+                        wsb.points.new({
+                            coords = location.coords,
+                            distance = v.CheckIn.Distance or 3.0,
+                            nearby = function(self)
+                                if not self.isClosest or (self.currentDistance > v.CheckIn.Distance) then return end
+                                if not textUI then
+                                    wsb.showTextUI(v.CheckIn.Label)
+                                    textUI = true
+                                end
+                                if IsControlJustReleased(0, v.CheckIn.HotKey) then
+                                    local cooldown = 3000
+                                    if v.CheckIn.DisableHospitalBeds then cooldown = v.CheckIn.Duration end
+                                    if GetGameTimer() - checkInTimer > cooldown then
+                                        checkInTimer = GetGameTimer()
+                                        textUI = nil
+                                        wsb.hideTextUI()
+                                        TriggerServerEvent('wasabi_ambulance:tryRevive', k, index)
+                                    else
+                                        TriggerEvent('wasabi_bridge:notify', Strings.checkin_cooldown,
+                                            Strings.checkin_cooldown_desc, 'error')
+                                    end
+                                end
+                            end,
+                            onExit = function()
+                                if textUI then
+                                    wsb.hideTextUI()
+                                    textUI = nil
+                                end
+                            end
+                        })
+                    end)
+                end
+
+                for i = 1, #locations do
+                    createCheckInPoint(i, locations[i])
+                end
+            end
+        end
+        if v.Cloakroom.Enabled then
+            if v.Cloakroom.Target and v.Cloakroom.Target.enabled then
+                local locationsArray = normalizeTargetLocations(v.Cloakroom.Target)
+                local function createCloakroomPoint(i, location)
+                    local jobRestriction = location.jobLock or Config.ambulanceJob or JobArrayToTarget()
+                    wsb.target.boxZone(k .. '_cloakroom_' .. i, location.coords, 1.0, 1.0, {
+                        heading = location.heading,
+                        minZ = location.minZ,
+                        maxZ = location.maxZ,
+                        job = jobRestriction,
+                        distance = 1.5,
+                        options = {
+                            {
+                                name = k .. '_cloakroom_' .. i,
+                                type = 'client',
+                                job = jobRestriction,
+                                groups = jobRestriction,
+                                distance = 1.5,
+                                event = 'wasabi_ambulance:openOutfitMenu',
+                                icon = 'fa-solid fa-shirt',
+                                label = Strings.open_cloakroom_target,
+                                hospital = k
+                            }
+                        }
+                    })
+                end
+                for i = 1, #locationsArray do
+                    createCloakroomPoint(i, locationsArray[i])
+                end
+            else
+                local locations = normalizeLocations(v.Cloakroom)
+                local function createCloakroomPoint(location)
+                    CreateThread(function()
+                        local textUI
+                        local distance = v.Cloakroom.Range or v.Cloakroom.Distance or 2.0
+                        wsb.points.new({
+                            coords = location.coords,
+                            distance = distance,
+                            nearby = function(self)
+                                if not self.isClosest or (self.currentDistance > distance) then return end
+                                local hasJob, jobCheck
+                                if location.jobLock and location.jobLock ~= false then
+                                    jobCheck = {location.jobLock,'off'..location.jobLock}                              
+                                else
+                                    jobCheck = Config.ambulanceJobs
+                                end
+                                local jobName, jobGrade = wsb.hasGroup(jobCheck)
+                                if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
+                                    if not wsb.playerData.job.onduty then hasJob = nil end
+                                end
+                                if location.jobLock and location.jobLock ~= false then
+                                    if hasJob == location.jobLock then
+                                        if not textUI then
+                                            wsb.showTextUI(v.Cloakroom.Label)
+                                            textUI = true
+                                        end
+                                        if IsControlJustReleased(0, v.Cloakroom.HotKey) then
+                                            openOutfits(k)
+                                        end
+                                    end
+                                elseif hasJob then
+                                    if not textUI then
+                                        wsb.showTextUI(v.Cloakroom.Label)
+                                        textUI = true
+                                    end
+                                    if IsControlJustReleased(0, v.Cloakroom.HotKey) then
+                                        openOutfits(k)
+                                    end
+                                end
+                            end,
+                            onExit = function()
+                                if textUI then
+                                    wsb.hideTextUI()
+                                    textUI = nil
+                                end
+                            end
+                        })
+                    end)
+                end
+                for i = 1, #locations do
+                    createCloakroomPoint(locations[i])
+                end
+            end
+        end
+        if v.MedicalSupplies.Enabled then
+
+            if v.MedicalSupplies.Target and v.MedicalSupplies.Target.enabled then
+                local locationsArray = normalizeTargetLocations(v.MedicalSupplies.Target, nil, v.MedicalSupplies.Ped or false)
+                local function createMedicalSuppliesTarget(i, location)
+                    local jobRestriction = location.jobLock or Config.ambulanceJob or JobArrayToTarget()
+                    if location.ped then
+                        createPersistentPed(location.ped, location.coords, location.heading)
+                    end
+                    wsb.target.boxZone(k .. '_medsup_' .. i, location.coords, 1.0, 1.0, {
+                        heading = location.heading,
+                        minZ = location.coords.z - 1.5,
+                        maxZ = location.coords.z + 1.5,
+                        job = jobRestriction,
+                        distance = 1.5,
+                        options = {
+                            {
+                                name = k .. '_medsup_' .. i,
+                                type = 'client',
+                                job = jobRestriction,
+                                groups = jobRestriction,
+                                distance = 1.5,
+                                event = 'wasabi_ambulance:medicalSuppliesMenu',
+                                icon = 'fa-solid fa-suitcase-medical',
+                                label = Strings.request_supplies_target,
+                                hospital = k
+                            }
+                        }
+                    })
+                end
+                for i = 1, #locationsArray do
+                    createMedicalSuppliesTarget(i, locationsArray[i])
+                end
+            else
+                local locations = normalizeLocations(v.MedicalSupplies)
+                local function createMedicalSuppliesPoint(location)
+                    CreateThread(function()
+                        local textUI
+                        if location.ped then
+                            createPersistentPed(location.ped, location.coords, location.heading)
+                        end
+
+                        wsb.points.new({
+                            coords = location.coords,
+                            distance = v.MedicalSupplies.Distance or 2.0,
+                            nearby = function(self)
+                                if not self.isClosest or (self.currentDistance > v.MedicalSupplies.Distance) then return end
+
+                                local hasJob, jobCheck
+                                if location.jobLock and location.jobLock ~= false then
+                                    jobCheck = {location.jobLock,'off'..location.jobLock}                              
+                                else
+                                    jobCheck = Config.ambulanceJobs
+                                end
+                                local jobName, _ = wsb.hasGroup(jobCheck)
+                                if jobName then hasJob = jobName end
+                                if hasJob and v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
+                                    if not wsb.isOnDuty() then hasJob = nil end
+                                end
+                                if hasJob and location.jobLock and location.jobLock ~= false then
+                                    if hasJob ~= location.jobLock then hasJob = nil end
+                                end
+
+                                if not textUI and hasJob then
+                                    wsb.showTextUI(v.MedicalSupplies.Label)
+                                    textUI = true
+                                end
+
+                                if IsControlJustReleased(0, 38) and hasJob then
+                                    medicalSuppliesMenu(k)
+                                end
+                            end,
+                            onExit = function()
+                                if textUI then
+                                    wsb.hideTextUI()
+                                    textUI = nil
+                                end
+                            end
+                        })
+                    end)
+                end
+                for i = 1, #locations do
+                    createMedicalSuppliesPoint(locations[i])
+                end
+            end
+        end
+        if v.Vehicles.Enabled then
+            local vehicleLocations = normalizeVehicleLocations(v.Vehicles)
+            
+            for locationIndex, location in ipairs(vehicleLocations) do
+                CreateThread(function()
+                    local zone = location.Zone
+                    local textUI
+                    while true do
+                        local sleep = 1500
+                        local hasJob, _grade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
+                        if hasJob and wsb.framework == 'qb' then
+                            if not wsb.isOnDuty() then hasJob = nil end
+                        end
+                        -- Check jobLock if specified for this location
+                        if hasJob and location.jobLock then
+                            if type(location.jobLock) == 'string' then
+                                local currentJob = wsb.getGroup()
+                                if currentJob ~= location.jobLock then
+                                    hasJob = nil
+                                end
+                            elseif type(location.jobLock) == 'table' then
+                                hasJob = wsb.hasGroup(location.jobLock)
+                            end
+                        end
+                        if hasJob then
+                            local playerPed = wsb.cache.ped
+                            local coords = GetEntityCoords(playerPed)
+                            local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(zone.coords.x, zone.coords.y, zone.coords.z))
+                            local dist2 = location.Spawn.air and #(vector3(coords.x, coords.y, coords.z) - vector3(location.Spawn.air.coords.x, location.Spawn.air.coords.y, location.Spawn.air.coords.z)) or 999
+                            if dist < zone.range + 1 and not inMenu and not IsPedInAnyVehicle(playerPed, false) then
+                                sleep = 0
+                                if not textUI then
+                                    wsb.showTextUI(zone.label)
+                                    textUI = true
+                                end
+                                if IsControlJustReleased(0, 38) then
+                                    textUI = nil
+                                    wsb.hideTextUI()
+                                    openVehicleMenu(k, locationIndex)
+                                    sleep = 1500
+                                end
+                            elseif dist < zone.range + 1 and not inMenu and IsPedInAnyVehicle(playerPed, false) then
+                                sleep = 0
+                                if not textUI then
+                                    textUI = true
+                                    wsb.showTextUI(zone.return_label)
+                                end
+                                if IsControlJustReleased(0, 38) then
+                                    textUI = nil
+                                    wsb.hideTextUI()
+                                    if DoesEntityExist(wsb.cache.vehicle) then
+                                        DoScreenFadeOut(800)
+                                        while not IsScreenFadedOut() do Wait(100) end
+                                        SetEntityAsMissionEntity(wsb.cache.vehicle, true, true)
+                                        local plate = GetVehicleNumberPlateText(wsb.cache.vehicle)
+                                        local model = GetEntityModel(wsb.cache.vehicle)
+                                        wsb.removeCarKeys(plate, model, wsb.cache.vehicle)
+                                        if Config.EnableStretcher then DeleteStretcherFromVehicle(wsb.cache.vehicle) end
+                                        if Config.AdvancedParking then
+                                            exports["AdvancedParking"]:DeleteVehicle(wsb.cache.vehicle, false)
+                                        else
+                                            DeleteVehicle(wsb.cache.vehicle)
+                                        end
+                                        DoScreenFadeIn(800)
+                                    end
+                                end
+                            elseif dist2 < 10 and IsPedInAnyVehicle(playerPed, false) then
+                                sleep = 0
+                                if not textUI then
+                                    textUI = true
+                                    wsb.showTextUI(zone.return_label)
+                                end
+                                if IsControlJustReleased(0, 38) then
+                                    textUI = nil
+                                    wsb.hideTextUI()
+                                    if DoesEntityExist(wsb.cache.vehicle) then
+                                        DoScreenFadeOut(800)
+                                        while not IsScreenFadedOut() do Wait(100) end
+                                        SetEntityAsMissionEntity(wsb.cache.vehicle, true, true)
+                                        local plate = GetVehicleNumberPlateText(wsb.cache.vehicle)
+                                        local model = GetEntityModel(wsb.cache.vehicle)
+                                        wsb.removeCarKeys(plate, model, wsb.cache.vehicle)
+                                        if Config.EnableStretcher then DeleteStretcherFromVehicle(wsb.cache.vehicle) end
+                                        if Config.AdvancedParking then
+                                            exports["AdvancedParking"]:DeleteVehicle(wsb.cache.vehicle, false)
+                                        else
+                                            DeleteVehicle(wsb.cache.vehicle)
+                                        end
+                                        SetEntityCoordsNoOffset(playerPed, zone.coords.x, zone.coords.y, zone.coords.z, false,
+                                            false, false)
+                                        DoScreenFadeIn(800)
+                                    end
+                                end
+                            else
+                                if textUI then
+                                    textUI = nil
+                                    wsb.hideTextUI()
+                                end
+                            end
                         end
                         Wait(sleep)
                     end
                 end)
             end
-        end
-        if v.CheckIn.Enabled then
-            if v.CheckIn?.Target?.enabled then
-                wsb.target.boxZone(k .. '_emscheckin', v.CheckIn.Target.coords, v.CheckIn.Target.width,
-                    v.CheckIn.Target.length, {
-                        heading = v.CheckIn.Target.heading,
-                        minZ = v.CheckIn.Target.minZ,
-                        maxZ = v.CheckIn.Target.maxZ,
-                        distance = v.CheckIn.Target.distance,
-                        options = {
-                            {
-                                name = k .. 'ems_checkin',
-                                event = 'wasabi_ambulance:attemptCheckin',
-                                icon = 'fa-solid fa-suitcase-medical',
-                                distance = v.CheckIn.Target.distance,
-                                label = v.CheckIn.Target.label,
-                                hospital = k
-                            }
-                        }
-                    })
-            end
-            local checkInTimer = GetGameTimer()
-            CreateThread(function()
-                local ped, pedSpawned
-                local textUI
-                while true do
-                    local sleep = 1500
-                    local playerPed = wsb.cache.ped
-                    local coords = GetEntityCoords(playerPed)
-                    local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(v.CheckIn.Coords.x, v.CheckIn.Coords.y, v.CheckIn.Coords.z))
-                    if dist <= 30 and not pedSpawned then
-                        wsb.stream.animDict('mini@strip_club@idles@bouncer@base')
-                        wsb.stream.model(v.CheckIn.Ped, 7000)
-                        ped = CreatePed(28, v.CheckIn.Ped, v.CheckIn.Coords.x, v.CheckIn.Coords.y, v.CheckIn.Coords.z,
-                            v.CheckIn.Heading, false, false)
-                        FreezeEntityPosition(ped, true)
-                        SetEntityInvincible(ped, true)
-                        SetBlockingOfNonTemporaryEvents(ped, true)
-                        TaskPlayAnim(ped, 'mini@strip_club@idles@bouncer@base', 'base', 8.0, 0.0, -1, 1, 0, false, false,
-                            false)
-                        pedSpawned = true
-                    elseif not v.CheckIn?.Target?.enabled and dist <= v.CheckIn.Distance then
-                        if not textUI then
-                            wsb.showTextUI(v.CheckIn.Label)
-                            textUI = true
-                        end
-                        sleep = 0
-                        if IsControlJustReleased(0, v.CheckIn.HotKey) then
-                            local cooldown = 3000
-                            if v.CheckIn.DisableHospitalBeds then cooldown = v.CheckIn.Duration end
-                            if GetGameTimer() - checkInTimer > cooldown then
-                                checkInTimer = GetGameTimer()
-                                textUI = nil
-                                wsb.hideTextUI()
-                                TriggerServerEvent('wasabi_ambulance:tryRevive', k)
-                            else
-                                TriggerEvent('wasabi_bridge:notify', Strings.checkin_cooldown,
-                                    Strings.checkin_cooldown_desc, 'error')
-                            end
-                        end
-                    elseif dist >= (v.CheckIn.Distance + 1) and textUI then
-                        wsb.hideTextUI()
-                        textUI = nil
-                    elseif dist >= 31 and pedSpawned then
-                        local model = GetEntityModel(ped)
-                        SetModelAsNoLongerNeeded(model)
-                        DeletePed(ped)
-                        SetPedAsNoLongerNeeded(ped)
-                        RemoveAnimDict('mini@strip_club@idles@bouncer@base')
-                        pedSpawned = nil
-                    end
-                    Wait(sleep)
-                end
-            end)
-        end
-        if v.Cloakroom.Enabled then
-            CreateThread(function()
-                local textUI
-                while true do
-                    local sleep = 1500
-                    local hasJob, _grade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
-                    if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
-                        if not wsb.isOnDuty() then hasJob = nil end
-                    end
-                    if hasJob then
-                        local ped = wsb.cache.ped
-                        local coords = GetEntityCoords(ped)
-                        local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(v.Cloakroom.Coords.x, v.Cloakroom.Coords.y, v.Cloakroom.Coords.z))
-                        if dist <= v.Cloakroom.Range then
-                            if not textUI then
-                                wsb.showTextUI(v.Cloakroom.Label)
-                                textUI = true
-                            end
-                            sleep = 0
-                            if IsControlJustReleased(0, v.Cloakroom.HotKey) then
-                                openOutfits(k)
-                            end
-                        else
-                            if textUI then
-                                wsb.hideTextUI()
-                                textUI = nil
-                            end
-                        end
-                    end
-                    Wait(sleep)
-                end
-            end)
-        end
-        if v.MedicalSupplies.Enabled then
-            if Config.targetSystem then
-                wsb.target.boxZone(k .. '_medsup', v.MedicalSupplies.Coords, 1.0, 1.0, {
-                    heading = v.MedicalSupplies.Heading,
-                    minZ = v.MedicalSupplies.Coords.z - 1.5,
-                    maxZ = v.MedicalSupplies.Coords.z + 1.5,
-                    job = Config.ambulanceJob or JobArrayToTarget(),
-                    distance = 1.5,
-                    options = {
-                        {
-                            name = k .. '_medsup',
-                            type = 'client',
-                            job = Config.ambulanceJob or JobArrayToTarget(),
-                            groups = Config.ambulanceJob or JobArrayToTarget(),
-                            distance = 1.5,
-                            event = 'wasabi_ambulance:medicalSuppliesMenu',
-                            icon = 'fa-solid fa-suitcase-medical',
-                            label = Strings.request_supplies_target,
-                            hospital = k
-                        }
-                    }
-                })
-            end
-            CreateThread(function()
-                local ped, pedSpawned, textUI
-                while true do
-                    local sleep = 1500
-                    local playerPed = wsb.cache.ped
-                    local hasJob, _grade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
-                    if v?.clockInAndOut?.enabled and wsb.framework == 'qb' then
-                        if not wsb.isOnDuty() then hasJob = nil end
-                    end
-                    local coords = GetEntityCoords(playerPed)
-                    local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(v.MedicalSupplies.Coords.x, v.MedicalSupplies.Coords.y, v.MedicalSupplies.Coords.z))
-                    if dist <= 30 and not pedSpawned then
-                        wsb.stream.animDict('mini@strip_club@idles@bouncer@base')
-                        wsb.stream.model(v.MedicalSupplies.Ped, 7000)
-                        ped = CreatePed(28, v.MedicalSupplies.Ped, v.MedicalSupplies.Coords.x, v.MedicalSupplies.Coords
-                            .y, v.MedicalSupplies.Coords.z, v.MedicalSupplies.Heading, false, false)
-                        FreezeEntityPosition(ped, true)
-                        SetEntityInvincible(ped, true)
-                        SetBlockingOfNonTemporaryEvents(ped, true)
-                        TaskPlayAnim(ped, 'mini@strip_club@idles@bouncer@base', 'base', 8.0, 0.0, -1, 1, 0, false, false,
-                            false)
-                        pedSpawned = true
-                    elseif dist <= 2.5 and not Config.targetSystem then
-                        if not textUI and hasJob then
-                            wsb.showTextUI(Strings.open_shop_ui)
-                            textUI = true
-                        end
-                        sleep = 0
-                        if IsControlJustReleased(0, 38) and hasJob then
-                            medicalSuppliesMenu(k)
-                            sleep = 1500
-                        end
-                    elseif dist >= 2.6 and not Config.targetSystem and textUI then
-                        wsb.hideTextUI()
-                        textUI = false
-                    elseif dist >= 31 and pedSpawned then
-                        local model = GetEntityModel(ped)
-                        SetModelAsNoLongerNeeded(model)
-                        DeletePed(ped)
-                        SetPedAsNoLongerNeeded(ped)
-                        RemoveAnimDict('mini@strip_club@idles@bouncer@base')
-                        pedSpawned = false
-                    end
-                    Wait(sleep)
-                end
-            end)
-        end
-        if v.Vehicles.Enabled then
-            CreateThread(function()
-                local zone = v.Vehicles.Zone
-                local textUI
-                while true do
-                    local sleep = 1500
-                    local hasJob, _grade = wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)
-                    if hasJob and wsb.framework == 'qb' then
-                        if not wsb.isOnDuty() then hasJob = nil end
-                    end
-                    if hasJob then
-                        local playerPed = wsb.cache.ped
-                        local coords = GetEntityCoords(playerPed)
-                        local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(zone.coords.x, zone.coords.y, zone.coords.z))
-                        local dist2 = #(vector3(coords.x, coords.y, coords.z) - vector3(v.Vehicles.Spawn.air.coords.x, v.Vehicles.Spawn.air.coords.y, v.Vehicles.Spawn.air.coords.z))
-                        if dist < zone.range + 1 and not inMenu and not IsPedInAnyVehicle(playerPed, false) then
-                            sleep = 0
-                            if not textUI then
-                                wsb.showTextUI(zone.label)
-                                textUI = true
-                            end
-                            if IsControlJustReleased(0, 38) then
-                                textUI = nil
-                                wsb.hideTextUI()
-                                openVehicleMenu(k)
-                                sleep = 1500
-                            end
-                        elseif dist < zone.range + 1 and not inMenu and IsPedInAnyVehicle(playerPed, false) then
-                            sleep = 0
-                            if not textUI then
-                                textUI = true
-                                wsb.showTextUI(zone.return_label)
-                            end
-                            if IsControlJustReleased(0, 38) then
-                                textUI = nil
-                                wsb.hideTextUI()
-                                if DoesEntityExist(wsb.cache.vehicle) then
-                                    DoScreenFadeOut(800)
-                                    while not IsScreenFadedOut() do Wait(100) end
-                                    SetEntityAsMissionEntity(wsb.cache.vehicle, true, true)
-
-                                    local plate = GetVehicleNumberPlateText(wsb.cache.vehicle)
-                                    local model = GetEntityModel(wsb.cache.vehicle)
-                                    wsb.removeCarKeys(plate, model, wsb.cache.vehicle)
-                                    if Config.EnableStretcher then DeleteStretcherFromVehicle(wsb.cache.vehicle) end
-                                    if Config.AdvancedParking then
-                                        exports["AdvancedParking"]:DeleteVehicle(wsb.cache.vehicle, false)
-                                    else
-                                        DeleteVehicle(wsb.cache.vehicle)
-                                    end
-                                    DoScreenFadeIn(800)
-                                end
-                            end
-                        elseif dist2 < 10 and IsPedInAnyVehicle(playerPed, false) then
-                            sleep = 0
-                            if not textUI then
-                                textUI = true
-                                wsb.showTextUI(zone.return_label)
-                            end
-                            if IsControlJustReleased(0, 38) then
-                                textUI = nil
-                                wsb.hideTextUI()
-                                if DoesEntityExist(wsb.cache.vehicle) then
-                                    DoScreenFadeOut(800)
-                                    while not IsScreenFadedOut() do Wait(100) end
-                                    SetEntityAsMissionEntity(wsb.cache.vehicle, true, true)
-
-                                    local plate = GetVehicleNumberPlateText(wsb.cache.vehicle)
-                                    local model = GetEntityModel(wsb.cache.vehicle)
-                                    wsb.removeCarKeys(plate, model, wsb.cache.vehicle)
-                                    if Config.EnableStretcher then DeleteStretcherFromVehicle(wsb.cache.vehicle) end
-                                    if Config.AdvancedParking then
-                                        exports["AdvancedParking"]:DeleteVehicle(wsb.cache.vehicle, false)
-                                    else
-                                        DeleteVehicle(wsb.cache.vehicle)
-                                    end
-                                    SetEntityCoordsNoOffset(playerPed, zone.coords.x, zone.coords.y, zone.coords.z, false,
-                                        false, false)
-                                    DoScreenFadeIn(800)
-                                end
-                            end
-                        else
-                            if textUI then
-                                textUI = nil
-                                wsb.hideTextUI()
-                            end
-                        end
-                    end
-                    Wait(sleep)
-                end
-            end)
         end
     end
 end)
@@ -1475,7 +1765,7 @@ RegisterNetEvent('wasabi_ambulance:useBandage', function()
                 dict = 'missheistdockssetup1clipboard@idle_a',
                 clip = 'idle_a'
             },
-            color = Config.UIColor 
+            color = Config.UIColor
         }, progressUI) then
         local health = GetEntityHealth(wsb.cache.ped)
         health = (Config.Bandages.hpRegen * 2) + health
@@ -1747,7 +2037,7 @@ AddEventHandler('wasabi_ambulance:attemptCheckin', function(data)
     if data.hospital == 'standalone' then
         if Config.StandaloneCheckIns[data.standaloneID].DisableHospitalBeds then
             cooldown = Config.StandaloneCheckIns
-                [data.standaloneID].Duration + 500
+                [data.standaloneID].Duration + 1000
         end
         if GetGameTimer() - checkInTimer > cooldown then
             checkInTimer = GetGameTimer()
@@ -1760,10 +2050,10 @@ AddEventHandler('wasabi_ambulance:attemptCheckin', function(data)
     local hospital = Config.Locations[data.hospital]
     if not hospital then return end
     if not hospital.CheckIn.Target.enabled then return end
-    if hospital.CheckIn.DisableHospitalBeds then cooldown = hospital.CheckIn.Duration + 500 end
+    if hospital.CheckIn.DisableHospitalBeds then cooldown = hospital.CheckIn.Duration + 1000 end
     if GetGameTimer() - checkInTimer > cooldown then
         checkInTimer = GetGameTimer()
-        TriggerServerEvent('wasabi_ambulance:tryRevive', data.hospital)
+        TriggerServerEvent('wasabi_ambulance:tryRevive', data.hospital, data.coordsId or nil)
     else
         TriggerEvent('wasabi_bridge:notify', Strings.checkin_cooldown, Strings.checkin_cooldown_desc, 'error')
     end
@@ -1772,8 +2062,31 @@ end)
 AddEventHandler('wasabi_ambulance:spawnVehicle', function(data)
     inMenu = false
     local model = data.model
-    local category = Config.Locations[data.hospital].Vehicles.Options[data.grade][data.model].category
-    local spawnLoc = Config.Locations[data.hospital].Vehicles.Spawn[category]
+    local locationIndex = data.locationIndex or 1  -- Default to 1 for backward compatibility
+    
+    local vehicleConfig = Config.Locations[data.hospital].Vehicles
+    local vehicleLocations = {}
+    
+    if vehicleConfig.locations then
+        vehicleLocations = vehicleConfig.locations
+    elseif vehicleConfig.Zone then
+        vehicleLocations[1] = {
+            Zone = vehicleConfig.Zone,
+            Spawn = vehicleConfig.Spawn,
+            Options = vehicleConfig.Options,
+            jobLock = vehicleConfig.jobLock or false
+        }
+    end
+    
+    local location = vehicleLocations[locationIndex]
+    if not location then
+        print('[wasabi_ambulance] : Vehicle location not found for index: ' .. locationIndex)
+        return
+    end
+    
+    local category = location.Options[data.grade][data.model].category
+    local spawnLoc = location.Spawn[category]
+    
     if not IsModelInCdimage(GetHashKey(model)) then
         print('Vehicle model not found: ' .. model)
     else
@@ -1873,8 +2186,14 @@ AddEventHandler('wasabi_ambulance:medicalSuppliesMenu', function(data)
     medicalSuppliesMenu(data.hospital)
 end)
 
+AddEventHandler('wasabi_ambulance:openOutfitMenu', function(data)
+    openOutfits(data.hospital)
+end)
+
 AddEventHandler('wasabi_ambulance:gItem', function(data)
-    gItem(data)
+    if (wsb.hasGroup(Config.ambulanceJobs or Config.ambulanceJob)) or (Config.policeCanTreat and Config.policeCanTreat.enabled and wsb.hasGroup(Config.policeCanTreat.jobs)) then
+        gItem(data)
+    end
 end)
 
 AddEventHandler('wasabi_ambulance:interactBag', function()

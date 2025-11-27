@@ -4,6 +4,15 @@
 if Config.Language ~= 'da' then return end
 
 Strings = {
+    
+    kick_checkin_cooldown = 'Dine handlinger er blevet vurderet som mistænkelige.',
+    kick_checkin_cooldown_print = '%s forsøgte at udløse begivenheden wasabi_ambulance:tryRevive før nedkølingsperioden.',
+    kick_checkin_standalone_cooldown_print = '%s forsøgte at udløse begivenheden wasabi_ambulance:tryStandaloneRevive før nedkølingsperioden.',
+    toggle_duty_cooldown = 'Nedkøling for at skifte vagt',
+    toggle_duty_cooldown_desc = 'Du skal vente mindst 2 sekunder, før du kan skifte vagt igen.',
+    kick_print_duty_cooldown = '%s forsøgte at udløse begivenheden wasabi_ambulance:svToggleDuty før nedkølingen.',
+    kick_duty_cooldown = 'Du skal vente mindst 1 sekund, før du kan skifte vagt igen.',
+
     no_society_account = '[^3ADVARSEL^0] Samfundskonto eksisterer ikke for: %s',
     ems_worker = 'Ambulancearbejder',
     not_authorized = 'Ikke autoriseret',

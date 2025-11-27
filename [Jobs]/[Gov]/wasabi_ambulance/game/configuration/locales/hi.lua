@@ -4,6 +4,15 @@
 if Config.Language ~= 'hi' then return end
 
 Strings = {
+    
+    kick_checkin_cooldown = 'आपकी गतिविधियाँ संदिग्ध मानी गई हैं।',
+    kick_checkin_cooldown_print = '%s ने कूलडाउन से पहले wasabi_ambulance:tryRevive इवेंट ट्रिगर करने की कोशिश की।',
+    kick_checkin_standalone_cooldown_print = '%s ने कूलडाउन से पहले wasabi_ambulance:tryStandaloneRevive इवेंट ट्रिगर करने की कोशिश की।',
+    toggle_duty_cooldown = 'ड्यूटी बदलने की प्रतीक्षा अवधि',
+    toggle_duty_cooldown_desc = 'ड्यूटी फिर से बदलने से पहले आपको कम से कम 2 सेकंड इंतजार करना होगा।',
+    kick_print_duty_cooldown = '%s ने कूलडाउन खत्म होने से पहले wasabi_ambulance:svToggleDuty इवेंट चलाने की कोशिश की।',
+    kick_duty_cooldown = 'ड्यूटी फिर से बदलने से पहले आपको कम से कम 1 सेकंड इंतजार करना होगा।',
+
     no_society_account = '[^3चेतावनी^0] समाज खाता मौजूद नहीं है: %s',
     ems_worker = 'एम्बुलेंस कर्मचारी',
     not_authorized = 'अनधिकृत',

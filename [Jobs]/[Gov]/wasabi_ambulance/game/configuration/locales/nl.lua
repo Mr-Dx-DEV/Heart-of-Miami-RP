@@ -4,6 +4,15 @@
 if Config.Language ~= 'nl' then return end
 
 Strings = {
+
+    kick_checkin_cooldown = 'Je acties worden als verdacht beschouwd.',
+    kick_checkin_cooldown_print = '%s probeerde het event wasabi_ambulance:tryRevive te activeren vóór de afkoelperiode.',
+    kick_checkin_standalone_cooldown_print = '%s probeerde het event wasabi_ambulance:tryStandaloneRevive te activeren vóór de afkoelperiode.',
+    toggle_duty_cooldown = 'Dienstwijziging Afkoelperiode',
+    toggle_duty_cooldown_desc = 'Je moet minstens 2 seconden wachten voordat je opnieuw van dienst wisselt.',
+    kick_print_duty_cooldown = '%s probeerde het event wasabi_ambulance:svToggleDuty te activeren voor het einde van de afkoelperiode.',
+    kick_duty_cooldown = 'Je moet minstens 1 seconde wachten voordat je opnieuw van dienst wisselt.',
+
     no_society_account = '[^3WAARSCHUWING^0] De maatschappelijke rekening bestaat niet voor: %s',
     ems_worker = 'Ambulancewerker',
     not_authorized = 'Niet gemachtigd',

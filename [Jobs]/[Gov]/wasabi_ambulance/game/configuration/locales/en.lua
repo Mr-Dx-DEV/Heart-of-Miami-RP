@@ -5,6 +5,15 @@ if not Config.Language then Config.Language = 'en' end
 if Config.Language ~= 'en' then return end
 
 Strings = {
+
+    kick_checkin_cooldown = 'Your actions have been deemed suspicious.',
+    kick_checkin_cooldown_print = '%s tried to trigger event wasabi_ambulance:tryRevive before the cooldown.',
+    kick_checkin_standalone_cooldown_print = '%s tried to trigger event wasabi_ambulance:tryStandaloneRevive before the cooldown.',
+    toggle_duty_cooldown = 'Toggle Duty Cooldown',
+    toggle_duty_cooldown_desc = 'You must wait at least 2 seconds before toggling duty again.',
+    kick_print_duty_cooldown = '%s tried to trigger event wasabi_ambulance:svToggleDuty before the cooldown.',
+    kick_duty_cooldown = 'You must wait at least 1 second before toggling duty again.',
+
     no_society_account = '[^3WARNING^0] Society account does not exist for: %s',
     ems_worker = 'EMS Worker',
     not_authorized = 'Not Authorized',

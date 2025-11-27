@@ -4,6 +4,15 @@
 if Config.Language ~= 'ko' then return end
 
 Strings = {
+
+    kick_checkin_cooldown = '귀하의 행동이 의심스럽다고 판단되었습니다.',
+    kick_checkin_cooldown_print = '%s님이 대기시간 전에 wasabi_ambulance:tryRevive 이벤트를 시도했습니다.',
+    kick_checkin_standalone_cooldown_print = '%s님이 대기시간 전에 wasabi_ambulance:tryStandaloneRevive 이벤트를 시도했습니다.',
+    toggle_duty_cooldown = '근무 교대 대기 시간',
+    toggle_duty_cooldown_desc = '근무를 다시 변경하기 전에 최소 2초를 기다려야 합니다.',
+    kick_print_duty_cooldown = '%s님이 대기 시간 종료 전에 wasabi_ambulance:svToggleDuty 이벤트를 실행하려고 했습니다.',
+    kick_duty_cooldown = '근무를 다시 변경하기 전에 최소 1초를 기다려야 합니다.',
+
     no_society_account = '[^3경고^0] 사회 계정이 존재하지 않습니다: %s',
     ems_worker = '구급차 근무자',
     not_authorized = '승인되지 않음',

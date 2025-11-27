@@ -50,7 +50,27 @@ SetCarFuel = function(vehicle, value)
 	end
 end
 
+-- Check if player is in pug resources to prevent distress signal spamming
+---@return boolean # true if in paintball or battle royale, false otherwise
+local function IsPlayerIsInAnyPaintBallGame()
+    local resources = {
+        { name = "pug-paintball", check = "IsInPaintball" },
+        { name = "pug-battleroyale", check = "IsInBattleRoyale" }
+		--- You can add more resources here if needed
+    }
+
+    for _, resource in ipairs(resources) do
+        if GetResourceState(resource.name) == "started" and exports[resource.name][resource.check]() then
+            return true
+        end
+    end
+
+    return false
+end
+
+
 SendDistressSignal = function() -- Edit distress signal to implement custom dispatch
+	if IsPlayerIsInAnyPaintBallGame() then return end
 	TriggerEvent('wasabi_bridge:notify', Strings.distress_sent_title, Strings.distress_sent_desc, 'success')
 	local ped = wsb.cache.ped
 	local myPos = GetEntityCoords(ped)
@@ -201,6 +221,16 @@ SendDistressSignal = function() -- Edit distress signal to implement custom disp
 	else
 		TriggerServerEvent('wasabi_ambulance:onPlayerDistress') -- To add your own dispatch, comment this line out and add into here
 	end
+end
+
+-- Knockout Bypass
+---@return boolean true if loop should be bypassed, false otherwise
+function KnockOutBypass()
+	local enviZombies = GetResourceState('envi-zombies')
+    if Config.EnviZombies.autoDetect and (enviZombies == 'started' or enviZombies == 'starting') then
+		return exports['envi-zombies']:IsInZombieGame()
+	end
+	return false
 end
 
 AddEventHandler('wasabi_ambulance:changeClothes', function(data)
