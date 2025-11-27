@@ -77,13 +77,6 @@ RegisterNetEvent('wasabi_bridge:playerLoaded', function()
         if wsb.isOnDuty() then
             TriggerServerEvent('wasabi_police:addPoliceCount', true)
         end
-        if Config.GPSBlips.enabled and not Config.GPSBlips.item then
-            if wsb.framework == 'qb' and wsb.isOnDuty() then
-                TriggerServerEvent('wasabi_police:addOfficerToGPS')
-            elseif wsb.framework ~= 'qb' then
-                TriggerServerEvent('wasabi_police:addOfficerToGPS')
-            end
-        end
     end
     TriggerServerEvent('wasabi_police:getPoliceOnline')
 end)

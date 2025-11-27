@@ -7,7 +7,7 @@ lua54 'yes'
 
 description 'Wasabi ESX/QBCore Police Job'
 author 'wasabirobby'
-version '1.10.0'
+version '1.10.8'
 
 ui_page 'ui/index.html'
 files { 'ui/*', 'ui/**/*' }
@@ -33,5 +33,7 @@ escrow_ignore {
   'game/client/radial.lua',
   'game/server/sv_customize.lua'
 }
+
+
 
 dependency '/assetpacks'
