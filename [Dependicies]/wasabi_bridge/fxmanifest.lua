@@ -12,7 +12,7 @@ version '1.6.5'
 ui_page 'ui/index.html'
 files { 'ui/*', 'ui/**/*' }
 
-shared_script {'config.lua',  'callback/shared.lua' }
+shared_script {'config.lua',  'callback/shared.lua', '@ox_lib/init.lua', '@prism_uipack/init.lua' }
 
 client_scripts {
     'callback/client.lua',

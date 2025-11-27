@@ -26,7 +26,7 @@ function WSB.showTextUI(msg, options)
     -- }
 
     -- Remove under this to use your own text UI --
-    textUI = msg
+    --[[textUI = msg
     if uikitFound then
         -- Function to extract a single key in the format [E] - Text or [E] Text
         local function extractKeyAndText(str)
@@ -40,7 +40,7 @@ function WSB.showTextUI(msg, options)
         local key, text = extractKeyAndText(msg)
         return exports.wasabi_uikit:OpenTextUI(text, key)
     end
-    return ShowTextUI(msg, options)
+    return ShowTextUI(msg, options)]]
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
     --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
@@ -54,7 +54,7 @@ function WSB.showTextUI(msg, options)
     ]] -- Remove this line if you are using lation_ui
 
 
-    --[[
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
@@ -63,17 +63,16 @@ function WSB.showTextUI(msg, options)
     end
     exports.ox_lib:showTextUI(msg)
     textUI = msg
-    ]]
 end
 
 -- Hide text UI
 function WSB.hideTextUI()
     -- Remove under this to use your own text UI --
-    textUI = false
+    --[[textUI = false
     if uikitFound then
         return exports.wasabi_uikit:CloseTextUI()
     end
-    return HideTextUI()
+    return HideTextUI()]]
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
     --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
@@ -86,7 +85,7 @@ function WSB.hideTextUI()
     textUI = false
     ]] -- Remove this line if you are using lation_ui
 
-    --[[
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
@@ -95,7 +94,6 @@ function WSB.hideTextUI()
     end
     exports.ox_lib:hideTextUI()
     textUI = false
-    ]]
 end
 
 -- Checking for text UI

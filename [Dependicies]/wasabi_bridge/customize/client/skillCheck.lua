@@ -31,7 +31,7 @@ function WSB.skillCheck(data)
     -- (Basically follow the same as ox_lib skill check and transfer the options to your skill check system)]
 
     -- Remove under this to use your own skill check --
-    if not data.difficulty then
+    --[[if not data.difficulty then
         data = {
             difficulty = data
         }
@@ -43,7 +43,7 @@ function WSB.skillCheck(data)
         return exports.wasabi_uikit:SkillCheck(data.difficulty, type(data.keys) == 'table' and data.keys or {data.keys}) or false
     end
 
-    return SkillCheck(data.difficulty, data.keys, data.color) or false
+    return SkillCheck(data.difficulty, data.keys, data.color) or false]]
     -- Remove above this to use your own skill check --
 
     --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
@@ -59,7 +59,7 @@ function WSB.skillCheck(data)
     ]] -- Remove this line if you are using lation_ui
 
 
-    --[[
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
@@ -70,7 +70,6 @@ function WSB.skillCheck(data)
         data = data.difficulty
     end
     return exports.ox_lib:skillCheck(data)
-    ]]
 end
 
 exports('skillCheck', WSB.skillCheck) -- Export for use in other scripts

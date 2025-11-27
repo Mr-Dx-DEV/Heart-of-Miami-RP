@@ -81,7 +81,7 @@ Config.MobileMenu = {                    -- Enabling this will use menu rather t
     position =
     'bottom-right'                       -- Choose where menu is positioned. Options : 'top-left' or 'top-right' or 'bottom-left' or 'bottom-right'
 }
-Config.ProgressCircle = false             -- Set to false to use a progress bar, set to true for progress circle(For checking in, diagnosing, etc)
+Config.ProgressCircle = true             -- Set to false to use a progress bar, set to true for progress circle(For checking in, diagnosing, etc)
 Config.ProgressCircleLocation = 'bottom' -- Where you want the progress circle located (if enabled)
 -- Choices: 'bottom' and 'middle'
 
@@ -423,11 +423,11 @@ Config.lowHealthAlert = {
     }
 }
 
-Config.EnableStandaloneCheckIns = false -- Enable stand-alone check-in locations? For grandmas, prisons, whatever
+Config.EnableStandaloneCheckIns = true -- Enable stand-alone check-in locations? For grandmas, prisons, whatever
 Config.CheckIfJailed = {
-    enabled = false,                    -- Check if player is jailed before respawning? (If using standalone check-in)
+    enabled = true,                    -- Check if player is jailed before respawning? (If using standalone check-in)
     location = 'Prison',                -- If player is jailed, they will respawn on this location. Location name must be the table name from Config.StandaloneCheckIns below
-    resource = ''                       -- Options: 'wasabi_police' (if you are using our police job's built-in jail system) / 'qb-prison' / 'rcore_prison' / 'tk_jail' / 'r_prison' / You can add your own in client/cl_customize.lua
+    resource = 'rcore_prison'                       -- Options: 'wasabi_police' (if you are using our police job's built-in jail system) / 'qb-prison' / 'rcore_prison' / 'tk_jail' / 'r_prison' / You can add your own in client/cl_customize.lua
 }
 
 Config.StandaloneCheckIns = {
@@ -467,8 +467,8 @@ Config.StandaloneCheckIns = {
 Config.Locations = {
     Pillbox = {
         RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-            coords = vec3(317.8, -585.14, 44.2),
-            heading = 332.22,
+            coords = vec3(-452.69, -991.87, 29.42),
+            heading = 268.75,
             -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
             -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
             useCheckInInstead = true
@@ -582,8 +582,8 @@ Config.Locations = {
             locations = {
                 {
                     ped = 's_m_m_scientist_01',                     -- Check in ped (false for no ped)
-                    coords = vec3(-452.69, -991.87, 29.42),
-                    heading = 268.75,
+                    coords = vec3(-467.44, -996.57, 23.02),
+                    heading = 96.07,
                     jobLock = false                      -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
 

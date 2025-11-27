@@ -17,12 +17,12 @@ if wasabi_uikit == 'started' or wasabi_uikit == 'starting' then uikitFound = tru
 function WSB.progressUI(data, type)
 
     -- Remove under this line to use your own progress bar/circle system or ox_lib
-    if not data.color then data.color = Config.DefaultColor end
+    --[[if not data.color then data.color = Config.DefaultColor end
     if uikitFound then
         type = type == 'progressCircle' and 'circle' or 'bar'
         return exports.wasabi_uikit:ProgressBar(data, type) or false
     end
-    return ProgressUI(data, type) or false
+    return ProgressUI(data, type) or false]]
     -- Remove above this line if you are using your own progress bar/circle system or ox_lib
 
     --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
@@ -34,7 +34,7 @@ function WSB.progressUI(data, type)
     return exports.lation_ui:progressBar(data)
     ]] -- Remove this line if you are using lation_ui
 
---[[    
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
@@ -46,7 +46,6 @@ function WSB.progressUI(data, type)
     else
         return exports.ox_lib:progressCircle(data)
     end
-]]
 end
 
 -- Compatibility functions for ox_lib

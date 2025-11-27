@@ -32,7 +32,7 @@ function WSB.showContextMenu(data)
 
     -- Remove below this if you are using your own menu system
 
-    if not data.color then data.color = Config.DefaultColor end
+    --[[if not data.color then data.color = Config.DefaultColor end
     if uikitFound then
 
         local uiKitData = {
@@ -47,7 +47,7 @@ function WSB.showContextMenu(data)
         return
     end
 
-    return ShowContextMenu(data)
+    return ShowContextMenu(data)]]
     -- Remove above this if you are using your own menu system
 
     --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
@@ -60,7 +60,7 @@ function WSB.showContextMenu(data)
     exports.lation_ui:showMenu(data.id)
     ]] -- Remove this line if you are using lation_ui
 
-    --[[
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
@@ -68,7 +68,7 @@ function WSB.showContextMenu(data)
         return
     end
     exports.ox_lib:registerContext(data)
-    exports.ox_lib:showContext(data.id)]]
+    exports.ox_lib:showContext(data.id)
 end
 
 -- Regular Menu
@@ -77,7 +77,7 @@ function WSB.showMenu(data)
     -- data: the same as data is for wsb.showContextMenu
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
-    if not data.color then data.color = Config.DefaultColor end
+    --[[if not data.color then data.color = Config.DefaultColor end
     if uikitFound then
 
         local uiKitData = {
@@ -92,10 +92,10 @@ function WSB.showMenu(data)
         return
     end
 
-    return ShowMenu(data)
+    return ShowMenu(data)]]
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
-    --[[
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
@@ -115,7 +115,7 @@ function WSB.showMenu(data)
         end
     end)
 
-    exports.ox_lib:showMenu(data.id) ]]
+    exports.ox_lib:showMenu(data.id)
 end
 
 exports('showContextMenu', WSB.showContextMenu) -- Export for use in other scripts

@@ -60,11 +60,11 @@ function WSB.inputDialog(heading, rows, color)
     -- (Basically follow the same as ox_lib menu system and transfer the options to your own input system)]
 
     -- Remove under this to use your own input dialog --
-    if not color then color = Config.DefaultColor end
+    --[[if not color then color = Config.DefaultColor end
     if uikitFound then
         return exports.wasabi_uikit:InputDialog(heading, rows, color)
     end
-    return InputDialog(heading, rows, color)
+    return InputDialog(heading, rows, color)]]
     -- Remove above this to use your own input dialog --
 
     --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
@@ -80,14 +80,14 @@ function WSB.inputDialog(heading, rows, color)
     ]] -- Remove this line if you are using lation_ui
 
     -- Remove above this to use your own input dialog or ox_lib
-    --[[
+
     local oxLib = GetResourceState('ox_lib')
     if oxLib ~= 'started' and oxLib ~= 'starting' then
         print(
             '^0[^3WARNING^0] ^1ox_lib^0 is not running, please ensure it is started before using ^wsb.inputDialog or use default!^0')
         return
     end
-    return exports.ox_lib:inputDialog(heading, rows)--]]
+    return exports.ox_lib:inputDialog(heading, rows)
 end
 
 exports('inputDialog', WSB.inputDialog) -- Export for use in other scripts
