@@ -29,6 +29,7 @@ AddStateBagChangeHandler('loadInventory', nil, function(bagName, _, value)
 end)
 
 SetTimeout(500, function()
+    server.GetPlayerFromId = QBX.GetPlayer
     local playersData = QBX:GetPlayersData()
     for i = 1, #playersData do setupPlayer(playersData[i]) end
 end)

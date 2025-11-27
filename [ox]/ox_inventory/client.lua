@@ -1356,7 +1356,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 	CreateThread(function ()
 		mugshot = GetProfilePicture()
 	end)
-	
+
 	PlayerData.loaded = true
 
 	if not client.disablesetupnotification then
@@ -1444,9 +1444,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			local weaponType = GetWeapontypeGroup(weaponHash)
 
 			if weaponType ~= 0 and weaponType ~= `GROUP_UNARMED` then
-				if not exports["pug-paintball"]:IsInPaintball() then
-					Weapon.Disarm(currentWeapon, true)
-				end
+				-- if not exports["pug-paintball"]:IsInPaintball() then
+				-- 	Weapon.Disarm(currentWeapon, true)
+				-- end
 			end
 		end
 	end, 200)
@@ -1485,9 +1485,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			end
 
 			if usingItem or invOpen or IsPedCuffed(playerPed) then
-				if not exports["pug-paintball"]:IsInPaintball() then
-        			DisablePlayerFiring(playerId, true)
-    			end
+				-- if not exports["pug-paintball"]:IsInPaintball() then
+        		-- 	DisablePlayerFiring(playerId, true)
+    			-- end
 			end
 
 			if not EnableWeaponWheel then
