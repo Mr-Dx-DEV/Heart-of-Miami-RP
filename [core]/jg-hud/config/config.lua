@@ -5,7 +5,7 @@ Config.NumberFormat = "en-US" -- follows [language]-[country code]
 
 -- Integrations
 Config.Framework = "auto" -- or "QBCore", "Qbox", "ESX"
-Config.FuelSystem = "ox_fuel" -- or "LegacyFuel", "lc_fuel", "ps-fuel", "lj-fuel", "ox_fuel", "cdn-fuel", "hyon_gas_station", "okokGasStation", "nd_fuel", "myFuel", "ti_fuel", "Renewed-Fuel", "rcore_fuel", "none"
+Config.FuelSystem = "rcore_fuel" -- or "LegacyFuel", "lc_fuel", "ps-fuel", "lj-fuel", "ox_fuel", "cdn-fuel", "hyon_gas_station", "okokGasStation", "nd_fuel", "myFuel", "ti_fuel", "Renewed-Fuel", "rcore_fuel", "none"
 
 -- Measurements
 Config.SpeedMeasurement = "kph" -- or "kph"

@@ -79,6 +79,7 @@ return {
 
     --- Only used by QB bridge
     hasKeys = function(plate, vehicle)
-        return GetResourceState('qbx_vehiclekeys') ~= 'started' or exports.qbx_vehiclekeys:HasKeys(vehicle)
+        if DoesEntityExist(vehicle) then return exports.MrNewbVehicleKeys:HaveKeys(vehicle) end
+        return false
     end,
 }

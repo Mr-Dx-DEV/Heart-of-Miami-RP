@@ -115,8 +115,11 @@ return {
         lockState = 'lock', -- 'lock' : vehicle will be locked when spawned, 'unlock' : vehicle will be unlocked when spawned
     },
 
+    -- Paste this in in its place
+
     giveVehicleKeys = function(src, plate, vehicle)
-        return exports.qbx_vehiclekeys:GiveKeys(src, vehicle)
+        local netId = NetworkGetNetworkIdFromEntity(vehicle)
+        return exports.MrNewbVehicleKeys:GiveKeys(src, netId)
     end,
 
     setVehicleLock = function(vehicle, state)

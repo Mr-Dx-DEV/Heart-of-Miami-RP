@@ -185,8 +185,6 @@ lib.addCommand('dv', {
     },
     restricted = 'group.admin'
 }, function(source, args)
-    if not IsOptin(source) then Notify(source, locale('error.not_optin'), 'error') return end
-
     local ped = GetPlayerPed(source)
     local pedCars = {GetVehiclePedIsIn(ped, false)}
     local radius = args[locale('command.dv.params.radius.name')]
@@ -201,6 +199,8 @@ lib.addCommand('dv', {
         for i = 1, #pedCars do
             local pedCar = NetworkGetEntityFromNetworkId(pedCars[i])
             if pedCar and DoesEntityExist(pedCar) then
+                local plate = GetVehicleNumberPlateText(pedCar)
+                exports.MrNewbVehicleKeys:RemoveKeysByPlate(source, plate)
                 DeleteVehicle(pedCar)
             end
         end
