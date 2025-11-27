@@ -61,37 +61,58 @@ end)
 
 ---@diagnostic disable: duplicate-set-field
 function WSB.serverCallback(name, cb, ...)
-    ESX.TriggerServerCallback(name, cb, ...)
+    Callback(name, false, cb, ...)
 end
 
 function WSB.awaitServerCallback(name, ...)
-    local args = { ... }
-    local promise = promise.new()
-    ESX.TriggerServerCallback(name, function(...)
-        promise:resolve(...)
-    end, table.unpack(args))
-    return table.unpack({ Citizen.Await(promise) })
+    local results = { Callback.awaitResponse(name, false, ...) }
+    return table.unpack(results)
 end
 
+function WSB.registerCallback(name, fn)
+    Callback.register(name, function(source, ...)
+         local responded = false
+         local response = nil
+         
+         local cb = function(...)
+             responded = true
+             response = {...}
+         end
+         
+         local ok, ret = pcall(function(...) 
+             return table.pack(fn(source, cb, ...)) 
+         end, ...)
+ 
+         if responded then
+             return table.unpack(response)
+         elseif ret ~= nil then
+             return table.unpack(ret, 1, ret.n)
+         end
+ 
+         if not ok then
+             print(("[wsb] callback %s threw an error: %s"):format(name, ret))
+         end
+     end)
+ end
+
 function WSB.hasGroup(filter)
+    if not WSB.playerData or not WSB.playerData.job then return end
     local type = type(filter)
 
     if type == 'string' then
-        if WSB.playerData and WSB.playerData.job and WSB.playerData.job.name == filter then
+        if WSB.playerData.job.name == filter then
             return WSB.playerData.job.name, WSB.playerData.job.grade
         end
-    else
+    elseif type == 'table' then
         local tabletype = table.type(filter)
-
         if tabletype == 'hash' then
-            local grade
-            if WSB.playerData and WSB.playerData.job then grade = filter[WSB.playerData.job.name] end
+            local grade = filter[WSB.playerData.job.name]
             if grade and grade <= WSB.playerData.job.grade then
                 return WSB.playerData.job.name, WSB.playerData.job.grade
             end
         elseif tabletype == 'array' then
             for i = 1, #filter do
-                if WSB.playerData and WSB.playerData.job and WSB.playerData.job.name == filter[i] then
+                if WSB.playerData.job.name == filter[i] then
                     return WSB.playerData.job.name, WSB.playerData.job.grade
                 end
             end

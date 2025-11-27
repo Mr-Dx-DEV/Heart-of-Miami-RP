@@ -9,9 +9,27 @@ WSB.inventorySystem = 'tgiann-inventory'
 WSB.inventory = {}
 
 local registeredShops = {}
-RegisterNetEvent('wasabi_bridge:registerShop', function(data)
-    if source ~= '' or not GetInvokingResource() then return end
+AddEventHandler('wasabi_bridge:registerShop', function(data)
+    --[[
+    data = {
+        identifier = 'shop_identifier',
+        name = 'Shop Name',
+        inventory = {
+            { name = 'item_name', price = 100 },
+        }
+    }
+    ]]
+    local invokingResource = GetInvokingResource()
+    if not invokingResource then return end
+    if invokingResource:sub(1, 7) ~= 'wasabi_' then return end
     exports["tgiann-inventory"]:RegisterShop(data.identifier, data.inventory)
+    registeredShops[data.identifier] = true
+end)
+
+RegisterNetEvent('wasabi_bridge:openShop', function(identifier)
+    local src = source
+    if not src or not registeredShops[identifier] then return end
+    exports["tgiann-inventory"]:OpenShop(src, identifier)
 end)
 
 function WSB.inventory.getItemSlot(source, itemName)

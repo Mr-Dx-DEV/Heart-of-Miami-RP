@@ -34,8 +34,7 @@ if not OldInventory then
     RegisterNetEvent('wasabi_bridge:openShop', function(data)
         if not data or not data.identifier or not registeredShops[data.identifier] then return end
 
-        if WSB.hasGroup(source, data.groups) then return end
-
+        if data.groups and not WSB.hasGroup(source, data.groups) then return end
         exports['qb-inventory']:OpenShop(source, data.identifier)
     end)
 
@@ -51,8 +50,19 @@ if not OldInventory then
     end)
 else
     local registeredShops = {}
-    RegisterNetEvent('wasabi_bridge:registerShop', function(data)
-        if source ~= '' or not GetInvokingResource() then return end
+    AddEventHandler('wasabi_bridge:registerShop', function(data)
+    --[[
+        data = {
+            identifier = 'shop_identifier',
+            name = 'Shop Name',
+            inventory = {
+                { name = 'item_name', price = 100 },
+            }
+        }
+    ]]
+    local invokingResource = GetInvokingResource()
+    if not invokingResource then return end
+    if invokingResource:sub(1, 7) ~= 'wasabi_' then return end
         registeredShops[data.identifier] = ConvertShopData(data)
     end)
 

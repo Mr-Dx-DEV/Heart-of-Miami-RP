@@ -2,6 +2,12 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
+-- Checking for if Complete UI Kit is running
+-- Get it here: https://wasabiscripts.com/product/7037645
+local wasabi_uikit, uikitFound = GetResourceState('wasabi_uikit'), false
+if wasabi_uikit == 'started' or wasabi_uikit == 'starting' then uikitFound = true end
+
+
 --- Skill Check
 ---@param data table Same/similiar data to the ox_lib skillCheck function. Subject to change.
 ---@return boolean
@@ -24,7 +30,7 @@ function WSB.skillCheck(data)
     --
     -- (Basically follow the same as ox_lib skill check and transfer the options to your skill check system)]
 
-    -- Remove under this to use your own skill check/ox_lib --
+    -- Remove under this to use your own skill check --
     if not data.difficulty then
         data = {
             difficulty = data
@@ -32,8 +38,25 @@ function WSB.skillCheck(data)
     end
     if not data.color then data.color = Config.DefaultColor end
     if not data.keys then data.keys = 'e' end
+
+    if uikitFound then
+        return exports.wasabi_uikit:SkillCheck(data.difficulty, type(data.keys) == 'table' and data.keys or {data.keys}) or false
+    end
+
     return SkillCheck(data.difficulty, data.keys, data.color) or false
-    -- Remove above this to use your own skill check / ox_lib --
+    -- Remove above this to use your own skill check --
+
+    --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
+    local lation_ui = GetResourceState('lation_ui')
+    if lation_ui ~= 'started' and lation_ui ~= 'starting' then
+        print('^0[^3WARNING^0] ^1lation_ui^0 is not running, please ensure it is started before using ^wsb.skillCheck or customize!^0')
+        return false
+    end
+    if data.difficulty then
+        data = data.difficulty
+    end
+    return exports.lation_ui:skillCheck('Skill Check', data)
+    ]] -- Remove this line if you are using lation_ui
 
 
     --[[

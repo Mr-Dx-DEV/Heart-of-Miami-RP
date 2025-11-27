@@ -16,21 +16,14 @@ end
 
 function WSB.inventory.openStash(data)
     -- data = {name = name, unique = true, maxWeight = maxWeight, slots = slots}
-    local stashRegistered = WSB.awaitServerCallback('wasabi_bridge:registerStash', data)
-    if not stashRegistered then return end
-
     exports.ox_inventory:openInventory('stash', data.name)
 end
 
 function WSB.inventory.openShop(data)
     --[[
-data = {
-    identifier = 'shop_identifier',
-    name = 'Shop Name',
-    inventory = {
-        { name = 'item_name', price = 100 },
-    }
-}
-]]
+        For security, you need to register shops on the server side
+        using server only event 'wasabi_bridge:registerShop'
+        see server.lua of this inventory for more information
+    ]]
     exports.ox_inventory:openInventory('shop', { type = data.identifier, id = 1 })
 end

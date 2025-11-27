@@ -37,19 +37,28 @@ function WSB.inventory.clearInventory(source, identifier, keepItems)
     exports.ox_inventory:ClearInventory(source, type(keepItems) == 'table' and next(keepItems) and keepItems or nil)
 end
 
-WSB.registerCallback('wasabi_bridge:registerStash', function(_source, cb, data)
-    if registeredStashes[data.name] then
-        cb(true)
-        return
-    end
+AddEventHandler('wasabi_bridge:registerStash', function(data)
+    local invokingResource = GetInvokingResource()
+    if not invokingResource then return end
+    if invokingResource:sub(1, 7) ~= 'wasabi_' then return end
+    if registeredStashes[data.name] then return end
     exports.ox_inventory:RegisterStash(data.name, data.name, data.slots, data.maxWeight, data.unique or false, nil, nil)
     registeredStashes[data.name] = true
-    cb(true)
 end)
 
-RegisterNetEvent('wasabi_bridge:registerShop', function(data)
-    if source ~= '' or not GetInvokingResource() then return end
-    
+AddEventHandler('wasabi_bridge:registerShop', function(data)
+    --[[
+        data = {
+            identifier = 'shop_identifier',
+            name = 'Shop Name',
+            inventory = {
+                { name = 'item_name', price = 100 },
+            }
+        }
+    ]]
+    local invokingResource = GetInvokingResource()
+    if not invokingResource then return end
+    if invokingResource:sub(1, 7) ~= 'wasabi_' then return end
     exports.ox_inventory:RegisterShop(data.identifier, {
         name = data.name,
         groups = data.groups,

@@ -35,9 +35,9 @@ function WSB.getPlayers()
 end
 
 function WSB.getAllJobs()
-    local jobs = ESX and ESX.Jobs or nil
+    local jobs = ESX.GetJobs()
     local returnTb = {}
-    if not jobs or #jobs < 1 then return end
+    if not jobs or not next(jobs) then return end
     for k, v in pairs(jobs) do
         returnTb[k] = { label = v.label }
         for a, b in pairs(v.grades) do
@@ -53,17 +53,29 @@ function WSB.getAllJobs()
     return returnTb
 end
 
-function WSB.registerCallback(name, handler)
-    ESX.RegisterServerCallback(name, function(source, cb, ...)
-        local responded = false
-        local function cbWrapper(...)
-            responded = true
-            cb(...)
-        end
-        local ok, ret = pcall(function(...) return table.pack(handler(source, cbWrapper, ...)) end, ...)
+function WSB.awaitClientCallback(name, source, ...)
+    local results = { Callback.awaitResponse(name, source, ...) }
+    return table.unpack(results)
+end
 
-        if not responded and ret ~= nil then
-            cb(table.unpack(ret, 1, ret.n))
+function WSB.registerCallback(name, fn)
+   Callback.register(name, function(source, ...)
+        local responded = false
+        local response = nil
+        
+        local cb = function(...)
+            responded = true
+            response = {...}
+        end
+        
+        local ok, ret = pcall(function(...) 
+            return table.pack(fn(source, cb, ...)) 
+        end, ...)
+
+        if responded then
+            return table.unpack(response)
+        elseif ret ~= nil then
+            return table.unpack(ret, 1, ret.n)
         end
 
         if not ok then
@@ -86,19 +98,17 @@ end
 
 function WSB.hasGroup(source, filter)
     local player = WSB.getPlayer(source)
-    if not player then return end
+    if not player or not player.job then return end
     local type = type(filter)
 
     if type == 'string' then
         if player.job.name == filter then
             return player.job.name, player.job.grade
         end
-    else
+    elseif type == 'table' then
         local tabletype = table.type(filter)
-
         if tabletype == 'hash' then
             local grade = filter[player.job.name]
-
             if grade and grade <= player.job.grade then
                 return player.job.name, player.job.grade
             end
@@ -202,10 +212,14 @@ function WSB.hasItem(source, _item)
     if not player then return end
 
     -- Default ESX inventory/Cheeza inventory support
-    local itemName = string.upper(_item)
-    if itemName:sub(1, 7) == 'WEAPON_' then
-        return player.hasWeapon(itemName) or false
-    end
+    -- Uncomment  under this if you want to use the default ESX inventory/Cheeza inventory
+
+    -- local itemName = string.upper(_item)
+    -- if itemName:sub(1, 7) == 'WEAPON_' then
+    --     return player.hasWeapon(itemName) or false
+    -- end
+
+    -- Uncomment above this if you want to use the default ESX inventory/Cheeza inventory
 
     local item = player.getInventoryItem(_item)
     return item?.amount or item?.count or 0

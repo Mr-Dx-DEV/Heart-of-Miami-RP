@@ -1,6 +1,8 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+local wasabi_uikit, uikitFound = GetResourceState('wasabi_uikit'), false
+if wasabi_uikit == 'started' or wasabi_uikit == 'starting' then uikitFound = true end
 
 -- Modify this with whatever input dialog system you want
 
@@ -57,9 +59,25 @@ function WSB.inputDialog(heading, rows, color)
     --
     -- (Basically follow the same as ox_lib menu system and transfer the options to your own input system)]
 
-    -- Remove under this to use your own input dialog OR the ox_lib input dialog --
+    -- Remove under this to use your own input dialog --
     if not color then color = Config.DefaultColor end
+    if uikitFound then
+        return exports.wasabi_uikit:InputDialog(heading, rows, color)
+    end
     return InputDialog(heading, rows, color)
+    -- Remove above this to use your own input dialog --
+
+    --[[ Remove this line if you are using lation_ui: https://lationscripts.com/product/modern-ui
+    local lation_ui = GetResourceState('lation_ui')
+    if lation_ui ~= 'started' and lation_ui ~= 'starting' then
+        print('^0[^3WARNING^0] ^1lation_ui^0 is not running, please ensure it is started before using ^wsb.inputDialog or use default!^0')
+        return
+    end
+    return exports.lation_ui:input({
+        title = heading,
+        options = rows
+    })
+    ]] -- Remove this line if you are using lation_ui
 
     -- Remove above this to use your own input dialog or ox_lib
     --[[

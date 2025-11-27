@@ -54,7 +54,7 @@ end
 function WSB.getAllJobs()
     local jobs = qboxFound and exports.qbx_core:GetJobs() or QBCore and QBCore.Shared and QBCore.Shared.Jobs or nil
     local returnTb = {}
-    if not jobs or #jobs < 1 then return end
+    if not next(jobs) then return end
     for k, v in pairs(jobs) do
         returnTb[k] = { label = v.label }
         for a, b in pairs(v.grades) do
@@ -77,24 +77,55 @@ function WSB.getAllJobs()
     return returnTb
 end
 
-function WSB.registerCallback(name, handler)
-    QBCore.Functions.CreateCallback(name, function(source, cb, ...)
+function WSB.awaitClientCallback(name, source, ...)
+    local results = { Callback.awaitResponse(name, source, ...) }
+    return table.unpack(results)
+end
+
+function WSB.registerCallback(name, fn)
+   Callback.register(name, function(source, ...)
         local responded = false
-        local function cbWrapper(...)
+        local response = nil
+        
+        local cb = function(...)
             responded = true
-            cb(...)
+            response = {...}
         end
-        local ok, ret = pcall(function(...)
-            return table.pack(handler(source, cbWrapper, ...))
+        
+        local ok, ret = pcall(function(...) 
+            return table.pack(fn(source, cb, ...)) 
         end, ...)
 
-        if ok then
-            if not responded and ret ~= nil then
-                cb(table.unpack(ret, 1, ret.n))
-            end
+        if responded then
+            return table.unpack(response)
+        elseif ret ~= nil then
+            return table.unpack(ret, 1, ret.n)
+        end
+
+        if not ok then
+            print(("[wsb] callback %s threw an error: %s"):format(name, ret))
         end
     end)
 end
+
+-- function WSB.registerCallback(name, handler)
+--     QBCore.Functions.CreateCallback(name, function(source, cb, ...)
+--         local responded = false
+--         local function cbWrapper(...)
+--             responded = true
+--             cb(...)
+--         end
+--         local ok, ret = pcall(function(...)
+--             return table.pack(handler(source, cbWrapper, ...))
+--         end, ...)
+
+--         if ok then
+--             if not responded and ret ~= nil then
+--                 cb(table.unpack(ret, 1, ret.n))
+--             end
+--         end
+--     end)
+-- end
 
 function WSB.kickPlayer(source, reason)
     if qboxFound then
@@ -112,38 +143,35 @@ function WSB.hasPermission(source, group)
 end
 
 function WSB.hasGroup(source, filter)
-    local groups = { 'job', 'gang' }
     local player = WSB.getPlayer(source)
-    if not player then return end
+    if not player or not player.PlayerData then return end
+    local groups = { 'job', 'gang' }
     local type = type(filter)
 
     if type == 'string' then
         for i = 1, #groups do
             local data = player.PlayerData[groups[i]]
-
             if data and data.name == filter then
                 return data.name, data.grade.level
             end
         end
-    else
+    elseif type == 'table' then
         local tabletype = table.type(filter)
-
         if tabletype == 'hash' then
             for i = 1, #groups do
                 local data = player.PlayerData[groups[i]]
-                local grade = filter[data.name]
-
-                if data and grade and grade <= data.grade.level then
-                    return data.name, data.grade.level
+                if data then
+                    local grade = filter[data.name]
+                    if grade and grade <= data.grade.level then
+                        return data.name, data.grade.level
+                    end
                 end
             end
         elseif tabletype == 'array' then
             for i = 1, #filter do
                 local group = filter[i]
-
                 for j = 1, #groups do
                     local data = player.PlayerData[groups[j]]
-
                     if data and data.name == group then
                         return data.name, data.grade.level
                     end
@@ -282,6 +310,10 @@ function WSB.removeItem(source, item, count, slot, metadata)
 end
 
 function WSB.addMoney(source, type, amount)
+    if type == 'black_money' then
+        WSB.addItem(source, 'black_money', amount)
+        return
+    end
     if type == 'money' then type = 'cash' end
     local player = WSB.getPlayer(source)
     if not player then return end
@@ -289,6 +321,10 @@ function WSB.addMoney(source, type, amount)
 end
 
 function WSB.removeMoney(source, type, amount)
+    if type == 'black_money' then
+        WSB.removeItem(source, 'black_money', amount)
+        return
+    end
     if type == 'money' then type = 'cash' end
     local player = WSB.getPlayer(source)
     if not player then return end

@@ -5,14 +5,11 @@
 -- Modify this to for how vehicle keys are added to your server (If applicable)
 
 -- Add car keys
--- Add car keys
 function WSB.giveCarKeys(plate, _model, _vehicle)
     if GetResourceState('wasabi_carlock') == 'started' then
         return exports.wasabi_carlock:GiveKey(plate) -- Leave like this if using wasabi_carlock
     end
-    if GetResourceState('MrNewbVehicleKeys') == 'started' then
-        return exports.MrNewbVehicleKeys:GiveKeysByPlate(plate)
-    end
+
     if GetResourceState('qb-vehiclekeys') == 'started' then
         return TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)
     end
@@ -21,9 +18,6 @@ end
 function WSB.removeCarKeys(plate, _model, _vehicle)
     if GetResourceState('wasabi_carlock') == 'started' then
         return exports.wasabi_carlock:RemoveKey(plate)
-    end
-    if GetResourceState('MrNewbVehicleKeys') == 'started' then
-        return exports.MrNewbVehicleKeys:RemoveKeysByPlate(plate)
     end
 end
 

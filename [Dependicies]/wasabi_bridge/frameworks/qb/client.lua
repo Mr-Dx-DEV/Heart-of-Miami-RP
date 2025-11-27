@@ -55,51 +55,80 @@ end)
 
 ---@diagnostic disable: duplicate-set-field
 function WSB.serverCallback(name, cb, ...)
-    QBCore.Functions.TriggerCallback(name, cb, ...)
+    Callback(name, false, cb, ...)
 end
+
 
 function WSB.awaitServerCallback(name, ...)
-    local args = { ... }
-    local promise = promise.new()
-    QBCore.Functions.TriggerCallback(name, function(...)
-        promise:resolve(table.pack(...)) 
-    end, table.unpack(args))
-    local result = Citizen.Await(promise)
-    return table.unpack(result, 1, result.n)
+    local results = { Callback.awaitResponse(name, false, ...) }
+    return table.unpack(results)
 end
 
+function WSB.registerCallback(name, fn)
+    Callback.register(name, function(source, ...)
+         local responded = false
+         local response = nil
+         
+         local cb = function(...)
+             responded = true
+             response = {...}
+         end
+         
+         local ok, ret = pcall(function(...) 
+             return table.pack(fn(source, cb, ...)) 
+         end, ...)
+ 
+         if responded then
+             return table.unpack(response)
+         elseif ret ~= nil then
+             return table.unpack(ret, 1, ret.n)
+         end
+ 
+         if not ok then
+             print(("[wsb] callback %s threw an error: %s"):format(name, ret))
+         end
+     end)
+ end
+
+-- function WSB.awaitServerCallback(name, ...)
+--     local args = { ... }
+--     local promise = promise.new() 
+--     QBCore.Functions.TriggerCallback(name, function(...)
+--         promise:resolve(table.pack(...)) 
+--     end, table.unpack(args))
+--     local result = Citizen.Await(promise)
+--     return table.unpack(result, 1, result.n)
+-- end
+
 function WSB.hasGroup(filter)
+    if not WSB.playerData then return end
     local groups = { 'job', 'gang' }
     local type = type(filter)
 
     if type == 'string' then
         for i = 1, #groups do
             local data = WSB.playerData[groups[i]]
-
             if data and data.name == filter then
                 return data.name, data.grade.level
             end
         end
-    else
+    elseif type == 'table' then
         local tabletype = table.type(filter)
-
         if tabletype == 'hash' then
             for i = 1, #groups do
                 local data = WSB.playerData[groups[i]]
-                local grade
-                if data then grade = filter[data.name] end
-
-                if data and grade and grade <= data.grade.level then
-                    return data.name, data.grade.level
+                if data then
+                    local grade = filter[data.name]
+                    if grade and grade <= data.grade.level then
+                        return data.name, data.grade.level
+                    end
                 end
             end
         elseif tabletype == 'array' then
             for i = 1, #filter do
                 local group = filter[i]
-
                 for j = 1, #groups do
                     local data = WSB.playerData[groups[j]]
-
                     if data and data.name == group then
                         return data.name, data.grade.level
                     end

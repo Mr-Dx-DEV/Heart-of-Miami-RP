@@ -7,14 +7,15 @@ lua54 'yes'
 
 description 'A library of functions used to ease the bridge between Wasabi Scripts'
 author 'wasabirobby'
-version '1.5.0'
+version '1.6.5'
 
 ui_page 'ui/index.html'
 files { 'ui/*', 'ui/**/*' }
 
-shared_script 'config.lua'
+shared_script {'config.lua',  'callback/shared.lua' }
 
 client_scripts {
+    'callback/client.lua',
     'frameworks/**/client.lua',
     'targets/*.lua',
     'inventories/**/client.lua',
@@ -23,6 +24,7 @@ client_scripts {
 }
 
 server_scripts {
+    'callback/server.lua',
     '@oxmysql/lib/MySQL.lua',
     'frameworks/**/server.lua',
     'inventories/**/server.lua',
@@ -40,5 +42,9 @@ escrow_ignore {
     'inventories/**/*.lua',
     'customize/client/*.lua'
 }
+
+
+
+
 
 dependency '/assetpacks'

@@ -40,9 +40,10 @@ function WSB.inventory.clearInventory(source, identifier, keepItems)
 end
 
 local registeredShops = {}
-RegisterNetEvent('wasabi_bridge:registerShop', function(data)
-    if source ~= '' or not GetInvokingResource() then return end
-    print(json.encode(data, { indent = true }))
+AddEventHandler('wasabi_bridge:registerShop', function(data)
+    local invokingResource = GetInvokingResource()
+    if not invokingResource then return end
+    if invokingResource:sub(1, 7) ~= 'wasabi_' then return end
     registeredShops[data.identifier] = ConvertShopData(data)
 end)
 

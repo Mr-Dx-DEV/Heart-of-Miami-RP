@@ -12,7 +12,7 @@ Config.CheckForUpdates = false
 --- UI Settings (Only works if using built-in systems) ---
 ----------------------------------------------------------
 
-Config.DefaultColor = '#218988' -- Default color for progress bars, circles, menus, etc if not defined when used.
+Config.DefaultColor = '#1E90FF' -- Default color for progress bars, circles, menus, etc if not defined when used.
 -- (Most of the time there will be configuration of color within specific Wasabi Scripts, but this is a fallback)
 -- (If you wish to use this color as default in other Wasabi Scripts set their UI color to false if applicable)
 
@@ -27,7 +27,7 @@ Config.Notifications = {
         iconSize = '2.2rem',                        -- Default icon size if shown and not defined. (Default is 1.5rem)
         fontColor = '#e5e5e5',                      -- Color, hex, etc (default: '#b5b3b3')
         backgroundColor = 'rgba(37, 38, 43, 0.60)', -- Background color of notification (default: 'rgba(80, 80, 80, 0.651)')
-        sound = true,                               -- Play a sound when the notification is shown
+        sound = false,                               -- Play a sound when the notification is shown
     },
     styles = {                           -- Notification styles (Feel free to edit and add, but don't remove any default styles completely)
 
@@ -51,7 +51,7 @@ Config.Notifications = {
 }
 
 Config.TextUISettings = {
-    position = 'right-center',   -- Position of the text UI ('right-center', 'left-center', 'top-center', or 'bottom-center')
+    position = 'top-center',   -- Position of the text UI ('right-center', 'left-center', 'top-center', or 'bottom-center')
     iconColor = '#ffffff',       -- Default icon color if not defined
     textColor = '#ffffff',       -- Default text color if not defined
     backgroundColor = '#25262B', -- Background color of the text UI
