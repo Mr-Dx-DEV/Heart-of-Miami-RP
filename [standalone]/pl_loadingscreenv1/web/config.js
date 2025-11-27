@@ -141,7 +141,8 @@ const LoadingScreenConfig = {
             enabled: true,
             // Use either: an mp4 path (string), an object with formats { mp4, webm }, or a YouTube link via `youtube`
             // url: "https://r2.fivemanage.com/w4aVvxe5Gx1fmKRNTBqw3/neload.mp4",
-            youtube: "https://www.youtube.com/watch?v=f1MAEDPcUC0",
+            url: "assets/video/background.mp4",
+            // youtube: "https://www.youtube.com/watch?v=f1MAEDPcUC0",
             fallbackImage: "assets/background.jpg"
         },
         animations: {
