@@ -1,5 +1,44 @@
 return {
 
+
+    ['vehicle_manual'] = {
+    label = 'Vehicle manual',
+    weight = 50,
+    close = true,
+    consume = 0,
+    client = {},
+    server = {
+        export = 'rcore_fuel.vehicle_manual',
+    },
+},
+
+['window_cleaner'] = {
+    label = 'windows cleaner',
+    weight = 50,
+    close = true,
+    consume = 0,
+    client = {},
+    server = {
+        export = 'rcore_fuel.window_cleaner',
+    },
+},
+
+['fuel_pump'] = {
+    label = 'Fuel pumper',
+    weight = 10000,
+    close = true,
+    consume = 0,
+    client = {},
+    server = {
+        export = 'rcore_fuel.fuel_pump',
+    },
+},
+
+
+
+
+
+
     ['vehiclekeys'] = {
 	label = 'Vehicle Keys',
 	weight = 220,
@@ -6210,31 +6249,6 @@ return {
     },
 
 
-    ['vehiclekeys'] = {
-        label = 'Vehicle Keys',
-        degrade = 360,
-        decay = true,
-        weight = 220,
-        stack = false,
-        close = true,
-        description = "Keys To A Car",
-    },
-
-    ['aftermarket_locks'] = {
-        label = 'Aftermarket Locks',
-        weight = 220,
-        stack = false,
-        close = true,
-        description = "Aftermarket Lock System",
-    },
-
-    ['keyring'] = {
-        label = 'Keyring',
-        weight = 220,
-        stack = false,
-        close = true,
-        description = "Keyring Of Car Keys",
-    },
 
 
     ---- Vehicle Keys Script End
