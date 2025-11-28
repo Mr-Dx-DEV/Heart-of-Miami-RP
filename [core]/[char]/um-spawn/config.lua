@@ -56,7 +56,7 @@ config.main = {
     },
     spawn = {
         type = 'playerFromSky', -- playerFromSky (um), gtaVNative
-        cutScene = true,       -- If you want to show the cutscene, set it to true.
+        cutScene = false,       -- If you want to show the cutscene, set it to true.
     },
     ped = {
         status = true, -- Make it true if you want your character to see and walk the path
