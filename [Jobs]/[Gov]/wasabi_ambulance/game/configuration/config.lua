@@ -776,12 +776,12 @@ Config.Locations = {
         },
 
         MedicalSupplies = {                                                     -- EMS Shop for supplies
-            Enabled = false,                                                     -- If set to false, rest of this table do not matter
+            Enabled = true,                                                     -- If set to false, rest of this table do not matter
             locations = {                                                      -- Coords of ped/target
                 {
                     ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
-                    coords = vec3(306.63, -601.44, 43.02 - 0.95),
-                    heading = 337.64,
+                    coords = vec3(-456.98, -1000.03, 23.93),
+                    heading = 357.93,
                     jobLock = false                                             -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
                 -- Add more non-target locations here if needed (if target is not enabled)
@@ -793,13 +793,13 @@ Config.Locations = {
                 locationsArray = {
                     {
                         ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
-                        coords = vec3(-457.93, -994.15, 23.02),
-                        heading = 194.05,
+                        coords = vec3(-456.98, -1000.03, 23.93),
+                        heading = 357.93,
                         distance = 5.0,
                         width = 2.0,
                         length = 1.0,
-                        minZ = 23.02 - 0.9,
-                        maxZ = 23.99 + 0.9,
+                        minZ = 22.02 - 0.9,
+                        maxZ = 25.99 + 0.9,
                         jobLock = false
                     },
 
@@ -808,7 +808,9 @@ Config.Locations = {
             },
 
             Supplies = {                                                        -- Supplies
-                { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
+               { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
+                { item = 'sedative',    label = 'Sedative', price = 250 },
+                { item = 'radio',    label = 'Radio', price = 250 },
                 { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
                 { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
                 { item = 'morphine15', label = 'Morphine 15MG', price = 45 },
@@ -817,6 +819,11 @@ Config.Locations = {
                 { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
                 { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
                 { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
+                { item = 'bandage',      label = 'Bandage',  price = 30 },
+                { item = 'bobby_pin',      label = 'Pin',  price = 30 },
+                { item = 'ifaks',      label = 'IFAK',  price = 30 },
+                { item = 'tablet',      label = 'Tablet',  price = 30 },
+                { item = 'handcuffs',      label = 'Handcuffs',  price = 30 },
             }
         },
 
