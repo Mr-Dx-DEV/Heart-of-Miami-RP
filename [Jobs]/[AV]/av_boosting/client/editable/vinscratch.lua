@@ -1,0 +1,92 @@
+local targetVeh = nil
+local dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@'
+local anim = 'machinic_loop_mechandplayer'
+local busy = false
+local TargetSystem = exports['av_laptop']:getTarget()
+
+function CreateVinTarget(vehicle)
+    if not vehicle then return end
+    targetVeh = vehicle
+    if TargetSystem == "ox_target" then
+        exports[TargetSystem]:addLocalEntity(targetVeh, {
+            name = "vinscratch",
+            type = "client",
+            event = "av_boosting:scratchVin",
+            icon = 'fas fa-user-secret',
+            label = Lang['scratch_target'],
+            distance = 3,
+        })
+    else
+        exports[TargetSystem]:AddTargetEntity(targetVeh, {
+            options = {
+                {
+                    type = "client",
+                    event = "av_boosting:scratchVin",
+                    icon = 'fas fa-user-secret',
+                    label = Lang['scratch_target'], 
+                }
+            },
+            distance = 3,
+        })
+    end
+end
+
+function RemoveVinTarget()
+    if not targetVeh then return end
+    if TargetSystem == "ox_target" then
+        exports[TargetSystem]:removeLocalEntity(targetVeh, "vinscratch")
+    else
+        exports[TargetSystem]:RemoveTargetEntity(targetVeh, Lang['offer'])
+    end
+    targetVeh = nil
+end
+
+RegisterNetEvent('av_boosting:scratchVin', function()
+    if Config.Debug then print('scratchVin(busy?)', busy) end
+    if not targetVeh then return end
+    if busy then return end
+    local plate = GetPlate(targetVeh)
+    local res = lib.callback.await('av_boosting:isVin', false, plate)
+    if Config.Debug then print('res?', res) end
+    if res then
+        busy = true
+        if Config.Debug then print("progressCircle()") end
+        if exports['av_laptop']:progressCircle({
+            duration = 5000,
+            position = 'bottom',
+            useWhileDead = false,
+            canCancel = true,
+            disable = {
+                car = true,
+                move = true,
+                combat = true
+            },
+            anim = {
+                dict = dict,
+                clip = anim
+            },
+            prop = {
+            },
+        }) then
+            local vehProperties = lib.getVehicleProperties(targetVeh)
+            local newPlates = lib.callback.await('av_boosting:saveVin', false, vehProperties, res)
+            SetVehicleNumberPlateText(targetVeh, newPlates)
+            GiveKeys(newPlates)
+            RemoveVinTarget()
+            TriggerEvent('av_boosting:wipe')
+            TriggerEvent('av_laptop:notification',Lang['app_title'],Lang['vin_removed'],'success')
+        end
+    end
+    Wait(500)
+    busy = false
+end)
+
+exports('getVin', function()
+    local vehicle = lib.getClosestVehicle(GetEntityCoords(PlayerPedId()), 5, false)
+    if vehicle then
+        local plate = GetPlate(vehicle)
+        local status = lib.callback.await('av_boosting:getVinStatus', false, plate)
+        return status
+    end
+    return false
+end)
