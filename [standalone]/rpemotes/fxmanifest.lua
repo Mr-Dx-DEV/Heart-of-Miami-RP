@@ -1,7 +1,9 @@
+shared_script '@vLife/ai_module_fg-obfuscated.lua'
+shared_script '@vLife/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 game 'gta5'
 description 'rpemotes-reborn'
-version '6.9.0'
+version '1.9.0'
 
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'
@@ -29,6 +31,7 @@ shared_scripts {
 }
 
 server_scripts {
+    'server/discord.lua',
     'server/Server.lua',
     'server/Updates.lua',
 }

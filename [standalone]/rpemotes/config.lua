@@ -23,7 +23,7 @@ Config = {
     CustomMenuEnabled = true, -- Change the header.png to your own image
 
     -- Combat Car, and Player Movement
-    DisarmPlayerOnEmote = false,
+    DisarmPlayerOnEmote = true,
     AllowPunchingDuringEmote = false,
     AllowEmoteInVehicle = true,
     AllowInWater = false,
@@ -46,10 +46,10 @@ Config = {
 
     -- Hands Up
     HandsupEnabled = false,
-    HandsupKeybind = 'Y',
+    HandsupKeybind = 'X',
     HandsupKeybindEnabled = false,
     HandsupInCar = false,
-    ReplayEmoteAfterHandsup = true,
+    ReplayEmoteAfterHandsup = false,
     HoldToHandsUp = false,
 
     -- Pointing
@@ -61,7 +61,7 @@ Config = {
 
     -- Crouching
     CrouchEnabled = false,
-    CrouchKeybindEnabled = true,
+    CrouchKeybindEnabled = false,
     CrouchKeybind = 'LCONTROL',
     CrouchOverrideStealthMode = false, -- If true, you won't enter stealth mode even if the crouch key and the 'duck' key are the same.
     FpsMode = false, -- set this to true if you have first-person shooting to disable the ability to crouch and shoot in third-person
@@ -88,12 +88,7 @@ Config = {
 }
 
 Config.KeybindKeys = {
-    'NUMPAD4',
-    'NUMPAD5',
-    'NUMPAD6',
-    'NUMPAD7',
-    'NUMPAD8',
-    'NUMPAD9'
+
 }
 
 Config.DisabledHandsupControls = {
@@ -147,10 +142,15 @@ Config.DisabledHandsupControls = {
 }
 
 Config.Credits = {
-   
-    { 
-    title = "Thank You <font color=\"#15BCEC\">Mr_Dx</font>", 
-    subtitle = "<font color=\"#15BCEC\">Mr_Dx</font> for assisting with code and features" 
-},
-
+    { title = "<b>Thanks to the community<b>", subtitle = "For supporting and using RP Emotes!" },
+    { title = "Thanks ~o~DullPear 🍐~s~", subtitle = "~o~DullPear~s~ for the original dpemotes ❤️" },
+    { title = "Thanks <font color=\"#ff451d\">Mathu_lmn 🇫🇷 </font>", subtitle = "<font color=\"#ff451d\">Mathu_lmn 🇫🇷</font> Maintainer, additional features and fixes 🛠️" },
+    { title = "Thanks <font color=\"#ff451d\">Enzo2991 🇧🇪 </font>", subtitle = "<font color=\"#ff451d\">Enzo2991 🇧🇪 </font> for creating the ped preview functionality, keybind with kvp" },
+    { title = "Thanks <b>Kibook 🐩</b>", subtitle = "<b>Kibook</b> for the addition of Animal Emotes 🐩 submenu." },
+    { title = "Thanks ~y~AvaN0x 🇫🇷~s~", subtitle = "~y~AvaN0x~s~ 🇫🇷 for reformatting and assisting with code and additional features 🙏" },
+    { title = "Thanks <font color=\"#40E0D0\">iSentrie </font>", subtitle = "<font color=\"#40E0D0\">iSentrie</font> for assisting with code 🛠️" },
+    { title = "Thanks <font color=\"#0e64ed\">Mads 🤖</font>", subtitle = "<font color=\"#0e64ed\">Mads 🤖</font> for the addition of Exit Emotes, Crouch & Crawl ⚙️" },
+    { title = "Thanks <font color=\"#ff00c3\">Tigerle 🐯</font>", subtitle = "<font color=\"#ff00c3\">Tigerle</font> for assisting with attached Shared Emotes ⚙️." },
+    { title = "Thanks <font color=\"#1C9369\">northsqrd ⚙️</font>", subtitle = "<font color=\"#1C9369\">northsqrd</font> for assisting with search feature and phone colours 🔎" },
+    { title = "Thanks <font color=\"#15BCEC\">GeekGarage 🤓</font>", subtitle = "<font color=\"#15BCEC\">GeekGarage</font> for assisting with code and features" },
 }

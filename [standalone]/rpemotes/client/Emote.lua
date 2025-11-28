@@ -15,6 +15,7 @@ local PtfxNotif = false
 local PtfxPrompt = false
 local AnimationThreadStatus = false
 local CheckStatus = false
+local CanCancel = true
 local InExitEmote = false
 local ExitAndPlay = false
 local EmoteCancelPlaying = false
@@ -68,7 +69,6 @@ end
 
 CreateThread(function()
     LocalPlayer.state:set('canEmote', true, true)
-    LocalPlayer.state:set('canCancel', true, true)
 end)
 
 local function runAnimationThread()
@@ -163,14 +163,14 @@ local function exitScenario()
 end
 
 function EmoteCancel(force)
-    if not LocalPlayer.state.canCancel and not force then return end
-
     LocalPlayer.state:set('currentEmote', nil, true)
     EmoteCancelPlaying = true
 
     if InExitEmote then
         return
     end
+
+    if not CanCancel and not force then return end
 
     exitScenario()
 
@@ -220,6 +220,11 @@ function EmoteCancel(force)
     cleanScenarioObjects(false)
     AnimationThreadStatus = false
     CheckStatus = false
+
+    local handsUp = exports['qbx_smallresources']:checkHands()
+    if not handsUP then
+        exports['qbx_smallresources']:lowerHands()
+    end
 end
 
 local function checkAnimalAndOnEmotePlay(name)
@@ -472,8 +477,6 @@ function EmoteCommandStart(args)
     if name == "c" then
         if IsInAnimation then
             EmoteCancel()
-        else
-            EmoteChatMessage(Translate('nocancel'))
         end
         return
     end
@@ -531,11 +534,15 @@ function DestroyAllProps(isClone)
     DebugPrint("Destroyed Props for " .. (isClone and "clone" or "player"))
 end
 
+RegisterNetEvent('animations:ToggleCanDoAnims', function(value)
+    LocalPlayer.state:set('canEmote', value, true)
+end)
+
 local function playExitAndEnterEmote(name, textureVariation)
-    if not LocalPlayer.state.canCancel then return end
     ExitAndPlay = true
     DebugPrint("Canceling previous emote and playing next emote")
     local ped = PlayerPedId()
+    if not CanCancel then return end
     exitScenario()
 
     PtfxNotif = false
@@ -676,7 +683,7 @@ function OnEmotePlay(name, textureVariation)
 
     if Config.DisarmPlayerOnEmote then
         if IsPedArmed(PlayerPedId(), 7) then
-            SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_UNARMED'), true)
+            TriggerEvent('ox_inventory:disarm', PlayerPedId(), true)
         end
     end
 
@@ -762,7 +769,7 @@ CreateExport("EmoteCommandStart", function(emoteName, textureVariation)
 end)
 CreateExport("EmoteCancel", EmoteCancel)
 CreateExport("CanCancelEmote", function(State)
-    error("CanCancelEmote is deprecated, use LocalPlayer.state:set('canCancel', State, true) instead")
+    CanCancel = State == true
 end)
 CreateExport('IsPlayerInAnim', function()
     return LocalPlayer.state.currentEmote

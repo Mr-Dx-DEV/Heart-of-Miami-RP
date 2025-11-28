@@ -22,18 +22,18 @@ RegisterCommand('e', function(source, args, raw) EmoteCommandStart(args) end, fa
 RegisterCommand('emote', function(source, args, raw) EmoteCommandStart(args) end, false)
 RegisterCommand('emotecancel', function() EmoteCancel() end, false)
 
-if Config.MenuKeybindEnabled then
+ if Config.MenuKeybindEnabled then
     RegisterCommand('emoteui', function() OpenEmoteMenu() end, false)
     RegisterKeyMapping("emoteui", Translate('register_open_menu'), "keyboard", Config.MenuKeybind)
 else
     RegisterCommand('emotemenu', function() OpenEmoteMenu() end, false)
 end
 
-if Config.EnableCancelKeybind then
+--[[ if Config.EnableCancelKeybind then
     RegisterKeyMapping("emotecancel", Translate('register_cancel_emote'), "keyboard", Config.CancelEmoteKey)
-end
+end ]]
 
--- BINDING EMOTES TO KEYS
+--[[-- BINDING EMOTES TO KEYS
 if Config.Keybinding then
     RegisterCommand('emotebind', function(source, args, raw) EmoteBindStart(source, args, raw) end, false)
     RegisterCommand('emotebinds', function(source, args, raw) ListKeybinds() end, false)
@@ -94,3 +94,4 @@ if Config.Keybinding then
         end
     end
 end
+ ]]
