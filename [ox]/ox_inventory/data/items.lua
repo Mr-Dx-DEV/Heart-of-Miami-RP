@@ -1,41 +1,419 @@
 return {
+     ["car_door"] = {label = "car door",weight = 100,stack = true,close = false,description = "",client = {	image = "car_door.png",}
+	},
+    ["car_wheel"] = {label = "car wheel",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_wheel.png",}
+	},
+    ["car_battery"] = {label = "car battery",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_battery.png",}
+	},
+    ["car_gearbox"] = {label = "car gearbox",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_gearbox.png",}
+	},
+    ["car_radiator"] = {label = "car radiator",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_radiator.png",}
+	},
+    ["car_scrap"] = {label = "car scrap",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_scrap.png",}
+	},
+    ["car_hood"] = {label = "car hood",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_hood.png",}
+	},
+    ["car_trunk"] = {label = "car trunk",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_trunk.png",}
+	},
+    ["chop_contract"] = {label = "chop_contract",weight = 100,stack = true,close = false,description = " :D",client = {	image = "chop_contract.png",}
+	},
+
+    ['laptop'] = {
+        label = 'Laptop',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = '',
+        buttons = {
+            {
+                label = "Devices",
+                action = function(slot)
+                    exports['av_laptop']:openContainer(slot)
+                end,
+            }
+        }
+    },
 
 
+    ['moonshine_still'] = {
+        label = 'Still',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['moonshine'] = {
+        label = 'Moonshine',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['fentanyl_table'] = {
+        label = 'Fentanyl Table',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+
+    ['fentanyl_batch'] = {
+        label = 'Fentanyl Batch',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+
+    ['fentanyl_baggy'] = {
+        label = 'Fentanyl Baggy',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['heroin_baggy'] = {
+        label = 'Heroin Baggy',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['ketamine_baggy'] = {
+        label = 'Ketamine Baggy',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['meth_baggy'] = {
+        label = 'Meth Baggy',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['coke_baggy'] = {
+        label = 'Coke Baggy',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['lsd_stamp'] = {
+        label = 'LSD Stamp',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['meth_key'] = {
+        label = 'Lab Key',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['coke_key'] = {
+        label = 'Lab Key',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['lsd_key'] = {
+        label = 'Lab Key',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['baggies'] = {
+        label = 'Baggies',
+        weight = 1,
+        stack = true,
+        close = false,
+        description = ''
+    },
+    ['meth_tray'] = {
+        label = 'Meth Tray',
+        weight = 1,
+        stack = false,
+        close = false,
+        description = ''
+    },
+    ['coke_tray'] = {
+        label = 'Coke Tray',
+        weight = 1,
+        stack = false,
+        close = false,
+        description = ''
+    },
+    ['lsd_sheet'] = {
+        label = 'LSD Sheet',
+        weight = 1,
+        stack = false,
+        close = false,
+        description = ''
+    },
+    ['pd_decrypter'] = {
+        label = 'PD Decrypter',
+        weight = 1,
+        stack = false,
+        close = false,
+        description = ''
+    },
+    ['dongle'] = {
+        label = 'USB Dongle',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['vpn'] = {
+        label = 'VPN',
+        weight = 1,
+        stack = true,
+        close = false,
+        description = ''
+    },
+    ['transponder'] = {
+        label = 'Transponder',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['hacking_device'] = {
+        label = 'Hacking Device',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['gopro'] = {
+        label = 'GoPro',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = 'A camera'
+    },
+    ['cam_jammer'] = {
+        label = 'Cam Jammer',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = 'Cam Jammer'
+    },
+    ['dongle'] = {
+        label = 'USB Dongle',
+        weight = 1,
+        stack = false,
+        close = true,
+        description = ''
+    },
+    ['vpn'] = {
+        label = 'VPN',
+        weight = 1,
+        stack = true,
+        close = false,
+        description = ''
+    },
+    ['transponder'] = {
+        label = 'Transponder',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+    ['hacking_device'] = {
+        label = 'Hacking Device',
+        weight = 1,
+        stack = true,
+        close = true,
+        description = ''
+    },
+
+
+    ['pina_colada'] = {
+        label = 'Pina colada',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+    ['blue_lagoon'] = {
+        label = 'Blue Lagoon',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+    ['caipirinha'] = {
+        label = 'Caipirinha',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+    ['mint'] = {
+        label = 'Mint',
+        weight = 10,
+        stack = true,
+        close = true
+    },
+    ['mai_tai'] = {
+        label = 'Mai Tai',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+    ['san_francisco'] = {
+        label = 'San Francisco',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+    ['mojito'] = {
+        label = 'Mojito',
+        weight = 175,
+        stack = true,
+        close = true
+    },
+    ['bar_beans'] = {
+        label = 'Beans in bowl',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+
+    ['bar_nuts'] = {
+        label = 'Nuts in bowl',
+        weight = 175,
+        stack = true,
+        close = true,
+    },
+    ['bar_bowl'] = {
+        label = 'Bowl',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+    ['bar_bowl_dirty'] = {
+        label = 'Dirty bowl',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+    ['beans'] = {
+        label = 'Beans',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+    ['nuts'] = {
+        label = 'Nuts',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+
+    ['ice'] = {
+        label = 'Ice',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+    ['coco_milk'] = {
+        label = 'Coco Milk',
+        weight = 100,
+        stack = true,
+        close = true,
+    },
+    ['lemon'] = {
+        label = 'Lemon',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+    ['lime'] = {
+        label = 'Lime',
+        weight = 10,
+        stack = true,
+        close = true,
+    },
+    ['glass_tall'] = {
+        label = 'Glass Tall',
+        weight = 50,
+        stack = true,
+        close = false,
+        consume = 0
+    },
+    ['glass_tall_dirty'] = {
+        label = 'Dirty Tall Glass',
+        weight = 50,
+        stack = true,
+        close = false,
+        consume = 0
+    },
+    ['rhum'] = {
+        label = 'Rhum',
+        description = 'Bagga rum - Original Dark',
+        weight = 500,
+        stack = true,
+        close = true,
+    },
+    ['vodka'] = {
+        label = 'Vodka',
+        description = 'Nogo vodka - 100%',
+        weight = 500,
+        stack = true,
+        close = true
+    },
+    ['sugar'] = {
+        label = 'Sugar',
+        weight = 5,
+        stack = true,
+        close = false
+    },
+    ['juice'] = {
+        label = 'Juice',
+        weight = 50,
+        stack = true,
+        close = false
+    },
 
 
 
     ['vehicle_manual'] = {
-    label = 'Vehicle manual',
-    weight = 50,
-    close = true,
-    consume = 0,
-    client = {},
-    server = {
-        export = 'rcore_fuel.vehicle_manual',
+        label = 'Vehicle manual',
+        weight = 50,
+        close = true,
+        consume = 0,
+        client = {},
+        server = {
+            export = 'rcore_fuel.vehicle_manual',
+        },
     },
-},
 
-['window_cleaner'] = {
-    label = 'windows cleaner',
-    weight = 50,
-    close = true,
-    consume = 0,
-    client = {},
-    server = {
-        export = 'rcore_fuel.window_cleaner',
+    ['window_cleaner'] = {
+        label = 'windows cleaner',
+        weight = 50,
+        close = true,
+        consume = 0,
+        client = {},
+        server = {
+            export = 'rcore_fuel.window_cleaner',
+        },
     },
-},
 
-['fuel_pump'] = {
-    label = 'Fuel pumper',
-    weight = 10000,
-    close = true,
-    consume = 0,
-    client = {},
-    server = {
-        export = 'rcore_fuel.fuel_pump',
+    ['fuel_pump'] = {
+        label = 'Fuel pumper',
+        weight = 10000,
+        close = true,
+        consume = 0,
+        client = {},
+        server = {
+            export = 'rcore_fuel.fuel_pump',
+        },
     },
-},
 
 
 
@@ -43,240 +421,240 @@ return {
 
 
     ['vehiclekeys'] = {
-	label = 'Vehicle Keys',
-	weight = 220,
-	stack = false,
-	close = true,
-	description = "Keys To A Car",
-},
+        label = 'Vehicle Keys',
+        weight = 220,
+        stack = false,
+        close = true,
+        description = "Keys To A Car",
+    },
 
-['keyring'] = {
-	label = 'Keyring',
-	weight = 220,
-	stack = false,
-	close = true,
-	description = "A keyring that holds car keys.",
-},
+    ['keyring'] = {
+        label = 'Keyring',
+        weight = 220,
+        stack = false,
+        close = true,
+        description = "A keyring that holds car keys.",
+    },
 
-['aftermarket_locks'] = {
-	label = 'Aftermarket Lock System',
-	weight = 220,
-	stack = false,
-	close = true,
-	description = "A locksystem to replace locks in a car.",
-},
+    ['aftermarket_locks'] = {
+        label = 'Aftermarket Lock System',
+        weight = 220,
+        stack = false,
+        close = true,
+        description = "A locksystem to replace locks in a car.",
+    },
 
-['lockpick'] = {
+    ['lockpick'] = {
         label = 'Lockpick',
         weight = 850,
         stack = true,
         close = true,
         description = "A mysterious device."
-},
+    },
 
-['advancedlockpick'] = {
+    ['advancedlockpick'] = {
         label = 'Advanced Lockpick',
         weight = 850,
         stack = true,
         close = true,
         description = "A upgraded mysterious device."
-},
+    },
 
 
 
 
     ['tvremote'] = {
-        label = 'TV Remote',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'TV Remote', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
     ['vehicletv'] = {
-        label = 'TV Remote',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'TV Remote', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ["molly"] = {
-    label = "Molly",
-    weight = 1000,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Molly pill",
-    client = {
-        image = "molly.png",
-    }
-},
+        label = "Molly",
+        weight = 1000,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Molly pill",
+        client = {
+            image = "molly.png",
+        }
+    },
 
-["lean"] = {
-    label = "Lean",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Bottle of Lean",
-    client = {
-        image = "lean.png",
-    }
-},
+    ["lean"] = {
+        label = "Lean",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Bottle of Lean",
+        client = {
+            image = "lean.png",
+        }
+    },
 
-["xanax"] = {
-    label = "Xanax",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Xanax pill",
-    client = {
-        image = "xanax.png",
-    }
-},
+    ["xanax"] = {
+        label = "Xanax",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Xanax pill",
+        client = {
+            image = "xanax.png",
+        }
+    },
 
-["hoc_tabs"] = {
-    label = "Hoc Tabs",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Hoc Tabs",
-    client = {
-        image = "hoc_tabs.png",
-    }
-},
+    ["hoc_tabs"] = {
+        label = "Hoc Tabs",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Hoc Tabs",
+        client = {
+            image = "hoc_tabs.png",
+        }
+    },
 
-["adderall"] = {
-    label = "Adderall",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Adderall pill",
-    client = {
-        image = "adderall.png",
-    }
-},
+    ["adderall"] = {
+        label = "Adderall",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Adderall pill",
+        client = {
+            image = "adderall.png",
+        }
+    },
 
-["sexy_pink_pill"] = {
-    label = "Sexy Pink Pill",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Sexy Pink Pill",
-    client = {
-        image = "sexy_pink_pill.png",
-    }
-},
+    ["sexy_pink_pill"] = {
+        label = "Sexy Pink Pill",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Sexy Pink Pill",
+        client = {
+            image = "sexy_pink_pill.png",
+        }
+    },
 
-["honey_packs"] = {
-    label = "Honey Packs",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Honey Packs",
-    client = {
-        image = "honey_packs.png",
-    }
-},
+    ["honey_packs"] = {
+        label = "Honey Packs",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Honey Packs",
+        client = {
+            image = "honey_packs.png",
+        }
+    },
 
-["hydrocodone"] = {
-    label = "Hydrocodone",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Hydrocodone pill",
-    client = {
-        image = "hydrocodone.png",
-    }
-},
+    ["hydrocodone"] = {
+        label = "Hydrocodone",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Hydrocodone pill",
+        client = {
+            image = "hydrocodone.png",
+        }
+    },
 
-["love_syrup"] = {
-    label = "Love Syrup",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Bottle of Love Syrup",
-    client = {
-        image = "love_syrup.png",
-    }
-},
+    ["love_syrup"] = {
+        label = "Love Syrup",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Bottle of Love Syrup",
+        client = {
+            image = "love_syrup.png",
+        }
+    },
 
-["rhino_pill"] = {
-    label = "Rhino Pill",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Rhino Pill",
-    client = {
-        image = "rhino_pill.png",
-    }
-},
+    ["rhino_pill"] = {
+        label = "Rhino Pill",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Rhino Pill",
+        client = {
+            image = "rhino_pill.png",
+        }
+    },
 
-["blue_potion"] = {
-    label = "Blue Potion",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Magical Blue Potion",
-    client = {
-        image = "blue_potion.png",
-    }
-},
+    ["blue_potion"] = {
+        label = "Blue Potion",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Magical Blue Potion",
+        client = {
+            image = "blue_potion.png",
+        }
+    },
 
-["sugar_rush"] = {
-    label = "Sugar Rush",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Sugar Rush candy",
-    client = {
-        image = "sugar_rush.png",
-    }
-},
+    ["sugar_rush"] = {
+        label = "Sugar Rush",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Sugar Rush candy",
+        client = {
+            image = "sugar_rush.png",
+        }
+    },
 
-["devils_breath"] = {
-    label = "Devil’s Breath",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Deadly Devil’s Breath",
-    client = {
-        image = "devils_breath.png",
-    }
-},
+    ["devils_breath"] = {
+        label = "Devil’s Breath",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Deadly Devil’s Breath",
+        client = {
+            image = "devils_breath.png",
+        }
+    },
 
-["purple_wock"] = {
-    label = "Purple Wock",
-    weight = 100,
-    degrade = 10080,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "Purple Wock",
-    client = {
-        image = "purple_wock.png",
-    }
-},
+    ["purple_wock"] = {
+        label = "Purple Wock",
+        weight = 100,
+        degrade = 10080,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "Purple Wock",
+        client = {
+            image = "purple_wock.png",
+        }
+    },
 
 
     ['spray'] = {
@@ -290,144 +668,144 @@ return {
         server = {
             export = 'rcore_spray.spray',
         },
-	},
-	['spray_remover'] = {
-		label = 'Spray Remover',
-		weight = 250,
+    },
+    ['spray_remover'] = {
+        label = 'Spray Remover',
+        weight = 250,
         degrade = 1440,
         decay = true,
-		close = true,
-		consume = 0,
-		client = {},
-		server = {
-			export = 'rcore_spray.spray_remover',
-		},
-	},
+        close = true,
+        consume = 0,
+        client = {},
+        server = {
+            export = 'rcore_spray.spray_remover',
+        },
+    },
 
     ["watermelonmojito"] = {
-    label = "Watermelon Mojito",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "watermelonmojito.png",
-    }
-},
+        label = "Watermelon Mojito",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "watermelonmojito.png",
+        }
+    },
 
-["hotchocolate"] = {
-    label = "Hot Chocolate",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "hotchocolate.png",
-    }
-},
+    ["hotchocolate"] = {
+        label = "Hot Chocolate",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "hotchocolate.png",
+        }
+    },
 
-["aguafresca"] = {
-    label = "Agua Fresca",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "aguafresca.png",
-    }
-},
-["treslechescake"] = {
-    label = "Tres Leches Cake",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "treslechescake.png",
-    }
-},
-["hoodrona"] = {
-    label = "Hoodrona",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "hoodrona.png",
-    }
-},
-["burrlight"] = {
-    label = "Burrlight",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "burrlight.png",
-    }
-},
-["horchata"] = {
-    label = "Horchata",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "horchata.png",
-    }
-},
-["cok"] = {
-    label = "Cok",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "cok.png",
-    }
-},
-["dietcok"] = {
-    label = "Diet Cok",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "dietcok.png",
-    }
-},
+    ["aguafresca"] = {
+        label = "Agua Fresca",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "aguafresca.png",
+        }
+    },
+    ["treslechescake"] = {
+        label = "Tres Leches Cake",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "treslechescake.png",
+        }
+    },
+    ["hoodrona"] = {
+        label = "Hoodrona",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "hoodrona.png",
+        }
+    },
+    ["burrlight"] = {
+        label = "Burrlight",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "burrlight.png",
+        }
+    },
+    ["horchata"] = {
+        label = "Horchata",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "horchata.png",
+        }
+    },
+    ["cok"] = {
+        label = "Cok",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "cok.png",
+        }
+    },
+    ["dietcok"] = {
+        label = "Diet Cok",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "dietcok.png",
+        }
+    },
 
 
     ['bzzz_mexicanfood_burrito_a'] = {
         label = 'Burrito',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         decay = true,
         weight = 300,
         stack = true,
@@ -436,18 +814,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_burrito_a',
-            pos = vec3(0.07, 0.01, -0.05),
-            rot = vec3(-150.0, -50.0, 70.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_burrito_a',
+                pos = vec3(0.07, 0.01, -0.05),
+                rot = vec3(-150.0, -50.0, 70.0)
+            },
+            bone = 60309,
             usetime = 7500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_caldoderes_a'] = {
+    ['bzzz_mexicanfood_caldoderes_a'] = {
         label = 'Caldo de Res',
-		degrade = 1440,-- 24 hours
+        degrade = 1440, -- 24 hours
         decay = true,
         weight = 500,
         stack = true,
@@ -457,24 +837,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_caldoderes_a',
-			bone = 60309,
-            pos = vec3(0.08, 0.01, 0.07),
-            rot = vec3(-30.0, 0.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_caldoderes_a',
+                bone = 60309,
+                pos = vec3(0.08, 0.01, 0.07),
+                rot = vec3(-30.0, 0.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_pozole_b',
-			bone = 28422,
-            pos = vec3(0.09, 0.03, -0.05),
-            rot = vec3(-90.0, 150.0, -30.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_pozole_b',
+                bone = 28422,
+                pos = vec3(0.09, 0.03, -0.05),
+                rot = vec3(-90.0, 150.0, -30.0)
+            },
 
             usetime = 9500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_camotes_a'] = {
+    ['bzzz_mexicanfood_camotes_a'] = {
         label = 'Camotes',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 400,
         stack = false,
         close = true,
@@ -483,24 +867,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_camotes_a',
-			bone = 60309,
-            pos = vec3(0.08, -0.03, 0.07),
-            rot = vec3(-30.0, 10.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_camotes_a',
+                bone = 60309,
+                pos = vec3(0.08, -0.03, 0.07),
+                rot = vec3(-30.0, 10.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_camotes_b',
-			bone = 28422,
-            pos = vec3(0.08, 0.04, -0.05),
-            rot = vec3(-90.0, -20.0, -10.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_camotes_b',
+                bone = 28422,
+                pos = vec3(0.08, 0.04, -0.05),
+                rot = vec3(-90.0, -20.0, -10.0)
+            },
 
             usetime = 7500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_ceviche_a'] = {
+    ['bzzz_mexicanfood_ceviche_a'] = {
         label = 'Ceviche',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 500,
         stack = false,
         close = true,
@@ -509,24 +897,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_ceviche_a',
-			bone = 60309,
-            pos = vec3(0.08, 0.01, 0.07),
-            rot = vec3(-30.0, 0.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_ceviche_a',
+                bone = 60309,
+                pos = vec3(0.08, 0.01, 0.07),
+                rot = vec3(-30.0, 0.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_ceviche_b',
-			bone = 28422,
-            pos = vec3(0.08, 0.04, -0.05),
-            rot = vec3(-90.0, -20.0, -10.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_ceviche_b',
+                bone = 28422,
+                pos = vec3(0.08, 0.04, -0.05),
+                rot = vec3(-90.0, -20.0, -10.0)
+            },
 
             usetime = 9500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_chilaquiles_a'] = {
+    ['bzzz_mexicanfood_chilaquiles_a'] = {
         label = 'Chilaquiles',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 400,
         stack = false,
         close = true,
@@ -535,24 +927,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_chilaquiles_a',
-			bone = 60309,
-            pos = vec3(0.08, -0.03, 0.07),
-            rot = vec3(-30.0, 10.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_chilaquiles_a',
+                bone = 60309,
+                pos = vec3(0.08, -0.03, 0.07),
+                rot = vec3(-30.0, 10.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_chilaquiles_b',
-			bone = 28422,
-            pos = vec3(0.08, 0.04, -0.05),
-            rot = vec3(-90.0, -20.0, -10.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_chilaquiles_b',
+                bone = 28422,
+                pos = vec3(0.08, 0.04, -0.05),
+                rot = vec3(-90.0, -20.0, -10.0)
+            },
 
             usetime = 5500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_elote_a'] = {
+    ['bzzz_mexicanfood_elote_a'] = {
         label = 'Elote',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         decay = true,
         weight = 200,
         stack = true,
@@ -561,18 +957,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_elote_a',
-            pos = vec3(-0.03, 0.0, -0.01),
-            rot = vec3(2.0, 6.0, 86.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_elote_a',
+                pos = vec3(-0.03, 0.0, -0.01),
+                rot = vec3(2.0, 6.0, 86.0)
+            },
+            bone = 60309,
             usetime = 5000,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_enchiladas_a'] = {
+    ['bzzz_mexicanfood_enchiladas_a'] = {
         label = 'Enchilada',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 200,
         stack = false,
         close = true,
@@ -580,18 +978,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_enchiladas_a',
-            pos = vec3(-0.03, 0.0, -0.01),
-            rot = vec3(2.0, 6.0, 86.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_enchiladas_a',
+                pos = vec3(-0.03, 0.0, -0.01),
+                rot = vec3(2.0, 6.0, 86.0)
+            },
+            bone = 60309,
             usetime = 5000,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_fajitas_a'] = {
+    ['bzzz_mexicanfood_fajitas_a'] = {
         label = 'Fajita',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 200,
         stack = false,
         close = true,
@@ -599,18 +999,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_fajitas_a',
-            pos = vec3(-0.03, 0.0, -0.01),
-            rot = vec3(2.0, 6.0, 86.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_fajitas_a',
+                pos = vec3(-0.03, 0.0, -0.01),
+                rot = vec3(2.0, 6.0, 86.0)
+            },
+            bone = 60309,
             usetime = 5000,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_flan_a'] = {
+    ['bzzz_mexicanfood_flan_a'] = {
         label = 'Flan',
-		degrade = 1440,-- 24 hours
+        degrade = 1440, -- 24 hours
         decay = true,
         weight = 100,
         stack = true,
@@ -620,24 +1022,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_flan_a',
-			bone = 60309,
-            pos = vec3(0.05, -0.01, 0.05),
-            rot = vec3(-30.0, 10.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_flan_a',
+                bone = 60309,
+                pos = vec3(0.05, -0.01, 0.05),
+                rot = vec3(-30.0, 10.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_flan_b',
-			bone = 28422,
-            pos = vec3(0.08, 0.04, -0.05),
-            rot = vec3(-90.0, -20.0, -10.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_flan_b',
+                bone = 28422,
+                pos = vec3(0.08, 0.04, -0.05),
+                rot = vec3(-90.0, -20.0, -10.0)
+            },
 
             usetime = 4500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_gorditas_a'] = {
+    ['bzzz_mexicanfood_gorditas_a'] = {
         label = 'Gordita',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 200,
         stack = false,
         close = true,
@@ -645,18 +1051,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_gorditas_a',
-            pos = vec3(-0.01, 0.01, -0.01),
-            rot = vec3(-68.0, -44.0, 76.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_gorditas_a',
+                pos = vec3(-0.01, 0.01, -0.01),
+                rot = vec3(-68.0, -44.0, 76.0)
+            },
+            bone = 60309,
             usetime = 4000,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_guacamole_a'] = {
+    ['bzzz_mexicanfood_guacamole_a'] = {
         label = 'Guacamole',
-		degrade = 1440,-- 24 hours
+        degrade = 1440, -- 24 hours
         decay = true,
         weight = 200,
         stack = true,
@@ -666,24 +1074,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_guacamole_a',
-			bone = 60309,
-            pos = vec3(0.08, 0.01, 0.05),
-            rot = vec3(-30.0, 10.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_guacamole_a',
+                bone = 60309,
+                pos = vec3(0.08, 0.01, 0.05),
+                rot = vec3(-30.0, 10.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_guacamole_b',
-			bone = 28422,
-            pos = vec3(0.1, 0.06, -0.03),
-            rot = vec3(-78.0, -44.0, 76.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_guacamole_b',
+                bone = 28422,
+                pos = vec3(0.1, 0.06, -0.03),
+                rot = vec3(-78.0, -44.0, 76.0)
+            },
 
             usetime = 5500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_menudo_a'] = {
+    ['bzzz_mexicanfood_menudo_a'] = {
         label = 'Menudo',
-        degrade = 1440,-- 24 hours
+        degrade = 1440, -- 24 hours
         decay = true,
         weight = 100,
         stack = true,
@@ -693,24 +1105,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_menudo_a',
-			bone = 60309,
-            pos = vec3(0.08, 0.01, 0.07),
-            rot = vec3(-30.0, 0.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_menudo_a',
+                bone = 60309,
+                pos = vec3(0.08, 0.01, 0.07),
+                rot = vec3(-30.0, 0.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_pozole_b',
-			bone = 28422,
-            pos = vec3(0.09, 0.03, -0.05),
-            rot = vec3(-90.0, 150.0, -30.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_pozole_b',
+                bone = 28422,
+                pos = vec3(0.09, 0.03, -0.05),
+                rot = vec3(-90.0, 150.0, -30.0)
+            },
 
             usetime = 9500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_quesadilla_a'] = {
+    ['bzzz_mexicanfood_quesadilla_a'] = {
         label = 'Quesadilla',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         decay = true,
         weight = 300,
         stack = true,
@@ -719,18 +1135,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_quesadilla_a',
-            pos = vec3(-0.01, -0.03, -0.05),
-            rot = vec3(-50.0, -150.0, 0.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_quesadilla_a',
+                pos = vec3(-0.01, -0.03, -0.05),
+                rot = vec3(-50.0, -150.0, 0.0)
+            },
+            bone = 60309,
             usetime = 5000,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_sopes_a'] = {
+    ['bzzz_mexicanfood_sopes_a'] = {
         label = 'Sope',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         decay = true,
         weight = 100,
         stack = true,
@@ -739,18 +1157,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_sopes_a',
-            pos = vec3(-0.02, -0.02, -0.02),
-            rot = vec3(42.0, -47.0, 46.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_sopes_a',
+                pos = vec3(-0.02, -0.02, -0.02),
+                rot = vec3(42.0, -47.0, 46.0)
+            },
+            bone = 60309,
             usetime = 5000,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_taco_a'] = {
+    ['bzzz_mexicanfood_taco_a'] = {
         label = 'Taco',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         decay = true,
         weight = 300,
         stack = true,
@@ -759,18 +1179,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_taco_a',
-            pos = vec3(0.00, -0.01, -0.02),
-            rot = vec3(20.0, -50.0, 70.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_taco_a',
+                pos = vec3(0.00, -0.01, -0.02),
+                rot = vec3(20.0, -50.0, 70.0)
+            },
+            bone = 60309,
             usetime = 5500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_tortas_a'] = {
+    ['bzzz_mexicanfood_tortas_a'] = {
         label = 'Torta',
-		degrade = 1440,-- 24 hours
+        degrade = 1440, -- 24 hours
         decay = true,
         weight = 300,
         stack = true,
@@ -779,18 +1201,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_tortas_a',
-            pos = vec3(0.00, -0.01, -0.02),
-            rot = vec3(20.0, -50.0, 70.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_tortas_a',
+                pos = vec3(0.00, -0.01, -0.02),
+                rot = vec3(20.0, -50.0, 70.0)
+            },
+            bone = 60309,
             usetime = 5500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_chilesrellenos_a'] = {
+    ['bzzz_mexicanfood_chilesrellenos_a'] = {
         label = 'Chille Relleno',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 300,
         stack = false,
         close = true,
@@ -798,18 +1222,20 @@ return {
         client = {
             status = { hunger = 500000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = 'bzzz_mexicanfood_chilesrellenos_a',
-            pos = vec3(0.00, -0.01, -0.02),
-            rot = vec3(20.0, -50.0, 70.0) },
-			bone = 60309,
+            prop = {
+                model = 'bzzz_mexicanfood_chilesrellenos_a',
+                pos = vec3(0.00, -0.01, -0.02),
+                rot = vec3(20.0, -50.0, 70.0)
+            },
+            bone = 60309,
             usetime = 5500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_picodegallo_a'] = {
+    ['bzzz_mexicanfood_picodegallo_a'] = {
         label = 'Pico de Gallo',
-		degrade = 1440,-- 48 hours
+        degrade = 1440, -- 48 hours
         weight = 400,
         stack = false,
         close = true,
@@ -818,24 +1244,28 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_picodegallo_a',
-			bone = 60309,
-            pos = vec3(0.08, 0.01, 0.07),
-            rot = vec3(-30.0, 0.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_picodegallo_a',
+                bone = 60309,
+                pos = vec3(0.08, 0.01, 0.07),
+                rot = vec3(-30.0, 0.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_ceviche_b',
-			bone = 28422,
-            pos = vec3(0.08, 0.04, -0.05),
-            rot = vec3(-90.0, -20.0, -10.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_ceviche_b',
+                bone = 28422,
+                pos = vec3(0.08, 0.04, -0.05),
+                rot = vec3(-90.0, -20.0, -10.0)
+            },
 
             usetime = 7500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
-	['bzzz_mexicanfood_pozole_a'] = {
+    ['bzzz_mexicanfood_pozole_a'] = {
         label = 'Pozole',
-		degrade = 1440,-- 24 hours
+        degrade = 1440, -- 24 hours
         decay = true,
         weight = 500,
         stack = true,
@@ -845,18 +1275,22 @@ return {
             status = { hunger = 500000 },
             anim = { dict = 'bzzz@mfood@anim', clip = 'bzzz_mexican' },
 
-			prop = { model = 'bzzz_mexicanfood_pozole_a',
-			bone = 60309,
-            pos = vec3(0.08, 0.01, 0.07),
-            rot = vec3(-30.0, 0.0, 0.0) },
+            prop = {
+                model = 'bzzz_mexicanfood_pozole_a',
+                bone = 60309,
+                pos = vec3(0.08, 0.01, 0.07),
+                rot = vec3(-30.0, 0.0, 0.0)
+            },
 
-			propTwo = { model = 'bzzz_mexicanfood_pozole_b',
-			bone = 28422,
-            pos = vec3(0.09, 0.03, -0.05),
-            rot = vec3(-90.0, 150.0, -30.0) },
+            propTwo = {
+                model = 'bzzz_mexicanfood_pozole_b',
+                bone = 28422,
+                pos = vec3(0.09, 0.03, -0.05),
+                rot = vec3(-90.0, 150.0, -30.0)
+            },
 
             usetime = 9500,
-			notification = 'You have satisfied your hunger'
+            notification = 'You have satisfied your hunger'
         },
     },
 
@@ -901,1950 +1335,1973 @@ return {
     },
 
     ["starter_packf"] = {
-		label = "Female Gift Pack",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A Box containing gift for a female.",
-		client = {
-			image = "starter_packf.png",
-		}
-	},
+        label = "Female Gift Pack",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A Box containing gift for a female.",
+        client = {
+            image = "starter_packf.png",
+        }
+    },
 
     ["hp_wineglass"] = {
-		label = "Wine Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean wine glass, ready to be filled.",
-		client = {
-			image = "hp_wineglass.png",
-		}
-	},
+        label = "Wine Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean wine glass, ready to be filled.",
+        client = {
+            image = "hp_wineglass.png",
+        }
+    },
 
-	["hp_pinacolada"] = {
-		label = "Piña Colada",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A creamy tropical cocktail with pineapple and coconut.",
-		client = {
-			image = "hp_pinacolada.png",
-		}
-	},
+    ["hp_pinacolada"] = {
+        label = "Piña Colada",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A creamy tropical cocktail with pineapple and coconut.",
+        client = {
+            image = "hp_pinacolada.png",
+        }
+    },
 
-	["hp_whiskeysour"] = {
-		label = "Whiskey Sour",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A classic cocktail made with whiskey, lemon juice, and sugar.",
-		client = {
-			image = "hp_whiskeysour.png",
-		}
-	},
+    ["hp_whiskeysour"] = {
+        label = "Whiskey Sour",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A classic cocktail made with whiskey, lemon juice, and sugar.",
+        client = {
+            image = "hp_whiskeysour.png",
+        }
+    },
 
-	["hp_jalapenos"] = {
-		label = "Jalapeños",
-		weight = 60,
-		stack = true,
-		close = true,
-		description = "Sliced jalapeños for a spicy kick.",
-		client = {
-			image = "hp_jalapenos.png",
-		}
-	},
+    ["hp_jalapenos"] = {
+        label = "Jalapeños",
+        weight = 60,
+        stack = true,
+        close = true,
+        description = "Sliced jalapeños for a spicy kick.",
+        client = {
+            image = "hp_jalapenos.png",
+        }
+    },
 
-	["hp_lettuce"] = {
-		label = "Lettuce",
-		weight = 60,
-		stack = true,
-		close = true,
-		description = "Fresh lettuce leaves, great for salads or sandwiches.",
-		client = {
-			image = "hp_lettuce.png",
-		}
-	},
+    ["hp_lettuce"] = {
+        label = "Lettuce",
+        weight = 60,
+        stack = true,
+        close = true,
+        description = "Fresh lettuce leaves, great for salads or sandwiches.",
+        client = {
+            image = "hp_lettuce.png",
+        }
+    },
 
-	["hp_pineappleslice"] = {
-		label = "Pineapple Slice",
-		weight = 30,
-		stack = true,
-		close = true,
-		description = "A sweet slice of pineapple, great for drinks or snacks.",
-		client = {
-			image = "hp_pineappleslice.png",
-		}
-	},
+    ["hp_pineappleslice"] = {
+        label = "Pineapple Slice",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "A sweet slice of pineapple, great for drinks or snacks.",
+        client = {
+            image = "hp_pineappleslice.png",
+        }
+    },
 
-	["hp_chickenwings"] = {
-		label = "Chicken Wings",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Spicy and delicious chicken wings.",
-		client = {
-			image = "hp_chickenwings.png",
-		}
-	},
+    ["hp_chickenwings"] = {
+        label = "Chicken Wings",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Spicy and delicious chicken wings.",
+        client = {
+            image = "hp_chickenwings.png",
+        }
+    },
 
-	["hp_islandicedtea"] = {
-		label = "Island Iced Tea",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A tropical twist on a classic iced tea cocktail.",
-		client = {
-			image = "hp_islandicedtea.png",
-		}
-	},
+    ["hp_islandicedtea"] = {
+        label = "Island Iced Tea",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A tropical twist on a classic iced tea cocktail.",
+        client = {
+            image = "hp_islandicedtea.png",
+        }
+    },
 
-	["hp_cosmopolitan"] = {
-		label = "Cosmopolitan",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A stylish pink cocktail with a citrus twist.",
-		client = {
-			image = "hp_cosmopolitan.png",
-		}
-	},
+    ["hp_cosmopolitan"] = {
+        label = "Cosmopolitan",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A stylish pink cocktail with a citrus twist.",
+        client = {
+            image = "hp_cosmopolitan.png",
+        }
+    },
 
-	["hp_plate"] = {
-		label = "Clean Plate",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A clean plate, ready to serve food.",
-		client = {
-			image = "hp_plate.png",
-		}
-	},
+    ["hp_plate"] = {
+        label = "Clean Plate",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A clean plate, ready to serve food.",
+        client = {
+            image = "hp_plate.png",
+        }
+    },
 
-	["hp_oldfashioned"] = {
-		label = "Old Fashioned",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A strong whiskey cocktail with bitters and sugar.",
-		client = {
-			image = "hp_oldfashioned.png",
-		}
-	},
+    ["hp_oldfashioned"] = {
+        label = "Old Fashioned",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A strong whiskey cocktail with bitters and sugar.",
+        client = {
+            image = "hp_oldfashioned.png",
+        }
+    },
 
-	["hp_sliders"] = {
-		label = "Sliders",
-		weight = 220,
-		stack = true,
-		close = true,
-		description = "Mini burgers served as a snack or appetizer.",
-		client = {
-			image = "hp_sliders.png",
-		}
-	},
+    ["hp_sliders"] = {
+        label = "Sliders",
+        weight = 220,
+        stack = true,
+        close = true,
+        description = "Mini burgers served as a snack or appetizer.",
+        client = {
+            image = "hp_sliders.png",
+        }
+    },
 
-	["hp_pork"] = {
-		label = "Raw Pork",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "Raw pork meat, needs to be cooked.",
-		client = {
-			image = "hp_pork.png",
-		}
-	},
+    ["hp_pork"] = {
+        label = "Raw Pork",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "Raw pork meat, needs to be cooked.",
+        client = {
+            image = "hp_pork.png",
+        }
+    },
 
-	["hp_cheeseslice"] = {
-		label = "Cheese Slice",
-		weight = 40,
-		stack = true,
-		close = true,
-		description = "A slice of cheese, perfect for burgers and sandwiches.",
-		client = {
-			image = "hp_cheeseslice.png",
-		}
-	},
+    ["hp_cheeseslice"] = {
+        label = "Cheese Slice",
+        weight = 40,
+        stack = true,
+        close = true,
+        description = "A slice of cheese, perfect for burgers and sandwiches.",
+        client = {
+            image = "hp_cheeseslice.png",
+        }
+    },
 
-	["hp_ice"] = {
-		label = "Ice Cubes",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Cold ice cubes for chilling drinks.",
-		client = {
-			image = "hp_ice.png",
-		}
-	},
+    ["hp_ice"] = {
+        label = "Ice Cubes",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "Cold ice cubes for chilling drinks.",
+        client = {
+            image = "hp_ice.png",
+        }
+    },
 
-	["hp_salt"] = {
-		label = "Salt",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "A pinch of salt to season your food.",
-		client = {
-			image = "hp_salt.png",
-		}
-	},
+    ["hp_salt"] = {
+        label = "Salt",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "A pinch of salt to season your food.",
+        client = {
+            image = "hp_salt.png",
+        }
+    },
 
-	["hp_burgerbun"] = {
-		label = "Burger Bun",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A soft bun, perfect for a burger.",
-		client = {
-			image = "hp_burgerbun.png",
-		}
-	},
+    ["hp_burgerbun"] = {
+        label = "Burger Bun",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A soft bun, perfect for a burger.",
+        client = {
+            image = "hp_burgerbun.png",
+        }
+    },
 
-	["hp_chives"] = {
-		label = "Chives",
-		weight = 30,
-		stack = true,
-		close = true,
-		description = "Fresh chives for garnishing and flavor.",
-		client = {
-			image = "hp_chives.png",
-		}
-	},
+    ["hp_chives"] = {
+        label = "Chives",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "Fresh chives for garnishing and flavor.",
+        client = {
+            image = "hp_chives.png",
+        }
+    },
 
-	["hp_maitai"] = {
-		label = "Mai Tai",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A fruity rum cocktail with tropical vibes.",
-		client = {
-			image = "hp_maitai.png",
-		}
-	},
+    ["hp_maitai"] = {
+        label = "Mai Tai",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A fruity rum cocktail with tropical vibes.",
+        client = {
+            image = "hp_maitai.png",
+        }
+    },
 
-	["hp_darkandstormy"] = {
-		label = "Dark and Stormy",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A bold cocktail with dark rum and ginger beer.",
-		client = {
-			image = "hp_darkandstormy.png",
-		}
-	},
+    ["hp_darkandstormy"] = {
+        label = "Dark and Stormy",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A bold cocktail with dark rum and ginger beer.",
+        client = {
+            image = "hp_darkandstormy.png",
+        }
+    },
 
-	["hp_beefpatty"] = {
-		label = "Beef Patty",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A seasoned beef patty, ready to cook.",
-		client = {
-			image = "hp_beefpatty.png",
-		}
-	},
+    ["hp_beefpatty"] = {
+        label = "Beef Patty",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A seasoned beef patty, ready to cook.",
+        client = {
+            image = "hp_beefpatty.png",
+        }
+    },
 
-	["hp_loadedpotatoskins"] = {
-		label = "Loaded Potato Skins",
-		weight = 220,
-		stack = true,
-		close = true,
-		description = "Potato skins filled with cheese, bacon, and more.",
-		client = {
-			image = "hp_loadedpotatoskins.png",
-		}
-	},
+    ["hp_loadedpotatoskins"] = {
+        label = "Loaded Potato Skins",
+        weight = 220,
+        stack = true,
+        close = true,
+        description = "Potato skins filled with cheese, bacon, and more.",
+        client = {
+            image = "hp_loadedpotatoskins.png",
+        }
+    },
 
-	["hp_lemonslice"] = {
-		label = "Lemon Slice",
-		weight = 20,
-		stack = true,
-		close = true,
-		description = "A slice of lemon to garnish your drink or dish.",
-		client = {
-			image = "hp_lemonslice.png",
-		}
-	},
+    ["hp_lemonslice"] = {
+        label = "Lemon Slice",
+        weight = 20,
+        stack = true,
+        close = true,
+        description = "A slice of lemon to garnish your drink or dish.",
+        client = {
+            image = "hp_lemonslice.png",
+        }
+    },
 
-	["hp_flour"] = {
-		label = "Flour",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A bag of flour used in baking and cooking.",
-		client = {
-			image = "hp_flour.png",
-		}
-	},
+    ["hp_flour"] = {
+        label = "Flour",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A bag of flour used in baking and cooking.",
+        client = {
+            image = "hp_flour.png",
+        }
+    },
 
-	["hp_dirtyglass"] = {
-		label = "Dirty Glass",
-		weight = 120,
-		stack = true,
-		close = true,
-		description = "A glass that needs to be cleaned before use.",
-		client = {
-			image = "hp_dirtyglass.png",
-		}
-	},
+    ["hp_dirtyglass"] = {
+        label = "Dirty Glass",
+        weight = 120,
+        stack = true,
+        close = true,
+        description = "A glass that needs to be cleaned before use.",
+        client = {
+            image = "hp_dirtyglass.png",
+        }
+    },
 
-	["hp_ginandtonic"] = {
-		label = "Gin and Tonic",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A refreshing mix of gin and tonic water.",
-		client = {
-			image = "hp_ginandtonic.png",
-		}
-	},
+    ["hp_ginandtonic"] = {
+        label = "Gin and Tonic",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A refreshing mix of gin and tonic water.",
+        client = {
+            image = "hp_ginandtonic.png",
+        }
+    },
 
-	["hp_cherry"] = {
-		label = "Cherry",
-		weight = 20,
-		stack = true,
-		close = true,
-		description = "A sweet and juicy cherry.",
-		client = {
-			image = "hp_cherry.png",
-		}
-	},
+    ["hp_cherry"] = {
+        label = "Cherry",
+        weight = 20,
+        stack = true,
+        close = true,
+        description = "A sweet and juicy cherry.",
+        client = {
+            image = "hp_cherry.png",
+        }
+    },
 
-	["hp_cheesecubes"] = {
-		label = "Cheese Cubes",
-		weight = 80,
-		stack = true,
-		close = true,
-		description = "Small cubes of cheese for snacking.",
-		client = {
-			image = "hp_cheesecubes.png",
-		}
-	},
+    ["hp_cheesecubes"] = {
+        label = "Cheese Cubes",
+        weight = 80,
+        stack = true,
+        close = true,
+        description = "Small cubes of cheese for snacking.",
+        client = {
+            image = "hp_cheesecubes.png",
+        }
+    },
 
-	["hp_classicmargarita"] = {
-		label = "Classic Margarita",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A zesty cocktail made with tequila and lime.",
-		client = {
-			image = "hp_classicmargarita.png",
-		}
-	},
+    ["hp_classicmargarita"] = {
+        label = "Classic Margarita",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A zesty cocktail made with tequila and lime.",
+        client = {
+            image = "hp_classicmargarita.png",
+        }
+    },
 
-	["hp_fish"] = {
-		label = "Raw Fish",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A fresh catch, ready to be cooked.",
-		client = {
-			image = "hp_fish.png",
-		}
-	},
+    ["hp_fish"] = {
+        label = "Raw Fish",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A fresh catch, ready to be cooked.",
+        client = {
+            image = "hp_fish.png",
+        }
+    },
 
-	["hp_mint"] = {
-		label = "Mint Leaves",
-		weight = 30,
-		stack = true,
-		close = true,
-		description = "Fresh mint leaves for garnish or flavor.",
-		client = {
-			image = "hp_mint.png",
-		}
-	},
+    ["hp_mint"] = {
+        label = "Mint Leaves",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "Fresh mint leaves for garnish or flavor.",
+        client = {
+            image = "hp_mint.png",
+        }
+    },
 
-	["hp_potato"] = {
-		label = "Potato",
-		weight = 120,
-		stack = true,
-		close = true,
-		description = "A raw potato, good for frying or baking.",
-		client = {
-			image = "hp_potato.png",
-		}
-	},
+    ["hp_potato"] = {
+        label = "Potato",
+        weight = 120,
+        stack = true,
+        close = true,
+        description = "A raw potato, good for frying or baking.",
+        client = {
+            image = "hp_potato.png",
+        }
+    },
 
-	["hp_tequilasunrise"] = {
-		label = "Tequila Sunrise",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A colorful tequila cocktail with orange juice and grenadine.",
-		client = {
-			image = "hp_tequilasunrise.png",
-		}
-	},
+    ["hp_tequilasunrise"] = {
+        label = "Tequila Sunrise",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A colorful tequila cocktail with orange juice and grenadine.",
+        client = {
+            image = "hp_tequilasunrise.png",
+        }
+    },
 
-	["hp_mojito"] = {
-		label = "Mojito",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A refreshing cocktail made with rum, mint, and lime.",
-		client = {
-			image = "hp_mojito.png",
-		}
-	},
+    ["hp_mojito"] = {
+        label = "Mojito",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A refreshing cocktail made with rum, mint, and lime.",
+        client = {
+            image = "hp_mojito.png",
+        }
+    },
 
-	["hp_hotsauce"] = {
-		label = "Hot Sauce",
-		weight = 80,
-		stack = true,
-		close = true,
-		description = "A spicy sauce to heat up your meal.",
-		client = {
-			image = "hp_hotsauce.png",
-		}
-	},
+    ["hp_hotsauce"] = {
+        label = "Hot Sauce",
+        weight = 80,
+        stack = true,
+        close = true,
+        description = "A spicy sauce to heat up your meal.",
+        client = {
+            image = "hp_hotsauce.png",
+        }
+    },
 
-	["hp_eggs"] = {
-		label = "Eggs",
-		weight = 90,
-		stack = true,
-		close = true,
-		description = "Fresh eggs, perfect for breakfast or baking.",
-		client = {
-			image = "hp_eggs.png",
-		}
-	},
+    ["hp_eggs"] = {
+        label = "Eggs",
+        weight = 90,
+        stack = true,
+        close = true,
+        description = "Fresh eggs, perfect for breakfast or baking.",
+        client = {
+            image = "hp_eggs.png",
+        }
+    },
 
-	["hp_dirtyplate"] = {
-		label = "Dirty Plate",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A used plate that needs washing.",
-		client = {
-			image = "hp_dirtyplate.png",
-		}
-	},
+    ["hp_dirtyplate"] = {
+        label = "Dirty Plate",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A used plate that needs washing.",
+        client = {
+            image = "hp_dirtyplate.png",
+        }
+    },
 
-	["hp_whiskeyglass"] = {
-		label = "Whiskey Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean glass for serving whiskey.",
-		client = {
-			image = "hp_whiskeyglass.png",
-		}
-	},
+    ["hp_whiskeyglass"] = {
+        label = "Whiskey Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean glass for serving whiskey.",
+        client = {
+            image = "hp_whiskeyglass.png",
+        }
+    },
 
-	["hp_tortillachips"] = {
-		label = "Tortilla Chips",
-		weight = 160,
-		stack = true,
-		close = true,
-		description = "Crunchy chips made from corn tortillas.",
-		client = {
-			image = "hp_tortillachips.png",
-		}
-	},
+    ["hp_tortillachips"] = {
+        label = "Tortilla Chips",
+        weight = 160,
+        stack = true,
+        close = true,
+        description = "Crunchy chips made from corn tortillas.",
+        client = {
+            image = "hp_tortillachips.png",
+        }
+    },
 
-	["hp_onionrings"] = {
-		label = "Onion Rings",
-		weight = 180,
-		stack = true,
-		close = true,
-		description = "Crispy battered onion rings.",
-		client = {
-			image = "hp_onionrings.png",
-		}
-	},
+    ["hp_onionrings"] = {
+        label = "Onion Rings",
+        weight = 180,
+        stack = true,
+        close = true,
+        description = "Crispy battered onion rings.",
+        client = {
+            image = "hp_onionrings.png",
+        }
+    },
 
-	["hp_tomato"] = {
-		label = "Tomato",
-		weight = 90,
-		stack = true,
-		close = true,
-		description = "A fresh tomato, used in many dishes.",
-		client = {
-			image = "hp_tomato.png",
-		}
-	},
+    ["hp_tomato"] = {
+        label = "Tomato",
+        weight = 90,
+        stack = true,
+        close = true,
+        description = "A fresh tomato, used in many dishes.",
+        client = {
+            image = "hp_tomato.png",
+        }
+    },
 
-	["hp_dirtywhiskeyglass"] = {
-		label = "Dirty Whiskey Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A whiskey glass in need of cleaning.",
-		client = {
-			image = "hp_dirtywhiskeyglass.png",
-		}
-	},
+    ["hp_dirtywhiskeyglass"] = {
+        label = "Dirty Whiskey Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A whiskey glass in need of cleaning.",
+        client = {
+            image = "hp_dirtywhiskeyglass.png",
+        }
+    },
 
-	["hp_orangeslice"] = {
-		label = "Orange Slice",
-		weight = 20,
-		stack = true,
-		close = true,
-		description = "A slice of orange for drinks or garnish.",
-		client = {
-			image = "hp_orangeslice.png",
-		}
-	},
+    ["hp_orangeslice"] = {
+        label = "Orange Slice",
+        weight = 20,
+        stack = true,
+        close = true,
+        description = "A slice of orange for drinks or garnish.",
+        client = {
+            image = "hp_orangeslice.png",
+        }
+    },
 
-	["hp_chicken"] = {
-		label = "Raw Chicken",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "Raw chicken meat, needs to be cooked.",
-		client = {
-			image = "hp_chicken.png",
-		}
-	},
+    ["hp_chicken"] = {
+        label = "Raw Chicken",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "Raw chicken meat, needs to be cooked.",
+        client = {
+            image = "hp_chicken.png",
+        }
+    },
 
-	["hp_espressomartini"] = {
-		label = "Espresso Martini",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A coffee-flavored cocktail for a late-night buzz.",
-		client = {
-			image = "hp_espressomartini.png",
-		}
-	},
+    ["hp_espressomartini"] = {
+        label = "Espresso Martini",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A coffee-flavored cocktail for a late-night buzz.",
+        client = {
+            image = "hp_espressomartini.png",
+        }
+    },
 
-	["hp_cheesedip"] = {
-		label = "Cheese Dip",
-		weight = 120,
-		stack = true,
-		close = true,
-		description = "A creamy dip made with melted cheese.",
-		client = {
-			image = "hp_cheesedip.png",
-		}
-	},
+    ["hp_cheesedip"] = {
+        label = "Cheese Dip",
+        weight = 120,
+        stack = true,
+        close = true,
+        description = "A creamy dip made with melted cheese.",
+        client = {
+            image = "hp_cheesedip.png",
+        }
+    },
 
-	["hp_dirtywineglass"] = {
-		label = "Dirty Wine Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A used wine glass that needs to be washed.",
-		client = {
-			image = "hp_dirtywineglass.png",
-		}
-	},
+    ["hp_dirtywineglass"] = {
+        label = "Dirty Wine Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A used wine glass that needs to be washed.",
+        client = {
+            image = "hp_dirtywineglass.png",
+        }
+    },
 
-	["hp_onion"] = {
-		label = "Onion",
-		weight = 80,
-		stack = true,
-		close = true,
-		description = "A fresh onion, perfect for cooking or garnishing.",
-		client = {
-			image = "hp_onion.png",
-		}
-	},
+    ["hp_onion"] = {
+        label = "Onion",
+        weight = 80,
+        stack = true,
+        close = true,
+        description = "A fresh onion, perfect for cooking or garnishing.",
+        client = {
+            image = "hp_onion.png",
+        }
+    },
 
-	["hp_chickentenders"] = {
-		label = "Chicken Tenders",
-		weight = 180,
-		stack = true,
-		close = true,
-		description = "Crispy chicken tenders, ready to eat.",
-		client = {
-			image = "hp_chickentenders.png",
-		}
-	},
+    ["hp_chickentenders"] = {
+        label = "Chicken Tenders",
+        weight = 180,
+        stack = true,
+        close = true,
+        description = "Crispy chicken tenders, ready to eat.",
+        client = {
+            image = "hp_chickentenders.png",
+        }
+    },
 
-	["hp_negroni"] = {
-		label = "Negroni",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A classic cocktail with gin, vermouth, and Campari.",
-		client = {
-			image = "hp_negroni.png",
-		}
-	},
+    ["hp_negroni"] = {
+        label = "Negroni",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A classic cocktail with gin, vermouth, and Campari.",
+        client = {
+            image = "hp_negroni.png",
+        }
+    },
 
-	["hp_glass"] = {
-		label = "Clean Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean glass, ready to be used.",
-		client = {
-			image = "hp_glass.png",
-		}
-	},
+    ["hp_glass"] = {
+        label = "Clean Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean glass, ready to be used.",
+        client = {
+            image = "hp_glass.png",
+        }
+    },
 
-	["hp_bangersandmash"] = {
-		label = "Bangers and Mash",
-		weight = 300,
-		stack = true,
-		close = true,
-		description = "A hearty dish of sausages and mashed potatoes.",
-		client = {
-			image = "hp_bangersandmash.png",
-		}
-	},
+    ["hp_bangersandmash"] = {
+        label = "Bangers and Mash",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "A hearty dish of sausages and mashed potatoes.",
+        client = {
+            image = "hp_bangersandmash.png",
+        }
+    },
 
-	["hp_frenchfries"] = {
-		label = "French Fries",
-		weight = 180,
-		stack = true,
-		close = true,
-		description = "Crispy golden fries, a fast food favorite.",
-		client = {
-			image = "hp_frenchfries.png",
-		}
-	},
+    ["hp_frenchfries"] = {
+        label = "French Fries",
+        weight = 180,
+        stack = true,
+        close = true,
+        description = "Crispy golden fries, a fast food favorite.",
+        client = {
+            image = "hp_frenchfries.png",
+        }
+    },
 
-	["hp_bbqsauce"] = {
-		label = "BBQ Sauce",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A rich and smoky barbecue sauce.",
-		client = {
-			image = "hp_bbqsauce.png",
-		}
-	},
+    ["hp_bbqsauce"] = {
+        label = "BBQ Sauce",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A rich and smoky barbecue sauce.",
+        client = {
+            image = "hp_bbqsauce.png",
+        }
+    },
 
-	["hp_sugar"] = {
-		label = "Sugar",
-		weight = 60,
-		stack = true,
-		close = true,
-		description = "Sweet sugar, used in cooking or drinks.",
-		client = {
-			image = "hp_sugar.png",
-		}
-	},
+    ["hp_sugar"] = {
+        label = "Sugar",
+        weight = 60,
+        stack = true,
+        close = true,
+        description = "Sweet sugar, used in cooking or drinks.",
+        client = {
+            image = "hp_sugar.png",
+        }
+    },
 
-	["hp_pretzel"] = {
-		label = "Pretzel",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A salted soft pretzel snack.",
-		client = {
-			image = "hp_pretzel.png",
-		}
-	},
+    ["hp_pretzel"] = {
+        label = "Pretzel",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A salted soft pretzel snack.",
+        client = {
+            image = "hp_pretzel.png",
+        }
+    },
 
-	["hp_classiccheeseburger"] = {
-		label = "Classic Cheeseburger",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "A delicious classic cheeseburger with all the fixings.",
-		client = {
-			image = "hp_classiccheeseburger.png",
-		}
-	},
+    ["hp_classiccheeseburger"] = {
+        label = "Classic Cheeseburger",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "A delicious classic cheeseburger with all the fixings.",
+        client = {
+            image = "hp_classiccheeseburger.png",
+        }
+    },
 
-	["hp_fishandchips"] = {
-		label = "Fish and Chips",
-		weight = 300,
-		stack = true,
-		close = true,
-		description = "A crispy and savory serving of fish and fries.",
-		client = {
-			image = "hp_fishandchips.png",
-		}
-	},
+    ["hp_fishandchips"] = {
+        label = "Fish and Chips",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "A crispy and savory serving of fish and fries.",
+        client = {
+            image = "hp_fishandchips.png",
+        }
+    },
 
-	["hp_beer"] = {
-		label = "Beer",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A cold bottle of beer to unwind with.",
-		client = {
-			image = "hp_beer.png",
-		}
-	},
+    ["hp_beer"] = {
+        label = "Beer",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A cold bottle of beer to unwind with.",
+        client = {
+            image = "hp_beer.png",
+        }
+    },
 
-	["hp_butter"] = {
-		label = "Butter",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Creamy butter for cooking or spreading.",
-		client = {
-			image = "hp_butter.png",
-		}
-	},
+    ["hp_butter"] = {
+        label = "Butter",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "Creamy butter for cooking or spreading.",
+        client = {
+            image = "hp_butter.png",
+        }
+    },
 
-	["hp_bloodymary"] = {
-		label = "Bloody Mary",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A spicy tomato-based cocktail.",
-		client = {
-			image = "hp_bloodymary.png",
-		}
-	},
+    ["hp_bloodymary"] = {
+        label = "Bloody Mary",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A spicy tomato-based cocktail.",
+        client = {
+            image = "hp_bloodymary.png",
+        }
+    },
 
-	["hp_nachos"] = {
-		label = "Nachos",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Crispy nachos topped with cheese and more.",
-		client = {
-			image = "hp_nachos.png",
-		}
-	},
+    ["hp_nachos"] = {
+        label = "Nachos",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Crispy nachos topped with cheese and more.",
+        client = {
+            image = "hp_nachos.png",
+        }
+    },
 
-	["hp_bowl"] = {
-		label = "Clean Bowl",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean bowl, ready to serve food.",
-		client = {
-			image = "hp_bowl.png",
-		}
-	},
+    ["hp_bowl"] = {
+        label = "Clean Bowl",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean bowl, ready to serve food.",
+        client = {
+            image = "hp_bowl.png",
+        }
+    },
 
-	["hp_dirtybowl"] = {
-		label = "Dirty Bowl",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A used bowl that needs to be washed.",
-		client = {
-			image = "hp_dirtybowl.png",
-		}
-	},
+    ["hp_dirtybowl"] = {
+        label = "Dirty Bowl",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A used bowl that needs to be washed.",
+        client = {
+            image = "hp_dirtybowl.png",
+        }
+    },
 
     -------------- suhi
     ['djs_bowl_unagi'] = {
-		label = 'Unagi Bowl',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_bowl_unagi',
-			bone = 18905,
-    		pos = vec3(0.130000, 0.040000, -0.010000),
-    		rot = vec3(0.000000, 0.000000, 0.000000)
-		},
-		propTwo = { model = 'djs_chopstick',
-		bone = 57005,
-		pos = vec3(0.136000, 0.027000, 0.000000),
-		rot = vec3 (80.100433, 0.000000, 0.000000),
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_mochiplate'] = {
-		label = 'Sugar Rolls',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_mochiplate',
-			bone = 18905,
-    		pos = vec3(0.140000, 0.030000, 0.020000),
-    		rot = vec3(-13.146003, 0.000000, 4.382000)
-		},
-		propTwo = { model = 'djs_prop_mochigreen',
-		bone = 57005,
-    	pos = vec3(0.140000, 0.050000, -0.040000),
-    	rot = vec3(-76.907990, 0.000000, 0.000000)
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_onigiri_multi'] = {
-		label = 'OniGiri',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_onigiri_multi',
-			bone = 18905,
-    		pos = vec3(0.152000, 0.040000, 0.012000),
-    		rot = vec3(0.000000, 0.000000, 0.000000)
-		},
-		propTwo = { model = 'djs_chopstick',
-		bone = 57005,
-		pos = vec3(0.136000, 0.027000, 0.000000),
-		rot = vec3 (80.100433, 0.000000, 0.000000),
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_tempurashirmp'] = {
-		label = 'Tempura Shrimp',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_plate_tempurashirmp',
-			bone = 18905,
-    		pos = vec3(0.152000, 0.040000, 0.012000),
-    		rot = vec3(0.000000, 0.000000, 0.000000)
-		},
-		propTwo = { model = 'djs_prop_tempurashirmp',
-		bone = 57005,
-    	pos = vec3(0.100000, 0.040000, -0.032000),
-    	rot = vec3(0.000000, -48.313988, 0.000000)
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_sushi_multi'] = {
-		label = 'Cuban Rolls',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_sushi_multi',
-			bone = 18905,
-    		pos = vec3(0.152000, 0.040000, 0.012000),
-    		rot = vec3(0.000000, 0.000000, 0.000000)
-		},
-		propTwo = { model = 'djs_chopstick',
-		bone = 57005,
-		pos = vec3(0.136000, 0.027000, 0.000000),
-		rot = vec3 (80.100433, 0.000000, 0.000000),
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_sushiboard_multi2'] = {
-		label = 'Cuban Rolls',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_sushiboard_multi2',
-			bone = 18905,
-    		pos = vec3(0.152000, 0.040000, 0.012000),
-    		rot = vec3(0.000000, 0.000000, 0.000000)
-		},
-		propTwo = { model = 'djs_chopstick',
-		bone = 57005,
-		pos = vec3(0.136000, 0.027000, 0.000000),
-		rot = vec3 (80.100433, 0.000000, 0.000000),
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_sushiplate_multi'] = {
-		label = 'Dragon Feast Platter',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {model = 'djs_sushiplate_multi',
-			bone = 18905,
-    		pos = vec3(0.152000, 0.040000, 0.012000),
-    		rot = vec3(0.000000, 0.000000, 0.000000)
-		},
-		propTwo = { model = 'djs_chopstick',
-		bone = 57005,
-		pos = vec3(0.136000, 0.027000, 0.000000),
-		rot = vec3 (80.100433, 0.000000, 0.000000),
-		},
-		usetime = 8000,
-		cancel = true,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_prop_caliroll'] = {
-		label = 'Cali Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_cookedsalmonroll'] = {
-		label = 'Cooked Salmon Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_eelroll'] = {
-		label = 'Eel Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_gunkanmakiroll'] = {
-		label = 'Gunkan Maki Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_hosomakiroll'] = {
-		label = 'Hoso Maki Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_hozomakiroll'] = {
-		label = 'Hozo Maki Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_kappabashiroll'] = {
-		label = 'Kappabashi Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_makiroll'] = {
-		label = 'Maki Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_mochigreen'] = {
-		label = 'Mochi Green',
-		weight = 500,
-		client = {
-			status = { hunger = 400000 },
-			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-			prop = { model = `djs_prop_mochigreen`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
-			usetime = 2500,
-			cancel = true,
-		},
-	},
-	['djs_prop_mochiorange'] = {
-		label = 'Mochi Orange',
-		weight = 500,
-		client = {
-			status = { hunger = 400000 },
-			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-			prop = { model = `djs_prop_mochiorange`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
-			usetime = 2500,
-			cancel = true,
-		},
-	},
-	['djs_prop_mochipink'] = {
-		label = 'Mochi Pink',
-		weight = 500,
-		client = {
-			status = { hunger = 400000 },
-			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-			prop = { model = `djs_prop_mochipink`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
-			usetime = 2500,
-			cancel = true,
-		},
-	},
-	['djs_prop_mochiwhite'] = {
-		label = 'Mochi White',
-		weight = 500,
-		client = {
-			status = { hunger = 400000 },
-			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-			prop = { model = `djs_prop_mochiwhite`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
-			usetime = 2500,
-			cancel = true,
-		},
-	},
-	['djs_prop_mochiyellow'] = {
-		label = 'Mochi Yellow',
-		weight = 500,
-		client = {
-			status = { hunger = 400000 },
-			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-			prop = { model = `djs_prop_mochiyellow`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
-			usetime = 2500,
-			cancel = true,
-		},
-	},
-	['djs_prop_philadelphiaroll'] = {
-		label = 'Philadelphia Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_salmongunkanroll'] = {
-		label = 'Salmon Gunkan Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_salmonroll'] = {
-		label = 'Salmon Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_searedahituna'] = {
-		label = 'Seared Ahi Tuna Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_shrimproll'] = {
-		label = 'Shrimp Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_tempurashirmp'] = {
-		label = 'Tempura Shrimp',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
-	['djs_prop_yellowtailroll'] = {
-		label = 'Yellow Tail Roll',
-		stack = true,
-		close = false,
-		weight = 10,
-	},
+        label = 'Unagi Bowl',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_bowl_unagi',
+                bone = 18905,
+                pos = vec3(0.130000, 0.040000, -0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
+            },
+            propTwo = {
+                model = 'djs_chopstick',
+                bone = 57005,
+                pos = vec3(0.136000, 0.027000, 0.000000),
+                rot = vec3(80.100433, 0.000000, 0.000000),
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_mochiplate'] = {
+        label = 'Sugar Rolls',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_mochiplate',
+                bone = 18905,
+                pos = vec3(0.140000, 0.030000, 0.020000),
+                rot = vec3(-13.146003, 0.000000, 4.382000)
+            },
+            propTwo = {
+                model = 'djs_prop_mochigreen',
+                bone = 57005,
+                pos = vec3(0.140000, 0.050000, -0.040000),
+                rot = vec3(-76.907990, 0.000000, 0.000000)
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_onigiri_multi'] = {
+        label = 'OniGiri',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_onigiri_multi',
+                bone = 18905,
+                pos = vec3(0.152000, 0.040000, 0.012000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
+            },
+            propTwo = {
+                model = 'djs_chopstick',
+                bone = 57005,
+                pos = vec3(0.136000, 0.027000, 0.000000),
+                rot = vec3(80.100433, 0.000000, 0.000000),
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_tempurashirmp'] = {
+        label = 'Tempura Shrimp',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_tempurashirmp',
+                bone = 18905,
+                pos = vec3(0.152000, 0.040000, 0.012000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
+            },
+            propTwo = {
+                model = 'djs_prop_tempurashirmp',
+                bone = 57005,
+                pos = vec3(0.100000, 0.040000, -0.032000),
+                rot = vec3(0.000000, -48.313988, 0.000000)
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_sushi_multi'] = {
+        label = 'Cuban Rolls',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_sushi_multi',
+                bone = 18905,
+                pos = vec3(0.152000, 0.040000, 0.012000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
+            },
+            propTwo = {
+                model = 'djs_chopstick',
+                bone = 57005,
+                pos = vec3(0.136000, 0.027000, 0.000000),
+                rot = vec3(80.100433, 0.000000, 0.000000),
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_sushiboard_multi2'] = {
+        label = 'Cuban Rolls',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_sushiboard_multi2',
+                bone = 18905,
+                pos = vec3(0.152000, 0.040000, 0.012000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
+            },
+            propTwo = {
+                model = 'djs_chopstick',
+                bone = 57005,
+                pos = vec3(0.136000, 0.027000, 0.000000),
+                rot = vec3(80.100433, 0.000000, 0.000000),
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_sushiplate_multi'] = {
+        label = 'Dragon Feast Platter',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_sushiplate_multi',
+                bone = 18905,
+                pos = vec3(0.152000, 0.040000, 0.012000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
+            },
+            propTwo = {
+                model = 'djs_chopstick',
+                bone = 57005,
+                pos = vec3(0.136000, 0.027000, 0.000000),
+                rot = vec3(80.100433, 0.000000, 0.000000),
+            },
+            usetime = 8000,
+            cancel = true,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_prop_caliroll'] = {
+        label = 'Cali Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_cookedsalmonroll'] = {
+        label = 'Cooked Salmon Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_eelroll'] = {
+        label = 'Eel Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_gunkanmakiroll'] = {
+        label = 'Gunkan Maki Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_hosomakiroll'] = {
+        label = 'Hoso Maki Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_hozomakiroll'] = {
+        label = 'Hozo Maki Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_kappabashiroll'] = {
+        label = 'Kappabashi Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_makiroll'] = {
+        label = 'Maki Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_mochigreen'] = {
+        label = 'Mochi Green',
+        weight = 500,
+        client = {
+            status = { hunger = 400000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = { model = `djs_prop_mochigreen`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
+            usetime = 2500,
+            cancel = true,
+        },
+    },
+    ['djs_prop_mochiorange'] = {
+        label = 'Mochi Orange',
+        weight = 500,
+        client = {
+            status = { hunger = 400000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = { model = `djs_prop_mochiorange`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
+            usetime = 2500,
+            cancel = true,
+        },
+    },
+    ['djs_prop_mochipink'] = {
+        label = 'Mochi Pink',
+        weight = 500,
+        client = {
+            status = { hunger = 400000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = { model = `djs_prop_mochipink`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
+            usetime = 2500,
+            cancel = true,
+        },
+    },
+    ['djs_prop_mochiwhite'] = {
+        label = 'Mochi White',
+        weight = 500,
+        client = {
+            status = { hunger = 400000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = { model = `djs_prop_mochiwhite`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
+            usetime = 2500,
+            cancel = true,
+        },
+    },
+    ['djs_prop_mochiyellow'] = {
+        label = 'Mochi Yellow',
+        weight = 500,
+        client = {
+            status = { hunger = 400000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = { model = `djs_prop_mochiyellow`, bone = 18905, pos = vec3(0.155000, 0.059000, 0.000000), rot = vec3(-206.097748, 0.000000, 72.600357) },
+            usetime = 2500,
+            cancel = true,
+        },
+    },
+    ['djs_prop_philadelphiaroll'] = {
+        label = 'Philadelphia Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_salmongunkanroll'] = {
+        label = 'Salmon Gunkan Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_salmonroll'] = {
+        label = 'Salmon Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_searedahituna'] = {
+        label = 'Seared Ahi Tuna Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_shrimproll'] = {
+        label = 'Shrimp Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_tempurashirmp'] = {
+        label = 'Tempura Shrimp',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
+    ['djs_prop_yellowtailroll'] = {
+        label = 'Yellow Tail Roll',
+        stack = true,
+        close = false,
+        weight = 10,
+    },
 
     ---------------------
-    	['djs_berryflower_martini'] = {
-		label = 'Berry Flower Martini',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_berryflower_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_blackberry_martini'] = {
-		label = 'Black Berry Martini',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_blackberry_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_bloodorange_margarita'] = {
-		label = 'Blood Orange Margarita',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_bloodorange_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_carambolaandmint_margarita'] = {
-		label = 'Carambo and Mint Margarita',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_carambolaandmint_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_cherryhibiscus_margarita'] = {
-		label = 'Cherry Hibiscus Margarita',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_cherryhibiscus_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_cherrypineapple_margarita'] = {
-		label = 'Cherry Pineapple Margarita',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_cherrypineapple_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_ginandtonic'] = {
-		label = 'Ocean Water Gin and Tonic',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_ginandtonic`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_grapefruit_martini'] = {
-		label = 'Grape Fruit Martini',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_grapefruit_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_prop_blueberrypie_jelloshot'] = {
-		label = 'Blueberry Pie Jello Shot',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_prop_blueberrypie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_prop_cherrylimepie_jelloshot'] = {
-		label = 'Cherry Lime Pie Jello Shot',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_prop_cherrylimepie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_prop_cherrypie_jelloshot'] = {
-		label = 'Cherry Pie Jello Shot',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_prop_cherrypie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_prop_keylimepie_jelloshot'] = {
-		label = 'Keylime Pie Jello Shot',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_prop_keylimepie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_prop_orangecream_jelloshot'] = {
-		label = 'Orange Cream Jello Shot',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_prop_orangecream_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_prop_pineappleshortcake_jelloshot'] = {
-		label = 'Pineapple Shortcake Jello Shot',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_prop_pineappleshortcake_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_raspberry_martini'] = {
-		label = 'Raspberry Martini',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_raspberry_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_strawberry_margarita'] = {
-		label = 'Strawberry Margarita',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `djs_strawberry_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst'
-		}
-	},
-	['djs_empanadas'] = {
-		label = 'Empanadas',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = 'alca',        prop = {model = 'djs_empanadas',
-			bone = 18905,
-			pos = vec3(0.1, 0.0, 0.02),
-			rot = vec3(-16.0, 0.0, 0.0),
-		},
-		propTwo = { model = 'djs_prop_empanadas',
-		bone = 57005,
-		pos = vec3(0.11, 0.04, -0.03),
-		rot = vec3 (-33.0, 0.0, 0.0),
-		},
-		usetime = 8000,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_vutacos'] = {
-		label = 'Empanadas',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = 'alca',        prop = {model = 'djs_vutacos',
-			bone = 18905,
-			pos = vec3(0.1, 0.0, 0.02),
-			rot = vec3(-16.0, 0.0, 0.0),
-		},
-		propTwo = { model = 'djs_prop_vutacos',
-		bone = 57005,
-		pos = vec3(0.11, 0.04, -0.03),
-		rot = vec3 (-33.0, 0.0, 0.0),
-		},
-		usetime = 8000,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_vuburritos'] = {
-		label = 'Empanadas',
-		stack = true,
-		close = false,
-		weight = 10,
-		client = {
-			status = { hunger = 2000000 },
-			anim = 'alca',        prop = {model = 'djs_vuburritos',
-			bone = 18905,
-			pos = vec3(0.1, 0.0, 0.02),
-			rot = vec3(-16.0, 0.0, 0.0),
-		},
-		propTwo = { model = 'djs_prop_vuburritos',
-		bone = 57005,
-		pos = vec3(0.11, 0.04, -0.03),
-		rot = vec3 (-33.0, 0.0, 0.0),
-		},
-		usetime = 8000,
-		notification = 'You have satistfied your hunger'
-		},
-	},
-    	['djs_bigplate_steaklobster'] = { --checked
-		label = 'Plate of Lobster',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A heaping plate of lobster",
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_bigplate_steaklobster',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.18, 0.02, 0.01),
-				rot = vec3(-23, 0.0, 0.0)
-			},
+    ['djs_berryflower_martini'] = {
+        label = 'Berry Flower Martini',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_berryflower_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_blackberry_martini'] = {
+        label = 'Black Berry Martini',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_blackberry_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_bloodorange_margarita'] = {
+        label = 'Blood Orange Margarita',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_bloodorange_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_carambolaandmint_margarita'] = {
+        label = 'Carambo and Mint Margarita',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_carambolaandmint_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_cherryhibiscus_margarita'] = {
+        label = 'Cherry Hibiscus Margarita',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_cherryhibiscus_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_cherrypineapple_margarita'] = {
+        label = 'Cherry Pineapple Margarita',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_cherrypineapple_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_ginandtonic'] = {
+        label = 'Ocean Water Gin and Tonic',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_ginandtonic`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_grapefruit_martini'] = {
+        label = 'Grape Fruit Martini',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_grapefruit_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_prop_blueberrypie_jelloshot'] = {
+        label = 'Blueberry Pie Jello Shot',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_prop_blueberrypie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_prop_cherrylimepie_jelloshot'] = {
+        label = 'Cherry Lime Pie Jello Shot',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_prop_cherrylimepie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_prop_cherrypie_jelloshot'] = {
+        label = 'Cherry Pie Jello Shot',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_prop_cherrypie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_prop_keylimepie_jelloshot'] = {
+        label = 'Keylime Pie Jello Shot',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_prop_keylimepie_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_prop_orangecream_jelloshot'] = {
+        label = 'Orange Cream Jello Shot',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_prop_orangecream_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_prop_pineappleshortcake_jelloshot'] = {
+        label = 'Pineapple Shortcake Jello Shot',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_prop_pineappleshortcake_jelloshot`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_raspberry_martini'] = {
+        label = 'Raspberry Martini',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_raspberry_martini`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_strawberry_margarita'] = {
+        label = 'Strawberry Margarita',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `djs_strawberry_margarita`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+            usetime = 2500,
+            notification = 'You quenched your thirst'
+        }
+    },
+    ['djs_empanadas'] = {
+        label = 'Empanadas',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = 'alca',
+            prop = {
+                model = 'djs_empanadas',
+                bone = 18905,
+                pos = vec3(0.1, 0.0, 0.02),
+                rot = vec3(-16.0, 0.0, 0.0),
+            },
+            propTwo = {
+                model = 'djs_prop_empanadas',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-33.0, 0.0, 0.0),
+            },
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_vutacos'] = {
+        label = 'Empanadas',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = 'alca',
+            prop = {
+                model = 'djs_vutacos',
+                bone = 18905,
+                pos = vec3(0.1, 0.0, 0.02),
+                rot = vec3(-16.0, 0.0, 0.0),
+            },
+            propTwo = {
+                model = 'djs_prop_vutacos',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-33.0, 0.0, 0.0),
+            },
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_vuburritos'] = {
+        label = 'Empanadas',
+        stack = true,
+        close = false,
+        weight = 10,
+        client = {
+            status = { hunger = 2000000 },
+            anim = 'alca',
+            prop = {
+                model = 'djs_vuburritos',
+                bone = 18905,
+                pos = vec3(0.1, 0.0, 0.02),
+                rot = vec3(-16.0, 0.0, 0.0),
+            },
+            propTwo = {
+                model = 'djs_prop_vuburritos',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-33.0, 0.0, 0.0),
+            },
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_bigplate_steaklobster'] = {  --checked
+        label = 'Plate of Lobster',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A heaping plate of lobster",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_bigplate_steaklobster',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.18, 0.02, 0.01),
+                rot = vec3(-23, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_fork',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_fork',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_bowl_clamchowder'] = { --checked
-		label = 'Bowl of Clam Chowder',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_bowl_clamchowder',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.15, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_bowl_clamchowder'] = { --checked
+        label = 'Bowl of Clam Chowder',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_bowl_clamchowder',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.15, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_spoon',
-				bone = 57005,
-				pos = vec3(0.14, 0.02, 0.01),
-				rot = vec3(-118.0, 192.0, 24.0)
-			},
+            propTwo = {
+                model = 'djs_spoon',
+                bone = 57005,
+                pos = vec3(0.14, 0.02, 0.01),
+                rot = vec3(-118.0, 192.0, 24.0)
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
 
-	['djs_bowl_crawfish'] = { --checked
-		label = 'Bowl of lobster bisque',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A heaping plate of lobster",
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_bowl_lobsterbisque',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+    ['djs_bowl_crawfish'] = { --checked
+        label = 'Bowl of lobster bisque',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A heaping plate of lobster",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_bowl_lobsterbisque',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_spoon',
-				bone = 57005,
-				pos = vec3(0.14, 0.02, 0.01),
-				rot = vec3(-118.0, 192.0, 24.0)
-			},
+            propTwo = {
+                model = 'djs_spoon',
+                bone = 57005,
+                pos = vec3(0.14, 0.02, 0.01),
+                rot = vec3(-118.0, 192.0, 24.0)
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
 
-	['djs_bowl_lobsterbisque'] = { --checked
-		label = 'Bowl of lobster bisque',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A heaping plate of lobster",
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_bowl_lobsterbisque',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+    ['djs_bowl_lobsterbisque'] = { --checked
+        label = 'Bowl of lobster bisque',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A heaping plate of lobster",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_bowl_lobsterbisque',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_spoon',
-				bone = 57005,
-				pos = vec3(0.14, 0.02, 0.01),
-				rot = vec3(-118.0, 192.0, 24.0)
-			},
+            propTwo = {
+                model = 'djs_spoon',
+                bone = 57005,
+                pos = vec3(0.14, 0.02, 0.01),
+                rot = vec3(-118.0, 192.0, 24.0)
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
 
-	['djs_bowl_shrimpokragumbo'] = { --checked
-		label = 'Shrimp Okra Gumbo', -- Lol never heard of this so i might be putting in the wrong name
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_bowl_shrimpokragumbo',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+    ['djs_bowl_shrimpokragumbo'] = { --checked
+        label = 'Shrimp Okra Gumbo', -- Lol never heard of this so i might be putting in the wrong name
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_bowl_shrimpokragumbo',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_spoon',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_spoon',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_shrimpcocktail'] = { --checked
-		label = 'Shrimp Coctail',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_shrimpcocktail',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.15, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_shrimpcocktail'] = { --checked
+        label = 'Shrimp Coctail',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_shrimpcocktail',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.15, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_shrimpcocktail',
-				bone = 57005,
-				pos = vec3(0.13, 0.02, -0.05),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_shrimpcocktail',
+                bone = 57005,
+                pos = vec3(0.13, 0.02, -0.05),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_newspaper_boil'] = { --checked
-		label = 'Newspaper Boil',
-		description = "Yummy seafood boil on a newspaper",
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_newspaper_boil',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.025),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_newspaper_boil'] = { --checked
+        label = 'Newspaper Boil',
+        description = "Yummy seafood boil on a newspaper",
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_newspaper_boil',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.025),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_crabclaw',
-				bone = 57005,
-				pos = vec3(0.15, 0.03, -0.03),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_crabclaw',
+                bone = 57005,
+                pos = vec3(0.15, 0.03, -0.03),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_newspaper_crablegsandshrimp'] = { --checked
-		label = 'Crablegs and shrimp',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_newspaper_crablegsandshrimp',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_newspaper_crablegsandshrimp'] = { --checked
+        label = 'Crablegs and shrimp',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_newspaper_crablegsandshrimp',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_crabclaw',
-				bone = 57005,
-				pos = vec3(0.15, 0.03, -0.03),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_crabclaw',
+                bone = 57005,
+                pos = vec3(0.15, 0.03, -0.03),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_newspaper_crawfish'] = { --done
-		label = 'Craw Fish',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_newspaper_crawfish',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_newspaper_crawfish'] = { --done
+        label = 'Craw Fish',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_newspaper_crawfish',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_coconutshrimp',
-				bone = 57005,
-				pos = vec3(0.13, 0.02, -0.05),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_coconutshrimp',
+                bone = 57005,
+                pos = vec3(0.13, 0.02, -0.05),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_newspaper_lobsterandshrimp'] = { --checked
-		label = 'Lobster and shrimp',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_newspaper_lobsterandshrimp',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_newspaper_lobsterandshrimp'] = { --checked
+        label = 'Lobster and shrimp',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_newspaper_lobsterandshrimp',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_shrimpcocktail',
-				bone = 57005,
-				pos = vec3(0.13, 0.02, -0.05),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_shrimpcocktail',
+                bone = 57005,
+                pos = vec3(0.13, 0.02, -0.05),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_newspaper_lobstertails'] = { --checked
-		label = 'Lobster Tails',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_newspaper_lobstertails',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_newspaper_lobstertails'] = { --checked
+        label = 'Lobster Tails',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_newspaper_lobstertails',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_fork',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_fork',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_newspaper_shrimppotatoes'] = { --checked
-		label = 'Shrimp Potatoes',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_newspaper_shrimppotatoes',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_newspaper_shrimppotatoes'] = { --checked
+        label = 'Shrimp Potatoes',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_newspaper_shrimppotatoes',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_fork',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_fork',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_calimari'] = { --done
-		label = 'Calimari Plate',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_calimari',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_calimari'] = { --done
+        label = 'Calimari Plate',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_calimari',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_calimari',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_calimari',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_coconutshrimp'] = { --done
-		label = 'Coconut Shrimp',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_coconutshrimp',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_coconutshrimp'] = { --done
+        label = 'Coconut Shrimp',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_coconutshrimp',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_coconutshrimp',
-				bone = 57005,
-				pos = vec3(0.13, 0.02, -0.05),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_coconutshrimp',
+                bone = 57005,
+                pos = vec3(0.13, 0.02, -0.05),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_crablegs'] = { --checked
-		label = 'Crab Legs',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_crablegs',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_crablegs'] = { --checked
+        label = 'Crab Legs',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_crablegs',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_crabmeat',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_crabmeat',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_fishandchips'] = { --checked
-		label = 'Fish & Chips',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_fishandchips',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_fishandchips'] = { --checked
+        label = 'Fish & Chips',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_fishandchips',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_fishandchips',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_fishandchips',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_garlicshrimpskewers'] = { --checked
-		label = 'Garlic Shrimp Skewers',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_garlicshrimpskewers',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_garlicshrimpskewers'] = { --checked
+        label = 'Garlic Shrimp Skewers',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_garlicshrimpskewers',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_garlicshrimpskewers',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_garlicshrimpskewers',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_lobster'] = { --checked
-		label = 'Plate Of Lobster',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_lobster',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_lobster'] = { --checked
+        label = 'Plate Of Lobster',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_lobster',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_fork',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_fork',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_lobster'] = { --checked
-		label = 'Lobster',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_lobster',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_lobster'] = { --checked
+        label = 'Lobster',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_lobster',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_fork',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_fork',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_lobsterultimatefeast'] = { --checked
-		label = 'Lobster Ultimat Feast',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_lobsterultimatefeast',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_lobsterultimatefeast'] = { --checked
+        label = 'Lobster Ultimat Feast',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_lobsterultimatefeast',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_crabcluster',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_crabcluster',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_mussels'] = { --checked
-		label = 'Plate Of Mussels',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_mussels',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_mussels'] = { --checked
+        label = 'Plate Of Mussels',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_mussels',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_mussels',
-				bone = 57005,
-				pos = vec3(0.13, 0.02, -0.05),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_mussels',
+                bone = 57005,
+                pos = vec3(0.13, 0.02, -0.05),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_poboy'] = { --checked
-		label = 'Plate Of Po Boy',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_poyboy',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_poboy'] = { --checked
+        label = 'Plate Of Po Boy',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_poyboy',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_poboy',
-				bone = 57005,
-				pos = vec3(0.13, 0.02, -0.05),
-				rot = vec3(0,0,0),
-			},
+            propTwo = {
+                model = 'djs_prop_poboy',
+                bone = 57005,
+                pos = vec3(0.13, 0.02, -0.05),
+                rot = vec3(0, 0, 0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_salmonbagels'] = { --checked
-		label = 'Salmon Bagels',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_salmonbagels',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_salmonbagels'] = { --checked
+        label = 'Salmon Bagels',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_salmonbagels',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_salmonbagels',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_salmonbagels',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_snowcrab'] = { --checked
-		label = 'Snowcrab',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_snowcrab',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_snowcrab'] = { --checked
+        label = 'Snowcrab',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_snowcrab',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_prop_crabcluster',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_prop_crabcluster',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
-	['djs_plate_surfturfandfries'] = { --checked
-		label = 'Surf and Turf',
-		degrade = 1440,
-		weight = 200,
-		stack = true,
-		close = true,
-		client = {
-			status = { hunger = 500000 },
-			anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
-			prop = {
-				model = 'djs_plate_surfturfandfries',
-				bone = 18905, -- R ForeArm
-				pos = vec3(0.13, 0.02, 0.02),
-				rot = vec3(0.0, 0.0, 0.0)
-			},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
+    ['djs_plate_surfturfandfries'] = { --checked
+        label = 'Surf and Turf',
+        degrade = 1440,
+        weight = 200,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'anim@djs@food@plated', clip = 'djs_food_plate_bite_loop' },
+            prop = {
+                model = 'djs_plate_surfturfandfries',
+                bone = 18905, -- R ForeArm
+                pos = vec3(0.13, 0.02, 0.02),
+                rot = vec3(0.0, 0.0, 0.0)
+            },
 
-			propTwo = {
-				model = 'djs_fork',
-				bone = 57005,
-				pos = vec3(0.11, 0.04, -0.03),
-				rot = vec3(-98.0, -222.0, 22.0),
-			},
+            propTwo = {
+                model = 'djs_fork',
+                bone = 57005,
+                pos = vec3(0.11, 0.04, -0.03),
+                rot = vec3(-98.0, -222.0, 22.0),
+            },
 
-			usetime = 8000,
-			notification = 'You have satistfied your hunger'
-		},
-	},
+            usetime = 8000,
+            notification = 'You have satistfied your hunger'
+        },
+    },
 
 
 
@@ -3125,715 +3582,715 @@ return {
 
 
     ["hp_wineglass"] = {
-		label = "Wine Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean wine glass, ready to be filled.",
-		client = {
-			image = "hp_wineglass.png",
-		}
-	},
-
-	["hp_pinacolada"] = {
-		label = "Piña Colada",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A creamy tropical cocktail with pineapple and coconut.",
-		client = {
-			image = "hp_pinacolada.png",
-		}
-	},
-
-	["hp_whiskeysour"] = {
-		label = "Whiskey Sour",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A classic cocktail made with whiskey, lemon juice, and sugar.",
-		client = {
-			image = "hp_whiskeysour.png",
-		}
-	},
-
-	["hp_jalapenos"] = {
-		label = "Jalapeños",
-		weight = 60,
-		stack = true,
-		close = true,
-		description = "Sliced jalapeños for a spicy kick.",
-		client = {
-			image = "hp_jalapenos.png",
-		}
-	},
-
-	["hp_lettuce"] = {
-		label = "Lettuce",
-		weight = 60,
-		stack = true,
-		close = true,
-		description = "Fresh lettuce leaves, great for salads or sandwiches.",
-		client = {
-			image = "hp_lettuce.png",
-		}
-	},
-
-	["hp_pineappleslice"] = {
-		label = "Pineapple Slice",
-		weight = 30,
-		stack = true,
-		close = true,
-		description = "A sweet slice of pineapple, great for drinks or snacks.",
-		client = {
-			image = "hp_pineappleslice.png",
-		}
-	},
-
-	["hp_chickenwings"] = {
-		label = "Chicken Wings",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Spicy and delicious chicken wings.",
-		client = {
-			image = "hp_chickenwings.png",
-		}
-	},
-
-	["hp_islandicedtea"] = {
-		label = "Island Iced Tea",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A tropical twist on a classic iced tea cocktail.",
-		client = {
-			image = "hp_islandicedtea.png",
-		}
-	},
-
-	["hp_cosmopolitan"] = {
-		label = "Cosmopolitan",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A stylish pink cocktail with a citrus twist.",
-		client = {
-			image = "hp_cosmopolitan.png",
-		}
-	},
-
-	["hp_plate"] = {
-		label = "Clean Plate",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A clean plate, ready to serve food.",
-		client = {
-			image = "hp_plate.png",
-		}
-	},
-
-	["hp_oldfashioned"] = {
-		label = "Old Fashioned",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A strong whiskey cocktail with bitters and sugar.",
-		client = {
-			image = "hp_oldfashioned.png",
-		}
-	},
-
-	["hp_sliders"] = {
-		label = "Sliders",
-		weight = 220,
-		stack = true,
-		close = true,
-		description = "Mini burgers served as a snack or appetizer.",
-		client = {
-			image = "hp_sliders.png",
-		}
-	},
-
-	["hp_pork"] = {
-		label = "Raw Pork",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "Raw pork meat, needs to be cooked.",
-		client = {
-			image = "hp_pork.png",
-		}
-	},
-
-	["hp_cheeseslice"] = {
-		label = "Cheese Slice",
-		weight = 40,
-		stack = true,
-		close = true,
-		description = "A slice of cheese, perfect for burgers and sandwiches.",
-		client = {
-			image = "hp_cheeseslice.png",
-		}
-	},
-
-	["hp_ice"] = {
-		label = "Ice Cubes",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Cold ice cubes for chilling drinks.",
-		client = {
-			image = "hp_ice.png",
-		}
-	},
-
-	["hp_salt"] = {
-		label = "Salt",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "A pinch of salt to season your food.",
-		client = {
-			image = "hp_salt.png",
-		}
-	},
-
-	["hp_burgerbun"] = {
-		label = "Burger Bun",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A soft bun, perfect for a burger.",
-		client = {
-			image = "hp_burgerbun.png",
-		}
-	},
-
-	["hp_chives"] = {
-		label = "Chives",
-		weight = 30,
-		stack = true,
-		close = true,
-		description = "Fresh chives for garnishing and flavor.",
-		client = {
-			image = "hp_chives.png",
-		}
-	},
-
-	["hp_maitai"] = {
-		label = "Mai Tai",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A fruity rum cocktail with tropical vibes.",
-		client = {
-			image = "hp_maitai.png",
-		}
-	},
-
-	["hp_darkandstormy"] = {
-		label = "Dark and Stormy",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A bold cocktail with dark rum and ginger beer.",
-		client = {
-			image = "hp_darkandstormy.png",
-		}
-	},
-
-	["hp_beefpatty"] = {
-		label = "Beef Patty",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A seasoned beef patty, ready to cook.",
-		client = {
-			image = "hp_beefpatty.png",
-		}
-	},
-
-	["hp_loadedpotatoskins"] = {
-		label = "Loaded Potato Skins",
-		weight = 220,
-		stack = true,
-		close = true,
-		description = "Potato skins filled with cheese, bacon, and more.",
-		client = {
-			image = "hp_loadedpotatoskins.png",
-		}
-	},
-
-	["hp_lemonslice"] = {
-		label = "Lemon Slice",
-		weight = 20,
-		stack = true,
-		close = true,
-		description = "A slice of lemon to garnish your drink or dish.",
-		client = {
-			image = "hp_lemonslice.png",
-		}
-	},
-
-	["hp_flour"] = {
-		label = "Flour",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A bag of flour used in baking and cooking.",
-		client = {
-			image = "hp_flour.png",
-		}
-	},
-
-	["hp_dirtyglass"] = {
-		label = "Dirty Glass",
-		weight = 120,
-		stack = true,
-		close = true,
-		description = "A glass that needs to be cleaned before use.",
-		client = {
-			image = "hp_dirtyglass.png",
-		}
-	},
-
-	["hp_ginandtonic"] = {
-		label = "Gin and Tonic",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A refreshing mix of gin and tonic water.",
-		client = {
-			image = "hp_ginandtonic.png",
-		}
-	},
-
-	["hp_cherry"] = {
-		label = "Cherry",
-		weight = 20,
-		stack = true,
-		close = true,
-		description = "A sweet and juicy cherry.",
-		client = {
-			image = "hp_cherry.png",
-		}
-	},
-
-	["hp_cheesecubes"] = {
-		label = "Cheese Cubes",
-		weight = 80,
-		stack = true,
-		close = true,
-		description = "Small cubes of cheese for snacking.",
-		client = {
-			image = "hp_cheesecubes.png",
-		}
-	},
-
-	["hp_classicmargarita"] = {
-		label = "Classic Margarita",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A zesty cocktail made with tequila and lime.",
-		client = {
-			image = "hp_classicmargarita.png",
-		}
-	},
-
-	["hp_fish"] = {
-		label = "Raw Fish",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A fresh catch, ready to be cooked.",
-		client = {
-			image = "hp_fish.png",
-		}
-	},
-
-	["hp_mint"] = {
-		label = "Mint Leaves",
-		weight = 30,
-		stack = true,
-		close = true,
-		description = "Fresh mint leaves for garnish or flavor.",
-		client = {
-			image = "hp_mint.png",
-		}
-	},
-
-	["hp_potato"] = {
-		label = "Potato",
-		weight = 120,
-		stack = true,
-		close = true,
-		description = "A raw potato, good for frying or baking.",
-		client = {
-			image = "hp_potato.png",
-		}
-	},
-
-	["hp_tequilasunrise"] = {
-		label = "Tequila Sunrise",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A colorful tequila cocktail with orange juice and grenadine.",
-		client = {
-			image = "hp_tequilasunrise.png",
-		}
-	},
-
-	["hp_mojito"] = {
-		label = "Mojito",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A refreshing cocktail made with rum, mint, and lime.",
-		client = {
-			image = "hp_mojito.png",
-		}
-	},
-
-	["hp_hotsauce"] = {
-		label = "Hot Sauce",
-		weight = 80,
-		stack = true,
-		close = true,
-		description = "A spicy sauce to heat up your meal.",
-		client = {
-			image = "hp_hotsauce.png",
-		}
-	},
-
-	["hp_eggs"] = {
-		label = "Eggs",
-		weight = 90,
-		stack = true,
-		close = true,
-		description = "Fresh eggs, perfect for breakfast or baking.",
-		client = {
-			image = "hp_eggs.png",
-		}
-	},
-
-	["hp_dirtyplate"] = {
-		label = "Dirty Plate",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A used plate that needs washing.",
-		client = {
-			image = "hp_dirtyplate.png",
-		}
-	},
-
-	["hp_whiskeyglass"] = {
-		label = "Whiskey Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean glass for serving whiskey.",
-		client = {
-			image = "hp_whiskeyglass.png",
-		}
-	},
-
-	["hp_tortillachips"] = {
-		label = "Tortilla Chips",
-		weight = 160,
-		stack = true,
-		close = true,
-		description = "Crunchy chips made from corn tortillas.",
-		client = {
-			image = "hp_tortillachips.png",
-		}
-	},
-
-	["hp_onionrings"] = {
-		label = "Onion Rings",
-		weight = 180,
-		stack = true,
-		close = true,
-		description = "Crispy battered onion rings.",
-		client = {
-			image = "hp_onionrings.png",
-		}
-	},
-
-	["hp_tomato"] = {
-		label = "Tomato",
-		weight = 90,
-		stack = true,
-		close = true,
-		description = "A fresh tomato, used in many dishes.",
-		client = {
-			image = "hp_tomato.png",
-		}
-	},
-
-	["hp_dirtywhiskeyglass"] = {
-		label = "Dirty Whiskey Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A whiskey glass in need of cleaning.",
-		client = {
-			image = "hp_dirtywhiskeyglass.png",
-		}
-	},
-
-	["hp_orangeslice"] = {
-		label = "Orange Slice",
-		weight = 20,
-		stack = true,
-		close = true,
-		description = "A slice of orange for drinks or garnish.",
-		client = {
-			image = "hp_orangeslice.png",
-		}
-	},
-
-	["hp_chicken"] = {
-		label = "Raw Chicken",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "Raw chicken meat, needs to be cooked.",
-		client = {
-			image = "hp_chicken.png",
-		}
-	},
-
-	["hp_espressomartini"] = {
-		label = "Espresso Martini",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A coffee-flavored cocktail for a late-night buzz.",
-		client = {
-			image = "hp_espressomartini.png",
-		}
-	},
-
-	["hp_cheesedip"] = {
-		label = "Cheese Dip",
-		weight = 120,
-		stack = true,
-		close = true,
-		description = "A creamy dip made with melted cheese.",
-		client = {
-			image = "hp_cheesedip.png",
-		}
-	},
-
-	["hp_dirtywineglass"] = {
-		label = "Dirty Wine Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A used wine glass that needs to be washed.",
-		client = {
-			image = "hp_dirtywineglass.png",
-		}
-	},
-
-	["hp_onion"] = {
-		label = "Onion",
-		weight = 80,
-		stack = true,
-		close = true,
-		description = "A fresh onion, perfect for cooking or garnishing.",
-		client = {
-			image = "hp_onion.png",
-		}
-	},
-
-	["hp_chickentenders"] = {
-		label = "Chicken Tenders",
-		weight = 180,
-		stack = true,
-		close = true,
-		description = "Crispy chicken tenders, ready to eat.",
-		client = {
-			image = "hp_chickentenders.png",
-		}
-	},
-
-	["hp_negroni"] = {
-		label = "Negroni",
-		weight = 140,
-		stack = true,
-		close = true,
-		description = "A classic cocktail with gin, vermouth, and Campari.",
-		client = {
-			image = "hp_negroni.png",
-		}
-	},
-
-	["hp_glass"] = {
-		label = "Clean Glass",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean glass, ready to be used.",
-		client = {
-			image = "hp_glass.png",
-		}
-	},
-
-	["hp_bangersandmash"] = {
-		label = "Bangers and Mash",
-		weight = 300,
-		stack = true,
-		close = true,
-		description = "A hearty dish of sausages and mashed potatoes.",
-		client = {
-			image = "hp_bangersandmash.png",
-		}
-	},
-
-	["hp_frenchfries"] = {
-		label = "French Fries",
-		weight = 180,
-		stack = true,
-		close = true,
-		description = "Crispy golden fries, a fast food favorite.",
-		client = {
-			image = "hp_frenchfries.png",
-		}
-	},
-
-	["hp_bbqsauce"] = {
-		label = "BBQ Sauce",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A rich and smoky barbecue sauce.",
-		client = {
-			image = "hp_bbqsauce.png",
-		}
-	},
-
-	["hp_sugar"] = {
-		label = "Sugar",
-		weight = 60,
-		stack = true,
-		close = true,
-		description = "Sweet sugar, used in cooking or drinks.",
-		client = {
-			image = "hp_sugar.png",
-		}
-	},
-
-	["hp_pretzel"] = {
-		label = "Pretzel",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A salted soft pretzel snack.",
-		client = {
-			image = "hp_pretzel.png",
-		}
-	},
-
-	["hp_classiccheeseburger"] = {
-		label = "Classic Cheeseburger",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "A delicious classic cheeseburger with all the fixings.",
-		client = {
-			image = "hp_classiccheeseburger.png",
-		}
-	},
-
-	["hp_fishandchips"] = {
-		label = "Fish and Chips",
-		weight = 300,
-		stack = true,
-		close = true,
-		description = "A crispy and savory serving of fish and fries.",
-		client = {
-			image = "hp_fishandchips.png",
-		}
-	},
-
-	["hp_beer"] = {
-		label = "Beer",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A cold bottle of beer to unwind with.",
-		client = {
-			image = "hp_beer.png",
-		}
-	},
-
-	["hp_butter"] = {
-		label = "Butter",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Creamy butter for cooking or spreading.",
-		client = {
-			image = "hp_butter.png",
-		}
-	},
-
-	["hp_bloodymary"] = {
-		label = "Bloody Mary",
-		weight = 150,
-		stack = true,
-		close = true,
-		description = "A spicy tomato-based cocktail.",
-		client = {
-			image = "hp_bloodymary.png",
-		}
-	},
-
-	["hp_nachos"] = {
-		label = "Nachos",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Crispy nachos topped with cheese and more.",
-		client = {
-			image = "hp_nachos.png",
-		}
-	},
-
-	["hp_bowl"] = {
-		label = "Clean Bowl",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A clean bowl, ready to serve food.",
-		client = {
-			image = "hp_bowl.png",
-		}
-	},
-
-	["hp_dirtybowl"] = {
-		label = "Dirty Bowl",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A used bowl that needs to be washed.",
-		client = {
-			image = "hp_dirtybowl.png",
-		}
-	},
-
-
-
-
-
-
------- HQ
+        label = "Wine Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean wine glass, ready to be filled.",
+        client = {
+            image = "hp_wineglass.png",
+        }
+    },
+
+    ["hp_pinacolada"] = {
+        label = "Piña Colada",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A creamy tropical cocktail with pineapple and coconut.",
+        client = {
+            image = "hp_pinacolada.png",
+        }
+    },
+
+    ["hp_whiskeysour"] = {
+        label = "Whiskey Sour",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A classic cocktail made with whiskey, lemon juice, and sugar.",
+        client = {
+            image = "hp_whiskeysour.png",
+        }
+    },
+
+    ["hp_jalapenos"] = {
+        label = "Jalapeños",
+        weight = 60,
+        stack = true,
+        close = true,
+        description = "Sliced jalapeños for a spicy kick.",
+        client = {
+            image = "hp_jalapenos.png",
+        }
+    },
+
+    ["hp_lettuce"] = {
+        label = "Lettuce",
+        weight = 60,
+        stack = true,
+        close = true,
+        description = "Fresh lettuce leaves, great for salads or sandwiches.",
+        client = {
+            image = "hp_lettuce.png",
+        }
+    },
+
+    ["hp_pineappleslice"] = {
+        label = "Pineapple Slice",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "A sweet slice of pineapple, great for drinks or snacks.",
+        client = {
+            image = "hp_pineappleslice.png",
+        }
+    },
+
+    ["hp_chickenwings"] = {
+        label = "Chicken Wings",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Spicy and delicious chicken wings.",
+        client = {
+            image = "hp_chickenwings.png",
+        }
+    },
+
+    ["hp_islandicedtea"] = {
+        label = "Island Iced Tea",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A tropical twist on a classic iced tea cocktail.",
+        client = {
+            image = "hp_islandicedtea.png",
+        }
+    },
+
+    ["hp_cosmopolitan"] = {
+        label = "Cosmopolitan",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A stylish pink cocktail with a citrus twist.",
+        client = {
+            image = "hp_cosmopolitan.png",
+        }
+    },
+
+    ["hp_plate"] = {
+        label = "Clean Plate",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A clean plate, ready to serve food.",
+        client = {
+            image = "hp_plate.png",
+        }
+    },
+
+    ["hp_oldfashioned"] = {
+        label = "Old Fashioned",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A strong whiskey cocktail with bitters and sugar.",
+        client = {
+            image = "hp_oldfashioned.png",
+        }
+    },
+
+    ["hp_sliders"] = {
+        label = "Sliders",
+        weight = 220,
+        stack = true,
+        close = true,
+        description = "Mini burgers served as a snack or appetizer.",
+        client = {
+            image = "hp_sliders.png",
+        }
+    },
+
+    ["hp_pork"] = {
+        label = "Raw Pork",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "Raw pork meat, needs to be cooked.",
+        client = {
+            image = "hp_pork.png",
+        }
+    },
+
+    ["hp_cheeseslice"] = {
+        label = "Cheese Slice",
+        weight = 40,
+        stack = true,
+        close = true,
+        description = "A slice of cheese, perfect for burgers and sandwiches.",
+        client = {
+            image = "hp_cheeseslice.png",
+        }
+    },
+
+    ["hp_ice"] = {
+        label = "Ice Cubes",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "Cold ice cubes for chilling drinks.",
+        client = {
+            image = "hp_ice.png",
+        }
+    },
+
+    ["hp_salt"] = {
+        label = "Salt",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "A pinch of salt to season your food.",
+        client = {
+            image = "hp_salt.png",
+        }
+    },
+
+    ["hp_burgerbun"] = {
+        label = "Burger Bun",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A soft bun, perfect for a burger.",
+        client = {
+            image = "hp_burgerbun.png",
+        }
+    },
+
+    ["hp_chives"] = {
+        label = "Chives",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "Fresh chives for garnishing and flavor.",
+        client = {
+            image = "hp_chives.png",
+        }
+    },
+
+    ["hp_maitai"] = {
+        label = "Mai Tai",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A fruity rum cocktail with tropical vibes.",
+        client = {
+            image = "hp_maitai.png",
+        }
+    },
+
+    ["hp_darkandstormy"] = {
+        label = "Dark and Stormy",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A bold cocktail with dark rum and ginger beer.",
+        client = {
+            image = "hp_darkandstormy.png",
+        }
+    },
+
+    ["hp_beefpatty"] = {
+        label = "Beef Patty",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A seasoned beef patty, ready to cook.",
+        client = {
+            image = "hp_beefpatty.png",
+        }
+    },
+
+    ["hp_loadedpotatoskins"] = {
+        label = "Loaded Potato Skins",
+        weight = 220,
+        stack = true,
+        close = true,
+        description = "Potato skins filled with cheese, bacon, and more.",
+        client = {
+            image = "hp_loadedpotatoskins.png",
+        }
+    },
+
+    ["hp_lemonslice"] = {
+        label = "Lemon Slice",
+        weight = 20,
+        stack = true,
+        close = true,
+        description = "A slice of lemon to garnish your drink or dish.",
+        client = {
+            image = "hp_lemonslice.png",
+        }
+    },
+
+    ["hp_flour"] = {
+        label = "Flour",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A bag of flour used in baking and cooking.",
+        client = {
+            image = "hp_flour.png",
+        }
+    },
+
+    ["hp_dirtyglass"] = {
+        label = "Dirty Glass",
+        weight = 120,
+        stack = true,
+        close = true,
+        description = "A glass that needs to be cleaned before use.",
+        client = {
+            image = "hp_dirtyglass.png",
+        }
+    },
+
+    ["hp_ginandtonic"] = {
+        label = "Gin and Tonic",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A refreshing mix of gin and tonic water.",
+        client = {
+            image = "hp_ginandtonic.png",
+        }
+    },
+
+    ["hp_cherry"] = {
+        label = "Cherry",
+        weight = 20,
+        stack = true,
+        close = true,
+        description = "A sweet and juicy cherry.",
+        client = {
+            image = "hp_cherry.png",
+        }
+    },
+
+    ["hp_cheesecubes"] = {
+        label = "Cheese Cubes",
+        weight = 80,
+        stack = true,
+        close = true,
+        description = "Small cubes of cheese for snacking.",
+        client = {
+            image = "hp_cheesecubes.png",
+        }
+    },
+
+    ["hp_classicmargarita"] = {
+        label = "Classic Margarita",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A zesty cocktail made with tequila and lime.",
+        client = {
+            image = "hp_classicmargarita.png",
+        }
+    },
+
+    ["hp_fish"] = {
+        label = "Raw Fish",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A fresh catch, ready to be cooked.",
+        client = {
+            image = "hp_fish.png",
+        }
+    },
+
+    ["hp_mint"] = {
+        label = "Mint Leaves",
+        weight = 30,
+        stack = true,
+        close = true,
+        description = "Fresh mint leaves for garnish or flavor.",
+        client = {
+            image = "hp_mint.png",
+        }
+    },
+
+    ["hp_potato"] = {
+        label = "Potato",
+        weight = 120,
+        stack = true,
+        close = true,
+        description = "A raw potato, good for frying or baking.",
+        client = {
+            image = "hp_potato.png",
+        }
+    },
+
+    ["hp_tequilasunrise"] = {
+        label = "Tequila Sunrise",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A colorful tequila cocktail with orange juice and grenadine.",
+        client = {
+            image = "hp_tequilasunrise.png",
+        }
+    },
+
+    ["hp_mojito"] = {
+        label = "Mojito",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A refreshing cocktail made with rum, mint, and lime.",
+        client = {
+            image = "hp_mojito.png",
+        }
+    },
+
+    ["hp_hotsauce"] = {
+        label = "Hot Sauce",
+        weight = 80,
+        stack = true,
+        close = true,
+        description = "A spicy sauce to heat up your meal.",
+        client = {
+            image = "hp_hotsauce.png",
+        }
+    },
+
+    ["hp_eggs"] = {
+        label = "Eggs",
+        weight = 90,
+        stack = true,
+        close = true,
+        description = "Fresh eggs, perfect for breakfast or baking.",
+        client = {
+            image = "hp_eggs.png",
+        }
+    },
+
+    ["hp_dirtyplate"] = {
+        label = "Dirty Plate",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A used plate that needs washing.",
+        client = {
+            image = "hp_dirtyplate.png",
+        }
+    },
+
+    ["hp_whiskeyglass"] = {
+        label = "Whiskey Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean glass for serving whiskey.",
+        client = {
+            image = "hp_whiskeyglass.png",
+        }
+    },
+
+    ["hp_tortillachips"] = {
+        label = "Tortilla Chips",
+        weight = 160,
+        stack = true,
+        close = true,
+        description = "Crunchy chips made from corn tortillas.",
+        client = {
+            image = "hp_tortillachips.png",
+        }
+    },
+
+    ["hp_onionrings"] = {
+        label = "Onion Rings",
+        weight = 180,
+        stack = true,
+        close = true,
+        description = "Crispy battered onion rings.",
+        client = {
+            image = "hp_onionrings.png",
+        }
+    },
+
+    ["hp_tomato"] = {
+        label = "Tomato",
+        weight = 90,
+        stack = true,
+        close = true,
+        description = "A fresh tomato, used in many dishes.",
+        client = {
+            image = "hp_tomato.png",
+        }
+    },
+
+    ["hp_dirtywhiskeyglass"] = {
+        label = "Dirty Whiskey Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A whiskey glass in need of cleaning.",
+        client = {
+            image = "hp_dirtywhiskeyglass.png",
+        }
+    },
+
+    ["hp_orangeslice"] = {
+        label = "Orange Slice",
+        weight = 20,
+        stack = true,
+        close = true,
+        description = "A slice of orange for drinks or garnish.",
+        client = {
+            image = "hp_orangeslice.png",
+        }
+    },
+
+    ["hp_chicken"] = {
+        label = "Raw Chicken",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "Raw chicken meat, needs to be cooked.",
+        client = {
+            image = "hp_chicken.png",
+        }
+    },
+
+    ["hp_espressomartini"] = {
+        label = "Espresso Martini",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A coffee-flavored cocktail for a late-night buzz.",
+        client = {
+            image = "hp_espressomartini.png",
+        }
+    },
+
+    ["hp_cheesedip"] = {
+        label = "Cheese Dip",
+        weight = 120,
+        stack = true,
+        close = true,
+        description = "A creamy dip made with melted cheese.",
+        client = {
+            image = "hp_cheesedip.png",
+        }
+    },
+
+    ["hp_dirtywineglass"] = {
+        label = "Dirty Wine Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A used wine glass that needs to be washed.",
+        client = {
+            image = "hp_dirtywineglass.png",
+        }
+    },
+
+    ["hp_onion"] = {
+        label = "Onion",
+        weight = 80,
+        stack = true,
+        close = true,
+        description = "A fresh onion, perfect for cooking or garnishing.",
+        client = {
+            image = "hp_onion.png",
+        }
+    },
+
+    ["hp_chickentenders"] = {
+        label = "Chicken Tenders",
+        weight = 180,
+        stack = true,
+        close = true,
+        description = "Crispy chicken tenders, ready to eat.",
+        client = {
+            image = "hp_chickentenders.png",
+        }
+    },
+
+    ["hp_negroni"] = {
+        label = "Negroni",
+        weight = 140,
+        stack = true,
+        close = true,
+        description = "A classic cocktail with gin, vermouth, and Campari.",
+        client = {
+            image = "hp_negroni.png",
+        }
+    },
+
+    ["hp_glass"] = {
+        label = "Clean Glass",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean glass, ready to be used.",
+        client = {
+            image = "hp_glass.png",
+        }
+    },
+
+    ["hp_bangersandmash"] = {
+        label = "Bangers and Mash",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "A hearty dish of sausages and mashed potatoes.",
+        client = {
+            image = "hp_bangersandmash.png",
+        }
+    },
+
+    ["hp_frenchfries"] = {
+        label = "French Fries",
+        weight = 180,
+        stack = true,
+        close = true,
+        description = "Crispy golden fries, a fast food favorite.",
+        client = {
+            image = "hp_frenchfries.png",
+        }
+    },
+
+    ["hp_bbqsauce"] = {
+        label = "BBQ Sauce",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A rich and smoky barbecue sauce.",
+        client = {
+            image = "hp_bbqsauce.png",
+        }
+    },
+
+    ["hp_sugar"] = {
+        label = "Sugar",
+        weight = 60,
+        stack = true,
+        close = true,
+        description = "Sweet sugar, used in cooking or drinks.",
+        client = {
+            image = "hp_sugar.png",
+        }
+    },
+
+    ["hp_pretzel"] = {
+        label = "Pretzel",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A salted soft pretzel snack.",
+        client = {
+            image = "hp_pretzel.png",
+        }
+    },
+
+    ["hp_classiccheeseburger"] = {
+        label = "Classic Cheeseburger",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "A delicious classic cheeseburger with all the fixings.",
+        client = {
+            image = "hp_classiccheeseburger.png",
+        }
+    },
+
+    ["hp_fishandchips"] = {
+        label = "Fish and Chips",
+        weight = 300,
+        stack = true,
+        close = true,
+        description = "A crispy and savory serving of fish and fries.",
+        client = {
+            image = "hp_fishandchips.png",
+        }
+    },
+
+    ["hp_beer"] = {
+        label = "Beer",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A cold bottle of beer to unwind with.",
+        client = {
+            image = "hp_beer.png",
+        }
+    },
+
+    ["hp_butter"] = {
+        label = "Butter",
+        weight = 50,
+        stack = true,
+        close = true,
+        description = "Creamy butter for cooking or spreading.",
+        client = {
+            image = "hp_butter.png",
+        }
+    },
+
+    ["hp_bloodymary"] = {
+        label = "Bloody Mary",
+        weight = 150,
+        stack = true,
+        close = true,
+        description = "A spicy tomato-based cocktail.",
+        client = {
+            image = "hp_bloodymary.png",
+        }
+    },
+
+    ["hp_nachos"] = {
+        label = "Nachos",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Crispy nachos topped with cheese and more.",
+        client = {
+            image = "hp_nachos.png",
+        }
+    },
+
+    ["hp_bowl"] = {
+        label = "Clean Bowl",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A clean bowl, ready to serve food.",
+        client = {
+            image = "hp_bowl.png",
+        }
+    },
+
+    ["hp_dirtybowl"] = {
+        label = "Dirty Bowl",
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A used bowl that needs to be washed.",
+        client = {
+            image = "hp_dirtybowl.png",
+        }
+    },
+
+
+
+
+
+
+    ------ HQ
 
 
     ["alley_rings"] = {
@@ -6855,90 +7312,90 @@ return {
             image = "weed_seed.png",
         }
     },
---- vanillaunicorn
-	["vanillaunicorn_raveroll"] = {     --- cake food
-		label = "Rave Roll",
-		weight = 10,
-		degrade = 1440,
-		decay = true,
-		allowArmed = true,
-		stack = true,
-		close = false,
-		description = "Sushi with pink rice, spicy tuna, and a glittery soy glaze.",
-		client = {
-			image = "vanillaunicorn_raveroll.png",
-		},
-	},
+    --- vanillaunicorn
+    ["vanillaunicorn_raveroll"] = { --- cake food
+        label = "Rave Roll",
+        weight = 10,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = false,
+        description = "Sushi with pink rice, spicy tuna, and a glittery soy glaze.",
+        client = {
+            image = "vanillaunicorn_raveroll.png",
+        },
+    },
 
-	["vanillaunicorn_docksidedelights"] = {    --- cake food
-		label = "Dockside Delights",
-		weight = 10,
-		degrade = 1440,
-		decay = true,
-		allowArmed = true,
-		stack = true,
-		close = false,
-		description = "Donut Holes dusted with pink sugar, with a side of chocolate dipping sauce.",
-		client = {
-			image = "vanillaunicorn_docksidedelights.png",
-		},
-	},
+    ["vanillaunicorn_docksidedelights"] = { --- cake food
+        label = "Dockside Delights",
+        weight = 10,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = false,
+        description = "Donut Holes dusted with pink sugar, with a side of chocolate dipping sauce.",
+        client = {
+            image = "vanillaunicorn_docksidedelights.png",
+        },
+    },
 
-	["vanillaunicorn_77sour"] = {   --- drink like votka
-		label = "77 Sour",
-		weight = 10,
-		degrade = 1440,
-		decay = true,
-		allowArmed = true,
-		stack = true,
-		close = false,
-		description = "A Whiskey Sour.. but pink",
-		client = {
-			image = "vanillaunicorn_77sour.png",
-		},
-	},
+    ["vanillaunicorn_77sour"] = { --- drink like votka
+        label = "77 Sour",
+        weight = 10,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = false,
+        description = "A Whiskey Sour.. but pink",
+        client = {
+            image = "vanillaunicorn_77sour.png",
+        },
+    },
 
-	["vanillaunicorn_portsantosporterhouse"] = {   --- cake food
-		label = "Port Santos Porterhouse",
-		weight = 10,
-		degrade = 1440,
-		decay = true,
-		allowArmed = true,
-		stack = true,
-		close = false,
-		description = "Porterhouse Steak with roasted garlic and creamy mashed taters",
-		client = {
-			image = "vanillaunicorn_portsantosporterhouse.png",
-		},
-	},
+    ["vanillaunicorn_portsantosporterhouse"] = { --- cake food
+        label = "Port Santos Porterhouse",
+        weight = 10,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = false,
+        description = "Porterhouse Steak with roasted garlic and creamy mashed taters",
+        client = {
+            image = "vanillaunicorn_portsantosporterhouse.png",
+        },
+    },
 
-	["vanillaunicorn_sunsetmartini"] = {   --- drink
-		label = "Sunset Martini",
-		weight = 10,
-		degrade = 1440,
-		decay = true,
-		allowArmed = true,
-		stack = true,
-		close = false,
-		description = "Sunset in a fancy glass.. with a snack",
-		client = {
-			image = "vanillaunicorn_sunsetmartini.png",
-		},
-	},
+    ["vanillaunicorn_sunsetmartini"] = { --- drink
+        label = "Sunset Martini",
+        weight = 10,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = false,
+        description = "Sunset in a fancy glass.. with a snack",
+        client = {
+            image = "vanillaunicorn_sunsetmartini.png",
+        },
+    },
 
-	["vanillaunicorn_docksidebreeze"] = {   --- drink
-		label = "Dockside Breeze",
-		weight = 10,
-		degrade = 1440,
-		decay = true,
-		allowArmed = true,
-		stack = true,
-		close = false,
-		description = "A fizzy mocktail.. with a lime",
-		client = {
-			image = "vanillaunicorn_docksidebreeze.png",
-		},
-	},
+    ["vanillaunicorn_docksidebreeze"] = { --- drink
+        label = "Dockside Breeze",
+        weight = 10,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = false,
+        description = "A fizzy mocktail.. with a lime",
+        client = {
+            image = "vanillaunicorn_docksidebreeze.png",
+        },
+    },
 
     ["grapejuice"] = {
         label = "Grape Juice",
@@ -7489,7 +7946,7 @@ return {
             image = "driverlicense.png",
         }
     },
-     ["weedlicense"] = {
+    ["weedlicense"] = {
         label = "DRIVER LICENSE",
         weight = 0,
         stack = false,
@@ -7499,7 +7956,7 @@ return {
             image = "weedlicense.png",
         }
     },
-     ["weaponlicense"] = {
+    ["weaponlicense"] = {
         label = "WEAPON PERMIT",
         weight = 0,
         stack = false,
@@ -8295,13 +8752,7 @@ return {
         }
     },
 
-    ['laptop'] = {
-        label = 'Laptop',
-        weight = 1,
-        stack = false,
-        close = true,
-        description = '',
-    },
+
     ['decrypter'] = {
         label = 'Decrypter',
         weight = 1,
@@ -11001,74 +11452,74 @@ return {
         }
     },
     ["fried_chicken"] = {
-    label = "Fried Chicken",
-    weight = 250,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "Crispy golden fried chicken, juicy and delicious.",
-    client = {
-        image = "fried_chicken.png",
-    }
-},
+        label = "Fried Chicken",
+        weight = 250,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "Crispy golden fried chicken, juicy and delicious.",
+        client = {
+            image = "fried_chicken.png",
+        }
+    },
 
-["spicy_chicken_sandwich"] = {
-    label = "Spicy Chicken Sandwich",
-    weight = 300,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "A fiery sandwich with crispy chicken and spicy sauce.",
-    client = {
-        image = "spicy_chicken_sandwich.png",
-    }
-},
+    ["spicy_chicken_sandwich"] = {
+        label = "Spicy Chicken Sandwich",
+        weight = 300,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "A fiery sandwich with crispy chicken and spicy sauce.",
+        client = {
+            image = "spicy_chicken_sandwich.png",
+        }
+    },
 
-["szechuan_tenders"] = {
-    label = "Szechuan Tenders",
-    weight = 200,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "Tender strips with a bold Szechuan kick.",
-    client = {
-        image = "szechuan_tenders.png",
-    }
-},
+    ["szechuan_tenders"] = {
+        label = "Szechuan Tenders",
+        weight = 200,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "Tender strips with a bold Szechuan kick.",
+        client = {
+            image = "szechuan_tenders.png",
+        }
+    },
 
-["buttery_biscuit"] = {
-    label = "Buttery Biscuit",
-    weight = 150,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "A soft and flaky biscuit loaded with butter.",
-    client = {
-        image = "buttery_biscuit.png",
-    }
-},
+    ["buttery_biscuit"] = {
+        label = "Buttery Biscuit",
+        weight = 150,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "A soft and flaky biscuit loaded with butter.",
+        client = {
+            image = "buttery_biscuit.png",
+        }
+    },
 
-["glory_hole"] = {
-    label = "Glory Hole",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    allowArmed = true,
-    stack = true,
-    close = true,
-    description = "A mysterious treat... eat at your own risk.",
-    client = {
-        image = "glory_hole.png",
-    }
-},
+    ["glory_hole"] = {
+        label = "Glory Hole",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        allowArmed = true,
+        stack = true,
+        close = true,
+        description = "A mysterious treat... eat at your own risk.",
+        client = {
+            image = "glory_hole.png",
+        }
+    },
 
 
     ["creampie"] = {
@@ -15002,10 +15453,10 @@ return {
         stack = true,
         close = true,
         client = {
-			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
-			disable = { move = true, car = false, combat = true },
-			usetime = 2500,
-		}
+            anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
+            disable = { move = true, car = false, combat = true },
+            usetime = 2500,
+        }
     },
     ['painkillers'] = {
         label = 'Painkillers',
@@ -15591,297 +16042,297 @@ return {
     },
 
     ['wigtable'] = {
-		label = 'Wig table',
-		weight = 250,
-		stack = true
-	},
+        label = 'Wig table',
+        weight = 250,
+        stack = true
+    },
 
-	['wigcap'] = {
-		label = 'Wig cap',
-		weight = 250,
-		stack = true
-	},
+    ['wigcap'] = {
+        label = 'Wig cap',
+        weight = 250,
+        stack = true
+    },
 
-	['sewingkit'] = {
-		label = 'Sewing kit',
-		weight = 250,
-		stack = true
-	},
+    ['sewingkit'] = {
+        label = 'Sewing kit',
+        weight = 250,
+        stack = true
+    },
 
-	['wigbundle'] = {
-		label = 'Wig bundle',
-		weight = 250,
-		stack = true
-	},
+    ['wigbundle'] = {
+        label = 'Wig bundle',
+        weight = 250,
+        stack = true
+    },
 
-	['40inchwigs'] = {
-		label = '40 inch wigs',
-		weight = 250,
-		stack = true
-	},
+    ['40inchwigs'] = {
+        label = '40 inch wigs',
+        weight = 250,
+        stack = true
+    },
 
-	['braidwigs'] = {
-		label = 'Braid wigs',
-		weight = 250,
-		stack = true
-	},
+    ['braidwigs'] = {
+        label = 'Braid wigs',
+        weight = 250,
+        stack = true
+    },
 
-	['bodywavewigs'] = {
-		label = 'Body wave wigs',
-		weight = 250,
-		stack = true
-	},
+    ['bodywavewigs'] = {
+        label = 'Body wave wigs',
+        weight = 250,
+        stack = true
+    },
 
-	['bangwigs'] = {
-		label = 'Bang wigs',
-		weight = 250,
-		stack = true
-	},
+    ['bangwigs'] = {
+        label = 'Bang wigs',
+        weight = 250,
+        stack = true
+    },
 
-	['straightwigs'] = {
-		label = 'Straight wigs',
-		weight = 250,
-		stack = true
-	},
+    ['straightwigs'] = {
+        label = 'Straight wigs',
+        weight = 250,
+        stack = true
+    },
 
-	['naturalwavewigs'] = {
-		label = 'Natural wave wigs',
-		weight = 250,
-		stack = true
-	},
+    ['naturalwavewigs'] = {
+        label = 'Natural wave wigs',
+        weight = 250,
+        stack = true
+    },
 
     ['deepwavewigs'] = {
-		label = 'Deep wave wigs',
-		weight = 250,
-		stack = true
-	},
+        label = 'Deep wave wigs',
+        weight = 250,
+        stack = true
+    },
 
-	['wigclientphone'] = {
-		label = 'Wig client phone',
-		weight = 250,
-		stack = true
-	},
+    ['wigclientphone'] = {
+        label = 'Wig client phone',
+        weight = 250,
+        stack = true
+    },
 
-	-- NEW WIGS
+    -- NEW WIGS
 
-	['long_curly'] = {
-		label = 'Long Curly Hair',
-		weight = 250,
-		stack = true
-	},
+    ['long_curly'] = {
+        label = 'Long Curly Hair',
+        weight = 250,
+        stack = true
+    },
 
     ['short_hair_wig'] = {
-		label = 'Short Haired Wig',
-		weight = 250,
-		stack = true
-	},
+        label = 'Short Haired Wig',
+        weight = 250,
+        stack = true
+    },
 
     ['short_curled_wig'] = {
-		label = 'Short Curled Wig',
-		weight = 250,
-		stack = true
-	},
+        label = 'Short Curled Wig',
+        weight = 250,
+        stack = true
+    },
 
     ['long_blonde_wig'] = {
-		label = 'Long Blonde Wig',
-		weight = 250,
-		stack = true
-	},
+        label = 'Long Blonde Wig',
+        weight = 250,
+        stack = true
+    },
 
     ["empty_lash_box"] = {
-	label = "Empty Lash Box",
-	weight = 0.5,
-	stack = true,
-	close = true,
-},
+        label = "Empty Lash Box",
+        weight = 0.5,
+        stack = true,
+        close = true,
+    },
 
     ["strips"] = {
-	    label = "Strips",
-	    weight = 0.2,
-	    stack = true,
-	    close = true,
+        label = "Strips",
+        weight = 0.2,
+        stack = true,
+        close = true,
     },
 
     ["eyelash_glue"] = {
-	    label = "Eyelash Glue",
-	    weight = 0.1,
-	    stack = true,
-	    close = true,
+        label = "Eyelash Glue",
+        weight = 0.1,
+        stack = true,
+        close = true,
     },
 
     ["lashes_phone"] = {
-	    label = "Lashes Phone",
-	    weight = 1.2,
-	    stack = false,
-	    close = true,
+        label = "Lashes Phone",
+        weight = 1.2,
+        stack = false,
+        close = true,
     },
 
-["lashes_table"] = {
-	    label = "Lashes Table",
-	    weight = 1,
-	    stack = true,
-	    close = true,
+    ["lashes_table"] = {
+        label = "Lashes Table",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["ellipse_lashes"] = {
-	    label = "Ellipse Lashes",
-	    weight = 0.3,
-	    stack = true,
-	    close = true,
+        label = "Ellipse Lashes",
+        weight = 0.3,
+        stack = true,
+        close = true,
     },
 
     ["faux_mink_lashes"] = {
-	    label = "Faux Mink Lashes",
-	    weight = 0.25,
-	    stack = true,
-	    close = true,
+        label = "Faux Mink Lashes",
+        weight = 0.25,
+        stack = true,
+        close = true,
     },
 
     ["mink_lashes"] = {
-	    label = "Mink Lashes",
-	    weight = 0.2,
-	    stack = true,
-	    close = true,
+        label = "Mink Lashes",
+        weight = 0.2,
+        stack = true,
+        close = true,
     },
 
     ["silk_lashes"] = {
-	    label = "Silk Lashes",
-	    weight = 0.15,
-	    stack = true,
-	    close = true,
+        label = "Silk Lashes",
+        weight = 0.15,
+        stack = true,
+        close = true,
     },
 
     ["synthetic_lashes"] = {
-	    label = "Synthetic Lashes",
-	    weight = 0.3,
-	    stack = true,
-	    close = true,
+        label = "Synthetic Lashes",
+        weight = 0.3,
+        stack = true,
+        close = true,
     },
 
     ["volume_lashes"] = {
-	    label = "Volume Lashes",
-	    weight = 0.4,
-	    stack = true,
-	    close = true,
+        label = "Volume Lashes",
+        weight = 0.4,
+        stack = true,
+        close = true,
     },
 
     ["handbag_leather"] = {
-    	label = "Handbag (Leather)",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Handbag (Leather)",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["handbag_sewing_kits"] = {
-    	label = "Handbag (Sewing Kits)",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Handbag (Sewing Kits)",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["handbag_cloth"] = {
-    	label = "Handbag (Cloth)",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Handbag (Cloth)",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["handbag_bench"] = {
-    	label = "Handbag (Bench)",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Handbag (Bench)",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["handbag_phone"] = {
-    	label = "Handbag (Phone)",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Handbag (Phone)",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["bowling_bag"] = {
-    	label = "Bowling Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Bowling Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["pale_pink_bag"] = {
-    	label = "Pale Pink Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Pale Pink Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["pink_heart_bag"] = {
-    	label = "Pink Heart Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Pink Heart Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["pink_messenger_bag"] = {
-    	label = "Pink Messenger Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Pink Messenger Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["pink_tote_bag"] = {
-    	label = "Pink Tote Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Pink Tote Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["tote_bag"] = {
-    	label = "Tote Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Tote Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["elegancy_beauty_bag"] = {
-    	label = "Elegancy Beauty Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Elegancy Beauty Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["messenger_purse"] = {
-    	label = "Messenger Purse",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Messenger Purse",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["small_yellow_bag"] = {
-    	label = "Small Yellow Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Small Yellow Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["leather_bag"] = {
-    	label = "Leather Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Leather Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["funky_bag"] = {
-    	label = "Funky Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Funky Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     ["elegance_bag"] = {
-    	label = "Elegance Bag",
-    	weight = 1,
-    	stack = true,
-    	close = true,
+        label = "Elegance Bag",
+        weight = 1,
+        stack = true,
+        close = true,
     },
 
     -- LIFE INVADER
@@ -16840,7 +17291,7 @@ return {
 
     ["waffle_syrup"] = {
         label = "Waffle with Syrup",
-        weight = 10, -- Same weight as raw chicken
+        weight = 10,    -- Same weight as raw chicken
         degrade = 1440, -- Same degrade time as raw chicken
         decay = true,
         stack = true,
@@ -17162,329 +17613,329 @@ return {
         }
     },
     ["bean_bagel_a"] = {
-    label = "Bean Bagel A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_bagel_a.png",
-    }
-},
-["bean_bagel_b"] = {
-    label = "Bean Bagel B",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_bagel_b.png",
-    }
-},
-["bean_bagel_c"] = {
-    label = "Bean Bagel C",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_bagel_c.png",
-    }
-},
-["bean_c_roll"] = {
-    label = "Bean C Roll",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_c_roll.png",
-    }
-},
-["bean_danish_a"] = {
-    label = "Bean Danish A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_danish_a.png",
-    }
-},
-["bean_danish_b"] = {
-    label = "Bean Danish B",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_danish_b.png",
-    }
-},
-["bean_donut_a"] = {
-    label = "Bean Donut A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_donut_a.png",
-    }
-},
-["bean_donut_b"] = {
-    label = "Bean Donut B",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_donut_b.png",
-    }
-},
-["bean_muffin_a"] = {
-    label = "Bean Muffin A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_muffin_a.png",
-    }
-},
-["bean_muffin_b"] = {
-    label = "Bean Muffin B",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_muffin_b.png",
-    }
-},
-["bean_scone"] = {
-    label = "Bean Scone",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_scone.png",
-    }
-},
-["cheesecake_a"] = {
-    label = "Cheesecake A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "cheesecake_a.png",
-    }
-},
-["coffee_cake"] = {
-    label = "Coffee Cake",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "coffee_cake.png",
-    }
-},
-["bean_cappuccino"] = {
-    label = "Bean Cappuccino",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_cappuccino.png",
-    }
-},
-["bean_coffee"] = {
-    label = "Bean Coffee",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_coffee.png",
-    }
-},
-["bean_espresso"] = {
-    label = "Bean Espresso",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_espresso.png",
-    }
-},
-["bean_frappe_a"] = {
-    label = "Bean Frappe A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_frappe_a.png",
-    }
-},
-["bean_frappe_b"] = {
-    label = "Bean Frappe B",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_frappe_b.png",
-    }
-},
-["bean_fruit"] = {
-    label = "Bean Fruit Drink",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_fruit.png",
-    }
-},
-["bean_hotchoc"] = {
-    label = "Bean Hot Chocolate",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_hotchoc.png",
-    }
-},
-["bean_iced_a"] = {
-    label = "Bean Iced Drink A",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_iced_a.png",
-    }
-},
-["bean_iced_b"] = {
-    label = "Bean Iced Drink B",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_iced_b.png",
-    }
-},
-["bean_latte"] = {
-    label = "Bean Latte",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_latte.png",
-    }
-},
-["bean_matcha"] = {
-    label = "Bean Matcha",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_matcha.png",
-    }
-},
-["bean_togo_l"] = {
-    label = "Bean To-Go Large",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_togo_l.png",
-    }
-},
-["bean_togo_m"] = {
-    label = "Bean To-Go Medium",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_togo_m.png",
-    }
-},
-["bean_togo_s"] = {
-    label = "Bean To-Go Small",
-    weight = 100,
-    degrade = 1440,
-    decay = true,
-    stack = true,
-    close = true,
-    description = "",
-    client = {
-        image = "bean_togo_s.png",
-    }
-},
+        label = "Bean Bagel A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_bagel_a.png",
+        }
+    },
+    ["bean_bagel_b"] = {
+        label = "Bean Bagel B",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_bagel_b.png",
+        }
+    },
+    ["bean_bagel_c"] = {
+        label = "Bean Bagel C",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_bagel_c.png",
+        }
+    },
+    ["bean_c_roll"] = {
+        label = "Bean C Roll",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_c_roll.png",
+        }
+    },
+    ["bean_danish_a"] = {
+        label = "Bean Danish A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_danish_a.png",
+        }
+    },
+    ["bean_danish_b"] = {
+        label = "Bean Danish B",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_danish_b.png",
+        }
+    },
+    ["bean_donut_a"] = {
+        label = "Bean Donut A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_donut_a.png",
+        }
+    },
+    ["bean_donut_b"] = {
+        label = "Bean Donut B",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_donut_b.png",
+        }
+    },
+    ["bean_muffin_a"] = {
+        label = "Bean Muffin A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_muffin_a.png",
+        }
+    },
+    ["bean_muffin_b"] = {
+        label = "Bean Muffin B",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_muffin_b.png",
+        }
+    },
+    ["bean_scone"] = {
+        label = "Bean Scone",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_scone.png",
+        }
+    },
+    ["cheesecake_a"] = {
+        label = "Cheesecake A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "cheesecake_a.png",
+        }
+    },
+    ["coffee_cake"] = {
+        label = "Coffee Cake",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "coffee_cake.png",
+        }
+    },
+    ["bean_cappuccino"] = {
+        label = "Bean Cappuccino",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_cappuccino.png",
+        }
+    },
+    ["bean_coffee"] = {
+        label = "Bean Coffee",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_coffee.png",
+        }
+    },
+    ["bean_espresso"] = {
+        label = "Bean Espresso",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_espresso.png",
+        }
+    },
+    ["bean_frappe_a"] = {
+        label = "Bean Frappe A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_frappe_a.png",
+        }
+    },
+    ["bean_frappe_b"] = {
+        label = "Bean Frappe B",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_frappe_b.png",
+        }
+    },
+    ["bean_fruit"] = {
+        label = "Bean Fruit Drink",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_fruit.png",
+        }
+    },
+    ["bean_hotchoc"] = {
+        label = "Bean Hot Chocolate",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_hotchoc.png",
+        }
+    },
+    ["bean_iced_a"] = {
+        label = "Bean Iced Drink A",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_iced_a.png",
+        }
+    },
+    ["bean_iced_b"] = {
+        label = "Bean Iced Drink B",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_iced_b.png",
+        }
+    },
+    ["bean_latte"] = {
+        label = "Bean Latte",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_latte.png",
+        }
+    },
+    ["bean_matcha"] = {
+        label = "Bean Matcha",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_matcha.png",
+        }
+    },
+    ["bean_togo_l"] = {
+        label = "Bean To-Go Large",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_togo_l.png",
+        }
+    },
+    ["bean_togo_m"] = {
+        label = "Bean To-Go Medium",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_togo_m.png",
+        }
+    },
+    ["bean_togo_s"] = {
+        label = "Bean To-Go Small",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "",
+        client = {
+            image = "bean_togo_s.png",
+        }
+    },
 
 
     ["highnoon"] = {
@@ -17956,224 +18407,224 @@ return {
 
 
     ['metalx_blueberry'] = {
-    label = 'MetalX Blueberry',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "MetalX Blueberry",
-    client = {
-        status = { thirst = 150000 },
-        anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-        prop = {
-            model = 'metalx_blueberry',
-            bone = 18905,
-            pos = vec3(0.13, 0.03, 0.03),
-            rot = vec3(-80.0, 70.0, -20.0)
+        label = 'MetalX Blueberry',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "MetalX Blueberry",
+        client = {
+            status = { thirst = 150000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = {
+                model = 'metalx_blueberry',
+                bone = 18905,
+                pos = vec3(0.13, 0.03, 0.03),
+                rot = vec3(-80.0, 70.0, -20.0)
+            },
+            usetime = 7000,
+            notification = 'You drank a MetalX Blueberry'
         },
-        usetime = 7000,
-        notification = 'You drank a MetalX Blueberry'
     },
-},
 
-['metalx_lime'] = {
-    label = 'MetalX Lime',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "MetalX Lime",
-    client = {
-        status = { thirst = 150000 },
-        anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-        prop = {
-            model = 'metalx_lime',
-            bone = 18905,
-            pos = vec3(0.13, 0.03, 0.03),
-            rot = vec3(-80.0, 70.0, -20.0)
+    ['metalx_lime'] = {
+        label = 'MetalX Lime',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "MetalX Lime",
+        client = {
+            status = { thirst = 150000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = {
+                model = 'metalx_lime',
+                bone = 18905,
+                pos = vec3(0.13, 0.03, 0.03),
+                rot = vec3(-80.0, 70.0, -20.0)
+            },
+            usetime = 7000,
+            notification = 'You drank a MetalX Lime'
         },
-        usetime = 7000,
-        notification = 'You drank a MetalX Lime'
     },
-},
 
-['metalx_orange'] = {
-    label = 'MetalX Orange',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "MetalX Orange",
-    client = {
-        status = { thirst = 150000 },
-        anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-        prop = {
-            model = 'metalx_orange',
-            bone = 18905,
-            pos = vec3(0.13, 0.03, 0.03),
-            rot = vec3(-80.0, 70.0, -20.0)
+    ['metalx_orange'] = {
+        label = 'MetalX Orange',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "MetalX Orange",
+        client = {
+            status = { thirst = 150000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = {
+                model = 'metalx_orange',
+                bone = 18905,
+                pos = vec3(0.13, 0.03, 0.03),
+                rot = vec3(-80.0, 70.0, -20.0)
+            },
+            usetime = 7000,
+            notification = 'You drank a MetalX Orange'
         },
-        usetime = 7000,
-        notification = 'You drank a MetalX Orange'
     },
-},
 
-['pretty_cherry'] = {
-    label = 'Pretty Cherry',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Pretty Cherry",
-    client = {
-        status = { thirst = 150000 },
-        anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-        prop = {
-            model = 'pretty_cherry',
-            bone = 18905,
-            pos = vec3(0.13, 0.03, 0.03),
-            rot = vec3(-80.0, 70.0, -20.0)
+    ['pretty_cherry'] = {
+        label = 'Pretty Cherry',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Pretty Cherry",
+        client = {
+            status = { thirst = 150000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = {
+                model = 'pretty_cherry',
+                bone = 18905,
+                pos = vec3(0.13, 0.03, 0.03),
+                rot = vec3(-80.0, 70.0, -20.0)
+            },
+            usetime = 7000,
+            notification = 'You drank a Pretty Cherry'
         },
-        usetime = 7000,
-        notification = 'You drank a Pretty Cherry'
     },
-},
 
-['pretty_peach'] = {
-    label = 'Pretty Peach',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Pretty Peach",
-    client = {
-        status = { thirst = 150000 },
-        anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-        prop = {
-            model = 'pretty_peach',
-            bone = 18905,
-            pos = vec3(0.13, 0.03, 0.03),
-            rot = vec3(-80.0, 70.0, -20.0)
+    ['pretty_peach'] = {
+        label = 'Pretty Peach',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Pretty Peach",
+        client = {
+            status = { thirst = 150000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = {
+                model = 'pretty_peach',
+                bone = 18905,
+                pos = vec3(0.13, 0.03, 0.03),
+                rot = vec3(-80.0, 70.0, -20.0)
+            },
+            usetime = 7000,
+            notification = 'You drank a Pretty Peach'
         },
-        usetime = 7000,
-        notification = 'You drank a Pretty Peach'
     },
-},
 
-['mochi_panda'] = {
-    label = 'Mochi Panda',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Mochi Panda",
-    client = {
-        status = { hunger = 500000 },
-        anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-        prop = {
-            model = 'mochi_panda',
-            bone = 18905,
-            pos = vec3(0.14, 0.06, 0.04),
-            rot = vec3(0.0, 110.0, 0.0)
+    ['mochi_panda'] = {
+        label = 'Mochi Panda',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Mochi Panda",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = {
+                model = 'mochi_panda',
+                bone = 18905,
+                pos = vec3(0.14, 0.06, 0.04),
+                rot = vec3(0.0, 110.0, 0.0)
+            },
+            usetime = 7000,
+            notification = 'You ate a Mochi Panda'
         },
-        usetime = 7000,
-        notification = 'You ate a Mochi Panda'
     },
-},
 
-['mochi_pig'] = {
-    label = 'Mochi Pig',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Mochi Pig",
-    client = {
-        status = { hunger = 500000 },
-        anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-        prop = {
-            model = 'mochi_pig',
-            bone = 18905,
-            pos = vec3(0.14, 0.06, 0.04),
-            rot = vec3(0.0, 110.0, 0.0)
+    ['mochi_pig'] = {
+        label = 'Mochi Pig',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Mochi Pig",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = {
+                model = 'mochi_pig',
+                bone = 18905,
+                pos = vec3(0.14, 0.06, 0.04),
+                rot = vec3(0.0, 110.0, 0.0)
+            },
+            usetime = 7000,
+            notification = 'You ate a Mochi Pig'
         },
-        usetime = 7000,
-        notification = 'You ate a Mochi Pig'
     },
-},
 
-['pop_chocolate'] = {
-    label = 'Pop Chocolate',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Pop Chocolate",
-    client = {
-        status = { hunger = 500000 },
-        anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-        prop = {
-            model = 'pop_chocolate',
-            bone = 18905,
-            pos = vec3(0.14, 0.04, 0.04),
-            rot = vec3(-60.0, 140.0, -10.0)
+    ['pop_chocolate'] = {
+        label = 'Pop Chocolate',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Pop Chocolate",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = {
+                model = 'pop_chocolate',
+                bone = 18905,
+                pos = vec3(0.14, 0.04, 0.04),
+                rot = vec3(-60.0, 140.0, -10.0)
+            },
+            usetime = 7000,
+            notification = 'You ate a Pop Chocolate'
         },
-        usetime = 7000,
-        notification = 'You ate a Pop Chocolate'
     },
-},
 
-['pop_purple'] = {
-    label = 'Pop Purple',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Pop Purple",
-    client = {
-        status = { hunger = 500000 },
-        anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-        prop = {
-            model = 'pop_purple',
-            bone = 18905,
-            pos = vec3(0.14, 0.04, 0.04),
-            rot = vec3(-60.0, 140.0, -10.0)
+    ['pop_purple'] = {
+        label = 'Pop Purple',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Pop Purple",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = {
+                model = 'pop_purple',
+                bone = 18905,
+                pos = vec3(0.14, 0.04, 0.04),
+                rot = vec3(-60.0, 140.0, -10.0)
+            },
+            usetime = 7000,
+            notification = 'You ate a Pop Purple'
         },
-        usetime = 7000,
-        notification = 'You ate a Pop Purple'
     },
-},
 
-['pop_red'] = {
-    label = 'Pop Red',
-    degrade = 1440,
-    decay = true,
-    weight = 10,
-    stack = true,
-    close = true,
-    description = "Pop Red",
-    client = {
-        status = { hunger = 500000 },
-        anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-        prop = {
-            model = 'pop_red',
-            bone = 18905,
-            pos = vec3(0.14, 0.04, 0.04),
-            rot = vec3(-60.0, 140.0, -10.0)
+    ['pop_red'] = {
+        label = 'Pop Red',
+        degrade = 1440,
+        decay = true,
+        weight = 10,
+        stack = true,
+        close = true,
+        description = "Pop Red",
+        client = {
+            status = { hunger = 500000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
+            prop = {
+                model = 'pop_red',
+                bone = 18905,
+                pos = vec3(0.14, 0.04, 0.04),
+                rot = vec3(-60.0, 140.0, -10.0)
+            },
+            usetime = 7000,
+            notification = 'You ate a Pop Red'
         },
-        usetime = 7000,
-        notification = 'You ate a Pop Red'
     },
-},
 
 
 
@@ -20785,66 +21236,66 @@ return {
         }
     },
 
-	["crumbl_warpchicken"] = {
-		label = "Crumbl Warp Chicken",
-		weight = 100,
-		degrade = 1440,
-		decay = true,
-		stack = true,
-		close = true,
-		description = "A delicious special chicken dish.",
-		client = {
-			image = "crumbl_warpchicken.png",
-		}
-	},
-	["crumbl_warpsalmon"] = {
-		label = "Crumbl Warp Salmon",
-		weight = 100,
-		degrade = 1440,
-		decay = true,
-		stack = true,
-		close = true,
-		description = "A freshly cooked salmon dish.",
-		client = {
-			image = "crumbl_warpsalmon.png",
-		}
-	},
+    ["crumbl_warpchicken"] = {
+        label = "Crumbl Warp Chicken",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "A delicious special chicken dish.",
+        client = {
+            image = "crumbl_warpchicken.png",
+        }
+    },
+    ["crumbl_warpsalmon"] = {
+        label = "Crumbl Warp Salmon",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "A freshly cooked salmon dish.",
+        client = {
+            image = "crumbl_warpsalmon.png",
+        }
+    },
     ["crumbl_bubble_milk"] = {
-		label = "Crumbl Bubble Milk Tea",
-		weight = 100,
-		degrade = 1440,
-		decay = true,
-		stack = true,
-		close = true,
-		description = "A refreshing bubble milk tea.",
-		client = {
-			image = "crumbl_bubble_milk.png",
-		}
-	},
-	["crumbl_bubble_orange"] = {
-		label = "Crumbl Bubble Orange Juice",
-		weight = 100,
-		degrade = 1440,
-		decay = true,
-		stack = true,
-		close = true,
-		description = "A sweet and tangy bubble orange drink.",
-		client = {
-			image = "crumbl_bubble_orange.png",
-		}
-	},
-	["crumbl_bubble_purple"] = {
-		label = "Crumbl Bubble Grape Juice",
-		weight = 100,
-		degrade = 1440,
-		decay = true,
-		stack = true,
-		close = true,
-		description = "A flavorful grape bubble tea.",
-		client = {
-			image = "crumbl_bubble_purple.png",
-		}
-	},
+        label = "Crumbl Bubble Milk Tea",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "A refreshing bubble milk tea.",
+        client = {
+            image = "crumbl_bubble_milk.png",
+        }
+    },
+    ["crumbl_bubble_orange"] = {
+        label = "Crumbl Bubble Orange Juice",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "A sweet and tangy bubble orange drink.",
+        client = {
+            image = "crumbl_bubble_orange.png",
+        }
+    },
+    ["crumbl_bubble_purple"] = {
+        label = "Crumbl Bubble Grape Juice",
+        weight = 100,
+        degrade = 1440,
+        decay = true,
+        stack = true,
+        close = true,
+        description = "A flavorful grape bubble tea.",
+        client = {
+            image = "crumbl_bubble_purple.png",
+        }
+    },
     ["crumbl_panini"] = {
         label = "Crumbl Panini",
         weight = 100,
@@ -21172,10 +21623,10 @@ return {
         label = "Offroad Tyres",
         weight = 1000,
     },
---    ["drift_tuning_kit"] = {
---        label = "Drift Tuning Kit",
---        weight = 1000,
---    },
+    --    ["drift_tuning_kit"] = {
+    --        label = "Drift Tuning Kit",
+    --        weight = 1000,
+    --    },
     ["ceramic_brakes"] = {
         label = "Ceramic Brakes",
         weight = 1000,
@@ -21189,13 +21640,13 @@ return {
             event = "jg-mechanic:client:show-lighting-controller",
         }
     },
---    ["stancing_kit"] = {
---        label = "Stancer Kit",
---        weight = 100,
---        client = {
---            event = "jg-mechanic:client:show-stancer-kit",
---        }
---    },
+    --    ["stancing_kit"] = {
+    --        label = "Stancer Kit",
+    --        weight = 100,
+    --        client = {
+    --            event = "jg-mechanic:client:show-stancer-kit",
+    --        }
+    --    },
     ["cosmetic_part"] = {
         label = "Cosmetic Parts",
         weight = 100,
@@ -22584,215 +23035,215 @@ return {
     -- Labus
     -- Labu Flower Bag
     ['ks_labu_flower_bag_01'] = {
-        label = 'Bolso Flor Coco',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Coco', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_flower_bag_02'] = {
-        label = 'Bolso Flor Nono',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Nono', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_flower_bag_03'] = {
-        label = 'Bolso Flor Kiki',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Kiki', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_flower_bag_04'] = {
-        label = 'Bolso Flor Popo',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Popo', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_flower_bag_05'] = {
-        label = 'Bolso Flor Fufu',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Fufu', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_flower_bag_06'] = {
-        label = 'Bolso Flor Mimi',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Mimi', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_flower_bag_07'] = {
-        label = 'Bolso Flor Wawa',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Bolso Flor Wawa', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Momo Backpack
     ['ks_momo_backpack_01'] = {
-        label = 'Mochila Momo Creamy',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Mochila Momo Creamy', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_momo_backpack_02'] = {
-        label = 'Mochila Momo Snow',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Mochila Momo Snow', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_momo_backpack_03'] = {
-        label = 'Mochila Momo Toffee',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Mochila Momo Toffee', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_momo_backpack_04'] = {
-        label = 'Mochila Momo Sky',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Mochila Momo Sky', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_momo_backpack_05'] = {
-        label = 'Mochila Momo Sakura',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Mochila Momo Sakura', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_momo_backpack_06'] = {
-        label = 'Mochila Momo Mocha',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Mochila Momo Mocha', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_momo_backpack_07'] = {
-        label = 'Mochila Momo Matcha',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Mochila Momo Matcha', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
     -- Labu Keychain V2
     ['ks_labu_keychain_v2_01'] = {
-        label = 'Llavero Colgante Nana',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Nana', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v2_02'] = {
-        label = 'Llavero Colgante Nono',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Nono', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v2_03'] = {
-        label = 'Llavero Colgante Coco',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Coco', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v2_04'] = {
-        label = 'Llavero Colgante Popo',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Popo', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v2_05'] = {
-        label = 'Llavero Colgante Bubu',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Bubu', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v2_06'] = {
-        label = 'Llavero Colgante Jeje',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Jeje', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v2_07'] = {
-        label = 'Llavero Colgante Fufu',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Llavero Colgante Fufu', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     -- Labu Keychain V1
     ['ks_labu_keychain_v1_01'] = {
-        label = 'Llavero Bolsa Wawa',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Wawa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v1_02'] = {
-        label = 'Llavero Bolsa Mimi',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Mimi', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v1_03'] = {
-        label = 'Llavero Bolsa Nono',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Nono', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v1_04'] = {
-        label = 'Llavero Bolsa Kiki',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Kiki', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v1_05'] = {
-        label = 'Llavero Bolsa Coco',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Coco', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v1_06'] = {
-        label = 'Llavero Bolsa Fufu',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Fufu', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_keychain_v1_07'] = {
-        label = 'Llavero Bolsa Popo',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Llavero Bolsa Popo', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Labus
     ['ks_labu_01'] = {
-        label = 'Kiki',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Kiki', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_02'] = {
-        label = 'Coco',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Coco', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_03'] = {
-        label = 'Popo',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Popo', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_04'] = {
-        label = 'Wawa',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Wawa', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_05'] = {
-        label = 'Fufu',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Fufu', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_06'] = {
-        label = 'Mimi',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Mimi', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_labu_07'] = {
-        label = 'Bebe',                 --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Bebe', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
@@ -22801,8 +23252,8 @@ return {
 
 
     ['ks_dad_01'] = {
-        label = 'Ecografía Y Prueba',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Ecografía Y Prueba', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
@@ -22810,64 +23261,64 @@ return {
     -- Nappy Bag
 
     ['ks_diaperbag_01'] = {
-        label = 'Pañalera Morada',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Pañalera Morada', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_diaperbag_02'] = {
-        label = 'Pañalera Amarilla',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Pañalera Amarilla', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_diaperbag_03'] = {
-        label = 'Pañalera Negra',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Pañalera Negra', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_diaperbag_04'] = {
-        label = 'Pañalera Rosa',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Pañalera Rosa', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_diaperbag_05'] = {
-        label = 'Pañalera Azul',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Pañalera Azul', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     -- Front Carrier
 
     ['ks_bearharness_01'] = {
-        label = 'Cangurera Rosa',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Cangurera Rosa', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearharness_02'] = {
-        label = 'Cangurera Verde',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Cangurera Verde', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearharness_03'] = {
-        label = 'Cangurera Morada',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Cangurera Morada', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearharness_04'] = {
-        label = 'Cangurera Naranja',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Cangurera Naranja', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearharness_05'] = {
-        label = 'Cangurera Azul',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Cangurera Azul', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
@@ -22876,220 +23327,220 @@ return {
     -- Wrap Carrier
 
     ['ks_dogcarrier_01'] = {
-        label = 'Fular Rosa',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Fular Rosa', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogcarrier_02'] = {
-        label = 'Fular Rojo',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Fular Rojo', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogcarrier_03'] = {
-        label = 'Fular Naranja',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Fular Naranja', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogcarrier_04'] = {
-        label = 'Fular Morado',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Fular Morado', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogcarrier_05'] = {
-        label = 'Fular Azul',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Fular Azul', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     -- Back Carrier
 
     ['ks_bunnyharness_01'] = {
-        label = 'Cangurera Trasera Morada',                         --Edit name as you please
-        weight = 1.0,                                               -- Edit weight as you please
+        label = 'Cangurera Trasera Morada', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['ks_bunnyharness_02'] = {
-        label = 'Cangurera Trasera Roja',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Cangurera Trasera Roja', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_bunnyharness_03'] = {
-        label = 'Cangurera Trasera Azul',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Cangurera Trasera Azul', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_bunnyharness_04'] = {
-        label = 'Cangurera Trasera Rosa',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Cangurera Trasera Rosa', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_bunnyharness_05'] = {
-        label = 'Cangurera Trasera Verde',                         --Edit name as you please
-        weight = 1.0,                                              -- Edit weight as you please
+        label = 'Cangurera Trasera Verde', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     -- Staff sign
 
     ['ks_adminsstaff_01'] = {
-        label = 'STAFF Dorado',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'STAFF Dorado', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_02'] = {
-        label = 'STAFF Plateado',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'STAFF Plateado', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_03'] = {
-        label = 'STAFF Cobre',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'STAFF Cobre', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_04'] = {
-        label = 'STAFF Arcoiris',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'STAFF Arcoiris', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_05'] = {
-        label = 'STAFF Azul',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'STAFF Azul', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_06'] = {
-        label = 'STAFF Celeste',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'STAFF Celeste', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_07'] = {
-        label = 'STAFF Rojo',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'STAFF Rojo', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_08'] = {
-        label = 'STAFF Verde',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'STAFF Verde', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_09'] = {
-        label = 'STAFF Naranja',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'STAFF Naranja', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_010'] = {
-        label = 'STAFF Rosa',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'STAFF Rosa', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_011'] = {
-        label = 'STAFF Salmon',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'STAFF Salmon', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_012'] = {
-        label = 'STAFF Amarillo',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'STAFF Amarillo', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_adminsstaff_013'] = {
-        label = 'STAFF Morado',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'STAFF Morado', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     -- Samrio Backpacks
 
     ['ks_samriobackpack_01'] = {
-        label = 'Mochila Cinna',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Mochila Cinna', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobackpack_02'] = {
-        label = 'Mochila Puddin',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Mochila Puddin', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobackpack_03'] = {
-        label = 'Mochila Kippy',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Mochila Kippy', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobackpack_04'] = {
-        label = 'Mochila Kat',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Mochila Kat', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobackpack_05'] = {
-        label = 'Mochila Moddy',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Mochila Moddy', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobackpack_06'] = {
-        label = 'Mochila Kuro',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Mochila Kuro', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     -- Sanri♡ Backpack
 
     ['ks_sanriobag_01'] = {
-        label = 'Mochila Cinnamonroll',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Cinnamonroll', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanriobag_02'] = {
-        label = 'Mochila Hello Kitty',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Mochila Hello Kitty', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanriobag_03'] = {
-        label = 'Mochila Keroppi',         --Edit name as you please
-        weight = 1.0,                      -- Edit weight as you please
+        label = 'Mochila Keroppi', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanriobag_04'] = {
-        label = 'Mochila Kuromi',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Mochila Kuromi', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanriobag_05'] = {
-        label = 'Mochila MyMelody',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Mochila MyMelody', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanriobag_06'] = {
-        label = 'Mochila Pompompurin',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Mochila Pompompurin', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
@@ -23098,172 +23549,172 @@ return {
     -- Bear Scarf
 
     ['ks_bearscarf_01'] = {
-        label = 'Bufanda Oso Panda',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Bufanda Oso Panda', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearscarf_02'] = {
-        label = 'Bufanda Oso Gris',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Bufanda Oso Gris', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearscarf_03'] = {
-        label = 'Bufanda Oso Café',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Bufanda Oso Café', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearscarf_04'] = {
-        label = 'Bufanda Oso Rosa',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Bufanda Oso Rosa', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearscarf_05'] = {
-        label = 'Bufanda Oso Blanco',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Bufanda Oso Blanco', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_bearscarf_06'] = {
-        label = 'Bufanda Oso Negro',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Bufanda Oso Negro', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Cat Hood
 
     ['ks_cathood_01'] = {
-        label = 'Capucha Gato Rosa',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Capucha Gato Rosa', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_cathood_02'] = {
-        label = 'Capucha Gato Amarilla',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Capucha Gato Amarilla', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_cathood_03'] = {
-        label = 'Capucha Gato Celeste',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Capucha Gato Celeste', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_cathood_04'] = {
-        label = 'Capucha Gato Azul',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Capucha Gato Azul', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_cathood_05'] = {
-        label = 'Capucha Gato Verde',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Capucha Gato Verde', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_cathood_06'] = {
-        label = 'Capucha Gato Blanca',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Capucha Gato Blanca', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     -- Christmas Beanie
 
     ['ks_goblinhat_01'] = {
-        label = 'Gorro Duende',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Gorro Duende', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_polarbearhat_01'] = {
-        label = 'Gorro Oso',                         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Gorro Oso', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ['ks_renhat_01'] = {
-        label = 'Gorro Reno',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Gorro Reno', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_santaclaushat_01'] = {
-        label = 'Gorro Santa Claus',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Gorro Santa Claus', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_snowmanhat_01'] = {
-        label = 'Gorro Mono de Nieve',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Gorro Mono de Nieve', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     -- Christmas Cookie
 
     ['ks_donutcookie_01'] = {
-        label = 'Galleta Corona',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Galleta Corona', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_giftcookie_01'] = {
-        label = 'Galleta Regalo',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Galleta Regalo', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_gingercookie_01'] = {
-        label = 'Galleta Jengibre',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Galleta Jengibre', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_pinecookie_01'] = {
-        label = 'Galleta Pino',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Galleta Pino', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_santacookie_01'] = {
-        label = 'Galleta Santa Claus',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Galleta Santa Claus', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     -- Christmas Pets V1
 
     ['ks_cuterein_01'] = {
-        label = 'Reno Navideño',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Reno Navideño', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_reinmouse_01'] = {
-        label = 'Reno Ratón Navideño',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Reno Ratón Navideño', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_snowrabbit_01'] = {
-        label = 'Conejo Navideño',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Conejo Navideño', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_snowsr_01'] = {
-        label = 'Mono de Nieve Navideño',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Mono de Nieve Navideño', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_winterspider_01'] = {
-        label = 'Araña Navideña',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Araña Navideña', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
@@ -23271,32 +23722,32 @@ return {
     -- Christmas Headband
 
     ['ks_bearhb_01'] = {
-        label = 'Diadema Oso Blanco',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Diadema Oso Blanco', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_pinehb_01'] = {
-        label = 'Diadema Pino',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Diadema Pino', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_reindeerhb_01'] = {
-        label = 'Diadema Reno',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Diadema Reno', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_snowmanhb_01'] = {
-        label = 'Diadema Mono de Nieve',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Diadema Mono de Nieve', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_winterhat_01'] = {
-        label = 'Sombrero Navideño',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Sombrero Navideño', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
@@ -23304,178 +23755,178 @@ return {
     -- Christmas Pets V2
 
     ['ks_cutepenguin_01'] = {
-        label = 'Pingüino Navideño',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Pingüino Navideño', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_cutereindeer_01'] = {
-        label = 'Renito Navideño',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Renito Navideño', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_cutexmasbird_01'] = {
-        label = 'Pájaro Navideño',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Pájaro Navideño', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_xmasbear_01'] = {
-        label = 'Oso Navideño',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Oso Navideño', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_xmasdog_01'] = {
-        label = 'Perro Navideño',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Perro Navideño', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     -- Gifts Backpack
 
     ['ks_giftsbag_01'] = {
-        label = 'Mochila Regalo Verde',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Regalo Verde', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_giftsbag_02'] = {
-        label = 'Mochila Regalo Morada',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Regalo Morada', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_giftsbag_03'] = {
-        label = 'Mochila Regalo Rosa',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Mochila Regalo Rosa', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_giftsbag_04'] = {
-        label = 'Mochila Regalo Roja',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Mochila Regalo Roja', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_giftsbag_05'] = {
-        label = 'Mochila Regalo Azul',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Mochila Regalo Azul', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     -- Light Up Santa Hat
 
     ['ks_santahat_01'] = {
-        label = 'Gorro Santa Rojo',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Gorro Santa Rojo', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_santahat_02'] = {
-        label = 'Gorro Santa Rosa',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Gorro Santa Rosa', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_santahat_03'] = {
-        label = 'Gorro Santa Azul',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Gorro Santa Azul', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_santahat_04'] = {
-        label = 'Gorro Santa Morado',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Gorro Santa Morado', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_santahat_05'] = {
-        label = 'Gorro Santa Verde',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Gorro Santa Verde', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_santahat_06'] = {
-        label = 'Gorro Santa Negro',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Gorro Santa Negro', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Samrio Earmuffs
 
     ['ks_samrioearmuffs_01'] = {
-        label = 'Orejeras Cinna',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Orejeras Cinna', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioearmuffs_02'] = {
-        label = 'Orejeras Kat',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Orejeras Kat', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioearmuffs_03'] = {
-        label = 'Orejeras Kippy',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Orejeras Kippy', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioearmuffs_04'] = {
-        label = 'Orejeras Kuro',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Orejeras Kuro', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioearmuffs_05'] = {
-        label = 'Orejeras Moddy',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Orejeras Moddy', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioearmuffs_06'] = {
-        label = 'Orejeras Puddin',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Orejeras Puddin', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Sanri♡ Earmuffs
 
     ['ks_cinamorollearmuff_01'] = {
-        label = 'Orejeras Cinamorroll',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Orejeras Cinamorroll', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_hellokittyearmuff_01'] = {
-        label = 'Orejeras Hello Kitty',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Orejeras Hello Kitty', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_keropiearmuff_01'] = {
-        label = 'Orejeras Keroppi',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Orejeras Keroppi', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_kuromiearmuff_01'] = {
-        label = 'Orejeras Kuromi',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Orejeras Kuromi', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_mymelodyearmuff_01'] = {
-        label = 'Orejeras My Melody',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Orejeras My Melody', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_pompompurinearmuff_01'] = {
-        label = 'Orejeras Pompompurin',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Orejeras Pompompurin', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
@@ -23483,365 +23934,365 @@ return {
     -- Angel and Devil
 
     ['ks_demonbw01'] = {
-        label = 'Angel',                 --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Angel', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_demonbw02'] = {
-        label = 'Demonio',                 --Edit name as you please
-        weight = 1.0,                      -- Edit weight as you please
+        label = 'Demonio', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     -- Angel Wings V2
 
     ['ks_angelwings_01'] = {
-        label = 'Alas Angel Arcoiris',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Alas Angel Arcoiris', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_angelwings_02'] = {
-        label = 'Alas Angel Celeste',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Alas Angel Celeste', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_angelwings_03'] = {
-        label = 'Alas Angel Blancas',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Alas Angel Blancas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_angelwings_04'] = {
-        label = 'Alas Angel Doradas',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Alas Angel Doradas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_angelwings_05'] = {
-        label = 'Alas Angel Bicolor',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Alas Angel Bicolor', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_angelwings_06'] = {
-        label = 'Alas Angel Negras',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Alas Angel Negras', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Animals In Costume
     ['ks_animinstume01'] = {
-        label = 'Gato Banana',                 --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Gato Banana', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_animinstume02'] = {
-        label = 'Perro Conejo',                 --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Perro Conejo', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_animinstume03'] = {
-        label = 'Perro Rana',                 --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Perro Rana', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_animinstume04'] = {
-        label = 'Gato Fresa',                 --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Gato Fresa', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     -- Cat costume
 
     ['ks_costume_ears01'] = {
-        label = 'Orejas Gato Blancas',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Orejas Gato Blancas', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_ears02'] = {
-        label = 'Orejas Gato Café',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Orejas Gato Café', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_ears03'] = {
-        label = 'Orejas Gato Beige',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Orejas Gato Beige', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_ears04'] = {
-        label = 'Orejas Gato Grises',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Orejas Gato Grises', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_ears05'] = {
-        label = 'Orejas Gato Negras',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Orejas Gato Negras', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_paw01'] = {
-        label = 'Guantes Gato Blancos',                 --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Guantes Gato Blancos', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_paw02'] = {
-        label = 'Guantes Gato Café',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Guantes Gato Café', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_paw03'] = {
-        label = 'Guantes Gato Beige',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Guantes Gato Beige', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_paw04'] = {
-        label = 'Guantes Gato Gris',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Guantes Gato Gris', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_paw05'] = {
-        label = 'Guantes Gato Negras',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Guantes Gato Negras', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_fpaw01'] = {
-        label = 'Botas Gato Blancas',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Botas Gato Blancas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_fpaw02'] = {
-        label = 'Botas Gato Café',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Botas Gato Café', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_fpaw03'] = {
-        label = 'Botas Gato Beige',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Botas Gato Beige', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_fpaw04'] = {
-        label = 'Botas Gato Gris',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Botas Gato Gris', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_fpaw05'] = {
-        label = 'Botas Gato Negras',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Botas Gato Negras', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_tail01'] = {
-        label = 'Cola Gato Blanca',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Cola Gato Blanca', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_tail02'] = {
-        label = 'Cola Gato Café',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Cola Gato Café', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_tail03'] = {
-        label = 'Cola Gato Beige',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Cola Gato Beige', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_tail04'] = {
-        label = 'Cola Gato Gris',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Cola Gato Gris', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_costume_tail05'] = {
-        label = 'Cola Gato Negra',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Cola Gato Negra', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Cat Paw Bottle
 
     ['ks_pawcup_01'] = {
-        label = 'Vaso Gato Rosa',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Vaso Gato Rosa', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_pawcup_02'] = {
-        label = 'Vaso Gato Celeste',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Vaso Gato Celeste', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_pawcup_01'] = {
-        label = 'Vaso Gato Morado',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Vaso Gato Morado', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_pawcup_01'] = {
-        label = 'Vaso Gato Verde',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Vaso Gato Verde', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_pawcup_01'] = {
-        label = 'Vaso Gato Cyan',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Vaso Gato Cyan', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     -- Dog bag
 
     ['ks_dogbag_01'] = {
-        label = 'Bolsa Perro Rosa',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Bolsa Perro Rosa', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogbag_02'] = {
-        label = 'Bolsa Perro Morada',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Bolsa Perro Morada', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogbag_03'] = {
-        label = 'Bolsa Perro Celeste',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Bolsa Perro Celeste', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogbag_04'] = {
-        label = 'Bolsa Perro Amarillo',                 --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Bolsa Perro Amarillo', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogbag_05'] = {
-        label = 'Bolsa Perro Verde',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Bolsa Perro Verde', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_dogbag_06'] = {
-        label = 'Bolso Perro Negro',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Bolso Perro Negro', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Fairy wings
 
     ['ks_fairywings_01'] = {
-        label = 'Alas Hada Azules',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Alas Hada Azules', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_fairywings_02'] = {
-        label = 'Alas Hada Celestes',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Alas Hada Celestes', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_fairywings_03'] = {
-        label = 'Alas Hada Moradas',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Alas Hada Moradas', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_fairywings_04'] = {
-        label = 'Alas Hada Rojas',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Alas Hada Rojas', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_fairywings_05'] = {
-        label = 'Alas Hada Rosas',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Alas Hada Rosas', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_fairywings_06'] = {
-        label = 'Alas Hada Verde',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Alas Hada Verde', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Floating mood
 
     ['ks_floatingmood_01'] = {
-        label = 'Partículas Corazón',                 --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Partículas Corazón', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_floatingmood_02'] = {
-        label = 'Partículas Estrellas',                 --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Partículas Estrellas', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_floatingmood_03'] = {
-        label = 'Partículas Destellos',                 --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Partículas Destellos', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     -- Sanrio Ears
 
     ['ks_sanrioears_01'] = {
-        label = 'Diadema Cinnamoroll',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Diadema Cinnamoroll', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanrioears_02'] = {
-        label = 'Diadema Hello Kitty',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Diadema Hello Kitty', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanrioears_03'] = {
-        label = 'Diadema Keroppi',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Diadema Keroppi', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanrioears_04'] = {
-        label = 'Diadema Kuromi',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Diadema Kuromi', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanrioears_05'] = {
-        label = 'Diadema MyMelody',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Diadema MyMelody', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_sanrioears_06'] = {
-        label = 'Diadema Pompompurin',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Diadema Pompompurin', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
@@ -23850,178 +24301,178 @@ return {
     -- Spellbook Backpack
 
     ['ks_spellbook_01'] = {
-        label = 'Mochila Libro Rosa',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Mochila Libro Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_spellbook_02'] = {
-        label = 'Mochila Libro Morado',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Libro Morado', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_spellbook_03'] = {
-        label = 'Mochila Libro Negro',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Mochila Libro Negro', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_spellbook_04'] = {
-        label = 'Mochila Libro Blanco',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Libro Blanco', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_spellbook_05'] = {
-        label = 'Mochila Libro Naranja',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Libro Naranja', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_spellbook_06'] = {
-        label = 'Mochila Libro Azul',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Mochila Libro Azul', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Witch Broom
 
     ['ks_witchstick_01'] = {
-        label = 'Escoba Rosa',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Escoba Rosa', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchstick_02'] = {
-        label = 'Escoba Verde',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Escoba Verde', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchstick_03'] = {
-        label = 'Escoba Naranja',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Escoba Naranja', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchstick_04'] = {
-        label = 'Escoba Morada',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Escoba Morada', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchstick_05'] = {
-        label = 'Escoba Azul',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Escoba Azul', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     -- Witch Hat
 
     ['ks_witchhat_01'] = {
-        label = 'Sombrero Bruja Negro',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Sombrero Bruja Negro', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchhat_02'] = {
-        label = 'Sombrero Bruja Morado',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Sombrero Bruja Morado', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchhat_03'] = {
-        label = 'Sombrero Bruja Celeste',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Sombrero Bruja Celeste', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchhat_04'] = {
-        label = 'Sombrero Bruja Naranja',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Sombrero Bruja Naranja', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchhat_05'] = {
-        label = 'Sombrero Bruja Rojo',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Sombrero Bruja Rojo', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_witchhat_06'] = {
-        label = 'Sombrero Bruja Blanco',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Sombrero Bruja Blanco', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     -- Monsters V2
 
     ['ks_reaper_01'] = {
-        label = 'Espíritu',                         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Espíritu', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['ks_scarybat_01'] = {
-        label = 'Murciélago',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Murciélago', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_scarymummy_01'] = {
-        label = 'Momia',                         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Momia', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_scarypumpkin_01'] = {
-        label = 'Calabaza',                         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Calabaza', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['ks_scaryreaper_01'] = {
-        label = 'La Muerte',                         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'La Muerte', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     -- Cauldron Backpack
 
     ['ks_cauldron_01'] = {
-        label = 'Mochila Caldero Rosa',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Caldero Rosa', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_cauldron_02'] = {
-        label = 'Mochila Caldero Celeste',                         --Edit name as you please
-        weight = 1.0,                                              -- Edit weight as you please
+        label = 'Mochila Caldero Celeste', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_cauldron_03'] = {
-        label = 'Mochila Caldero Roja',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Caldero Roja', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_cauldron_04'] = {
-        label = 'Mochila Caldero Negro',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Caldero Negro', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_cauldron_05'] = {
-        label = 'Mochila Caldero Blanca',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Mochila Caldero Blanca', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_cauldron_06'] = {
-        label = 'Mochila Caldero Azul',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Caldero Azul', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
@@ -24029,228 +24480,228 @@ return {
     -- Cute Ghost
 
     ['ks_sadghost_01'] = {
-        label = 'Fantasma Blanco',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Fantasma Blanco', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_sadghost_02'] = {
-        label = 'Fantasma Negro',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Fantasma Negro', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_sadghost_03'] = {
-        label = 'Fantasma Rojo',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Fantasma Rojo', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_sadghost_04'] = {
-        label = 'Fantasma Rosa',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Fantasma Rosa', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_sadghost_05'] = {
-        label = 'Fantasma Celeste',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Fantasma Celeste', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_sadghost_06'] = {
-        label = 'Fantasma Naranja',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Fantasma Naranja', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_sadghost_07'] = {
-        label = 'Fantasma Morado',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Fantasma Morado', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Cute Coffin Backpack
 
     ['ks_coffinbag_01'] = {
-        label = 'Mochila Ataud Rosa',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Mochila Ataud Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_coffinbag_02'] = {
-        label = 'Mochila Ataud Celeste',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Ataud Celeste', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_coffinbag_03'] = {
-        label = 'Mochila Ataud Amarilla',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Mochila Ataud Amarilla', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_coffinbag_04'] = {
-        label = 'Mochila Ataud Negra',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Mochila Ataud Negra', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_coffinbag_05'] = {
-        label = 'Mochila Ataud Morada',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Ataud Morada', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_coffinbag_06'] = {
-        label = 'Mochila Ataud Roja',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Mochila Ataud Roja', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Samrio Candy Buckets
 
     ['ks_samriobucket_01'] = {
-        label = 'Cubeta Cinna',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Cubeta Cinna', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobucket_02'] = {
-        label = 'Cubeta Kuro',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Cubeta Kuro', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobucket_03'] = {
-        label = 'Cubeta Moddy',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Cubeta Moddy', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobucket_04'] = {
-        label = 'Cubeta Kat',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Cubeta Kat', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobucket_05'] = {
-        label = 'Cubeta Kippy',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Cubeta Kippy', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriobucket_06'] = {
-        label = 'Cubeta Puddin',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Cubeta Puddin', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     -- Sanri♡ Candy Bucket
 
     ['ks_bucket_01'] = {
-        label = 'Cubeta My Melody',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Cubeta My Melody', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_bucket_02'] = {
-        label = 'Cubeta Kuromi',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Cubeta Kuromi', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_bucket_03'] = {
-        label = 'Cubeta HelloKitty',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Cubeta HelloKitty', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_bucket_04'] = {
-        label = 'Cubeta Cinamonroll',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Cubeta Cinamonroll', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_bucket_05'] = {
-        label = 'Cubeta Pompompurin',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Cubeta Pompompurin', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_bucket_06'] = {
-        label = 'Cubeta Keroppi',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Cubeta Keroppi', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     -- Cat Pumpkin Backpack
 
     ['ks_pumpkincat_01'] = {
-        label = 'Mochila Calabaza Naranja',                         --Edit name as you please
-        weight = 1.0,                                               -- Edit weight as you please
+        label = 'Mochila Calabaza Naranja', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['ks_pumpkincat_02'] = {
-        label = 'Mochila Calabaza Morada',                         --Edit name as you please
-        weight = 1.0,                                              -- Edit weight as you please
+        label = 'Mochila Calabaza Morada', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_pumpkincat_03'] = {
-        label = 'Mochila Calabaza Verde',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Mochila Calabaza Verde', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_pumpkincat_04'] = {
-        label = 'Mochila Calabaza Celeste',                         --Edit name as you please
-        weight = 1.0,                                               -- Edit weight as you please
+        label = 'Mochila Calabaza Celeste', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['ks_pumpkincat_05'] = {
-        label = 'Mochila Calabaza Rosa',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Calabaza Rosa', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_pumpkincat_06'] = {
-        label = 'Mochila Calabaza Roja',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Calabaza Roja', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     -- Monsters V1
 
     ['ks_evilcat_01'] = {
-        label = 'Gato Diablo',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Gato Diablo', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_ghostcat_01'] = {
-        label = 'Gato Fantasma',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Gato Fantasma', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_killerbunny_01'] = {
-        label = 'Conejo Asesino',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Conejo Asesino', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_skeletonbird_01'] = {
-        label = 'Pájaro Esqueleto',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Pájaro Esqueleto', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_spiderwitch_01'] = {
-        label = 'Araña Bruja',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Araña Bruja', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
@@ -24259,474 +24710,474 @@ return {
     -- Bunny Float
 
     ['ks_swimfloat_01'] = {
-        label = 'Flotador Rosa',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Flotador Rosa', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_swimfloat_02'] = {
-        label = 'Flotador Rojo',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Flotador Rojo', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_swimfloat_03'] = {
-        label = 'Flotador Naranja',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Flotador Naranja', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_swimfloat_04'] = {
-        label = 'Flotador Beige',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Flotador Beige', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_swimfloat_05'] = {
-        label = 'Flotador Morado',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Flotador Morado', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Instant Camera
 
     ['ks_camera_01'] = {
-        label = 'Cámara Blanca',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Cámara Blanca', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_02'] = {
-        label = 'Cámara Rosa',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Cámara Rosa', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_03'] = {
-        label = 'Cámara Roja',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Cámara Roja', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_04'] = {
-        label = 'Cámara Celeste',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Cámara Celeste', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_05'] = {
-        label = 'Cámara Negra',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Cámara Negra', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_06'] = {
-        label = 'Cámara Morada',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Cámara Morada', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_07'] = {
-        label = 'Cámara Azul',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Cámara Azul', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_camera_08'] = {
-        label = 'Cámara Verde',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Cámara Verde', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     -- Cat Straw Hat
 
     ['ks_sunhat_01'] = {
-        label = 'Sombrero Gato Negro',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Sombrero Gato Negro', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_sunhat_02'] = {
-        label = 'Sombrero Gato Rosa',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Sombrero Gato Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_sunhat_03'] = {
-        label = 'Sombrero Gato Rojo',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Sombrero Gato Rojo', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_sunhat_04'] = {
-        label = 'Sombrero Gato Morado',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Sombrero Gato Morado', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_sunhat_05'] = {
-        label = 'Sombrero Gato Azul',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Sombrero Gato Azul', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_sunhat_06'] = {
-        label = 'Sombrero Gato Blanco',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Sombrero Gato Blanco', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     -- Sand Bucket Backpack
 
     ['ks_sandbucket_01'] = {
-        label = 'Mochila Cubo Roja',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Mochila Cubo Roja', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_sandbucket_02'] = {
-        label = 'Mochila Cubo Naranja',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Cubo Naranja', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_sandbucket_03'] = {
-        label = 'Mochila Cubo Morada',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Mochila Cubo Morada', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_sandbucket_04'] = {
-        label = 'Mochila Cubo Rosa',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Mochila Cubo Rosa', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_sandbucket_05'] = {
-        label = 'Mochila Cubo Negra',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Mochila Cubo Negra', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_sandbucket_06'] = {
-        label = 'Mochila Cubo Azul',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Mochila Cubo Azul', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Beach Bag
 
     ['ks_summerbag_01'] = {
-        label = 'Bolsa Roja',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Bolsa Roja', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_summerbag_02'] = {
-        label = 'Bolsa Celeste',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Bolsa Celeste', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_summerbag_03'] = {
-        label = 'Bolsa Amarilla',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Bolsa Amarilla', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_summerbag_04'] = {
-        label = 'Bolsa Fucsia',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Bolsa Fucsia', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_summerbag_05'] = {
-        label = 'Bolsa Rosa',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Bolsa Rosa', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_summerbag_06'] = {
-        label = 'Bolsa Naranja',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Bolsa Naranja', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_summerbag_07'] = {
-        label = 'Bolsa Verde',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Bolsa Verde', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
     -- Beach Package V2
     -- Bear Goggles
 
     ['ks_goggles_01'] = {
-        label = 'Goggles Negros',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Goggles Negros', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_goggles_02'] = {
-        label = 'Goggles Blancos',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Goggles Blancos', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_goggles_03'] = {
-        label = 'Goggles Celestes',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Goggles Celestes', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_goggles_04'] = {
-        label = 'Goggles Morados',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Goggles Morados', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_goggles_05'] = {
-        label = 'Goggles Rojos',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Goggles Rojos', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_goggles_06'] = {
-        label = 'Goggles Rosas',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Goggles Rosas', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     -- Cooler Backpack
 
     ['ks_cooler_01'] = {
-        label = 'Mochila Hielera Azul',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Hielera Azul', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_cooler_02'] = {
-        label = 'Mochila Hielera Roja',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Hielera Roja', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_cooler_03'] = {
-        label = 'Mochila Hielera Verde',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Hielera Verde', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_cooler_04'] = {
-        label = 'Mochila Hielera Negra',                         --Edit name as you please
-        weight = 1.0,                                            -- Edit weight as you please
+        label = 'Mochila Hielera Negra', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks_cooler_05'] = {
-        label = 'Mochila Hielera Morada',                         --Edit name as you please
-        weight = 1.0,                                             -- Edit weight as you please
+        label = 'Mochila Hielera Morada', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['ks_cooler_06'] = {
-        label = 'Mochila Hielera Rosa',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Mochila Hielera Rosa', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     -- Hibiscus Flower
 
     ['ks_headflower_01'] = {
-        label = 'Flor Blanca',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Flor Blanca', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_headflower_02'] = {
-        label = 'Flor Rosa',                         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Flor Rosa', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ['ks_headflower_03'] = {
-        label = 'Flor Amarilla',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Flor Amarilla', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_headflower_04'] = {
-        label = 'Flor Celeste',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Flor Celeste', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_headflower_05'] = {
-        label = 'Flor Gris',                         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Flor Gris', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ['ks_headflower_06'] = {
-        label = 'Flor Morada',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Flor Morada', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     -- Popsicle
 
     ['ks_popsicles_01'] = {
-        label = 'Paleta Chocolate',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Paleta Chocolate', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_popsicles_02'] = {
-        label = 'Paleta Arcoíris',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Paleta Arcoíris', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_popsicles_03'] = {
-        label = 'Paleta de Mango',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Paleta de Mango', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_popsicles_04'] = {
-        label = 'Paleta de Fresa',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Paleta de Fresa', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_popsicles_05'] = {
-        label = 'Paleta de Sandía',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Paleta de Sandía', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     -- Surfboard
 
     ['ks_surfboard_01'] = {
-        label = 'Tabla Solar',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Tabla Solar', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_surfboard_02'] = {
-        label = 'Tabla Floral',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Tabla Floral', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_surfboard_03'] = {
-        label = 'Tabla Palmera',                         --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Tabla Palmera', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_surfboard_04'] = {
-        label = 'Tabla Estrellada',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Tabla Estrellada', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_surfboard_05'] = {
-        label = 'Tabla Arcoíris',                         --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Tabla Arcoíris', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     -- Wings Arm Floaties
 
     ['ks_armfloat_01'] = {
-        label = 'Flotadores Rosas',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Flotadores Rosas', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_armfloat_02'] = {
-        label = 'Flotadores Rojos',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Flotadores Rojos', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_armfloat_03'] = {
-        label = 'Flotadores Morados',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Flotadores Morados', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_armfloat_04'] = {
-        label = 'Flotadores Celestes',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Flotadores Celestes', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_armfloat_05'] = {
-        label = 'Flotadores Blancos',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Flotadores Blancos', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_armfloat_06'] = {
-        label = 'Flotadores Negros',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Flotadores Negros', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Winner Awards Full Package
     -- Winner Medal
     ['ks_winneraward_01'] = {
-        label = 'Medalla Oro',                 --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Medalla Oro', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_winneraward_02'] = {
-        label = 'Medalla Plata',                 --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Medalla Plata', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_winneraward_03'] = {
-        label = 'Medalla Bronce',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Medalla Bronce', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
     -- Winner Trophy
     ['ks_winneraward_04'] = {
-        label = 'Trofeo Oro',                 --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Trofeo Oro', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ks_winneraward_05'] = {
-        label = 'Trofeo Plata',                 --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Trofeo Plata', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_winneraward_06'] = {
-        label = 'Trofeo Bronce',                 --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Trofeo Bronce', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
     -- Winner Award
     ['ks_winneraward_07'] = {
-        label = 'Trofeo Estrella',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Trofeo Estrella', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['ks_winneraward_08'] = {
-        label = 'Trofeo Volante',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Trofeo Volante', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_winneraward_09'] = {
-        label = 'Trofeo Cinturón',                 --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Trofeo Cinturón', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
@@ -24736,291 +25187,291 @@ return {
     -- Fnko Pack V3
 
     ['ks-blackpanther'] = {
-        label = 'Funko Black Panther',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Funko Black Panther', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks-capitanamerica'] = {
-        label = 'Funko Captain America',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Funko Captain America', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ks-deadpool'] = {
-        label = 'Funko Deadpool',                 --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Funko Deadpool', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks-groot'] = {
-        label = 'Funko Groot',                 --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Funko Groot', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks-zoolavision'] = {
-        label = 'Funko Zolavision',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Funko Zolavision', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
     -- Fnko Pack V2
 
     ['ks-cheer'] = {
-        label = 'Funko Cheer Bear',                 --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Funko Cheer Bear', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks-fun'] = {
-        label = 'Funko Funshine Bear',                 --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Funko Funshine Bear', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks-god'] = {
-        label = 'Funko Good Luck Bear',                 --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Funko Good Luck Bear', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks-grum'] = {
-        label = 'Funko Grumpy Bear',                 --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Funko Grumpy Bear', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks-tender'] = {
-        label = 'Funko Tenderheart Bear',                 --Edit name as you please
-        weight = 1.0,                                     -- Edit weight as you please
+        label = 'Funko Tenderheart Bear', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     -- Fnko Pack V1
 
     ['funkokuromi'] = {
-        label = 'Funko Kuromi',                 --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Funko Kuromi', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
 
 
     ['pusheen'] = {
-        label = 'Funko Pusheen',                 --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Funko Pusheen', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['pushenicorn'] = {
-        label = 'Funko Pusheen Unicorn',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Funko Pusheen Unicorn', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['pushmermaid'] = {
-        label = 'Funko Pusheen Mermaid',                 --Edit name as you please
-        weight = 1.0,                                    -- Edit weight as you please
+        label = 'Funko Pusheen Mermaid', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     -- Valocats
 
     ['ks_valocats_01'] = {
-        label = 'Flutter',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Flutter', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_02'] = {
-        label = 'Zephyr',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Zephyr', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_03'] = {
-        label = 'Helix',         --Edit name as you please
-        weight = 1.0,            -- Edit weight as you please
+        label = 'Helix', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_04'] = {
-        label = 'Hex',         --Edit name as you please
-        weight = 1.0,          -- Edit weight as you please
+        label = 'Hex', --Edit name as you please
+        weight = 1.0,  -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_05'] = {
-        label = 'Killshot',         --Edit name as you please
-        weight = 1.0,               -- Edit weight as you please
+        label = 'Killshot', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_06'] = {
-        label = 'Shadow',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Shadow', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_07'] = {
-        label = 'Haze',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Haze', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_08'] = {
-        label = 'Rain',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Rain', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_09'] = {
-        label = 'Rage',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Rage', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_valocats_010'] = {
-        label = 'Viprex',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Viprex', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     -- Valo Agents
 
     ['ks_cypher'] = {
-        label = 'Cypher',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Cypher', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     ['ks_jett'] = {
-        label = 'Jett',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Jett', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_killjoy'] = {
-        label = 'Killjoy',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Killjoy', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['ks_phoenix'] = {
-        label = 'Phoenix',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Phoenix', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['ks_raze'] = {
-        label = 'Raze',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Raze', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_reyna'] = {
-        label = 'Reyna',         --Edit name as you please
-        weight = 1.0,            -- Edit weight as you please
+        label = 'Reyna', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_sage'] = {
-        label = 'Sage',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Sage', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_sova'] = {
-        label = 'Sova',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Sova', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_viper'] = {
-        label = 'Viper',         --Edit name as you please
-        weight = 1.0,            -- Edit weight as you please
+        label = 'Viper', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_yoru'] = {
-        label = 'Yoru',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Yoru', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     -- Samrio Friends
 
     ['ks_samriofriends_01'] = {
-        label = 'Cinna',         --Edit name as you please
-        weight = 1.0,            -- Edit weight as you please
+        label = 'Cinna', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriofriends_02'] = {
-        label = 'Kuro',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Kuro', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriofriends_03'] = {
-        label = 'Moddy',         --Edit name as you please
-        weight = 1.0,            -- Edit weight as you please
+        label = 'Moddy', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriofriends_04'] = {
-        label = 'Kat',         --Edit name as you please
-        weight = 1.0,          -- Edit weight as you please
+        label = 'Kat', --Edit name as you please
+        weight = 1.0,  -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriofriends_05'] = {
-        label = 'Kippy',         --Edit name as you please
-        weight = 1.0,            -- Edit weight as you please
+        label = 'Kippy', --Edit name as you please
+        weight = 1.0,    -- Edit weight as you please
         close = true,
     },
 
     ['ks_samriofriends_06'] = {
-        label = 'Puddin',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Puddin', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     -- Sanri♡ Friends
 
     ['cinnamorollks'] = {
-        label = 'Cinnamoroll',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Cinnamoroll', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['hellokittyks'] = {
-        label = 'Hello Kitty',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Hello Kitty', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['keropiks'] = {
-        label = 'Keroppi',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Keroppi', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['kuromiks'] = {
-        label = 'Kuromi',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Kuromi', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     ['melodyks'] = {
-        label = 'My Melody',         --Edit name as you please
-        weight = 1.0,                -- Edit weight as you please
+        label = 'My Melody', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ['pompompuriks'] = {
-        label = 'Pompompurin',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Pompompurin', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
@@ -25029,130 +25480,130 @@ return {
     -- Roses and Money
 
     ['ramobilletes-n'] = {
-        label = 'Ramo Billetes Negro',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Ramo Billetes Negro', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ramobilletes-r'] = {
-        label = 'Ramo Billetes Fucsia',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Ramo Billetes Fucsia', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ramobilletes-ro'] = {
-        label = 'Ramo Billetes Rojo',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Ramo Billetes Rojo', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ramobilletes-rp'] = {
-        label = 'Ramo Billetes Rosa',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Ramo Billetes Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Giant Teddy Bear With Balloons
 
     ['osoconglobo'] = {
-        label = 'Oso Globos Blanco',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Oso Globos Blanco', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['osoconglobo-d'] = {
-        label = 'Oso Globos Gris',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Oso Globos Gris', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['osoconglobo-r'] = {
-        label = 'Oso Globos Café',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Oso Globos Café', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Roses In A Box
 
     ['ludboxb'] = {
-        label = 'Cajita Rosas Blancas',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Cajita Rosas Blancas', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ludboxbl'] = {
-        label = 'Cajita Rosas Negras',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Cajita Rosas Negras', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ludboxhp'] = {
-        label = 'Cajita Rosas Fucsias',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Cajita Rosas Fucsias', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ludboxp'] = {
-        label = 'Cajita Rosas Rosas',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Cajita Rosas Rosas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ludboxr'] = {
-        label = 'Cajita Rosas Rojas',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Cajita Rosas Rojas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Heart Balloons
 
     ['babe_party_ballons'] = {
-        label = 'Globos Babe',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Globos Babe', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['doll_party_ballons'] = {
-        label = 'Globos Doll',                         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Globos Doll', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['lover_party_balloons'] = {
-        label = 'Globos Lover',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Globos Lover', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['queen_party_ballons'] = {
-        label = 'Globos Queen',                         --Edit name as you please
-        weight = 1.0,                                   -- Edit weight as you please
+        label = 'Globos Queen', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['valentines_ballons2_drv'] = {
-        label = 'Globos I Love You',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Globos I Love You', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Roses Basket With Teddy Bears
 
     ['canastaoso-g'] = {
-        label = 'Canasta Osos Grises',                         --Edit name as you please
-        weight = 1.0,                                          -- Edit weight as you please
+        label = 'Canasta Osos Grises', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['canastaoso-r'] = {
-        label = 'Canasta Osos Blancos',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Canasta Osos Blancos', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['canastaoso-ro'] = {
-        label = 'Canasta Osos Café',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Canasta Osos Café', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
@@ -25160,494 +25611,494 @@ return {
     -- Combo Gift Box
 
     ['combovalentine-roj'] = {
-        label = 'Combo Botella Rojo',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Combo Botella Rojo', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['combovalentine-ros'] = {
-        label = 'Combo Botella Rosa',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Combo Botella Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Heart Shapead Roses In A Box
 
     ['ks_ramobox'] = {
-        label = 'Caja Rosas Rosas',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Caja Rosas Rosas', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_ramobox_g'] = {
-        label = 'Caja Rosas Negras',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Caja Rosas Negras', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_ramobox_hp'] = {
-        label = 'Caja Rosas Fucsias',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Caja Rosas Fucsias', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_ramobox_r'] = {
-        label = 'Caja Rosas Rojas',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Caja Rosas Rojas', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
         close = true,
     },
 
     ['ks_ramobox_rb'] = {
-        label = 'Caja Rosas Elegantes',                         --Edit name as you please
-        weight = 1.0,                                           -- Edit weight as you please
+        label = 'Caja Rosas Elegantes', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
         close = true,
     },
 
     ['ks_ramobox_w'] = {
-        label = 'Caja Rosas Blancas',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Caja Rosas Blancas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Teddy Bear Box
 
     ['osocaja-azu'] = {
-        label = 'Osito Azul',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Osito Azul', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['osocaja-roj'] = {
-        label = 'Osito Rojo',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Osito Rojo', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['osocaja-ros'] = {
-        label = 'Osito Rosa',                         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Osito Rosa', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     -- Giant Teddy Bear
 
     ['osogrande-b'] = {
-        label = 'Oso Grande Blanco',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Oso Grande Blanco', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['osogrande-g'] = {
-        label = 'Oso Grande Gris',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Oso Grande Gris', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['osogrande-c'] = {
-        label = 'Oso Grande Café',                         --Edit name as you please
-        weight = 1.0,                                      -- Edit weight as you please
+        label = 'Oso Grande Café', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     -- Strawberries Bouquet
 
     ['ks_strawberryflowers_01'] = {
-        label = 'Ramo Fresas Negro',                         --Edit name as you please
-        weight = 1.0,                                        -- Edit weight as you please
+        label = 'Ramo Fresas Negro', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_strawberryflowers_02'] = {
-        label = 'Ramo Fresas Rojo',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Ramo Fresas Rojo', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_strawberryflowers_03'] = {
-        label = 'Ramo Fresas Blanco',                         --Edit name as you please
-        weight = 1.0,                                         -- Edit weight as you please
+        label = 'Ramo Fresas Blanco', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_strawberryflowers_04'] = {
-        label = 'Ramo Fresas Gris',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Ramo Fresas Gris', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_strawberryflowers_05'] = {
-        label = 'Ramo Fresas Rosa',                         --Edit name as you please
-        weight = 1.0,                                       -- Edit weight as you please
+        label = 'Ramo Fresas Rosa', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     -- Magical Girl Set
 
     ['ks_magicalgirl_01'] = {
-        label = 'Nova',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Nova', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['ks_magicalgirl_02'] = {
-        label = 'Báculo Lunar',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Báculo Lunar', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_magicalgirl_03'] = {
-        label = 'Báculo Estelar',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Báculo Estelar', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_magicalgirl_04'] = {
-        label = 'Grimorio Lunar',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Grimorio Lunar', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_magicalgirl_05'] = {
-        label = 'Círculo Mágico Arcoíris',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Círculo Mágico Arcoíris', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     -- Sakura Card Captor Set
 
     ['sak_circle'] = {
-        label = 'Circulo Sakura',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Circulo Sakura', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['sak_star'] = {
-        label = 'Baston Estrella',         --Edit name as you please
-        weight = 1.0,                      -- Edit weight as you please
+        label = 'Baston Estrella', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['sak_rata'] = {
-        label = 'Kero',         --Edit name as you please
-        weight = 1.0,           -- Edit weight as you please
+        label = 'Kero', --Edit name as you please
+        weight = 1.0,   -- Edit weight as you please
         close = true,
     },
 
     ['sak_libro'] = {
-        label = 'Libro de Clow',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Libro de Clow', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['sak_bird'] = {
-        label = 'Baston del Sello',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Baston del Sello', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     -- Magic Circles
 
     ['cir-yingyang'] = {
-        label = 'Círculo Yin Yang',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Círculo Yin Yang', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['cir-blue'] = {
-        label = 'Círculo Azul',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Círculo Azul', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['cir-green'] = {
-        label = 'Círculo Verde',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Círculo Verde', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['cir-red'] = {
-        label = 'Círculo Rojo',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Círculo Rojo', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['cir-yellow'] = {
-        label = 'Círculo Amarillo',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Círculo Amarillo', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     -- Food Fanny pack
 
     ['banana'] = {
-        label = 'Cangurera Banana',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Cangurera Banana', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['cacahuate'] = {
-        label = 'Cangurera Cacahuate',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Cangurera Cacahuate', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['chicharo'] = {
-        label = 'Cangurera Chícharo',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Cangurera Chícharo', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     -- Shiba Backpack
 
     ['ks_shibabackpack_01'] = {
-        label = 'Mochila Shiba Negra',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Mochila Shiba Negra', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_shibabackpack_02'] = {
-        label = 'Mochila Shiba Beige',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Mochila Shiba Beige', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['ks_shibabackpack_03'] = {
-        label = 'Mochila Shiba Roja',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Shiba Roja', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_shibabackpack_04'] = {
-        label = 'Mochila Shiba Blanca',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Shiba Blanca', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ks_shibabackpack_05'] = {
-        label = 'Mochila Shiba Rosa',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Shiba Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_shibabackpack_06'] = {
-        label = 'Mochila Shiba Café',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Shiba Café', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['ks_shibabackpack_07'] = {
-        label = 'Mochila Shiba Chocolate',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Shiba Chocolate', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     -- Game Backpack
 
     ['ks_gamebackpack_01'] = {
-        label = 'Mochila Videojuego Rosa',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Videojuego Rosa', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_gamebackpack_02'] = {
-        label = 'Mochila Videojuego Azul',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Videojuego Azul', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_gamebackpack_03'] = {
-        label = 'Mochila Videojuego Verde',         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Mochila Videojuego Verde', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['ks_gamebackpack_04'] = {
-        label = 'Mochila Videojuego Amarila',         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Mochila Videojuego Amarila', --Edit name as you please
+        weight = 1.0,                         -- Edit weight as you please
         close = true,
     },
 
     ['ks_gamebackpack_05'] = {
-        label = 'Mochila Videojuego Naranja',         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Mochila Videojuego Naranja', --Edit name as you please
+        weight = 1.0,                         -- Edit weight as you please
         close = true,
     },
 
     ['ks_gamebackpack_06'] = {
-        label = 'Mochila Videojuego Gris',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Videojuego Gris', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     -- Kitsune Maks
 
     ['kitsune-g'] = {
-        label = 'Máscara Kitsune Negra',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Máscara Kitsune Negra', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['kitsune-p'] = {
-        label = 'Máscara Kitsune Morada',         --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Máscara Kitsune Morada', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['kitsune-r'] = {
-        label = 'Máscara Kitsune Roja',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Máscara Kitsune Roja', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['kitsune-v'] = {
-        label = 'Máscara Kitsune Fucsia',         --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Máscara Kitsune Fucsia', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['kitsuneside-g'] = {
-        label = 'Máscara Kitsune Lado Negra',         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Máscara Kitsune Lado Negra', --Edit name as you please
+        weight = 1.0,                         -- Edit weight as you please
         close = true,
     },
 
     ['kitsuneside-p'] = {
-        label = 'Máscara Kitsune Lado Morada',         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Máscara Kitsune Lado Morada', --Edit name as you please
+        weight = 1.0,                          -- Edit weight as you please
         close = true,
     },
 
     ['kitsuneside-r'] = {
-        label = 'Máscara Kitsune Lado Roja',         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Máscara Kitsune Lado Roja', --Edit name as you please
+        weight = 1.0,                        -- Edit weight as you please
         close = true,
     },
 
     ['kitsuneside-v'] = {
-        label = 'Máscara Kitsune Lado Fucsia',         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Máscara Kitsune Lado Fucsia', --Edit name as you please
+        weight = 1.0,                          -- Edit weight as you please
         close = true,
     },
 
     -- Power-Up Hats
 
     ['ks_poweruphat_01'] = {
-        label = 'Sombrero Mauro',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Sombrero Mauro', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_poweruphat_02'] = {
-        label = 'Sombrero Lucca',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Sombrero Lucca', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_poweruphat_03'] = {
-        label = 'Sombrero Wauro',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Sombrero Wauro', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_poweruphat_04'] = {
-        label = 'Sombrero Walucca',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Sombrero Walucca', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_poweruphat_05'] = {
-        label = 'Corona Pearl',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Corona Pearl', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_poweruphat_06'] = {
-        label = 'Corona Dalia',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Corona Dalia', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['ks_poweruphat_07'] = {
-        label = 'Sombrero Toud',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Sombrero Toud', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     -- Mario Hats
 
     ['daisy'] = {
-        label = 'Corona Daisy',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Corona Daisy', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['mario-g'] = {
-        label = 'Sombrero Luigi',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Sombrero Luigi', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['mario-p'] = {
-        label = 'Sombrero Waluigi',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Sombrero Waluigi', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['mario-r'] = {
-        label = 'Sombrero Mario',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Sombrero Mario', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['mario-y'] = {
-        label = 'Sombrero Wario',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Sombrero Wario', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['peach'] = {
-        label = 'Corona Peach',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Corona Peach', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['toad'] = {
-        label = 'Sombrero Toad',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Sombrero Toad', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     -- Milk Bag
 
     ['millk-b'] = {
-        label = 'Mochila Leche Aqua',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Leche Aqua', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['millk-be'] = {
-        label = 'Mochila Leche Beige',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Mochila Leche Beige', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['millk-p'] = {
-        label = 'Mochila Leche Rosa',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Leche Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['millk-pu'] = {
-        label = 'Mochila Leche Morada',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Leche Morada', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['millk-r'] = {
-        label = 'Mochila Leche Roja',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Leche Roja', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
@@ -25657,86 +26108,86 @@ return {
     -- Pokemon
 
     ['pokemonb'] = {
-        label = 'Bulbasaur',         --Edit name as you please
-        weight = 1.0,                -- Edit weight as you please
+        label = 'Bulbasaur', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ['pokemonc'] = {
-        label = 'Charmander',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'Charmander', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['pokemonj'] = {
-        label = 'Jigglypuff',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'Jigglypuff', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['pokemonp'] = {
-        label = 'Pikachu',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Pikachu', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['pokemons'] = {
-        label = 'Squirtle',         --Edit name as you please
-        weight = 1.0,               -- Edit weight as you please
+        label = 'Squirtle', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['digiviceb'] = {
-        label = 'Digivice Gris',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Digivice Gris', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['digiviceb1'] = {
-        label = 'Digivice Azul',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Digivice Azul', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['digivicef'] = {
-        label = 'Digivice Blanco',         --Edit name as you please
-        weight = 1.0,                      -- Edit weight as you please
+        label = 'Digivice Blanco', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['digiviceg'] = {
-        label = 'Digivice Verde',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Digivice Verde', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['digivicel'] = {
-        label = 'Digivice Lima',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Digivice Lima', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['digiviceo'] = {
-        label = 'Digivice Naranja',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Digivice Naranja', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['digivicep'] = {
-        label = 'Digivice Morado',         --Edit name as you please
-        weight = 1.0,                      -- Edit weight as you please
+        label = 'Digivice Morado', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['digivicer'] = {
-        label = 'Digivice Rojo',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Digivice Rojo', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['digivicero'] = {
-        label = 'Digivice Rosa',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Digivice Rosa', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
@@ -25744,424 +26195,424 @@ return {
     -- Digimon
 
     ['digimon1'] = {
-        label = 'Agumon',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Agumon', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     ['digimon2'] = {
-        label = 'Biyomon',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Biyomon', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['digimon3'] = {
-        label = 'Lopmon',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Lopmon', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     ['digimon4'] = {
-        label = 'Patamon',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Patamon', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['digimon5'] = {
-        label = 'Tanemon',         --Edit name as you please
-        weight = 1.0,              -- Edit weight as you please
+        label = 'Tanemon', --Edit name as you please
+        weight = 1.0,      -- Edit weight as you please
         close = true,
     },
 
     ['digimon6'] = {
-        label = 'Veemon',         --Edit name as you please
-        weight = 1.0,             -- Edit weight as you please
+        label = 'Veemon', --Edit name as you please
+        weight = 1.0,     -- Edit weight as you please
         close = true,
     },
 
     -- Teddy Bear Bag
 
     ['bearb1'] = {
-        label = 'Bolsa Oso Café',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Bolsa Oso Café', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['bearb2'] = {
-        label = 'Bolso Oso Rojo',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Bolso Oso Rojo', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['bearb3'] = {
-        label = 'Bolso Oso Blanco',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Bolso Oso Blanco', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['bearb4'] = {
-        label = 'Bolso Oso Beige',         --Edit name as you please
-        weight = 1.0,                      -- Edit weight as you please
+        label = 'Bolso Oso Beige', --Edit name as you please
+        weight = 1.0,              -- Edit weight as you please
         close = true,
     },
 
     ['bearb5'] = {
-        label = 'Bolso Oso Marrón',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Bolso Oso Marrón', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     -- Angel Heart Backpack
 
     ['ahba'] = {
-        label = 'Mochila Corazón Amarilla',         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Mochila Corazón Amarilla', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['ahbaz'] = {
-        label = 'Mochila Corazón Azul',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Corazón Azul', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ahbm'] = {
-        label = 'Mochila Corazón  Morada',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Corazón  Morada', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ahbn'] = {
-        label = 'Mochila Corazón Naranja',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Corazón Naranja', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ahbne'] = {
-        label = 'Mochila Corazón Negra',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Corazón Negra', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['ahbr'] = {
-        label = 'Mochila Corazón Roja',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Corazón Roja', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ahbro'] = {
-        label = 'Mochila Corazón Rosa',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Corazón Rosa', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['ahbv'] = {
-        label = 'Mochila Corazón verde',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Corazón verde', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
     ['masterball'] = {
-        label = 'Masterball',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'Masterball', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['greatball'] = {
-        label = 'Greatrball',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'Greatrball', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['healball'] = {
-        label = 'Healball',         --Edit name as you please
-        weight = 1.0,               -- Edit weight as you please
+        label = 'Healball', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['loveball'] = {
-        label = 'Loveball',         --Edit name as you please
-        weight = 1.0,               -- Edit weight as you please
+        label = 'Loveball', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['pokeball'] = {
-        label = 'Pokeball',         --Edit name as you please
-        weight = 1.0,               -- Edit weight as you please
+        label = 'Pokeball', --Edit name as you please
+        weight = 1.0,       -- Edit weight as you please
         close = true,
     },
 
     ['premierball'] = {
-        label = 'Premierball',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Premierball', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['safariball'] = {
-        label = 'Safariball',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'Safariball', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['ultraball'] = {
-        label = 'Ultraball',         --Edit name as you please
-        weight = 1.0,                -- Edit weight as you please
+        label = 'Ultraball', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     -- Angel Wings
 
     ['angelwingy'] = {
-        label = 'Alitas Angel Amarillas',         --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Alitas Angel Amarillas', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['angelwingw'] = {
-        label = 'Alitas Angel Blancas',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Alitas Angel Blancas', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['angelwingp'] = {
-        label = 'Alitas Angel Rosas',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Alitas Angel Rosas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['angelwingc'] = {
-        label = 'Alitas Angel Celestes',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Alitas Angel Celestes', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['angelwingb'] = {
-        label = 'Alitas Angel Negras',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Alitas Angel Negras', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     -- Between Us Backpack
 
     ['ks_betweenus_01'] = {
-        label = 'Mochila Between Us Amarilla',         --Edit name as you please
-        weight = 1.0,                                  -- Edit weight as you please
+        label = 'Mochila Between Us Amarilla', --Edit name as you please
+        weight = 1.0,                          -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_02'] = {
-        label = 'Mochila Between Us Roja',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Between Us Roja', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_03'] = {
-        label = 'Mochila Between Us Verde',         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Mochila Between Us Verde', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_04'] = {
-        label = 'Mochila Between Us Morada',         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Mochila Between Us Morada', --Edit name as you please
+        weight = 1.0,                        -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_05'] = {
-        label = 'Mochila Between Us Guinda',         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Mochila Between Us Guinda', --Edit name as you please
+        weight = 1.0,                        -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_06'] = {
-        label = 'Mochila Between Us Naranja',         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Mochila Between Us Naranja', --Edit name as you please
+        weight = 1.0,                         -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_07'] = {
-        label = 'Mochila Between Us Azul',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Between Us Azul', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_08'] = {
-        label = 'Mochila Between Us Celeste',         --Edit name as you please
-        weight = 1.0,                                 -- Edit weight as you please
+        label = 'Mochila Between Us Celeste', --Edit name as you please
+        weight = 1.0,                         -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_09'] = {
-        label = 'Mochila Between Us Rosa',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Between Us Rosa', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_10'] = {
-        label = 'Mochila Between Us Café',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Between Us Café', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['ks_betweenus_11'] = {
-        label = 'Mochila Between Us Beige',         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Mochila Between Us Beige', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     -- Among Us Backpack
     ['amongusb'] = {
-        label = 'Mochila Among Us Azul',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Among Us Azul', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['amongusc'] = {
-        label = 'Mochila Among Us Cyan',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Among Us Cyan', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['amongusg'] = {
-        label = 'Mochila Among Us Verde',         --Edit name as you please
-        weight = 1.0,                             -- Edit weight as you please
+        label = 'Mochila Among Us Verde', --Edit name as you please
+        weight = 1.0,                     -- Edit weight as you please
         close = true,
     },
 
     ['amongusl'] = {
-        label = 'Mochila Among Us Lima',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Among Us Lima', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['amonguso'] = {
-        label = 'Mochila Among Us Naranja',         --Edit name as you please
-        weight = 1.0,                               -- Edit weight as you please
+        label = 'Mochila Among Us Naranja', --Edit name as you please
+        weight = 1.0,                       -- Edit weight as you please
         close = true,
     },
 
     ['amongusp'] = {
-        label = 'Mochila Among Us Rosa',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Among Us Rosa', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['amongusr'] = {
-        label = 'Mochila Among Us Roja',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Mochila Among Us Roja', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['amongusw'] = {
-        label = 'Mochila Among Us Blanca',         --Edit name as you please
-        weight = 1.0,                              -- Edit weight as you please
+        label = 'Mochila Among Us Blanca', --Edit name as you please
+        weight = 1.0,                      -- Edit weight as you please
         close = true,
     },
 
     ['amongusy'] = {
-        label = 'Mochila Among Us Amarilla',         --Edit name as you please
-        weight = 1.0,                                -- Edit weight as you please
+        label = 'Mochila Among Us Amarilla', --Edit name as you please
+        weight = 1.0,                        -- Edit weight as you please
         close = true,
     },
 
     -- Angel Halo
 
     ['halob'] = {
-        label = 'Halo Negro',         --Edit name as you please
-        weight = 1.0,                 -- Edit weight as you please
+        label = 'Halo Negro', --Edit name as you please
+        weight = 1.0,         -- Edit weight as you please
         close = true,
     },
 
     ['haloc'] = {
-        label = 'Halo Celeste',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Halo Celeste', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     ['halor'] = {
-        label = 'Halo Rojo',         --Edit name as you please
-        weight = 1.0,                -- Edit weight as you please
+        label = 'Halo Rojo', --Edit name as you please
+        weight = 1.0,        -- Edit weight as you please
         close = true,
     },
 
     ['halow'] = {
-        label = 'Halo Blanco',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Halo Blanco', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['haloy'] = {
-        label = 'Halo Amarillo',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Halo Amarillo', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     -- Devil Wings
 
     ['batwingsb'] = {
-        label = 'Alas Demonio Negras',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Alas Demonio Negras', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['batwingsp'] = {
-        label = 'Alas Demonio Moradas',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Alas Demonio Moradas', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['batwingspk'] = {
-        label = 'Alas Demonio Rosas',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Alas Demonio Rosas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['batwingsr'] = {
-        label = 'Alas Demonio Rojas',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Alas Demonio Rojas', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['batwingsw'] = {
-        label = 'Alas Demonio Blancas',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Alas Demonio Blancas', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     -- Corgi Backpack
 
     ['corgib'] = {
-        label = 'Mochila Corgi Beige',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Mochila Corgi Beige', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['corgic'] = {
-        label = 'Mochila Corgi Cyan',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Corgi Cyan', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['corgig'] = {
-        label = 'Mochila Corgi Gris',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Corgi Gris', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['corgigd'] = {
-        label = 'Mochila Corgi Dorada',         --Edit name as you please
-        weight = 1.0,                           -- Edit weight as you please
+        label = 'Mochila Corgi Dorada', --Edit name as you please
+        weight = 1.0,                   -- Edit weight as you please
         close = true,
     },
 
     ['corgip'] = {
-        label = 'Mochila Corgi Rosa',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Corgi Rosa', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
     ['corgir'] = {
-        label = 'Mochila Corgi Roja',         --Edit name as you please
-        weight = 1.0,                         -- Edit weight as you please
+        label = 'Mochila Corgi Roja', --Edit name as you please
+        weight = 1.0,                 -- Edit weight as you please
         close = true,
     },
 
@@ -26169,335 +26620,335 @@ return {
     -- Samrio Headband
 
     ['ks_samrioheadband_01'] = {
-        label = 'Diadema Cinna',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Diadema Cinna', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioheadband_02'] = {
-        label = 'Diadema Puddin',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Diadema Puddin', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioheadband_03'] = {
-        label = 'Diadema Kippy',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Diadema Kippy', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioheadband_04'] = {
-        label = 'Diadema Kat',         --Edit name as you please
-        weight = 1.0,                  -- Edit weight as you please
+        label = 'Diadema Kat', --Edit name as you please
+        weight = 1.0,          -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioheadband_05'] = {
-        label = 'Diadema Moddy',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Diadema Moddy', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['ks_samrioheadband_06'] = {
-        label = 'Diadema Kuro',         --Edit name as you please
-        weight = 1.0,                   -- Edit weight as you please
+        label = 'Diadema Kuro', --Edit name as you please
+        weight = 1.0,           -- Edit weight as you please
         close = true,
     },
 
     -- My Mel♡dy and Kur♡mi Ears
 
     ['kuromiears'] = {
-        label = 'Orejas Kuromi',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Orejas Kuromi', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
     ['mymelodyears'] = {
-        label = 'Orejas My Melody',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Orejas My Melody', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     -- Cat Headset
 
     ['cathsb'] = {
-        label = 'Headset Gato Azul',         --Edit name as you please
-        weight = 1.0,                        -- Edit weight as you please
+        label = 'Headset Gato Azul', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['cathsgn'] = {
-        label = 'Headset Gato Amarillo',         --Edit name as you please
-        weight = 1.0,                            -- Edit weight as you please
+        label = 'Headset Gato Amarillo', --Edit name as you please
+        weight = 1.0,                    -- Edit weight as you please
         close = true,
     },
 
     ['cathsp'] = {
-        label = 'Headset Gato Morado',         --Edit name as you please
-        weight = 1.0,                          -- Edit weight as you please
+        label = 'Headset Gato Morado', --Edit name as you please
+        weight = 1.0,                  -- Edit weight as you please
         close = true,
     },
 
     ['cathspk'] = {
-        label = 'Headset Gato Rosa',         --Edit name as you please
-        weight = 1.0,                        -- Edit weight as you please
+        label = 'Headset Gato Rosa', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['cathsr'] = {
-        label = 'Headset Gato Rojo',         --Edit name as you please
-        weight = 1.0,                        -- Edit weight as you please
+        label = 'Headset Gato Rojo', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     -- Prismorb
 
     ['ks_prismorb_01'] = {
-        label = 'Prismorb Verde',         --Edit name as you please
-        weight = 1.0,                     -- Edit weight as you please
+        label = 'Prismorb Verde', --Edit name as you please
+        weight = 1.0,             -- Edit weight as you please
         close = true,
     },
 
     ['ks_prismorb_02'] = {
-        label = 'Prismorb Amarillo',         --Edit name as you please
-        weight = 1.0,                        -- Edit weight as you please
+        label = 'Prismorb Amarillo', --Edit name as you please
+        weight = 1.0,                -- Edit weight as you please
         close = true,
     },
 
     ['ks_prismorb_03'] = {
-        label = 'Prismorb Naranja',         --Edit name as you please
-        weight = 1.0,                       -- Edit weight as you please
+        label = 'Prismorb Naranja', --Edit name as you please
+        weight = 1.0,               -- Edit weight as you please
         close = true,
     },
 
     ['ks_prismorb_04'] = {
-        label = 'Prismorb Rojo',         --Edit name as you please
-        weight = 1.0,                    -- Edit weight as you please
+        label = 'Prismorb Rojo', --Edit name as you please
+        weight = 1.0,            -- Edit weight as you please
         close = true,
     },
 
 
-	["alive_chicken"] = {
-		label = "Living chicken",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["alive_chicken"] = {
+        label = "Living chicken",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["basketball"] = {
-		label = "Basketball",
-		weight = 0,
-		stack = true,
-		close = true,
-	},
+    ["basketball"] = {
+        label = "Basketball",
+        weight = 0,
+        stack = true,
+        close = true,
+    },
 
-	["basketball_hoop"] = {
-		label = "Basketball Hoop",
-		weight = 0,
-		stack = true,
-		close = true,
-	},
+    ["basketball_hoop"] = {
+        label = "Basketball Hoop",
+        weight = 0,
+        stack = true,
+        close = true,
+    },
 
-	["blowpipe"] = {
-		label = "Blowtorch",
-		weight = 2,
-		stack = true,
-		close = true,
-	},
+    ["blowpipe"] = {
+        label = "Blowtorch",
+        weight = 2,
+        stack = true,
+        close = true,
+    },
 
-	["cannabis"] = {
-		label = "Cannabis",
-		weight = 3,
-		stack = true,
-		close = true,
-	},
+    ["cannabis"] = {
+        label = "Cannabis",
+        weight = 3,
+        stack = true,
+        close = true,
+    },
 
-	["carkeys"] = {
-		label = "Car Keys",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["carkeys"] = {
+        label = "Car Keys",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["carokit"] = {
-		label = "Body Kit",
-		weight = 3,
-		stack = true,
-		close = true,
-	},
+    ["carokit"] = {
+        label = "Body Kit",
+        weight = 3,
+        stack = true,
+        close = true,
+    },
 
-	["carotool"] = {
-		label = "Tools",
-		weight = 2,
-		stack = true,
-		close = true,
-	},
+    ["carotool"] = {
+        label = "Tools",
+        weight = 2,
+        stack = true,
+        close = true,
+    },
 
-	["clothe"] = {
-		label = "Cloth",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["clothe"] = {
+        label = "Cloth",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["cutted_wood"] = {
-		label = "Cut wood",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["cutted_wood"] = {
+        label = "Cut wood",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["essence"] = {
-		label = "Gas",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["essence"] = {
+        label = "Gas",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["fabric"] = {
-		label = "Fabric",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["fabric"] = {
+        label = "Fabric",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["fish"] = {
-		label = "Fish",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["fish"] = {
+        label = "Fish",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["fixkit"] = {
-		label = "Repair Kit",
-		weight = 3,
-		stack = true,
-		close = true,
-	},
+    ["fixkit"] = {
+        label = "Repair Kit",
+        weight = 3,
+        stack = true,
+        close = true,
+    },
 
-	["fixtool"] = {
-		label = "Repair Tools",
-		weight = 2,
-		stack = true,
-		close = true,
-	},
+    ["fixtool"] = {
+        label = "Repair Tools",
+        weight = 2,
+        stack = true,
+        close = true,
+    },
 
-	["gazbottle"] = {
-		label = "Gas Bottle",
-		weight = 2,
-		stack = true,
-		close = true,
-	},
+    ["gazbottle"] = {
+        label = "Gas Bottle",
+        weight = 2,
+        stack = true,
+        close = true,
+    },
 
-	["gold"] = {
-		label = "Gold",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["gold"] = {
+        label = "Gold",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["iron"] = {
-		label = "Iron",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["iron"] = {
+        label = "Iron",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["marijuana"] = {
-		label = "Marijuana",
-		weight = 2,
-		stack = true,
-		close = true,
-	},
+    ["marijuana"] = {
+        label = "Marijuana",
+        weight = 2,
+        stack = true,
+        close = true,
+    },
 
-	["tracking_bracelet"] = {
-		label = "Tracking Bracelet",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["tracking_bracelet"] = {
+        label = "Tracking Bracelet",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["packaged_chicken"] = {
-		label = "Chicken fillet",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["packaged_chicken"] = {
+        label = "Chicken fillet",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["packaged_plank"] = {
-		label = "Packaged wood",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["packaged_plank"] = {
+        label = "Packaged wood",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["washed_stone"] = {
-		label = "Washed stone",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["washed_stone"] = {
+        label = "Washed stone",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["wood"] = {
-		label = "Wood",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["wood"] = {
+        label = "Wood",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["petrol"] = {
-		label = "Oil",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["petrol"] = {
+        label = "Oil",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["petrol_raffin"] = {
-		label = "Processed oil",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["petrol_raffin"] = {
+        label = "Processed oil",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["slaughtered_chicken"] = {
-		label = "Slaughtered chicken",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["slaughtered_chicken"] = {
+        label = "Slaughtered chicken",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["stone"] = {
-		label = "Stone",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["stone"] = {
+        label = "Stone",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["wool"] = {
-		label = "Wool",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["wool"] = {
+        label = "Wool",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["weddingcertificate"] = {
-		label = "Wedding Certificate",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["weddingcertificate"] = {
+        label = "Wedding Certificate",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["weddingring"] = {
-		label = "Wedding Ring",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["weddingring"] = {
+        label = "Wedding Ring",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
     ['nailtable'] = {
-    label = 'Nail Table',
-    weight = 0,
-    stack = true
+        label = 'Nail Table',
+        weight = 0,
+        stack = true
     },
 
     ['acrylic-liquid'] = {
@@ -27428,9 +27879,9 @@ return {
 
     ["alligator_gar"] = {
         label = "Alligator Gar",
-        weight = 550,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 550, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "An alligator gar fish.",
         client = {
             image = "alligator_gar.png",
@@ -27439,9 +27890,9 @@ return {
 
     ["amur_pike"] = {
         label = "Amur Pike",
-        weight = 750,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 750, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "An Amur Pike fish.",
         client = {
             image = "amur_pike.png",
@@ -27450,9 +27901,9 @@ return {
 
     ["atlantic_cod"] = {
         label = "Atlantic Cod",
-        weight = 300,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 300, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "An Atlantic Cod fish.",
         client = {
             image = "atlantic_cod.png",
@@ -27461,8 +27912,8 @@ return {
 
     ["fishing_gear"] = {
         label = "Fishing Gear",
-        weight = 30,  -- Dropped a 0 from the weight
-        stack = false,  -- Made non-stackable (unique item)
+        weight = 30,   -- Dropped a 0 from the weight
+        stack = false, -- Made non-stackable (unique item)
         close = true,  -- Equivalent to shouldClose
         description = "Essential gear for fishing.",
         client = {
@@ -27472,8 +27923,8 @@ return {
 
     ["aquarium_pass"] = {
         label = "Aquarium Pass",
-        weight = 30,  -- Dropped a 0 from the weight
-        stack = false,  -- Made non-stackable
+        weight = 30,   -- Dropped a 0 from the weight
+        stack = false, -- Made non-stackable
         close = true,  -- Equivalent to shouldClose
         description = "Pass for entry to the aquarium.",
         client = {
@@ -27483,8 +27934,8 @@ return {
 
     ["research_kit"] = {
         label = "Research Kit",
-        weight = 30,  -- Dropped a 0 from the weight
-        stack = false,  -- Made non-stackable
+        weight = 30,   -- Dropped a 0 from the weight
+        stack = false, -- Made non-stackable
         close = true,  -- Equivalent to shouldClose
         description = "A kit useful for conducting field research.",
         client = {
@@ -27493,8 +27944,8 @@ return {
     },
     ["special_boots"] = {
         label = "Special Boots",
-        weight = 30,  -- Dropped a 0 from the weight
-        stack = false,  -- Made non-stackable
+        weight = 30,   -- Dropped a 0 from the weight
+        stack = false, -- Made non-stackable
         close = true,  -- Equivalent to shouldClose
         description = "Specially designed boots for rugged terrain.",
         client = {
@@ -27504,8 +27955,8 @@ return {
 
     ["museum_ticket"] = {
         label = "Museum Ticket",
-        weight = 30,  -- Dropped a 0 from the weight
-        stack = false,  -- Made non-stackable
+        weight = 30,   -- Dropped a 0 from the weight
+        stack = false, -- Made non-stackable
         close = true,  -- Equivalent to shouldClose
         description = "Ticket for entry to the museum.",
         client = {
@@ -27515,9 +27966,9 @@ return {
 
     ["atlantic_salmon"] = {
         label = "Atlantic Salmon",
-        weight = 500,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 500, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "An Atlantic Salmon fish.",
         client = {
             image = "atlantic_salmon.png",
@@ -27526,9 +27977,9 @@ return {
 
     ["barbel"] = {
         label = "Barbel",
-        weight = 600,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 600, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Barbel fish.",
         client = {
             image = "barbel.png",
@@ -27537,9 +27988,9 @@ return {
 
     ["beluga_sturgeon"] = {
         label = "Beluga Sturgeon",
-        weight = 264,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 264, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Beluga Sturgeon fish.",
         client = {
             image = "beluga_sturgeon.png",
@@ -27548,9 +27999,9 @@ return {
 
     ["black_grayling"] = {
         label = "Black Grayling",
-        weight = 120,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 120, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Black Grayling fish.",
         client = {
             image = "black_grayling.png",
@@ -27559,7 +28010,7 @@ return {
 
     ["blacktip_reef_shark"] = {
         label = "Blacktip Reef Shark",
-        weight = 1500,  -- Dropped a 0 from the weight
+        weight = 1500, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Blacktip Reef Shark.",
@@ -27570,9 +28021,9 @@ return {
 
     ["blue_marlin"] = {
         label = "Blue Marlin",
-        weight = 200,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 200, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Blue Marlin fish.",
         client = {
             image = "blue_marlin.png",
@@ -27581,9 +28032,9 @@ return {
 
     ["bluefin_tuna"] = {
         label = "Bluefin Tuna",
-        weight = 270,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 270, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Bluefin Tuna fish.",
         client = {
             image = "bluefin_tuna.png",
@@ -27592,9 +28043,9 @@ return {
 
     ["bluegill"] = {
         label = "Bluegill",
-        weight = 120,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 120, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Bluegill fish.",
         client = {
             image = "bluegill.png",
@@ -27603,9 +28054,9 @@ return {
 
     ["brook_trout"] = {
         label = "Brook Trout",
-        weight = 700,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 700, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Brook Trout fish.",
         client = {
             image = "brook_trout.png",
@@ -27614,9 +28065,9 @@ return {
 
     ["brown_trout"] = {
         label = "Brown Trout",
-        weight = 230,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 230, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Brown Trout fish.",
         client = {
             image = "brown_trout.png",
@@ -27625,9 +28076,9 @@ return {
 
     ["bull_trout"] = {
         label = "Bull Trout",
-        weight = 200,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 200, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Bull Trout fish.",
         client = {
             image = "bull_trout.png",
@@ -27636,9 +28087,9 @@ return {
 
     ["chub"] = {
         label = "Chub",
-        weight = 150,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 150, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Chub fish.",
         client = {
             image = "chub.png",
@@ -27647,9 +28098,9 @@ return {
 
     ["chum_salmon"] = {
         label = "Chum Salmon",
-        weight = 600,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 600, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Chum Salmon fish.",
         client = {
             image = "chum_salmon.png",
@@ -27658,9 +28109,9 @@ return {
 
     ["coho_salmon"] = {
         label = "Coho Salmon",
-        weight = 500,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 500, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Coho Salmon fish.",
         client = {
             image = "coho_salmon.png",
@@ -27670,8 +28121,8 @@ return {
     ["common_bleak"] = {
         label = "Common Bleak",
         weight = 10,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Common Bleak fish.",
         client = {
             image = "common_bleak.png",
@@ -27680,9 +28131,9 @@ return {
 
     ["common_bream"] = {
         label = "Common Bream",
-        weight = 400,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 400, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Common Bream fish.",
         client = {
             image = "common_bream.png",
@@ -27691,9 +28142,9 @@ return {
 
     ["common_carp"] = {
         label = "Common Carp",
-        weight = 700,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 700, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Common Carp fish.",
         client = {
             image = "common_carp.png",
@@ -27701,9 +28152,9 @@ return {
     },
     ["crucian_carp"] = {
         label = "Crucian Carp",
-        weight = 140,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 140, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Crucian Carp fish.",
         client = {
             image = "crucian_carp.png",
@@ -27712,9 +28163,9 @@ return {
 
     ["european_bass"] = {
         label = "European Bass",
-        weight = 250,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 250, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A European Bass fish.",
         client = {
             image = "european_bass.png",
@@ -27723,9 +28174,9 @@ return {
 
     ["european_eel"] = {
         label = "European Eel",
-        weight = 300,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 300, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A European Eel fish.",
         client = {
             image = "european_eel.png",
@@ -27734,9 +28185,9 @@ return {
 
     ["european_flounder"] = {
         label = "European Flounder",
-        weight = 170,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 170, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A European Flounder fish.",
         client = {
             image = "european_flounder.png",
@@ -27745,9 +28196,9 @@ return {
 
     ["european_perch"] = {
         label = "European Perch",
-        weight = 500,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 500, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A European Perch fish.",
         client = {
             image = "european_perch.png",
@@ -27756,7 +28207,7 @@ return {
 
     ["european_sea_sturgeon"] = {
         label = "European Sea Sturgeon",
-        weight = 2000,  -- Dropped a 0 from the weight
+        weight = 2000, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A European Sea Sturgeon.",
@@ -27767,7 +28218,7 @@ return {
 
     ["electric_eel"] = {
         label = "Electric Eel",
-        weight = 1500,  -- Dropped a 0 from the weight
+        weight = 1500, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "An Electric Eel.",
@@ -27779,8 +28230,8 @@ return {
     ["garfish"] = {
         label = "Garfish",
         weight = 50,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Garfish.",
         client = {
             image = "garfish.png",
@@ -27789,9 +28240,9 @@ return {
 
     ["giant_freshwater_stingray"] = {
         label = "Giant Freshwater Stingray",
-        weight = 350,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 350, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Giant Freshwater Stingray.",
         client = {
             image = "giant_freshwater_stingray.png",
@@ -27800,9 +28251,9 @@ return {
 
     ["giant_grouper"] = {
         label = "Giant Grouper",
-        weight = 260,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 260, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Giant Grouper fish.",
         client = {
             image = "giant_grouper.png",
@@ -27811,7 +28262,7 @@ return {
 
     ["giant_squid"] = {
         label = "Giant Squid",
-        weight = 2000,  -- Dropped a 0 from the weight
+        weight = 2000, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Giant Squid.",
@@ -27822,9 +28273,9 @@ return {
 
     ["giant_trevally"] = {
         label = "Giant Trevally",
-        weight = 200,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 200, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Giant Trevally fish.",
         client = {
             image = "giant_trevally.png",
@@ -27834,8 +28285,8 @@ return {
     ["golden_trout"] = {
         label = "Golden Trout",
         weight = 40,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Golden Trout fish.",
         client = {
             image = "golden_trout.png",
@@ -27844,9 +28295,9 @@ return {
 
     ["grass_carp"] = {
         label = "Grass Carp",
-        weight = 120,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 120, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Grass Carp fish.",
         client = {
             image = "grass_carp.png",
@@ -27856,8 +28307,8 @@ return {
     ["grass_pickerel"] = {
         label = "Grass Pickerel",
         weight = 90,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Grass Pickerel fish.",
         client = {
             image = "grass_pickerel.png",
@@ -27867,8 +28318,8 @@ return {
     ["grayling"] = {
         label = "Grayling",
         weight = 80,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Grayling fish.",
         client = {
             image = "grayling.png",
@@ -27877,9 +28328,9 @@ return {
 
     ["great_barracuda"] = {
         label = "Great Barracuda",
-        weight = 900,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 900, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Great Barracuda fish.",
         client = {
             image = "great_barracuda.png",
@@ -27888,9 +28339,9 @@ return {
 
     ["grey_snapper"] = {
         label = "Grey Snapper",
-        weight = 400,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 400, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Grey Snapper fish.",
         client = {
             image = "grey_snapper.png",
@@ -27899,7 +28350,7 @@ return {
 
     ["huchen"] = {
         label = "Huchen",
-        weight = 1500,  -- Dropped a 0 from the weight
+        weight = 1500, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Huchen fish.",
@@ -27910,9 +28361,9 @@ return {
 
     ["ide"] = {
         label = "Ide",
-        weight = 100,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 100, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "An Ide fish.",
         client = {
             image = "ide.png",
@@ -27921,9 +28372,9 @@ return {
 
     ["indian_threadfish"] = {
         label = "Indian Threadfish",
-        weight = 250,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 250, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "An Indian Threadfish.",
         client = {
             image = "indian_threadfish.png",
@@ -27932,7 +28383,7 @@ return {
 
     ["lake_sturgeon"] = {
         label = "Lake Sturgeon",
-        weight = 1600,  -- Dropped a 0 from the weight
+        weight = 1600, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Lake Sturgeon fish.",
@@ -27943,9 +28394,9 @@ return {
 
     ["largemouth_bass"] = {
         label = "Largemouth Bass",
-        weight = 100,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 100, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Largemouth Bass fish.",
         client = {
             image = "largemouth_bass.png",
@@ -27954,7 +28405,7 @@ return {
 
     ["mahi_mahi"] = {
         label = "Mahi-Mahi",
-        weight = 1000,  -- Dropped a 0 from the weight
+        weight = 1000, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Mahi-Mahi fish.",
@@ -27965,7 +28416,7 @@ return {
 
     ["malabar_grouper"] = {
         label = "Malabar Grouper",
-        weight = 1500,  -- Dropped a 0 from the weight
+        weight = 1500, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Malabar Grouper fish.",
@@ -27976,9 +28427,9 @@ return {
 
     ["mirror_carp"] = {
         label = "Mirror Carp",
-        weight = 700,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 700, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Mirror Carp fish.",
         client = {
             image = "mirror_carp.png",
@@ -27987,9 +28438,9 @@ return {
 
     ["northern_pike"] = {
         label = "Northern Pike",
-        weight = 500,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 500, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Northern Pike fish.",
         client = {
             image = "northern_pike.png",
@@ -27998,7 +28449,7 @@ return {
 
     ["pink_river_dolphin"] = {
         label = "Pink River Dolphin",
-        weight = 1550,  -- Dropped a 0 from the weight
+        weight = 1550, -- Dropped a 0 from the weight
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Pink River Dolphin.",
@@ -28009,9 +28460,9 @@ return {
 
     ["pink_salmon"] = {
         label = "Pink Salmon",
-        weight = 200,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 200, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Pink Salmon fish.",
         client = {
             image = "pink_salmon.png",
@@ -28021,8 +28472,8 @@ return {
     ["prussian_carp"] = {
         label = "Prussian Carp",
         weight = 90,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Prussian Carp fish.",
         client = {
             image = "prussian_carp.png",
@@ -28031,9 +28482,9 @@ return {
 
     ["pufferfish"] = {
         label = "Pufferfish",
-        weight = 150,  -- Dropped a 0 from the weight
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 150, -- Dropped a 0 from the weight
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Pufferfish.",
         client = {
             image = "pufferfish.png",
@@ -28043,8 +28494,8 @@ return {
     ["pumpkinseed"] = {
         label = "Pumpkinseed",
         weight = 40,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Pumpkinseed fish.",
         client = {
             image = "pumpkinseed.png",
@@ -28053,9 +28504,9 @@ return {
 
     ["rainbow_trout"] = {
         label = "Rainbow Trout",
-        weight = 100,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 100, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Rainbow Trout fish.",
         client = {
             image = "rainbow_trout.png",
@@ -28064,9 +28515,9 @@ return {
 
     ["red_lionfish"] = {
         label = "Red Lionfish",
-        weight = 100,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 100, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Red Lionfish.",
         client = {
             image = "red_lionfish.png",
@@ -28075,9 +28526,9 @@ return {
 
     ["redeye_piranha"] = {
         label = "Redeye Piranha",
-        weight = 120,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 120, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Redeye Piranha.",
         client = {
             image = "redeye_piranha.png",
@@ -28087,8 +28538,8 @@ return {
     ["redfin_pickerel"] = {
         label = "Redfin Pickerel",
         weight = 40,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Redfin Pickerel fish.",
         client = {
             image = "redfin_pickerel.png",
@@ -28098,8 +28549,8 @@ return {
     ["roach"] = {
         label = "Roach",
         weight = 50,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Roach fish.",
         client = {
             image = "roach.png",
@@ -28108,9 +28559,9 @@ return {
 
     ["sea_trout"] = {
         label = "Sea Trout",
-        weight = 200,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 200, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Sea Trout fish.",
         client = {
             image = "sea_trout.png",
@@ -28119,7 +28570,7 @@ return {
 
     ["silver_carp"] = {
         label = "Silver Carp",
-        weight = 1000,  -- Converted weight to OxInventory format
+        weight = 1000, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Silver Carp fish.",
@@ -28131,8 +28582,8 @@ return {
     ["skeleton"] = {
         label = "Skeleton",
         weight = 10,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Skeleton.",
         client = {
             image = "skeleton.png",
@@ -28141,9 +28592,9 @@ return {
 
     ["smallmouth_bass"] = {
         label = "Smallmouth Bass",
-        weight = 150,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 150, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Smallmouth Bass fish.",
         client = {
             image = "smallmouth_bass.png",
@@ -28152,9 +28603,9 @@ return {
 
     ["sockeye_salmon"] = {
         label = "Sockeye Salmon",
-        weight = 300,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 300, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Sockeye Salmon fish.",
         client = {
             image = "sockeye_salmon.png",
@@ -28164,8 +28615,8 @@ return {
     ["south_sea_pearl_oyster"] = {
         label = "South Sea Pearl Oyster",
         weight = 10,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A South Sea Pearl Oyster.",
         client = {
             image = "south_sea_pearl_oyster.png",
@@ -28174,9 +28625,9 @@ return {
 
     ["tench"] = {
         label = "Tench",
-        weight = 250,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 250, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Tench fish.",
         client = {
             image = "tench.png",
@@ -28185,7 +28636,7 @@ return {
 
     ["tiger_shark"] = {
         label = "Tiger Shark",
-        weight = 5500,  -- Converted weight to OxInventory format
+        weight = 5500, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A Tiger Shark.",
@@ -28196,9 +28647,9 @@ return {
 
     ["wels_catfish"] = {
         label = "Wels Catfish",
-        weight = 400,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 400, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Wels Catfish fish.",
         client = {
             image = "wels_catfish.png",
@@ -28207,9 +28658,9 @@ return {
 
     ["white_sturgeon"] = {
         label = "White Sturgeon",
-        weight = 800,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 800, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A White Sturgeon fish.",
         client = {
             image = "white_sturgeon.png",
@@ -28219,8 +28670,8 @@ return {
     ["yellow_perch"] = {
         label = "Yellow Perch",
         weight = 40,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Yellow Perch fish.",
         client = {
             image = "yellow_perch.png",
@@ -28229,9 +28680,9 @@ return {
 
     ["yellowfin_tuna"] = {
         label = "Yellowfin Tuna",
-        weight = 900,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 900, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Yellowfin Tuna fish.",
         client = {
             image = "yellowfin_tuna.png",
@@ -28240,9 +28691,9 @@ return {
 
     ["yellowtail_barracuda"] = {
         label = "Yellowtail Barracuda",
-        weight = 110,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 110, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Yellowtail Barracuda.",
         client = {
             image = "yellowtail_barracuda.png",
@@ -28251,9 +28702,9 @@ return {
 
     ["zander"] = {
         label = "Zander",
-        weight = 200,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 200, -- Converted weight to OxInventory format
+        stack = true, -- Made stackable
+        close = true, -- Equivalent to shouldClose
         description = "A Zander fish.",
         client = {
             image = "zander.png",
@@ -28262,7 +28713,7 @@ return {
 
     ["paddlefish"] = {
         label = "Paddle Fish",
-        weight = 1000,  -- Converted weight to OxInventory format
+        weight = 1000, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A rare and illegal Paddle Fish.",
@@ -28273,7 +28724,7 @@ return {
 
     ["sawfish"] = {
         label = "Saw Fish",
-        weight = 1000,  -- Converted weight to OxInventory format
+        weight = 1000, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A rare and illegal Saw Fish.",
@@ -28284,7 +28735,7 @@ return {
 
     ["eel"] = {
         label = "Eel",
-        weight = 1000,  -- Converted weight to OxInventory format
+        weight = 1000, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A rare and illegal Eel.",
@@ -28295,7 +28746,7 @@ return {
 
     ["hammerheadshark"] = {
         label = "Hammer Head Shark",
-        weight = 2500,  -- Converted weight to OxInventory format
+        weight = 2500, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A rare and illegal Hammer Head Shark.",
@@ -28306,7 +28757,7 @@ return {
 
     ["seaturtle"] = {
         label = "Sea Turtle",
-        weight = 2500,  -- Converted weight to OxInventory format
+        weight = 2500, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A rare and illegal Sea Turtle.",
@@ -28317,7 +28768,7 @@ return {
 
     ["leopardshark"] = {
         label = "Leopard Shark",
-        weight = 2500,  -- Converted weight to OxInventory format
+        weight = 2500, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A rare and illegal Leopard Shark.",
@@ -28328,7 +28779,7 @@ return {
 
     ["blueshark"] = {
         label = "Blue Shark",
-        weight = 4000,  -- Converted weight to OxInventory format
+        weight = 4000, -- Converted weight to OxInventory format
         stack = true,  -- Made stackable
         close = true,  -- Equivalent to shouldClose
         description = "A legendary and illegal Blue Shark.",
@@ -28339,9 +28790,9 @@ return {
 
     ["greatwhiteshark"] = {
         label = "Great White Shark",
-        weight = 10000,  -- Converted weight to OxInventory format
-        stack = true,  -- Made stackable
-        close = true,  -- Equivalent to shouldClose
+        weight = 10000, -- Converted weight to OxInventory format
+        stack = true,   -- Made stackable
+        close = true,   -- Equivalent to shouldClose
         description = "A mythic and illegal Great White Shark.",
         client = {
             image = "greatwhiteshark.png",
@@ -28450,371 +28901,371 @@ return {
         }
     },
 
-	["mov_advanced_ceramic"] = {
-		label = "Premium Ceramic",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_advanced_ceramic"] = {
+        label = "Premium Ceramic",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-	["mov_advanced_wax"] = {
-		label = "Advanced Wax",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_advanced_wax"] = {
+        label = "Advanced Wax",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-	["mov_basic_ceramic"] = {
-		label = "Basic Ceramic",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_basic_ceramic"] = {
+        label = "Basic Ceramic",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-	["mov_basic_wax"] = {
-		label = "Basic Wax",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_basic_wax"] = {
+        label = "Basic Wax",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-    	["mov_advanced_ceramic"] = {
-		label = "Premium Ceramic",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_advanced_ceramic"] = {
+        label = "Premium Ceramic",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-	["mov_advanced_wax"] = {
-		label = "Advanced Wax",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_advanced_wax"] = {
+        label = "Advanced Wax",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-	["mov_basic_ceramic"] = {
-		label = "Basic Ceramic",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
+    ["mov_basic_ceramic"] = {
+        label = "Basic Ceramic",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
-	["mov_basic_wax"] = {
-		label = "Basic Wax",
-		weight = 10,
-		stack = true,
-		close = true,
-	},
-
-
+    ["mov_basic_wax"] = {
+        label = "Basic Wax",
+        weight = 10,
+        stack = true,
+        close = true,
+    },
 
 
 
-['hack_usb'] = {
-    label = 'Phantom USB',
-    weight = 100,
-    stack = false
-},
 
 
-['bomb_c4'] = {
-    label = 'C4 Explosive',
-    weight = 3000,
-},
-
-['angle_grinder'] = {
-    label = 'Angle Grinder',
-    weight = 1500,
-},
+    ['hack_usb'] = {
+        label = 'Phantom USB',
+        weight = 100,
+        stack = false
+    },
 
 
-['thermite'] = {
-    label = 'Thermite',
-    weight = 350,
-},
+    ['bomb_c4'] = {
+        label = 'C4 Explosive',
+        weight = 3000,
+    },
+
+    ['angle_grinder'] = {
+        label = 'Angle Grinder',
+        weight = 1500,
+    },
 
 
-["large_drill"] = {
-    label = "Large Drill",
-    weight = 12500,
-    stack = true,
-    close = true,
-},
-
-["small_drill"] = {
-    label = "Small Drill",
-    weight = 2000,
-    stack = true,
-    close = true,
-},
-
-['explosives'] = {
-    label = 'Explosives',
-    weight = 3000,
-},
-
-['tv'] = {
-    label = 'Television',
-    weight = 12500,
-    stack = true,
-},
+    ['thermite'] = {
+        label = 'Thermite',
+        weight = 350,
+    },
 
 
-['flat_tv'] = {
-    label = 'Flat Screen TV',
-    weight = 12500,
-    stack = true,
-},
+    ["large_drill"] = {
+        label = "Large Drill",
+        weight = 12500,
+        stack = true,
+        close = true,
+    },
 
-['old_tv'] = {
-    label = 'Old TV',
-    weight = 12500,
-    stack = true,
-},
+    ["small_drill"] = {
+        label = "Small Drill",
+        weight = 2000,
+        stack = true,
+        close = true,
+    },
 
-['keyboard'] = {
-    label = 'Keyboard',
-    weight = 500,
-    stack = true,
-},
+    ['explosives'] = {
+        label = 'Explosives',
+        weight = 3000,
+    },
 
-['pink_diamond'] = {
-    label = 'Pink Diamond',
-    weight = 100,
-},
+    ['tv'] = {
+        label = 'Television',
+        weight = 12500,
+        stack = true,
+    },
 
-['rare_tequila'] = {
-    label = 'Rare Tequila',
-    weight = 300,
-},
 
-['plasma_cutter'] = {
-    label = 'Plasma cutter',
-    weight = 1000,
-    stack = true,
-},
+    ['flat_tv'] = {
+        label = 'Flat Screen TV',
+        weight = 12500,
+        stack = true,
+    },
 
-	["simcard"] = {
-		label = "Empty Sim Card",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ['old_tv'] = {
+        label = 'Old TV',
+        weight = 12500,
+        stack = true,
+    },
 
-	["ccard"] = {
-		label = "Cloned Card",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ['keyboard'] = {
+        label = 'Keyboard',
+        weight = 500,
+        stack = true,
+    },
 
-	["checkpaper"] = {
-		label = "Checkpaper",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ['pink_diamond'] = {
+        label = 'Pink Diamond',
+        weight = 100,
+    },
 
-	["burnerphone"] = {
-		label = "Burner Phone",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ['rare_tequila'] = {
+        label = 'Rare Tequila',
+        weight = 300,
+    },
 
-	["msr"] = {
-		label = "MSR",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ['plasma_cutter'] = {
+        label = 'Plasma cutter',
+        weight = 1000,
+        stack = true,
+    },
 
-	["blank"] = {
-		label = "Blank Cards",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ["simcard"] = {
+        label = "Empty Sim Card",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["sim"] = {
-		label = "Swapped Sim Card",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ["ccard"] = {
+        label = "Cloned Card",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["fcheck"] = {
-		label = "Forged Check",
-		weight = 100,
-		stack = true,
-		close = true,
-	},
+    ["checkpaper"] = {
+        label = "Checkpaper",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["carplay"] = {
-		label = "Carplay",
-		weight = 3,
-		stack = true,
-		close = true,
-	},
+    ["burnerphone"] = {
+        label = "Burner Phone",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["speaker_blast"] = {
-		label = "Speaker Blast",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["msr"] = {
+        label = "MSR",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["speaker_retro"] = {
-		label = "Speaker Retro",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["blank"] = {
+        label = "Blank Cards",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["speaker_beat"] = {
-		label = "Speaker Beat",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["sim"] = {
+        label = "Swapped Sim Card",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["speaker_vibe"] = {
-		label = "Speaker Vibe",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["fcheck"] = {
+        label = "Forged Check",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
 
-	["drug_meth"] = {
-		label = "Meth",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["carplay"] = {
+        label = "Carplay",
+        weight = 3,
+        stack = true,
+        close = true,
+    },
 
-	["green_gelato_cannabis"] = {
-		label = "Green Gelato Cannabis",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["speaker_blast"] = {
+        label = "Speaker Blast",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["pseudoefedrine"] = {
-		label = "Pseudoefedrine",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["speaker_retro"] = {
+        label = "Speaker Retro",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["hydrogen"] = {
-		label = "Hydrogen",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["speaker_beat"] = {
+        label = "Speaker Beat",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["red_sulfur"] = {
-		label = "Red Sulfur",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["speaker_vibe"] = {
+        label = "Speaker Vibe",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["carbon"] = {
-		label = "Carbon",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["drug_meth"] = {
+        label = "Meth",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["jolly_ranchers"] = {
-		label = "Jolly Ranchers",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["green_gelato_cannabis"] = {
+        label = "Green Gelato Cannabis",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["liquid_sulfur"] = {
-		label = "Liquid Sulfur",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["pseudoefedrine"] = {
+        label = "Pseudoefedrine",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["cocaine"] = {
-		label = "Cocaine",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["hydrogen"] = {
+        label = "Hydrogen",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["codeine"] = {
-		label = "Codeine",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["red_sulfur"] = {
+        label = "Red Sulfur",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["sodium_hydroxide"] = {
-		label = "Sodium hydroxide",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["carbon"] = {
+        label = "Carbon",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["drug_lean"] = {
-		label = "Lean",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["jolly_ranchers"] = {
+        label = "Jolly Ranchers",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["drug_ecstasy"] = {
-		label = "Ecstasy",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["liquid_sulfur"] = {
+        label = "Liquid Sulfur",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["drink_sprunk"] = {
-		label = "Sprunk",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["cocaine"] = {
+        label = "Cocaine",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["muriatic_acid"] = {
-		label = "Muriatic Acid",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["codeine"] = {
+        label = "Codeine",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["nitrogen"] = {
-		label = "Nitrogen",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["sodium_hydroxide"] = {
+        label = "Sodium hydroxide",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["drug_lsd"] = {
-		label = "LSD",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["drug_lean"] = {
+        label = "Lean",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["oxygen"] = {
-		label = "Oxygen",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["drug_ecstasy"] = {
+        label = "Ecstasy",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 
-	["drink_sprite"] = {
-		label = "Sprite",
-		weight = 1,
-		stack = true,
-		close = true,
-	},
+    ["drink_sprunk"] = {
+        label = "Sprunk",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
+
+    ["muriatic_acid"] = {
+        label = "Muriatic Acid",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
+
+    ["nitrogen"] = {
+        label = "Nitrogen",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
+
+    ["drug_lsd"] = {
+        label = "LSD",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
+
+    ["oxygen"] = {
+        label = "Oxygen",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
+
+    ["drink_sprite"] = {
+        label = "Sprite",
+        weight = 1,
+        stack = true,
+        close = true,
+    },
 }
