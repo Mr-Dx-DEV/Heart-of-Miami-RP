@@ -200,7 +200,7 @@ local function spawnPeds()
                 lib.zones.box({
                     name = 'cityhall',
                     coords = current.coords.xyz,
-                    size = vec3(2, 2, 3),
+                    size = vec3(5, 5, 2),
                     rotation = current.coords.w,
                     debug = false,
                     onEnter = function()

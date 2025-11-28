@@ -1,15 +1,15 @@
 return {
     cityhalls = {
         {
-            coords = vec3(-265.0, -963.6, 31.2),
+            coords = vec3(-437.085, 1096.909, 328.766),
             showBlip = true,
             blip = {
                 label = 'City Services',
                 shortRange = true,
-                sprite = 487,
+                sprite = 176,
                 display = 4,
-                scale = 0.65,
-                colour = 0,
+                scale = 0.8,
+                colour = 3,
             },
             licenses = {
                 ['id'] = {
@@ -22,17 +22,17 @@ return {
                     label = 'Driver License',
                     cost = 50,
                 },
-                ['weapon'] = {
-                    item = 'weaponlicense',
-                    label = 'Weapon License',
-                    cost = 50,
-                },
+                -- ['weapon'] = {
+                --     item = 'weaponlicense',
+                --     label = 'Weapon License',
+                --     cost = 50,
+                -- },
             },
         },
     },
 
     employment = {
-        enabled = true, -- Set to false to disable the employment menu
+        enabled = false, -- Set to false to disable the employment menu
         jobs = {
             unemployed = 'Unemployed',
             trucker = 'Trucker',

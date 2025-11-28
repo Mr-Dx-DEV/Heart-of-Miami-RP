@@ -38,7 +38,15 @@ lib.callback.register('qbx_cityhall:server:requestId', function(source, item, ha
         return exports.qbx_core:Notify(source, locale('error.not_enough_money'), 'error')
     end
 
-    exports.qbx_idcard:CreateMetaLicense(source, itemType.item)
+    if itemType.item == "id_card" then
+        exports['um-idcard']:CreateMetaLicense(source, 'id_card')
+    elseif itemType.item == "driver_license" then
+        exports['um-idcard']:CreateMetaLicense(source, 'driver_license')
+    elseif itemType.item == "weaponlicense" then
+        exports['um-idcard']:CreateMetaLicense(source, 'weaponlicense')
+    else
+        return false -- This shouldn't happen due to the validation above, but kept for safety
+    end
     exports.qbx_core:Notify(source, locale('success.item_recieved') .. itemType.label, 'success')
 end)
 
