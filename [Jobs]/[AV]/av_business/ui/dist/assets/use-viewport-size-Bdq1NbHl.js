@@ -1,0 +1,1 @@
+import{l as t,az as i}from"./index-C_M0pIoi.js";const n={passive:!0};function a(){const[s,o]=t.useState({width:0,height:0}),e=t.useCallback(()=>{o({width:window.innerWidth||0,height:window.innerHeight||0})},[]);return i("resize",e,n),i("orientationchange",e,n),t.useEffect(e,[]),s}export{a as u};

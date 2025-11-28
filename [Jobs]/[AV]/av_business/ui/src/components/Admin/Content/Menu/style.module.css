@@ -1,0 +1,12 @@
+.tbody {
+  background-color: var(--dark-700);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.th {
+  background-color: var(--dark-500);
+}
+
+.thead {
+  background-color: var(--dark-500);
+}

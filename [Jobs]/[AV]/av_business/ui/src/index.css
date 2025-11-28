@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background: url("https://r2.fivemanage.com/QmVAYSlqeAlD4IxVbdvu5/images/lab.png")
+    no-repeat center center fixed;
+  background-size: cover; */
+  box-sizing: border-box;
+  background-color: transparent !important;
+  user-select: none;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  color-scheme: unset;
+  --blue-50: #edf5ff;
+  --blue-100: #d2c2ff;
+  --blue-200: #bca4ff;
+  --blue-300: #9e7aff;
+  --blue-400: #8b61ff;
+  --blue-500: #6e39ff;
+  --blue-600: #6434e8;
+  --blue-700: #4e28b5;
+  --blue-800: #3d1f8c;
+  --blue-900: #2e186b;
+
+  /* Dark Palette */
+  --dark-50: #e8e8e8;
+  --dark-100: #b7b7b8;
+  --dark-200: #959596;
+  --dark-300: #464648;
+  --dark-400: #292934;
+  --dark-500: #18181a;
+  --dark-600: #161618;
+  --dark-700: #111112;
+  --dark-800: #0d0d0e;
+  --dark-900: #0a0a0b;
+
+  /* White Palette */
+  --white-50: #ffffff;
+  --white-100: #ffffff;
+  --white-200: #ffffff;
+  --white-300: #f8f9fa;
+  --white-400: #f5f5f5;
+  --white-500: #e8e8e8;
+  --white-600: #e5e2dc;
+  --white-700: #b5b5b5;
+  --white-800: #8c8c8c;
+  --white-900: #6b6b6b;
+
+  /* Error (Red) */
+  --red-50: #fceceb;
+  --red-100: #f4c3bf;
+  --red-200: #efa6a1;
+  --red-300: #e8d7d6;
+  --red-400: #e3645b;
+  --red-500: #dc3d32;
+  --red-600: #c8322e;
+  --red-700: #9c2b24;
+  --red-800: #79221c;
+  --red-900: #5c1a15;
+
+  /* Warning (Orange) */
+  --orange-50: #fff7e9;
+  --orange-100: #fee7ba;
+  --orange-200: #fedbb9;
+  --orange-300: #feca6b;
+  --orange-400: #fdc04e;
+  --orange-500: #fdb022;
+  --orange-600: #e6a01f;
+  --orange-700: #b47d18;
+  --orange-800: #8b6113;
+  --orange-900: #6a4a0e;
+
+  /* Success (Green) */
+  --green-50: #e7f0eb;
+  --green-100: #b3cfce;
+  --green-200: #8eb8a4;
+  --green-300: #5b987b;
+  --green-400: #3b8461;
+  --green-500: #0a653a;
+  --green-600: #095c35;
+  --green-700: #074829;
+  --green-800: #063820;
+  --green-900: #042418;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(120, 120, 120, 0.15);
+}

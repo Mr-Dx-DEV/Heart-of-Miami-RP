@@ -1,0 +1,52 @@
+.button {
+  background-color: var(--blue-500);
+  &:disabled,
+  &[data-disabled] {
+    color: var(--blue-300);
+  }
+}
+
+.button:hover {
+  background-color: var(--blue-600);
+}
+
+.input {
+  background-color: rgba(13, 14, 15, 0.25);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.input:focus {
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.tbody {
+  background-color: var(--dark-700);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.th {
+  padding: 0;
+  background-color: var(--dark-600);
+}
+
+.thead {
+  background-color: var(--dark-600);
+}
+
+@media (max-height: 900px) and (min-height: 701px) {
+  .scroll {
+    height: calc(95vh - 130px);
+  }
+}
+
+@media (max-height: 700px) {
+  .scroll {
+    height: calc(82vh - 100px);
+  }
+}
+
+@media (min-height: 901px) {
+  .scroll {
+    height: calc(95vh - 130px);
+  }
+}

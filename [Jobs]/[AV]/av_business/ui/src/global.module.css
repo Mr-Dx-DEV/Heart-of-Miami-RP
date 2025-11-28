@@ -1,0 +1,45 @@
+.content {
+  background-color: var(--dark-600);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+.header {
+  background-color: var(--dark-600);
+}
+
+.input {
+  background-color: var(--dark-600);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.input:focus {
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.dropdown {
+  background-color: var(--dark-700);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.option {
+  font-size: 12px;
+}
+
+.option:hover {
+  background-color: rgba(155, 155, 155, 0.3);
+}
+
+.mantine-Modal-inner {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
+.button {
+  background-color: var(--blue-500);
+}
+
+.button:hover {
+  background-color: var(--blue-600);
+}
