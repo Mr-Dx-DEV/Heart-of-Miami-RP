@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" type="text/javascript"></script>
+      <link rel="stylesheet" href="style.css">
+      <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+
+   </head>
+<body>
+   <div class="container-3">
+      <img src="./img/Group.svg" alt="">
+      <div class="steps-container">
+        <span id="total_steps">99</span><span id="total_steps_2">/ 15</span>
+      </div>
+    </div>
+
+    <div class="container-4">
+      <div class="close" onclick="close_start('.container-4')"><span>X</span></div>
+
+      <span id="jobname">LUMBERJACK</span>
+      <div class="start_text">How do you want to start <span id="start_text"> work</span>?</div>
+
+      <div class="bottom-start">
+         <div class="alone" onclick="startjob('alone', 'close')"><span data-lang="JOBS_UI_21">ALONE</span></div>
+         <div class="multiplayer" onclick="startjob('multiplayer')"><span data-lang="JOBS_UI_22">MULTIPLAYER</span></div>
+      </div>
+       
+   </div>
+   <div class="container-5">
+      <div class="close" onclick="close_start('.container-5','close')"><span>X</span></div>
+      
+      <span id="multiplayer-text" data-lang="JOBS_UI_23">MULTIPLAYER OPTION</span>
+      <div class="multiplayer_start_text" data-lang="JOBS_UI_24">Choose your teammates</span>:</div>
+
+      <div class="bottom-player">
+
+         <div class="player1" onclick="invite(1)"><span></span><img id="img_user1" src="./img/user.png" alt=""></div>
+         <div class="invite1">
+            <input placeholder="ID" class="player1-id" id="place">
+            <div class="send" onclick="send(1)"><span data-lang="JOBS_UI_25">SEND</span></div>
+         </div>
+        
+         <div class="player2" onclick="invite(2)"><span></span><img id="img_user2" src="./img/user.png" alt=""></div>
+         <div class="invite2">
+            <input placeholder="ID" class="player2-id" id="place">
+            <div class="send2" onclick="send(2)"><span data-lang="JOBS_UI_25">SEND</span></div>
+         </div>
+
+         <div class="player3" onclick="invite(3)"><span></span><img id="img_user3" src="./img/user.png" alt=""></div>
+         <div class="invite3">
+            <input placeholder="ID" class="player3-id" id="place">
+            <div class="send3" onclick="send(3)"><span data-lang="JOBS_UI_25">SEND</span></div>
+         </div>
+
+      </div>
+
+      <div class="startjob" onclick="startmultiplayerjob('start')"><span data-lang="JOBS_UI_26">WORK</span></div>
+   </div>
+
+   <div class="container-6">
+      <span data-lang="JOBS_UI_27">YOU HAVE BEEN INVITED TO A WORKING TEAM</span>
+      <div class="bottom-team">
+         <div class="accept" onclick="team_invite('accept')"><span id="accept" data-lang="JOBS_UI_28">ACCEPT</span></div>
+         <div class="decline" onclick="team_invite('decline')"><span id="decline" data-lang="JOBS_UI_29">DECLINE</span></div>
+      </div>
+   </div>
+
+   <div class="container-7">
+      <div class="closesell" onclick="closesell()"><span id="closesellx">X</span></div>
+      <span id="textbuyer">
+         <!-- BUYER <span id="supplier">SUPPLIER</span> -->
+      </span>
+      <div class="line-container7"></div>
+      <span id="desc" data-lang="JOBS_UI_35">Which item do you want to sell?</span>
+      <div class="totalitem" id="totalItems">        
+     </div>
+      <span id="selected_item">
+         You have selected  <span id="item">none</span>
+      </span>
+      <div class="price_wholesale"><span id="price_wholesale">$u</span></div>
+      <div class="wholesale" onclick="sell('wholesale')"><span id="wholesale">WHOLESALE (0/0)</span></div>
+      <div class="linesell"></div>
+      <div class="price_retail"><span id="price_retail">$u</span></div>
+      <div class="retail" onclick="sell('retail')"><span id="retail">RETAIL (0/0)</span></div>
+   </div>
+
+   <div class="container-8">
+      <span id="jobname2">LUMBERJACK</span>
+      <div class="finish_text" data-lang="JOBS_UI_15">What do you want to do after I pay you?</div>
+
+      <div class="bottom-finish">
+         <div class="work" onclick="finish('yes')"><span data-lang="JOBS_UI_16">Keep working</span></div>
+         <div class="nowork" onclick="finish('no')"><span data-lang="JOBS_UI_17">Finish work</span></div>
+      </div>
+   </div>
+   <div class="container-9">
+      <div class="progress-container">
+         <svg class="progress-circle" viewBox="0 0 100 100">
+             <circle class="progress-background" cx="50" cy="50" r="45"/>
+             <circle class="progress" cx="50" cy="50" r="45"/>
+         </svg>
+         <div class="level-text"></div>
+         <div class="progress-text"></div>
+     </div>
+    </div>
+  
+   <div id="app" v-show="display">
+
+      <div class="container-2">
+         <div class="header">
+            <div class="left" data-lang="JOBS_UI_9">BACKSPACE</div>
+            <div class="right" data-lang="JOBS_UI_10">SKIP TUTORIAL</div>
+         </div>
+         <div class="bottom">
+            <div class="left">
+               <img src="./img/icon.png" alt="" class="icon">
+               <div class="texts">
+                  <div class="title" id="namejob">LUMBERJACK</div>
+                  <div class="text" data-lang="JOBS_UI_11">TUTORIAL</div>
+               </div>
+            </div>
+            <div class="mid">
+               <div class="head">
+                  <div class="icon">A</div>
+                  <div class="title" data-lang="JOBS_UI_12">GET READY TO WORK!</div>
+               </div>
+               <div class="description" id="tutorial-text">
+                  Go to the farm area to be able to get a large amount of raw materials, which you will later process to create wonderful things. To do this you will have to take the tool from the trunk of your vehicle that will help you to take raw material from the different points.
+               </div>
+            </div>
+            <div class="right" id="next-button" @click="NEXTSTEP()">
+               <!-- <span>NEXT</span> STEP > -->
+            </div>
+         </div>
+      </div>
+
+      <div class="container">
+         <img class="background-img" src="./background/PURPLE.jpg" alt="">
+         <div class="header">
+            <div class="left" id="leftelectjob">
+               <!-- <ion-icon name="briefcase-outline"></ion-icon>
+               <h1 class="title">  {{ translate[6] }} <span>  {{ translate[7] }}</span></h1> -->
+            </div>
+            <div class="right" id="rightselectorjob">
+               <!-- <h1>  {{ translate[4] }} <span>  {{ translate[5] }}</span></h1> -->
+            </div>
+         </div>
+         
+         <div class="main">
+            <div class="arrows">
+               <div class="arrow-left" @click="onLeftClick()">
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+               </div>
+               <div class="arrow-right" @click="onRightClick()">
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+               </div>
+            </div>
+            <div class="slider">
+                <div class="jobs">
+                    <div class="job" v-for="(job, index) in jobs" :class="{ active: selectedJobIndex == index }">
+                        <div class="top">
+                           <img :src="job.data.Img">
+
+                            <div class="job-title">{{ job.data.Name }}</div>
+                            
+                            <div v-show="job.typejob" class="level">
+                                <div class="level-value">{{ Math.floor(job.data.level) ? Math.floor(job.data.level) : 0 }}</div>
+                            </div>
+                        </div>
+                        
+                        <div v-show="job.typejob" class="level-progress">
+                           <div v-if="job.data.level >= maxLevel">
+                               <div class="level-bar" style="width: 100%"></div>
+                               <div class="next-level">
+                                   <span class="next-level-value">
+                                    {{ translate[3] }}
+                                   </span>
+                               </div>
+                           </div>
+                           <div v-else>
+                               <div class="level-bar" 
+                                   :style="'width:' + ((job.data.xp % job.data.ExperienceRequired) / job.data.ExperienceRequired) * 100 + '%'" 
+                                   v-if="job.data.xp > 0"></div>
+                               <div class="level-bar" style="width:0%" v-else></div>
+                               <div class="next-level">
+                                 {{ translate[0] }}
+                                   <span class="next-level-value">
+                                       {{ job.data.xp ? job.data.xp : 0 }}/{{ job.data.xp >= job.data.ExperienceRequired 
+                                           ? job.data.ExperienceRequired + (job.data.level * job.data.ExperienceRequired) - (job.data.xp % job.data.ExperienceRequired) 
+                                           : job.data.ExperienceRequired }}
+                                   </span>
+                               </div>
+                           </div>
+                       </div>
+                       
+
+                        <div v-show="!job.typejob" class="externaljob">
+                           <div class="circle">
+                              <img src="./img/ma.png">
+                           </div>
+                           <span>  {{ translate[2] }}</span>
+                       </div>
+
+                        <div :class="{ 'no-experience': !job.typejob }" class="description">
+                            {{ job.data.info }}
+                        </div>
+                
+                        <div :class="{ 'no-experience': !job.typejob }" class="select-button" @click="selectJOB(index+1)">
+                           {{ translate[1] }}
+                        </div>
+                    </div>
+                </div>                
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+    
+   <audio id="ShowProgress" preload="auto">
+      <source src="./img/ShowProgress.mp3" type="audio/mpeg">
+   </audio>
+
+   <audio id="swipeJobCenter" preload="auto">
+      <source src="./img/swipe.mp3" type="audio/mpeg">
+   </audio>
+
+   <audio id="buttonJobCenter" preload="auto">
+      <source src="./img/button.mp3" type="audio/mpeg">
+   </audio>
+
+   <script src="script.js" defer></script>
+</body>
+</html>
