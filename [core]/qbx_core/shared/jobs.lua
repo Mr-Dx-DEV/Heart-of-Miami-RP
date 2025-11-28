@@ -576,7 +576,7 @@ return {
 			[5] = { name = "Owner", isboss = true, payment = 100 },
 		},
 	},
-	["vanillaunicorn"] = {
+	["unicorn"] = {
 		label = "Vanilla Unicorn",
 		defaultDuty = false,
 		offDutyPay = false,
