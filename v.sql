@@ -15,10 +15,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for vlife
-CREATE DATABASE IF NOT EXISTS `vlife` /*!40100 DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci */;
-USE `vlife`;
-
 -- Dumping structure for table vlife.17mov_jobcenter_chat
 CREATE TABLE IF NOT EXISTS `17mov_jobcenter_chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
