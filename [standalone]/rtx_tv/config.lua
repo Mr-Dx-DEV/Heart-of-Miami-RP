@@ -2,7 +2,7 @@ Config = {}
 
 Config.TVs = {}
 
-Config.Framework = "standalone"  -- types (standalone, qbcore, esx, custom)
+Config.Framework = "qbcore"  -- types (standalone, qbcore, esx, custom)
 
 Config.ESXFramework = {
 	newversion = false, -- use this if you using new esx version (if you get error with old esxsharedobjectmethod in console)
@@ -24,7 +24,7 @@ Config.TvForCommand = true -- this will enable tv open via command
 
 Config.Target = false -- enable this if you want use target
 
-Config.Targettype = "qtarget" -- types - qtarget, qbtarget, oxtarget
+Config.Targettype = "oxtarget" -- types - qtarget, qbtarget, oxtarget
 
 Config.TargetSystemsNames = {qtarget = "qtarget", qbtarget = "qb-target", oxtarget = "ox_target"}
 
@@ -42,7 +42,7 @@ Config.TelevisionPresets = false -- enable this feature if you want to have, for
 
 Config.VehicleTelevisionOffSetsCreator = false --enable this only on dev server, you can open offset menu via /tvcreator command
 
-Config.VehicleTelevision = true -- this will enable vehicle television system
+Config.VehicleTelevision = false -- this will enable vehicle television system
 
 Config.VehicleTelevisionForEveryVehicle = true -- if you enable this, television will work on every vehicles, if its disabled, it will work only in vehicles which is writed in Config.TelevisonVehicles. 
 
