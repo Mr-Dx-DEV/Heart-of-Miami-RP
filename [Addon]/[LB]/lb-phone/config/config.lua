@@ -222,6 +222,172 @@ Config.Companies.Services = {
             }
         }
     },
+    {
+        job = "catcafe",
+        name = "Cat Cafe",
+        icon = "https://r2.fivemanage.com/w4aVvxe5Gx1fmKRNTBqw3/Uwu_cafe_logo.webp",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = -152.843,
+                y = -129.114
+            }
+        }
+    },
+    {
+        job = "burgershot",
+        name = "Burger Shot",
+        icon = "https://burgershot.spaceturtl.us/image/theme/largelogo.png",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = -1177.15, 
+                y = -886.81
+            }
+        }
+    },
+    {
+        job = "joebar",
+        name = "Joe Bar",
+        icon = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjYKbixBNKq7CBa43vWPIaumThYha_BrDlvA&s",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = 301.32,  
+                y = -717.583
+            }
+        }
+    },
+    {
+        job = "nazar",
+        name = "Nazar",
+        icon = "https://cdn.pixabay.com/photo/2012/11/07/02/26/nazar-amulet-64999_1280.jpg",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Nazar Shop",
+            coords = {
+                x = 445.82, 
+                y = -769.75
+            }
+        }
+    },
+    {
+        job = "seapearls",
+        name = "Sea Pearls",
+        icon = "https://mindtrip.ai/cdn-cgi/image/format=webp,w=720/https://iorigin.mindtrip.ai/restaurants/fc1b/d861/e911/cc0d/05c8/79d1/28ce/b0cf",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = -1860.517,  
+                y = -1210.488
+            }
+        }
+    },
+    {
+        job = "crucialfix",
+        name = "Crucial Fix",
+        icon = "https://i.ytimg.com/vi/yUZ4iRooR4U/maxresdefault.jpg",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = 937.34, 
+                y = -555.02
+            }
+        }
+    },
+    {
+        job = "unicorn",
+        name = "Vanilla Unicorn",
+        icon = "https://r2.fivemanage.com/w4aVvxe5Gx1fmKRNTBqw3/dx.jpg",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Bar / Club",
+            coords = {
+                x = 126.15, 
+                y = -1290.7
+            }
+        }
+    },
+    {
+        job = "lustresort",
+        name = "Lustre Resort",
+        icon = "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/e2/16/80/feel-the-joyful-moments.jpg?w=1200&h=1200&s=1",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = -576.79, 
+                y = 234.23
+            }
+        }
+    },
+
+    {
+        job = "taxi",
+        name = "Taxi",
+        icon = "https://cdn-icons-png.flaticon.com/128/433/433449.png",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"boss", "driver"}, -- ranks that can manage the company
+        location = {
+            name = "Taxi HQ",
+            coords = {
+                x =984.2,
+                y = -219.0
+            }
+        }
+    },
+    {
+        job = "saltlabmechanic",
+        name = "Lustre Resort",
+        icon = "https://forum-cfx-re.akamaized.net/optimized/5X/9/d/f/e/9dfe1d52e1646f790aa68b5e7e11ced36a29725e_2_690x361.jpeg",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Mechanic Workshop",
+            coords = {
+                x = -3065.014,  
+                y = 458.757
+            }
+        }
+    },
+    {
+        job = "saltlabcafe",
+        name = "SaltLab Cafe",
+        icon = "https://forum-cfx-re.akamaized.net/optimized/5X/9/d/f/e/9dfe1d52e1646f790aa68b5e7e11ced36a29725e_2_690x361.jpeg",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Cafe / Restaurant",
+            coords = {
+                x = -3078.347, 
+                y = 433.74
+            }
+        }
+    },
 }
 
 Config.Companies.Contacts = { -- not needed if you use the services app, this will add the contact to the contacts app
