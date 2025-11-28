@@ -101,7 +101,7 @@ return {
 			{ name = 'radio',       price = 10000 },
 			{ name = 'laptop',      price = 30000 },
 			{ name = 'backpack',    price = 15000 },
-			
+
 			{ name = 'lockpick',    price = 500 },
 			{ name = 'repairkit',   price = 2000 },
 			{ name = 'cleaningkit', price = 1000 },
@@ -121,7 +121,7 @@ return {
 		targets = {
 			{ loc = vec3(2746.8, 3473.13, 55.67), length = 0.6, width = 3.0, heading = 65.0, minZ = 55.0, maxZ = 56.8, distance = 3.0 },
 			{ loc = vec3(342.99, -1298.26, 32.51), length = 0.6, width = 3.0, heading = 65.0, minZ = 30.0, maxZ = 35.8, distance = 3.0 }
-		}	
+		}
 	},
 	DrivingGear = {
 		name = 'DrivingGear',
@@ -130,10 +130,10 @@ return {
 		},
 		inventory = {
 
-			
+
 			{ name = 'diving_gear',   price = 5000 },
 			{ name = 'diving_fill',   price = 500 },
-			
+
 
 		},
 		locations = {
@@ -141,8 +141,8 @@ return {
 		},
 		targets = {
 			{ loc = vec3(-1123.344, 2682.735, 18.751), length = 0.6, width = 3.0, heading = 58.723, minZ = 17.0, maxZ = 19.8, distance = 3.0 }
-			
-		}		
+
+		}
 	},
 	KaluMarket = {
 		name = 'Kalu Market',
@@ -151,11 +151,11 @@ return {
 		-- },
 		inventory = {
 
-			
+
 			{ name = 'black_usb',   price = 500000 },
 			{ name = 'light_armor',   price = 8000 },
 			--{ name = 'armory_usb',   price = 600000 },
-		
+
 
 		},
 		locations = {
@@ -163,8 +163,8 @@ return {
 		},
 		targets = {
 			{ loc = vec3(4925.723, -5245.035, 2.525), length = 0.6, width = 3.0, heading = 41.367, minZ = 1.8, maxZ = 2.5, distance = 5.0 }
-			
-		}		
+
+		}
 	},
 	Ammunation = {
 		name = 'Ammunation',
@@ -175,7 +175,7 @@ return {
 			{ name = 'WEAPON_BAT',      price = 3000, weapon = true },
 
 			{ name = 'pistol_ammo',     price = 100 },
-	
+
 
 			-- { name = 'WEAPON_GLOCK26S', price = 5, metadata = {registered = true }, license = 'weapon', weapon = true },
 			-- { name = 'WEAPON_XDS9',     price = 5, metadata = {registered = true }, license = 'weapon', weapon = true },
@@ -291,10 +291,10 @@ return {
 			-- { name = 'at_muzzle_tactical',       price = 250,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 2 }, -- Tactical Muzzle (Officer - Chief)
 		},
 		locations = {
-			vector3(466.0428, -985.4561, 25.8663)
+			 vec3(79.53, -362.18, 41.19)
 		},
 		targets = {
-			{ loc = vector3(466.0428, -985.4561, 25.8663), length = 1.0, width = 3.0, heading = 280.47, minZ = 25.02, maxZ = 27.99, distance = 6 }
+			{ loc = vec3(79.53, -362.18, 41.19), length = 2.8, width = 3.0, heading = 70.60, minZ = 39.02, maxZ = 42.98, distance = 3 },
 		}
 	},
 
@@ -312,7 +312,7 @@ return {
 		},
 		targets = {
 			{ loc = vec3(-406.8568, 1074.8776, 335.1199), length = 0.6, width = 3.0, heading = 65.0, minZ = 355.0, maxZ = 356.8, distance = 3.0 },
-		}	
+		}
 	},
 
 	-- Medicine = {
