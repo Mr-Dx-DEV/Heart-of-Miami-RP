@@ -115,6 +115,16 @@ RegisterNUICallback('spawn', function(data, cb)
     destroyCamera()
     setPlace(data)
     Debug('Location: ' .. place .. ' Spawned')
+
+    -- Trigger cutscene if enabled in config
+    if um.main.spawn.cutScene and place ~= 'properties' and place ~= 'rentApartment' then
+        DoScreenFadeIn(1000)
+        Wait(500)
+        TriggerEvent('introCinematic:start')
+        Debug('Cutscene triggered')
+        Wait(31520) -- Wait for cutscene to complete (31.52 seconds)
+    end
+
     Wait(500)
     DoScreenFadeIn(1000)
     um.hud(false)
