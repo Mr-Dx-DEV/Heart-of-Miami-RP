@@ -9,14 +9,12 @@ return {
         [`BUZZARD2`] = true,
         [`ANNIHILATOR`] = true,
         [`SAVAGE`] = true,
-        [`TITAN`] = true,
         [`RHINO`] = true,
         [`FIRETRUK`] = true,
         [`MULE`] = true,
         [`MAVERICK`] = true,
         [`BLIMP`] = true,
         [`AIRTUG`] = true,
-        [`CAMPER`] = true,
         [`HYDRA`] = true,
         [`OPPRESSOR`] = true,
         [`technical3`] = true,
@@ -27,6 +25,8 @@ return {
         [`halftrack`] = true,
         [`hunter`] = true,
         [`vigilante`] = true,
+        [`policeb`] = true,
+        [`polmav`] = true,
         [`akula`] = true,
         [`barrage`] = true,
         [`khanjali`] = true,
@@ -50,6 +50,32 @@ return {
         [`s_m_y_cop_01`] = true,
         [`s_f_y_sheriff_01`] = true,
         [`s_f_y_cop_01`] = true,
-        [`s_m_y_hwaycop_01`] = true
+        [`s_m_y_hwaycop_01`] = true,
+        ['freight'] = true,
+        ['freightcar'] = true,
+        ['freightcar2'] = true,
+        ['freightcont1'] = true,
+        ['freightcont2'] = true,
+        ['freightgrain'] = true,
+        ['freighttrailer'] = true,
+        ['tankercar'] = true,
+        ['metrotrain'] = true,
+        ['s_m_m_lsmetro_01'] = true,
+        ['tram'] = true,
+        ['lighttrain'] = true,
+        ['trolley'] = true,
+
+
+
+    [`Blimp2`] = true,
+    [`CAMPER`] = true,
+
+    [`cargoplane2`] = true,
+    [`voltic2`] = true,
+    [`THRUSTER`] = true,
+
+    [`swift`] = true,
+    [`frogger`] = true,
+
     }
 }

@@ -7,7 +7,7 @@ return {
         ambience = true,
 
         -- Disables headshots instantly killing players
-        headshots = false,
+        headshots = true,
 
     },
 
@@ -37,6 +37,27 @@ return {
             'AIRTUG',
             'RIPLEY',
             'BLIMP',
+            'AKULA',
+            'BUZZARD',
+            'BUZZARD2',
+            'VOLATUS',
+            'VALKYRIE',
+            'VALKYRIE2',
+            'ANNIHILATOR',
+            'ANNIHILATOR2',
+            'CONADA',
+            'CONADA2',
+            'FROGGER',
+            'FROGGER2',
+            'MAVERICK',
+            'MAVERICK2',
+            'SUPERVOLITO',
+            'SUPERVOLITO2',
+            'SWIFT',
+            'SWIFT2',
+            'THRUSTER',
+            'HAVOK',
+            'HUNTER',
         },
 
         scenarioGroups = {
