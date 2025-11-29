@@ -1,0 +1,20 @@
+shared_script '@vLife/ai_module_fg-obfuscated.lua'
+shared_script '@vLife/shared_fg-obfuscated.lua'
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+use_experimental_fxv2_oal 'yes'
+
+description 'For support or other queries: discord.gg/jgscripts'
+version '1.4'
+repository 'https://github.com/jgscripts/jg-stress-addon'
+
+client_script 'client.lua'
+
+shared_scripts {
+  '@ox_lib/init.lua',
+  '@prism_uipack/init.lua',
+  'config.lua',
+}
+
+server_script 'server.lua'
