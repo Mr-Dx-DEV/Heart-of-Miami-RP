@@ -1,0 +1,41 @@
+shared_script '@vLife/ai_module_fg-obfuscated.lua'
+shared_script '@vLife/shared_fg-obfuscated.lua'
+
+name "Jim_Bridge"
+author "Jimathy"
+version "2.1.09"
+description "Framework Bridge By Jimathy"
+fx_version "cerulean"
+rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
+games { 'gta5', 'rdr3' }
+lua54 'yes'
+
+
+shared_scripts {
+	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua',
+
+}
+files {
+    'starter.lua',
+    'shared/*.lua',
+    'shared/make/*.lua',
+    'shared/auth/*.lua',
+    'shared/make/*.lua',
+    'shared/modules/*.lua',
+    'shared/scaleforms/*.lua',
+    'shared/wrappers/*.lua',
+}
+
+-- Version checker
+server_scripts {
+    'frameworkCache.lua',
+    '_versioncheck.lua',
+}
+
+client_scripts {
+    'clientFrameworkCache.lua',
+    'ui_modules/*.lua',
+}
+
+suppress_updates 'false'   -- set to 'true' to disable update pings
