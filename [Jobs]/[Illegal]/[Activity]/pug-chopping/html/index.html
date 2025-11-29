@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chopshop Audio</title>
+</head>
+<body>
+  <script>
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (data && data.action === "playSound" && data.sound) {
+        const audio = new Audio(`sounds/${data.sound}.ogg`);
+        audio.volume = data.volume !== undefined ? data.volume : 1.0;
+        audio.play().catch(err => {
+          console.error("Audio playback failed:", err);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
