@@ -1,5 +1,4 @@
-shared_script '@vLife/ai_module_fg-obfuscated.lua'
-shared_script '@vLife/shared_fg-obfuscated.lua'
+
 -- FXVersion Version
 fx_version 'adamant'
 games {"rdr3","gta5"}

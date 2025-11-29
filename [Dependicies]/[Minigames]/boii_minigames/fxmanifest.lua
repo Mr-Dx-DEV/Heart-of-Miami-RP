@@ -1,8 +1,6 @@
 ----------------------------------
 --<!>-- BOII | DEVELOPMENT --<!>--
 ----------------------------------
-shared_script '@vLife/ai_module_fg-obfuscated.lua'
-shared_script '@vLife/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 
 game 'gta5'

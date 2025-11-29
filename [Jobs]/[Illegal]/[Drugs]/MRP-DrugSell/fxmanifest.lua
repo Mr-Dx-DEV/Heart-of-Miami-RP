@@ -1,4 +1,4 @@
-shared_script '@vLife/shared_fg-obfuscated.lua'
+
 fx_version 'cerulean'
 game 'gta5'
 

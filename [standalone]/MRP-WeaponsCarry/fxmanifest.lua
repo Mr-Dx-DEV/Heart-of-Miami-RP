@@ -1,5 +1,4 @@
-shared_script '@vLife/ai_module_fg-obfuscated.lua'
-shared_script '@vLife/shared_fg-obfuscated.lua'
+
 fx_version 'cerulean'
 use_experimental_fxv2_oal 'yes'
 lua54 'yes'
