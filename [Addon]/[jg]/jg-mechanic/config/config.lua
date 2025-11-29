@@ -105,35 +105,35 @@ Config.DisableNoPaymentOptionForEmployees = false
 
 -- Mechanic Locations
 Config.MechanicLocations = {
-  bennys = {
-    type = "self-service",
-    logo = "bennys.png", -- logos go in /logos
-    locations = {
-      {
-        coords = vector3(-211.6, -1324.73, 30.23),
-        size = 8.0,
-        showBlip = true,
-      }
-    },
-    blip = {
-      id = 446,
-      color = 47,
-      scale = 0.7
-    },
-    mods = {
-      repair           = { enabled = true, price = 500, percentVehVal = 0.01 },
-      performance      = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
-      cosmetics        = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
-      stance           = { enabled = true, price = 500, percentVehVal = 0.01 },
-      respray          = { enabled = true, price = 500, percentVehVal = 0.01 },
-      wheels           = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
-      neonLights       = { enabled = true, price = 500, percentVehVal = 0.01 },
-      headlights       = { enabled = true, price = 500, percentVehVal = 0.01 },
-      tyreSmoke        = { enabled = true, price = 500, percentVehVal = 0.01 },
-      bulletproofTyres = { enabled = true, price = 500, percentVehVal = 0.01 },
-      extras           = { enabled = true, price = 500, percentVehVal = 0.01 }
-    },
-  },
+  -- bennys = {
+  --   type = "self-service",
+  --   logo = "bennys.png", -- logos go in /logos
+  --   locations = {
+  --     {
+  --       coords = vector3(-211.6, -1324.73, 30.23),
+  --       size = 8.0,
+  --       showBlip = true,
+  --     }
+  --   },
+  --   blip = {
+  --     id = 446,
+  --     color = 47,
+  --     scale = 0.7
+  --   },
+  --   mods = {
+  --     repair           = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     performance      = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
+  --     cosmetics        = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
+  --     stance           = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     respray          = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     wheels           = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
+  --     neonLights       = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     headlights       = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     tyreSmoke        = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     bulletproofTyres = { enabled = true, price = 500, percentVehVal = 0.01 },
+  --     extras           = { enabled = true, price = 500, percentVehVal = 0.01 }
+  --   },
+  -- },
   lscustoms = {
     type = "owned",
     job = "mechanic",
@@ -142,16 +142,76 @@ Config.MechanicLocations = {
     commission = 0, -- %, 10 = 10%
     locations = {
       {
-        coords = vector3(-337.25, -137.2, 38.35),
-        size = 6.5,
+        coords = vector3(-317.07, -93.40, 38.83),
+        size = 3.5,
         showBlip = true,
       },
       {
-        coords = vector3(-324.2, -132.0, 38.54),
+        coords = vector3(-325.97, -89.36, 38.83),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-334.15, -86.72, 39.43),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-342.35, -83.55, 39.10),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-350.57, -80.40, 38.70),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-358.40, -77.35, 38.60),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-366.58, -74.12, 38.40),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+
+
+
+
+
+      {
+        coords = vector3(-368.02, -98.31, 39.18),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-361.45, -100.63, 39.08),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-355.49, -102.95, 38.98),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-349.17, -105.18, 39.24),
         size = 3.0,
         showBlip = false,
         employeeOnly = true,
       }
+      
     },
     blip = {
       id = 446,
@@ -181,12 +241,12 @@ Config.MechanicLocations = {
       gearboxes        = { enabled = true, requiresItem = true },
     },
     carLifts = { -- only usable by employees
-      vector4(-357.45, -114.17, 38.7, 339.89)
+      --vector4(-357.45, -114.17, 38.7, 339.89)
     },
     shops = {
       {
         name = "Servicing Supplies",
-        coords = vector3(-345.54, -131.32, 39.01),
+        coords = vector3(-366.29, -101.31, 38.68),
         size = 2.0,
         usePed = false,
         pedModel = "s_m_m_lathandy_01",
@@ -203,7 +263,7 @@ Config.MechanicLocations = {
       },
       {
         name = "Advanced Upgrades",
-        coords = vector3(-343.79, -139.92, 39.01),
+        coords = vector3(-360.07, -103.47, 38.68),
         size = 2.0,
         usePed = false,
         pedModel = "s_m_m_lathandy_01",
@@ -218,7 +278,114 @@ Config.MechanicLocations = {
     stashes = {
       {
         name = "Parts Bin",
-        coords = vector3(-339.24, -132.2, 39.01),
+        coords = vector3(-353.99, -105.84, 38.68),
+        size = 2.0,
+        usePed = false,
+        pedModel = "s_m_m_lathandy_01",
+        marker = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+        slots = 10,
+        weight = 50000,
+      },
+    }
+  },
+  Mechanic = {
+    type = "owned",
+    job = "mechanic",
+    jobManagementRanks = {4},
+    logo = "ls_customs.png",
+    commission = 0, -- %, 10 = 10%
+    locations = {
+      {
+        coords = vector3(-3072.53, 446.13, 6.97),
+        size = 3.5,
+        showBlip = true,
+      },
+      {
+        coords = vector3(-3075.38, 440.01, 6.97),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-3078.35, 433.95, 6.97),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      },
+      {
+        coords = vector3(-3083.11, 429.10, 6.97),
+        size = 3.0,
+        showBlip = false,
+        employeeOnly = true,
+      }
+
+    },
+    blip = {
+      id = 446,
+      color = 47,
+      scale = 0.7
+    },
+    mods = {
+      repair           = { enabled = true, price = 500, percentVehVal = 0.01 },
+      performance      = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
+      cosmetics        = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
+      stance           = { enabled = true, price = 500, percentVehVal = 0.01 },
+      respray          = { enabled = true, price = 500, percentVehVal = 0.01 },
+      wheels           = { enabled = true, price = 500, percentVehVal = 0.01, priceMult = 0.1 },
+      neonLights       = { enabled = true, price = 500, percentVehVal = 0.01 },
+      headlights       = { enabled = true, price = 500, percentVehVal = 0.01 },
+      tyreSmoke        = { enabled = true, price = 500, percentVehVal = 0.01 },
+      bulletproofTyres = { enabled = true, price = 500, percentVehVal = 0.01 },
+      extras           = { enabled = true, price = 500, percentVehVal = 0.01 }
+    },
+    tuning = {
+      engineSwaps      = { enabled = true, requiresItem = true },
+      drivetrains      = { enabled = true, requiresItem = true },
+      turbocharging    = { enabled = true, requiresItem = true },
+      tyres            = { enabled = true, requiresItem = true },
+      brakes           = { enabled = true, requiresItem = true },
+      driftTuning      = { enabled = true, requiresItem = true },
+      gearboxes        = { enabled = true, requiresItem = true },
+    },
+    carLifts = { -- only usable by employees
+      --vector4(-357.45, -114.17, 38.7, 339.89)
+    },
+    shops = {
+      {
+        name = "Servicing Supplies",
+        coords = vector3(-3083.37, 426.81, 6.97),
+        size = 2.0,
+        usePed = false,
+        pedModel = "s_m_m_lathandy_01",
+        marker = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+        items = {
+          { name = "engine_oil", label = "Engine Oil", price = 50 },
+          { name = "tyre_replacement", label = "Tyre Replacement", price = 2500 },
+          { name = "clutch_replacement", label = "Clutch Replacement", price = 3000 },
+          { name = "air_filter", label = "Air Filter", price = 300 },
+          { name = "spark_plug", label = "Spark Plug", price = 100 },
+          { name = "suspension_parts", label = "Suspension Parts", price = 2500 },
+          { name = "brakepad_replacement", label = "Brakepad Replacement", price = 1500 },
+        },
+      },
+      {
+        name = "Advanced Upgrades",
+        coords = vector3(-3081.13, 425.73, 6.97),
+        size = 2.0,
+        usePed = false,
+        pedModel = "s_m_m_lathandy_01",
+        marker = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+        items = {
+          { name = "turbocharger", label = "Turbo Charger", price = 25000 },
+          { name = "v8_engine", label = "V8 Engine Upgrade", price = 40000 },
+          { name = "ceramic_brakes", label = "Ceramic Brakes", price = 15000 },
+        },
+      }
+    },
+    stashes = {
+      {
+        name = "Parts Bin",
+        coords = vector3(-3078.58, 424.25, 6.97),
         size = 2.0,
         usePed = false,
         pedModel = "s_m_m_lathandy_01",
