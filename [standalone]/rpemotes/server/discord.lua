@@ -3,10 +3,10 @@ local QBCore = exports['qb-core']:GetCoreObject()
 QBCore.Functions.CreateCallback('rpemotes:server:checkDiscordRoles', function(source, cb)
     local src = source
 
-    local hasGold = exports.zdiscord:isRolePresent(src, '1347445310766452805')
-    local hasPlatinum = exports.zdiscord:isRolePresent(src, '1347445310766452806')
-    local hasDiamond = exports.zdiscord:isRolePresent(src, '1347445310766452807')
-    local hasAmethyst = exports.zdiscord:isRolePresent(src, '1347445310766452808')
+    local hasGold = exports.zdiscord:isRolePresent(src, '1404669577799012473')
+    local hasPlatinum = exports.zdiscord:isRolePresent(src, '1404669577799012473')
+    local hasDiamond = exports.zdiscord:isRolePresent(src, '1404669577799012473')
+    local hasAmethyst = exports.zdiscord:isRolePresent(src, '1404669577799012473')
 
     -- Prevent nil values (default to false)
     hasGold = hasGold ~= nil and hasGold or false
