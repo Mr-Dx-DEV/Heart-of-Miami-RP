@@ -45,6 +45,12 @@ Config = {
             model = 'u_m_m_bankman',
             coords = vector4(-112.22, 6471.01, 31.63, 134.18),
             createAccounts = true
+        },
+
+         [9] = { -- DOME
+            model = 'u_m_m_bankman',
+            coords = vector4(-2411.31, -888.23, 10.85, 8.77),
+            createAccounts = true
         }
     }
 }
