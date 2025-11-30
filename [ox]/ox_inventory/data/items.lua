@@ -1,5 +1,14 @@
 return {
 
+["backpack1"] = { label = "Backpack 1", weight = 15, stack = false, close = true, description = "A stylish backpack" },
+["backpack2"] = { label = "Backpack 2", weight = 15, stack = false, close = true, description = "A stylish backpack" },
+["duffle1"] = { label = "Duffle Bag", weight = 15, stack = false, close = true, description = "A stylish duffle bag" },
+["briefcase"] = { label = "Briefcase", weight = 10, stack = false, close = true, description = "Portable case for documents" },
+["paramedicbag"] = { label = "Paramedic Bag", weight = 5, stack = false, close = true, description = "Medical bag for emergency care" },
+["policepouches"] = { label = "Police Pouch", weight = 5, stack = false, close = true, description = "Tactical equipment pouch" },
+["policepouches1"] = { label = "Police Pouch (Large)", weight = 5, stack = false, close = true, description = "Larger tactical pouch" },
+["briefcaselockpicker"] = { label = "Briefcase Lockpicker", weight = 0.5, stack = true, close = true, description = "Lockpicker for briefcases" },
+
     ['wet_money'] = {
         label = 'Wet money',
         weight = 0.01,
@@ -841,7 +850,7 @@ return {
             image = "rubber.png",
         }
     },
-    
+
     ["fitbit"] = {
         label = "Fitbit",
         weight = 90,
