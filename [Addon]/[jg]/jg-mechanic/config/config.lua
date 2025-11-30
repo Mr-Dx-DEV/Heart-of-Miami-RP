@@ -150,37 +150,37 @@ Config.MechanicLocations = {
         coords = vector3(-325.97, -89.36, 38.83),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-334.15, -86.72, 39.43),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-342.35, -83.55, 39.10),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-350.57, -80.40, 38.70),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-358.40, -77.35, 38.60),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-366.58, -74.12, 38.40),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
 
 
@@ -191,25 +191,25 @@ Config.MechanicLocations = {
         coords = vector3(-368.02, -98.31, 39.18),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-361.45, -100.63, 39.08),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-355.49, -102.95, 38.98),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-349.17, -105.18, 39.24),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       }
       
     },
@@ -321,19 +321,19 @@ Config.MechanicLocations = {
         coords = vector3(-3075.38, 440.01, 6.97),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-3078.35, 433.95, 6.97),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       },
       {
         coords = vector3(-3083.11, 429.10, 6.97),
         size = 3.0,
         showBlip = false,
-        employeeOnly = true,
+        employeeOnly = false,
       }
 
     },
