@@ -100,7 +100,7 @@ return {
 			{ name = 'phone',       price = 15000 },
 			{ name = 'radio',       price = 10000 },
 			{ name = 'laptop',      price = 30000 },
-			{ name = 'backpack',    price = 15000 },
+			-- { name = 'backpack',    price = 15000 },
 
 			{ name = 'lockpick',    price = 500 },
 			{ name = 'repairkit',   price = 2000 },
@@ -153,7 +153,7 @@ return {
 
 
 			{ name = 'black_usb',   price = 500000 },
-			{ name = 'light_armor',   price = 8000 },
+			{ name = 'illheavyarmor',   price = 8000 },
 			--{ name = 'armory_usb',   price = 600000 },
 
 
@@ -235,8 +235,8 @@ return {
 			{ name = 'government_handcuffs',     price = 100,   metadata = {registered = true, serial = 'POL' }, grade = 0 },
 			{ name = 'WEAPON_FLASHLIGHT',        price = 50,    metadata = {registered = true, serial = 'POL' }, grade = 0 },
 			{ name = 'police_stormram',          price = 50,    metadata = {registered = true, serial = 'POL' }, grade = 0 },
-			{ name = 'armor_plate',              price = 5,     metadata = { serial = 'POL' }, grade = 0 },
-			{ name = 'pd_armor',                 price = 50,    grade = 0 },
+			{ name = 'heavyarmor',              price = 5,     metadata = { serial = 'POL' }, grade = 0 },
+			-- { name = 'pd_armor',                 price = 50,    grade = 0 },
 			{ name = 'advancedrepairkit',        price = 50,    grade = 0 },
 			{ name = 'radio',                    price = 500,   grade = 0 },
 			{ name = 'bandage',                  price = 30,    grade = 0 },
