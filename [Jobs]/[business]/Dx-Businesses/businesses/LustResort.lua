@@ -1,5 +1,5 @@
 Businesses["lustresort"] = {
-    enabled = false,
+    enabled = true,
     drawmarker = true,
     job = "lustresort",
     dutyzone = {
