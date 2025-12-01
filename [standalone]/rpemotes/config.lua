@@ -45,7 +45,7 @@ Config = {
     AnimalEmotesEnabled = true,
 
     -- Hands Up
-    HandsupEnabled = false,
+    HandsupEnabled = true,
     HandsupKeybind = 'X',
     HandsupKeybindEnabled = false,
     HandsupInCar = false,
