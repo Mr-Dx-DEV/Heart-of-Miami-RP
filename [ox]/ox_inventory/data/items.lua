@@ -109,6 +109,17 @@ return {
             image = "laundromatkey.png",
         }
     },
+['rentalpapers'] = {
+        label = "Rental Papers",
+        weight = 400,
+        stack = false,
+        close = false,
+        description = "Rental Papers",
+        client = {
+            image = "rentalpapers.png",
+        }
+    },
+    
     ['x_shirt'] = {
         label = "Shirt",
         weight = 200,
@@ -19639,9 +19650,8 @@ return {
         close = true,
         consume = 1,
         client = {},
-        server = {
-            export = 'xradio.boombox',
-        },
+        stack = true
+        
     },
 
     ['coffemachine'] = {
