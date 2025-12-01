@@ -60,6 +60,7 @@ return {
 
 
             { name = 'phone',  price = 1000 },
+            { name = 'boombox',  price = 1000 },
             { name = 'radio',  price = 1900 },
             { name = 'laptop', price = 2500 }
 
@@ -383,19 +384,22 @@ return {
     -- 	}
     -- },
 
-    Baddiesgun = {
-        name = 'Baddies Gun',
-        inventory = {
-            { name = 'bzzz_pepsiloca_a', price = 120 },
-            { name = 'kurkakola',        price = 150 },
-        },
-        locations = {
-            vec3(-382.27, 292.63, 84.79)
-        },
-        targets = {
+    -- Baddiesgun = {
+    --     name = 'Baddies Gun',
+    --     blip = {
+    --  		id = 567, colour = 8, scale = 0.5
+    --  	},
+    --     inventory = {
+    --         { name = 'bzzz_pepsiloca_a', price = 120 },
+    --         { name = 'kurkakola',        price = 150 },
+    --     },
+    --     locations = {
+    --         vec3(-382.27, 292.63, 84.79)
+    --     },
+    --     targets = {
 
-        }
-    },
+    --     }
+    -- },
     VendingMachineDrinks = {
         name = 'Vending Machine',
         inventory = {
