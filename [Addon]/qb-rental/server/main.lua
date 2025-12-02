@@ -8,26 +8,22 @@ RegisterNetEvent('qb-rental:getpapers', function(licenseplate, model)
         veh = QBCore.Shared.Vehicles[model]["brand"].." "..QBCore.Shared.Vehicles[model]["name"],
         plate = licenseplate
     }
-    Player.Functions.AddItem("rentalpapers", 1, false, info)
-    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['rentalpapers'], "add")
+    exports.ox_inventory:AddItem(src, "rentalpapers", 1, info)
 end)
 
-QBCore.Functions.CreateCallback('qb-rental:CheckMoney',function(source, cb, money)
-    local src = source 
+lib.callback.register('qb-rental:CheckMoney', function(source, money)
+    local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player.PlayerData.money.cash >= money then
-        cb(true)
         Player.Functions.RemoveMoney('cash', money)
+        return true
     else
-        cb(false)
+        return false
     end
 end)
 
-RegisterServerEvent('qb-rental:takepapers', function(plate, model)
+RegisterServerEvent('qb-rental:takepapers', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    TriggerClientEvent('inventory:client:ItemBox', src,  QBCore.Shared.Items["rentalpapers"], 'remove')
-    Player.Functions.RemoveItem('rentalpapers', 1, false, info)
+    exports.ox_inventory:RemoveItem(src, 'rentalpapers', 1)
 end)
-
-
