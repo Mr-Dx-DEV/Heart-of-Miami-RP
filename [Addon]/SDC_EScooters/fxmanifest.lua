@@ -7,6 +7,7 @@ version '1.0.2'
 
 shared_script {
     "@ox_lib/init.lua",
+    '@prism_uipack/init.lua',
     "config/config.lua",
     "config/lang.lua"
 }

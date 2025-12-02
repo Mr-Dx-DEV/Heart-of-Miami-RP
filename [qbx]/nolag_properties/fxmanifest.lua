@@ -9,6 +9,7 @@ version '2.3.94'
 
 shared_scripts {
   '@ox_lib/init.lua',
+  '@prism_uipack/init.lua',
   'config.lua',
   'shared/init.lua',
   'furniture.lua',

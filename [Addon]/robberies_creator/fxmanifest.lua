@@ -6,7 +6,8 @@ shared_scripts {
     "shared/streamed_props_remover.lua",
     "shared/objects.lua",
     "shared/misc.lua",
-    "@ox_lib/init.lua"
+    "@ox_lib/init.lua",
+    '@prism_uipack/init.lua'
 }
 
 client_scripts {

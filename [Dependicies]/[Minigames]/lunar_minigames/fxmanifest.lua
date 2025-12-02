@@ -19,7 +19,7 @@ files {
 
 ui_page 'web/build/index.html'
 
-shared_script '@ox_lib/init.lua'
+shared_script {'@ox_lib/init.lua', '@prism_uipack/init.lua'}
 
 client_scripts {
     'client/*.lua',

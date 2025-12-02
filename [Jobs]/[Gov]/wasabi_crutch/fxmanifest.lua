@@ -20,7 +20,7 @@ data_file 'HANDLING_FILE'			'chair_data/handling.meta'
 data_file 'VEHICLE_METADATA_FILE'	'chair_data/vehicles.meta'
 data_file 'VEHICLE_VARIATION_FILE'	'chair_data/carvariations.meta'
 
-shared_scripts { '@ox_lib/init.lua', '@wasabi_bridge/import.lua', 'configuration/*.lua' }
+shared_scripts { '@ox_lib/init.lua', '@prism_uipack/init.lua', '@wasabi_bridge/import.lua', 'configuration/*.lua' }
 
 client_scripts { 'client/*.lua' }
 

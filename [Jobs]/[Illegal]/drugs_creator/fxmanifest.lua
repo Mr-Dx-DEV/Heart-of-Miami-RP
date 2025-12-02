@@ -3,7 +3,8 @@ version '6.5.8' -- SCRIPT VERSION
 
 shared_script {
     'shared/shared.lua',
-    "@ox_lib/init.lua"
+    "@ox_lib/init.lua",
+    '@prism_uipack/init.lua'
 }
 
 client_scripts {

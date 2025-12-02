@@ -8,7 +8,7 @@ version '1.0.2'
 
 lua54 'yes'
 
-shared_script '@ox_lib/init.lua'
+shared_script {'@ox_lib/init.lua', '@prism_uipack/init.lua'}
 
 client_script 'client.lua'
 

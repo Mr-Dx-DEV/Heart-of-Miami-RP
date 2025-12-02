@@ -21,6 +21,7 @@ server_scripts {
 
 shared_scripts {
   "@ox_lib/init.lua",
+  '@prism_uipack/init.lua',
   "config/config.lua",
   "config/config.data.lua"
 }

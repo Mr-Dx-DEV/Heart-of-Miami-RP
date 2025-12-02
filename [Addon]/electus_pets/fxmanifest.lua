@@ -15,6 +15,7 @@ shared_scripts({
 	"config/**/*.lua",
 	"shared/utils.lua",
 	"@ox_lib/init.lua",
+	'@prism_uipack/init.lua',
 })
 
 client_scripts({

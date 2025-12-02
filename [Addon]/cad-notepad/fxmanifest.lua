@@ -7,7 +7,8 @@ description 'Notepad'
 version '1.1'
 
 shared_scripts {
-    -- '@ox_lib/init.lua', -- Uncomment if using ox_lib
+    '@ox_lib/init.lua', -- Uncomment if using ox_lib
+    '@prism_uipack/init.lua',
     'shared.lua'
 }
 

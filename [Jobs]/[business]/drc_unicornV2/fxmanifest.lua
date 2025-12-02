@@ -11,6 +11,7 @@ lua54 'yes'
 
 shared_scripts {
 	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua',
 	'shared/sh_config.lua',
 	'shared/DeliveryCoords.lua',
 }

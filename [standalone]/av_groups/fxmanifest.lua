@@ -9,6 +9,7 @@ games {
 
 shared_scripts {
     '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
     'config/*.lua'
 }
 

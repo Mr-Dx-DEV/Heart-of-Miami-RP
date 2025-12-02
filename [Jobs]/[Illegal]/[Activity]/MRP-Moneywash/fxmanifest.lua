@@ -14,6 +14,7 @@ dependencies {
 
 shared_scripts {
     '@ox_lib/init.lua',
+    '@prism_uipack/init.lua',
     'shared/*.lua',
 }
 

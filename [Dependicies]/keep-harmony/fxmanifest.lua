@@ -19,6 +19,7 @@ repository 'https://swkeep.tebex.io'
 
 shared_scripts {
     "@ox_lib/init.lua",
+    '@prism_uipack/init.lua',
     -- shared config
     'config.shared.lua',
     -- links
