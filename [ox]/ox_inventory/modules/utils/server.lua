@@ -7,6 +7,7 @@ local webHook = GetConvar('inventory:webhook', '')
 if webHook ~= '' then
 	local validHosts = {
 		['i.imgur.com'] = true,
+		['k8kmkccdhq4bghqi.public.blob.vercel-storage.com'] = true,
 	}
 
 	local validExtensions = {
