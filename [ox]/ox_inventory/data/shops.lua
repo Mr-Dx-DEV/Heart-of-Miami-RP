@@ -60,6 +60,7 @@ return {
 
 
             { name = 'phone',  price = 1000 },
+            { name = 'tunertablet',  price = 1000 },
             { name = 'boombox',  price = 1000 },
             { name = 'radio',  price = 1900 },
             { name = 'laptop', price = 2500 }
@@ -148,6 +149,21 @@ return {
             -- { name = 'diving_fill',   price = 500 },
             { name = 'WEAPON_PETROLCAN', price = 1000 },
 
+            { name = 'condom',   price = 500 },
+            { name = 'levonorgestrel',   price = 500 },
+            { name = 'mifepristone',   price = 500 },
+            { name = 'testpack',   price = 500 },
+            { name = 'viagra',   price = 500 },
+
+
+
+            { name = 'pregtest',   price = 500 },
+            { name = 'planb',   price = 500 },
+
+
+            { name = 'notepad',   price = 500 },
+            { name = 'notepad_slip',   price = 500 },
+
         },
         locations = {
             vec3(2748.0, 3473.0, 55.67),
@@ -207,17 +223,10 @@ return {
             id = 110, colour = 69, scale = 0.5
         },
         inventory = {
-            { name = 'WEAPON_BAT',   price = 3000,  weapon = true },
-
-            { name = 'pistol_ammo',  price = 100 },
-
-
-            -- { name = 'WEAPON_GLOCK26S', price = 5, metadata = {registered = true }, license = 'weapon', weapon = true },
-            -- { name = 'WEAPON_XDS9',     price = 5, metadata = {registered = true }, license = 'weapon', weapon = true },
-            -- { name = 'WEAPON_RUGER57',  price = 5, metadata = {registered = true }, license = 'weapon', weapon = true },
-            -- { name = 'WEAPON_GLOCK17S',      price = 15000, metadata = {registered = true }, license = 'weapon', weapon = true },
-            { name = 'WEAPON_FNX45', price = 10000, metadata = { registered = true }, license = 'weapon', weapon = true },
-            -- { name = 'WEAPON_APS',      price = 5, metadata = {registered = true }, license = 'weapon', weapon = true }
+            { name = 'ammo-9', price = 5, },
+			{ name = 'WEAPON_KNIFE', price = 200 },
+			{ name = 'WEAPON_BAT', price = 100 },
+			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true } }
 
 
         },
@@ -252,8 +261,9 @@ return {
         -- },
         inventory = {
             { name = 'gps_tracker',             price = 100,  grade = 0 },
-            { name = 'harness',                 price = 20,   grade = 1 },
+            { name = 'harness',                 price = 20,   grade = 0 },
             { name = 'parachute',               price = 20,   grade = 0 },
+            { name = 'tunerchecker',                 price = 20,   grade = 0 },
             { name = 'diving_gear',             price = 20,   grade = 0 },
             { name = 'diving_fill',             price = 20,   grade = 0 },
             { name = 'WEAPON_FIREEXTINGUISHER', price = 50,   metadata = { registered = true, serial = 'POL' }, grade = 0 },
@@ -333,6 +343,21 @@ return {
         }
     },
 
+BlackMarketArms = {
+		name = 'Black Market (Arms)',
+		inventory = {
+			{ name = 'WEAPON_DAGGER', price = 5000, metadata = { registered = false	}, currency = 'black_money' },
+			{ name = 'WEAPON_CERAMICPISTOL', price = 50000, metadata = { registered = false }, currency = 'black_money' },
+			{ name = 'at_suppressor_light', price = 50000, currency = 'black_money' },
+			{ name = 'ammo-rifle', price = 1000, currency = 'black_money' },
+			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' },
+            { name = 'kq_airdrop_flare', price = 1000, currency = 'black_money' },
+		}, locations = {
+			vec3(309.09, -913.75, 56.46)
+		}, targets = {
+
+		}
+	},
     BRDD = {
         name = 'BRDD',
         inventory = {
