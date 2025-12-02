@@ -10,7 +10,7 @@ ui_page 'html/index.html'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    '@prism_uipack/init.lua',
+    
 	'config/config.lua',
     'config/*.lua',
     'custom/custom_config.lua',
