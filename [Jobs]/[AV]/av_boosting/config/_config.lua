@@ -3,7 +3,7 @@
 -- DISCORD CONFIG IS INSIDE SERVER/FRAMEWORK/_DISCORD.LUA
 -- READ THE DOCS BEFORE USING THIS SCRIPT: https://docs.av-scripts.com/
 Config = {}
-Config.Debug = true
+Config.Debug = false
 Config.App = {
     name = "boosting",
     label = "Boosting", -- You can rename the app by editing this field

@@ -3,7 +3,7 @@
 -- https://docs.av-scripts.com/laptop-pack/av-laptop/installation
 
 Config = {}
-Config.Debug = true -- Used to show some prints in client and server console
+Config.Debug = false -- Used to show some prints in client and server console
 Config.ZonesDebug = false -- It will show the zones debug
 Config.Target = exports['av_laptop']:getTarget() -- No need to modify this, do it from av_laptop/config directly
 Config.Command = "admin:business"  -- Used to open the admin menu

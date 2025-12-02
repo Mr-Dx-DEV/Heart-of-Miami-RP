@@ -1,5 +1,5 @@
 Config = {}
-Config.Debug = true
+Config.Debug = false
 Config.Target = exports['av_laptop']:getTarget()
 Config.MaxLevel = 10 -- Max level for any contact / Every 100 XP = 1 level
 
