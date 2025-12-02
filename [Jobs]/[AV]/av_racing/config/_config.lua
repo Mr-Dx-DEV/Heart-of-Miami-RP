@@ -6,7 +6,7 @@
 ]]
 
 Config = {}
-Config.Debug = true
+Config.Debug = false
 Config.AdminLevel = "admin" -- Admin level, used for permissions in APP, check the docs to customize server/framework/permissions.lua
 Config.AdminPanelCommand = "admin:racing" -- Admin command used to open the admin menu
 Config.ClassCommand = "class" -- Used to view the vehicle class, or change it to false to disable it
