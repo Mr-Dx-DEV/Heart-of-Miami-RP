@@ -5,15 +5,15 @@ return {
 		["ambulance"] = true,
 	},
 
-	debug = true,
+	debug = false,
 
 	vip = {
 		roles = {
-			member = "1347445310674178113",
-			silver = "1347445310766452803", 
-			gold = "1347445310766452805",
-			platinum = "1347445310766452806",
-			diamond = "1347445310766452807"
+			member = "1404669577799012473",
+			silver = "1404669577799012473", 
+			gold = "1404669577799012473",
+			platinum = "1404669577799012473",
+			diamond = "1404669577799012473"
 		},
 		maxJobs = {
 			default = 1, 
@@ -27,7 +27,7 @@ return {
 
 	jobSwitch = {
 		cooldown = 300, 
-		bypassCooldownRoles = {"1347445310871437340"}, 
+		bypassCooldownRoles = {"1404669577799012473"}, 
 		disabledJobs = {}, 
 	},
 	
