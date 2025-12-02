@@ -1,0 +1,32 @@
+1.0.4 Changes:
+Censor bars this seems like it would be a bad thing but it's either that or risk your server getting into trouble.
+
+
+1.0.3 Changes:
+Added auto restore clothing options for sleep and sex
+minor bug fixes
+
+
+1.0.2 Changes:
+Added SQL support for saving pregnancies.
+Added the option to change textures to all outfits
+Fixed a few minor bugs
+Added Female stop sex button
+Added Dizzy effect (Only if using k_diseases)
+Added Added the option to disable outfit component changes example below
+Added Auto restore clothing after pregnancies `RestoreClothing = true`
+
+['female'] = {
+    ['tshirt'] = false,
+    ['pants'] = {comp = 17, texture=0},-- Disable by setting it to = false
+    ['shoes'] = {comp = 35, texture=0},-- Disable by setting it to = false
+    ['torso'] = false,
+    ['arms'] = {comp = 15, texture=0},-- Disable by setting it to = false
+},
+
+Updated Pregnancy start females will no longer need to use a pregtest to start the pregnant system (it starts asoon as the player gets pregnant from sex)
+Updated how plan b's work it should no longer cause issues
+Updated Few of the animations to sync a little better
+
+
+Please report any bugs in the discord! (Please provide a clip of how to recreate it if possible)

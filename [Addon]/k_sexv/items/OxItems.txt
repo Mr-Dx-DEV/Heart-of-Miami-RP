@@ -1,0 +1,21 @@
+	['pregtest'] = {
+		label = 'Pregnancy Test',
+		weight = 5,
+		stack = true,
+		close = true,
+		description = ""
+	},
+	['planb'] = {
+		label = 'Plan B',
+		weight = 5,
+		stack = true,
+		close = true,
+		description = ""
+	},
+	['condom'] = {
+		label = 'Condom',
+		weight = 10,
+		stack = true,
+		close = true,
+		description = ""
+	},

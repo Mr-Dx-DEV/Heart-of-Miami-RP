@@ -1,0 +1,5 @@
+	['pregtest'] 			 = {['name'] = 'pregtest', 					['label'] = 'Pregnancy Test', 				['weight'] = 100, 		['type'] = 'item', 		['image'] = 'pregtest.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = ''},
+	['condom'] 			 = {['name'] = 'condom', 					['label'] = 'Condom', 				['weight'] = 100, 		['type'] = 'item', 		['image'] = 'condom.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = ''},
+	['planb'] 			 = {['name'] = 'planb', 				['label'] = 'Plan B', 				['weight'] = 100, 		['type'] = 'item', 		['image'] = 'planb.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = ''},
+
+
