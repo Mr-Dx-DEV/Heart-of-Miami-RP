@@ -6984,6 +6984,143 @@ return {
         }
     },
 
+    ['laptop2'] = {
+    label = 'Laptop #2',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['whiteslip'] = {
+    label = 'White Slip',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['stolencard'] = {
+    label = 'Stolen Bankcard',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['infousb'] = {
+    label = 'Information USB',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['forgedcheck'] = {
+    label = 'Forged Check',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['blankcard'] = {
+    label = 'Blank Card',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['clonedcard'] = {
+    label = 'Cloned Card',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['printer'] = {
+    label = 'Printer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['skimmer'] = {
+    label = 'Skimmer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+['generator'] = {
+    label = 'Generator',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = '',
+},
+
+
+	['pregtest'] = {
+		label = 'Pregnancy Test',
+		weight = 5,
+		stack = true,
+		close = true,
+		description = ""
+	},
+	['planb'] = {
+		label = 'Plan B',
+		weight = 5,
+		stack = true,
+		close = true,
+		description = ""
+	},
+
+    ['condom'] = {
+    label = 'Condom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Condom',
+},
+
+['levonorgestrel'] = {
+    label = 'Levonorgestrel',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Levonorgestrel',
+},
+
+['mifepristone'] = {
+    label = 'Mifepristone',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Mifepristone',
+},
+
+['testpack'] = {
+    label = 'Test Pack',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Test Pack',
+},
+
+['viagra'] = {
+    label = 'Viagra',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Viagra',
+},
+
+
     ['condom_red'] = {
         label = 'Durex Straberry Condom',
         weight = 10,
@@ -7101,7 +7238,195 @@ return {
             event = 'mm_radio:client:usejammer'
         }
     },
-
+["pigeonmeat"] = {
+        label = "Pigeon Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Delicious pigeon meat for your culinary adventures.",
+    },
+    ["pigeonfeather"] = {
+        label = "Pigeon Feather",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A soft and lightweight feather from a pigeon.",
+    },
+    ["crowmeat"] = {
+        label = "Crow Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Tasty crow meat, perfect for daring gourmets.",
+    },
+    ["crowfeather"] = {
+        label = "Crow Feather",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A sleek and dark feather from a crow.",
+    },
+    ["seagullmeat"] = {
+        label = "Seagull Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Savory seagull meat, a delicacy among fishermen.",
+    },
+    ["seagullfeather"] = {
+        label = "Seagull Feather",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A graceful and light feather from a seagull.",
+    },
+    ["cormorantmeat"] = {
+        label = "Cormorant Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Meaty cormorant meat, a rare find for adventurous eaters.",
+    },
+    ["cormorantbeak"] = {
+        label = "Cormorant Beak",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A sturdy and pointed beak from a cormorant.",
+    },
+    ["deermeat"] = {
+        label = "Deer Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Succulent deer meat, a favorite among hunters.",
+    },
+    ["deerhorn"] = {
+        label = "Deer Horn",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A majestic horn from a deer, prized for its beauty.",
+    },
+    ["rabbitmeat"] = {
+        label = "Rabbit Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Tender rabbit meat, perfect for stews and roasts.",
+    },
+    ["rabbitskin"] = {
+        label = "Rabbit Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A soft and supple skin from a rabbit, ideal for crafting.",
+    },
+    ["ratmeat"] = {
+        label = "Rat Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Edible rat meat, a survivalist's choice in desperate times.",
+    },
+    ["pigmeat"] = {
+        label = "Pig Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Juicy pig meat, a staple in many hearty meals.",
+    },
+    ["pigskin"] = {
+        label = "Pig Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Thick and durable pig skin, useful for crafting leather goods.",
+    },
+    ["coyotemeat"] = {
+        label = "Coyote Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Lean and gamey coyote meat, favored by wilderness enthusiasts.",
+    },
+    ["coyoteskin"] = {
+        label = "Coyote Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Tough and weather-resistant coyote skin, perfect for outdoor gear.",
+    },
+    ["coguarmeat"] = {
+        label = "Cougarmeat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Exotic cougarmeat, a delicacy for adventurous palates.",
+    },
+    ["coguarskin"] = {
+        label = "Cougar Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Supple cougar skin, highly valued in the fashion industry.",
+    },
+    ["boarmeat"] = {
+        label = "Boar Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Hearty boar meat, a popular choice among hunters and chefs.",
+    },
+    ["boarskin"] = {
+        label = "Boar Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Tough boar skin, excellent for crafting rugged goods.",
+    },
+    ["snakemeat"] = {
+        label = "Snake Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Savory snake meat, a delicacy in some cultures.",
+    },
+    ["boarhorn"] = {
+        label = "Boar Horn",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A large and impressive horn from a boar.",
+    },
+    ["snakeskin"] = {
+        label = "Snake Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Smooth and patterned snake skin, used for various crafts.",
+    },
+    ["hawkmeat"] = {
+        label = "Hawk Meat",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Lean and gamey hawk meat, a rare delicacy among hunters.",
+    },
+    ["hawkskin"] = {
+        label = "Hawk Skin",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "Beautiful hawk skin, prized for its unique markings.",
+    },
+    ["hawkpeak"] = {
+        label = "Hawk Peak",
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A majestic feather from a hawk's peak, a symbol of freedom.",
+    },
     ['radiocell'] = {
         label = 'AAA Cells',
         weight = 1000,
@@ -7113,8 +7438,122 @@ return {
     },
 
 
+
+    ['hacking_computer'] = {
+    label = 'Hacking computer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Computer to hack panels'
+},
+
+['thermal_charge'] = {
+    label = 'Thermal charge',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Use to melt some doors'
+},
+
+['gas_mask'] = {
+    label = 'Gas mask',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Protects from lethal gas'
+},
+
+['drill'] = {
+    label = 'Drill',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Can be used to open trucks doors'
+},
+
+['gold_ingot'] = {
+    label = 'Gold ingot',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Goooold'
+},
+
+['diamonds_box'] = {
+    label = 'Diamond box',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Diamooonds'
+},
+
+['lockpick'] = {
+    label = 'Lockpick',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Used to lockpick doors'
+},
+
+['painting'] = {
+    label = 'Painting',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Expensive painting'
+},
+
+["notepad"] = {
+    label = "Notepad",
+    weight = 100,
+    stack = false,
+    close = true,
+    description = "Sometimes handy to remember something.",
+    server = {
+        export = "cad-notepad.useItem",
+    }
+},
+
+["notepad_slip"] = {
+    label = "Note",
+    weight = 10,
+    stack = false,
+    close = true,
+    description = "Piece of paper which has something written on it.",
+    server = {
+        export = "cad-notepad.useItem",
+    }
+},
+['tunertablet'] = {
+    label = 'Tuner Tablet',
+    description = 'desc',
+    weight = 390,
+    stack = false,
+    consume = 0,
+
+    client = {
+        usetime = 150,
+        export = 'm-tuning.tunerTablet'
+    }
+},
+['tunerchecker'] = {
+    label = 'Tuner Tablet',
+    description = 'desc',
+    weight = 390,
+    stack = false,
+    consume = 0,
+
+    client = {
+        usetime = 150,
+        export = 'm-tuning.tunerCheckTablet'
+    }
+},
     ['clothing'] = {
         label = 'Clothing',
+        consume = 0,
+    },
+    ['kq_airdrop_flare'] = {
+        label = 'airdrop flare',
         consume = 0,
     },
 
@@ -7379,6 +7818,535 @@ return {
             image = "vanillaunicorn_docksidebreeze.png",
         },
     },
+
+
+    ['doghouse_1'] = {
+    label = 'Dog House',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Dog House',
+},
+
+['pet_leash'] = {
+    label = 'Pet Leash',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A leash for your pet',
+},
+
+['pet_food'] = {
+    label = 'Pet Food',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Food for your pet',
+},
+
+['prop_michael_backpack'] = {
+    label = 'Michael Backpack',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A backpack owned by Michael',
+},
+
+['prop_parapack_01'] = {
+    label = 'Parapack',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A parapack',
+},
+
+['p_ld_heist_bag_01'] = {
+    label = 'Heist Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag used in heists',
+},
+
+['xm_prop_x17_bag_med_01a'] = {
+    label = 'Medium Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A medium-sized bag',
+},
+
+['prop_tool_torch'] = {
+    label = 'Tool Torch',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A torch for tools',
+},
+
+['prop_proxy_hat_01'] = {
+    label = 'Proxy Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A hat for proxy',
+},
+
+['reh_prop_reh_hat_cowboy_01a'] = {
+    label = 'Cowboy Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A cowboy hat',
+},
+
+['prop_hard_hat_01'] = {
+    label = 'Hard Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A hard hat',
+},
+
+['sf_prop_sf_helmet_01a'] = {
+    label = 'Helmet',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A helmet',
+},
+
+['sf_prop_art_cap_01a'] = {
+    label = 'Art Cap',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'An art cap',
+},
+
+['ba_prop_battle_headphones_dj'] = {
+    label = 'DJ Headphones',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Headphones for DJs',
+},
+
+['prop_safety_glasses'] = {
+    label = 'Safety Glasses',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Glasses for safety',
+},
+
+['xm_prop_x17_b_glasses_01'] = {
+    label = 'Glasses',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A pair of glasses',
+},
+
+['xm3_prop_xm3_glasses_ron_01a'] = {
+    label = 'Ron Glasses',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Glasses owned by Ron',
+},
+
+['prop_ld_hat_01'] = {
+    label = 'Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A hat',
+},
+
+['m23_2_prop_m32_hat_captain_01a'] = {
+    label = 'Captain Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A captain hat',
+},
+
+['prop_cs_panties_03'] = {
+    label = 'Panties',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Panties',
+},
+
+['v_26_cophelmet2'] = {
+    label = 'Cop Helmet',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A helmet for cops',
+},
+
+['v_ret_gc_ear01'] = {
+    label = 'Earphones',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Earphones',
+},
+
+['xm3_prop_xm3_hat_ron_01a'] = {
+    label = 'Ron Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A hat owned by Ron',
+},
+
+['p_jewel_necklace_02'] = {
+    label = 'Jewel Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace with jewels',
+},
+
+['p_omega_neck_01_s'] = {
+    label = 'Omega Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'An omega necklace',
+},
+
+['p_oscar_necklace_s'] = {
+    label = 'Oscar Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'An oscar necklace',
+},
+
+['prop_player_gasmask'] = {
+    label = 'Gas Mask',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A gas mask',
+},
+
+['xm3_prop_xm3_helmet_01a'] = {
+    label = 'Helmet',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A helmet',
+},
+
+['m23_2_prop_m32_peterscap_01a'] = {
+    label = "Peter's Cap",
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A cap owned by Peter',
+},
+
+['prop_ear_defenders_01'] = {
+    label = 'Ear Defenders',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Ear defenders',
+},
+
+['xm3_int1_mask_new'] = {
+    label = 'Mask',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A mask',
+},
+
+['p_single_rose_s'] = {
+    label = 'Single Rose',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A single rose',
+},
+
+['ch_prop_drills_hat02x'] = {
+    label = 'Drills Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A hat for drills',
+},
+
+['ch_prop_drills_hat01x'] = {
+    label = 'Drills Hat',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A hat for drills',
+},
+
+['ch_p_m_bag_var01_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var03_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var04_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var06_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var07_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var08_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var09_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['ch_p_m_bag_var10_arm_s'] = {
+    label = 'Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A bag',
+},
+
+['collar_brown'] = {
+    label = 'Brown Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A brown collar',
+},
+
+['collar_black'] = {
+    label = 'Black Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A black collar',
+},
+
+['collar_red'] = {
+    label = 'Red Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A red collar',
+},
+
+['collar_white'] = {
+    label = 'White Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A white collar',
+},
+
+['collar_blue'] = {
+    label = 'Blue Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A blue collar',
+},
+
+['collar_orange'] = {
+    label = 'Orange Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'An orange collar',
+},
+
+['collar_pink'] = {
+    label = 'Pink Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A pink collar',
+},
+
+['collar_green'] = {
+    label = 'Green Collar',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A green collar',
+},
+
+['prop_stat_pack_01'] = {
+    label = 'Stat Pack',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A stat pack',
+},
+
+['xm3_prop_xm3_backpack_01a'] = {
+    label = 'Backpack',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A backpack',
+},
+
+['prop_beach_bag_01b'] = {
+    label = 'Beach Bag',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A beach bag',
+},
+
+['h4_prop_h4_pouch_01a'] = {
+    label = 'Pouch',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A pouch',
+},
+
+['p_jimmy_necklace_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_lamarneck_01_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_cs_tracy_neck2_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_cs_beverly_lanyard_s'] = {
+    label = 'Lanyard',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A lanyard',
+},
+
+['tr_prop_tr_dd_necklace_01a'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['sf_prop_sf_necklace_01a'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_stretch_necklace_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_omega_necklace_01_s'] = {
+    label = 'Neckace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_jewel_necklace01_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['p_wade_necklace_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['h4_prop_h4_necklace_01a'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
+
+['ch_p_ch_jimmy_necklace_2_s'] = {
+    label = 'Necklace',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A necklace',
+},
 
     ["grapejuice"] = {
         label = "Grape Juice",
