@@ -87,16 +87,13 @@ local ox_inventory = exports[shared.resource]
 -----------------------------------------------------------------------------------------------
 -- Clientside item use functions
 -----------------------------------------------------------------------------------------------
-Item('ifak', function(data, slot)
-	if not (client.hasGroup('police') or client.hasGroup('bcso') or client.hasGroup('sasp') or client.hasGroup('sahp')or client.hasGroup('ambulance')) then
-        lib.notify({type = 'error', description = 'Only OnDuty police or ambulance can use this'})
-        return
-    end
+
+Item('bandage', function(data, slot)
 	local maxHealth = GetEntityMaxHealth(cache.ped)
 	local health = GetEntityHealth(cache.ped)
 	ox_inventory:useItem(data, function(data)
 		if data then
-			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth + 30)))
+			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
 			lib.notify({ description = 'You feel better already' })
 		end
 	end)
@@ -106,41 +103,12 @@ Item('armour', function(data, slot)
 	if GetPedArmour(cache.ped) < 100 then
 		ox_inventory:useItem(data, function(data)
 			if data then
-				SetPlayerMaxArmour(PlayerData.id, 60)
-				SetPedArmour(cache.ped, 60)
-			end
-		end)
-	end
-end)
-
-Item('heavyarmor', function(data, slot)
-	if not (
-			client.hasGroup('police') or client.hasGroup('ambulance') or client.hasGroup('bcso') or client.hasGroup('sasp') or client.hasGroup('sahp')) then
-		lib.notify({ type = 'error', description = 'Only OnDuty police, ambulance, BCSO, SASP, or SAHP can use Government armor!' })
-		return
-	end
-
-	if GetPedArmour(cache.ped) < 100 then
-		ox_inventory:useItem(data, function(data)
-			if data then
 				SetPlayerMaxArmour(PlayerData.id, 100)
 				SetPedArmour(cache.ped, 100)
 			end
 		end)
 	end
 end)
-
-Item('illheavyarmor', function(data, slot)
-	if GetPedArmour(cache.ped) < 100 then
-		ox_inventory:useItem(data, function(data)
-			if data then
-				SetPlayerMaxArmour(PlayerData.id, 100)
-				SetPedArmour(cache.ped, 100)
-			end
-		end)
-	end
-end)
-
 
 client.parachute = false
 Item('parachute', function(data, slot)

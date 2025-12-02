@@ -302,7 +302,7 @@ return {
 			},
 		},
 	},
-	["mechanic"] = {
+	["lsmechanic"] = {
 		label = "Mechanic",
 		type = "mechanic",
 		defaultDuty = true,

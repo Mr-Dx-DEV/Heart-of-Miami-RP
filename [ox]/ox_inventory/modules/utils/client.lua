@@ -79,32 +79,12 @@ end
 RegisterNetEvent('ox_inventory:notify', Utils.Notify)
 exports('notify', Utils.Notify)
 
-local notifySuppressed = false
-
----@param value boolean
-local function setNotifySuppressed(value)
-    notifySuppressed = value
-end
-
-RegisterNetEvent('ox_inventory:suppressItemNotifications', setNotifySuppressed)
-exports('suppressItemNotifications', setNotifySuppressed)
-
 function Utils.ItemNotify(data)
-    if notifySuppressed or not client.itemnotify then
+    if not client.itemnotify then
         return
     end
 
-    -- Use standard ox_inventory notification format instead of Prism-specific format
-    -- This prevents JavaScript errors in the standard web build
-    SendNUIMessage({
-        action = 'itemNotify',
-        data = {
-            data.item or data[1],
-            data.text or data[2],
-            data.count or data[3]
-            -- Removed Prism.ItemNotificationConfig to prevent JS errors
-        }
-    })
+    SendNUIMessage({ action = 'itemNotify', data = data })
 end
 
 RegisterNetEvent('ox_inventory:itemNotify', Utils.ItemNotify)
@@ -193,9 +173,9 @@ local hasTextUi
 
 ---@param point CPoint
 function Utils.nearbyMarker(point)
-    DrawMarker(point.marker.type, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, point.marker.scale[1], point.marker.scale[2], point.marker.scale[3],
+    DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15,
         ---@diagnostic disable-next-line: param-type-mismatch
-        point.marker.colour[1], point.marker.colour[2], point.marker.colour[3], 222, false, false, 0, true, false, false, false)
+        point.marker[1], point.marker[2], point.marker[3], 222, false, false, 0, true, false, false, false)
 
     if point.isClosest and point.currentDistance < 1.2 then
         if not hasTextUi then

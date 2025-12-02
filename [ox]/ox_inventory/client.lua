@@ -7,20 +7,6 @@ local Utils = require 'modules.utils.client'
 local Weapon = require 'modules.weapon.client'
 local currentWeapon
 
--- Add cooldown system
-local ITEM_COOLDOWN = 5000 -- 1 second cooldown
-local lastItemAction = 0
-
-local function checkCooldown()
-    local currentTime = GetGameTimer()
-    if currentTime - lastItemAction < ITEM_COOLDOWN then
-        lib.notify({ type = 'error', description = 'Please wait before using or giving items again' })
-        return false
-    end
-    lastItemAction = currentTime
-    return true
-end
-
 exports('getCurrentWeapon', function()
 	return currentWeapon
 end)
@@ -57,15 +43,6 @@ plyState:set('invBusy', true, true)
 plyState:set('invHotkeys', false, false)
 plyState:set('canUseWeapons', false, false)
 
-local function GetProfilePicture()
-	if Prism.ProfileType == 'mugshot' then
-		return exports['MugShotBase64']:GetMugShotBase64(cache.ped, false)
-	else
-		local result = lib.callback.await('ox_inventory:GetProfilePicture', false)
-		return result
-	end
-end
-
 local function canOpenInventory()
     if not PlayerData.loaded then
         return shared.info('cannot open inventory', '(player inventory has not loaded)')
@@ -91,23 +68,20 @@ end
 ---@param ped number
 ---@return boolean
 local function canOpenTarget(ped)
-    local player = NetworkGetPlayerIndexFromPed(ped)
-    local playerID = GetPlayerServerId(player)
-    return IsPedFatallyInjured(ped)
-    or Player(playerID).state.dead
-    or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
-    or IsPedCuffed(ped)
-    or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
-    or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)
-    or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3)
-    or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
+	return IsPedFatallyInjured(ped)
+	or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
+	or IsPedCuffed(ped)
+	or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
+	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)
+	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3)
+	or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
 end
 
 local defaultInventory = {
 	type = 'newdrop',
-	slots = shared.dropslots,
+	slots = shared.playerslots,
 	weight = 0,
-	maxWeight = shared.dropweight,
+	maxWeight = shared.playerweight,
 	items = {}
 }
 
@@ -188,19 +162,19 @@ function client.openInventory(inv, data)
     local left, right, accessError
 
     if inv == 'player' and data ~= cache.serverId then
-        local targetId, targetPed, serverId
+        local targetId, targetPed
 
         if not data then
             targetId, targetPed = Utils.GetClosestPlayer()
-            serverId = targetId and GetPlayerServerId(targetId)
-            data = serverId
+            data = targetId and GetPlayerServerId(targetId)
         else
-            serverId = type(data) == 'table' and data.id or data
+            local serverId = type(data) == 'table' and data.id or data
+
+            if serverId == cache.serverId then return end
+
             targetId = serverId and GetPlayerFromServerId(serverId)
             targetPed = targetId and GetPlayerPed(targetId)
         end
-
-        if serverId == cache.serverId then return end
 
         local targetCoords = targetPed and GetEntityCoords(targetPed)
 
@@ -301,7 +275,13 @@ function client.openInventory(inv, data)
     left.items = PlayerData.inventory
     left.groups = PlayerData.groups
 
-	SetupPrismInventory(left, currentInventory)
+    SendNUIMessage({
+        action = 'setupInventory',
+        data = {
+            leftInventory = left,
+            rightInventory = currentInventory
+        }
+    })
 
     if not currentInventory.coords and not inv == 'container' then
         currentInventory.coords = GetEntityCoords(playerPed)
@@ -757,9 +737,7 @@ local invHotkeys = false
 
 ---@type function?
 local function registerCommands()
-	if client.enablestealcommand then
-		RegisterCommand('steal', openNearbyInventory, false)
-	end
+	RegisterCommand('steal', openNearbyInventory, false)
 
 	local function openGlovebox(vehicle)
 		if not IsPedInAnyVehicle(playerPed, false) or not NetworkGetEntityIsNetworked(vehicle) then return end
@@ -874,7 +852,7 @@ local function registerCommands()
 		description = locale('disable_hotbar'),
 		defaultKey = client.keys[3],
 		onPressed = function()
-			if EnableWeaponWheel or not invHotkeys or IsNuiFocused() or lib.progressActive() then return end
+			if EnableWeaponWheel or IsNuiFocused() or lib.progressActive() then return end
 			SendNUIMessage({ action = 'toggleHotbar' })
 		end
 	})
@@ -1041,10 +1019,9 @@ end)
 ---@param point CPoint
 local function nearbyDrop(point)
 	if not point.instance or point.instance == currentInstance then
-        DrawMarker(client.dropmarker.type, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, client.dropmarker.scale[1], client.dropmarker.scale[2], client.dropmarker.scale[3],
-        ---@diagnostic disable-next-line: param-type-mismatch
-        client.dropmarker.colour[1], client.dropmarker.colour[2], client.dropmarker.colour[3], 222, false, false, 0, true, false, false, false)
-    end
+		---@diagnostic disable-next-line: param-type-mismatch
+		DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 150, 30, 30, 222, false, false, 0, true, false, false, false)
+	end
 end
 
 ---@param point CPoint
@@ -1353,16 +1330,10 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			imagepath = client.imagepath
 		}
 	})
-	CreateThread(function ()
-		mugshot = GetProfilePicture()
-	end)
 
 	PlayerData.loaded = true
 
-	if not client.disablesetupnotification then
-		lib.notify({ description = locale('inventory_setup') })
-	end
-
+	lib.notify({ description = locale('inventory_setup') })
 	Shops.refreshShops()
 	Inventory.Stashes()
 	Inventory.Evidence()
@@ -1372,12 +1343,6 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 	TriggerEvent('ox_inventory:updateInventory', PlayerData.inventory)
 
 	client.interval = SetInterval(function()
-        local canSteal = canOpenTarget(playerPed)
-
-        if canSteal ~= plyState.canSteal then
-            plyState:set('canSteal', canSteal, true)
-        end
-
 		if invOpen == false then
 			playerCoords = GetEntityCoords(playerPed)
 
@@ -1399,14 +1364,14 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 						local ped = GetPlayerPed(id)
 						local pedCoords = GetEntityCoords(ped)
 
-						if not id or #(playerCoords - pedCoords) > maxDistance or (not client.hasGroup(shared.police) and not Player(currentInventory.id).state.canSteal) then
+						if not id or #(playerCoords - pedCoords) > maxDistance or not (client.hasGroup(shared.police) or canOpenTarget(ped)) then
 							client.closeInventory()
 							lib.notify({ id = 'inventory_lost_access', type = 'error', description = locale('inventory_lost_access') })
 						else
 							TaskTurnPedToFaceCoord(playerPed, pedCoords.x, pedCoords.y, pedCoords.z, 50)
 						end
 
-					elseif currentInventory.coords and (#(playerCoords - currentInventory.coords) > maxDistance or canSteal) then
+					elseif currentInventory.coords and (#(playerCoords - currentInventory.coords) > maxDistance or canOpenTarget(playerPed)) then
 						client.closeInventory()
 						lib.notify({ id = 'inventory_lost_access', type = 'error', description = locale('inventory_lost_access') })
 					end
@@ -1444,9 +1409,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			local weaponType = GetWeapontypeGroup(weaponHash)
 
 			if weaponType ~= 0 and weaponType ~= `GROUP_UNARMED` then
-				-- if not exports["pug-paintball"]:IsInPaintball() then
-				-- 	Weapon.Disarm(currentWeapon, true)
-				-- end
+				Weapon.Disarm(currentWeapon, true)
 			end
 		end
 	end, 200)
@@ -1485,9 +1448,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			end
 
 			if usingItem or invOpen or IsPedCuffed(playerPed) then
-				-- if not exports["pug-paintball"]:IsInPaintball() then
-        		-- 	DisablePlayerFiring(playerId, true)
-    			-- end
+				DisablePlayerFiring(playerId, true)
 			end
 
 			if not EnableWeaponWheel then
@@ -1638,10 +1599,7 @@ RegisterNUICallback('getItemData', function(itemName, cb)
 end)
 
 RegisterNUICallback('removeComponent', function(data, cb)
-
-    lib.notify({ id = 'cantremove', type = 'error', description = 'You Cant remove Attachment' })
-
-	--[[ cb(1)
+	cb(1)
 
 	if not currentWeapon then
 		return TriggerServerEvent('ox_inventory:updateWeapon', 'component', data)
@@ -1670,7 +1628,7 @@ RegisterNUICallback('removeComponent', function(data, cb)
 				end
 			end
 		end
-	end ]]
+	end
 end)
 
 RegisterNUICallback('removeAmmo', function(slot, cb)
@@ -1687,9 +1645,6 @@ RegisterNUICallback('removeAmmo', function(slot, cb)
 end)
 
 RegisterNUICallback('useItem', function(slot, cb)
-	if not checkCooldown() then
-		return cb(false)
-	end
 	useSlot(slot --[[@as number]])
 	cb(1)
 end)
@@ -1724,9 +1679,6 @@ local function isGiveTargetValid(ped, coords)
 end
 
 RegisterNUICallback('giveItem', function(data, cb)
-	if not checkCooldown() then
-		return cb(false)
-	end
 	cb(1)
 
     if usingItem then return end

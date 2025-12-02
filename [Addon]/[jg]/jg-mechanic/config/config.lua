@@ -136,7 +136,7 @@ Config.MechanicLocations = {
   -- },
   lscustoms = {
     type = "owned",
-    job = "mechanic",
+    job = "lsmechanic",
     jobManagementRanks = {4},
     logo = "ls_customs.png",
     commission = 0, -- %, 10 = 10%
@@ -306,7 +306,7 @@ Config.MechanicLocations = {
   },
   Mechanic = {
     type = "owned",
-    job = "mechanic",
+    job = "saltlabmechanic",
     jobManagementRanks = {4},
     logo = "ls_customs.png",
     commission = 0, -- %, 10 = 10%

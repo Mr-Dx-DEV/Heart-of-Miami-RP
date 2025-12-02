@@ -1,3 +1,3 @@
 return {
-	{ name = 'weapon', coords = vector3(-546.212, -206.223, 38.42), price = 30000 }
+	{ name = 'weapon', coords = vec3(12.42198, -1105.82, 29.7854), price = 5000 }
 }

@@ -25,34 +25,6 @@ function OxInventory:openInventory(inv)
 	TriggerEvent('ox_inventory:openedInventory', self.id, inv.id)
 end
 
-local function ReaperExports()
-    while GetResourceState("ReaperV4") ~= "started" do
-        Wait(200)
-    end
-
-    while ExportsLoaded == false and GlobalState.ExportsLoaded ~= true do
-        Wait(200)
-    end
-
-    return exports['ReaperV4']
-end
-
----@param message string
----@param level "info" | "debug" | "error" | "warn" | "severe"
----@param dataset string
----@param metadata table
----@param disable_console_log boolean|nil
-local function CreateNewLog(message, level, dataset, metadata, disable_console_log)
-    Citizen.CreateThreadNow(function ()
-        local success <const>, err <const> = ReaperExports():InvokeSLogger('NewLog', message, level, dataset, metadata, disable_console_log)
-
-        if not success then
-            print("[REAPER] FAILED TO UPLOAD LOG", err)
-        end
-    end)
-end
-
-
 ---Close a player's inventory.
 ---@param noEvent? boolean
 function OxInventory:closeInventory(noEvent)
@@ -948,29 +920,24 @@ end
 ---@param item table | string
 ---@param count number
 ---@param metadata? table
----@return boolean? success, string|SlotWithItem|nil response
 function Inventory.SetItem(inv, item, count, metadata)
 	if type(item) ~= 'table' then item = Items(item) end
 
-	if not item then return false, 'invalid_item' end
-	if type(count) ~= 'number' then return false, 'invalid_count' end
+	if item and count >= 0 then
+		inv = Inventory(inv) --[[@as OxInventory]]
 
-	count = math.floor(count + 0.5)
-	if count < 0 then return false, 'negative_count' end
+		if inv then
+			inv.changed = true
+			local itemCount = Inventory.GetItem(inv, item.name, metadata, true) --[[@as number]]
 
-	inv = Inventory(inv) --[[@as OxInventory]]
-
-	if not inv then return false, 'invalid_inventory' end
-
-	inv.changed = true
-	local itemCount = Inventory.GetItem(inv, item.name, metadata, true) --[[@as number]]
-
-	if count > itemCount then
-		count -= itemCount
-		return Inventory.AddItem(inv, item.name, count, metadata)
-	elseif count < itemCount then
-		itemCount -= count
-		return Inventory.RemoveItem(inv, item.name, itemCount, metadata)
+			if count > itemCount then
+				count -= itemCount
+				return Inventory.AddItem(inv, item.name, count, metadata)
+			elseif count <= itemCount then
+				itemCount -= count
+				return Inventory.RemoveItem(inv, item.name, itemCount, metadata)
+			end
+		end
 	end
 end
 exports('SetItem', Inventory.SetItem)
@@ -995,10 +962,8 @@ exports('GetCurrentWeapon', Inventory.GetCurrentWeapon)
 ---@param slotId number
 ---@return table? item
 function Inventory.GetSlot(inv, slotId)
-	if not inv or type(slotId) ~= 'number' then return end
-
 	inv = Inventory(inv) --[[@as OxInventory]]
-	local slot = inv and inv.items?[slotId]
+	local slot = inv and inv.items[slotId]
 
 	if slot and not Items.UpdateDurability(inv, slot, Items(slot.name), nil, os.time()) then
         return slot
@@ -1008,12 +973,9 @@ exports('GetSlot', Inventory.GetSlot)
 
 ---@param inv inventory
 ---@param slotId number
----@param durability number
 function Inventory.SetDurability(inv, slotId, durability)
-	if not inv or type(slotId) ~= 'number' or type(durability) ~= 'number' then return end
-
 	inv = Inventory(inv) --[[@as OxInventory]]
-	local slot = inv and inv.items?[slotId]
+	local slot = inv and inv.items[slotId]
 
 	if not slot then return end
 
@@ -1031,10 +993,8 @@ local Utils = require 'modules.utils.server'
 ---@param slotId number
 ---@param metadata { [string]: any }
 function Inventory.SetMetadata(inv, slotId, metadata)
-	if not inv or type(slotId) ~= 'number' then return end
-
 	inv = Inventory(inv) --[[@as OxInventory]]
-	local slot = inv and inv.items?[slotId]
+	local slot = inv and inv.items[slotId]
 
 	if not slot then return end
 
@@ -1123,32 +1083,6 @@ end
 
 exports('SetMaxWeight', Inventory.SetMaxWeight)
 
-local function matchesExcludingDurability(meta1, meta2)
-    local durability1 = meta1.durability or 0
-    local durability2 = meta2.durability or 0
-    local degrade1 = meta1.degrade or 0
-    local degrade2 = meta2.degrade or 0
-    local averageDegrade = (degrade1 + degrade2) / 2 -- Degrade amount (set in minutes)
-	local DegradeSeconds = averageDegrade * 60 -- Degrade (set in seconds)
-	local diff = (1/100) * DegradeSeconds -- 1% range
-    if math.abs(durability1 - durability2) > diff then
-        return false
-    end
-    for k, v in pairs(meta1) do
-        if k ~= "durability" and (not meta2[k] or meta2[k] ~= v) then
-            return false
-        end
-    end
-    for k, v in pairs(meta2) do
-        if k ~= "durability" and (not meta1[k] or meta1[k] ~= v) then
-            return false
-        end
-    end
-    return true
-end
-
-
-
 ---@param inv inventory
 ---@param item table | string
 ---@param count number
@@ -1170,23 +1104,6 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 	count = math.floor(count + 0.5)
 	metadata = assertMetadata(metadata)
 
-	local Player_Information = server.GetPlayerFromId(inv.id)
-
-	if Player_Information == nil then
-	else
-		TriggerEvent("NukeXD-Logs:CreateLog", "playerinventory", "Add Inventory Item", "green", "**".. Player_Information.name .. "**\n**".. Player_Information.identifier .."** (id: *"..inv.id.."*) \n\nReceived **"..count.."**x **"..item.name.."**")
-	end
-
-	local invokingResource = server.loglevel > 0 and GetInvokingResource()
-
-	if invokingResource then
-		if Player_Information == nil then
-		TriggerEvent("NukeXD-Logs:CreateLog", "invoking", "Invoking Resource Inventory Change", "blue", "**"..invokingResource.."** - added **"..count.."x "..item.name.."** to **"..inv.label.."**")
-		else
-		TriggerEvent("NukeXD-Logs:CreateLog", "invoking", "Invoking Resource Inventory Change", "green", "**".. Player_Information.name .. "**\n**".. Player_Information.identifier .."** (id: *"..inv.id.."*) \n\nResource: **"..invokingResource.."**\nadded **"..count.."x "..item.name.."** to **"..inv.label.."**")
-		end
-	end
-
 	if slot then
 		local slotData = inv.items[slot]
 		slotMetadata, slotCount = Items.Metadata(inv.id, item, metadata and table.clone(metadata) or {}, count)
@@ -1203,13 +1120,8 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 		for i = 1, inv.slots do
 			local slotData = items[i]
 
-			--if item.stack and slotData ~= nil and slotData.name == item.name and table.matches(slotData.metadata, slotMetadata) then
-			if item.stack and slotData ~= nil and slotData.name == item.name and matchesExcludingDurability(slotData.metadata, slotMetadata) then
+			if item.stack and slotData ~= nil and slotData.name == item.name and table.matches(slotData.metadata, slotMetadata) then
 				toSlot = i
-				-- Set the durability to the lower of the two
-				if slotData.metadata.durability and slotMetadata.durability then
-					slotMetadata.durability = math.min(slotData.metadata.durability, slotMetadata.durability)
-				end
 				break
 			elseif not item.stack and not slotData then
 				if not toSlot then toSlot = {} end
@@ -1234,71 +1146,6 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 
 	local invokingResource = server.loglevel > 1 and GetInvokingResource()
 	local toSlotType = type(toSlot)
-
-	 if string.match(item.name, "WEAPON_") then
-        local tebexWeapons = {
-            'WEAPON_KATANA_R',
-			'WEAPON_KATANA_Y',
-			'WEAPON_KATANA_B',
-			'WEAPON_KATANA_G',
-
-			'WEAPON_NEVA',
-			'WEAPON_M416P',
-			'WEAPON_M133',
-			'WEAPON_JRBAK',
-			'WEAPON_GALILAR',
-			'WEAPON_FAMASU1',
-			'WEAPON_FN42',
-			'WEAPON_DRH',
-			'WEAPON_CFS',
-			'WEAPON_M4_TACTICAL_RED',
-			'WEAPON_GRAUV2',
-
-			'WEAPON_M270D',
-			'WEAPON_HFSMGV2',
-			'WEAPON_NVRIFLE_PURPLE',
-			'WEAPON_M27S',
-			'WEAPON_VECTOR',
-        }
-
-        local useReaperLogging = false
-        for _, weaponName in ipairs(tebexWeapons) do
-            if item.name == weaponName then
-                useReaperLogging = true
-                break
-            end
-        end
-
-        if useReaperLogging then
-            if slotMetadata.serial then
-                CreateNewLog(("^3%s^7 (^3id:%s^7) received ^3%sx %s^7 (Serial: ^3%s^7)"):format(Player_Information.name, inv.id, count, item.name, slotMetadata.serial), "info", "weapon_logs", {
-                    name = Player_Information.name,
-                    source = inv.id,
-                    identifier = Player_Information.identifier,
-                    weapon = item.name,
-                    count = count,
-                    serial = slotMetadata.serial,
-                    action = "received"
-                })
-            else
-                CreateNewLog(("^3%s^7 (^3id:%s^7) received ^3%sx %s^7 (Serial: ^1NO SERIAL^7)"):format(Player_Information.name, inv.id, count, item.name), "info", "weapon_logs", {
-                    name = Player_Information.name,
-                    source = inv.id,
-                    identifier = Player_Information.identifier,
-                    weapon = item.name,
-                    count = count,
-                    serial = "NO SERIAL",
-                    action = "received"
-                })
-            end
-        else
-            if slotMetadata.serial then
-                TriggerEvent("NukeXD-Logs:CreateLog", "newweapon", "New Weapon", "green", "**".. Player_Information.name .. "**\n**".. Player_Information.identifier .."** (id: *"..inv.id.."*) \n\nReceived **"..count.."**x **"..item.name.."** (Serial: "..slotMetadata.serial..")")
-            else
-                TriggerEvent("NukeXD-Logs:CreateLog", "newweapon", "New Weapon", "green", "**".. Player_Information.name .. "**\n**".. Player_Information.identifier .."** (id: *"..inv.id.."*) \n\nReceived **"..count.."**x **"..item.name.."** (Serial: NO SERIAL)")
-            end
-        end
-    end
 
 	if toSlotType == 'number' then
 		Inventory.SetSlot(inv, item, slotCount, slotMetadata, toSlot)
@@ -1475,12 +1322,6 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, str
 
 		local removed, total, slots = 0, count, {}
 
-		local Player_Information = server.GetPlayerFromId(inv.id)
-		if Player_Information == nil then
-		else
-			TriggerEvent("NukeXD-Logs:CreateLog", "playerinventory", "Remove Inventory Item", "red", "**".. Player_Information.name .. "**\n**".. Player_Information.identifier .."** (id: *"..inv.id.."*) \n\n Removed **"..count.."**x **"..item.name.."** from their inventory")
-		end
-
 		if slot and itemSlots[slot] then
 			removed = count
 			Inventory.SetSlot(inv, item, -count, inv.items[slot].metadata, slot)
@@ -1531,7 +1372,7 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, str
 			local invokingResource = server.loglevel > 1 and GetInvokingResource()
 
 			if invokingResource then
-				TriggerEvent("NukeXD-Logs:CreateLog", "invoking", "Invoking Resource Inventory Change", "red", "**"..invokingResource.."** - removed **"..removed.."x "..item.name.."** from **"..inv.label.."**")
+				lib.logger(inv.owner, 'removeItem', ('"%s" removed %sx %s from "%s"'):format(invokingResource, removed, item.name, inv.label))
 			end
 
 			return true
@@ -1567,7 +1408,6 @@ function Inventory.CanCarryItem(inv, item, count, metadata)
 				local newWeight = inv.weight + (weight * count)
 
 				if newWeight > inv.maxWeight then
-					TriggerClientEvent('ox_lib:notify', inv.id, { type = 'error', description = locale('cannot_carry') })
 					return false
 				end
 
@@ -1711,10 +1551,6 @@ local TriggerEventHooks = require 'modules.hooks.server'
 ---@param data SwapSlotData
 local function dropItem(source, playerInventory, fromData, data)
     if not fromData then return end
-    if fromData.name == 'money' then
-        TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = 'You cannot drop money.' })
-        return
-    end
 
 	local toData = table.clone(fromData)
 	toData.slot = data.toSlot
@@ -1755,7 +1591,6 @@ local function dropItem(source, playerInventory, fromData, data)
 		playerInventory.weapon = nil
 	end
 
-	local dropId = generateInvId('drop')
 	local inventory = Inventory.Create(dropId, ('Drop %s'):format(dropId:gsub('%D', '')), 'drop', shared.dropslots, toData.weight, shared.dropweight, false, {[data.toSlot] = toData})
 
 	if not inventory then return end
@@ -1766,16 +1601,8 @@ local function dropItem(source, playerInventory, fromData, data)
 
 	TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId], playerInventory.open and source, slot)
 
-	if tostring(toData.name) == "radio" then
-		TriggerClientEvent("zerio-radio:client:removedradio", source)
-	end
-
 	if server.loglevel > 0 then
-		local Player_Information = server.GetPlayerFromId(playerInventory.player.source)
-		if Player_Information == nil then
-		else
-			TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Dropped Item", "red", "**".. Player_Information.name .. "**\n**".. Player_Information.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..toData.name.."** into Drop **"..dropId.."**")
-		end
+		lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s"'):format(data.count, toData.name, playerInventory.label, dropId))
 	end
 
 	if server.syncInventory then server.syncInventory(playerInventory) end
@@ -1841,54 +1668,6 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 		end
 	end
 
-	if fromOtherPlayer and not sameInventory then
-		local fromData = fromInventory.items[data.fromSlot]
-		if fromData then
-			local RobberyRestrictions = lib.load('data.robbery')
-			if RobberyRestrictions and RobberyRestrictions.protected_items then
-				for i = 1, #RobberyRestrictions.protected_items do
-					if RobberyRestrictions.protected_items[i] == fromData.name then
-						TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = locale('item_protected') })
-						TriggerClientEvent('ox_lib:notify', fromInventory.id, { type = 'info', description = locale('item_protection_attempt', fromData.label or fromData.name) })
-
-						return false
-					end
-				end
-			end
-		end
-	end
-
-	if sameInventory and playerInventory.open and playerInventory.open ~= playerInventory.id then
-		local fromData = fromInventory.items[data.fromSlot]
-		if fromData then
-			local RobberyRestrictions = lib.load('data.robbery')
-			if RobberyRestrictions and RobberyRestrictions.protected_items then
-				for i = 1, #RobberyRestrictions.protected_items do
-					if RobberyRestrictions.protected_items[i] == fromData.name then
-						TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = locale('item_protected') })
-						return false
-					end
-				end
-			end
-		end
-	end
-
-	if toOtherPlayer and not sameInventory then
-        local toData = toInventory.items[data.toSlot]
-        if toData then
-            local RobberyRestrictions = lib.load('data.robbery')
-            if RobberyRestrictions and RobberyRestrictions.protected_items then
-                for i = 1, #RobberyRestrictions.protected_items do
-                    if RobberyRestrictions.protected_items[i] == toData.name then
-                        TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = locale('item_protected') })
-                        TriggerClientEvent('ox_lib:notify', toInventory.id, { type = 'info', description = locale('item_protection_attempt', toData.label or toData.name) })
-                        return false
-                    end
-                end
-            end
-        end
-    end
-
 	activeSlots[fromRef] = true
 	activeSlots[toRef] = true
 
@@ -1913,11 +1692,6 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 			}
 		end
 
-		if fromData.name == 'money' and (data.toType == 'newdrop' or toInventory.type == 'drop') then
-			TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = 'You cannot drop money.' })
-			return false
-		end
-
         if data.count > fromData.count then
             data.count = fromData.count
         end
@@ -1929,12 +1703,6 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 		if fromData then
             if fromData.metadata.container and toInventory.type == 'container' then return false end
             if toData and toData.metadata.container and fromInventory.type == 'container' then return false end
-
-            -- Prevent transferring money to or from stashes, trunks, and gloveboxes
-            if fromData.name == 'money' and (toInventory.type == 'stash' or toInventory.type == 'trunk' or toInventory.type == 'glovebox' or fromInventory.type == 'stash' or fromInventory.type == 'trunk' or fromInventory.type == 'glovebox') then
-                TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = 'You cannot transfer money to or from this inventory.' })
-                return false
-            end
 
 			local container, containerItem = (not sameInventory and playerInventory.containerSlot) and (fromInventory.type == 'container' and fromInventory or toInventory)
 
@@ -1952,85 +1720,10 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 				toType = toInventory.type,
 				count = data.count,
 			}
-			-- this is new
-			if toData and toData.name == fromData.name and toData.stack and matchesExcludingDurability(toData.metadata, fromData.metadata) then
-				-- Stack items
-				toData.count += data.count
-				fromData.count -= data.count
-				local toSlotWeight = Inventory.SlotWeight(Items(toData.name), toData)
-				local totalWeight = toInventory.weight - toData.weight + toSlotWeight
 
-				-- Set the durability to the lower of the two
-				if toData.metadata.durability and fromData.metadata.durability then
-					toData.metadata.durability = math.min(toData.metadata.durability, fromData.metadata.durability)
-				end
-
-				if fromInventory.type == 'container' or sameInventory or totalWeight <= toInventory.maxWeight then
-					hookPayload.action = 'stack'
-
-					if not TriggerEventHooks('swapItems', hookPayload) then
-						toData.count -= data.count
-						fromData.count += data.count
-						return
-					end
-
-					local fromSlotWeight = Inventory.SlotWeight(Items(fromData.name), fromData)
-					toData.weight = toSlotWeight
-
-					if not sameInventory then
-						fromInventory.weight = fromInventory.weight - fromData.weight + fromSlotWeight
-						toInventory.weight = totalWeight
-
-						if container then
-							Inventory.ContainerWeight(containerItem, toInventory.type == 'container' and toInventory.weight or fromInventory.weight, playerInventory)
-						end
-
-						if fromOtherPlayer then
-							TriggerClientEvent('ox_inventory:itemNotify', fromInventory.id, { fromData, 'ui_removed', data.count })
-						elseif toOtherPlayer then
-							TriggerClientEvent('ox_inventory:itemNotify', toInventory.id, { toData, 'ui_added', data.count })
-						end
-
-						if server.loglevel > 0 then
-							local Player_LogInfo = server.GetPlayerFromId(playerInventory.player.source)
-							-- revised logs
-
-
-							if fromInventory.type == 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Pickup Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Dropped Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** into **"..fromInventory.label.."**")
-							elseif toInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'player' and toInventory.type ~= 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "robbing", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nRobbed **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							else
-								TriggerEvent("NukeXD-Logs:CreateLog", "playerinventory", "Add Item (Random, if statement not met - should be fromType = "..fromInventory.type.." toType = "..toInventory.type..")", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..toInventory.label.."**")
-							end
-						end
-					end
-
-					fromData.weight = fromSlotWeight
-				else
-					toData.count -= data.count
-					fromData.count += data.count
-					return false, 'cannot_carry'
-				end
-			-- this is new ^
-			-- if toData and ((toData.name ~= fromData.name) or not toData.stack or (not table.matches(toData.metadata, fromData.metadata))) then
-			elseif toData and ((toData.name ~= fromData.name) or not toData.stack or (not matchesExcludingDurability(toData.metadata, fromData.metadata))) then
-			-- Swap items
-			local toWeight = not sameInventory and (toInventory.weight - toData.weight + fromData.weight) or 0
+			if toData and ((toData.name ~= fromData.name) or not toData.stack or (not table.matches(toData.metadata, fromData.metadata))) then
+				-- Swap items
+				local toWeight = not sameInventory and (toInventory.weight - toData.weight + fromData.weight) or 0
 				local fromWeight = not sameInventory and (fromInventory.weight + toData.weight - fromData.weight) or 0
 				hookPayload.action = 'swap'
 
@@ -2063,31 +1756,8 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 						toInventory.weight = toWeight
 						toData, fromData = Inventory.SwapSlots(fromInventory, toInventory, data.fromSlot, data.toSlot) --[[@as table]]
 
-						local Player_LogInfo = server.GetPlayerFromId(playerInventory.player.source)
-						-- revised logs
-
 						if server.loglevel > 0 then
-							if toInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."x** **"..fromData.name.."** from **"..toInventory.label.."**")
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."x** **"..toData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."x** **"..fromData.name.."** from **"..fromInventory.label.."**")
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."x** **"..toData.name.."** into **"..fromInventory.label.."**")
-							elseif toInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."x** **"..fromData.name.."** from **"..toInventory.label.."**")
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."x** **"..toData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."x** **"..fromData.name.."** from **"..fromInventory.label.."**")
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."x** **"..toData.name.."** into **"..fromInventory.label.."**")
-							elseif toInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."x** **"..fromData.name.."** from **"..toInventory.label.."**")
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."x** **"..toData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."x** **"..fromData.name.."** from **"..fromInventory.label.."**")
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."x** **"..toData.name.."** into **"..fromInventory.label.."**")
-							else
-								TriggerEvent("NukeXD-Logs:CreateLog", "playerinventory", "Moved Item", "orange", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nMoved **"..data.count.."x** **"..toData.name.."** into **"..toInventory.label.."**")
-							end
+							lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s" for %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name))
 						end
 					else return false, 'cannot_carry' end
 				else
@@ -2130,32 +1800,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 						end
 
 						if server.loglevel > 0 then
-
-						local Player_LogInfo = server.GetPlayerFromId(playerInventory.player.source)
-							-- revised logs
-
-
-							if fromInventory.type == 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Pickup Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Dropped Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** into **"..fromInventory.label.."**")
-							elseif toInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'player' and toInventory.type ~= 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "robbing", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nRobbed **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							else
-								TriggerEvent("NukeXD-Logs:CreateLog", "playerinventory", "Add Item (Random, if statement not met - should be fromType = "..fromInventory.type.." toType = "..toInventory.type..")", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..toInventory.label.."**")
-							end
+							lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s"'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id))
 						end
 					end
 
@@ -2205,31 +1850,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 						end
 
 						if server.loglevel > 0 then
-							local Player_LogInfo = server.GetPlayerFromId(playerInventory.player.source)
-							-- revised logs
-
-
-							if fromInventory.type == 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Pickup Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "inventorydrop", "Dropped Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** into **"..fromInventory.label.."**")
-							elseif toInventory.type == 'glovebox' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "glovebox", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'trunk' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "trunk", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							elseif toInventory.type == 'stash' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "stash", "Remove Item", "red", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nDropped **"..data.count.."**x **"..fromData.name.."** into **"..toInventory.label.."**")
-							elseif fromInventory.type == 'player' and toInventory.type ~= 'drop' then
-								TriggerEvent("NukeXD-Logs:CreateLog", "robbing", "Add Item", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nRobbed **"..data.count.."**x **"..fromData.name.."** from **"..fromInventory.label.."**")
-							else
-								TriggerEvent("NukeXD-Logs:CreateLog", "playerinventory", "Add Item (Random, if statement not met - should be fromType = "..fromInventory.type.." toType = "..toInventory.type..")", "green", "**".. Player_LogInfo.name .. "**\n**".. Player_LogInfo.identifier .."** (id: *"..playerInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..fromData.name.."** from **"..toInventory.label.."**")
-							end
+							lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s"'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id))
 						end
 					end
 
@@ -2792,11 +2413,9 @@ local function giveItem(playerId, slot, target, count)
 	local fromInventory = Inventory(playerId)
 	local toInventory = Inventory(target)
 
-	if not fromInventory or not toInventory then return end
+	if count <= 0 then count = 1 end
 
-	if type(count) ~= 'number' or count <= 0 then count = 1 end
-
-	if toInventory.player then
+	if toInventory?.player then
 		local data = fromInventory.items[slot]
 
 		if not data then return end
@@ -2843,16 +2462,10 @@ local function giveItem(playerId, slot, target, count)
 			if Inventory.AddItem(toInventory, item, count, data.metadata, toSlot) then
 				if Inventory.RemoveItem(fromInventory, item, count, data.metadata, slot) then
 					if server.loglevel > 0 then
-						local Player_LogInfo_to = server.GetPlayerFromId(toInventory.player.source)
-						local Player_LogInfo_from = server.GetPlayerFromId(fromInventory.player.source)
-
-						TriggerEvent("NukeXD-Logs:CreateLog", "trade", "Add Item", "green", "**".. Player_LogInfo_to.name .. "**\n**".. Player_LogInfo_to.identifier .."** (id: *"..toInventory.player.source.."*) \n\nReceived **"..data.count.."**x **"..data.name.."** from **"..fromInventory.label.."**")
-						TriggerEvent("NukeXD-Logs:CreateLog", "trade", "Remove Item", "red", "**".. Player_LogInfo_from.name .. "**\n**".. Player_LogInfo_from.identifier .."** (id: *"..fromInventory.player.source.."*) \n\nGave **"..data.count.."**x **"..data.name.."** to **"..toInventory.label.."**")
+						lib.logger(fromInventory.owner, 'giveItem', ('"%s" gave %sx %s to "%s"'):format(fromInventory.label, count, data.name, toInventory.label))
 					end
 
 					return
-				else
-					Inventory.RemoveItem(toInventory, item, count, data.metadata, toSlot)
 				end
 			end
 		end
@@ -2935,7 +2548,7 @@ local function updateWeapon(source, action, value, slot, specialAmmo)
 					weapon.weight = Inventory.SlotWeight(item, weapon)
 				end
 			elseif action == 'ammo' then
-				if item.hash == `WEAPON_FIREEXTINGUISHER` or item.hash == `WEAPON_PETROLCAN` or item.hash == `WEAPON_HAZARDCAN` or item.hash == `WEAPON_FERTILIZERCAN` or item.hash == `WEAPON_PEPPERSPRAY` then
+				if item.hash == `WEAPON_FIREEXTINGUISHER` or item.hash == `WEAPON_PETROLCAN` or item.hash == `WEAPON_HAZARDCAN` or item.hash == `WEAPON_FERTILIZERCAN` then
 					weapon.metadata.durability = math.floor(value)
 					weapon.metadata.ammo = weapon.metadata.durability
 				elseif value < weapon.metadata.ammo then

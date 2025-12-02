@@ -45,7 +45,7 @@ Config.Chat = "default" -- "default", "okok", "codem"
 -- use qb-weather if you use qb-weather
 -- cd_easytime for cd_easytime (if you use esx, it will be cd_easytime  by default)
 -- renewed for renewed weathersync
-Config.WeatherScript = "qb-weather"
+Config.WeatherScript = "cd_easytime"
 
 -- legacy is for legacyfuel
 -- ps is for ps-fuel
@@ -54,7 +54,7 @@ Config.WeatherScript = "qb-weather"
 -- lc_fuel is for lc_fuel
 -- rcore is for rcore_fuel
 -- other is for no fuel system
-Config.Fuel = "legacy" -- "ps" "ox" "other", "cdn", "legacy"
+Config.Fuel = "rcore" -- "ps" "ox" "other", "cdn", "legacy"
 
 -- garage
 -- qb is for qb-garage or qbx_garages
@@ -67,7 +67,7 @@ Config.Garage = "qb"
 -- ox_target
 -- qtarget
 -- interact
-Config.Target = "interact" -- qb-target || ox_target || qtarget (Only these 3 targets are supported. You will have to edit in cl_customise if you want to use any other target other than this. No support is given to other target scripts)
+Config.Target = "ox_target" -- qb-target || ox_target || qtarget (Only these 3 targets are supported. You will have to edit in cl_customise if you want to use any other target other than this. No support is given to other target scripts)
 
 -- use qb is you use qb-vehiclekeys
 -- use cd if you use cd_garage keys system
