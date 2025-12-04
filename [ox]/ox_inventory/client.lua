@@ -7,6 +7,20 @@ local Utils = require 'modules.utils.client'
 local Weapon = require 'modules.weapon.client'
 local currentWeapon
 
+-- Add cooldown system
+local ITEM_COOLDOWN = 5000 -- 1 second cooldown
+local lastItemAction = 0
+
+local function checkCooldown()
+    local currentTime = GetGameTimer()
+    if currentTime - lastItemAction < ITEM_COOLDOWN then
+        lib.notify({ type = 'error', description = 'Please wait before using or giving items again' })
+        return false
+    end
+    lastItemAction = currentTime
+    return true
+end
+
 exports('getCurrentWeapon', function()
 	return currentWeapon
 end)
@@ -43,6 +57,15 @@ plyState:set('invBusy', true, true)
 plyState:set('invHotkeys', false, false)
 plyState:set('canUseWeapons', false, false)
 
+local function GetProfilePicture()
+	if Prism.ProfileType == 'mugshot' then
+		return exports['MugShotBase64']:GetMugShotBase64(cache.ped, false)
+	else
+		local result = lib.callback.await('ox_inventory:GetProfilePicture', false)
+		return result
+	end
+end
+
 local function canOpenInventory()
     if not PlayerData.loaded then
         return shared.info('cannot open inventory', '(player inventory has not loaded)')
@@ -68,20 +91,23 @@ end
 ---@param ped number
 ---@return boolean
 local function canOpenTarget(ped)
-	return IsPedFatallyInjured(ped)
-	or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
-	or IsPedCuffed(ped)
-	or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
-	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)
-	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3)
-	or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
+    local player = NetworkGetPlayerIndexFromPed(ped)
+    local playerID = GetPlayerServerId(player)
+    return IsPedFatallyInjured(ped)
+    or Player(playerID).state.dead
+    or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
+    or IsPedCuffed(ped)
+    or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
+    or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)
+    or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_enter', 3)
+    or IsEntityPlayingAnim(ped, 'random@mugging3', 'handsup_standing_base', 3)
 end
 
 local defaultInventory = {
 	type = 'newdrop',
-	slots = shared.playerslots,
+	slots = shared.dropslots,
 	weight = 0,
-	maxWeight = shared.playerweight,
+	maxWeight = shared.dropweight,
 	items = {}
 }
 
@@ -162,19 +188,19 @@ function client.openInventory(inv, data)
     local left, right, accessError
 
     if inv == 'player' and data ~= cache.serverId then
-        local targetId, targetPed
+        local targetId, targetPed, serverId
 
         if not data then
             targetId, targetPed = Utils.GetClosestPlayer()
-            data = targetId and GetPlayerServerId(targetId)
+            serverId = targetId and GetPlayerServerId(targetId)
+            data = serverId
         else
-            local serverId = type(data) == 'table' and data.id or data
-
-            if serverId == cache.serverId then return end
-
+            serverId = type(data) == 'table' and data.id or data
             targetId = serverId and GetPlayerFromServerId(serverId)
             targetPed = targetId and GetPlayerPed(targetId)
         end
+
+        if serverId == cache.serverId then return end
 
         local targetCoords = targetPed and GetEntityCoords(targetPed)
 
@@ -194,32 +220,34 @@ function client.openInventory(inv, data)
             return lib.notify({ id = 'cannot_perform', type = 'error', description = locale('cannot_perform') })
         end
 
-        left, right = lib.callback.await('ox_inventory:openCraftingBench', 200, data.id, data.index)
- 
-if left and right then
-	if not right?.items then return end
- 
-	local coords, distance
- 
-	if not right.zones and not right.points then
-		coords = GetEntityCoords(cache.ped)
-		distance = 2
-	else
-		coords = shared.target == 'ox_target' and right.zones and right.zones[data.index].coords or right.points and right.points[data.index]
-		distance = coords and shared.target == 'ox_target' and right.zones[data.index].distance or 2
-	end
- 
-	right = {
-		type = 'crafting',
-		id = data.id,
-		label = right.label or locale('crafting_bench'),
-		index = data.index,
-		slots = right.slots,
-		items = right.items,
-		coords = coords,
-		distance = distance
-	}
-end
+        left, right, accessError = lib.callback.await('ox_inventory:openCraftingBench', 200, data.id, data.index)
+
+        if left then
+            right = CraftingBenches[data.id]
+
+            if not right?.items then return end
+
+            local coords, distance
+
+            if not right.zones and not right.points then
+                coords = GetEntityCoords(cache.ped)
+                distance = 2
+            else
+                coords = shared.target and right.zones and right.zones[data.index].coords or right.points and right.points[data.index]
+                distance = coords and shared.target and right.zones[data.index].distance or 2
+            end
+
+            right = {
+                type = 'crafting',
+                id = data.id,
+                label = right.label or locale('crafting_bench'),
+                index = data.index,
+                slots = right.slots,
+                items = right.items,
+                coords = coords,
+                distance = distance
+            }
+        end
     elseif invOpen ~= nil then
         if inv == 'policeevidence' then
             if not data then
@@ -273,13 +301,7 @@ end
     left.items = PlayerData.inventory
     left.groups = PlayerData.groups
 
-    SendNUIMessage({
-        action = 'setupInventory',
-        data = {
-            leftInventory = left,
-            rightInventory = currentInventory
-        }
-    })
+	SetupPrismInventory(left, currentInventory)
 
     if not currentInventory.coords and not inv == 'container' then
         currentInventory.coords = GetEntityCoords(playerPed)
@@ -735,7 +757,9 @@ local invHotkeys = false
 
 ---@type function?
 local function registerCommands()
-	RegisterCommand('steal', openNearbyInventory, false)
+	if client.enablestealcommand then
+		RegisterCommand('steal', openNearbyInventory, false)
+	end
 
 	local function openGlovebox(vehicle)
 		if not IsPedInAnyVehicle(playerPed, false) or not NetworkGetEntityIsNetworked(vehicle) then return end
@@ -850,7 +874,7 @@ local function registerCommands()
 		description = locale('disable_hotbar'),
 		defaultKey = client.keys[3],
 		onPressed = function()
-			if EnableWeaponWheel or IsNuiFocused() or lib.progressActive() then return end
+			if EnableWeaponWheel or not invHotkeys or IsNuiFocused() or lib.progressActive() then return end
 			SendNUIMessage({ action = 'toggleHotbar' })
 		end
 	})
@@ -1017,9 +1041,10 @@ end)
 ---@param point CPoint
 local function nearbyDrop(point)
 	if not point.instance or point.instance == currentInstance then
-		---@diagnostic disable-next-line: param-type-mismatch
-		DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 150, 30, 30, 222, false, false, 0, true, false, false, false)
-	end
+        DrawMarker(client.dropmarker.type, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, client.dropmarker.scale[1], client.dropmarker.scale[2], client.dropmarker.scale[3],
+        ---@diagnostic disable-next-line: param-type-mismatch
+        client.dropmarker.colour[1], client.dropmarker.colour[2], client.dropmarker.colour[3], 222, false, false, 0, true, false, false, false)
+    end
 end
 
 ---@param point CPoint
@@ -1328,10 +1353,16 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			imagepath = client.imagepath
 		}
 	})
+	CreateThread(function ()
+		mugshot = GetProfilePicture()
+	end)
 
 	PlayerData.loaded = true
 
-	lib.notify({ description = locale('inventory_setup') })
+	if not client.disablesetupnotification then
+		lib.notify({ description = locale('inventory_setup') })
+	end
+
 	Shops.refreshShops()
 	Inventory.Stashes()
 	Inventory.Evidence()
@@ -1341,6 +1372,12 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 	TriggerEvent('ox_inventory:updateInventory', PlayerData.inventory)
 
 	client.interval = SetInterval(function()
+        local canSteal = canOpenTarget(playerPed)
+
+        if canSteal ~= plyState.canSteal then
+            plyState:set('canSteal', canSteal, true)
+        end
+
 		if invOpen == false then
 			playerCoords = GetEntityCoords(playerPed)
 
@@ -1362,14 +1399,14 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 						local ped = GetPlayerPed(id)
 						local pedCoords = GetEntityCoords(ped)
 
-						if not id or #(playerCoords - pedCoords) > maxDistance or not (client.hasGroup(shared.police) or canOpenTarget(ped)) then
+						if not id or #(playerCoords - pedCoords) > maxDistance or (not client.hasGroup(shared.police) and not Player(currentInventory.id).state.canSteal) then
 							client.closeInventory()
 							lib.notify({ id = 'inventory_lost_access', type = 'error', description = locale('inventory_lost_access') })
 						else
 							TaskTurnPedToFaceCoord(playerPed, pedCoords.x, pedCoords.y, pedCoords.z, 50)
 						end
 
-					elseif currentInventory.coords and (#(playerCoords - currentInventory.coords) > maxDistance or canOpenTarget(playerPed)) then
+					elseif currentInventory.coords and (#(playerCoords - currentInventory.coords) > maxDistance or canSteal) then
 						client.closeInventory()
 						lib.notify({ id = 'inventory_lost_access', type = 'error', description = locale('inventory_lost_access') })
 					end
@@ -1407,7 +1444,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			local weaponType = GetWeapontypeGroup(weaponHash)
 
 			if weaponType ~= 0 and weaponType ~= `GROUP_UNARMED` then
-				Weapon.Disarm(currentWeapon, true)
+				-- if not exports["pug-paintball"]:IsInPaintball() then
+				-- 	Weapon.Disarm(currentWeapon, true)
+				-- end
 			end
 		end
 	end, 200)
@@ -1446,7 +1485,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			end
 
 			if usingItem or invOpen or IsPedCuffed(playerPed) then
-				DisablePlayerFiring(playerId, true)
+				-- if not exports["pug-paintball"]:IsInPaintball() then
+        		-- 	DisablePlayerFiring(playerId, true)
+    			-- end
 			end
 
 			if not EnableWeaponWheel then
@@ -1597,7 +1638,10 @@ RegisterNUICallback('getItemData', function(itemName, cb)
 end)
 
 RegisterNUICallback('removeComponent', function(data, cb)
-	cb(1)
+
+    lib.notify({ id = 'cantremove', type = 'error', description = 'You Cant remove Attachment' })
+
+	--[[ cb(1)
 
 	if not currentWeapon then
 		return TriggerServerEvent('ox_inventory:updateWeapon', 'component', data)
@@ -1626,7 +1670,7 @@ RegisterNUICallback('removeComponent', function(data, cb)
 				end
 			end
 		end
-	end
+	end ]]
 end)
 
 RegisterNUICallback('removeAmmo', function(slot, cb)
@@ -1643,6 +1687,9 @@ RegisterNUICallback('removeAmmo', function(slot, cb)
 end)
 
 RegisterNUICallback('useItem', function(slot, cb)
+	if not checkCooldown() then
+		return cb(false)
+	end
 	useSlot(slot --[[@as number]])
 	cb(1)
 end)
@@ -1677,6 +1724,9 @@ local function isGiveTargetValid(ped, coords)
 end
 
 RegisterNUICallback('giveItem', function(data, cb)
+	if not checkCooldown() then
+		return cb(false)
+	end
 	cb(1)
 
     if usingItem then return end
@@ -1754,7 +1804,9 @@ RegisterNUICallback('exit', function(_, cb)
 	cb(1)
 end)
 
-lib.callback.register('ox_inventory:startCrafting', function(recipe)
+lib.callback.register('ox_inventory:startCrafting', function(id, recipe)
+	recipe = CraftingBenches[id].items[recipe]
+
 	return lib.progressCircle({
 		label = locale('crafting_item', recipe.metadata?.label or Items[recipe.name].label),
 		duration = recipe.duration or 3000,
@@ -1764,10 +1816,9 @@ lib.callback.register('ox_inventory:startCrafting', function(recipe)
 			combat = true,
 		},
 		anim = {
-			dict = recipe.anim?.dict or 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-			clip = recipe.anim?.clip or 'machinic_loop_mechandplayer',
-		},
-		prop = recipe.prop or {}
+			dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+			clip = 'machinic_loop_mechandplayer',
+		}
 	})
 end)
 

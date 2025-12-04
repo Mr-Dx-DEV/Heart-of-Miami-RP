@@ -1,8 +1,8 @@
 Prism = {}
 
 Prism.ProfileType = 'discord'-- ( 'discord', 'steam', 'mugshot' ) if mugshot you need to have a dependency installed https://github.com/BaziForYou/MugShotBase64
-Prism.SteamApiKey = '' -- https://steamcommunity.com/dev/apikey (required for steam profile pictures)
-Prism.DiscordBotToken = 'MTQwMjU0NTY1MDA2NjkxNTMyOA.GnC7LB.WPyuk-z-Q25D1jboC9x3GvvVc2S9BBvDJrWCJ4' -- https://discord.com/developers/applications (required for discord profile pictures)
+Prism.SteamApiKey = '99880BA896E5122449EDFF7AA9C5A035' -- https://steamcommunity.com/dev/apikey (required for steam profile pictures)
+Prism.DiscordBotToken = 'MTQ0NDQwMDAwMDYxMTEyMzI3MQ.GtGx0V.VyNafDF3m21Hv5pEidYpE2q1bmrNEMmtBeqGIw' -- https://discord.com/developers/applications (required for discord profile pictures)
 Prism.UseCitizenId = true -- ( Use citizen id instead of player server id ( Only enable for QBcore or Qbox ))
 Prism.mouseTrailActive = {
     enabled = true, -- Disabled for standard ox_inventory compatibility
