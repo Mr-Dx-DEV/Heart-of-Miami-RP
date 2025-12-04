@@ -524,6 +524,20 @@ return {
 			[5] = { name = "Owner", isboss = true, payment = 100 },
 		},
 	},
+    ["dfc"] = {
+		label = "Dome DFC",
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+			[0] = { name = "New Hire", payment = 100 },
+			[1] = { name = "Employee", payment = 100 },
+			[2] = { name = "Supervisor", payment = 100 },
+			[3] = { name = "Manager", payment = 100 },
+			[4] = { name = "Hiring Manager", isboss = true, payment = 100 },
+			[5] = { name = "Owner", isboss = true, payment = 100 },
+		},
+	},
+
 	["seapearls"] = {
 		label = "Sea Pearls",
 		defaultDuty = false,
