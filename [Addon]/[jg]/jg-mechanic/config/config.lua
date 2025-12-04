@@ -7,7 +7,7 @@ Config.Notifications = "auto" -- or "default", "ox_lib", "lation_ui", "ps-ui", "
 Config.ProgressBar = "auto" -- or "ox-circle", "ox-bar", "lation_ui", "qb"
 Config.SkillCheck = "auto" -- or "ox", "qb", "lation_ui"
 Config.DrawText = "auto" -- or "jg-textui", "ox_lib", "okokTextUI", "ps-ui", "lation_ui", "qb"
-Config.SocietyBanking = "auto" -- or "okokBanking", "fd_banking", "Renewed-Banking", "tgg-banking", "qb-banking", "qb-management", "esx_addonaccount"
+Config.SocietyBanking = "qb-management" -- or "okokBanking", "fd_banking", "Renewed-Banking", "tgg-banking", "qb-banking", "qb-management", "esx_addonaccount"
 Config.Menus = "ox" -- or "ox", "lation_ui"
 
 -- Localisation

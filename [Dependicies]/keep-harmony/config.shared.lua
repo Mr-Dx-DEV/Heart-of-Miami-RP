@@ -37,8 +37,8 @@ Config.resource_names = {
     -- I saw people who are using esx set this as esx which is wrong!
     -- It should be es_extended instead!
     framework = 'qb-core',
-    inventory = 'qb-inventory',
-    target = 'qb-target',
+    inventory = 'ox_inventory',
+    target = 'ox_target',
     menu = '', -- leave it empty when using built-in
     input = '' -- leave it empty when using built-in
 }
