@@ -6,10 +6,11 @@ config.RentalLocations = {
     cars = { -- This is the section for the car rental 
 		pedname = "a_m_y_business_02", -- Ped name 
         pedhash = 0xB3B3F5E6, -- Ped Hash of the pedname
-        pedspawn = vector4(110.87, -1090.64, 28.3, 36.98), -- This is where the ped spawns
+        pedspawn = vector4(-2290.56, -695.45, 8.23, 339.86), -- This is where the ped spawns
         heading = 340.0, -- heading of where the vehicle spawns
-        vehiclespawn = vector4(111.4223, -1081.24, 29.192, 340.0), -- Location where the vehicle spawns after being purchased
+        vehiclespawn = vector4(-2285.17, -693.73, 9.18, 342.88), -- Location where the vehicle spawns after being purchased
     },
+    
 	aircrafts = { -- This is the section for the aircraft rental 
 		pedname = "s_m_y_pilot_01", -- Ped name 
         pedhash = 0xAB300C07, -- Ped Hash of the pedname
