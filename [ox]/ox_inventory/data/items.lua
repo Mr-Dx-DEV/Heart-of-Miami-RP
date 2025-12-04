@@ -278,7 +278,7 @@ return {
             image = "rentalpapers.png",
         }
     },
-    
+
     ['x_shirt'] = {
         label = "Shirt",
         weight = 200,
@@ -4795,7 +4795,7 @@ return {
         client = {
             status = { hunger = 60000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = `bzzz_new_snacks_croissant_a`, pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, -50.0, 80.0) },
+            prop = { model = `bzzz_new_snacks_croissant_a`, bone = 18905, pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, -50.0, 80.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4811,7 +4811,7 @@ return {
         client = {
             status = { hunger = 50000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = `bzzz_new_snacks_donut_a`, pos = vec3(0.0, 0.0, -0.02), rot = vec3(0.0, -20.0, 80.0) },
+            prop = { model = `bzzz_new_snacks_donut_a`, bone = 18905, pos = vec3(0.0, 0.0, -0.02), rot = vec3(0.0, -20.0, 80.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4827,7 +4827,7 @@ return {
         client = {
             status = { hunger = 30000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = `bzzz_new_snacks_donut_b`, pos = vec3(0.0, 0.0, -0.02), rot = vec3(0.0, -20.0, 80.0) },
+            prop = { model = `bzzz_new_snacks_donut_b`, bone = 18905, pos = vec3(0.0, 0.0, -0.02), rot = vec3(0.0, -20.0, 80.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4842,7 +4842,7 @@ return {
         client = {
             status = { hunger = 30000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = `bzzz_new_snacks_peanuts_a`, pos = vec3(0.0, -0.02, -0.01), rot = vec3(0.0, -20.0, 80.0) },
+            prop = { model = `bzzz_new_snacks_peanuts_a`, bone = 18905, pos = vec3(0.0, -0.02, -0.01), rot = vec3(0.0, -20.0, 80.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4858,7 +4858,7 @@ return {
         client = {
             status = { hunger = 50000 },
             anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger' },
-            prop = { model = `bzzz_new_snacks_pretzels_a`, pos = vec3(0.03, -0.04, -0.01), rot = vec3(-80.0, 0.0, 70.0) },
+            prop = { model = `bzzz_new_snacks_pretzels_a`, bone = 18905, pos = vec3(0.03, -0.04, -0.01), rot = vec3(-80.0, 0.0, 70.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4874,7 +4874,7 @@ return {
         client = {
             status = { thirst = 50000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `bzzz_new_snacks_pepsiloca_a`, pos = vec3(0.01, 0.00, 0.07), rot = vec3(0.0, 0.0, 0.0) },
+            prop = { model = `bzzz_new_snacks_pepsiloca_a`, bone = 18905, pos = vec3(0.01, 0.00, 0.07), rot = vec3(0.0, 0.0, 0.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4890,7 +4890,7 @@ return {
         client = {
             status = { thirst = 30000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `bzzz_new_snacks_pepsiloca_b`, pos = vec3(0.01, 0.00, 0.07), rot = vec3(0.0, 0.0, 0.0) },
+            prop = { model = `bzzz_new_snacks_pepsiloca_b`, bone = 18905, pos = vec3(0.01, 0.00, 0.07), rot = vec3(0.0, 0.0, 0.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -4906,7 +4906,7 @@ return {
         client = {
             status = { thirst = 50000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `bzzz_new_snacks_energy_a`, pos = vec3(0.01, 0.00, 0.05), rot = vec3(0.0, 0.0, 0.0) },
+            prop = { model = `bzzz_new_snacks_energy_a`, bone = 18905, pos = vec3(0.01, 0.00, 0.05), rot = vec3(0.0, 0.0, 0.0) },
             usetime = 4500,
             cancel = true,
             notification = 'Enjoy your food'
@@ -9601,6 +9601,17 @@ return {
             image = "lawyerpass.png",
         }
     },
+    ["gym_pass"] = {
+        label = "Gym Pass",
+        weight = 0,
+        stack = false,
+        close = false,
+        description = "Pass to access the gym facilities",
+        client = {
+            image = "gym_pass.png",
+        }
+    },
+
 
     ["antipatharia_coral"] = {
         label = "Antipatharia",
@@ -20778,7 +20789,7 @@ return {
         consume = 1,
         client = {},
         stack = true
-        
+
     },
 
     ['coffemachine'] = {

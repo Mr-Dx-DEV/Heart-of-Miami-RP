@@ -1,82 +1,82 @@
 return {
-    General = {
-        name = 'Shop',
-        blip = {
-            id = 59, colour = 69, scale = 0.5
-        },
-        inventory = {
+    -- General = {
+    --     name = 'Shop',
+    --     blip = {
+    --         id = 59, colour = 69, scale = 0.5
+    --     },
+    --     inventory = {
 
-            -- { name = 'water_bottle', price = 10 },
-            -- { name = 'kurkakola', price = 10 },
-            -- { name = 'tosti', price = 10 },
-            -- { name = 'sandwich', price = 10 },
-
-
-            { name = 'bzzz_croissant',   price = 152 },
-            { name = 'bzzz_donut_a',     price = 121 },
-            { name = 'bzzz_donut_b',     price = 99 },
-            { name = 'bzzz_peanuts',     price = 99 },
-            { name = 'bzzz_pretzels',    price = 104 },
-
-            { name = 'bzzz_pepsiloca_a', price = 122 },
-            { name = 'bzzz_pepsiloca_b', price = 99 },
-            { name = 'bzzz_energy',      price = 148 },
+    --         -- { name = 'water_bottle', price = 10 },
+    --         -- { name = 'kurkakola', price = 10 },
+    --         -- { name = 'tosti', price = 10 },
+    --         -- { name = 'sandwich', price = 10 },
 
 
-        },
-        locations = {
-            vec3(25.7, -1347.3, 29.49),
-            vec3(-3038.71, 585.9, 7.9),
-            vec3(-3241.47, 1001.14, 12.83),
-            vec3(1728.66, 6414.16, 35.03),
-            vec3(1697.99, 4924.4, 42.06),
-            vec3(1961.48, 3739.96, 32.34),
-            vec3(547.79, 2671.79, 42.15),
-            vec3(2679.25, 3280.12, 55.24),
-            vec3(2557.94, 382.05, 108.62),
-            vec3(373.55, 325.56, 103.56),
-        },
-        targets = {
-            { loc = vec3(25.06, -1347.32, 29.5),   length = 1.5, width = 3.0, heading = 0.0,   minZ = 29.5,   maxZ = 29.9,   distance = 2 },
-            { loc = vec3(-3039.18, 585.13, 7.91),  length = 0.6, width = 0.5, heading = 15.0,  minZ = 7.91,   maxZ = 8.31,   distance = 1.5 },
-            { loc = vec3(-3242.2, 1000.58, 12.83), length = 0.6, width = 0.6, heading = 175.0, minZ = 12.83,  maxZ = 13.23,  distance = 1.5 },
-            { loc = vec3(1728.39, 6414.95, 35.04), length = 0.6, width = 0.6, heading = 65.0,  minZ = 35.04,  maxZ = 35.44,  distance = 1.5 },
-            { loc = vec3(1698.37, 4923.43, 42.06), length = 0.5, width = 0.5, heading = 235.0, minZ = 42.06,  maxZ = 42.46,  distance = 1.5 },
-            { loc = vec3(1960.54, 3740.28, 32.34), length = 0.6, width = 0.5, heading = 120.0, minZ = 32.34,  maxZ = 32.74,  distance = 1.5 },
-            { loc = vec3(548.5, 2671.25, 42.16),   length = 0.6, width = 0.5, heading = 10.0,  minZ = 42.16,  maxZ = 42.56,  distance = 1.5 },
-            { loc = vec3(2678.29, 3279.94, 55.24), length = 0.6, width = 0.5, heading = 330.0, minZ = 55.24,  maxZ = 55.64,  distance = 1.5 },
-            { loc = vec3(2557.19, 381.4, 108.62),  length = 0.6, width = 0.5, heading = 0.0,   minZ = 108.62, maxZ = 109.02, distance = 1.5 },
-            { loc = vec3(373.13, 326.29, 103.57),  length = 0.6, width = 0.5, heading = 345.0, minZ = 103.57, maxZ = 103.97, distance = 1.5 },
-        }
-    },
+    --         { name = 'bzzz_croissant',   price = 152 },
+    --         { name = 'bzzz_donut_a',     price = 121 },
+    --         { name = 'bzzz_donut_b',     price = 99 },
+    --         { name = 'bzzz_peanuts',     price = 99 },
+    --         { name = 'bzzz_pretzels',    price = 104 },
 
-    Electric = {
-        name = 'Electric Shop',
-        blip = {
-            id = 59, colour = 69, scale = 0.5
-        },
-        inventory = {
+    --         { name = 'bzzz_pepsiloca_a', price = 122 },
+    --         { name = 'bzzz_pepsiloca_b', price = 99 },
+    --         { name = 'bzzz_energy',      price = 148 },
 
 
+    --     },
+    --     locations = {
+    --         vec3(25.7, -1347.3, 29.49),
+    --         vec3(-3038.71, 585.9, 7.9),
+    --         vec3(-3241.47, 1001.14, 12.83),
+    --         vec3(1728.66, 6414.16, 35.03),
+    --         vec3(1697.99, 4924.4, 42.06),
+    --         vec3(1961.48, 3739.96, 32.34),
+    --         vec3(547.79, 2671.79, 42.15),
+    --         vec3(2679.25, 3280.12, 55.24),
+    --         vec3(2557.94, 382.05, 108.62),
+    --         vec3(373.55, 325.56, 103.56),
+    --     },
+    --     targets = {
+    --         { loc = vec3(25.06, -1347.32, 29.5),   length = 1.5, width = 3.0, heading = 0.0,   minZ = 29.5,   maxZ = 29.9,   distance = 2 },
+    --         { loc = vec3(-3039.18, 585.13, 7.91),  length = 0.6, width = 0.5, heading = 15.0,  minZ = 7.91,   maxZ = 8.31,   distance = 1.5 },
+    --         { loc = vec3(-3242.2, 1000.58, 12.83), length = 0.6, width = 0.6, heading = 175.0, minZ = 12.83,  maxZ = 13.23,  distance = 1.5 },
+    --         { loc = vec3(1728.39, 6414.95, 35.04), length = 0.6, width = 0.6, heading = 65.0,  minZ = 35.04,  maxZ = 35.44,  distance = 1.5 },
+    --         { loc = vec3(1698.37, 4923.43, 42.06), length = 0.5, width = 0.5, heading = 235.0, minZ = 42.06,  maxZ = 42.46,  distance = 1.5 },
+    --         { loc = vec3(1960.54, 3740.28, 32.34), length = 0.6, width = 0.5, heading = 120.0, minZ = 32.34,  maxZ = 32.74,  distance = 1.5 },
+    --         { loc = vec3(548.5, 2671.25, 42.16),   length = 0.6, width = 0.5, heading = 10.0,  minZ = 42.16,  maxZ = 42.56,  distance = 1.5 },
+    --         { loc = vec3(2678.29, 3279.94, 55.24), length = 0.6, width = 0.5, heading = 330.0, minZ = 55.24,  maxZ = 55.64,  distance = 1.5 },
+    --         { loc = vec3(2557.19, 381.4, 108.62),  length = 0.6, width = 0.5, heading = 0.0,   minZ = 108.62, maxZ = 109.02, distance = 1.5 },
+    --         { loc = vec3(373.13, 326.29, 103.57),  length = 0.6, width = 0.5, heading = 345.0, minZ = 103.57, maxZ = 103.97, distance = 1.5 },
+    --     }
+    -- },
 
-            { name = 'phone',  price = 1000 },
-            { name = 'tunertablet',  price = 1000 },
-            { name = 'boombox',  price = 1000 },
-            { name = 'radio',  price = 1900 },
-            { name = 'laptop', price = 2500 }
+    -- Electric = {
+    --     name = 'Electric Shop',
+    --     blip = {
+    --         id = 59, colour = 69, scale = 0.5
+    --     },
+    --     inventory = {
 
 
 
-        },
-        locations = {
-            vec3(-2443.06, -897.68, 11.04),
+    --         { name = 'phone',  price = 1000 },
+    --         { name = 'tunertablet',  price = 1000 },
+    --         { name = 'boombox',  price = 1000 },
+    --         { name = 'radio',  price = 1900 },
+    --         { name = 'laptop', price = 2500 }
 
-        },
-        targets = {
-            { loc = vec3(-2443.06, -897.68, 11.04), length = 1.5, width = 3.0, heading = 122.81, minZ = 10.02, maxZ = 13.9, distance = 2 },
 
-        }
-    },
+
+    --     },
+    --     locations = {
+    --         vec3(-2443.06, -897.68, 11.04),
+
+    --     },
+    --     targets = {
+    --         { loc = vec3(-2443.06, -897.68, 11.04), length = 1.5, width = 3.0, heading = 122.81, minZ = 10.02, maxZ = 13.9, distance = 2 },
+
+    --     }
+    -- },
     --[[ SKBM = {
 		name = 'Blackmarket',
 		inventory = {
@@ -174,84 +174,84 @@ return {
             { loc = vec3(342.99, -1298.26, 32.51), length = 0.6, width = 3.0, heading = 65.0, minZ = 30.0, maxZ = 35.8, distance = 3.0 }
         }
     },
-    DrivingGear = {
-        name = 'DrivingGear',
-        blip = {
-            id = 402, colour = 69, scale = 0.5
-        },
-        inventory = {
+    -- DrivingGear = {
+    --     name = 'DrivingGear',
+    --     blip = {
+    --         id = 402, colour = 69, scale = 0.5
+    --     },
+    --     inventory = {
 
 
-            { name = 'diving_gear', price = 5000 },
-            { name = 'diving_fill', price = 500 },
+    --         { name = 'diving_gear', price = 5000 },
+    --         { name = 'diving_fill', price = 500 },
 
 
-        },
-        locations = {
-            vec3(-1123.344, 2682.735, 18.751)
-        },
-        targets = {
-            { loc = vec3(-1123.344, 2682.735, 18.751), length = 0.6, width = 3.0, heading = 58.723, minZ = 17.0, maxZ = 19.8, distance = 3.0 }
+    --     },
+    --     locations = {
+    --         vec3(-1123.344, 2682.735, 18.751)
+    --     },
+    --     targets = {
+    --         { loc = vec3(-1123.344, 2682.735, 18.751), length = 0.6, width = 3.0, heading = 58.723, minZ = 17.0, maxZ = 19.8, distance = 3.0 }
 
-        }
-    },
-    KaluMarket = {
-        name = 'Kalu Market',
-        -- blip = {
-        -- 	id = 402, colour = 69, scale = 0.5
-        -- },
-        inventory = {
-
-
-            { name = 'black_usb',     price = 500000 },
-            { name = 'illheavyarmor', price = 8000 },
-            --{ name = 'armory_usb',   price = 600000 },
+    --     }
+    -- },
+    -- KaluMarket = {
+    --     name = 'Kalu Market',
+    --     -- blip = {
+    --     -- 	id = 402, colour = 69, scale = 0.5
+    --     -- },
+    --     inventory = {
 
 
-        },
-        locations = {
-            vec3(4925.809, -5244.801, 2.363)
-        },
-        targets = {
-            { loc = vec3(4925.723, -5245.035, 2.525), length = 0.6, width = 3.0, heading = 41.367, minZ = 1.8, maxZ = 2.5, distance = 5.0 }
-
-        }
-    },
-    Ammunation = {
-        name = 'Ammunation',
-        blip = {
-            id = 110, colour = 69, scale = 0.5
-        },
-        inventory = {
-            { name = 'ammo-9', price = 5, },
-			{ name = 'WEAPON_KNIFE', price = 200 },
-			{ name = 'WEAPON_BAT', price = 100 },
-			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true } }
+    --         { name = 'black_usb',     price = 500000 },
+    --         { name = 'illheavyarmor', price = 8000 },
+    --         --{ name = 'armory_usb',   price = 600000 },
 
 
-        },
-        locations = {
-            vec3(-662.180, -934.961, 21.829),
-            vec3(810.25, -2157.60, 29.62),
-            vec3(1693.44, 3760.16, 34.71),
-            vec3(-330.24, 6083.88, 31.45),
-            vec3(252.63, -50.00, 69.94),
-            vec3(22.56, -1109.89, 29.80),
-            vec3(2567.69, 294.38, 108.73),
-            vec3(-1117.58, 2698.61, 18.55),
-            vec3(842.44, -1033.42, 28.19)
-        },
-        targets = {
-            { loc = vec3(-660.0809, -940.3282, 22.3063), length = 0.6, width = 0.5, heading = 180.0,   minZ = 21.8,  maxZ = 22.2,  distance = 3.0 },
-            { loc = vec3(1698.035, 3756.3994, 35.0754),  length = 0.6, width = 0.5, heading = 227.39,  minZ = 34.7,  maxZ = 35.1,  distance = 3.0 },
-            { loc = vec3(-325.9745, 6080.144, 31.8264),  length = 0.6, width = 0.5, heading = 225.0,   minZ = 31.4,  maxZ = 31.8,  distance = 3.0 },
-            { loc = vec3(246.5864, -50.5394, 70.317),    length = 0.6, width = 0.5, heading = 70.0,    minZ = 69.9,  maxZ = 70.3,  distance = 3.0 },
-            { loc = vec3(18.4405, -1109.0492, 30.1397),  length = 0.6, width = 0.5, heading = 161.529, minZ = 29.8,  maxZ = 30.2,  distance = 3.0 },
-            { loc = vec3(2565.4729, 299.3745, 109.1109), length = 0.6, width = 0.5, heading = 360.0,   minZ = 108.7, maxZ = 109.1, distance = 3.0 },
-            { loc = vec3(-1112.626, 2696.3279, 18.9301), length = 0.6, width = 0.5, heading = 221.82,  minZ = 18.5,  maxZ = 18.9,  distance = 3.0 },
-            { loc = vec3(841.7936, -1027.9658, 28.5649), length = 0.6, width = 0.5, heading = 360.0,   minZ = 28.2,  maxZ = 28.6,  distance = 3.0 }
-        }
-    },
+    --     },
+    --     locations = {
+    --         vec3(4925.809, -5244.801, 2.363)
+    --     },
+    --     targets = {
+    --         { loc = vec3(4925.723, -5245.035, 2.525), length = 0.6, width = 3.0, heading = 41.367, minZ = 1.8, maxZ = 2.5, distance = 5.0 }
+
+    --     }
+    -- },
+    -- Ammunation = {
+    --     name = 'Ammunation',
+    --     blip = {
+    --         id = 110, colour = 69, scale = 0.5
+    --     },
+    --     inventory = {
+    --         { name = 'ammo-9', price = 5, },
+	-- 		{ name = 'WEAPON_KNIFE', price = 200 },
+	-- 		{ name = 'WEAPON_BAT', price = 100 },
+	-- 		{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true } }
+
+
+    --     },
+    --     locations = {
+    --         vec3(-662.180, -934.961, 21.829),
+    --         vec3(810.25, -2157.60, 29.62),
+    --         vec3(1693.44, 3760.16, 34.71),
+    --         vec3(-330.24, 6083.88, 31.45),
+    --         vec3(252.63, -50.00, 69.94),
+    --         vec3(22.56, -1109.89, 29.80),
+    --         vec3(2567.69, 294.38, 108.73),
+    --         vec3(-1117.58, 2698.61, 18.55),
+    --         vec3(842.44, -1033.42, 28.19)
+    --     },
+    --     targets = {
+    --         { loc = vec3(-660.0809, -940.3282, 22.3063), length = 0.6, width = 0.5, heading = 180.0,   minZ = 21.8,  maxZ = 22.2,  distance = 3.0 },
+    --         { loc = vec3(1698.035, 3756.3994, 35.0754),  length = 0.6, width = 0.5, heading = 227.39,  minZ = 34.7,  maxZ = 35.1,  distance = 3.0 },
+    --         { loc = vec3(-325.9745, 6080.144, 31.8264),  length = 0.6, width = 0.5, heading = 225.0,   minZ = 31.4,  maxZ = 31.8,  distance = 3.0 },
+    --         { loc = vec3(246.5864, -50.5394, 70.317),    length = 0.6, width = 0.5, heading = 70.0,    minZ = 69.9,  maxZ = 70.3,  distance = 3.0 },
+    --         { loc = vec3(18.4405, -1109.0492, 30.1397),  length = 0.6, width = 0.5, heading = 161.529, minZ = 29.8,  maxZ = 30.2,  distance = 3.0 },
+    --         { loc = vec3(2565.4729, 299.3745, 109.1109), length = 0.6, width = 0.5, heading = 360.0,   minZ = 108.7, maxZ = 109.1, distance = 3.0 },
+    --         { loc = vec3(-1112.626, 2696.3279, 18.9301), length = 0.6, width = 0.5, heading = 221.82,  minZ = 18.5,  maxZ = 18.9,  distance = 3.0 },
+    --         { loc = vec3(841.7936, -1027.9658, 28.5649), length = 0.6, width = 0.5, heading = 360.0,   minZ = 28.2,  maxZ = 28.6,  distance = 3.0 }
+    --     }
+    -- },
 
     PoliceArmoury = {
         name = 'Police Armoury',

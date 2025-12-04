@@ -1,5 +1,216 @@
 return {
 	Weapons = {
+        --Kyros Weapon Pack V4
+		['WEAPON_TITAN19X'] = {
+            label = 'T19X XL',
+            weight = 2800,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_TITAN19'] = {
+            label = 'TITAN 19',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_TITAN40'] = {
+            label = 'TITAN 40',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_TITAN40S'] = {
+            label = 'TITAN 40 SWITCH',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_DDM4V5'] = {
+            label = 'DDM4V5',
+            weight = 6400,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        },
+
+		['WEAPON_MMX'] = {
+            label = 'MATRIX MX',
+            weight = 6600,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_PP614'] = {
+            label = 'PATROL P614',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_SAPS'] = {
+            label = 'STORM APS',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_WPKX'] = {
+            label = 'WOLF PKX',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-22'
+        },
+
+		['WEAPON_PITVIPER'] = {
+            label = 'JW4 PIT VIPER',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_BARP'] = {
+            label = 'BANSHEE ARP-9',
+            weight = 4500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_HRDP'] = {
+            label = 'HUNTER RDP',
+            weight = 2400,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_WLOX15'] = {
+            label = 'WLOX 15',
+            weight = 6000,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        },
+
+		['WEAPON_PLR16'] = {
+            label = 'PHANTOM LR16',
+            weight = 3400,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        },
+
+		['WEAPON_XMK9'] = {
+            label = 'XTREME MK9',
+            weight = 2800,
+            durability = 0.1,
+            ammoname = 'ammo-45'
+        },
+
+		['WEAPON_WPSX'] = {
+            label = 'WOLF PSX',
+            weight = 2400,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_XDME'] = {
+            label = 'XDM ELITE',
+            weight = 1800,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_FF15'] = {
+            label = 'FALCON F15 PISTOL',
+            weight = 4200,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        },
+
+		['WEAPON_TITAN17S'] = {
+            label = 'TITAN 17 SWITCH',
+            weight = 2300,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_TITAN18C'] = {
+            label = 'TITAN 18C',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_TITAN19S'] = {
+            label = 'TITAN 19 SWITCH',
+            weight = 2300,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_ARPISTOL'] = {
+            label = 'TATIC ARP 9MM',
+            weight = 5500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_TITAN26S'] = {
+            label = 'TITAN 26 SWITCH',
+            weight = 2500,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_GRENADES'] = {
+            label = 'GRENADE SNIPER',
+            weight = 15000,
+            durability = 0.1,
+            ammoname = 'ammo-grenade'
+        },
+
+		['WEAPON_M32S'] = {
+            label = 'M32 SMOKE GL',
+            weight = 8000,
+            durability = 0.1,
+            ammoname = 'ammo-smokegrenade'
+        },
+
+		['WEAPON_MDRAGON'] = {
+            label = 'MICRO DRAGON',
+            weight = 5600,
+            durability = 0.1,
+            ammoname = 'ammo-rifle2'
+        },
+
+		['WEAPON_RR67'] = {
+            label = 'RANGER R67',
+            weight = 2200,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_MK18'] = {
+            label = 'MK18 MOD 1',
+            weight = 5200,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        },
+
+		['WEAPON_G680'] = {
+            label = 'GEUYBERG G680',
+            weight = 6200,
+            durability = 0.1,
+            ammoname = 'ammo-shotgun'
+        },
+
+		['WEAPON_ZIPTIE'] = {
+            label = 'ZIP TIE M4A1',
+            weight = 8500,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        },
+
 		['WEAPON_BATTLERIFLE'] = {
 			label = 'Battle Rifle',
 			weight = 3300,
@@ -719,7 +930,49 @@ return {
 	},
 
 	Components = {
-		['at_flashlight'] = {
+        ['at_clip_drum_pistol'] = {
+			label = '50 Round Drum',
+			type = 'magazine',
+			weight = 500,
+			client = {
+				component = {
+					`COMPONENT_TITAN19X_CLIP_03`, -- v4
+					`COMPONENT_TITAN19_CLIP_03`, -- v4
+					`COMPONENT_TITAN40_CLIP_03`, -- v4
+					`COMPONENT_TITAN40S_CLIP_03`, -- v4
+					`COMPONENT_TITAN18C_CLIP_03`, -- v4
+					`COMPONENT_ILLTITAN17_CLIP_03`, -- v5
+					`COMPONENT_BLUETITANS_CLIP_03`, -- v5
+					`COMPONENT_TITANBEAMS_CLIP_03`, -- v5
+					`COMPONENT_MGTITAN_CLIP_03`, -- v5
+					`COMPONENT_TTITAN19_CLIP_03`, -- v5
+					`COMPONENT_MIDASTITAN_CLIP_03`, -- v5
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_100_pistol'] = {
+			label = '100 Round Mag',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_TITAN19X_CLIP_04`, -- v4
+					`COMPONENT_TITAN40_CLIP_04`, -- v4
+					`COMPONENT_TITAN40S_CLIP_04`, -- v4
+					`COMPONENT_ILLTITAN17_CLIP_05`, -- v5
+					`COMPONENT_BLUETITANS_CLIP_04`, -- v5
+					`COMPONENT_TITANBEAMS_CLIP_04`, -- v5
+					`COMPONENT_MGTITAN_CLIP_04`, -- v5
+					`COMPONENT_TTITAN19_CLIP_04`, -- v5
+					`COMPONENT_MIDASTITAN_CLIP_04`, -- v5
+				},
+				usetime = 5500
+			}
+		},
+
+        ['at_flashlight'] = {
 			label = 'Tactical Flashlight',
 			weight = 120,
 			type = 'flashlight',
@@ -730,6 +983,8 @@ return {
 					`COMPONENT_AT_PI_FLSH`,
 					`COMPONENT_AT_PI_FLSH_02`,
 					`COMPONENT_AT_PI_FLSH_03`,
+					`COMPONENT_AT_AR_BARPFLSH`, -- v4
+					`COMPONENT_AT_PI_RR67FLSH`, -- v4
 				},
 				usetime = 2500
 			}
@@ -740,16 +995,162 @@ return {
 			weight = 280,
 			type = 'muzzle',
 			client = {
-                image = 'at_suppressor.png',
 				component = {
 					`COMPONENT_AT_PI_SUPP`,
 					`COMPONENT_AT_PI_SUPP_02`,
 					`COMPONENT_CERAMICPISTOL_SUPP`,
-					`COMPONENT_PISTOLXM3_SUPP`
+					`COMPONENT_PISTOLXM3_SUPP`,
+					`COMPONENT_AT_PI_PDG19G4_SUPP`, -- pd
+					`COMPONENT_AT_AR_PINKPM9SUPP_02`, -- feamle
+					`COMPONENT_AT_AR_PINKMK18_SUPP`, -- female
+					`COMPONENT_AT_AR_DMK18_SUPP`, -- v5
+					`COMPONENT_AT_AR_REDM4A1_SUPP`, -- v5
+					`COMPONENT_AT_AR_ZIPTIE_SUPP`, -- v4
 				},
 				usetime = 2500
 			}
 		},
+
+		['at_grip'] = {
+			label = 'Grip',
+			type = 'grip',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_AT_AR_AFGRIP`,
+					`COMPONENT_AT_AR_AFGRIP_02`,
+					`COMPONENT_AT_AR_WLOX15GRIP`, -- v4
+					`COMPONENT_AT_AR_PLRAFGRIP`, -- v4
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_extended_pistol'] = {
+			label = 'Extended Pistol Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_APPISTOL_CLIP_02`,
+					`COMPONENT_CERAMICPISTOL_CLIP_02`,
+					`COMPONENT_COMBATPISTOL_CLIP_02`,
+					`COMPONENT_HEAVYPISTOL_CLIP_02`,
+					`COMPONENT_PISTOL_CLIP_02`,
+					`COMPONENT_PISTOL_MK2_CLIP_02`,
+					`COMPONENT_PISTOL50_CLIP_02`,
+					`COMPONENT_SNSPISTOL_CLIP_02`,
+					`COMPONENT_SNSPISTOL_MK2_CLIP_02`,
+					`COMPONENT_VINTAGEPISTOL_CLIP_02`,
+                    `COMPONENT_TECPISTOL_CLIP_02`,
+					`COMPONENT_TITAN19X_CLIP_02`, -- v4
+					`COMPONENT_TITAN19_CLIP_02`, -- v4
+					`COMPONENT_TITAN40_CLIP_02`, -- v4
+					`COMPONENT_TITAN40S_CLIP_02`, -- v4
+					`COMPONENT_ARPISTOL_BOXMAG`, -- v4
+					`COMPONENT_TITAN17_CLIP_02`, -- v4
+					`COMPONENT_TITAN18C_CLIP_02`, -- v4
+					`COMPONENT_XMK9_CLIP_02`, -- v4
+					`COMPONENT_SAPS_CLIP_02`, -- v4
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_extended_rifle'] = {
+			label = 'Extended Rifle Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_ADVANCEDRIFLE_CLIP_02`,
+					`COMPONENT_ASSAULTRIFLE_CLIP_02`,
+					`COMPONENT_ASSAULTRIFLE_MK2_CLIP_02`,
+					`COMPONENT_BULLPUPRIFLE_CLIP_02`,
+					`COMPONENT_BULLPUPRIFLE_MK2_CLIP_02`,
+					`COMPONENT_CARBINERIFLE_CLIP_02`,
+					`COMPONENT_CARBINERIFLE_MK2_CLIP_02`,
+					`COMPONENT_COMPACTRIFLE_CLIP_02`,
+					`COMPONENT_HEAVYRIFLE_CLIP_02`,
+					`COMPONENT_MILITARYRIFLE_CLIP_02`,
+					`COMPONENT_SPECIALCARBINE_CLIP_02`,
+					`COMPONENT_SPECIALCARBINE_MK2_CLIP_02`,
+					`COMPONENT_TACTICALRIFLE_CLIP_02`,
+					`COMPONENT_CARBINERIFLE_BOXMAG`,
+					`COMPONENT_BARP_CLIP_02`, -- v4
+					`COMPONENT_PLR_CLIP_02`, -- v4
+					`COMPONENT_ZIPTIE_BOXMAG`, -- v4
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_clip_extended_smg'] = {
+			label = 'Extended SMG Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_ASSAULTSMG_CLIP_02`,
+					`COMPONENT_COMBATPDW_CLIP_02`,
+					`COMPONENT_MACHINEPISTOL_CLIP_02`,
+					`COMPONENT_MICROSMG_CLIP_02`,
+					`COMPONENT_MINISMG_CLIP_02`,
+					`COMPONENT_SMG_CLIP_02`,
+					`COMPONENT_SMG_MK2_CLIP_02`,
+					`COMPONENT_PINKMP9_CLIP_02`, -- female
+					`COMPONENT_TEC9S_CLIP_02`, -- v5
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_scope_small'] = {
+			label = 'Small Scope',
+			type = 'sight',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_AT_SCOPE_SMALL`,
+					`COMPONENT_AT_SCOPE_SMALL_02`,
+					`COMPONENT_AT_SCOPE_SMALL_MK2`,
+					`COMPONENT_AT_SCOPE_SMALL_SMG_MK2`,
+					`COMPONENT_AT_PDG19G4_SCOPE_SMALL`, -- pd
+					`COMPONENT_AT_PI_HRDP_RAIL`, -- v4
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_scope_medium'] = {
+			label = 'Medium Scope',
+			type = 'sight',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_AT_SCOPE_MEDIUM`,
+					`COMPONENT_AT_SCOPE_MEDIUM_MK2`,
+					`COMPONENT_AT_ARPISTOLSCOPE_MEDIUM`, -- v4
+				},
+				usetime = 2500
+			}
+		},
+
+        ['at_scope_large'] = {
+			label = 'Large Scope',
+			type = 'sight',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_AT_SCOPE_LARGE_MK2`,
+					`COMPONENT_AT_SCOPE_LARGE`
+				},
+				usetime = 2500
+			}
+		},
+
+
+
 
 		['at_suppressor_heavy'] = {
 			label = 'Tactical Suppressor',
@@ -767,18 +1168,7 @@ return {
 			}
 		},
 
-		['at_grip'] = {
-			label = 'Grip',
-			type = 'grip',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_AR_AFGRIP`,
-					`COMPONENT_AT_AR_AFGRIP_02`
-				},
-				usetime = 2500
-			}
-		},
+
 
 		['at_barrel'] = {
 			label = 'Heavy Barrel',
@@ -799,47 +1189,9 @@ return {
 			}
 		},
 
-		['at_clip_extended_pistol'] = {
-			label = 'Extended Pistol Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-                image = 'at_clip_extended.png',
-				component = {
-					`COMPONENT_APPISTOL_CLIP_02`,
-					`COMPONENT_CERAMICPISTOL_CLIP_02`,
-					`COMPONENT_COMBATPISTOL_CLIP_02`,
-					`COMPONENT_HEAVYPISTOL_CLIP_02`,
-					`COMPONENT_PISTOL_CLIP_02`,
-					`COMPONENT_PISTOL_MK2_CLIP_02`,
-					`COMPONENT_PISTOL50_CLIP_02`,
-					`COMPONENT_SNSPISTOL_CLIP_02`,
-					`COMPONENT_SNSPISTOL_MK2_CLIP_02`,
-					`COMPONENT_VINTAGEPISTOL_CLIP_02`,
-                    `COMPONENT_TECPISTOL_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
 
-		['at_clip_extended_smg'] = {
-			label = 'Extended SMG Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-                image = 'at_clip_extended.png',
-				component = {
-					`COMPONENT_ASSAULTSMG_CLIP_02`,
-					`COMPONENT_COMBATPDW_CLIP_02`,
-					`COMPONENT_MACHINEPISTOL_CLIP_02`,
-					`COMPONENT_MICROSMG_CLIP_02`,
-					`COMPONENT_MINISMG_CLIP_02`,
-					`COMPONENT_SMG_CLIP_02`,
-					`COMPONENT_SMG_MK2_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
+
+
 
 		['at_clip_extended_shotgun'] = {
 			label = 'Extended Shotgun Clip',
@@ -855,31 +1207,7 @@ return {
 			}
 		},
 
-		['at_clip_extended_rifle'] = {
-			label = 'Extended Rifle Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-                image = 'at_clip_extended2.png',
-				component = {
-					`COMPONENT_ADVANCEDRIFLE_CLIP_02`,
-					`COMPONENT_ASSAULTRIFLE_CLIP_02`,
-					`COMPONENT_ASSAULTRIFLE_MK2_CLIP_02`,
-					`COMPONENT_BULLPUPRIFLE_CLIP_02`,
-					`COMPONENT_BULLPUPRIFLE_MK2_CLIP_02`,
-					`COMPONENT_CARBINERIFLE_CLIP_02`,
-					`COMPONENT_CARBINERIFLE_MK2_CLIP_02`,
-					`COMPONENT_COMPACTRIFLE_CLIP_02`,
-					`COMPONENT_HEAVYRIFLE_CLIP_02`,
-					`COMPONENT_MILITARYRIFLE_CLIP_02`,
-					`COMPONENT_SPECIALCARBINE_CLIP_02`,
-					`COMPONENT_SPECIALCARBINE_MK2_CLIP_02`,
-					`COMPONENT_TACTICALRIFLE_CLIP_02`,
-					`COMPONENT_BATTLERIFLE_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
+
 
 		['at_clip_extended_mg'] = {
 			label = 'Extended MG Clip',
@@ -986,45 +1314,9 @@ return {
 			}
 		},
 
-		['at_scope_small'] = {
-			label = 'Small Scope',
-			type = 'sight',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_SMALL`,
-					`COMPONENT_AT_SCOPE_SMALL_02`,
-					`COMPONENT_AT_SCOPE_SMALL_MK2`,
-					`COMPONENT_AT_SCOPE_SMALL_SMG_MK2`
-				},
-				usetime = 2500
-			}
-		},
 
-		['at_scope_medium'] = {
-			label = 'Medium Scope',
-			type = 'sight',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_MEDIUM`,
-					`COMPONENT_AT_SCOPE_MEDIUM_MK2`
-				},
-				usetime = 2500
-			}
-		},
 
-		['at_scope_large'] = {
-			label = 'Large Scope',
-			type = 'sight',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_LARGE_MK2`
-				},
-				usetime = 2500
-			}
-		},
+
 
 		['at_scope_advanced'] = {
 			label = 'Advanced Scope',
@@ -1879,6 +2171,10 @@ return {
 		['snp_ammo'] = {
 			label = 'snp ammo',
 			weight = 38,
+		},
+        ['ammo-smokegrenade'] = {
+			label = '40mm Smoke',
+			weight = 3,
 		},
 	}
 }
