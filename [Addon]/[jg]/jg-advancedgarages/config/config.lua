@@ -204,6 +204,20 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   },
+  ["Dome Garage"] = {
+    coords = vector3(-2283.77, -675.01, 9.18),
+    spawn = vector4(-2283.77, -675.01, 9.18, 249.85),
+    distance = 15,
+    type = "car",
+    hideBlip = false,
+    blip = {
+      id = 357,
+      color = 0,
+      scale = 0.7
+    },
+    hideMarkers = true,
+    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  },
   ["Grapeseed"] = {
     coords = vector3(1713.06, 4745.32, 41.96),
     spawn = vector4(1710.64, 4746.94, 41.95, 90.11),
