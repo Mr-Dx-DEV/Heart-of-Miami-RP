@@ -4,7 +4,6 @@ Locales['en'] = {
     ['danceemotes'] = "🕺 Dance Emotes",
     ['animalemotes'] = "🐩 Animal Emotes",
     ['propemotes'] = "📦 Prop Emotes",
-    ['customemotes'] = "⭐ Gold+ Emotes",
     ['prop2info'] = "❓ Prop Emotes can be located at the end",
     ['set'] = "Set (",
     ['newsetemote'] = "~w~ is now your bound emote, press ~g~CapsLock~w~ to use it.",

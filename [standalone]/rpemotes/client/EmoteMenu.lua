@@ -1,5 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 ---@type table<string, EmoteData>
 EmoteData = {}
 
@@ -38,7 +36,6 @@ local EmoteTable = {}
 local DanceTable = {}
 local AnimalTable = {}
 local PropTable = {}
-local CustomTable = {}
 local WalkTable = {}
 local FaceTable = {}
 local ShareTable = {}
@@ -57,10 +54,8 @@ function AddEmoteMenu(menu)
         EmoteTable[#EmoteTable + 1] = Translate('animalemotes')
     end
     local propmenu = _menuPool:AddSubMenu(submenu, Translate('propemotes'), "", true, true)
-    local custommenu = _menuPool:AddSubMenu(submenu, Translate('customemotes'), "", true, true)
     EmoteTable[#EmoteTable + 1] = Translate('danceemotes')
     EmoteTable[#EmoteTable + 1] = Translate('danceemotes')
-    EmoteTable[#EmoteTable + 1] = Translate('customemotes')
 
     if Config.SharedEmotesEnabled then
         sharemenu = _menuPool:AddSubMenu(submenu, Translate('shareemotes'),
@@ -118,29 +113,6 @@ function AddEmoteMenu(menu)
         PropTable[#PropTable + 1] = a
     end
 
-    local customEmotesData = RP and RP.CustomEmotes or {}
-
-    if next(customEmotesData) then
-        QBCore.Functions.TriggerCallback('rpemotes:server:checkDiscordRoles', function(result)
-            if result.gold == true or result.platinum == true or result.diamond == true or result.amethyst == true then
-                for a, b in PairsByKeys(customEmotesData) do
-                    local name = '⭐ ' .. b[3]
-                    local customitem = b.AnimationOptions and b.AnimationOptions.PropTextureVariations and
-                        NativeUI.CreateListItem(name, b.AnimationOptions.PropTextureVariations, 1, "/e (" .. a .. ")") or
-                        NativeUI.CreateItem(name, "/e (" .. a .. ")")
-
-                    custommenu:AddItem(customitem)
-                    CustomTable[#CustomTable + 1] = a
-                end
-                _menuPool:RefreshIndex()
-            else
-                print("Custom emotes require Discord role: Gold, Platinum, Diamond, or Amethyst")
-            end
-        end)
-    else
-        print("No custom emotes available")
-    end
-
     -- Ped Emote on Change Index
 
     dancemenu.OnIndexChange = function(_, newindex)
@@ -151,11 +123,6 @@ function AddEmoteMenu(menu)
     propmenu.OnIndexChange = function(_, newindex)
         ClearPedTaskPreview()
         EmoteMenuStartClone(PropTable[newindex], Category.PROP_EMOTES)
-    end
-
-    custommenu.OnIndexChange = function(_, newindex)
-        ClearPedTaskPreview()
-        EmoteMenuStartClone(CustomTable[newindex], Category.CUSTOM_EMOTES)
     end
 
     submenu.OnIndexChange = function(_, newindex)
@@ -209,14 +176,6 @@ function AddEmoteMenu(menu)
 
    propmenu.OnListSelect = function(_, item, itemIndex, listIndex)
         EmoteMenuStart(PropTable[itemIndex], Category.PROP_EMOTES, item:IndexToItem(listIndex).Value)
-    end
-
-    custommenu.OnItemSelect = function(_, _, index)
-        EmoteMenuStart(CustomTable[index], Category.CUSTOM_EMOTES)
-    end
-
-    custommenu.OnListSelect = function(_, item, itemIndex, listIndex)
-        EmoteMenuStart(CustomTable[itemIndex], Category.CUSTOM_EMOTES, item:IndexToItem(listIndex).Value)
     end
 
     submenu.OnItemSelect = function(_, _, index)
@@ -466,9 +425,21 @@ end
 
 function OpenEmoteMenu()
     if IsEntityDead(PlayerPedId()) then
+        -- show in chat
+        TriggerEvent('chat:addMessage', {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {"RPEmotes", Translate('dead')}
+        })
         return
     end
     if (IsPedSwimming(PlayerPedId()) or IsPedSwimmingUnderWater(PlayerPedId())) and not Config.AllowInWater then
+        -- show in chat
+        TriggerEvent('chat:addMessage', {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {"RPEmotes", Translate('swimming')}
+        })
         return
     end
     if _menuPool:IsAnyMenuOpen() then

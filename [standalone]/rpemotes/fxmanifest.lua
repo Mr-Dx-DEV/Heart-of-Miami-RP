@@ -1,4 +1,3 @@
-
 fx_version 'cerulean'
 game 'gta5'
 description 'rpemotes-reborn'
@@ -30,7 +29,6 @@ shared_scripts {
 }
 
 server_scripts {
-    'server/discord.lua',
     'server/Server.lua',
     'server/Updates.lua',
 }

@@ -23,7 +23,7 @@ Config = {
     CustomMenuEnabled = true, -- Change the header.png to your own image
 
     -- Combat Car, and Player Movement
-    DisarmPlayerOnEmote = true,
+    DisarmPlayerOnEmote = false,
     AllowPunchingDuringEmote = false,
     AllowEmoteInVehicle = true,
     AllowInWater = false,
@@ -49,7 +49,7 @@ Config = {
     HandsupKeybind = 'X',
     HandsupKeybindEnabled = false,
     HandsupInCar = false,
-    ReplayEmoteAfterHandsup = false,
+    ReplayEmoteAfterHandsup = true,
     HoldToHandsUp = false,
 
     -- Pointing
@@ -60,8 +60,8 @@ Config = {
     ReplayEmoteAfterPointing = true,
 
     -- Crouching
-    CrouchEnabled = false,
-    CrouchKeybindEnabled = false,
+    CrouchEnabled = true,
+    CrouchKeybindEnabled = true,
     CrouchKeybind = 'LCONTROL',
     CrouchOverrideStealthMode = false, -- If true, you won't enter stealth mode even if the crouch key and the 'duck' key are the same.
     FpsMode = false, -- set this to true if you have first-person shooting to disable the ability to crouch and shoot in third-person
@@ -88,7 +88,12 @@ Config = {
 }
 
 Config.KeybindKeys = {
-
+    'NUMPAD4',
+    'NUMPAD5',
+    'NUMPAD6',
+    'NUMPAD7',
+    'NUMPAD8',
+    'NUMPAD9'
 }
 
 Config.DisabledHandsupControls = {

@@ -28,7 +28,6 @@ Category = {
     EXITS = 'Exits',
     EMOTES = 'Emotes',
     PROP_EMOTES = 'PropEmotes',
-    CUSTOM_EMOTES = 'CustomEmotes',
 }
 
 ---@alias Dictionary string
@@ -101,7 +100,6 @@ Category = {
 ---@field Exits table<string, {[1]: Dictionary, [2]: AnimName, [3]: Label, AnimationOptions?: AnimationOptions}>
 ---@field Emotes table<string, {[1]: Dictionary | ScenarioType, [2]: AnimName | ScenarioName, [3]: Label, AnimationOptions?: AnimationOptions, AdultAnimation?: boolean}>
 ---@field PropEmotes table<string, {[1]: Dictionary, [2]: AnimName, [3]: Label, AnimationOptions?: AnimationOptions}>
----@field CustomEmotes table<string, {[1]: Dictionary | ScenarioType, [2]: AnimName | ScenarioName, [3]: Label, AnimationOptions?: AnimationOptions, AdultAnimation?: boolean}>
 
 ---@class EmoteData
 ---@field [1] AnimName | Dictionary | ScenarioType deprecated: Use anim or dict instead.
