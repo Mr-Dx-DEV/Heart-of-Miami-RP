@@ -2,7 +2,7 @@ Config = {}
 
 Config.TVs = {}
 
-Config.Framework = "qbcore"  -- types (standalone, qbcore, esx, custom)
+Config.Framework = "standalone"  -- types (standalone, qbcore, esx, custom)
 
 Config.ESXFramework = {
 	newversion = false, -- use this if you using new esx version (if you get error with old esxsharedobjectmethod in console)
