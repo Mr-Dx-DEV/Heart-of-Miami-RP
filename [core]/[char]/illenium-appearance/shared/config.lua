@@ -373,6 +373,19 @@ Config.Stores = {
         }
     },
     {
+        type = "clothing",
+        coords = vector4(-2341.95, -982.55, 10.85, 182.54),
+        size = vector3(4, 4, 4),
+        rotation = 45,
+        usePoly = false,
+        points = {
+            vector3(-2333.94, -964.62, 10.85),
+            vector3(-2342.35, -998.54, 11.19),
+            vector3(-2349.64, -992.59, 11.34),
+            vector3(-2342.81, -964.61, 12.22)
+        }
+    },
+    {
         type = "barber",
         coords = vector4(-814.22, -183.7, 37.57, 116.91),
         size = vector3(4, 4, 4),
