@@ -388,6 +388,16 @@ CREATE TABLE IF NOT EXISTS `bans` (
 
 -- Dumping data for table miamifres.bans: ~0 rows (approximately)
 
+-- Dumping structure for table miamifres.basketball_rpg
+CREATE TABLE IF NOT EXISTS `basketball_rpg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(64) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+-- Dumping data for table miamifres.basketball_rpg: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.boombox_songs
 CREATE TABLE IF NOT EXISTS `boombox_songs` (
   `citizenid` varchar(64) NOT NULL,
@@ -441,6 +451,19 @@ INSERT INTO `buty_jobsv2` (`identifier`, `jobs`, `totalwork`, `worktime`) VALUES
 	('W043P0H9', '{"8":{"experience":50,"tutorial":true},"11":{"experience":0,"tutorial":false},"7":{"experience":50,"tutorial":true}}', 0, 0),
 	('Y7823F94', '{"5":{"experience":0,"tutorial":false},"8":{"experience":0,"tutorial":false}}', 0, 0);
 
+-- Dumping structure for table miamifres.carnival_highscores
+CREATE TABLE IF NOT EXISTS `carnival_highscores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `player_identifier` varchar(128) NOT NULL,
+  `player_name` varchar(128) NOT NULL,
+  `game_identifier` varchar(64) NOT NULL,
+  `score` int(11) NOT NULL DEFAULT 0,
+  `difficulty` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.carnival_highscores: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.casino_cache
 CREATE TABLE IF NOT EXISTS `casino_cache` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -458,9 +481,9 @@ CREATE TABLE IF NOT EXISTS `casino_players` (
   `identifier` varchar(128) NOT NULL,
   `properties` longtext NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table miamifres.casino_players: ~10 rows (approximately)
+-- Dumping data for table miamifres.casino_players: ~11 rows (approximately)
 INSERT INTO `casino_players` (`ID`, `identifier`, `properties`) VALUES
 	(35, 'W043P0H9', '{"firstTime":false,"logins":1,"chips":0,"lastSave":1267884,"activeTime":1202664,"vipUntil":0}'),
 	(36, 'HE48OIHZ', '{"logins":1,"activeTime":1574108,"insideTrackCooldownUntil":1759988846,"vipUntil":0,"firstTime":false,"chips":24990,"lastSave":4003334,"luckyWheelCooldownUntil":1760075080}'),
@@ -471,7 +494,19 @@ INSERT INTO `casino_players` (`ID`, `identifier`, `properties`) VALUES
 	(41, 'MY0UGIIJ', '{"lastSave":3477090,"vipUntil":0,"luckyWheelCooldownUntil":1760651004,"logins":1,"activeTime":2443009,"firstTime":false}'),
 	(42, 'X86511N3', '{"logins":12,"lastSave":7708272,"activeTime":4103073,"firstTime":false,"vipUntil":0}'),
 	(43, 'U4XD2430', '{"firstTime":false,"activeTime":2368262,"lastDailyBonus":"12/01/25","chips":100000,"lastSave":5417547,"logins":3,"vipUntil":1765232355}'),
-	(44, 'R9C0SPP1', '{"activeTime":1203317,"chips":74780500,"lastSave":4818114,"vipUntil":1765232349,"firstTime":false,"insideTrackCooldownUntil":1764746895,"luckyWheelCooldownUntil":1764833397,"logins":4}');
+	(44, 'R9C0SPP1', '{"activeTime":1203317,"chips":74780500,"lastSave":4818114,"vipUntil":1765232349,"firstTime":false,"insideTrackCooldownUntil":1764746895,"luckyWheelCooldownUntil":1764833397,"logins":4}'),
+	(45, 'D8E35P04', '{"logins":2,"vipUntil":1765503051,"lastSave":13888203,"chips":90124010,"firstTime":false,"activeTime":10281260,"luckyWheelCooldownUntil":1764984437}');
+
+-- Dumping structure for table miamifres.categories_mixer
+CREATE TABLE IF NOT EXISTS `categories_mixer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` text NOT NULL,
+  `category_name` varchar(256) DEFAULT 'list',
+  `added_by` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.categories_mixer: ~0 rows (approximately)
 
 -- Dumping structure for table miamifres.cd_dispatch
 CREATE TABLE IF NOT EXISTS `cd_dispatch` (
@@ -502,6 +537,26 @@ CREATE TABLE IF NOT EXISTS `characters` (
 
 -- Dumping data for table miamifres.characters: ~0 rows (approximately)
 
+-- Dumping structure for table miamifres.codem_billing
+CREATE TABLE IF NOT EXISTS `codem_billing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` char(50) DEFAULT NULL,
+  `name` char(50) DEFAULT NULL,
+  `targetidentifier` char(50) DEFAULT NULL,
+  `targetname` char(50) DEFAULT NULL,
+  `amount` char(50) DEFAULT NULL,
+  `invoicelabel` char(50) DEFAULT NULL,
+  `status` char(50) DEFAULT NULL,
+  `societyname` char(50) DEFAULT NULL,
+  `uniqueid` char(50) DEFAULT NULL,
+  `date` char(50) DEFAULT NULL,
+  `dateupdate` char(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniqueid` (`uniqueid`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.codem_billing: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.codem_newbank
 CREATE TABLE IF NOT EXISTS `codem_newbank` (
   `identifier` char(50) DEFAULT NULL,
@@ -515,14 +570,15 @@ CREATE TABLE IF NOT EXISTS `codem_newbank` (
   `spendigsdata` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table miamifres.codem_newbank: ~6 rows (approximately)
+-- Dumping data for table miamifres.codem_newbank: ~7 rows (approximately)
 INSERT INTO `codem_newbank` (`identifier`, `profiledata`, `spenddata`, `cryptodata`, `loandata`, `savingdata`, `notificationdata`, `mostsenddata`, `spendigsdata`) VALUES
-	('G641A281', '{"pincode":"","block":false,"iban":"946816","name":"Mr Dx","avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png"}', '{"mon":0,"sat":0,"fri":0,"wed":0,"tue":0,"thu":0,"sun":0}', '[]', '[]', '[]', '[]', '[]', '{"bills":0,"transfer":0,"gas":0,"shopping":0}'),
-	('R9C0SPP1', '{"avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png","block":false,"iban":"941909","pincode":"","name":"Tyb Fazo"}', '{"sun":0,"tue":0,"mon":0,"wed":0,"sat":0,"fri":0,"thu":0}', '[]', '[]', '[]', '[]', '[]', '{"gas":0,"transfer":0,"shopping":0,"bills":0}'),
-	('U4XD2430', '{"pincode":"","name":"Alex Srt","iban":"926413","block":false,"avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png"}', '{"mon":0,"sat":0,"sun":0,"tue":0,"thu":0,"fri":0,"wed":0}', '[]', '[]', '[]', '[]', '[]', '{"gas":0,"bills":0,"transfer":0,"shopping":0}'),
+	('G641A281', '{"name":"Mr Dx","avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png","pincode":"","iban":"946816","block":false}', '{"wed":0,"sun":0,"tue":0,"thu":0,"mon":0,"sat":0,"fri":0}', '[]', '[]', '[]', '[]', '[]', '{"shopping":0,"bills":0,"gas":0,"transfer":0}'),
+	('R9C0SPP1', '{"iban":"941909","pincode":"","block":false,"name":"Tyb Fazo","avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png"}', '{"wed":0,"fri":0,"sun":0,"mon":0,"sat":0,"tue":0,"thu":0}', '[]', '[]', '[]', '[]', '[]', '{"bills":0,"shopping":0,"gas":0,"transfer":0}'),
+	('U4XD2430', '{"name":"Alex Srt","block":false,"avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png","pincode":"","iban":"926413"}', '{"tue":0,"fri":0,"sun":0,"sat":0,"thu":0,"mon":0,"wed":0}', '[]', '[]', '[]', '[]', '[]', '{"transfer":0,"gas":0,"bills":0,"shopping":0}'),
 	('RTJ5P4DZ', '{"pincode":"","name":"SLIME BALL","iban":"626323","avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png","block":false}', '{"mon":0,"sat":0,"tue":0,"sun":0,"wed":0,"fri":0,"thu":0}', '[]', '[]', '[]', '[]', '[]', '{"bills":0,"gas":0,"shopping":0,"transfer":0}'),
 	('D27RS572', '{"avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png","iban":"240118","name":"Sari Vive","pincode":"","block":false}', '{"sun":0,"sat":0,"thu":0,"wed":0,"mon":0,"tue":0,"fri":0}', '[]', '[]', '[]', '[]', '[]', '{"transfer":0,"gas":0,"bills":0,"shopping":0}'),
-	('D8E35P04', '{"pincode":"","name":"Sari V","iban":"555535","block":false,"avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png"}', '{"mon":0,"wed":0,"sun":0,"tue":0,"thu":0,"fri":0,"sat":0}', '[]', '[]', '[]', '[]', '[]', '{"gas":0,"bills":0,"transfer":0,"shopping":0}');
+	('D8E35P04', '{"block":false,"iban":"555535","avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png","pincode":"","name":"Sari V"}', '{"sat":0,"fri":0,"wed":0,"mon":0,"thu":0,"sun":0,"tue":0}', '[]', '[]', '[]', '[]', '[]', '{"gas":0,"transfer":0,"shopping":0,"bills":0}'),
+	('J85YFAHP', '{"pincode":"","name":"Rob Stark","block":false,"iban":"468317","avatar":"https://cdn.discordapp.com/attachments/983471660684423240/1147567519712940044/example-pp.png"}', '{"mon":0,"sat":0,"thu":0,"sun":0,"fri":0,"wed":0,"tue":0}', '[]', '[]', '[]', '[]', '[]', '{"shopping":0,"bills":0,"gas":0,"transfer":0}');
 
 -- Dumping structure for table miamifres.codem_newbank_society
 CREATE TABLE IF NOT EXISTS `codem_newbank_society` (
@@ -828,6 +884,20 @@ INSERT INTO `drugs_fields` (`id`, `label`, `coords`, `radius`, `object_model`, `
 	(3, 'Cocaine', '{"z":34.49,"y":3019.87,"x":-92.15}', 20, 'prop_plant_01a', 8, '[{"minQuantity":1,"maxQuantity":5,"chances":100,"name":"cocaine"}]', 5, 'Cocaine field', 403, 0, 1, NULL),
 	(4, 'Cannabis', '{"z":41.83,"y":4893.95,"x":2016.97}', 25, 'prop_weed_02', 20, '[{"minQuantity":1,"maxQuantity":5,"chances":25,"name":"cannabis"}]', 7, 'Cannabis field', 140, 2, 1, NULL);
 
+-- Dumping structure for table miamifres.drunk_stats
+CREATE TABLE IF NOT EXISTS `drunk_stats` (
+  `identifier` varchar(128) NOT NULL,
+  `drunk_level` float NOT NULL DEFAULT 0,
+  `headache_level` float NOT NULL DEFAULT 0,
+  `toughness` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.drunk_stats: ~2 rows (approximately)
+INSERT INTO `drunk_stats` (`identifier`, `drunk_level`, `headache_level`, `toughness`) VALUES
+	('J85YFAHP', 0, 0, 1),
+	('U4XD2430', 0, 0, 1);
+
 -- Dumping structure for table miamifres.ecommerce_items
 CREATE TABLE IF NOT EXISTS `ecommerce_items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -894,7 +964,7 @@ CREATE TABLE IF NOT EXISTS `electus_pets_daily_data` (
 
 -- Dumping data for table miamifres.electus_pets_daily_data: ~1 rows (approximately)
 INSERT INTO `electus_pets_daily_data` (`lastReset`) VALUES
-	(1764819387);
+	(1764992590);
 
 -- Dumping structure for table miamifres.electus_pets_daily_tasks
 CREATE TABLE IF NOT EXISTS `electus_pets_daily_tasks` (
@@ -2187,6 +2257,38 @@ INSERT INTO `fuel_stations` (`location`, `owned`, `owner`, `fuel`, `fuelprice`, 
 	(26, 0, '0', 100000, 3, 0, 'North Rockford LTD'),
 	(27, 0, '0', 100000, 3, 0, 'Alta Street Globe Oil');
 
+-- Dumping structure for table miamifres.gangs
+CREATE TABLE IF NOT EXISTS `gangs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(255) NOT NULL,
+  `tag` varchar(10) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `color` varchar(16) NOT NULL,
+  `group` varchar(24) DEFAULT NULL,
+  `checkpoints` text DEFAULT NULL,
+  `balance` int(11) NOT NULL DEFAULT 0,
+  `vehicles` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gangs_ui_tag` (`tag`),
+  UNIQUE KEY `gangs_ui_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.gangs: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.gang_zones
+CREATE TABLE IF NOT EXISTS `gang_zones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(16) NOT NULL,
+  `gang_id` int(11) NOT NULL,
+  `loyalty` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `gang_zones_fk_id` (`gang_id`),
+  CONSTRAINT `gang_zones_fk_id` FOREIGN KEY (`gang_id`) REFERENCES `gangs` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.gang_zones: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.gmmultijob_time
 CREATE TABLE IF NOT EXISTS `gmmultijob_time` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -2196,9 +2298,9 @@ CREATE TABLE IF NOT EXISTS `gmmultijob_time` (
   `last_updated` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `citizen_job` (`citizenid`,`job`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table miamifres.gmmultijob_time: ~18 rows (approximately)
+-- Dumping data for table miamifres.gmmultijob_time: ~19 rows (approximately)
 INSERT INTO `gmmultijob_time` (`id`, `citizenid`, `job`, `minutes`, `last_updated`) VALUES
 	(3, 'DE94PHVF', 'unemployed', 124, '2025-11-29 20:43:41'),
 	(4, 'VPRW5VEK', 'unemployed', 11, '2025-11-29 19:56:02'),
@@ -2206,18 +2308,19 @@ INSERT INTO `gmmultijob_time` (`id`, `citizenid`, `job`, `minutes`, `last_update
 	(6, 'FUA36029', 'unemployed', 27, '2025-11-29 23:29:57'),
 	(7, 'V7X26O7G', 'unemployed', 61, '2025-11-30 07:15:51'),
 	(8, 'U4XD2430', 'unemployed', 43, '2025-11-30 23:14:16'),
-	(9, 'U4XD2430', 'saltlabmechanic', 426, '2025-12-04 03:24:47'),
-	(10, 'D8E35P04', 'unemployed', 60, '2025-12-04 03:24:47'),
+	(9, 'U4XD2430', 'saltlabmechanic', 652, '2025-12-07 01:45:14'),
+	(10, 'D8E35P04', 'unemployed', 264, '2025-12-05 02:57:30'),
 	(11, 'G641A281', 'unemployed', 70, '2025-12-01 18:07:42'),
 	(12, 'RTJ5P4DZ', 'unemployed', 36, '2025-12-02 20:49:14'),
 	(13, 'R9C0SPP1', 'unemployed', 39, '2025-12-01 22:25:36'),
 	(14, 'R9C0SPP1', 'mechanic', 145, '2025-12-02 00:57:40'),
-	(15, 'R9C0SPP1', 'realestate', 472, '2025-12-04 04:28:29'),
+	(15, 'R9C0SPP1', 'realestate', 540, '2025-12-05 00:50:26'),
 	(16, 'M4CZ13BJ', 'unemployed', 36, '2025-12-02 03:17:19'),
-	(17, 'G641A281', 'mechanic', 65, '2025-12-02 06:27:59'),
+	(17, 'G641A281', 'mechanic', 68, '2025-12-04 22:52:36'),
 	(18, 'U4XD2430', 'mechanic', 83, '2025-12-03 19:17:12'),
 	(19, 'VN5719QE', 'unemployed', 5, '2025-12-02 04:57:44'),
-	(20, 'D27RS572', 'unemployed', 26, '2025-12-04 02:14:42');
+	(20, 'D27RS572', 'unemployed', 26, '2025-12-04 02:14:42'),
+	(21, 'J85YFAHP', 'unemployed', 7, '2025-12-06 14:39:09');
 
 -- Dumping structure for table miamifres.gm_service
 CREATE TABLE IF NOT EXISTS `gm_service` (
@@ -2250,6 +2353,24 @@ CREATE TABLE IF NOT EXISTS `gm_service_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table miamifres.gm_service_items: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.golf_memberships
+CREATE TABLE IF NOT EXISTS `golf_memberships` (
+  `user` varchar(255) NOT NULL,
+  `membershipEndTime` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.golf_memberships: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.gunrange_rented
+CREATE TABLE IF NOT EXISTS `gunrange_rented` (
+  `identifier` varchar(50) NOT NULL,
+  `weapon` varchar(50) NOT NULL,
+  `stored_weapons` longtext NOT NULL,
+  PRIMARY KEY (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.gunrange_rented: ~0 rows (approximately)
 
 -- Dumping structure for table miamifres.handling_profiles
 CREATE TABLE IF NOT EXISTS `handling_profiles` (
@@ -4410,8 +4531,9 @@ CREATE TABLE IF NOT EXISTS `mechanic_vehicledata` (
   PRIMARY KEY (`plate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table miamifres.mechanic_vehicledata: ~10 rows (approximately)
+-- Dumping data for table miamifres.mechanic_vehicledata: ~11 rows (approximately)
 INSERT INTO `mechanic_vehicledata` (`plate`, `data`) VALUES
+	('02EZT749', '{"servicingData":{"brakePads":99.4,"tyres":98.8,"airFilter":98.8,"evBattery":100,"evMotor":100,"suspension":99.7,"evCoolant":100,"clutch":99.4,"engineOil":97.0,"sparkPlugs":97.99999}}'),
 	('08MET624', '{"disablePearl":false,"primarySecondarySync":false,"_sbFromTableSet":true}'),
 	('09FPH428', '{"_sbFromTableSet":true,"stance":{"height":0.0,"xOffset":[0.7197,0.7197,0.7882,0.7882],"yRot":[-0.0,0.0,-0.0,0.0]},"enableStance":false,"wheelsAdjIndv":false}'),
 	('22BRC965', '{"disablePearl":false,"primarySecondarySync":false,"_sbFromTableSet":true}'),
@@ -4458,9 +4580,9 @@ CREATE TABLE IF NOT EXISTS `nation_ped_scale` (
   `identifier` varchar(50) DEFAULT NULL,
   `scale` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table miamifres.nation_ped_scale: ~7 rows (approximately)
+-- Dumping data for table miamifres.nation_ped_scale: ~8 rows (approximately)
 INSERT INTO `nation_ped_scale` (`id`, `identifier`, `scale`) VALUES
 	(1, 'Z1JNC2H9', 1.2),
 	(2, 'DE94PHVF', 0.92),
@@ -4468,7 +4590,8 @@ INSERT INTO `nation_ped_scale` (`id`, `identifier`, `scale`) VALUES
 	(4, 'DE94PHVF', 0.92),
 	(5, 'U4XD2430', 1.2),
 	(6, 'U4XD2430', 1.2),
-	(7, 'U4XD2430', 1.2);
+	(7, 'U4XD2430', 1.2),
+	(8, 'D8E35P04', 0.99);
 
 -- Dumping structure for table miamifres.npwd_calls
 CREATE TABLE IF NOT EXISTS `npwd_calls` (
@@ -5699,27 +5822,28 @@ CREATE TABLE IF NOT EXISTS `phone_phones` (
   UNIQUE KEY `phone_number` (`phone_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table miamifres.phone_phones: ~31 rows (approximately)
+-- Dumping data for table miamifres.phone_phones: ~32 rows (approximately)
 INSERT INTO `phone_phones` (`id`, `owner_id`, `phone_number`, `name`, `pin`, `face_id`, `settings`, `is_setup`, `assigned`, `battery`, `last_seen`) VALUES
 	('C0XA22K3', 'C0XA22K3', '4808027099', NULL, NULL, NULL, '{"weather":{"celcius":false},"doNotDisturb":false,"storage":{"used":8576331,"total":128000000},"locale":"en","latestVersion":"2.3.7","time":{"twelveHourClock":false},"notifications":[],"version":"2.3.7","wallpaper":{"blur":false,"background":"cloud8"},"name":"Not set","airplaneMode":false,"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"display":{"automatic":false,"size":0.7,"theme":"light","brightness":1},"sound":{"ringtone":"default","volume":0.5,"texttone":"default","silent":false,"callVolume":0.5},"phone":{"showCallerId":true},"security":{"pinCode":false,"faceId":false},"streamerMode":false,"lockscreen":{"color":"gradient","fontStyle":1,"layout":1}}', 0, 0, 100, '2025-10-14 19:19:01'),
 	('C4CBT92Q', 'C4CBT92Q', '5203720675', 'gang\'s Phone', NULL, NULL, '{"phone":{"showCallerId":true},"time":{"twelveHourClock":false},"storage":{"used":8576331,"total":128000000},"airplaneMode":false,"lockscreen":{"fontStyle":1,"color":"gradient","layout":1},"security":{"pinCode":false,"faceId":false},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"wallpaper":{"background":"cloud8","blur":false},"notifications":[],"doNotDisturb":false,"locale":"en","name":"gang\'s Phone","weather":{"celcius":false},"latestVersion":"2.3.7","version":"2.3.7","display":{"theme":"dark","brightness":1,"size":0.7,"automatic":false},"streamerMode":false,"sound":{"silent":false,"ringtone":"default","volume":0.5,"callVolume":0.5,"texttone":"default"}}', 1, 0, 100, '2025-10-15 15:52:12'),
 	('CW55UZ0L', 'CW55UZ0L', '5200860896', NULL, NULL, NULL, '{"security":{"pinCode":false,"faceId":false},"latestVersion":"2.3.7","wallpaper":{"background":"cloud8","blur":false},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"time":{"twelveHourClock":false},"airplaneMode":false,"weather":{"celcius":false},"doNotDisturb":false,"lockscreen":{"layout":1,"fontStyle":1,"color":"gradient"},"version":"2.3.7","name":"Not set","notifications":[],"storage":{"total":128000000,"used":8576331},"display":{"brightness":1,"size":0.7,"theme":"light","automatic":false},"sound":{"callVolume":0.5,"volume":0.5,"silent":false,"texttone":"default","ringtone":"default"},"phone":{"showCallerId":true},"streamerMode":false,"locale":"en"}', 0, 0, 100, '2025-10-08 19:04:39'),
 	('D27RS572', 'D27RS572', '4806469279', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-04 01:48:04'),
 	('D31710PC', 'D31710PC', '9074592787', NULL, NULL, NULL, '{"streamerMode":false,"phone":{"showCallerId":true},"notifications":[],"version":"2.3.7","time":{"twelveHourClock":false},"wallpaper":{"blur":false,"background":"cloud8"},"locale":"en","sound":{"ringtone":"default","volume":0.5,"callVolume":0.5,"texttone":"default","silent":false},"doNotDisturb":false,"storage":{"total":128000000,"used":8576331},"lockscreen":{"color":"gradient","fontStyle":1,"layout":1},"latestVersion":"2.3.7","security":{"pinCode":false,"faceId":false},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","Home"]],"weather":{"celcius":false},"name":"Not set","display":{"automatic":false,"size":0.7,"theme":"light","brightness":1},"airplaneMode":false}', 0, 0, 100, '2025-10-18 21:49:23'),
-	('D8E35P04', 'D8E35P04', '5208294980', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-04 02:55:39'),
+	('D8E35P04', 'D8E35P04', '5208294980', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-04 23:33:14'),
 	('DE94PHVF', 'DE94PHVF', '9074814549', 'Sari\'s Phone', '0731', 'DE94PHVF', '{"phone":{"showCallerId":true},"weather":{"celcius":false},"notifications":[],"lockscreen":{"fontStyle":1,"layout":1,"color":"gradient"},"wallpaper":{"blur":false,"background":"cloud8"},"doNotDisturb":false,"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Home","Maps","Notes","Calculator","VoiceMemo","Music","Services"]],"version":"2.4.1","streamerMode":false,"sound":{"volume":0.5,"callVolume":0.5,"ringtone":"default","silent":false,"texttone":"default"},"airplaneMode":false,"security":{"faceId":true,"pinCode":true},"display":{"size":0.7,"brightness":1,"automatic":false,"theme":"dark"},"name":"Sari\'s Phone","storage":{"used":8576331,"total":128000000},"locale":"en","latestVersion":"2.4.2","time":{"twelveHourClock":false}}', 1, 0, 100, '2025-11-29 20:34:41'),
 	('E98VK54Q', 'E98VK54Q', '5204723195', 'Galib\'s Phone', NULL, NULL, '{"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"storage":{"used":8576331,"total":128000000},"locale":"en","display":{"automatic":false,"size":0.7,"brightness":1,"theme":"dark"},"streamerMode":false,"weather":{"celcius":false},"wallpaper":{"blur":false,"background":"cloud8"},"version":"2.3.7","lockscreen":{"fontStyle":1,"color":"gradient","layout":1},"sound":{"volume":0.5,"silent":false,"callVolume":0.5,"texttone":"default","ringtone":"default"},"security":{"pinCode":false,"faceId":false},"notifications":[],"latestVersion":"2.3.7","time":{"twelveHourClock":false},"doNotDisturb":false,"airplaneMode":false,"phone":{"showCallerId":true},"name":"Galib\'s Phone"}', 1, 0, 100, '2025-10-16 08:27:44'),
 	('FD398GF4', 'FD398GF4', '5207358850', NULL, NULL, NULL, '{"lockscreen":{"fontStyle":1,"layout":1,"color":"gradient"},"security":{"faceId":false,"pinCode":false},"airplaneMode":false,"streamerMode":false,"name":"Not set","wallpaper":{"background":"cloud8","blur":false},"locale":"en","latestVersion":"2.3.7","sound":{"silent":false,"texttone":"default","volume":0.5,"callVolume":0.5,"ringtone":"default"},"display":{"automatic":false,"brightness":1,"theme":"light","size":0.7},"storage":{"used":8576331,"total":128000000},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"doNotDisturb":false,"version":"2.3.7","time":{"twelveHourClock":false},"phone":{"showCallerId":true},"notifications":[],"weather":{"celcius":false}}', 0, 0, 100, '2025-10-14 19:24:22'),
 	('FUA36029', 'FUA36029', '6022373292', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-11-29 23:02:47'),
-	('G641A281', 'G641A281', '9070726968', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-03 15:39:17'),
+	('G641A281', 'G641A281', '9070726968', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-04 22:48:46'),
 	('HE48OIHZ', 'HE48OIHZ', '2059346155', 'Kalu\'s Phone', NULL, NULL, '{"latestVersion":"2.3.7","airplaneMode":false,"locale":"en","display":{"size":0.7,"theme":"dark","automatic":false,"brightness":1},"security":{"pinCode":false,"faceId":false},"name":"Kalu\'s Phone","doNotDisturb":false,"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"sound":{"texttone":"default","silent":false,"ringtone":"default","callVolume":0.5,"volume":0.5},"lockscreen":{"fontStyle":1,"color":"gradient","layout":1},"phone":{"showCallerId":true},"wallpaper":{"blur":false,"background":"cloud8"},"streamerMode":false,"version":"2.3.7","notifications":[],"storage":{"used":8576331,"total":128000000},"time":{"twelveHourClock":false},"weather":{"celcius":false}}', 1, 0, 100, '2025-10-14 22:50:50'),
+	('J85YFAHP', 'J85YFAHP', '4804996320', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-06 14:31:36'),
 	('K251H40I', 'K251H40I', '2056260321', 'Marco\'s Phone', NULL, NULL, '{"latestVersion":"2.3.7","display":{"automatic":false,"theme":"light","brightness":1,"size":0.7},"security":{"faceId":false,"pinCode":false},"weather":{"celcius":false},"lockscreen":{"fontStyle":1,"color":"gradient","layout":1},"wallpaper":{"background":"cloud8","blur":false},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","Twitter","Home"]],"time":{"twelveHourClock":false},"locale":"en","name":"Marco\'s Phone","doNotDisturb":false,"phone":{"showCallerId":true},"notifications":[],"airplaneMode":false,"version":"2.3.7","streamerMode":false,"storage":{"used":8576371.74,"total":128000000},"sound":{"callVolume":0.5,"volume":0.5,"texttone":"default","silent":false,"ringtone":"default"}}', 1, 0, 100, '2025-10-20 06:19:11'),
 	('L6S9Y9AB', 'L6S9Y9AB', '2051842914', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-10-19 17:21:45'),
 	('M4CZ13BJ', 'M4CZ13BJ', '6025123351', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-02 03:16:29'),
 	('MY0UGIIJ', 'MY0UGIIJ', '4801532895', NULL, NULL, NULL, '{"airplaneMode":false,"version":"2.3.7","time":{"twelveHourClock":false},"locale":"en","weather":{"celcius":false},"doNotDisturb":false,"lockscreen":{"layout":1,"color":"gradient","fontStyle":1},"storage":{"used":8576331,"total":128000000},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","Home"]],"security":{"pinCode":false,"faceId":false},"name":"Not set","sound":{"silent":false,"volume":0.5,"texttone":"default","callVolume":0.5,"ringtone":"default"},"notifications":[],"streamerMode":false,"display":{"brightness":1,"size":0.7,"theme":"light","automatic":false},"latestVersion":"2.3.7","phone":{"showCallerId":true},"wallpaper":{"blur":false,"background":"cloud8"}}', 0, 0, 100, '2025-10-19 10:26:35'),
 	('N71JNKEJ', 'N71JNKEJ', '5202792636', NULL, NULL, NULL, '{"airplaneMode":false,"display":{"automatic":false,"size":0.7,"theme":"light","brightness":1},"weather":{"celcius":false},"time":{"twelveHourClock":false},"version":"2.3.7","wallpaper":{"background":"cloud8","blur":false},"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","Home"]],"locale":"en","lockscreen":{"fontStyle":1,"color":"gradient","layout":1},"storage":{"used":8576331,"total":128000000},"notifications":[],"streamerMode":false,"latestVersion":"2.3.7","security":{"faceId":false,"pinCode":false},"doNotDisturb":false,"sound":{"silent":false,"callVolume":0.5,"volume":0.5,"ringtone":"default","texttone":"default"},"phone":{"showCallerId":true},"name":"Not set"}', 0, 0, 100, '2025-10-19 16:25:33'),
 	('O3048CWO', 'O3048CWO', '2050581542', 'Mr\'s Phone', NULL, NULL, '{"streamerMode":false,"security":{"faceId":false,"pinCode":false},"latestVersion":"2.3.7","name":"Mr\'s Phone","apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","Home"]],"locale":"en","time":{"twelveHourClock":false},"airplaneMode":false,"display":{"automatic":false,"size":0.7,"brightness":1,"theme":"dark"},"phone":{"showCallerId":true},"lockscreen":{"layout":1,"fontStyle":1,"color":"gradient"},"weather":{"celcius":false},"wallpaper":{"background":"wallpaper22","blur":false},"doNotDisturb":false,"storage":{"total":128000000,"used":8576331},"version":"2.3.7","notifications":[],"sound":{"texttone":"default","ringtone":"default","silent":false,"callVolume":0.5,"volume":0.5}}', 1, 0, 100, '2025-10-19 20:54:10'),
-	('R9C0SPP1', 'R9C0SPP1', '6020604901', 'Tyb\'s Phone', '1111', NULL, '{"latestVersion":"2.4.2","sound":{"texttone":"default","ringtone":"default","volume":0.5,"silent":false,"callVolume":0.5},"security":{"faceId":false,"pinCode":true},"display":{"automatic":false,"brightness":1,"theme":"dark","size":0.7},"lockscreen":{"layout":1,"color":"gradient","fontStyle":1},"name":"Tyb\'s Phone","notifications":[],"locale":"en","weather":{"celcius":false},"version":"2.4.1","apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Home","Maps","Notes","Calculator","VoiceMemo","Music","Services"]],"time":{"twelveHourClock":false},"streamerMode":false,"storage":{"used":8576331,"total":128000000},"airplaneMode":false,"wallpaper":{"background":"cloud8","blur":false},"phone":{"showCallerId":true},"doNotDisturb":false}', 1, 0, 100, '2025-12-04 03:30:58'),
+	('R9C0SPP1', 'R9C0SPP1', '6020604901', 'Tyb\'s Phone', '1111', NULL, '{"latestVersion":"2.4.2","sound":{"texttone":"default","ringtone":"default","volume":0.5,"silent":false,"callVolume":0.5},"security":{"faceId":false,"pinCode":true},"display":{"automatic":false,"brightness":1,"theme":"dark","size":0.7},"lockscreen":{"layout":1,"color":"gradient","fontStyle":1},"name":"Tyb\'s Phone","notifications":[],"locale":"en","weather":{"celcius":false},"version":"2.4.1","apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Home","Maps","Notes","Calculator","VoiceMemo","Music","Services"]],"time":{"twelveHourClock":false},"streamerMode":false,"storage":{"used":8576331,"total":128000000},"airplaneMode":false,"wallpaper":{"background":"cloud8","blur":false},"phone":{"showCallerId":true},"doNotDisturb":false}', 1, 0, 100, '2025-12-05 15:55:54'),
 	('RTJ5P4DZ', 'RTJ5P4DZ', '9077435397', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-02 20:52:17'),
 	('SLOE4O29', 'SLOE4O29', '2055155435', NULL, NULL, NULL, '{"wallpaper":{"blur":false,"background":"cloud8"},"display":{"automatic":false,"brightness":1,"size":0.7,"theme":"light"},"name":"Not set","storage":{"total":128000000,"used":8576331},"notifications":[],"weather":{"celcius":false},"airplaneMode":false,"apps":[["Phone","Messages","Camera","Photos"],["Settings","AppStore","Clock","Mail","Weather","Wallet","Garage","Maps","Notes","Calculator","VoiceMemo","Music","Services","fd_banking"]],"version":"2.3.7","time":{"twelveHourClock":false},"locale":"en","sound":{"silent":false,"callVolume":0.5,"ringtone":"default","volume":0.5,"texttone":"default"},"latestVersion":"2.3.7","streamerMode":false,"doNotDisturb":false,"phone":{"showCallerId":true},"lockscreen":{"layout":1,"color":"gradient","fontStyle":1},"security":{"pinCode":false,"faceId":false}}', 0, 0, 100, '2025-10-14 14:27:29'),
 	('U4XD2430', 'U4XD2430', '4809017948', NULL, NULL, NULL, NULL, 0, 0, 100, '2025-12-02 05:15:55'),
@@ -6363,22 +6487,25 @@ CREATE TABLE IF NOT EXISTS `players` (
   `last_logged_out` timestamp NULL DEFAULT NULL,
   `electrocourses` int(11) DEFAULT 0,
   `iban` char(50) DEFAULT NULL,
+  `skills` longtext DEFAULT NULL,
+  `ganginfo` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`ganginfo`)),
   PRIMARY KEY (`citizenid`),
   KEY `id` (`id`),
   KEY `last_updated` (`last_updated`),
   KEY `license` (`license`)
-) ENGINE=InnoDB AUTO_INCREMENT=5898 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6232 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table miamifres.players: ~8 rows (approximately)
-INSERT INTO `players` (`id`, `userId`, `citizenid`, `cid`, `license`, `name`, `money`, `charinfo`, `job`, `gang`, `position`, `metadata`, `inventory`, `phone_number`, `last_updated`, `last_logged_out`, `electrocourses`, `iban`) VALUES
-	(5747, 27, 'D27RS572', 3, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'Sarivive', '{"cash":500,"bank":5300,"crypto":0}', '{"lastname":"Vive","gender":1,"cid":"3","firstname":"Sari","backstory":"placeholder backstory","birthdate":"1996-07-31","phone":"1797413979","nationality":"Cuba","account":"US03QBX9531570176"}', '{"grade":{"level":0,"name":"Freelancer"},"payment":100,"bankAuth":false,"isboss":false,"label":"Civilian","onduty":true,"name":"unemployed"}', '{"grade":{"level":0,"name":"Unaffiliated"},"bankAuth":false,"label":"No Gang","isboss":false,"name":"none"}', '{"x":-995.1428833007813,"y":-67.22637176513672,"z":41.5802001953125,"w":325.9842529296875}', '{"health":200,"fingerprint":"L9AA5K8IMG39B27","phonedata":{"SerialNumber":12992641,"InstalledApps":[]},"callsign":"NO CALLSIGN","walletid":"QB-60174198","jobrep":{"tow":0,"taxi":0,"hotdog":0,"trucker":0},"hunger":78.99999999999999,"tracker":false,"dealerrep":0,"inlaststand":false,"isdead":false,"inside":{"apartment":[]},"licences":{"driver":true,"id":true,"weapon":false},"attachmentcraftingrep":0,"criminalrecord":{"hasRecord":false},"craftingrep":0,"bloodtype":"B+","status":[],"armor":0,"thirst":81.00000000000002,"jailitems":[],"ishandcuffed":false,"injail":0,"phone":[],"stress":0,"optin":false}', '[{"count":500,"slot":1,"name":"money"},{"metadata":{"durability":1767404880,"degrade":43200},"count":1,"slot":2,"name":"phone"},{"metadata":{"citizenid":"D27RS572","sex":"F","cardtype":"id_card","mugShot":"none","firstname":"Sari","lastname":"Vive","badge":"none","birthdate":"1996-07-31","nationality":"Cuba"},"count":1,"slot":3,"name":"id_card"},{"metadata":{"citizenid":"D27RS572","sex":"F","cardtype":"driver_license","mugShot":"none","firstname":"Sari","lastname":"Vive","badge":"none","birthdate":"1996-07-31","nationality":"Cuba"},"count":1,"slot":4,"name":"driver_license"}]', NULL, '2025-12-04 02:15:07', '2025-12-04 02:15:07', 0, '240118'),
-	(4675, 27, 'D8E35P04', 1, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'Sarivive', '{"cash":50500,"crypto":0,"bank":5700}', '{"gender":1,"nationality":"Cuba","firstname":"Sari","lastname":"V","account":"US04QBX3586212019","backstory":"placeholder backstory","cid":"1","birthdate":"1996-07-31","phone":"9916968571"}', '{"grade":{"name":"Freelancer","level":0},"payment":100,"bankAuth":false,"name":"unemployed","label":"Civilian","onduty":true,"isboss":false}', '{"grade":{"name":"Unaffiliated","level":0},"bankAuth":false,"name":"none","label":"No Gang","isboss":false}', '{"x":-2341.424072265625,"y":-943.9384765625,"z":10.84619140625,"w":323.14959716796877}', '{"stress":0,"hunger":95.8,"inlaststand":false,"craftingrep":0,"criminalrecord":{"hasRecord":false},"tracker":false,"injail":0,"walletid":"QB-26694036","jobrep":{"tow":0,"hotdog":0,"trucker":0,"taxi":0},"phone":[],"licences":{"id":true,"weapon":false,"driver":true},"health":200,"dealerrep":0,"optin":false,"fingerprint":"1DRN3KP5G9305Y9","bloodtype":"O+","status":[],"inside":{"apartment":[]},"thirst":96.2,"isdead":false,"phonedata":{"InstalledApps":[],"SerialNumber":36675426},"jailitems":[],"callsign":"NO CALLSIGN","armor":0,"ishandcuffed":false,"attachmentcraftingrep":0}', '[{"slot":1,"name":"money","count":50500},{"slot":2,"name":"phone","metadata":{"durability":1767162584,"degrade":43200},"count":1},{"slot":3,"name":"id_card","metadata":{"mugShot":"none","cardtype":"id_card","firstname":"Sari","sex":"F","citizenid":"D8E35P04","badge":"none","nationality":"Cuba","lastname":"V","birthdate":"1996-07-31"},"count":1},{"slot":4,"name":"driver_license","metadata":{"mugShot":"none","cardtype":"driver_license","firstname":"Sari","sex":"F","citizenid":"D8E35P04","badge":"none","nationality":"Cuba","lastname":"V","birthdate":"1996-07-31"},"count":1},{"slot":5,"name":"burger","count":5},{"slot":7,"name":"phone","metadata":{"durability":1767162676,"degrade":43200},"count":1},{"slot":8,"name":"lockpick","count":5}]', NULL, '2025-12-04 03:25:42', '2025-12-04 03:25:42', 0, '555535'),
-	(4680, 11, 'G641A281', 1, 'license2:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5', 'DEV Dx', '{"bank":6200,"crypto":0,"cash":2181121510}', '{"phone":"3825102884","account":"US07QBX7653820135","cid":"1","backstory":"placeholder backstory","lastname":"Dx","birthdate":"1970-01-01","nationality":"United Arab Emirates","firstname":"Mr","gender":0}', '{"label":"Civilian","name":"mechanic","onduty":true,"grade":{"level":0,"name":"Freelancer"},"payment":100,"isboss":false,"bankAuth":false}', '{"label":"No Gang","name":"none","grade":{"level":0,"name":"Unaffiliated"},"isboss":false,"bankAuth":false}', '{"x":-2445.441650390625,"y":-896.8746948242188,"z":13.845458984375,"w":269.2913513183594}', '{"criminalrecord":{"hasRecord":false},"isdead":false,"jailitems":[],"health":200,"tracker":false,"optin":true,"phone":[],"thirst":88.60000000000001,"armor":0,"inlaststand":false,"stress":0,"walletid":"QB-66828907","bloodtype":"B-","status":[],"jobrep":{"tow":0,"hotdog":0,"trucker":0,"taxi":0},"licences":{"driver":true,"weapon":false,"id":true},"callsign":"NO CALLSIGN","hunger":87.39999999999999,"fingerprint":"TNSORVS7A6PF1N9","dealerrep":0,"phonedata":{"SerialNumber":24654952,"InstalledApps":[]},"inside":{"apartment":[]},"injail":0,"ishandcuffed":false,"craftingrep":0,"attachmentcraftingrep":0}', '[{"slot":1,"count":2181121510,"name":"money"},{"slot":2,"count":1,"metadata":{"degrade":43200,"durability":1767200252},"name":"phone"},{"slot":3,"count":1,"metadata":{"badge":"none","mugShot":"none","birthdate":"1970-01-01","firstname":"Mr","lastname":"Dx","citizenid":"G641A281","cardtype":"id_card","sex":"M","nationality":"United Arab Emirates"},"name":"id_card"},{"slot":4,"count":1,"metadata":{"badge":"none","mugShot":"data:image/png;base64,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","birthdate":"1970-01-01","firstname":"Mr","lastname":"Dx","citizenid":"G641A281","cardtype":"driver_license","sex":"M","nationality":"United Arab Emirates"},"name":"driver_license"},{"slot":5,"count":2,"name":"mechanic_tablet"}]', NULL, '2025-12-03 15:43:18', '2025-12-03 15:43:18', 0, '946816'),
-	(4867, 30, 'M4CZ13BJ', 1, 'license2:10b3a8bb00679c8c4d321e9fce24218a9a2fc7d0', 'minahh<3', '{"cash":500,"crypto":0,"bank":5400}', '{"lastname":"Naveyah","phone":"8097798582","account":"US05QBX8077995967","nationality":"United States","gender":1,"birthdate":"2005-07-06","firstname":"Aminah","backstory":"placeholder backstory","cid":"1"}', '{"isboss":false,"payment":100,"grade":{"name":"Freelancer","level":0},"name":"unemployed","onduty":true,"bankAuth":false,"label":"Civilian"}', '{"isboss":false,"name":"none","grade":{"name":"Unaffiliated","level":0},"bankAuth":false,"label":"No Gang"}', '{"x":-1041.4154052734376,"y":-2733.982421875,"z":20.1640625,"w":56.69291305541992}', '{"isdead":false,"tracker":false,"armor":0,"status":[],"ishandcuffed":false,"attachmentcraftingrep":0,"phonedata":{"SerialNumber":18915484,"InstalledApps":[]},"phone":[],"dealerrep":0,"criminalrecord":{"hasRecord":false},"health":200,"jailitems":[],"thirst":73.40000000000002,"injail":0,"bloodtype":"A-","callsign":"NO CALLSIGN","licences":{"weapon":false,"id":true,"driver":true},"craftingrep":0,"jobrep":{"hotdog":0,"trucker":0,"tow":0,"taxi":0},"hunger":70.59999999999998,"optin":false,"fingerprint":"U0M8L9D32P8D4UJ","inlaststand":false,"inside":{"apartment":[]},"stress":0,"walletid":"QB-31513961"}', '[{"name":"phone","slot":1,"metadata":{"degrade":43200,"durability":1767235013},"count":1},{"name":"driver_license","slot":24,"metadata":{"citizenid":"M4CZ13BJ","badge":"none","firstname":"Aminah","nationality":"United States","lastname":"Naveyah","sex":"F","mugShot":"data:image/png;base64,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","birthdate":"2005-07-06","cardtype":"driver_license"},"count":1},{"name":"id_card","slot":23,"metadata":{"citizenid":"M4CZ13BJ","badge":"none","firstname":"Aminah","nationality":"United States","lastname":"Naveyah","sex":"F","mugShot":"data:image/png;base64,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","birthdate":"2005-07-06","cardtype":"id_card"},"count":1},{"name":"money","slot":5,"count":500}]', NULL, '2025-12-02 03:18:04', '2025-12-02 03:18:04', 0, NULL),
-	(4719, 29, 'R9C0SPP1', 1, 'license2:f068a96c1d23d25e41125893c099286ddad06604', 'deeeeznutz', '{"cash":23168542481,"bank":10605125,"crypto":0}', '{"firstname":"Tyb","lastname":"Fazo","birthdate":"1999-08-05","cid":"1","gender":0,"account":"US06QBX2717909038","backstory":"placeholder backstory","phone":"5374738090","nationality":"Antigua and Barbuda"}', '{"label":"Real Estate","isboss":true,"grade":{"level":4,"name":"Manager"},"bankAuth":true,"type":"realestate","onduty":true,"payment":150,"name":"realestate"}', '{"label":"No Gang","isboss":false,"grade":{"level":0,"name":"Unaffiliated"},"bankAuth":false,"name":"none"}', '{"x":-1927.5296630859376,"y":4598.0439453125,"z":56.5428466796875,"w":136.06298828125}', '{"craftingrep":0,"injail":0,"inlaststand":false,"hunger":66.39999999999998,"bloodtype":"B+","dealerrep":0,"phone":[],"stress":0,"tracker":false,"fingerprint":"C5SGBRW37O57VN9","callsign":"NO CALLSIGN","optin":false,"criminalrecord":{"hasRecord":false},"isdead":false,"health":200,"inside":{"apartment":[]},"thirst":69.60000000000002,"status":[],"attachmentcraftingrep":0,"jobrep":{"hotdog":0,"taxi":0,"tow":0,"trucker":0},"walletid":"QB-54535743","phonedata":{"SerialNumber":80804707,"InstalledApps":[]},"ishandcuffed":false,"jailitems":[],"armor":0,"licences":{"driver":true,"weapon":true,"id":true}}', '[{"slot":1,"metadata":{"keyoptions":["REMOTE_START"],"vehName":"SC1","degrade":360,"durability":1764840179,"lockid":"none","description":"Vehicle Keys forSC1  \\n Plate #65NNH775","plate":"65NNH775"},"name":"vehiclekeys","count":1},{"slot":2,"metadata":{"durability":1767217578,"degrade":43200},"name":"phone","count":1},{"slot":3,"metadata":{"plate":"08EHU887","vehName":"Buzzard","degrade":360,"description":"Vehicle Keys forBuzzard  \\n Plate #08EHU887","lockid":"none","durability":1764841227,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":4,"metadata":{"plate":"61IYM054","vehName":"Future Shock Issi","degrade":360,"description":"Vehicle Keys forFuture Shock Issi  \\n Plate #61IYM054","lockid":"none","durability":1764841428,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":5,"name":"burger","count":4},{"slot":6,"name":"at_skin_pearl","count":1},{"slot":7,"metadata":{"durability":1767217850,"degrade":43200},"name":"phone","count":1},{"slot":8,"metadata":{"plate":"06BNO302","vehName":"Trophy Truck","degrade":360,"description":"Vehicle Keys forTrophy Truck  \\n Plate #06BNO302","lockid":"none","durability":1764841435,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":9,"metadata":{"plate":"46TUX100","vehName":"Nero","degrade":360,"description":"Vehicle Keys forNero  \\n Plate #46TUX100","lockid":"none","durability":1764841442,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":10,"name":"mechanic_tablet","count":1},{"slot":11,"metadata":{"plate":"03MQI497","vehName":"Future Shock Issi","degrade":360,"description":"Vehicle Keys forFuture Shock Issi  \\n Plate #03MQI497","lockid":"none","durability":1764841451,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":12,"metadata":{"plate":"65CHA424","vehName":"Trophy Truck","degrade":360,"description":"Vehicle Keys forTrophy Truck  \\n Plate #65CHA424","lockid":"none","durability":1764841457,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":13,"name":"lockpick","count":5},{"slot":14,"metadata":{"plate":"04RAM561","vehName":"Toros","degrade":360,"description":"Vehicle Keys forToros  \\n Plate #04RAM561","lockid":"none","durability":1764841464,"keyoptions":["REMOTE_START"]},"name":"vehiclekeys","count":1},{"slot":17,"name":"money","count":23168542481},{"slot":18,"metadata":{"cardtype":"id_card","nationality":"Antigua and Barbuda","lastname":"Fazo","birthdate":"1999-08-05","firstname":"Tyb","citizenid":"R9C0SPP1","badge":"none","sex":"M","mugShot":"none"},"name":"id_card","count":1},{"slot":19,"metadata":{"cardtype":"driver_license","nationality":"Antigua and Barbuda","lastname":"Fazo","birthdate":"1999-08-05","firstname":"Tyb","citizenid":"R9C0SPP1","badge":"none","sex":"M","mugShot":"data:image/png;base64,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"},"name":"driver_license","count":1}]', NULL, '2025-12-04 04:28:34', '2025-12-04 04:28:34', 0, '941909'),
-	(4715, 28, 'RTJ5P4DZ', 1, 'license2:f94814371b99087d54639a47a7fb2d1d9b6eab03', 'bradley', '{"cash":43400,"bank":5100,"crypto":0}', '{"backstory":"placeholder backstory","birthdate":"1999-09-03","phone":"9595223543","firstname":"SLIME","gender":0,"account":"US07QBX9145234187","nationality":"United States","lastname":"BALL","cid":"1"}', '{"grade":{"name":"Freelancer","level":0},"onduty":true,"label":"Civilian","payment":100,"bankAuth":false,"name":"unemployed","isboss":false}', '{"grade":{"name":"Unaffiliated","level":0},"label":"No Gang","bankAuth":false,"name":"none","isboss":false}', '{"x":-1532.2021484375,"y":-0.09230422973632,"z":56.7451171875,"w":19.84251976013183}', '{"criminalrecord":{"hasRecord":false},"jobrep":{"trucker":0,"taxi":0,"hotdog":0,"tow":0},"injail":0,"inlaststand":false,"stress":0,"ishandcuffed":false,"fingerprint":"VZJICD54OEF1B4E","dealerrep":0,"phonedata":{"InstalledApps":[],"SerialNumber":68023575},"phone":[],"licences":{"driver":true,"id":true,"weapon":false},"inside":{"apartment":[]},"optin":false,"tracker":false,"callsign":"NO CALLSIGN","walletid":"QB-89355905","attachmentcraftingrep":0,"isdead":false,"hunger":100,"health":200,"craftingrep":0,"status":[],"thirst":100,"armor":0,"bloodtype":"AB-","jailitems":[]}', '[{"count":1,"slot":1,"metadata":{"durability":78.90000000000035,"ammo":1,"registered":"SLIME BALL","components":[],"serial":"121218GPJ196474"},"name":"WEAPON_PISTOL"},{"count":1,"slot":2,"metadata":{"durability":1767215915,"degrade":43200},"name":"phone"},{"count":1,"slot":3,"metadata":{"cardtype":"id_card","nationality":"United States","citizenid":"RTJ5P4DZ","badge":"none","sex":"M","firstname":"SLIME","lastname":"BALL","mugShot":"none","birthdate":"1999-09-03"},"name":"id_card"},{"count":1,"slot":4,"metadata":{"cardtype":"driver_license","nationality":"United States","citizenid":"RTJ5P4DZ","badge":"none","sex":"M","firstname":"SLIME","lastname":"BALL","mugShot":"none","birthdate":"1999-09-03"},"name":"driver_license"},{"count":43400,"slot":6,"name":"money"},{"count":1,"slot":7,"metadata":{"durability":1767215938,"degrade":43200},"name":"phone"},{"count":5,"slot":8,"name":"lockpick"},{"count":1,"slot":9,"metadata":{"durability":1764730060,"keyoptions":["REMOTE_START"],"description":"Vehicle Keys forSC1  \\n Plate #68BCF814","vehName":"SC1","degrade":360,"lockid":"none","plate":"68BCF814"},"name":"vehiclekeys"},{"count":5,"slot":10,"name":"burger"},{"count":5,"slot":15,"metadata":{"durability":1764710338,"degrade":1440},"name":"sprunk"}]', NULL, '2025-12-02 20:52:27', '2025-12-02 20:52:27', 0, '626323'),
-	(4645, 26, 'U4XD2430', 1, 'license2:c0da2116c504d911d2cbe314ec88e991416e9fd7', 'ANT SRT', '{"cash":0,"crypto":0,"bank":2869250}', '{"gender":0,"nationality":"United Arab Emirates","firstname":"Alex","lastname":"Srt","account":"US08QBX8102853414","backstory":"placeholder backstory","cid":"1","birthdate":"2001-01-01","phone":"8936104086"}', '{"grade":{"name":"Experienced","level":2},"bankAuth":false,"payment":100,"label":"Mechanic","name":"saltlabmechanic","type":"mechanic","onduty":true,"isboss":false}', '{"grade":{"name":"Unaffiliated","level":0},"bankAuth":false,"name":"none","label":"No Gang","isboss":false}', '{"x":-385.96484375,"y":-5.67032623291015,"z":55.801513671875,"w":257.9527587890625}', '{"stress":0,"hunger":95.8,"inlaststand":false,"craftingrep":0,"criminalrecord":{"hasRecord":false},"tracker":false,"injail":0,"ishandcuffed":false,"jobrep":{"tow":0,"hotdog":0,"trucker":0,"taxi":0},"dealerrep":0,"licences":{"id":true,"weapon":false,"driver":true},"health":200,"walletid":"QB-84634695","optin":false,"fingerprint":"F99EIU9X2M7QH4P","bloodtype":"AB+","status":[],"inside":{"apartment":[]},"thirst":96.2,"isdead":false,"attachmentcraftingrep":0,"jailitems":[],"phonedata":{"InstalledApps":[],"SerialNumber":37047267},"armor":0,"callsign":"NO CALLSIGN","phone":[]}', NULL, NULL, '2025-12-04 03:25:42', '2025-12-04 03:25:42', 0, '926413'),
-	(4994, 27, 'VN5719QE', 2, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'Sarivive', '{"crypto":0,"cash":500,"bank":5000}', '{"backstory":"placeholder backstory","firstname":"Sari","account":"US06QBX9820598051","lastname":"Vive","birthdate":"1996-07-31","nationality":"Cuba","phone":"2293021972","cid":"2","gender":1}', '{"name":"unemployed","grade":{"name":"Freelancer","level":0},"bankAuth":false,"isboss":false,"label":"Civilian","payment":100,"onduty":true}', '{"name":"none","isboss":false,"label":"No Gang","grade":{"name":"Unaffiliated","level":0},"bankAuth":false}', '{"x":-1036.760498046875,"y":-2736.527587890625,"z":20.1640625,"w":323.14959716796877}', '{"optin":false,"attachmentcraftingrep":0,"bloodtype":"B-","fingerprint":"2U9X698I434HW73","injail":0,"health":200,"inlaststand":false,"isdead":false,"armor":0,"dealerrep":0,"status":[],"walletid":"QB-72358056","stress":0,"hunger":95.8,"thirst":96.2,"licences":{"id":true,"driver":true,"weapon":false},"inside":{"apartment":[]},"criminalrecord":{"hasRecord":false},"callsign":"NO CALLSIGN","jailitems":[],"jobrep":{"hotdog":0,"tow":0,"trucker":0,"taxi":0},"craftingrep":0,"phone":[],"ishandcuffed":false,"tracker":false,"phonedata":{"SerialNumber":61574889,"InstalledApps":[]}}', '[{"slot":1,"count":500,"name":"money"},{"metadata":{"degrade":43200,"durability":1767243151},"slot":2,"count":1,"name":"phone"},{"metadata":{"badge":"none","birthdate":"1996-07-31","citizenid":"VN5719QE","nationality":"Cuba","sex":"F","lastname":"Vive","mugShot":"none","firstname":"Sari","cardtype":"id_card"},"slot":3,"count":1,"name":"id_card"},{"metadata":{"badge":"none","birthdate":"1996-07-31","citizenid":"VN5719QE","nationality":"Cuba","sex":"F","lastname":"Vive","mugShot":"none","firstname":"Sari","cardtype":"driver_license"},"slot":4,"count":1,"name":"driver_license"}]', NULL, '2025-12-02 04:58:23', '2025-12-02 04:58:23', 0, NULL);
+-- Dumping data for table miamifres.players: ~9 rows (approximately)
+INSERT INTO `players` (`id`, `userId`, `citizenid`, `cid`, `license`, `name`, `money`, `charinfo`, `job`, `gang`, `position`, `metadata`, `inventory`, `phone_number`, `last_updated`, `last_logged_out`, `electrocourses`, `iban`, `skills`, `ganginfo`) VALUES
+	(5747, 27, 'D27RS572', 3, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'Sarivive', '{"cash":500,"bank":5300,"crypto":0}', '{"lastname":"Vive","gender":1,"cid":"3","firstname":"Sari","backstory":"placeholder backstory","birthdate":"1996-07-31","phone":"1797413979","nationality":"Cuba","account":"US03QBX9531570176"}', '{"grade":{"level":0,"name":"Freelancer"},"payment":100,"bankAuth":false,"isboss":false,"label":"Civilian","onduty":true,"name":"unemployed"}', '{"grade":{"level":0,"name":"Unaffiliated"},"bankAuth":false,"label":"No Gang","isboss":false,"name":"none"}', '{"x":-995.1428833007813,"y":-67.22637176513672,"z":41.5802001953125,"w":325.9842529296875}', '{"health":200,"fingerprint":"L9AA5K8IMG39B27","phonedata":{"SerialNumber":12992641,"InstalledApps":[]},"callsign":"NO CALLSIGN","walletid":"QB-60174198","jobrep":{"tow":0,"taxi":0,"hotdog":0,"trucker":0},"hunger":78.99999999999999,"tracker":false,"dealerrep":0,"inlaststand":false,"isdead":false,"inside":{"apartment":[]},"licences":{"driver":true,"id":true,"weapon":false},"attachmentcraftingrep":0,"criminalrecord":{"hasRecord":false},"craftingrep":0,"bloodtype":"B+","status":[],"armor":0,"thirst":81.00000000000002,"jailitems":[],"ishandcuffed":false,"injail":0,"phone":[],"stress":0,"optin":false}', '[{"count":500,"slot":1,"name":"money"},{"metadata":{"durability":1767404880,"degrade":43200},"count":1,"slot":2,"name":"phone"},{"metadata":{"citizenid":"D27RS572","sex":"F","cardtype":"id_card","mugShot":"none","firstname":"Sari","lastname":"Vive","badge":"none","birthdate":"1996-07-31","nationality":"Cuba"},"count":1,"slot":3,"name":"id_card"},{"metadata":{"citizenid":"D27RS572","sex":"F","cardtype":"driver_license","mugShot":"none","firstname":"Sari","lastname":"Vive","badge":"none","birthdate":"1996-07-31","nationality":"Cuba"},"count":1,"slot":4,"name":"driver_license"}]', NULL, '2025-12-04 02:15:07', '2025-12-04 02:15:07', 0, '240118', NULL, NULL),
+	(4675, 27, 'D8E35P04', 1, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'Sarivive', '{"cash":999999909998500,"bank":101200000020201830000.0,"crypto":0}', '{"firstname":"Sari","lastname":"V","phone":"9916968571","backstory":"placeholder backstory","account":"US04QBX3586212019","nationality":"Cuba","birthdate":"1996-07-31","gender":1,"cid":"1"}', '{"bankAuth":false,"label":"Civilian","name":"unemployed","grade":{"level":0,"name":"Freelancer"},"payment":100,"isboss":false,"onduty":true}', '{"bankAuth":false,"label":"No Gang","name":"none","grade":{"level":0,"name":"Unaffiliated"},"isboss":false}', '{"x":408.01318359375,"y":-784.8131713867188,"z":33.18896484375,"w":19.84251976013183}', '{"attachmentcraftingrep":0,"injail":0,"dealerrep":0,"craftingrep":0,"licences":{"id":true,"driver":true,"weapon":false},"walletid":"QB-26694036","callsign":"NO CALLSIGN","ishandcuffed":false,"inlaststand":false,"jailitems":[],"phonedata":{"InstalledApps":[],"SerialNumber":36675426},"isdead":false,"thirst":20.20000000000004,"status":[],"fingerprint":"1DRN3KP5G9305Y9","tracker":false,"bloodtype":"O+","criminalrecord":{"hasRecord":false},"inside":{"apartment":[]},"hunger":11.79999999999995,"phone":[],"optin":false,"armor":0,"health":200,"jobrep":{"taxi":0,"tow":0,"hotdog":0,"trucker":0},"stress":0}', '[{"name":"money","count":999999909998500,"slot":1},{"metadata":{"durability":1767162584,"degrade":43200},"name":"phone","count":1,"slot":2},{"metadata":{"sex":"F","badge":"none","citizenid":"D8E35P04","birthdate":"1996-07-31","lastname":"V","firstname":"Sari","mugShot":"none","cardtype":"id_card","nationality":"Cuba"},"name":"id_card","count":1,"slot":3},{"metadata":{"sex":"F","badge":"none","citizenid":"D8E35P04","birthdate":"1996-07-31","lastname":"V","firstname":"Sari","mugShot":"none","cardtype":"driver_license","nationality":"Cuba"},"name":"driver_license","count":1,"slot":4},{"name":"burger","count":5,"slot":5},{"metadata":{"plate":"44ZXS194","lockid":"none","vehName":"Needs pairing.","description":"  \\n Plate #44ZXS194","keyoptions":["REMOTE_START"],"degrade":360,"durability":1764916371},"name":"vehiclekeys","count":1,"slot":6},{"metadata":{"durability":1767162676,"degrade":43200},"name":"phone","count":1,"slot":7},{"name":"lockpick","count":5,"slot":8},{"metadata":{"plate":"44ZXS194","name":"Sari V D8E35P04","veh":"Dundreary Stretch"},"name":"rentalpapers","count":1,"slot":9}]', NULL, '2025-12-05 02:57:32', '2025-12-05 02:57:32', 0, '555535', '{"Stamina":{"Stat":"MP0_STAMINA","RemoveAmount":0,"icon":"fas fa-walking","Current":0},"Heist Reputation":{"Stat":"HEIST_ABILITY","RemoveAmount":0,"icon":"fa-solid fa-user-secret","Current":0},"Searching":{"Stat":"BINDIVE_ABILITY","RemoveAmount":0,"icon":"fas fa-trash","Current":0},"Strength":{"Stat":"MP0_STRENGTH","RemoveAmount":0,"icon":"fas fa-dumbbell","Current":0},"Driving":{"Stat":"DRIVER_ABILITY","RemoveAmount":0,"icon":"fas fa-car-alt","Current":0},"Hacking":{"Stat":"HACK_ABILITY","RemoveAmount":0,"icon":"fas fa-laptop-code","Current":0},"Diving":{"Stat":"DIVING_ABILITY","RemoveAmount":0,"icon":"fas fa-water","Current":0},"Hitman":{"Stat":"HITMAN_ABILITY","RemoveAmount":0,"icon":"fas fa-skull","Current":0},"Drug Manufacture":{"Stat":"DRUGMAKE_ABILITY","RemoveAmount":0,"icon":"fas fa-pills","Current":0},"Lumberjack":{"Stat":"TREE_ABILITY","RemoveAmount":0,"icon":"fas fa-tree","Current":0},"Electrical":{"Stat":"ELECTRICAL_ABILITY","RemoveAmount":0,"icon":"fas fa-bolt","Current":0},"Scraping":{"Stat":"SCRAP_ABILITY","RemoveAmount":0,"icon":"fas fa-screwdriver","Current":0},"Street Reputation":{"Stat":"DRUGREP_ABILITY","RemoveAmount":0,"icon":"fas fa-cannabis","Current":0},"Delivery Runner":{"Stat":"RUNNER_ABILITY","RemoveAmount":0,"icon":"fas fa-car","Current":0}}', NULL),
+	(4680, 11, 'G641A281', 1, 'license2:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5', 'DEV Dx', '{"crypto":0,"cash":2181121510,"bank":6200}', '{"gender":0,"firstname":"Mr","lastname":"Dx","phone":"3825102884","backstory":"placeholder backstory","birthdate":"1970-01-01","cid":"1","account":"US07QBX7653820135","nationality":"United Arab Emirates"}', '{"grade":{"level":0,"name":"Freelancer"},"bankAuth":false,"name":"mechanic","payment":100,"isboss":false,"onduty":true,"label":"Civilian"}', '{"name":"none","isboss":false,"grade":{"level":0,"name":"Unaffiliated"},"bankAuth":false,"label":"No Gang"}', '{"x":3592.496826171875,"y":-3495.191162109375,"z":390.438720703125,"w":354.3307189941406}', '{"bloodtype":"B-","status":[],"injail":0,"optin":true,"phone":[],"phonedata":{"InstalledApps":[],"SerialNumber":24654952},"stress":0,"walletid":"QB-66828907","fingerprint":"TNSORVS7A6PF1N9","jailitems":[],"tracker":false,"armor":0,"callsign":"NO CALLSIGN","health":200,"licences":{"id":true,"weapon":false,"driver":true},"attachmentcraftingrep":0,"thirst":84.80000000000001,"craftingrep":0,"jobrep":{"trucker":0,"taxi":0,"hotdog":0,"tow":0},"criminalrecord":{"hasRecord":false},"dealerrep":0,"ishandcuffed":false,"inside":{"apartment":[]},"isdead":false,"hunger":83.19999999999999,"inlaststand":false}', '[{"count":2181121510,"name":"money","slot":1},{"metadata":{"durability":1767200252,"degrade":43200},"count":1,"name":"phone","slot":2},{"metadata":{"nationality":"United Arab Emirates","citizenid":"G641A281","firstname":"Mr","sex":"M","mugShot":"none","birthdate":"1970-01-01","badge":"none","cardtype":"id_card","lastname":"Dx"},"count":1,"name":"id_card","slot":3},{"metadata":{"nationality":"United Arab Emirates","citizenid":"G641A281","firstname":"Mr","sex":"M","mugShot":"data:image/png;base64,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","birthdate":"1970-01-01","badge":"none","cardtype":"driver_license","lastname":"Dx"},"count":1,"name":"driver_license","slot":4},{"count":2,"name":"mechanic_tablet","slot":5}]', NULL, '2025-12-04 22:53:05', '2025-12-04 22:53:05', 0, '946816', NULL, NULL),
+	(6177, 33, 'J85YFAHP', 1, 'license2:8dacb1a204e817aeb4cb50c8980753051d859929', 'Toby', '{"crypto":0,"cash":50500,"bank":5000}', '{"account":"US06QBX2003315917","firstname":"Rob","nationality":"United Arab Emirates","phone":"8732001197","cid":"1","birthdate":"2000-01-01","backstory":"placeholder backstory","gender":0,"lastname":"Stark"}', '{"grade":{"level":0,"name":"Freelancer"},"label":"Civilian","bankAuth":false,"payment":100,"onduty":true,"isboss":false,"name":"unemployed"}', '{"grade":{"level":0,"name":"Unaffiliated"},"label":"No Gang","bankAuth":false,"isboss":false,"name":"none"}', '{"x":-122.69010925292969,"y":-1143.7186279296876,"z":25.050537109375,"w":291.968505859375}', '{"jailitems":[],"inlaststand":false,"ishandcuffed":false,"phone":[],"phonedata":{"InstalledApps":[],"SerialNumber":60129361},"status":[],"inside":{"apartment":[]},"walletid":"QB-62912882","optin":false,"bloodtype":"O-","criminalrecord":{"hasRecord":false},"fingerprint":"94X1GCMP9496785","hunger":95.8,"callsign":"NO CALLSIGN","jobrep":{"taxi":0,"tow":0,"hotdog":0,"trucker":0},"stress":0,"thirst":96.2,"tracker":false,"health":144,"attachmentcraftingrep":0,"isdead":false,"injail":0,"armor":0,"dealerrep":0,"craftingrep":0,"licences":{"driver":true,"id":true,"weapon":false}}', '[{"name":"money","slot":46,"count":50500},{"name":"phone","metadata":{"durability":1767623490,"degrade":43200},"slot":47,"count":1},{"name":"id_card","metadata":{"cardtype":"id_card","firstname":"Rob","birthdate":"2000-01-01","nationality":"United Arab Emirates","citizenid":"J85YFAHP","sex":"M","lastname":"Stark","mugShot":"none","badge":"none"},"slot":48,"count":1},{"name":"driver_license","metadata":{"cardtype":"driver_license","firstname":"Rob","birthdate":"2000-01-01","nationality":"United Arab Emirates","citizenid":"J85YFAHP","sex":"M","lastname":"Stark","mugShot":"none","badge":"none"},"slot":49,"count":1},{"name":"sprunk","metadata":{"durability":1765117930,"degrade":1440},"slot":6,"count":5},{"name":"phone","metadata":{"durability":1767623530,"degrade":43200},"slot":7,"count":1},{"name":"lockpick","slot":8,"count":5},{"name":"vehiclekeys","metadata":{"vehName":"Sultan","lockid":"none","durability":1765053132,"degrade":360,"keyoptions":["REMOTE_START"],"description":"Vehicle Keys forSultan  \\n Plate #23XCZ557","plate":"23XCZ557"},"slot":9,"count":1},{"name":"vehiclekeys","metadata":{"vehName":"Coquette","lockid":"none","durability":1765053512,"degrade":360,"keyoptions":["REMOTE_START"],"description":"Vehicle Keys forCoquette  \\n Plate #01MZE440","plate":"01MZE440"},"slot":2,"count":1},{"name":"burger","slot":1,"count":5}]', NULL, '2025-12-06 14:39:32', '2025-12-06 14:39:32', 0, '468317', '{"Street Reputation":{"Stat":"DRUGREP_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-cannabis"},"Lumberjack":{"Stat":"TREE_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-tree"},"Scraping":{"Stat":"SCRAP_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-screwdriver"},"Hitman":{"Stat":"HITMAN_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-skull"},"Diving":{"Stat":"DIVING_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-water"},"Stamina":{"Stat":"MP0_STAMINA","Current":0,"RemoveAmount":0,"icon":"fas fa-walking"},"Heist Reputation":{"Stat":"HEIST_ABILITY","Current":0,"RemoveAmount":0,"icon":"fa-solid fa-user-secret"},"Driving":{"Stat":"DRIVER_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-car-alt"},"Electrical":{"Stat":"ELECTRICAL_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-bolt"},"Hacking":{"Stat":"HACK_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-laptop-code"},"Drug Manufacture":{"Stat":"DRUGMAKE_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-pills"},"Delivery Runner":{"Stat":"RUNNER_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-car"},"Searching":{"Stat":"BINDIVE_ABILITY","Current":0,"RemoveAmount":0,"icon":"fas fa-trash"},"Strength":{"Stat":"MP0_STRENGTH","Current":0,"RemoveAmount":0,"icon":"fas fa-dumbbell"}}', NULL),
+	(4867, 30, 'M4CZ13BJ', 1, 'license2:10b3a8bb00679c8c4d321e9fce24218a9a2fc7d0', 'minahh<3', '{"cash":500,"crypto":0,"bank":5400}', '{"lastname":"Naveyah","phone":"8097798582","account":"US05QBX8077995967","nationality":"United States","gender":1,"birthdate":"2005-07-06","firstname":"Aminah","backstory":"placeholder backstory","cid":"1"}', '{"isboss":false,"payment":100,"grade":{"name":"Freelancer","level":0},"name":"unemployed","onduty":true,"bankAuth":false,"label":"Civilian"}', '{"isboss":false,"name":"none","grade":{"name":"Unaffiliated","level":0},"bankAuth":false,"label":"No Gang"}', '{"x":-1041.4154052734376,"y":-2733.982421875,"z":20.1640625,"w":56.69291305541992}', '{"isdead":false,"tracker":false,"armor":0,"status":[],"ishandcuffed":false,"attachmentcraftingrep":0,"phonedata":{"SerialNumber":18915484,"InstalledApps":[]},"phone":[],"dealerrep":0,"criminalrecord":{"hasRecord":false},"health":200,"jailitems":[],"thirst":73.40000000000002,"injail":0,"bloodtype":"A-","callsign":"NO CALLSIGN","licences":{"weapon":false,"id":true,"driver":true},"craftingrep":0,"jobrep":{"hotdog":0,"trucker":0,"tow":0,"taxi":0},"hunger":70.59999999999998,"optin":false,"fingerprint":"U0M8L9D32P8D4UJ","inlaststand":false,"inside":{"apartment":[]},"stress":0,"walletid":"QB-31513961"}', '[{"name":"phone","slot":1,"metadata":{"degrade":43200,"durability":1767235013},"count":1},{"name":"driver_license","slot":24,"metadata":{"citizenid":"M4CZ13BJ","badge":"none","firstname":"Aminah","nationality":"United States","lastname":"Naveyah","sex":"F","mugShot":"data:image/png;base64,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","birthdate":"2005-07-06","cardtype":"driver_license"},"count":1},{"name":"id_card","slot":23,"metadata":{"citizenid":"M4CZ13BJ","badge":"none","firstname":"Aminah","nationality":"United States","lastname":"Naveyah","sex":"F","mugShot":"data:image/png;base64,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","birthdate":"2005-07-06","cardtype":"id_card"},"count":1},{"name":"money","slot":5,"count":500}]', NULL, '2025-12-02 03:18:04', '2025-12-02 03:18:04', 0, NULL, NULL, NULL),
+	(4719, 29, 'R9C0SPP1', 1, 'license2:f068a96c1d23d25e41125893c099286ddad06604', 'Virxlヅ', '{"crypto":0,"bank":10605175,"cash":23168541385}', '{"firstname":"Tyb","gender":0,"backstory":"placeholder backstory","nationality":"Antigua and Barbuda","account":"US06QBX2717909038","cid":"1","lastname":"Fazo","phone":"5374738090","birthdate":"1999-08-05"}', '{"grade":{"level":4,"name":"Manager"},"name":"realestate","payment":150,"isboss":true,"bankAuth":true,"onduty":true,"label":"Real Estate","type":"realestate"}', '{"name":"none","isboss":false,"grade":{"level":0,"name":"Unaffiliated"},"label":"No Gang","bankAuth":false}', '{"x":-642.2769165039063,"y":5595.138671875,"z":39.002197265625,"w":311.81103515625}', '{"licences":{"driver":true,"weapon":true,"id":true},"health":200,"craftingrep":0,"injail":0,"attachmentcraftingrep":0,"fingerprint":"C5SGBRW37O57VN9","stress":0,"jobrep":{"taxi":0,"trucker":0,"tow":0,"hotdog":0},"phone":[],"callsign":"NO CALLSIGN","isdead":false,"dealerrep":0,"criminalrecord":{"hasRecord":false},"status":[],"bloodtype":"B+","tracker":false,"walletid":"QB-54535743","inlaststand":false,"thirst":96.2,"ishandcuffed":false,"jailitems":[],"hunger":95.8,"armor":0,"optin":false,"inside":{"apartment":[]},"phonedata":{"InstalledApps":[],"SerialNumber":80804707}}', '[{"metadata":{"durability":1767217578,"degrade":43200},"slot":2,"count":1,"name":"phone"},{"slot":5,"count":3,"name":"burger"},{"slot":6,"count":1,"name":"at_skin_pearl"},{"metadata":{"durability":1767217850,"degrade":43200},"slot":7,"count":1,"name":"phone"},{"slot":10,"count":1,"name":"mechanic_tablet"},{"slot":13,"count":5,"name":"lockpick"},{"slot":17,"count":23168541385,"name":"money"},{"metadata":{"birthdate":"1999-08-05","sex":"M","mugShot":"none","cardtype":"id_card","nationality":"Antigua and Barbuda","firstname":"Tyb","citizenid":"R9C0SPP1","badge":"none","lastname":"Fazo"},"slot":18,"count":1,"name":"id_card"},{"metadata":{"birthdate":"1999-08-05","sex":"M","mugShot":"data:image/png;base64,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","cardtype":"driver_license","nationality":"Antigua and Barbuda","firstname":"Tyb","citizenid":"R9C0SPP1","badge":"none","lastname":"Fazo"},"slot":19,"count":1,"name":"driver_license"},{"metadata":{"durability":1764979632,"degrade":1440},"slot":24,"count":2,"name":"bzzz_energy"}]', NULL, '2025-12-05 15:56:27', '2025-12-05 15:56:27', 0, '941909', '{"Delivery Runner":{"icon":"fas fa-car","Stat":"RUNNER_ABILITY","RemoveAmount":0,"Current":0},"Hacking":{"icon":"fas fa-laptop-code","Stat":"HACK_ABILITY","RemoveAmount":0,"Current":0},"Electrical":{"icon":"fas fa-bolt","Stat":"ELECTRICAL_ABILITY","RemoveAmount":0,"Current":0},"Stamina":{"icon":"fas fa-walking","Stat":"MP0_STAMINA","RemoveAmount":0,"Current":0},"Drug Manufacture":{"icon":"fas fa-pills","Stat":"DRUGMAKE_ABILITY","RemoveAmount":0,"Current":0},"Hitman":{"icon":"fas fa-skull","Stat":"HITMAN_ABILITY","RemoveAmount":0,"Current":0},"Diving":{"icon":"fas fa-water","Stat":"DIVING_ABILITY","RemoveAmount":0,"Current":0},"Searching":{"icon":"fas fa-trash","Stat":"BINDIVE_ABILITY","RemoveAmount":0,"Current":0},"Heist Reputation":{"icon":"fa-solid fa-user-secret","Stat":"HEIST_ABILITY","RemoveAmount":0,"Current":0},"Street Reputation":{"icon":"fas fa-cannabis","Stat":"DRUGREP_ABILITY","RemoveAmount":0,"Current":0},"Lumberjack":{"icon":"fas fa-tree","Stat":"TREE_ABILITY","RemoveAmount":0,"Current":0},"Driving":{"icon":"fas fa-car-alt","Stat":"DRIVER_ABILITY","RemoveAmount":0,"Current":0},"Scraping":{"icon":"fas fa-screwdriver","Stat":"SCRAP_ABILITY","RemoveAmount":0,"Current":0},"Strength":{"icon":"fas fa-dumbbell","Stat":"MP0_STRENGTH","RemoveAmount":0,"Current":0}}', NULL),
+	(4715, 28, 'RTJ5P4DZ', 1, 'license2:f94814371b99087d54639a47a7fb2d1d9b6eab03', 'bradley', '{"cash":43400,"bank":5100,"crypto":0}', '{"backstory":"placeholder backstory","birthdate":"1999-09-03","phone":"9595223543","firstname":"SLIME","gender":0,"account":"US07QBX9145234187","nationality":"United States","lastname":"BALL","cid":"1"}', '{"grade":{"name":"Freelancer","level":0},"onduty":true,"label":"Civilian","payment":100,"bankAuth":false,"name":"unemployed","isboss":false}', '{"grade":{"name":"Unaffiliated","level":0},"label":"No Gang","bankAuth":false,"name":"none","isboss":false}', '{"x":-1532.2021484375,"y":-0.09230422973632,"z":56.7451171875,"w":19.84251976013183}', '{"criminalrecord":{"hasRecord":false},"jobrep":{"trucker":0,"taxi":0,"hotdog":0,"tow":0},"injail":0,"inlaststand":false,"stress":0,"ishandcuffed":false,"fingerprint":"VZJICD54OEF1B4E","dealerrep":0,"phonedata":{"InstalledApps":[],"SerialNumber":68023575},"phone":[],"licences":{"driver":true,"id":true,"weapon":false},"inside":{"apartment":[]},"optin":false,"tracker":false,"callsign":"NO CALLSIGN","walletid":"QB-89355905","attachmentcraftingrep":0,"isdead":false,"hunger":100,"health":200,"craftingrep":0,"status":[],"thirst":100,"armor":0,"bloodtype":"AB-","jailitems":[]}', '[{"count":1,"slot":1,"metadata":{"durability":78.90000000000035,"ammo":1,"registered":"SLIME BALL","components":[],"serial":"121218GPJ196474"},"name":"WEAPON_PISTOL"},{"count":1,"slot":2,"metadata":{"durability":1767215915,"degrade":43200},"name":"phone"},{"count":1,"slot":3,"metadata":{"cardtype":"id_card","nationality":"United States","citizenid":"RTJ5P4DZ","badge":"none","sex":"M","firstname":"SLIME","lastname":"BALL","mugShot":"none","birthdate":"1999-09-03"},"name":"id_card"},{"count":1,"slot":4,"metadata":{"cardtype":"driver_license","nationality":"United States","citizenid":"RTJ5P4DZ","badge":"none","sex":"M","firstname":"SLIME","lastname":"BALL","mugShot":"none","birthdate":"1999-09-03"},"name":"driver_license"},{"count":43400,"slot":6,"name":"money"},{"count":1,"slot":7,"metadata":{"durability":1767215938,"degrade":43200},"name":"phone"},{"count":5,"slot":8,"name":"lockpick"},{"count":1,"slot":9,"metadata":{"durability":1764730060,"keyoptions":["REMOTE_START"],"description":"Vehicle Keys forSC1  \\n Plate #68BCF814","vehName":"SC1","degrade":360,"lockid":"none","plate":"68BCF814"},"name":"vehiclekeys"},{"count":5,"slot":10,"name":"burger"},{"count":5,"slot":15,"metadata":{"durability":1764710338,"degrade":1440},"name":"sprunk"}]', NULL, '2025-12-02 20:52:27', '2025-12-02 20:52:27', 0, '626323', NULL, NULL),
+	(4645, 26, 'U4XD2430', 1, 'license2:c0da2116c504d911d2cbe314ec88e991416e9fd7', 'ANT SRT', '{"bank":2869050,"cash":0,"crypto":0}', '{"nationality":"United Arab Emirates","birthdate":"2001-01-01","phone":"8936104086","firstname":"Alex","cid":"1","lastname":"Srt","backstory":"placeholder backstory","account":"US08QBX8102853414","gender":0}', '{"label":"Mechanic","payment":100,"bankAuth":false,"grade":{"level":2,"name":"Experienced"},"type":"mechanic","name":"saltlabmechanic","onduty":true,"isboss":false}', '{"label":"No Gang","grade":{"level":0,"name":"Unaffiliated"},"bankAuth":false,"name":"none","isboss":false}', '{"x":-83.06373596191406,"y":-1199.3934326171876,"z":203.20361328125,"w":164.40945434570313}', '{"status":[],"optin":false,"fingerprint":"F99EIU9X2M7QH4P","isdead":false,"phone":[],"attachmentcraftingrep":0,"injail":0,"jailitems":[],"phonedata":{"InstalledApps":[],"SerialNumber":37047267},"criminalrecord":{"hasRecord":false},"health":200,"dealerrep":0,"licences":{"id":true,"driver":true,"weapon":false},"callsign":"NO CALLSIGN","walletid":"QB-84634695","tracker":false,"inside":{"apartment":[]},"inlaststand":false,"thirst":16.40000000000004,"craftingrep":0,"armor":0,"ishandcuffed":false,"stress":0,"bloodtype":"AB+","hunger":7.59999999999995,"jobrep":{"trucker":0,"taxi":0,"tow":0,"hotdog":0}}', NULL, NULL, '2025-12-07 01:45:28', '2025-12-07 01:45:28', 0, '926413', '{"Heist Reputation":{"icon":"fa-solid fa-user-secret","Stat":"HEIST_ABILITY","Current":0,"RemoveAmount":0},"Electrical":{"icon":"fas fa-bolt","Stat":"ELECTRICAL_ABILITY","Current":0,"RemoveAmount":0},"Diving":{"icon":"fas fa-water","Stat":"DIVING_ABILITY","Current":0,"RemoveAmount":0},"Lumberjack":{"icon":"fas fa-tree","Stat":"TREE_ABILITY","Current":0,"RemoveAmount":0},"Delivery Runner":{"icon":"fas fa-car","Stat":"RUNNER_ABILITY","Current":0,"RemoveAmount":0},"Strength":{"icon":"fas fa-dumbbell","Stat":"MP0_STRENGTH","Current":0,"RemoveAmount":0},"Driving":{"icon":"fas fa-car-alt","Stat":"DRIVER_ABILITY","Current":0,"RemoveAmount":0},"Hitman":{"icon":"fas fa-skull","Stat":"HITMAN_ABILITY","Current":0,"RemoveAmount":0},"Scraping":{"icon":"fas fa-screwdriver","Stat":"SCRAP_ABILITY","Current":0,"RemoveAmount":0},"Drug Manufacture":{"icon":"fas fa-pills","Stat":"DRUGMAKE_ABILITY","Current":0,"RemoveAmount":0},"Hacking":{"icon":"fas fa-laptop-code","Stat":"HACK_ABILITY","Current":0,"RemoveAmount":0},"Street Reputation":{"icon":"fas fa-cannabis","Stat":"DRUGREP_ABILITY","Current":0,"RemoveAmount":0},"Stamina":{"icon":"fas fa-walking","Stat":"MP0_STAMINA","Current":0,"RemoveAmount":0},"Searching":{"icon":"fas fa-trash","Stat":"BINDIVE_ABILITY","Current":0,"RemoveAmount":0}}', NULL),
+	(4994, 27, 'VN5719QE', 2, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'Sarivive', '{"crypto":0,"cash":500,"bank":5000}', '{"backstory":"placeholder backstory","firstname":"Sari","account":"US06QBX9820598051","lastname":"Vive","birthdate":"1996-07-31","nationality":"Cuba","phone":"2293021972","cid":"2","gender":1}', '{"name":"unemployed","grade":{"name":"Freelancer","level":0},"bankAuth":false,"isboss":false,"label":"Civilian","payment":100,"onduty":true}', '{"name":"none","isboss":false,"label":"No Gang","grade":{"name":"Unaffiliated","level":0},"bankAuth":false}', '{"x":-1036.760498046875,"y":-2736.527587890625,"z":20.1640625,"w":323.14959716796877}', '{"optin":false,"attachmentcraftingrep":0,"bloodtype":"B-","fingerprint":"2U9X698I434HW73","injail":0,"health":200,"inlaststand":false,"isdead":false,"armor":0,"dealerrep":0,"status":[],"walletid":"QB-72358056","stress":0,"hunger":95.8,"thirst":96.2,"licences":{"id":true,"driver":true,"weapon":false},"inside":{"apartment":[]},"criminalrecord":{"hasRecord":false},"callsign":"NO CALLSIGN","jailitems":[],"jobrep":{"hotdog":0,"tow":0,"trucker":0,"taxi":0},"craftingrep":0,"phone":[],"ishandcuffed":false,"tracker":false,"phonedata":{"SerialNumber":61574889,"InstalledApps":[]}}', '[{"slot":1,"count":500,"name":"money"},{"metadata":{"degrade":43200,"durability":1767243151},"slot":2,"count":1,"name":"phone"},{"metadata":{"badge":"none","birthdate":"1996-07-31","citizenid":"VN5719QE","nationality":"Cuba","sex":"F","lastname":"Vive","mugShot":"none","firstname":"Sari","cardtype":"id_card"},"slot":3,"count":1,"name":"id_card"},{"metadata":{"badge":"none","birthdate":"1996-07-31","citizenid":"VN5719QE","nationality":"Cuba","sex":"F","lastname":"Vive","mugShot":"none","firstname":"Sari","cardtype":"driver_license"},"slot":4,"count":1,"name":"driver_license"}]', NULL, '2025-12-02 04:58:23', '2025-12-02 04:58:23', 0, NULL, NULL, NULL);
 
 -- Dumping structure for table miamifres.playerskins
 CREATE TABLE IF NOT EXISTS `playerskins` (
@@ -6390,16 +6517,17 @@ CREATE TABLE IF NOT EXISTS `playerskins` (
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`),
   KEY `active` (`active`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table miamifres.playerskins: ~6 rows (approximately)
+-- Dumping data for table miamifres.playerskins: ~7 rows (approximately)
 INSERT INTO `playerskins` (`id`, `citizenid`, `model`, `skin`, `active`) VALUES
-	(86, 'D8E35P04', 'mp_f_freemode_01', '{"model":"mp_f_freemode_01","tattoos":[],"eyeColor":0,"components":[{"texture":0,"drawable":0,"component_id":0},{"texture":0,"drawable":0,"component_id":1},{"texture":0,"drawable":0,"component_id":2},{"texture":0,"drawable":0,"component_id":3},{"texture":0,"drawable":0,"component_id":4},{"texture":0,"drawable":0,"component_id":5},{"texture":0,"drawable":0,"component_id":6},{"texture":0,"drawable":0,"component_id":7},{"texture":0,"drawable":0,"component_id":8},{"texture":0,"drawable":0,"component_id":9},{"texture":0,"drawable":0,"component_id":10},{"texture":0,"drawable":0,"component_id":11}],"faceFeatures":{"chinHole":0,"chinBoneSize":0,"nosePeakHigh":0,"neckThickness":0,"lipsThickness":0,"jawBoneBackSize":0,"noseBoneTwist":0,"nosePeakSize":0,"chinBoneLowering":0,"noseWidth":0,"eyeBrownHigh":0,"noseBoneHigh":0,"chinBoneLenght":0,"jawBoneWidth":0,"cheeksBoneHigh":0,"eyeBrownForward":0,"cheeksWidth":0,"cheeksBoneWidth":0,"nosePeakLowering":0,"eyesOpening":0},"headOverlays":{"blemishes":{"color":0,"opacity":0,"style":0,"secondColor":0},"sunDamage":{"color":0,"opacity":0,"style":0,"secondColor":0},"ageing":{"color":0,"opacity":0,"style":0,"secondColor":0},"bodyBlemishes":{"color":0,"opacity":0,"style":0,"secondColor":0},"chestHair":{"color":0,"opacity":0,"style":0,"secondColor":0},"blush":{"color":0,"opacity":0,"style":0,"secondColor":0},"moleAndFreckles":{"color":0,"opacity":0,"style":0,"secondColor":0},"eyebrows":{"color":0,"opacity":0,"style":0,"secondColor":0},"lipstick":{"color":0,"opacity":0,"style":0,"secondColor":0},"complexion":{"color":0,"opacity":0,"style":0,"secondColor":0},"beard":{"color":0,"opacity":0,"style":0,"secondColor":0},"makeUp":{"color":0,"opacity":0,"style":0,"secondColor":0}},"props":[{"prop_id":0,"drawable":-1,"texture":-1},{"prop_id":1,"drawable":-1,"texture":-1},{"prop_id":2,"drawable":-1,"texture":-1},{"prop_id":6,"drawable":-1,"texture":-1},{"prop_id":7,"drawable":-1,"texture":-1}],"hair":{"color":0,"highlight":0,"texture":0,"style":387},"headBlend":{"skinFirst":20,"skinMix":0.1,"skinThird":0,"skinSecond":15,"shapeMix":0.3,"shapeThird":0,"thirdMix":0,"shapeSecond":21,"shapeFirst":45}}', 1),
 	(87, 'G641A281', 'mp_m_freemode_01', '{"model":"mp_m_freemode_01","faceFeatures":{"eyeBrownForward":0,"noseBoneTwist":0,"chinBoneLowering":0,"nosePeakHigh":0,"eyesOpening":0,"nosePeakSize":0,"noseWidth":0,"neckThickness":0,"cheeksWidth":0,"jawBoneBackSize":0,"noseBoneHigh":0,"eyeBrownHigh":0,"nosePeakLowering":0,"chinBoneSize":0,"cheeksBoneHigh":0,"lipsThickness":0,"chinHole":0,"cheeksBoneWidth":0,"chinBoneLenght":0,"jawBoneWidth":0},"headOverlays":{"chestHair":{"color":0,"opacity":0,"style":0,"secondColor":0},"ageing":{"color":0,"opacity":0,"style":0,"secondColor":0},"beard":{"color":0,"opacity":0,"style":0,"secondColor":0},"bodyBlemishes":{"color":0,"opacity":0,"style":0,"secondColor":0},"lipstick":{"color":0,"opacity":0,"style":0,"secondColor":0},"complexion":{"color":0,"opacity":0,"style":0,"secondColor":0},"makeUp":{"color":0,"opacity":0,"style":0,"secondColor":0},"blemishes":{"color":0,"opacity":0,"style":0,"secondColor":0},"eyebrows":{"color":0,"opacity":0,"style":0,"secondColor":0},"sunDamage":{"color":0,"opacity":0,"style":0,"secondColor":0},"moleAndFreckles":{"color":0,"opacity":0,"style":0,"secondColor":0},"blush":{"color":0,"opacity":0,"style":0,"secondColor":0}},"components":[{"texture":0,"drawable":0,"component_id":0},{"texture":0,"drawable":0,"component_id":1},{"texture":0,"drawable":0,"component_id":2},{"texture":0,"drawable":0,"component_id":3},{"texture":0,"drawable":0,"component_id":4},{"texture":0,"drawable":0,"component_id":5},{"texture":0,"drawable":0,"component_id":6},{"texture":0,"drawable":0,"component_id":7},{"texture":0,"drawable":0,"component_id":8},{"texture":0,"drawable":0,"component_id":9},{"texture":0,"drawable":0,"component_id":10},{"texture":0,"drawable":0,"component_id":11}],"props":[{"texture":-1,"drawable":-1,"prop_id":0},{"texture":-1,"drawable":-1,"prop_id":1},{"texture":-1,"drawable":-1,"prop_id":2},{"texture":-1,"drawable":-1,"prop_id":6},{"texture":-1,"drawable":-1,"prop_id":7}],"headBlend":{"shapeFirst":0,"skinThird":0,"thirdMix":0,"skinFirst":0,"skinSecond":0,"shapeThird":0,"shapeSecond":0,"skinMix":0,"shapeMix":0},"hair":{"texture":0,"color":0,"style":0,"highlight":0},"tattoos":[],"eyeColor":0}', 1),
 	(88, 'RTJ5P4DZ', 'mp_m_freemode_01', '{"headOverlays":{"blemishes":{"opacity":0,"secondColor":0,"style":0,"color":0},"eyebrows":{"opacity":0,"secondColor":0,"style":0,"color":0},"lipstick":{"opacity":0,"secondColor":0,"style":0,"color":0},"beard":{"opacity":0,"secondColor":0,"style":0,"color":0},"ageing":{"opacity":0,"secondColor":0,"style":0,"color":0},"makeUp":{"opacity":0,"secondColor":0,"style":0,"color":0},"bodyBlemishes":{"opacity":0,"secondColor":0,"style":0,"color":0},"chestHair":{"opacity":0,"secondColor":0,"style":0,"color":0},"moleAndFreckles":{"opacity":0,"secondColor":0,"style":0,"color":0},"blush":{"opacity":0,"secondColor":0,"style":0,"color":0},"complexion":{"opacity":0,"secondColor":0,"style":0,"color":0},"sunDamage":{"opacity":0,"secondColor":0,"style":0,"color":0}},"components":[{"drawable":0,"texture":0,"component_id":0},{"drawable":0,"texture":0,"component_id":1},{"drawable":0,"texture":0,"component_id":2},{"drawable":0,"texture":0,"component_id":3},{"drawable":0,"texture":0,"component_id":4},{"drawable":0,"texture":0,"component_id":5},{"drawable":0,"texture":0,"component_id":6},{"drawable":0,"texture":0,"component_id":7},{"drawable":0,"texture":0,"component_id":8},{"drawable":0,"texture":0,"component_id":9},{"drawable":0,"texture":0,"component_id":10},{"drawable":0,"texture":0,"component_id":11}],"hair":{"style":0,"texture":0,"highlight":0,"color":0},"faceFeatures":{"neckThickness":0,"noseWidth":0,"lipsThickness":0,"chinBoneLowering":0,"cheeksBoneWidth":0,"eyesOpening":0,"chinBoneSize":0,"eyeBrownForward":0,"noseBoneHigh":0,"cheeksBoneHigh":0,"noseBoneTwist":0,"eyeBrownHigh":0,"nosePeakLowering":0,"jawBoneBackSize":0,"jawBoneWidth":0,"cheeksWidth":0,"chinBoneLenght":0,"chinHole":0,"nosePeakHigh":0,"nosePeakSize":0},"headBlend":{"shapeThird":0,"skinMix":0,"skinThird":0,"thirdMix":0,"skinSecond":0,"shapeSecond":0,"skinFirst":0,"shapeFirst":0,"shapeMix":0},"props":[{"drawable":-1,"texture":-1,"prop_id":0},{"drawable":-1,"texture":-1,"prop_id":1},{"drawable":-1,"texture":-1,"prop_id":2},{"drawable":-1,"texture":-1,"prop_id":6},{"drawable":-1,"texture":-1,"prop_id":7}],"model":"mp_m_freemode_01","tattoos":[],"eyeColor":0}', 1),
-	(90, 'R9C0SPP1', 'mp_m_freemode_01', '{"headOverlays":{"blemishes":{"style":0,"secondColor":0,"opacity":0,"color":0},"eyebrows":{"style":0,"secondColor":0,"opacity":0,"color":0},"lipstick":{"style":0,"secondColor":0,"opacity":0,"color":0},"beard":{"style":0,"secondColor":0,"opacity":0,"color":0},"complexion":{"style":0,"secondColor":0,"opacity":0,"color":0},"blush":{"style":0,"secondColor":0,"opacity":0,"color":0},"bodyBlemishes":{"style":0,"secondColor":0,"opacity":0,"color":0},"makeUp":{"style":0,"secondColor":0,"opacity":0,"color":0},"moleAndFreckles":{"style":0,"secondColor":0,"opacity":0,"color":0},"ageing":{"style":0,"secondColor":0,"opacity":0,"color":0},"chestHair":{"style":0,"secondColor":0,"opacity":0,"color":0},"sunDamage":{"style":0,"secondColor":0,"opacity":0,"color":0}},"components":[{"component_id":0,"drawable":0,"texture":0},{"component_id":1,"drawable":0,"texture":0},{"component_id":2,"drawable":0,"texture":0},{"component_id":3,"drawable":0,"texture":0},{"component_id":4,"drawable":0,"texture":0},{"component_id":5,"drawable":0,"texture":0},{"component_id":6,"drawable":0,"texture":0},{"component_id":7,"drawable":0,"texture":0},{"component_id":8,"drawable":0,"texture":0},{"component_id":9,"drawable":0,"texture":0},{"component_id":10,"drawable":0,"texture":0},{"component_id":11,"drawable":0,"texture":0}],"hair":{"style":14,"texture":0,"highlight":0,"color":0},"faceFeatures":{"neckThickness":0,"noseWidth":0,"lipsThickness":0,"chinBoneLowering":0,"jawBoneBackSize":0,"eyesOpening":0,"chinBoneSize":0,"eyeBrownForward":0,"noseBoneHigh":0,"cheeksBoneHigh":0,"noseBoneTwist":0,"eyeBrownHigh":0,"nosePeakLowering":0,"chinHole":0,"cheeksWidth":0,"cheeksBoneWidth":0,"chinBoneLenght":0,"jawBoneWidth":0,"nosePeakHigh":0,"nosePeakSize":0},"headBlend":{"skinSecond":0,"skinMix":0,"skinThird":0,"thirdMix":0,"shapeThird":0,"shapeSecond":0,"skinFirst":0,"shapeFirst":0,"shapeMix":0},"props":[{"drawable":-1,"texture":-1,"prop_id":0},{"drawable":-1,"texture":-1,"prop_id":1},{"drawable":-1,"texture":-1,"prop_id":2},{"drawable":-1,"texture":-1,"prop_id":6},{"drawable":-1,"texture":-1,"prop_id":7}],"tattoos":[],"model":"mp_m_freemode_01","eyeColor":0}', 1),
 	(92, 'D27RS572', 'mp_f_freemode_01', '{"headOverlays":{"sunDamage":{"style":0,"secondColor":0,"opacity":0,"color":0},"lipstick":{"style":0,"secondColor":0,"opacity":0,"color":0},"complexion":{"style":0,"secondColor":0,"opacity":0,"color":0},"eyebrows":{"style":0,"secondColor":0,"opacity":0,"color":0},"ageing":{"style":0,"secondColor":0,"opacity":0,"color":0},"bodyBlemishes":{"style":0,"secondColor":0,"opacity":0,"color":0},"blush":{"style":0,"secondColor":0,"opacity":0,"color":0},"beard":{"style":0,"secondColor":0,"opacity":0,"color":0},"blemishes":{"style":0,"secondColor":0,"opacity":0,"color":0},"chestHair":{"style":0,"secondColor":0,"opacity":0,"color":0},"makeUp":{"style":0,"secondColor":0,"opacity":0,"color":0},"moleAndFreckles":{"style":0,"secondColor":0,"opacity":0,"color":0}},"headBlend":{"skinMix":0.1,"thirdMix":0,"shapeFirst":31,"shapeMix":0.3,"skinThird":0,"shapeSecond":33,"skinSecond":1,"shapeThird":0,"skinFirst":37},"tattoos":[],"eyeColor":0,"props":[{"texture":-1,"drawable":-1,"prop_id":0},{"texture":-1,"drawable":-1,"prop_id":1},{"texture":-1,"drawable":-1,"prop_id":2},{"texture":-1,"drawable":-1,"prop_id":6},{"texture":-1,"drawable":-1,"prop_id":7}],"faceFeatures":{"jawBoneWidth":0,"lipsThickness":0,"nosePeakHigh":0,"cheeksBoneWidth":0,"chinBoneSize":0,"noseBoneHigh":0,"jawBoneBackSize":0,"chinBoneLowering":0,"eyeBrownHigh":0,"cheeksWidth":0,"cheeksBoneHigh":0,"noseBoneTwist":0,"eyesOpening":0,"neckThickness":0,"nosePeakLowering":0,"eyeBrownForward":0,"chinBoneLenght":0,"chinHole":0,"nosePeakSize":0,"noseWidth":0},"hair":{"texture":0,"color":0,"highlight":0,"style":0},"components":[{"texture":0,"component_id":0,"drawable":0},{"texture":0,"component_id":1,"drawable":0},{"texture":0,"component_id":2,"drawable":0},{"texture":0,"component_id":3,"drawable":0},{"texture":0,"component_id":4,"drawable":0},{"texture":0,"component_id":5,"drawable":0},{"texture":0,"component_id":6,"drawable":0},{"texture":0,"component_id":7,"drawable":0},{"texture":0,"component_id":8,"drawable":0},{"texture":0,"component_id":9,"drawable":0},{"texture":0,"component_id":10,"drawable":0},{"texture":0,"component_id":11,"drawable":0}],"model":"mp_f_freemode_01"}', 1),
-	(93, 'U4XD2430', 'mp_m_freemode_01', '{"headBlend":{"skinMix":1,"shapeMix":0,"skinThird":0,"thirdMix":0,"skinFirst":0,"skinSecond":2,"shapeFirst":0,"shapeThird":0,"shapeSecond":0},"hair":{"style":618,"texture":0,"highlight":0,"color":0},"model":"mp_m_freemode_01","faceFeatures":{"noseWidth":0,"eyeBrownHigh":0,"neckThickness":0,"noseBoneTwist":0,"lipsThickness":0,"cheeksWidth":0,"chinHole":0,"nosePeakLowering":0,"chinBoneLenght":0,"chinBoneLowering":0,"jawBoneBackSize":0,"jawBoneWidth":0,"nosePeakHigh":0,"cheeksBoneWidth":0,"nosePeakSize":0,"eyeBrownForward":0,"cheeksBoneHigh":0,"eyesOpening":0,"noseBoneHigh":0,"chinBoneSize":0},"headOverlays":{"beard":{"style":0,"color":0,"secondColor":0,"opacity":0},"ageing":{"style":0,"color":0,"secondColor":0,"opacity":0},"blush":{"style":0,"color":0,"secondColor":0,"opacity":0},"bodyBlemishes":{"style":0,"color":0,"secondColor":0,"opacity":0},"eyebrows":{"style":30,"color":0,"secondColor":0,"opacity":1},"lipstick":{"style":0,"color":0,"secondColor":0,"opacity":0},"sunDamage":{"style":0,"color":0,"secondColor":0,"opacity":0},"makeUp":{"style":0,"color":0,"secondColor":0,"opacity":0},"chestHair":{"style":16,"color":0,"secondColor":0,"opacity":1},"blemishes":{"style":0,"color":0,"secondColor":0,"opacity":0},"moleAndFreckles":{"style":0,"color":0,"secondColor":0,"opacity":0},"complexion":{"style":0,"color":0,"secondColor":0,"opacity":0}},"tattoos":[],"eyeColor":0,"props":[{"drawable":-1,"texture":-1,"prop_id":0},{"drawable":-1,"texture":-1,"prop_id":1},{"drawable":63,"texture":0,"prop_id":2},{"drawable":7,"texture":0,"prop_id":6},{"drawable":-1,"texture":-1,"prop_id":7}],"components":[{"drawable":0,"texture":0,"component_id":0},{"drawable":0,"texture":0,"component_id":1},{"drawable":618,"texture":0,"component_id":2},{"drawable":219,"texture":0,"component_id":3},{"drawable":605,"texture":0,"component_id":4},{"drawable":0,"texture":0,"component_id":5},{"drawable":428,"texture":0,"component_id":6},{"drawable":272,"texture":0,"component_id":7},{"drawable":15,"texture":0,"component_id":8},{"drawable":0,"texture":0,"component_id":9},{"drawable":0,"texture":0,"component_id":10},{"drawable":1389,"texture":1,"component_id":11}]}', 1);
+	(93, 'U4XD2430', 'mp_m_freemode_01', '{"headBlend":{"skinMix":1,"shapeMix":0,"skinThird":0,"thirdMix":0,"skinFirst":0,"skinSecond":2,"shapeFirst":0,"shapeThird":0,"shapeSecond":0},"hair":{"style":618,"texture":0,"highlight":0,"color":0},"model":"mp_m_freemode_01","faceFeatures":{"noseWidth":0,"eyeBrownHigh":0,"neckThickness":0,"noseBoneTwist":0,"lipsThickness":0,"cheeksWidth":0,"chinHole":0,"nosePeakLowering":0,"chinBoneLenght":0,"chinBoneLowering":0,"jawBoneBackSize":0,"jawBoneWidth":0,"nosePeakHigh":0,"cheeksBoneWidth":0,"nosePeakSize":0,"eyeBrownForward":0,"cheeksBoneHigh":0,"eyesOpening":0,"noseBoneHigh":0,"chinBoneSize":0},"headOverlays":{"beard":{"style":0,"color":0,"secondColor":0,"opacity":0},"ageing":{"style":0,"color":0,"secondColor":0,"opacity":0},"blush":{"style":0,"color":0,"secondColor":0,"opacity":0},"bodyBlemishes":{"style":0,"color":0,"secondColor":0,"opacity":0},"eyebrows":{"style":30,"color":0,"secondColor":0,"opacity":1},"lipstick":{"style":0,"color":0,"secondColor":0,"opacity":0},"sunDamage":{"style":0,"color":0,"secondColor":0,"opacity":0},"makeUp":{"style":0,"color":0,"secondColor":0,"opacity":0},"chestHair":{"style":16,"color":0,"secondColor":0,"opacity":1},"blemishes":{"style":0,"color":0,"secondColor":0,"opacity":0},"moleAndFreckles":{"style":0,"color":0,"secondColor":0,"opacity":0},"complexion":{"style":0,"color":0,"secondColor":0,"opacity":0}},"tattoos":[],"eyeColor":0,"props":[{"drawable":-1,"texture":-1,"prop_id":0},{"drawable":-1,"texture":-1,"prop_id":1},{"drawable":63,"texture":0,"prop_id":2},{"drawable":7,"texture":0,"prop_id":6},{"drawable":-1,"texture":-1,"prop_id":7}],"components":[{"drawable":0,"texture":0,"component_id":0},{"drawable":0,"texture":0,"component_id":1},{"drawable":618,"texture":0,"component_id":2},{"drawable":219,"texture":0,"component_id":3},{"drawable":605,"texture":0,"component_id":4},{"drawable":0,"texture":0,"component_id":5},{"drawable":428,"texture":0,"component_id":6},{"drawable":272,"texture":0,"component_id":7},{"drawable":15,"texture":0,"component_id":8},{"drawable":0,"texture":0,"component_id":9},{"drawable":0,"texture":0,"component_id":10},{"drawable":1389,"texture":1,"component_id":11}]}', 1),
+	(96, 'R9C0SPP1', 'mp_m_freemode_01', '{"faceFeatures":{"noseWidth":0,"cheeksBoneHigh":0,"cheeksWidth":0,"neckThickness":0,"nosePeakHigh":0,"chinBoneLowering":0,"lipsThickness":0,"jawBoneWidth":0,"noseBoneHigh":0,"eyeBrownHigh":0,"jawBoneBackSize":0,"eyesOpening":0,"eyeBrownForward":0,"noseBoneTwist":0,"chinHole":0,"cheeksBoneWidth":0,"chinBoneSize":0,"nosePeakLowering":0,"nosePeakSize":0,"chinBoneLenght":0},"props":[{"drawable":-1,"prop_id":0,"texture":-1},{"drawable":-1,"prop_id":1,"texture":-1},{"drawable":-1,"prop_id":2,"texture":-1},{"drawable":-1,"prop_id":6,"texture":-1},{"drawable":-1,"prop_id":7,"texture":-1}],"hair":{"highlight":0,"style":14,"color":0,"texture":0},"headOverlays":{"beard":{"opacity":0,"color":0,"style":0,"secondColor":0},"chestHair":{"opacity":0,"color":0,"style":0,"secondColor":0},"blush":{"opacity":0,"color":0,"style":0,"secondColor":0},"eyebrows":{"opacity":0,"color":0,"style":0,"secondColor":0},"sunDamage":{"opacity":0,"color":0,"style":0,"secondColor":0},"ageing":{"opacity":0,"color":0,"style":0,"secondColor":0},"blemishes":{"opacity":0,"color":0,"style":0,"secondColor":0},"makeUp":{"opacity":0,"color":0,"style":0,"secondColor":0},"bodyBlemishes":{"opacity":0,"color":0,"style":0,"secondColor":0},"complexion":{"opacity":0,"color":0,"style":0,"secondColor":0},"moleAndFreckles":{"opacity":0,"color":0,"style":0,"secondColor":0},"lipstick":{"opacity":0,"color":0,"style":0,"secondColor":0}},"tattoos":[],"eyeColor":0,"model":"mp_m_freemode_01","components":[{"drawable":0,"component_id":0,"texture":0},{"drawable":0,"component_id":1,"texture":0},{"drawable":14,"component_id":2,"texture":0},{"drawable":0,"component_id":3,"texture":0},{"drawable":0,"component_id":4,"texture":0},{"drawable":0,"component_id":5,"texture":0},{"drawable":0,"component_id":6,"texture":0},{"drawable":348,"component_id":7,"texture":0},{"drawable":15,"component_id":8,"texture":0},{"drawable":0,"component_id":9,"texture":0},{"drawable":0,"component_id":10,"texture":0},{"drawable":1478,"component_id":11,"texture":6}],"headBlend":{"skinThird":0,"thirdMix":0,"shapeMix":0,"skinMix":0,"skinSecond":0,"shapeThird":0,"skinFirst":0,"shapeSecond":0,"shapeFirst":0}}', 1),
+	(98, 'D8E35P04', 'mp_f_freemode_01', '{"faceFeatures":{"noseWidth":0,"cheeksBoneHigh":0,"cheeksWidth":0,"neckThickness":0,"nosePeakHigh":0,"chinBoneLowering":0,"chinHole":0,"jawBoneWidth":0,"noseBoneHigh":0,"eyeBrownHigh":0,"jawBoneBackSize":0,"eyesOpening":0,"eyeBrownForward":0,"noseBoneTwist":0,"cheeksBoneWidth":0,"chinBoneSize":0,"lipsThickness":0,"nosePeakLowering":0,"nosePeakSize":0,"chinBoneLenght":0},"props":[{"drawable":-1,"prop_id":0,"texture":-1},{"drawable":-1,"prop_id":1,"texture":-1},{"drawable":49,"prop_id":2,"texture":0},{"drawable":-1,"prop_id":6,"texture":-1},{"drawable":-1,"prop_id":7,"texture":-1}],"hair":{"highlight":0,"style":387,"color":0,"texture":0},"headOverlays":{"beard":{"opacity":0,"color":0,"style":0,"secondColor":0},"chestHair":{"opacity":0,"color":0,"style":0,"secondColor":0},"makeUp":{"opacity":0,"color":0,"style":0,"secondColor":0},"lipstick":{"opacity":0,"color":0,"style":0,"secondColor":0},"sunDamage":{"opacity":0,"color":0,"style":0,"secondColor":0},"complexion":{"opacity":0,"color":0,"style":0,"secondColor":0},"blemishes":{"opacity":0,"color":0,"style":0,"secondColor":0},"blush":{"opacity":0,"color":0,"style":0,"secondColor":0},"bodyBlemishes":{"opacity":0,"color":0,"style":0,"secondColor":0},"eyebrows":{"opacity":0,"color":0,"style":0,"secondColor":0},"moleAndFreckles":{"opacity":0,"color":0,"style":0,"secondColor":0},"ageing":{"opacity":0,"color":0,"style":0,"secondColor":0}},"tattoos":[],"eyeColor":0,"headBlend":{"skinThird":0,"thirdMix":0,"shapeMix":0.3,"skinMix":0.1,"shapeThird":0,"skinSecond":15,"skinFirst":20,"shapeSecond":21,"shapeFirst":45},"components":[{"drawable":0,"texture":0,"component_id":0},{"drawable":0,"texture":0,"component_id":1},{"drawable":387,"texture":0,"component_id":2},{"drawable":460,"texture":0,"component_id":3},{"drawable":425,"texture":0,"component_id":4},{"drawable":234,"texture":0,"component_id":5},{"drawable":227,"texture":1,"component_id":6},{"drawable":170,"texture":0,"component_id":7},{"drawable":538,"texture":1,"component_id":8},{"drawable":84,"texture":0,"component_id":9},{"drawable":330,"texture":0,"component_id":10},{"drawable":923,"texture":8,"component_id":11}],"model":"mp_f_freemode_01"}', 1),
+	(99, 'J85YFAHP', 'mp_m_freemode_01', '{"hair":{"style":0,"texture":0,"color":0,"highlight":0},"headOverlays":{"sunDamage":{"opacity":0,"style":0,"color":0,"secondColor":0},"bodyBlemishes":{"opacity":0,"style":0,"color":0,"secondColor":0},"makeUp":{"opacity":0,"style":0,"color":0,"secondColor":0},"moleAndFreckles":{"opacity":0,"style":0,"color":0,"secondColor":0},"blush":{"opacity":0,"style":0,"color":0,"secondColor":0},"complexion":{"opacity":0,"style":0,"color":0,"secondColor":0},"beard":{"opacity":0,"style":0,"color":0,"secondColor":0},"chestHair":{"opacity":0,"style":0,"color":0,"secondColor":0},"lipstick":{"opacity":0,"style":0,"color":0,"secondColor":0},"eyebrows":{"opacity":0,"style":0,"color":0,"secondColor":0},"ageing":{"opacity":0,"style":0,"color":0,"secondColor":0},"blemishes":{"opacity":0,"style":0,"color":0,"secondColor":0}},"eyeColor":0,"components":[{"texture":0,"component_id":0,"drawable":0},{"texture":0,"component_id":1,"drawable":0},{"texture":0,"component_id":2,"drawable":0},{"texture":0,"component_id":3,"drawable":0},{"texture":0,"component_id":4,"drawable":0},{"texture":0,"component_id":5,"drawable":0},{"texture":0,"component_id":6,"drawable":0},{"texture":0,"component_id":7,"drawable":0},{"texture":0,"component_id":8,"drawable":0},{"texture":0,"component_id":9,"drawable":0},{"texture":0,"component_id":10,"drawable":0},{"texture":0,"component_id":11,"drawable":0}],"props":[{"texture":-1,"prop_id":0,"drawable":-1},{"texture":-1,"prop_id":1,"drawable":-1},{"texture":-1,"prop_id":2,"drawable":-1},{"texture":-1,"prop_id":6,"drawable":-1},{"texture":-1,"prop_id":7,"drawable":-1}],"faceFeatures":{"chinHole":0,"chinBoneLowering":0,"cheeksBoneWidth":0,"chinBoneLenght":0,"nosePeakHigh":0,"noseBoneTwist":0,"cheeksBoneHigh":0,"lipsThickness":0,"nosePeakSize":0,"jawBoneWidth":0,"jawBoneBackSize":0,"eyesOpening":0,"nosePeakLowering":0,"eyeBrownHigh":0,"cheeksWidth":0,"eyeBrownForward":0,"neckThickness":0,"noseWidth":0,"noseBoneHigh":0,"chinBoneSize":0},"tattoos":[],"headBlend":{"shapeSecond":0,"skinSecond":0,"skinFirst":0,"skinThird":0,"thirdMix":0,"shapeThird":0,"skinMix":0,"shapeMix":0,"shapeFirst":0},"model":"mp_m_freemode_01"}', 1);
 
 -- Dumping structure for table miamifres.player_groups
 CREATE TABLE IF NOT EXISTS `player_groups` (
@@ -6428,9 +6556,9 @@ CREATE TABLE IF NOT EXISTS `player_jobs_activity` (
   KEY `last_checkout` (`last_checkout`) USING BTREE,
   KEY `citizenid_job` (`citizenid`,`job`) USING BTREE,
   CONSTRAINT `player_jobs_activity_ibfk_1` FOREIGN KEY (`citizenid`) REFERENCES `players` (`citizenid`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table miamifres.player_jobs_activity: ~19 rows (approximately)
+-- Dumping data for table miamifres.player_jobs_activity: ~22 rows (approximately)
 INSERT INTO `player_jobs_activity` (`id`, `citizenid`, `job`, `last_checkin`, `last_checkout`) VALUES
 	(116, 'G641A281', 'unemployed', 1764608254, 1764612504),
 	(117, 'U4XD2430', 'saltlabmechanic', 1764622261, 1764624234),
@@ -6450,7 +6578,10 @@ INSERT INTO `player_jobs_activity` (`id`, `citizenid`, `job`, `last_checkin`, `l
 	(131, 'U4XD2430', 'saltlabmechanic', 1764812560, 1764814507),
 	(132, 'D8E35P04', 'unemployed', 1764816937, 1764818742),
 	(133, 'U4XD2430', 'saltlabmechanic', 1764816721, 1764818742),
-	(134, 'R9C0SPP1', 'realestate', 1764819056, 1764822514);
+	(134, 'R9C0SPP1', 'realestate', 1764819056, 1764822514),
+	(135, 'R9C0SPP1', 'realestate', 1764892007, 1764895857),
+	(136, 'D8E35P04', 'unemployed', 1764891192, 1764903452),
+	(137, 'U4XD2430', 'saltlabmechanic', 1765067945, 1765071928);
 
 -- Dumping structure for table miamifres.player_mails
 CREATE TABLE IF NOT EXISTS `player_mails` (
@@ -6607,14 +6738,32 @@ CREATE TABLE IF NOT EXISTS `player_vehicles` (
   UNIQUE KEY `plate` (`plate`),
   KEY `citizenid` (`citizenid`),
   CONSTRAINT `player_vehicles_ibfk_1` FOREIGN KEY (`citizenid`) REFERENCES `players` (`citizenid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table miamifres.player_vehicles: ~4 rows (approximately)
+-- Dumping data for table miamifres.player_vehicles: ~5 rows (approximately)
 INSERT INTO `player_vehicles` (`id`, `license`, `citizenid`, `vehicle`, `hash`, `mods`, `plate`, `fakeplate`, `garage`, `fuel`, `engine`, `body`, `state`, `depotprice`, `drivingdistance`, `status`, `coords`, `glovebox`, `trunk`, `damage`, `financed`, `in_garage`, `finance_data`, `garage_id`, `job_vehicle`, `job_vehicle_rank`, `gang_vehicle`, `gang_vehicle_rank`, `impound`, `impound_retrievable`, `impound_data`, `nickname`, `parking`, `balance`, `paymentamount`, `paymentsleft`, `financetime`, `nosColour`, `traveldistance`, `noslevel`, `hasnitro`, `mileage`) VALUES
 	(15, 'license2:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 'D8E35P04', 'sultan', '970598228', '{"modKit17":-1,"oilLevel":5,"modXenon":false,"driftTyres":false,"modKit49":-1,"windowStatus":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"tankHealth":1000,"paintType1":0,"modShifterLeavers":-1,"modFrame":-1,"tireBurstState":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"paintType2":0,"modWindows":-1,"wheels":0,"tyreSmokeColor":[255,255,255],"modKit21":false,"modTransmission":-1,"wheelSize":0.0,"modLightbar":-1,"modHydrolic":-1,"modRightFender":-1,"pearlescentColor":5,"modStruts":-1,"modFrontBumper":-1,"modTrimB":-1,"modGrille":-1,"modHorns":-1,"modLivery":-1,"modKit19":-1,"modAPlate":-1,"modHood":-1,"modSuspension":-1,"tireHealth":{"1":1000.0,"2":1000.0,"3":1000.0,"0":1000.0},"modVanityPlate":-1,"wheelColor":156,"plate":"40INW597","tyres":[],"modCustomTiresF":false,"modSteeringWheel":-1,"modSubwoofer":-1,"modKit47":-1,"model":970598228,"modFrontWheels":-1,"modCustomTiresR":false,"modNitrous":-1,"color1":1,"modTrimA":-1,"modSmokeEnabled":false,"modSeats":-1,"windowTint":-1,"modRoofLivery":-1,"modTurbo":false,"modDoorSpeaker":-1,"modExhaust":-1,"engineHealth":1000,"modDoorR":-1,"doors":[],"bodyHealth":1000,"modOrnaments":-1,"modDial":-1,"interiorColor":0,"modTrunk":-1,"windows":[4,5],"modFender":-1,"liveryRoof":-1,"fuelLevel":100,"modBackWheels":-1,"modTank":-1,"headlightColor":255,"modArmor":-1,"modSideSkirt":-1,"neonEnabled":[false,false,false,false],"modBrakes":-1,"extras":{"10":0,"12":1},"modEngine":-1,"livery":-1,"plateIndex":0,"modPlateHolder":-1,"modSpeakers":-1,"modRearBumper":-1,"modRoof":-1,"xenonColor":255,"modDashboard":-1,"dashboardColor":0,"modAerials":-1,"wheelWidth":0.0,"modSpoilers":-1,"dirtLevel":3,"doorStatus":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"color2":1,"modArchCover":-1,"modAirFilter":-1,"neonColor":[255,0,255],"tireBurstCompletely":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"modEngineBlock":-1,"bulletProofTyres":true,"modHydraulics":false}', '40INW597', NULL, NULL, 100, 1000, 1000, 1, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 1, NULL, 'Legion Square', 0, 0, 0, 0, 0, 0, '', '', NULL, 0, 0, 0, 0, NULL, 0, 0, 0, 0),
 	(16, 'license2:f94814371b99087d54639a47a7fb2d1d9b6eab03', 'RTJ5P4DZ', 'sultan', '970598228', '{"modHood":-1,"modEngineBlock":-1,"modDashboard":-1,"modTrunk":-1,"modCustomTiresR":false,"modBrakes":-1,"interiorColor":0,"modHorns":-1,"modBackWheels":-1,"modFrontBumper":-1,"modTank":-1,"wheelSize":0.0,"modRoofLivery":-1,"modXenon":false,"modKit47":-1,"driftTyres":false,"modArchCover":-1,"engineHealth":1000,"modArmor":-1,"modEngine":-1,"modFrontWheels":-1,"windowStatus":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"modAerials":-1,"modAPlate":-1,"modSeats":-1,"modShifterLeavers":-1,"modCustomTiresF":false,"xenonColor":255,"wheelColor":156,"modHydrolic":-1,"modNitrous":-1,"tireHealth":{"1":1000.0,"2":1000.0,"3":1000.0,"0":1000.0},"windowTint":-1,"modKit49":-1,"windows":[4,5],"modPlateHolder":-1,"extras":{"10":0,"12":1},"modFrame":-1,"modSmokeEnabled":false,"dirtLevel":7,"modDoorSpeaker":-1,"tyres":[],"modDial":-1,"tireBurstCompletely":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"modSuspension":-1,"modRoof":-1,"modOrnaments":-1,"modLivery":-1,"doors":[],"modKit17":-1,"modAirFilter":-1,"oilLevel":5,"modWindows":-1,"tireBurstState":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"wheelWidth":0.0,"doorStatus":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"fuelLevel":100,"modExhaust":-1,"modRearBumper":-1,"paintType2":0,"headlightColor":255,"modSideSkirt":-1,"modKit19":-1,"modSpeakers":-1,"modRightFender":-1,"dashboardColor":0,"modSubwoofer":-1,"modGrille":-1,"neonEnabled":[false,false,false,false],"modVanityPlate":-1,"neonColor":[255,0,255],"color2":1,"color1":1,"modTurbo":false,"liveryRoof":-1,"modStruts":-1,"bodyHealth":1000,"modKit21":false,"wheels":0,"modLightbar":-1,"plateIndex":0,"modFender":-1,"plate":"24PVB507","modSpoilers":-1,"tankHealth":1000,"modHydraulics":false,"tyreSmokeColor":[255,255,255],"modTransmission":-1,"paintType1":0,"model":970598228,"modDoorR":-1,"modSteeringWheel":-1,"modTrimA":-1,"livery":-1,"modTrimB":-1,"bulletProofTyres":true,"pearlescentColor":5}', '24PVB507', NULL, NULL, 100, 1000, 1000, 1, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 1, NULL, 'Legion Square', 0, 0, 0, 0, 0, 0, '', '', NULL, 0, 0, 0, 0, NULL, 0, 0, 0, 2.02201),
 	(17, 'license2:f068a96c1d23d25e41125893c099286ddad06604', 'R9C0SPP1', 'sultan', '970598228', '{"modHood":-1,"modHydraulics":false,"modDashboard":-1,"modTrunk":-1,"modCustomTiresR":false,"modBrakes":-1,"interiorColor":0,"modDial":-1,"modBackWheels":-1,"modFrontBumper":-1,"modTank":-1,"wheelSize":0.0,"modRoofLivery":-1,"modXenon":false,"modKit47":-1,"driftTyres":false,"modArchCover":-1,"tireBurstCompletely":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"modArmor":-1,"tyreSmokeColor":[255,255,255],"modFrontWheels":-1,"modTransmission":-1,"modAirFilter":-1,"modAPlate":-1,"modSeats":-1,"modShifterLeavers":-1,"modCustomTiresF":false,"xenonColor":255,"wheelColor":156,"modHydrolic":-1,"modStruts":-1,"windowTint":-1,"modGrille":-1,"modKit49":-1,"windows":[4,5],"modPlateHolder":-1,"modEngine":-1,"modFrame":-1,"tireBurstState":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"bodyHealth":1000,"modLivery":-1,"tyres":[],"pearlescentColor":5,"bulletProofTyres":true,"modSuspension":-1,"modTrimA":-1,"modSmokeEnabled":false,"headlightColor":255,"modTrimB":-1,"modHorns":-1,"modEngineBlock":-1,"oilLevel":5,"color2":1,"neonEnabled":[false,false,false,false],"modAerials":-1,"doorStatus":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"fuelLevel":100,"dashboardColor":0,"modRoof":-1,"paintType2":0,"tireHealth":{"1":1000.0,"2":1000.0,"3":1000.0,"0":1000.0},"modTurbo":false,"modKit19":-1,"modRearBumper":-1,"modRightFender":-1,"doors":[],"windowStatus":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"liveryRoof":-1,"modExhaust":-1,"modVanityPlate":-1,"dirtLevel":5,"modWindows":-1,"color1":1,"modNitrous":-1,"modSubwoofer":-1,"extras":{"10":1,"12":0},"modKit17":-1,"modKit21":false,"wheels":0,"modLightbar":-1,"plateIndex":3,"modSideSkirt":-1,"modDoorSpeaker":-1,"modSpoilers":-1,"tankHealth":1000,"neonColor":[255,0,255],"plate":"80VLY859","modFender":-1,"paintType1":0,"model":970598228,"modDoorR":-1,"modSteeringWheel":-1,"wheelWidth":0.0,"livery":-1,"engineHealth":1000,"modSpeakers":-1,"modOrnaments":-1}', '80VLY859', NULL, NULL, 100, 1000, 1000, 1, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 1, NULL, 'Legion Square', 0, 0, 0, 0, 0, 0, '', '', NULL, 0, 0, 0, 0, NULL, 0, 0, 0, 3.31655),
-	(18, 'license2:c0da2116c504d911d2cbe314ec88e991416e9fd7', 'U4XD2430', 'speedo2', '728614474', '{"modWindows":-1,"bodyHealth":1000,"extras":[],"color1":131,"modExhaust":-1,"modRightFender":-1,"modNitrous":-1,"livery":-1,"windows":[4,5,7],"modArchCover":-1,"modEngineBlock":-1,"wheelColor":156,"modHorns":-1,"modFender":-1,"modTurbo":false,"modRearBumper":-1,"modFrontBumper":-1,"modSmokeEnabled":false,"color2":0,"modPlateHolder":-1,"modSeats":-1,"modSideSkirt":-1,"dirtLevel":6,"modVanityPlate":-1,"modLightbar":-1,"modGrille":-1,"modAerials":-1,"paintType2":0,"modFrame":-1,"tyres":[],"plateIndex":1,"doors":[],"paintType1":0,"pearlescentColor":31,"modTransmission":-1,"modCustomTiresF":false,"modRoof":-1,"modLivery":-1,"modAirFilter":-1,"modStruts":-1,"modAPlate":-1,"plate":"02EZT749","neonEnabled":[false,false,false,false],"modSpeakers":-1,"modShifterLeavers":-1,"wheelWidth":0.0,"driftTyres":false,"interiorColor":0,"modFrontWheels":-1,"fuelLevel":65,"modTank":-1,"modXenon":false,"windowTint":-1,"modSuspension":-1,"modHydrolic":-1,"modDial":-1,"engineHealth":1000,"model":728614474,"modTrunk":-1,"modDashboard":-1,"modSteeringWheel":-1,"modHydraulics":false,"tankHealth":1000,"modRoofLivery":-1,"modHood":-1,"tyreSmokeColor":[255,255,255],"modSubwoofer":-1,"modBackWheels":-1,"modEngine":-1,"modTrimB":-1,"wheelSize":0.0,"modTrimA":-1,"dashboardColor":0,"modDoorSpeaker":-1,"modCustomTiresR":false,"wheels":1,"modArmor":-1,"modBrakes":-1,"modDoorR":-1,"bulletProofTyres":true,"modSpoilers":-1,"oilLevel":5,"neonColor":[255,0,255],"xenonColor":255,"modOrnaments":-1}', '02EZT749', NULL, 'pillboxgarage', 100, 1000, 1000, 1, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 1, NULL, 'Legion Square', 0, 0, 0, 0, 0, 0, '', '', NULL, 0, 0, 0, 0, NULL, 0, 0, 0, 0);
+	(18, 'license2:c0da2116c504d911d2cbe314ec88e991416e9fd7', 'U4XD2430', 'speedo2', '728614474', '{"tyresCanBurst":false,"tireBurstState":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"modTank":-1,"modFrame":-1,"color1":131,"interiorColor":0,"xenonCustomColorEnabled":false,"modHorns":-1,"modHydraulics":false,"tyreSmokeColor":[255,255,255],"modCustomTiresR":false,"paintType2":7,"modFrontWheels":-1,"modKit21":-1,"modAerials":-1,"fuelLevel":100.0,"modBackWheels":-1,"modFender":-1,"tyreBurst":{"0":false,"5":false,"1":false,"4":false},"modCustomBackWheels":false,"modHood":-1,"dirtLevel":6.0,"driftTyres":false,"oilLevel":5.0,"neonColor":[255,0,255],"modPlateHolder":-1,"modShifterLeavers":-1,"modRoof":-1,"modKit17":-1,"modArmor":-1,"modSubwoofer":-1,"modKit47":-1,"paintType1":7,"modTurbo":false,"modTrimB":-1,"modSpeakers":-1,"wheelWidth":1.0,"modOrnaments":-1,"dashboardColor":0,"modTrimA":-1,"bodyHealth":1000.0,"windowTint":-1,"tankHealth":1000.0,"modWindows":-1,"windowStatus":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":false,"0":true},"modSteeringWheel":-1,"wheelColor":156,"engineHealth":1000.0,"modAirFilter":-1,"modDashboard":-1,"modGrille":-1,"modSeats":-1,"liveryRoof":-1,"doorStatus":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"color2":0,"modDoorR":-1,"modXenon":false,"modEngineBlock":-1,"modHydrolic":-1,"modBrakes":-1,"modLivery":-1,"modCustomFrontWheels":false,"doorsBroken":{"0":false,"1":false,"4":false,"5":false,"2":false,"3":false},"modDoorSpeaker":-1,"wheelSize":1.0,"modArchCover":-1,"windowsBroken":{"0":false,"1":false,"6":false,"7":true,"4":true,"5":true,"2":false,"3":false},"modLightbar":-1,"modRightFender":-1,"plateIndex":1,"modSuspension":-1,"modVanityPlate":-1,"model":728614474,"modEngine":-1,"modKit49":-1,"modTransmission":-1,"plate":"02EZT749","modTrunk":-1,"tireHealth":{"1":1000.0,"2":1000.0,"3":1000.0,"0":1000.0},"modRoofLivery":-1,"modSideSkirt":-1,"modDial":-1,"modCustomTiresF":false,"neonEnabled":[false,false,false,false],"modExhaust":-1,"modSmokeEnabled":false,"modKit19":-1,"xenonCustomColor":[],"extras":[],"tireBurstCompletely":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"modAPlate":-1,"modSpoilers":-1,"bulletProofTyres":true,"pearlescentColor":31,"modFrontBumper":-1,"modRearBumper":-1,"modStruts":-1,"modNitrous":-1,"xenonColor":255,"wheels":1}', '02EZT749', NULL, 'pillboxgarage', 100, 1000, 1000, 1, 0, NULL, NULL, NULL, NULL, NULL, '{"deformation":[],"dirt":6.0}', 0, 0, NULL, 'Dome Garage', 0, 0, 0, 0, 0, 0, '', '', NULL, 0, 0, 0, 0, NULL, 0, 0, 0, 0.000000495441),
+	(19, 'license2:8dacb1a204e817aeb4cb50c8980753051d859929', 'J85YFAHP', 'sultan', '970598228', '{"windowTint":-1,"modHydrolic":-1,"neonColor":[255,0,255],"modRearBumper":-1,"modKit19":-1,"wheelSize":0.0,"livery":-1,"model":970598228,"modSeats":-1,"modNitrous":-1,"modFrontBumper":-1,"paintType2":0,"pearlescentColor":5,"modTank":-1,"modKit47":-1,"xenonColor":255,"fuelLevel":100,"modDial":-1,"modXenon":false,"oilLevel":5,"modSuspension":-1,"modAPlate":-1,"extras":{"10":1,"12":1},"tyreSmokeColor":[255,255,255],"modRoofLivery":-1,"modBackWheels":-1,"interiorColor":0,"modCustomTiresR":false,"modHorns":-1,"plate":"23XCZ557","modTrimB":-1,"modSpoilers":-1,"modDoorR":-1,"modSteeringWheel":-1,"windowStatus":{"1":true,"2":true,"3":true,"4":false,"5":false,"6":true,"7":true,"0":true},"neonEnabled":[false,false,false,false],"modStruts":-1,"modPlateHolder":-1,"modArmor":-1,"tireHealth":{"1":1000.0,"2":1000.0,"3":1000.0,"0":1000.0},"tireBurstState":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"wheels":0,"wheelWidth":0.0,"tireBurstCompletely":{"1":false,"2":false,"3":false,"4":false,"5":false,"6":false,"7":false,"0":false},"color2":1,"dashboardColor":0,"modAerials":-1,"modRightFender":-1,"modSideSkirt":-1,"bulletProofTyres":true,"modDoorSpeaker":-1,"modKit49":-1,"modBrakes":-1,"doors":[],"wheelColor":156,"modVanityPlate":-1,"modTrunk":-1,"modTurbo":false,"modGrille":-1,"modExhaust":-1,"modKit17":-1,"windows":[4,5],"modFender":-1,"paintType1":0,"plateIndex":0,"headlightColor":255,"modArchCover":-1,"modCustomTiresF":false,"modFrame":-1,"modEngine":-1,"modOrnaments":-1,"modSmokeEnabled":false,"modSpeakers":-1,"driftTyres":false,"tankHealth":1000,"modHydraulics":false,"doorStatus":{"1":false,"2":false,"3":false,"4":false,"5":false,"0":false},"modRoof":-1,"modLivery":-1,"modTrimA":-1,"modKit21":false,"modShifterLeavers":-1,"modLightbar":-1,"engineHealth":1000,"modEngineBlock":-1,"modDashboard":-1,"modSubwoofer":-1,"modAirFilter":-1,"tyres":[],"bodyHealth":1000,"modHood":-1,"modTransmission":-1,"modWindows":-1,"liveryRoof":-1,"color1":1,"modFrontWheels":-1,"dirtLevel":9}', '23XCZ557', NULL, NULL, 100, 1000, 1000, 1, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 1, NULL, 'Legion Square', 0, 0, 0, 0, 0, 0, '', '', NULL, 0, 0, 0, 0, NULL, 0, 0, 0, 0);
+
+-- Dumping structure for table miamifres.playlist_mixer
+CREATE TABLE IF NOT EXISTS `playlist_mixer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` text NOT NULL,
+  `name` text NOT NULL,
+  `real_name` text NOT NULL,
+  `time` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `mixer_identifier` text NOT NULL,
+  `added_by` text NOT NULL,
+  `category` varchar(256) NOT NULL DEFAULT 'null',
+  `que` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.playlist_mixer: ~0 rows (approximately)
 
 -- Dumping structure for table miamifres.prism_multicharacter
 CREATE TABLE IF NOT EXISTS `prism_multicharacter` (
@@ -6808,6 +6957,16 @@ INSERT INTO `properties_rentprices` (`id`, `property_id`, `price`, `set_by`, `se
 	(3, 3, 0.00, 'Tyb Fazo', '2025-12-02 01:31:15'),
 	(4, 4, 0.00, 'Tyb Fazo', '2025-12-02 18:01:27');
 
+-- Dumping structure for table miamifres.protections
+CREATE TABLE IF NOT EXISTS `protections` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_id` varchar(64) NOT NULL,
+  `amount` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.protections: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.pug_chopping
 CREATE TABLE IF NOT EXISTS `pug_chopping` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -6826,6 +6985,808 @@ CREATE TABLE IF NOT EXISTS `pug_chopping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 -- Dumping data for table miamifres.pug_chopping: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.radiocar_music
+CREATE TABLE IF NOT EXISTS `radiocar_music` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(64) NOT NULL,
+  `url` varchar(256) NOT NULL,
+  `plate` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.radiocar_music: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.radiocar_owned
+CREATE TABLE IF NOT EXISTS `radiocar_owned` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `spz` varchar(32) NOT NULL,
+  `style` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.radiocar_owned: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.radiocar_playlist
+CREATE TABLE IF NOT EXISTS `radiocar_playlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `playlist` text NOT NULL,
+  `plate` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.radiocar_playlist: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_banners_billboards
+CREATE TABLE IF NOT EXISTS `rcore_banners_billboards` (
+  `rent_billboardId` int(11) NOT NULL AUTO_INCREMENT,
+  `state` enum('available','not-available','owned') NOT NULL,
+  `owner` varchar(255) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `rent_left` int(11) DEFAULT NULL,
+  `rent_right` int(11) DEFAULT NULL,
+  `service_fee` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`rent_billboardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Dumping data for table miamifres.rcore_banners_billboards: ~301 rows (approximately)
+INSERT INTO `rcore_banners_billboards` (`rent_billboardId`, `state`, `owner`, `date`, `rent_left`, `rent_right`, `service_fee`) VALUES
+	(1, 'available', NULL, '2024-01-30 16:05:04', 10, 280, NULL),
+	(2, 'available', NULL, '2024-01-30 16:05:04', 11, 281, NULL),
+	(3, 'available', NULL, '2024-01-30 16:05:04', 9, 279, NULL),
+	(4, 'available', NULL, '2024-01-30 16:05:04', 8, 278, NULL),
+	(5, 'available', NULL, '2024-01-30 16:05:04', 6, 275, NULL),
+	(6, 'available', NULL, '2024-01-30 16:05:04', 7, 277, NULL),
+	(7, 'available', NULL, '2024-01-30 16:05:04', 5, 274, NULL),
+	(8, 'available', NULL, '2024-01-30 16:05:04', 4, 276, NULL),
+	(9, 'available', NULL, '2024-01-30 16:05:04', 2, 273, NULL),
+	(10, 'available', NULL, '2024-01-30 16:05:04', 3, 272, NULL),
+	(11, 'available', NULL, '2024-01-30 16:05:04', 12, 284, NULL),
+	(12, 'available', NULL, '2024-01-30 16:05:04', 13, 283, NULL),
+	(13, 'available', NULL, '2024-01-30 16:05:04', 24, 295, NULL),
+	(14, 'available', NULL, '2024-01-30 16:05:04', 18, 289, NULL),
+	(15, 'available', NULL, '2024-01-30 16:05:04', 16, 285, NULL),
+	(16, 'available', NULL, '2024-01-30 16:05:04', 17, 286, NULL),
+	(17, 'available', NULL, '2024-01-30 16:05:04', 14, 282, NULL),
+	(18, 'available', NULL, '2024-01-30 16:05:04', 15, 287, NULL),
+	(19, 'available', NULL, '2024-01-30 16:05:04', 19, 288, NULL),
+	(20, 'available', NULL, '2024-01-30 16:05:04', 20, 290, NULL),
+	(21, 'available', NULL, '2024-01-30 16:05:04', 21, 291, NULL),
+	(22, 'available', NULL, '2024-01-30 16:05:04', 22, 302, NULL),
+	(23, 'available', NULL, '2024-01-30 16:05:04', 23, 293, NULL),
+	(24, 'available', NULL, '2024-01-30 16:05:04', 25, 294, NULL),
+	(25, 'available', NULL, '2024-01-30 16:05:04', 28, 299, NULL),
+	(26, 'available', NULL, '2024-01-30 16:05:04', 30, 300, NULL),
+	(27, 'available', NULL, '2024-01-30 16:05:04', 26, 296, NULL),
+	(28, 'available', NULL, '2024-01-30 16:05:04', 27, 297, NULL),
+	(29, 'available', NULL, '2024-01-30 16:05:04', 29, 298, NULL),
+	(30, 'available', NULL, '2024-01-30 16:05:04', 31, 292, NULL),
+	(31, 'available', NULL, '2024-01-30 16:05:04', 32, 301, NULL),
+	(32, 'available', NULL, '2024-01-30 16:05:04', 33, 303, NULL),
+	(33, 'available', NULL, '2024-01-30 16:05:04', 35, NULL, NULL),
+	(34, 'available', NULL, '2024-01-30 16:05:04', 34, NULL, NULL),
+	(35, 'available', NULL, '2024-01-30 16:05:04', 66, 326, NULL),
+	(36, 'available', NULL, '2024-01-30 16:05:04', 38, 307, NULL),
+	(37, 'available', NULL, '2024-01-30 16:05:04', 36, 305, NULL),
+	(38, 'available', NULL, '2024-01-30 16:05:04', 37, 306, NULL),
+	(39, 'available', NULL, '2024-01-30 16:05:04', 39, 308, NULL),
+	(40, 'available', NULL, '2024-01-30 16:05:04', 40, 304, NULL),
+	(41, 'available', NULL, '2024-01-30 16:05:04', 43, 310, NULL),
+	(42, 'available', NULL, '2024-01-30 16:05:04', 41, 311, NULL),
+	(43, 'available', NULL, '2024-01-30 16:05:04', 44, 312, NULL),
+	(44, 'available', NULL, '2024-01-30 16:05:04', 49, 316, NULL),
+	(45, 'available', NULL, '2024-01-30 16:05:04', 42, 317, NULL),
+	(46, 'available', NULL, '2024-01-30 16:05:04', 47, 314, NULL),
+	(47, 'available', NULL, '2024-01-30 16:05:04', 46, 315, NULL),
+	(48, 'available', NULL, '2024-01-30 16:05:04', 45, 313, NULL),
+	(49, 'available', NULL, '2024-01-30 16:05:04', 48, 309, NULL),
+	(50, 'available', NULL, '2024-01-30 16:05:04', 50, 318, NULL),
+	(51, 'available', NULL, '2024-01-30 16:05:04', 63, 325, NULL),
+	(52, 'available', NULL, '2024-01-30 16:05:04', 51, 319, NULL),
+	(53, 'available', NULL, '2024-01-30 16:05:04', 52, 320, NULL),
+	(54, 'available', NULL, '2024-01-30 16:05:04', 53, 321, NULL),
+	(55, 'available', NULL, '2024-01-30 16:05:04', 54, 323, NULL),
+	(56, 'available', NULL, '2024-01-30 16:05:04', 403, 404, NULL),
+	(57, 'available', NULL, '2024-01-30 16:05:04', 56, 322, NULL),
+	(58, 'available', NULL, '2024-01-30 16:05:04', 399, 400, NULL),
+	(59, 'available', NULL, '2024-01-30 16:05:04', 64, NULL, NULL),
+	(60, 'available', NULL, '2024-01-30 16:05:04', 57, NULL, NULL),
+	(61, 'available', NULL, '2024-01-30 16:05:04', 58, NULL, NULL),
+	(62, 'available', NULL, '2024-01-30 16:05:04', 59, NULL, NULL),
+	(63, 'available', NULL, '2024-01-30 16:05:04', 60, NULL, NULL),
+	(64, 'available', NULL, '2024-01-30 16:05:04', 62, NULL, NULL),
+	(65, 'available', NULL, '2024-01-30 16:05:04', 61, NULL, NULL),
+	(66, 'available', NULL, '2024-01-30 16:05:04', 65, NULL, NULL),
+	(67, 'available', NULL, '2024-01-30 16:05:04', 67, NULL, NULL),
+	(68, 'available', NULL, '2024-01-30 16:05:04', 92, NULL, NULL),
+	(69, 'available', NULL, '2024-01-30 16:05:04', 70, NULL, NULL),
+	(70, 'available', NULL, '2024-01-30 16:05:04', 69, NULL, NULL),
+	(71, 'available', NULL, '2024-01-30 16:05:04', 71, NULL, NULL),
+	(72, 'available', NULL, '2024-01-30 16:05:04', 68, NULL, NULL),
+	(73, 'available', NULL, '2024-01-30 16:05:04', 72, NULL, NULL),
+	(74, 'available', NULL, '2024-01-30 16:05:04', 73, NULL, NULL),
+	(75, 'available', NULL, '2024-01-30 16:05:04', 74, NULL, NULL),
+	(76, 'available', NULL, '2024-01-30 16:05:04', 75, NULL, NULL),
+	(77, 'available', NULL, '2024-01-30 16:05:04', 76, NULL, NULL),
+	(78, 'available', NULL, '2024-01-30 16:05:04', 77, NULL, NULL),
+	(79, 'available', NULL, '2024-01-30 16:05:04', 78, NULL, NULL),
+	(80, 'available', NULL, '2024-01-30 16:05:04', 81, NULL, NULL),
+	(81, 'available', NULL, '2024-01-30 16:05:04', 80, NULL, NULL),
+	(82, 'available', NULL, '2024-01-30 16:05:04', 79, NULL, NULL),
+	(83, 'available', NULL, '2024-01-30 16:05:04', 82, NULL, NULL),
+	(84, 'available', NULL, '2024-01-30 16:05:04', 83, NULL, NULL),
+	(85, 'available', NULL, '2024-01-30 16:05:04', 84, NULL, NULL),
+	(86, 'available', NULL, '2024-01-30 16:05:04', 88, NULL, NULL),
+	(87, 'available', NULL, '2024-01-30 16:05:04', 87, NULL, NULL),
+	(88, 'available', NULL, '2024-01-30 16:05:04', 85, NULL, NULL),
+	(89, 'available', NULL, '2024-01-30 16:05:04', 86, NULL, NULL),
+	(90, 'available', NULL, '2024-01-30 16:05:04', 89, NULL, NULL),
+	(91, 'available', NULL, '2024-01-30 16:05:04', 90, NULL, NULL),
+	(92, 'available', NULL, '2024-01-30 16:05:04', 91, NULL, NULL),
+	(93, 'available', NULL, '2024-01-30 16:05:04', 98, NULL, NULL),
+	(94, 'available', NULL, '2024-01-30 16:05:04', 93, NULL, NULL),
+	(95, 'available', NULL, '2024-01-30 16:05:04', 94, NULL, NULL),
+	(96, 'available', NULL, '2024-01-30 16:05:04', 96, NULL, NULL),
+	(97, 'available', NULL, '2024-01-30 16:05:04', 97, NULL, NULL),
+	(98, 'available', NULL, '2024-01-30 16:05:04', 95, NULL, NULL),
+	(99, 'available', NULL, '2024-01-30 16:05:04', 99, NULL, NULL),
+	(100, 'available', NULL, '2024-01-30 16:05:04', 100, NULL, NULL),
+	(101, 'available', NULL, '2024-01-30 16:05:04', 103, NULL, NULL),
+	(102, 'available', NULL, '2024-01-30 16:05:04', 101, NULL, NULL),
+	(103, 'available', NULL, '2024-01-30 16:05:04', 102, NULL, NULL),
+	(104, 'available', NULL, '2024-01-30 16:05:04', 104, NULL, NULL),
+	(105, 'available', NULL, '2024-01-30 16:05:04', 106, NULL, NULL),
+	(106, 'available', NULL, '2024-01-30 16:05:04', 107, NULL, NULL),
+	(107, 'available', NULL, '2024-01-30 16:05:04', 105, NULL, NULL),
+	(108, 'available', NULL, '2024-01-30 16:05:04', 108, NULL, NULL),
+	(109, 'available', NULL, '2024-01-30 16:05:04', 109, NULL, NULL),
+	(110, 'available', NULL, '2024-01-30 16:05:04', 110, NULL, NULL),
+	(111, 'available', NULL, '2024-01-30 16:05:04', 111, NULL, NULL),
+	(112, 'available', NULL, '2024-01-30 16:05:04', 112, NULL, NULL),
+	(113, 'available', NULL, '2024-01-30 16:05:04', 113, NULL, NULL),
+	(114, 'available', NULL, '2024-01-30 16:05:04', 114, NULL, NULL),
+	(115, 'available', NULL, '2024-01-30 16:05:04', 115, NULL, NULL),
+	(116, 'available', NULL, '2024-01-30 16:05:04', 117, NULL, NULL),
+	(117, 'available', NULL, '2024-01-30 16:05:04', 116, NULL, NULL),
+	(118, 'available', NULL, '2024-01-30 16:05:04', 119, NULL, NULL),
+	(119, 'available', NULL, '2024-01-30 16:05:04', 118, NULL, NULL),
+	(120, 'available', NULL, '2024-01-30 16:05:04', 120, NULL, NULL),
+	(121, 'available', NULL, '2024-01-30 16:05:04', 124, NULL, NULL),
+	(122, 'available', NULL, '2024-01-30 16:05:04', 122, NULL, NULL),
+	(123, 'available', NULL, '2024-01-30 16:05:04', 121, NULL, NULL),
+	(124, 'available', NULL, '2024-01-30 16:05:04', 123, NULL, NULL),
+	(125, 'available', NULL, '2024-01-30 16:05:04', 125, NULL, NULL),
+	(126, 'available', NULL, '2024-01-30 16:05:04', 126, NULL, NULL),
+	(127, 'available', NULL, '2024-01-30 16:05:04', 127, NULL, NULL),
+	(128, 'available', NULL, '2024-01-30 16:05:04', 132, NULL, NULL),
+	(129, 'available', NULL, '2024-01-30 16:05:04', 128, NULL, NULL),
+	(130, 'available', NULL, '2024-01-30 16:05:04', 129, NULL, NULL),
+	(131, 'available', NULL, '2024-01-30 16:05:04', 134, NULL, NULL),
+	(132, 'available', NULL, '2024-01-30 16:05:04', 130, NULL, NULL),
+	(133, 'available', NULL, '2024-01-30 16:05:04', 397, NULL, NULL),
+	(134, 'available', NULL, '2024-01-30 16:05:04', 131, NULL, NULL),
+	(135, 'available', NULL, '2024-01-30 16:05:04', 398, NULL, NULL),
+	(136, 'available', NULL, '2024-01-30 16:05:04', 133, NULL, NULL),
+	(137, 'available', NULL, '2024-01-30 16:05:04', 136, NULL, NULL),
+	(138, 'available', NULL, '2024-01-30 16:05:04', 401, NULL, NULL),
+	(139, 'available', NULL, '2024-01-30 16:05:04', 137, NULL, NULL),
+	(140, 'available', NULL, '2024-01-30 16:05:04', 138, NULL, NULL),
+	(141, 'available', NULL, '2024-01-30 16:05:04', 140, 327, NULL),
+	(142, 'available', NULL, '2024-01-30 16:05:04', 142, NULL, NULL),
+	(143, 'available', NULL, '2024-01-30 16:05:04', 139, NULL, NULL),
+	(144, 'available', NULL, '2024-01-30 16:05:04', 141, NULL, NULL),
+	(145, 'available', NULL, '2024-01-30 16:05:04', 143, NULL, NULL),
+	(146, 'available', NULL, '2024-01-30 16:05:04', 144, NULL, NULL),
+	(147, 'available', NULL, '2024-01-30 16:05:04', 148, 328, NULL),
+	(148, 'available', NULL, '2024-01-30 16:05:04', 147, NULL, NULL),
+	(149, 'available', NULL, '2024-01-30 16:05:04', 146, NULL, NULL),
+	(150, 'available', NULL, '2024-01-30 16:05:04', 396, NULL, NULL),
+	(151, 'available', NULL, '2024-01-30 16:05:04', 145, NULL, NULL),
+	(152, 'available', NULL, '2024-01-30 16:05:04', 150, NULL, NULL),
+	(153, 'available', NULL, '2024-01-30 16:05:04', 152, NULL, NULL),
+	(154, 'available', NULL, '2024-01-30 16:05:04', 149, NULL, NULL),
+	(155, 'available', NULL, '2024-01-30 16:05:04', 153, NULL, NULL),
+	(156, 'available', NULL, '2024-01-30 16:05:04', 151, NULL, NULL),
+	(157, 'available', NULL, '2024-01-30 16:05:04', 154, NULL, NULL),
+	(158, 'available', NULL, '2024-01-30 16:05:04', 155, NULL, NULL),
+	(159, 'available', NULL, '2024-01-30 16:05:04', 156, NULL, NULL),
+	(160, 'available', NULL, '2024-01-30 16:05:04', 157, NULL, NULL),
+	(161, 'available', NULL, '2024-01-30 16:05:04', 160, NULL, NULL),
+	(162, 'available', NULL, '2024-01-30 16:05:04', 158, NULL, NULL),
+	(163, 'available', NULL, '2024-01-30 16:05:04', 159, NULL, NULL),
+	(164, 'available', NULL, '2024-01-30 16:05:04', 161, NULL, NULL),
+	(165, 'available', NULL, '2024-01-30 16:05:04', 162, NULL, NULL),
+	(166, 'available', NULL, '2024-01-30 16:05:04', 163, NULL, NULL),
+	(167, 'available', NULL, '2024-01-30 16:05:04', 164, NULL, NULL),
+	(168, 'available', NULL, '2024-01-30 16:05:04', 165, NULL, NULL),
+	(169, 'available', NULL, '2024-01-30 16:05:04', 166, NULL, NULL),
+	(170, 'available', NULL, '2024-01-30 16:05:04', 167, NULL, NULL),
+	(171, 'available', NULL, '2024-01-30 16:05:04', 168, NULL, NULL),
+	(172, 'available', NULL, '2024-01-30 16:05:04', 171, NULL, NULL),
+	(173, 'available', NULL, '2024-01-30 16:05:04', 172, NULL, NULL),
+	(174, 'available', NULL, '2024-01-30 16:05:04', 173, NULL, NULL),
+	(175, 'available', NULL, '2024-01-30 16:05:04', 175, NULL, NULL),
+	(176, 'available', NULL, '2024-01-30 16:05:04', 169, NULL, NULL),
+	(177, 'available', NULL, '2024-01-30 16:05:04', 170, NULL, NULL),
+	(178, 'available', NULL, '2024-01-30 16:05:04', 174, NULL, NULL),
+	(179, 'available', NULL, '2024-01-30 16:05:04', 183, NULL, NULL),
+	(180, 'available', NULL, '2024-01-30 16:05:04', 184, NULL, NULL),
+	(181, 'available', NULL, '2024-01-30 16:05:04', 176, NULL, NULL),
+	(182, 'available', NULL, '2024-01-30 16:05:04', 177, NULL, NULL),
+	(183, 'available', NULL, '2024-01-30 16:05:04', 185, NULL, NULL),
+	(184, 'available', NULL, '2024-01-30 16:05:04', 178, NULL, NULL),
+	(185, 'available', NULL, '2024-01-30 16:05:04', 179, NULL, NULL),
+	(186, 'available', NULL, '2024-01-30 16:05:04', 180, NULL, NULL),
+	(187, 'available', NULL, '2024-01-30 16:05:04', 181, NULL, NULL),
+	(188, 'available', NULL, '2024-01-30 16:05:04', 182, NULL, NULL),
+	(189, 'available', NULL, '2024-01-30 16:05:04', 186, 329, NULL),
+	(190, 'available', NULL, '2024-01-30 16:05:04', 187, NULL, NULL),
+	(191, 'available', NULL, '2024-01-30 16:05:04', 188, NULL, NULL),
+	(192, 'available', NULL, '2024-01-30 16:05:04', 192, NULL, NULL),
+	(193, 'available', NULL, '2024-01-30 16:05:04', 189, NULL, NULL),
+	(194, 'available', NULL, '2024-01-30 16:05:04', 190, NULL, NULL),
+	(195, 'available', NULL, '2024-01-30 16:05:04', 191, NULL, NULL),
+	(196, 'available', NULL, '2024-01-30 16:05:04', 193, NULL, NULL),
+	(197, 'available', NULL, '2024-01-30 16:05:04', 195, NULL, NULL),
+	(198, 'available', NULL, '2024-01-30 16:05:04', 194, NULL, NULL),
+	(199, 'available', NULL, '2024-01-30 16:05:04', 196, NULL, NULL),
+	(200, 'available', NULL, '2024-01-30 16:05:04', 197, NULL, NULL),
+	(201, 'available', NULL, '2024-01-30 16:05:04', 199, NULL, NULL),
+	(202, 'available', NULL, '2024-01-30 16:05:04', 395, NULL, NULL),
+	(203, 'available', NULL, '2024-01-30 16:05:04', 201, NULL, NULL),
+	(204, 'available', NULL, '2024-01-30 16:05:04', 202, 332, NULL),
+	(205, 'available', NULL, '2024-01-30 16:05:04', 198, 330, NULL),
+	(206, 'available', NULL, '2024-01-30 16:05:04', 200, 331, NULL),
+	(207, 'available', NULL, '2024-01-30 16:05:04', 203, 333, NULL),
+	(208, 'available', NULL, '2024-01-30 16:05:04', 204, 337, NULL),
+	(209, 'available', NULL, '2024-01-30 16:05:04', 205, 335, NULL),
+	(210, 'available', NULL, '2024-01-30 16:05:04', 206, 336, NULL),
+	(211, 'available', NULL, '2024-01-30 16:05:04', 207, 334, NULL),
+	(212, 'available', NULL, '2024-01-30 16:05:04', 209, 339, NULL),
+	(213, 'available', NULL, '2024-01-30 16:05:04', 208, 343, NULL),
+	(214, 'available', NULL, '2024-01-30 16:05:04', 210, 340, NULL),
+	(215, 'available', NULL, '2024-01-30 16:05:04', 211, 341, NULL),
+	(216, 'available', NULL, '2024-01-30 16:05:04', 212, 342, NULL),
+	(217, 'available', NULL, '2024-01-30 16:05:04', 213, 338, NULL),
+	(218, 'available', NULL, '2024-01-30 16:05:04', 214, 345, NULL),
+	(219, 'available', NULL, '2024-01-30 16:05:04', 215, 344, NULL),
+	(220, 'available', NULL, '2024-01-30 16:05:04', 216, 346, NULL),
+	(221, 'available', NULL, '2024-01-30 16:05:04', 217, 347, NULL),
+	(222, 'available', NULL, '2024-01-30 16:05:04', 221, 350, NULL),
+	(223, 'available', NULL, '2024-01-30 16:05:04', 224, 354, NULL),
+	(224, 'available', NULL, '2024-01-30 16:05:04', 226, 356, NULL),
+	(225, 'available', NULL, '2024-01-30 16:05:04', 228, 357, NULL),
+	(226, 'available', NULL, '2024-01-30 16:05:04', 219, 349, NULL),
+	(227, 'available', NULL, '2024-01-30 16:05:04', 393, 394, NULL),
+	(228, 'available', NULL, '2024-01-30 16:05:04', 392, NULL, NULL),
+	(229, 'available', NULL, '2024-01-30 16:05:04', 405, 406, NULL),
+	(230, 'available', NULL, '2024-01-30 16:05:04', NULL, NULL, NULL),
+	(231, 'available', NULL, '2024-01-30 16:05:04', 222, 351, NULL),
+	(232, 'available', NULL, '2024-01-30 16:05:04', 220, 352, NULL),
+	(233, 'available', NULL, '2024-01-30 16:05:04', 390, 391, NULL),
+	(234, 'available', NULL, '2024-01-30 16:05:04', 225, 355, NULL),
+	(235, 'available', NULL, '2024-01-30 16:05:04', 389, NULL, NULL),
+	(236, 'available', NULL, '2024-01-30 16:05:04', 387, 388, NULL),
+	(237, 'available', NULL, '2024-01-30 16:05:04', 227, 358, NULL),
+	(238, 'available', NULL, '2024-01-30 16:05:04', 230, 360, NULL),
+	(239, 'available', NULL, '2024-01-30 16:05:04', 231, 359, NULL),
+	(240, 'available', NULL, '2024-01-30 16:05:04', 386, NULL, NULL),
+	(241, 'available', NULL, '2024-01-30 16:05:04', 385, NULL, NULL),
+	(242, 'available', NULL, '2024-01-30 16:05:04', 384, NULL, NULL),
+	(243, 'available', NULL, '2024-01-30 16:05:04', 383, NULL, NULL),
+	(244, 'available', NULL, '2024-01-30 16:05:04', 229, NULL, NULL),
+	(245, 'available', NULL, '2024-01-30 16:05:04', 236, NULL, NULL),
+	(246, 'available', NULL, '2024-01-30 16:05:04', 232, NULL, NULL),
+	(247, 'available', NULL, '2024-01-30 16:05:04', 233, 361, NULL),
+	(248, 'available', NULL, '2024-01-30 16:05:04', 234, 362, NULL),
+	(249, 'available', NULL, '2024-01-30 16:05:04', 237, 363, NULL),
+	(250, 'available', NULL, '2024-01-30 16:05:04', 382, NULL, NULL),
+	(251, 'available', NULL, '2024-01-30 16:05:04', 381, NULL, NULL),
+	(252, 'available', NULL, '2024-01-30 16:05:04', 380, NULL, NULL),
+	(253, 'available', NULL, '2024-01-30 17:22:47', 379, NULL, NULL),
+	(254, 'available', NULL, '2024-01-30 16:05:04', 377, NULL, NULL),
+	(255, 'available', NULL, '2024-01-30 16:05:04', 235, NULL, NULL),
+	(256, 'available', NULL, '2024-01-30 16:05:04', 376, NULL, NULL),
+	(257, 'available', NULL, '2024-01-30 16:05:04', 238, NULL, NULL),
+	(258, 'available', NULL, '2024-01-30 16:05:04', NULL, NULL, NULL),
+	(259, 'available', NULL, '2024-01-30 16:05:04', 240, 365, NULL),
+	(260, 'available', NULL, '2024-01-30 16:05:04', 242, 366, NULL),
+	(261, 'available', NULL, '2024-01-30 16:05:04', 241, NULL, NULL),
+	(262, 'available', NULL, '2024-01-30 16:05:04', 255, NULL, NULL),
+	(263, 'available', NULL, '2024-01-30 16:05:04', 243, NULL, NULL),
+	(264, 'available', NULL, '2024-01-30 16:05:04', 246, NULL, NULL),
+	(265, 'available', NULL, '2024-01-30 16:05:04', 244, NULL, NULL),
+	(266, 'available', NULL, '2024-01-30 16:05:04', 245, NULL, NULL),
+	(267, 'available', NULL, '2024-01-30 16:05:04', 247, 367, NULL),
+	(268, 'available', NULL, '2024-01-30 16:05:04', 251, 368, NULL),
+	(269, 'available', NULL, '2024-01-30 16:05:04', 248, NULL, NULL),
+	(270, 'available', NULL, '2024-01-30 16:05:04', 249, NULL, NULL),
+	(271, 'available', NULL, '2024-01-30 16:05:04', 256, NULL, NULL),
+	(272, 'available', NULL, '2024-01-30 16:05:04', 250, NULL, NULL),
+	(273, 'available', NULL, '2024-01-30 16:05:04', 252, NULL, NULL),
+	(274, 'available', NULL, '2024-01-30 16:05:04', 253, NULL, NULL),
+	(275, 'available', NULL, '2024-01-30 16:05:04', 254, NULL, NULL),
+	(276, 'available', NULL, '2024-01-30 16:05:04', 257, NULL, NULL),
+	(277, 'available', NULL, '2024-01-30 16:05:04', 261, NULL, NULL),
+	(278, 'available', NULL, '2024-01-30 16:05:04', 259, NULL, NULL),
+	(279, 'available', NULL, '2024-01-30 16:05:04', 260, NULL, NULL),
+	(280, 'available', NULL, '2024-01-30 16:05:04', NULL, NULL, NULL),
+	(281, 'available', NULL, '2024-01-30 16:05:04', 375, NULL, NULL),
+	(282, 'available', NULL, '2024-01-30 16:05:04', 258, NULL, NULL),
+	(283, 'available', NULL, '2024-01-30 16:05:04', 262, NULL, NULL),
+	(284, 'available', NULL, '2024-01-30 16:05:04', 264, NULL, NULL),
+	(285, 'available', NULL, '2024-01-30 16:05:04', 266, NULL, NULL),
+	(286, 'available', NULL, '2024-01-30 16:05:04', 374, NULL, NULL),
+	(287, 'available', NULL, '2024-01-30 16:05:04', 373, NULL, NULL),
+	(288, 'available', NULL, '2024-01-30 16:05:04', 372, NULL, NULL),
+	(289, 'available', NULL, '2024-01-30 16:05:04', 371, NULL, NULL),
+	(290, 'available', NULL, '2024-01-30 16:05:04', 370, NULL, NULL),
+	(291, 'available', NULL, '2024-01-30 16:05:04', 263, 369, NULL),
+	(292, 'available', NULL, '2024-01-30 16:05:04', 267, NULL, NULL),
+	(293, 'available', NULL, '2024-01-30 16:05:04', 265, NULL, NULL),
+	(294, 'available', NULL, '2024-01-30 16:05:04', 268, NULL, NULL),
+	(295, 'available', NULL, '2024-01-30 16:05:04', 269, NULL, NULL),
+	(296, 'available', NULL, '2024-01-30 16:05:04', 270, NULL, NULL),
+	(297, 'available', NULL, '2024-01-30 16:05:04', 271, NULL, NULL),
+	(298, 'available', NULL, '2024-01-30 15:05:04', 407, NULL, NULL),
+	(299, 'available', NULL, '2024-01-30 14:05:04', 408, NULL, NULL),
+	(300, 'available', NULL, '2024-01-30 13:05:04', 409, 410, NULL),
+	(301, 'available', NULL, '2024-02-24 13:22:53', 526, NULL, NULL);
+
+-- Dumping structure for table miamifres.rcore_banners_list
+CREATE TABLE IF NOT EXISTS `rcore_banners_list` (
+  `banner_name` varchar(255) NOT NULL,
+  `banner_type` varchar(255) DEFAULT NULL,
+  `banner_dict` varchar(255) DEFAULT NULL,
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `category` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `disabled` tinyint(4) DEFAULT 0,
+  `job_allowed` tinyint(4) DEFAULT 0,
+  `jobs` longtext DEFAULT '[]',
+  PRIMARY KEY (`banner_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Dumping data for table miamifres.rcore_banners_list: ~2 rows (approximately)
+INSERT INTO `rcore_banners_list` (`banner_name`, `banner_type`, `banner_dict`, `updatedAt`, `category`, `image`, `disabled`, `job_allowed`, `jobs`) VALUES
+	('for_rent', 'custom', 'for_rent', '2024-02-23 15:39:59', NULL, NULL, 0, 1, '[]'),
+	('for_sale', 'custom', 'for_sale', '2024-02-23 15:39:56', NULL, NULL, 0, 1, '[]');
+
+-- Dumping structure for table miamifres.rcore_banners_placed
+CREATE TABLE IF NOT EXISTS `rcore_banners_placed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `banner_name` varchar(255) DEFAULT NULL,
+  `owner` varchar(255) DEFAULT NULL,
+  `x` float(8,4) DEFAULT NULL,
+  `y` float(8,4) DEFAULT NULL,
+  `z` float(8,4) DEFAULT NULL,
+  `fwX` float(15,10) DEFAULT NULL,
+  `fwY` float(15,10) DEFAULT NULL,
+  `fwZ` float(15,10) DEFAULT NULL,
+  `dX` float(15,10) DEFAULT NULL,
+  `dY` float(15,10) DEFAULT NULL,
+  `dZ` float DEFAULT NULL,
+  `scaleY` float(8,4) DEFAULT NULL,
+  `scaleX` float(8,4) DEFAULT NULL,
+  `locationType` varchar(50) DEFAULT NULL,
+  `billboardText` longtext DEFAULT '[]',
+  `note` longtext DEFAULT '[]',
+  `renderDistance` int(10) NOT NULL DEFAULT 300,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=528 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=COMPACT;
+
+-- Dumping data for table miamifres.rcore_banners_placed: ~401 rows (approximately)
+INSERT INTO `rcore_banners_placed` (`id`, `banner_name`, `owner`, `x`, `y`, `z`, `fwX`, `fwY`, `fwZ`, `dX`, `dY`, `dZ`, `scaleY`, `scaleX`, `locationType`, `billboardText`, `note`, `renderDistance`) VALUES
+	(2, 'for_rent', NULL, 303.4084, -220.6102, 74.9862, -0.5768784285, 0.8168299794, -0.0000329368, 0.8168299794, 0.5768784285, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(3, 'for_rent', NULL, 351.2480, 294.8237, 123.7992, -0.9657002091, -0.2596594095, -0.0000329368, -0.2596594393, 0.9657003284, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(4, 'for_rent', NULL, 547.4254, -221.5430, 71.0676, -0.7654833198, -0.6434556246, -0.0000329368, -0.6434556842, 0.7654834390, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(5, 'for_rent', NULL, 552.7976, -143.5338, 77.1536, -0.8655897975, -0.5007536411, -0.0000329368, -0.5007537007, 0.8655899167, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(6, 'for_rent', NULL, 505.8926, -6.4890, 103.0305, -0.9846563339, -0.1745045483, -0.0000329368, -0.1745045632, 0.9846564531, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(7, 'for_rent', NULL, 199.7908, -185.5234, 75.3091, 0.9066753387, -0.4218290448, -0.0000329368, -0.4218291044, -0.9066754580, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(8, 'for_rent', NULL, 146.8067, -14.7051, 85.4775, 0.7064902186, 0.7077227235, -0.0000329368, 0.7077227831, -0.7064902782, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(9, 'for_rent', NULL, -373.2112, -877.8676, 52.6259, -0.1578440964, -0.9874639511, -0.0000329368, -0.9874640703, 0.1578441113, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(10, 'for_rent', NULL, -375.7078, -684.0887, 55.3280, -0.1493471116, -0.9887847304, -0.0000329368, -0.9887848496, 0.1493471265, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(11, 'for_rent', NULL, -374.4647, -755.0918, 53.4056, -0.1101579517, -0.9939140677, -0.0000329368, -0.9939141870, 0.1101579666, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(12, 'for_rent', NULL, 458.9255, 128.9433, 125.5440, 0.8655894995, 0.5007541180, -0.0000329368, 0.5007541776, -0.8655896187, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(13, 'for_rent', NULL, 509.1919, 115.5357, 140.6234, -0.2596600056, 0.9657000899, -0.0000329368, 0.9657000899, 0.2596600056, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(14, 'for_rent', NULL, -348.3582, 270.3473, 101.4416, -0.9999995828, -0.0008711219, -0.0000329368, -0.0008711220, 0.9999997020, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(15, 'for_rent', NULL, -869.0348, -2271.0776, 26.1851, 0.6434552073, -0.7654836774, -0.0000329368, -0.7654837966, -0.6434552670, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(16, 'for_rent', NULL, 591.0622, -1690.5526, 44.6910, -0.8664606214, 0.4992452264, -0.0000329368, 0.4992452860, 0.8664607406, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(17, 'for_rent', NULL, -165.1777, 231.1653, 108.1293, -0.9962701797, 0.0862878785, -0.0000329368, 0.0862878859, 0.9962702990, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(18, 'for_rent', NULL, 1169.9408, -784.6342, 77.1536, 0.6421203613, 0.7666037679, -0.0000329368, 0.7666038871, -0.6421204209, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(19, 'for_rent', NULL, -915.0605, -2225.9939, 26.1851, 0.6434552073, -0.7654836774, -0.0000329368, -0.7654837966, -0.6434552670, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(20, 'for_rent', NULL, -817.4546, -2322.8735, 34.6919, 0.6434552073, -0.7654836774, -0.0000329368, -0.7654837966, -0.6434552670, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(21, 'for_rent', NULL, -751.1732, -2395.1411, 34.6919, 0.6434552073, -0.7654836774, -0.0000329368, -0.7654837966, -0.6434552670, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(22, 'for_rent', NULL, -723.6487, -2426.1377, 34.4537, 0.5728626847, 0.8196513057, -0.0000329368, 0.8196514249, -0.5728627443, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(23, 'for_rent', NULL, -845.5197, -2429.6980, 34.1053, -0.8196517229, 0.5728621483, -0.0000329368, 0.5728621483, 0.8196517229, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(24, 'for_rent', NULL, 755.7393, -939.7197, 45.4220, -0.3184248209, -0.9479470253, -0.0014848431, -0.9479480386, 0.3184251487, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(25, 'for_rent', NULL, -1058.6150, -1892.9021, 26.3808, -0.6375830173, -0.7703816295, -0.0000329368, -0.7703816295, 0.6375830173, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(26, 'for_rent', NULL, -799.2255, -2194.9895, 28.9645, 0.7660278082, 0.6428073645, 0.0001181176, 0.6428074241, -0.7660279274, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(27, 'for_rent', NULL, -736.1252, -2125.7700, 27.9602, 0.7654836178, 0.6434552670, -0.0000329368, 0.6434553266, -0.7654837370, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(28, 'for_rent', NULL, -678.8540, -1976.7712, 26.7256, 0.6434539557, -0.7654847503, -0.0000329368, -0.7654848695, -0.6434540153, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(29, 'for_rent', NULL, -605.3781, -905.9763, 44.6124, 0.0862878636, 0.9962701797, -0.0000329368, 0.9962702990, -0.0862878710, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(30, 'for_rent', NULL, -588.5026, -2218.6045, 26.3221, 0.7064897418, 0.7077232003, -0.0000329368, 0.7077232599, -0.7064898014, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(31, 'for_rent', NULL, -535.3534, -867.6542, 47.1714, -0.9849585891, 0.1727901250, -0.0000329368, 0.1727901399, 0.9849587083, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(32, 'for_rent', NULL, -445.2367, -571.9739, 47.6583, 0.6852003932, -0.7283545136, -0.0000329368, -0.7283545732, -0.6852004528, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(33, 'for_rent', NULL, -365.0756, -576.4352, 50.5015, 0.5986981392, 0.8009746075, -0.0000329368, 0.8009747267, -0.5986981988, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(34, 'for_rent', NULL, 1894.9464, 2990.0869, 59.0868, 0.7497940063, 0.6616713405, 0.0000000022, 0.6616713405, -0.7497940063, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(35, 'for_rent', NULL, 1563.7385, 2851.1641, 63.9409, 0.3185062706, 0.9479207397, 0.0000000022, 0.9479207397, -0.3185062706, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(36, 'for_rent', NULL, -611.3618, -1921.5129, 37.9999, -0.9965913296, 0.0824962929, -0.0000329368, 0.0824963003, 0.9965914488, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(37, 'for_rent', NULL, -473.8511, -1915.0339, 32.3269, 0.8807427883, 0.4735947251, -0.0000329368, 0.4735947847, -0.8807429075, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(38, 'for_rent', NULL, -403.8922, -2095.3557, 44.5734, 0.9154376984, -0.4024595618, -0.0000329368, -0.4024596214, -0.9154378176, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(39, 'for_rent', NULL, -290.9832, -1803.7468, 43.1089, -0.9944303632, -0.1053956077, -0.0000329368, -0.1053956226, 0.9944304824, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(40, 'for_rent', NULL, 111.2604, -220.4716, 66.5525, -0.2588013113, 0.9659306407, -0.0000062040, 0.9659306407, 0.2588013113, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(41, 'for_rent', NULL, -64.1815, -203.5194, 55.4824, -0.2588013113, 0.9659306407, -0.0000062040, 0.9659306407, 0.2588013113, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(42, 'for_rent', NULL, -38.8009, -220.9983, 62.1555, 0.9396988153, 0.3420031667, -0.0000062040, 0.3420031667, -0.9396988153, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(43, 'for_rent', NULL, 177.4379, -171.4638, 68.5248, -0.5446234941, 0.8386806846, -0.0000062040, 0.8386806846, 0.5446234941, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(44, 'for_rent', NULL, -10.2860, -106.9218, 76.5393, -0.7431334257, 0.6691433191, -0.0000062040, 0.6691433191, 0.7431334257, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(45, 'for_rent', NULL, 1238.0253, -444.9111, 86.2229, 0.4999849498, -0.8660341501, -0.0000062040, -0.8660341501, -0.4999849498, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(46, 'for_rent', NULL, 1126.8390, -499.0390, 80.3930, -0.9063156843, -0.4226014614, -0.0000062040, -0.4226014614, 0.9063156843, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(47, 'for_rent', NULL, 1263.2437, -333.8052, 85.1741, -0.9063156843, -0.4226014614, -0.0000062040, -0.4226014614, 0.9063156843, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(48, 'for_rent', NULL, 1151.5552, -340.2446, 85.1741, -0.9659215212, 0.2588352859, -0.0000062040, 0.2588352859, 0.9659215212, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(49, 'for_rent', NULL, 69.9897, -122.9333, 70.4630, -0.7431334257, 0.6691433191, -0.0000062040, 0.6691433191, 0.7431334257, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(50, 'for_rent', NULL, 193.9673, -2014.6669, 30.0526, -0.1577348709, 0.9874815345, -0.0000062040, 0.9874815345, 0.1577348709, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(51, 'for_rent', NULL, 213.4382, -1860.1825, 42.7572, -0.1577348709, 0.9874815345, -0.0000062040, 0.9874815345, 0.1577348709, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(52, 'for_rent', NULL, 103.9221, -2021.3320, 31.1415, -0.9997840524, 0.0207827464, -0.0000062040, 0.0207827464, 0.9997840524, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(53, 'for_rent', NULL, 35.3857, -1827.9327, 36.5821, -0.2793586552, 0.9601868391, -0.0000062040, 0.9601868391, 0.2793586552, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(54, 'for_rent', NULL, -88.3518, -81.5826, 73.3569, -0.9271773100, 0.3746230006, -0.0000062040, 0.3746230006, 0.9271773100, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(56, 'for_rent', NULL, -228.5527, -30.2640, 63.6449, 0.9929557443, -0.1184855774, 0.0000016211, -0.1184855774, -0.9929557443, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(57, 'for_rent', NULL, -811.7377, -2417.9292, 28.5567, -0.2588187754, 0.9659258127, 0.0000000000, 0.9659259319, 0.2588188052, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(58, 'for_rent', NULL, -529.5295, -2136.6809, 22.1612, 0.3420196474, -0.9396927357, 0.0000000000, -0.9396928549, -0.3420196772, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(59, 'for_rent', NULL, -1041.4471, -845.4640, 18.9158, 0.5735678077, 0.8191581368, 0.0000853141, 0.8191581368, -0.5735678077, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(60, 'for_rent', NULL, 2557.2295, 88.7915, 111.2941, 0.2208512723, 0.9753074646, -0.0000236291, 0.9753075838, -0.2208513021, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(61, 'for_rent', NULL, 848.4606, 3502.6238, 50.4544, -0.8430988193, -0.5377585292, 0.0000000000, -0.5377585888, 0.8430989385, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(62, 'for_rent', NULL, 1083.5720, 3500.4133, 46.2764, -0.9689865112, -0.2471134365, 0.0000000000, -0.2471134663, 0.9689866304, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(63, 'for_rent', NULL, 354.0588, -1858.5244, 47.3800, -0.1292560995, 0.9916113019, -0.0000062040, 0.9916113019, 0.1292560995, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(64, 'for_rent', NULL, -873.8188, -2693.4419, 27.2766, 0.8660254478, 0.4999998212, 0.0000000000, 0.4999998808, -0.8660255671, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(65, 'for_rent', NULL, 443.1962, 3446.8757, 53.8773, 0.7915877104, -0.6110553741, 0.0000000000, -0.6110554338, -0.7915878296, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(66, 'for_rent', NULL, -427.2207, -1812.4349, 41.2826, -0.7851234674, -0.6193391085, -0.0000329368, -0.6193391681, 0.7851235867, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(67, 'for_rent', NULL, 1359.5023, 3478.0151, 48.8446, -0.9576734304, -0.2878566384, 0.0000000000, -0.2878566682, 0.9576735497, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(68, 'for_rent', NULL, 352.0570, 345.9013, 115.1822, 0.9659258127, -0.2588190436, 0.0000000022, -0.2588190734, -0.9659259319, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(69, 'for_rent', NULL, 257.9994, -1078.5133, 52.4057, 0.9659255147, -0.2588202953, 0.0000000022, -0.2588202953, -0.9659255147, 0, 7.4000, 14.7000, 'BILLBOARD', '[]', '[]', 300),
+	(70, 'for_rent', NULL, 382.6601, -1079.8361, 47.2467, -0.9659262300, -0.2588176131, 0.0000000022, -0.2588176131, 0.9659262300, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(71, 'for_rent', NULL, 517.6817, -87.5944, 80.6402, -0.1736476719, 0.9848078489, 0.0000000022, 0.9848078489, 0.1736476719, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(72, 'for_rent', NULL, 371.4988, 224.6833, 124.5484, -0.6427872181, -0.7660447955, 0.0000000022, -0.7660447955, 0.6427872181, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(73, 'for_rent', NULL, 448.8897, 77.0642, 121.1311, -0.9528388977, -0.3034764826, 0.0000000022, -0.3034765124, 0.9528390169, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(74, 'for_rent', NULL, 369.7321, 105.1270, 122.6976, 0.5277134776, -0.8494224548, 0.0000000022, -0.8494224548, -0.5277134776, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(75, 'for_rent', NULL, 543.2380, 105.6736, 127.9724, 0.8660255671, 0.4999997616, 0.0000000022, 0.4999997616, -0.8660255671, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(76, 'for_rent', NULL, 224.8866, 331.7505, 124.3083, -0.9659258723, -0.2588189840, 0.0000000022, -0.2588189840, 0.9659258723, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(77, 'for_rent', NULL, 104.3783, 266.9322, 139.3789, 1.0000000000, 0.0000001957, 0.0000000022, 0.0000001957, -1.0000000000, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(78, 'for_rent', NULL, 629.6158, 204.1069, 110.4386, -0.9396942854, 0.3420155942, 0.0001676647, 0.3420155942, 0.9396942854, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(79, 'for_rent', NULL, 1132.5237, -929.2683, 63.7249, 0.7071062326, 0.7071073651, 0.0000000022, 0.7071073651, -0.7071062326, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(80, 'for_rent', NULL, 1214.0817, -1791.3751, 53.7323, 0.4694715738, 0.8829475641, 0.0000000022, 0.8829476833, -0.4694716334, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(81, 'for_rent', NULL, 753.3622, -1713.0551, 41.4438, 0.9848112464, 0.1736285388, 0.0000012852, 0.1736285388, -0.9848112464, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(82, 'for_rent', NULL, 930.0383, -867.1338, 55.7421, -0.8379613757, -0.5457295775, 0.0000000022, -0.5457295775, 0.8379613757, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(83, 'for_rent', NULL, 751.8751, -988.4245, 37.9054, -0.1725435406, 0.9850019217, 0.0000000022, 0.9850019217, 0.1725435406, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(84, 'for_rent', NULL, 769.6765, -1157.2439, 38.7926, -0.1563034505, -0.9877091050, 0.0000000022, -0.9877091050, 0.1563034505, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(85, 'for_rent', NULL, 1135.3129, -415.7145, 80.8857, -0.2588186264, -0.9659259319, 0.0000000022, -0.9659259319, 0.2588186264, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(86, 'for_rent', NULL, 1279.3099, -371.5690, 79.6358, 0.7981609702, -0.6024442315, 0.0000000022, -0.6024442315, -0.7981609702, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(87, 'for_rent', NULL, 757.8339, -1024.9044, 34.8890, -0.0000000864, -1.0000000000, 0.0000000022, -1.0000000000, 0.0000000864, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(88, 'for_rent', NULL, 976.2823, -1258.0386, 48.4295, 0.5736187696, -0.8191223145, -0.0003989820, -0.8191224337, -0.5736188293, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(89, 'for_rent', NULL, 1215.9391, -471.2084, 84.2330, 0.2588195801, 0.9659256935, 0.0000000022, 0.9659256935, -0.2588195801, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(90, 'for_rent', NULL, 1140.6836, -277.0435, 82.6433, -1.0000000000, 0.0000000109, 0.0000000022, 0.0000000109, 1.0000000000, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(91, 'for_rent', NULL, 1076.0426, -336.3185, 79.9996, 0.8660256267, -0.4999996424, 0.0000000022, -0.4999996424, -0.8660256267, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(92, 'for_rent', NULL, 1290.2023, 3480.1138, 49.9390, -0.9576734304, -0.2878566384, 0.0000000000, -0.2878566682, 0.9576735497, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(93, 'for_rent', NULL, 327.4180, -2204.1147, 22.4999, -0.6564129591, -0.7544017434, 0.0000000022, -0.7544017434, 0.6564129591, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(94, 'for_rent', NULL, 187.7063, -2074.0837, 31.7963, 0.8947665691, -0.4465341866, 0.0000000022, -0.4465341866, -0.8947665691, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(95, 'for_rent', NULL, -317.9805, -1659.9183, 35.5803, 0.6970130801, 0.7170584202, 0.0000000022, 0.7170584202, -0.6970130801, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(96, 'for_rent', NULL, 20.1619, -1585.7505, 43.3031, 0.7666039467, -0.6421201825, 0.0000000022, -0.6421202421, -0.7666040659, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(97, 'for_rent', NULL, 2.7889, -1531.7815, 38.2365, -0.6421207190, -0.7666035295, 0.0000000022, -0.7666035295, 0.6421207190, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(98, 'for_rent', NULL, 77.1315, -2678.6111, 28.5067, 0.6686866879, -0.7435442805, 0.0000000022, -0.7435442805, -0.6686866879, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(99, 'for_rent', NULL, -316.8903, -1503.9507, 40.4394, -0.4245121479, -0.9054222703, 0.0000000022, -0.9054222703, 0.4245121479, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(100, 'for_rent', NULL, -29.3927, -1337.1569, 42.3535, 0.9999877810, 0.0049481955, 0.0000000022, 0.0049481955, -0.9999877810, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(101, 'for_rent', NULL, -129.5241, -1349.7969, 40.8507, -0.8294914365, 0.5585194230, 0.0000000022, 0.5585194230, 0.8294914365, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(102, 'for_rent', NULL, -212.1261, -1257.3400, 45.2489, -0.0024441129, -0.9999970198, 0.0000000022, -0.9999970198, 0.0024441129, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(103, 'for_rent', NULL, 54.8182, -1333.4647, 42.3535, -0.9999877810, -0.0049481080, 0.0000000022, -0.0049481080, 0.9999877810, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(104, 'for_rent', NULL, 616.6123, -1598.8070, 34.4448, 0.9820774794, -0.1884776950, 0.0000000022, -0.1884776950, -0.9820774794, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(105, 'for_rent', NULL, 317.6274, -1253.4578, 49.6709, 0.9343358874, -0.3563936055, 0.0000000022, -0.3563936055, -0.9343358874, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(106, 'for_rent', NULL, 586.2925, -1667.5887, 40.8616, -0.5253837109, -0.8508654237, 0.0000000022, -0.8508654237, 0.5253837109, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(107, 'for_rent', NULL, 562.6914, -1460.8932, 42.2082, 0.8373814225, -0.5466190577, 0.0000000022, -0.5466190577, -0.8373814225, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(108, 'for_rent', NULL, 367.1864, -1262.2642, 47.8692, 0.7560951710, -0.6544616222, 0.0000000022, -0.6544616818, -0.7560952902, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(109, 'for_rent', NULL, 480.5599, -1933.5759, 33.7330, 0.7826548219, -0.6224560142, 0.0000000022, -0.6224560142, -0.7826548219, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(110, 'for_rent', NULL, 593.0756, -1849.7615, 35.5544, 0.6107078791, -0.7918559909, 0.0000000022, -0.7918559909, -0.6107078791, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(111, 'for_rent', NULL, 227.7392, -1963.1322, 31.6398, 0.6437714696, 0.7652178407, 0.0000000022, 0.7652178407, -0.6437714696, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(112, 'for_rent', NULL, 518.4205, -1880.3958, 34.9837, 0.5975425839, 0.8018371463, 0.0000000022, 0.8018372655, -0.5975426435, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(113, 'for_rent', NULL, 173.9489, -1816.1461, 38.2846, -0.6437720060, -0.7652173638, 0.0000000022, -0.7652173638, 0.6437720060, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(114, 'for_rent', NULL, 12.3304, -1838.7402, 33.8469, -0.7666038871, 0.6421203017, 0.0000000022, 0.6421203017, 0.7666038871, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(115, 'for_rent', NULL, -172.5441, -1751.9329, 39.5125, -0.7666038871, 0.6421203017, 0.0000000022, 0.6421203017, 0.7666038871, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(116, 'for_rent', NULL, -525.5032, -57.1683, 53.7343, -0.9205047488, 0.3907314241, 0.0000000022, 0.3907314241, 0.9205047488, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(117, 'for_rent', NULL, -463.7937, -78.0780, 52.7606, 0.7771458030, 0.6293205619, 0.0000000022, 0.6293205619, -0.7771458030, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(118, 'for_rent', NULL, -129.7323, 219.4548, 109.2741, 0.2588191330, -0.9659258127, 0.0000000022, -0.9659258127, -0.2588191330, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(119, 'for_rent', NULL, -74.4450, 227.4151, 117.2240, 0.6366344094, -0.7711657286, 0.0000000022, -0.7711658478, -0.6366344690, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(120, 'for_rent', NULL, -3.4948, 223.5581, 120.5018, -0.8237174153, -0.5670005679, 0.0000000022, -0.5670005679, 0.8237174153, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(121, 'for_rent', NULL, -682.4072, -723.8896, 49.7959, 0.0000000000, 1.0000000000, 0.0000000000, 1.0000000000, 0.0000000000, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(122, 'for_rent', NULL, -1452.9982, -265.9819, 59.8158, -0.6894127727, 0.7243686914, 0.0000062798, 0.7243686914, 0.6894127727, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(123, 'for_rent', NULL, -595.7659, -1170.2263, 24.7137, -0.0040754760, 0.9999917746, 0.0000088561, 0.9999917746, 0.0040754760, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(124, 'for_rent', NULL, -1390.1959, -332.4153, 52.6468, -0.4936612546, 0.8696542382, -0.0000891166, 0.8696543574, 0.4936613142, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(125, 'for_rent', NULL, -615.2728, -1170.2356, 24.7137, -0.0040653674, 0.9999917150, 0.0003279375, 0.9999918342, 0.0040653679, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(126, 'for_rent', NULL, -732.9853, -1125.2307, 22.4625, 0.8939957023, -0.4480754733, 0.0000000022, -0.4480755329, -0.8939958215, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(127, 'for_rent', NULL, -718.0758, -1150.2362, 20.2267, 0.6208693385, -0.7839140296, 0.0000000022, -0.7839141488, -0.6208693981, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(128, 'for_rent', NULL, 191.2670, 6438.0825, 45.0461, -0.7071058750, -0.7071076632, 0.0000000022, -0.7071076632, 0.7071058750, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(129, 'for_rent', NULL, 71.5146, 6412.8232, 45.3909, 0.7023436427, 0.7118380666, 0.0000000022, 0.7118380666, -0.7023436427, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(130, 'for_rent', NULL, 715.5391, 3483.4155, 49.0136, -0.8073555231, -0.5900653005, 0.0000000022, -0.5900653005, 0.8073555231, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(131, 'for_rent', NULL, -473.5736, 275.2033, 92.4000, 0.0890057907, 0.9960312247, 0.0000000000, 0.9960311055, -0.0890057832, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(132, 'for_rent', NULL, -695.7808, -1842.4802, 39.5680, -0.3420197368, 0.9396927953, 0.0000000022, 0.9396927953, 0.3420197368, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(133, 'for_rent', NULL, -616.1117, 292.4661, 91.9000, 0.6427617073, 0.7660661936, 0.0000000534, 0.7660661936, -0.6427617073, 0, 6.0000, 17.5200, 'BILLBOARD', '[]', '[]', 300),
+	(134, 'for_rent', NULL, -308.1956, 6037.2026, 45.5407, 0.9160617590, 0.4010372758, 0.0000000022, 0.4010372758, -0.9160617590, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(135, 'for_rent', NULL, -499.5031, 275.2033, 92.4000, 0.0890057907, 0.9960312247, 0.0000000000, 0.9960311055, -0.0890057832, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(136, 'for_rent', NULL, -593.4255, 283.3500, 92.5100, 0.7063450813, 0.7078676224, 0.0000001454, 0.7078676820, -0.7063451409, 0, 4.8000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(137, 'for_rent', NULL, 705.5155, -972.3744, 39.7000, 0.7071062326, 0.7071073651, 0.0000000000, 0.7071073651, -0.7071062326, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(138, 'for_rent', NULL, 796.9918, -1723.5535, 48.4117, -0.3420184851, 0.9396933317, 0.0000000000, 0.9396932125, 0.3420184553, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(139, 'for_rent', NULL, -22.7620, -1003.8093, 64.5000, 0.3475213945, 0.9376720786, -0.0000141235, 0.9376720786, -0.3475213945, 0, 36.8800, 15.4000, 'BILLBOARD', '[]', '[]', 300),
+	(140, 'for_rent', NULL, 1168.7948, -1829.6960, 48.9741, -0.3366467655, 0.9416308403, 0.0000000000, 0.9416310787, 0.3366468549, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(141, 'for_rent', NULL, -1.9964, -1011.3433, 67.1000, 0.3532801569, 0.9355175495, -0.0002519348, 0.9355176687, -0.3532801867, 0, 42.2000, 14.2000, 'BILLBOARD', '[]', '[]', 300),
+	(142, 'for_rent', NULL, -98.5443, -1009.7372, 82.7000, 0.3420191705, 0.9396929145, 0.0000000082, 0.9396930337, -0.3420192003, 0, 40.0000, 24.0000, 'BILLBOARD', '[]', '[]', 300),
+	(143, 'for_rent', NULL, 20.0263, -1019.3777, 64.5000, 0.3510930240, 0.9363405704, 0.0000221621, 0.9363405704, -0.3510930240, 0, 36.7000, 15.2000, 'BILLBOARD', '[]', '[]', 300),
+	(144, 'for_rent', NULL, 1159.6509, -296.3342, 77.0200, -0.6427052021, 0.7661135197, 0.0000029261, 0.7661136389, 0.6427052617, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(145, 'for_rent', NULL, 791.7417, -801.3560, 39.6900, -0.0871568769, -0.9961945415, 0.0000000000, -0.9961946607, 0.0871568844, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(146, 'for_rent', NULL, 1169.3446, -438.4090, 75.0727, 0.8191004992, 0.5736499429, -0.0002695554, 0.5736500025, -0.8191006184, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(147, 'for_rent', NULL, 1225.0039, -403.1173, 78.7046, -0.7660779953, 0.6427474022, 0.0003136562, 0.6427474618, 0.7660781145, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(148, 'for_rent', NULL, 975.8718, -200.9807, 92.1367, 0.7502208948, -0.6611872315, -0.0000329368, -0.6611872315, -0.7502208948, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(149, 'for_rent', NULL, 229.7341, 3220.7234, 56.2487, 0.3540953100, 0.9352093339, 0.0000000022, 0.9352093339, -0.3540953100, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(150, 'for_rent', NULL, 2455.2336, 3019.4167, 56.3843, -0.9149757028, 0.4035088420, -0.0000162045, 0.4035089016, 0.9149758220, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(151, 'for_rent', NULL, 2342.6062, 3854.2678, 46.5000, 0.9886858463, 0.1500011086, 0.0000000022, 0.1500011086, -0.9886858463, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(152, 'for_rent', NULL, 2533.9121, 3067.7654, 57.8625, -0.9809372425, -0.1943247467, 0.0000000022, -0.1943247467, 0.9809372425, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(153, 'for_rent', NULL, 849.1918, 3551.8730, 46.9298, -0.8910868764, 0.4538326859, -0.0000008516, 0.4538327456, 0.8910869956, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(154, 'for_rent', NULL, 1537.4391, 3432.8899, 52.2004, -0.7927982211, -0.6094841957, 0.0000000022, -0.6094841957, 0.7927982211, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(155, 'for_rent', NULL, 1490.2102, 3446.1165, 50.6367, -0.7927982211, -0.6094841957, 0.0000000022, -0.6094841957, 0.7927982211, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(156, 'for_rent', NULL, 59.2773, 214.0549, 130.3033, 0.7660441399, -0.6427879930, 0.0000000000, -0.6427879930, -0.7660441399, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(157, 'for_rent', NULL, 179.7771, 174.4121, 130.3033, -0.9063082337, -0.4226173162, 0.0000000000, -0.4226173162, 0.9063082337, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(158, 'for_rent', NULL, 687.1501, -655.6370, 41.4166, 0.8660256267, -0.4999996424, 0.0000000000, -0.4999996424, -0.8660256267, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(159, 'for_rent', NULL, 753.1397, -676.2454, 43.8121, -0.5329632759, -0.8461383581, 0.0000000000, -0.8461383581, 0.5329632759, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(160, 'for_rent', NULL, 782.6674, -2223.5474, 45.4393, 0.0871579424, 0.9961944818, 0.0000000000, 0.9961946011, -0.0871579498, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(161, 'for_rent', NULL, 1095.0461, -1382.0636, 44.7806, 0.0000000000, 0.9999999404, 0.0000000000, 1.0000000000, 0.0000000000, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(162, 'for_rent', NULL, 1227.1449, -1331.8638, 50.4211, -0.1527597606, -0.9882633686, 0.0000000000, -0.9882633686, 0.1527597606, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(163, 'for_rent', NULL, -320.0126, -1615.9270, 32.5359, 0.7076113820, 0.7066018581, 0.0000000000, 0.7066018581, -0.7076113820, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(164, 'for_rent', NULL, -361.8459, -1501.5872, 43.4055, 0.7076113820, 0.7066018581, 0.0000000000, 0.7066018581, -0.7076113820, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(165, 'for_rent', NULL, -83.0820, -1310.0452, 38.6666, 0.6258711815, 0.7799264789, 0.0000000000, 0.7799264789, -0.6258711815, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(166, 'for_rent', NULL, -299.8878, -1338.4327, 43.9668, -0.5901755095, -0.8072749972, 0.0000000000, -0.8072749972, 0.5901755095, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(167, 'for_rent', NULL, 122.1382, -1575.5181, 45.9000, 0.7224100232, -0.6914649010, 0.0000000000, -0.6914649606, -0.7224100828, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(168, 'for_rent', NULL, 516.2175, -1512.7887, 45.4737, -0.3583079875, -0.9336034656, 0.0000000000, -0.9336034656, 0.3583079875, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(169, 'for_rent', NULL, -1036.8313, -2680.2786, 29.6723, 0.9848079085, -0.1736471355, 0.0000000000, -0.1736471504, -0.9848080277, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(170, 'for_rent', NULL, -1115.5062, -2662.6897, 29.6723, -0.5000000000, -0.8660253882, 0.0000000000, -0.8660253882, 0.5000000000, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(171, 'for_rent', NULL, 478.1315, -1680.7430, 44.5804, 0.2726541460, -0.9621121287, 0.0000000000, -0.9621121287, -0.2726541460, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(172, 'for_rent', NULL, 280.9804, -1808.6277, 39.7188, 0.0878656134, 0.9961323142, 0.0000000000, 0.9961324334, -0.0878656209, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(173, 'for_rent', NULL, 397.6595, -1930.3813, 38.5680, -0.3323699534, 0.9431490898, 0.0000000000, 0.9431490898, 0.3323699534, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(174, 'for_rent', NULL, -962.9772, -2760.7722, 25.2120, 0.8660256267, -0.4999996424, 0.0000000000, -0.4999996424, -0.8660256267, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(175, 'for_rent', NULL, -862.8509, -2322.0684, 29.6723, -0.4226188958, -0.9063074589, 0.0000000000, -0.9063075781, 0.4226189554, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(176, 'for_rent', NULL, -1106.8256, -2019.8551, 29.1567, -0.5735768676, 0.8191517591, 0.0000000000, 0.8191517591, 0.5735768676, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(177, 'for_rent', NULL, -1339.7578, -235.3135, 56.0126, 0.9391444921, -0.3435224295, 0.0000000000, -0.3435224295, -0.9391444921, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(178, 'for_rent', NULL, -1361.9139, -348.3613, 48.3710, 0.0783983320, 0.9969220757, 0.0000101074, 0.9969221950, -0.0783983395, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(179, 'for_rent', NULL, -1516.1670, -172.8346, 65.9666, 0.9999746084, 0.0071276580, 0.0000000000, 0.0071276580, -0.9999746084, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(180, 'for_rent', NULL, -825.8805, -1067.7054, 19.8144, -0.4923942387, 0.8703720570, -0.0002775792, 0.8703722358, 0.4923943579, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(181, 'for_rent', NULL, 1824.5377, 2380.1541, 67.1194, -0.4817123413, -0.8763294220, 0.0000000000, -0.8763294220, 0.4817123413, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(182, 'for_rent', NULL, 1930.7137, 3136.7339, 60.8227, 0.5841994882, -0.8116101027, 0.0000000000, -0.8116101027, -0.5841994882, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(183, 'for_rent', NULL, -915.0574, -2399.9319, 30.2824, -0.5735768080, -0.8191518188, 0.0000000000, -0.8191518188, 0.5735768080, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(184, 'for_rent', NULL, -1067.1113, -1952.8424, 27.8101, -0.5735768080, -0.8191518188, 0.0000000000, -0.8191518188, 0.5735768080, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(185, 'for_rent', NULL, -1328.6719, -258.2372, 56.0126, -0.0681631491, 0.9976741672, 0.0000000000, 0.9976741672, 0.0681631491, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(186, 'for_rent', NULL, 190.6507, 6642.6196, 40.5502, -0.2757578194, -0.9612271190, 0.0000000321, -0.9612272382, 0.2757578492, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(187, 'for_rent', NULL, -1334.5962, -331.9070, 49.3066, -0.9636122584, 0.2673040330, 0.0000308720, 0.2673040330, 0.9636122584, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(188, 'for_rent', NULL, -1470.3669, -134.7198, 66.3451, -0.2939021885, -0.9558355212, 0.0000000000, -0.9558355212, 0.2939021885, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(189, 'for_rent', NULL, -805.9207, -1778.5857, 44.8337, 0.9848079681, 0.1736470461, 0.0000000000, 0.1736470461, -0.9848079681, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(190, 'for_rent', NULL, -832.6575, -1112.4836, 19.3070, 0.8703704476, 0.4923973083, -0.0000146879, 0.4923973680, -0.8703705668, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(191, 'for_rent', NULL, 2604.2126, 213.5602, 110.9684, 0.2558611333, 0.9667134285, 0.0000052933, 0.9667135477, -0.2558611631, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(192, 'for_rent', NULL, -1227.8105, -412.3750, 48.1153, 0.4864993691, 0.8736810088, 0.0001569381, 0.8736810088, -0.4864993691, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(193, 'for_rent', NULL, 2630.0759, 635.5465, 110.6743, 0.0008925567, 0.9995791912, 0.0289938021, 0.9999995828, -0.0008929321, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(194, 'for_rent', NULL, 1357.6261, 674.7260, 95.1398, -0.7080424428, -0.7061699033, 0.0000000000, -0.7061699033, 0.7080424428, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(195, 'for_rent', NULL, 1646.8411, 1323.9918, 100.5418, -0.3426113427, -0.9394772053, 0.0000000000, -0.9394773245, 0.3426113725, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(196, 'for_rent', NULL, 2616.1282, 4309.1606, 57.9868, -0.6563726664, -0.7544368505, 0.0000000000, -0.7544368505, 0.6563726664, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(197, 'for_rent', NULL, 1125.2238, 3545.4961, 50.5830, -0.8910868764, 0.4538326859, -0.0000008537, 0.4538327456, 0.8910869956, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(198, 'for_rent', NULL, -372.8971, -1243.9626, 32.2286, 0.0852862746, -0.9963564873, 0.0000000000, -0.9963564873, -0.0852862746, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(199, 'for_rent', NULL, 2442.4575, 3977.1150, 50.5400, 0.5446977615, 0.8386324644, 0.0000000000, 0.8386324644, -0.5446977615, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(200, 'for_rent', NULL, -372.8971, -1177.0027, 28.8516, 0.0852862746, -0.9963564873, 0.0000000000, -0.9963564873, -0.0852862746, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(201, 'for_rent', NULL, -1333.1759, -424.6470, 48.0378, 0.4196684361, 0.7461634278, -0.5168350339, 0.8715997338, -0.4902181923, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(202, 'for_rent', NULL, 816.7323, -1573.6366, 40.3337, 0.2588186860, -0.9659259319, 0.0000000000, -0.9659259319, -0.2588186860, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(203, 'for_rent', NULL, -767.6815, -1828.3558, 36.5575, -0.3420184553, 0.9396932125, 0.0000000000, 0.9396933317, 0.3420184851, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(204, 'for_rent', NULL, -191.2967, -2128.1943, 33.5468, -0.9063082337, -0.4226173162, 0.0000000000, -0.4226173162, 0.9063082337, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(205, 'for_rent', NULL, -75.8994, -2084.3545, 32.1602, -0.9063082337, -0.4226173162, 0.0000000000, -0.4226173162, 0.9063082337, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(206, 'for_rent', NULL, -678.9840, -1600.4413, 30.9721, -0.0871550962, -0.9961947799, 0.0000000000, -0.9961947799, 0.0871550962, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(207, 'for_rent', NULL, -1430.2435, -447.5491, 51.1527, -0.7489559054, -0.6626198292, 0.0000000000, -0.6626198292, 0.7489559054, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(208, 'for_rent', NULL, 2105.5034, 3023.1882, 54.4156, 0.9994652867, 0.0326978825, 0.0000000000, 0.0326978825, -0.9994652867, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(209, 'for_rent', NULL, 1173.4938, -2579.7390, 45.3418, -0.9057472348, -0.4238183498, 0.0000000000, -0.4238183498, 0.9057472348, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(210, 'for_rent', NULL, 2029.8572, 3033.4941, 56.6732, 0.3410556912, 0.9400430918, 0.0000000000, 0.9400430918, -0.3410556912, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(211, 'for_rent', NULL, 856.5288, -1544.1953, 41.8896, -0.9659267664, 0.2588155866, -0.0000064136, 0.2588155866, 0.9659267664, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(212, 'for_rent', NULL, -1895.5059, -238.0706, 54.6414, -0.3420197368, 0.9396927953, -0.0000000005, 0.9396927953, 0.3420197368, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(213, 'for_rent', NULL, -570.3370, 199.3737, 97.8246, 0.0000000002, 1.0000000000, -0.0000000005, 1.0000000000, -0.0000000002, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(214, 'for_rent', NULL, -504.7041, 285.2259, 100.0158, 0.6214370131, -0.7834641337, -0.0000000005, -0.7834641337, -0.6214370131, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(215, 'for_rent', NULL, -446.6776, 271.4258, 101.8826, 0.6214370131, -0.7834641337, -0.0000000005, -0.7834641337, -0.6214370131, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(216, 'for_rent', NULL, -401.2919, 288.9435, 96.3622, 0.8943188787, -0.4474301636, -0.0000000005, -0.4474301636, -0.8943188787, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(217, 'for_rent', NULL, -401.8335, 265.0923, 95.5808, 0.8943188787, -0.4474301636, -0.0000000005, -0.4474301636, -0.8943188787, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(219, 'for_rent', NULL, 1287.8865, -2231.5132, 59.8104, 0.9394853115, 0.3425891399, 0.0002396062, 0.3425891399, -0.9394853115, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(220, 'for_rent', NULL, -738.8914, -1681.2458, 42.1127, 0.9848083258, 0.1736449748, 0.0000016211, 0.1736449748, -0.9848083258, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(221, 'for_rent', NULL, -110.5299, 282.2582, 108.4893, 0.7071059346, -0.7071076035, -0.0000000005, -0.7071076035, -0.7071059346, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(222, 'for_rent', NULL, -604.4515, -1754.3990, 49.3578, -0.9396936893, -0.3420172632, 0.0000016211, -0.3420172632, 0.9396936893, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(224, 'for_rent', NULL, -126.9658, 282.3641, 108.4893, -0.6426946521, -0.7661224008, 0.0001646570, -0.7661225200, 0.6426947117, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(225, 'for_rent', NULL, -604.4515, -1754.3990, 49.3578, -0.9396936893, -0.3420172632, 0.0000016211, -0.3420172632, 0.9396936893, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(226, 'for_rent', NULL, -213.6787, 323.7710, 106.9208, -0.0146816140, -0.9998922348, -0.0000000005, -0.9998922348, 0.0146816140, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(227, 'for_rent', NULL, -757.7399, -1978.3685, 28.8548, 0.8186517954, 0.5742901564, -0.0000329368, 0.5742902160, -0.8186519146, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(228, 'for_rent', NULL, -989.6055, -2105.0554, 22.8846, 0.7071082592, -0.7071052194, 0.0000825458, -0.7071052790, -0.7071083188, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(229, 'for_rent', NULL, -961.9548, -2710.2375, 29.6723, 1.0000000000, 0.0000001947, 0.0000000000, 0.0000001947, -1.0000000000, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(230, 'for_rent', NULL, -818.2854, -1976.2053, 18.9522, 0.9396927953, 0.3420197368, 0.0000000000, 0.3420197368, -0.9396927953, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(231, 'for_rent', NULL, -982.5262, -2098.3867, 22.8846, 0.4491172135, -0.8934729099, 0.0000000000, -0.8934729099, -0.4491172135, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(232, 'for_rent', NULL, -774.8573, -2517.8345, 27.4648, 0.8660254478, 0.4999998212, 0.0000000000, 0.4999998808, -0.8660255671, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(233, 'for_rent', NULL, -132.4032, -2109.6523, 36.8044, 0.9548321962, 0.2971456647, -0.0000062040, 0.2971456647, -0.9548321962, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(234, 'for_rent', NULL, -38.4776, -2076.9460, 32.5025, -0.8887205124, -0.4584493041, 0.0000016211, -0.4584493637, 0.8887206316, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(235, 'for_rent', NULL, 72.4850, -1451.2217, 38.9000, 0.0009765623, 0.9999995232, 0.0000000000, 0.9999995232, -0.0009765623, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(236, 'for_rent', NULL, -822.5544, -2604.9443, 27.4648, 0.8660254478, 0.4999998212, 0.0000000000, 0.4999998808, -0.8660255671, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(237, 'for_rent', NULL, -26.0459, -2016.9556, 32.5025, 0.6427732110, -0.7660565972, -0.0000062040, -0.7660565972, -0.6427732110, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(238, 'for_rent', NULL, 616.3400, 146.3919, 105.4182, -0.6427672505, 0.7660614252, -0.0000023490, 0.7660615444, 0.6427673101, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(240, 'for_rent', NULL, -606.0203, 232.4775, 106.3000, 1.0000000000, 0.0000000000, 0.0000000000, 0.0000000000, -1.0000000000, 0, 25.0000, 10.0000, 'BILLBOARD', '[]', '[]', 300),
+	(241, 'for_rent', NULL, -29.6210, 6391.7349, 43.6471, -0.9149087667, -0.4036606550, 0.0000000000, -0.4036606550, 0.9149087667, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(242, 'for_rent', NULL, -1823.4172, 765.9954, 155.5164, 0.8499668241, 0.5264697671, -0.0196434539, 0.5265713930, -0.8501308560, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(243, 'for_rent', NULL, 483.5015, -807.5098, 48.2107, -0.7070856094, 0.7071279287, 0.0000037993, 0.7071279287, 0.7070856094, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(244, 'for_rent', NULL, 390.4870, -879.2188, 44.7000, -0.7071058750, -0.7071076632, 0.0000000000, -0.7071076632, 0.7071058750, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(245, 'for_rent', NULL, 382.2259, -971.1456, 49.5384, -0.7071058750, -0.7071076632, 0.0000000000, -0.7071076632, 0.7071058750, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(246, 'for_rent', NULL, 449.6615, -878.8949, 49.4800, -1.0000000000, 0.0000011484, 0.0000000000, 0.0000011484, 1.0000000000, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(247, 'for_rent', NULL, -1116.8145, -759.2216, 39.1808, -0.1736652255, -0.9848048091, -0.0000062040, -0.9848048091, 0.1736652255, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(248, 'for_rent', NULL, 386.8679, -937.1589, 44.5000, -0.7071055770, 0.7071079612, 0.0000000000, 0.7071079612, 0.7071055770, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(249, 'for_rent', NULL, 420.1554, -924.9700, 51.3692, 0.7071075439, 0.7071059942, 0.0000000000, 0.7071059942, -0.7071075439, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(250, 'for_rent', NULL, 422.2882, -785.5619, 49.9000, 0.7071072459, 0.7071063519, 0.0000000038, 0.7071063519, -0.7071072459, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(251, 'for_rent', NULL, -1324.3883, -817.6385, 32.8352, 0.5877823830, -0.8090190887, 0.0000016211, -0.8090190887, -0.5877823830, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(252, 'for_rent', NULL, 389.3440, -777.4523, 41.1991, -0.7070983052, -0.7071152925, -0.0000037989, -0.7071152925, 0.7070983052, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(253, 'for_rent', NULL, 354.4991, 280.9793, 116.1482, -0.9659258127, 0.2588190436, 0.0000000000, 0.2588190734, 0.9659259319, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(254, 'for_rent', NULL, 118.7857, -1337.7764, 42.3179, 0.9271991253, -0.3745689392, 0.0000006709, -0.3745689392, -0.9271991253, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(255, 'for_rent', NULL, 2490.6697, 4125.7012, 50.4858, 0.4181406200, 0.9083822966, 0.0000000022, 0.9083822966, -0.4181406200, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(256, 'for_rent', NULL, 389.9994, -828.8756, 44.7597, -0.7070989609, 0.7071145773, -0.0000056994, 0.7071145773, 0.7070989609, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(257, 'for_rent', NULL, 128.2066, -1346.3008, 38.5066, -0.0261738095, 0.9996573925, 0.0000000000, 0.9996573925, 0.0261738095, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(258, 'for_rent', NULL, 2096.7529, 3080.0020, 57.9013, -0.8665378094, 0.4991113842, 0.0000000022, 0.4991114438, 0.8665379286, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(259, 'for_rent', NULL, 176.8571, -1319.8198, 40.0069, -0.4067364037, 0.9135455489, 0.0000000000, 0.9135455489, 0.4067364037, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(260, 'for_rent', NULL, 188.3406, -1291.9751, 39.8000, -0.8338860869, -0.5519366264, 0.0000000000, -0.5519366264, 0.8338860869, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(261, 'for_rent', NULL, 159.6133, -1341.2954, 38.7917, -0.9510980844, -0.3088887632, 0.0000000000, -0.3088887930, 0.9510982037, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(262, 'for_rent', NULL, 2046.3906, 3100.0054, 59.5956, -0.8665378094, 0.4991113842, 0.0000000022, 0.4991114438, 0.8665379286, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(263, 'for_rent', NULL, -220.9521, 300.8488, 104.5535, 0.5987881422, -0.8009014130, -0.0030527785, -0.8009053469, -0.5987910628, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(264, 'for_rent', NULL, 1848.8192, 3600.1057, 48.6908, 0.8665229678, 0.4991371334, 0.0000012104, 0.4991371930, -0.8665230870, 0, 6.0800, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(265, 'for_rent', NULL, 2482.5654, 2885.3362, 60.3077, 0.3304187655, 0.9438344240, 0.0000000022, 0.9438344240, -0.3304187655, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(266, 'for_rent', NULL, 1114.8490, 2710.9248, 51.9605, -0.9292295575, 0.3695029616, 0.0000000022, 0.3695029616, 0.9292295575, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(267, 'for_rent', NULL, -62.1464, 6440.7183, 45.0403, 0.9963326454, -0.0855646878, 0.0000000000, -0.0855646878, -0.9963326454, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(268, 'for_rent', NULL, 2603.8865, 3047.8662, 61.0308, 0.7572813034, 0.6530888081, 0.0000000000, 0.6530888677, -0.7572814226, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(269, 'for_rent', NULL, 2719.2803, 3183.6028, 64.5354, 0.7572813034, 0.6530888081, 0.0000000022, 0.6530888677, -0.7572814226, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(270, 'for_rent', NULL, 2784.7532, 3320.7739, 70.5482, 0.7572813034, 0.6530888081, 0.0000000000, 0.6530888677, -0.7572814226, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(271, 'for_rent', NULL, 2847.7021, 3472.8711, 70.0725, 0.7572813034, 0.6530888081, 0.0000000000, 0.6530888677, -0.7572814226, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(272, 'for_rent', NULL, 346.7835, 293.1987, 123.7992, 0.9064292908, 0.4223574698, 0.0000923488, 0.4223575294, -0.9064294100, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(273, 'for_rent', NULL, 300.3429, -216.9804, 74.9862, 0.7091395259, -0.7050681114, 0.0000923488, -0.7050681710, -0.7091395855, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(274, 'for_rent', NULL, 548.8188, -146.3198, 77.1536, 0.7662290335, 0.6425674558, 0.0000923488, 0.6425675154, -0.7662291527, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(275, 'for_rent', NULL, 501.1343, -7.7641, 103.0305, 0.9397910833, 0.3417493403, 0.0000923488, 0.3417493701, -0.9397912025, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(276, 'for_rent', NULL, 543.9889, -224.9795, 71.0676, 0.6430061460, 0.7658609152, 0.0000923488, 0.7658610344, -0.6430062056, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(277, 'for_rent', NULL, 204.3409, -187.1795, 75.3091, -0.9658513665, 0.2590965033, 0.0000923488, 0.2590965331, 0.9658514857, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(278, 'for_rent', NULL, 150.1463, -10.7251, 85.4775, -0.5738108754, -0.8189877868, 0.0000923488, -0.8189879060, 0.5738109350, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(279, 'for_rent', NULL, -373.5534, -882.6061, 52.6259, -0.0148675516, 0.9998893738, 0.0000923488, 0.9998894930, 0.0148675535, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(280, 'for_rent', NULL, -376.0150, -688.9195, 55.3280, -0.0234649926, 0.9997246265, 0.0000923488, 0.9997247458, 0.0234649964, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(281, 'for_rent', NULL, -374.5786, -759.8416, 53.4056, -0.0629514754, 0.9980165362, 0.0000923488, 0.9980166554, 0.0629514828, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(282, 'for_rent', NULL, -353.0912, 269.9332, 101.4416, 0.9848574400, 0.1733658165, 0.0000923488, 0.1733658314, -0.9848575592, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(283, 'for_rent', NULL, 507.5669, 120.0002, 140.6234, 0.4223580360, -0.9064290524, 0.0000923488, -0.9064291716, -0.4223580956, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(284, 'for_rent', NULL, 462.8174, 131.6684, 125.5440, -0.7662286758, -0.6425678730, 0.0000923488, -0.6425679326, 0.7662287951, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(285, 'for_rent', NULL, 586.7563, -1688.5449, 44.6910, 0.9395944476, -0.3422893882, 0.0000923488, -0.3422894180, -0.9395945668, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(286, 'for_rent', NULL, -169.9288, 231.1652, 108.1293, 0.9962195754, 0.0868701413, 0.0000923488, 0.0868701488, -0.9962196946, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(287, 'for_rent', NULL, -865.6752, -2274.4365, 26.1851, -0.7658606172, 0.6430066228, 0.0000923488, 0.6430066228, 0.7658606172, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(288, 'for_rent', NULL, -911.7009, -2229.3528, 26.1851, -0.7658606172, 0.6430066228, 0.0000923488, 0.6430066228, 0.7658606172, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(289, 'for_rent', NULL, 1172.6660, -780.7422, 77.1536, -0.5002486706, -0.8658816814, 0.0000923488, -0.8658818007, 0.5002487302, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(290, 'for_rent', NULL, -814.0950, -2326.2324, 34.6919, -0.7658606172, 0.6430066228, 0.0000923488, 0.6430066228, 0.7658606172, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(291, 'for_rent', NULL, -747.8136, -2398.5002, 34.6919, -0.7658606172, 0.6430066228, 0.0000923488, 0.6430066228, 0.7658606172, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(292, 'for_rent', NULL, -540.0865, -867.2402, 47.1714, 0.9999998808, -0.0002866089, 0.0000923488, -0.0002866090, -1.0000000000, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(293, 'for_rent', NULL, -849.6342, -2427.3225, 34.1053, 0.9061867595, -0.4228775501, 0.0000923488, -0.4228776097, -0.9061868787, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(294, 'for_rent', NULL, -1061.3170, -1896.8099, 26.3808, 0.4951275587, 0.8688201904, 0.0000923488, 0.8688203096, -0.4951276183, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(295, 'for_rent', NULL, 754.6219, -944.3327, 45.4158, 0.1501405388, 0.9886642098, -0.0010113056, 0.9886646867, -0.1501406133, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(296, 'for_rent', NULL, -795.7252, -2191.4893, 28.9645, -0.6430065632, -0.7658606172, 0.0000923488, -0.7658607364, 0.6430066228, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(297, 'for_rent', NULL, -732.7658, -2122.4104, 27.9602, -0.6430065632, -0.7658606172, 0.0000923488, -0.7658607364, 0.6430066228, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(298, 'for_rent', NULL, -605.3782, -901.2253, 44.6124, 0.0868701562, -0.9962195754, 0.0000923488, -0.9962196946, -0.0868701637, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(299, 'for_rent', NULL, -675.4944, -1980.1309, 26.7256, -0.7658594847, 0.6430079341, 0.0000923488, 0.6430079341, 0.7658594847, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(300, 'for_rent', NULL, -585.4487, -2214.9653, 26.3221, -0.5738103390, -0.8189881444, 0.0000923488, -0.8189882636, 0.5738103986, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(301, 'for_rent', NULL, -441.6948, -575.1406, 47.6583, -0.8005748391, 0.5992326736, 0.0000923488, 0.5992327332, 0.8005749583, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(302, 'for_rent', NULL, -721.2733, -2422.0227, 34.4537, -0.4228781462, -0.9061864614, 0.0000923488, -0.9061865807, 0.4228782058, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(303, 'for_rent', NULL, -362.5701, -572.3983, 50.5015, -0.4515481591, -0.8922466636, 0.0000923488, -0.8922467828, 0.4515482187, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(304, 'for_rent', NULL, 110.2033, -217.0702, 66.5525, 0.4226149321, -0.9063093662, 0.0000016211, -0.9063093662, -0.4226149321, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(305, 'for_rent', NULL, -616.1128, -1921.5311, 37.9999, 0.9958817959, 0.0906602815, 0.0000923488, 0.0906602889, -0.9958819151, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(306, 'for_rent', NULL, -469.8764, -1912.4312, 32.3269, -0.7858400345, -0.6184297204, 0.0000923488, -0.6184297800, 0.7858401537, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(307, 'for_rent', NULL, -399.3940, -2096.8855, 44.5734, -0.9711409807, 0.2385057509, 0.0000923488, 0.2385057807, 0.9711410999, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(308, 'for_rent', NULL, -295.6469, -1804.6537, 43.1089, 0.9613403678, 0.2753625512, 0.0000923488, 0.2753625810, -0.9613404870, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(309, 'for_rent', NULL, 1148.0811, -339.4594, 85.1741, 0.9961945415, -0.0871578082, 0.0000016211, -0.0871578082, -0.9961945415, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(310, 'for_rent', NULL, 175.3165, -168.4724, 68.5248, 0.6819955707, -0.7313563228, 0.0000016211, -0.7313563228, -0.6819955707, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(311, 'for_rent', NULL, -65.2385, -200.1181, 55.4824, 0.4226149321, -0.9063093662, 0.0000016211, -0.9063093662, -0.4226149321, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(312, 'for_rent', NULL, -13.0250, -104.6450, 76.5393, 0.8480468392, -0.5299212337, 0.0000016211, -0.5299212337, -0.8480468392, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(313, 'for_rent', NULL, 1239.9266, -447.9230, 86.2229, -0.6427855492, 0.7660461664, 0.0000016211, 0.7660461664, 0.6427855492, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(314, 'for_rent', NULL, 1259.9441, -335.5138, 85.1741, 0.8191542029, 0.5735732913, 0.0000016211, 0.5735733509, -0.8191543221, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(315, 'for_rent', NULL, 1123.6731, -500.6705, 80.3930, 0.8191542029, 0.5735732913, 0.0000016211, 0.5735733509, -0.8191543221, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(316, 'for_rent', NULL, 67.2507, -120.6564, 70.4630, 0.8480468392, -0.5299212337, 0.0000016211, -0.5299212337, -0.8480468392, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(317, 'for_rent', NULL, -35.5047, -219.6488, 62.1555, -0.8660269976, -0.4999971092, 0.0000016211, -0.4999971688, 0.8660271168, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(318, 'for_rent', NULL, 193.2670, -2011.1747, 30.0526, 0.3268267810, -0.9450842142, 0.0000016211, -0.9450843334, -0.3268268108, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(319, 'for_rent', NULL, 212.7378, -1856.6903, 42.7572, 0.3268267810, -0.9450842142, 0.0000016211, -0.9450843334, -0.3268268108, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(320, 'for_rent', NULL, 100.3610, -2021.3989, 31.1415, 0.9882016778, 0.1531582177, 0.0000016211, 0.1531582177, -0.9882016778, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(321, 'for_rent', NULL, 34.2563, -1824.5548, 36.5821, 0.4418624640, -0.8970828056, 0.0000016211, -0.8970828056, -0.4418624640, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(322, 'for_rent', NULL, -224.6508, -29.7176, 63.6449, -0.9572915435, 0.2891245782, -0.0000062040, 0.2891245782, 0.9572915435, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(323, 'for_rent', NULL, -91.7043, -80.3799, 73.3569, 0.9781469703, -0.2079145312, 0.0000016211, -0.2079145610, -0.9781470895, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(325, 'for_rent', NULL, 353.4591, -1855.0137, 47.3800, 0.2994979620, -0.9540969133, 0.0000016211, -0.9540970325, -0.2994979918, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(326, 'for_rent', NULL, -430.6831, -1815.6884, 41.2826, 0.6665121913, 0.7454940081, 0.0000923488, 0.7454940677, -0.6665122509, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(327, 'for_rent', NULL, 1168.9164, -1829.3622, 48.9741, -0.8633748293, -0.5045630932, 0.0000000000, -0.5045630932, 0.8633748293, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(328, 'for_rent', NULL, 980.2207, -203.5087, 92.1367, -0.8530336618, 0.5218557715, 0.0000923488, 0.5218558311, 0.8530337811, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(329, 'for_rent', NULL, 191.9211, 6640.4326, 40.5502, 0.2757578194, 0.9612271190, 0.0000000000, 0.9612272382, -0.2757578492, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(330, 'for_rent', NULL, -371.6610, -1248.8918, 32.2286, 0.1987120211, 0.9800579548, -0.0000119176, 0.9800579548, -0.1987120211, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(331, 'for_rent', NULL, -371.6610, -1181.9319, 28.8516, 0.1987120211, 0.9800579548, -0.0000119176, 0.9800579548, -0.1987120211, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(332, 'for_rent', NULL, 818.8142, -1578.2722, 40.3337, 0.0236323476, 0.9997208118, -0.0000119176, 0.9997208118, -0.0236323476, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(333, 'for_rent', NULL, -770.1595, -1823.9193, 36.5575, 0.0635875762, -0.9979763031, -0.0000119176, -0.9979763031, -0.0635875762, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(334, 'for_rent', NULL, -1433.4633, -451.4807, 51.1527, 0.9052290916, 0.4249238968, -0.0000119176, 0.4249238968, -0.9052290916, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(335, 'for_rent', NULL, -80.1032, -2087.2095, 32.1602, 0.9886366129, 0.1503256857, -0.0000119176, 0.1503256857, -0.9886366129, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(336, 'for_rent', NULL, -678.6131, -1605.5096, 30.9721, 0.3641308248, 0.9313479066, -0.0000119176, 0.9313477874, -0.3641307950, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(337, 'for_rent', NULL, -195.5005, -2131.0493, 33.5468, 0.9886366129, 0.1503256857, -0.0000119176, 0.1503256857, -0.9886366129, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(338, 'for_rent', NULL, -570.3370, 201.1353, 97.8246, 0.0000000000, -1.0000000000, 0.0000000000, -1.0000000000, 0.0000000000, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(339, 'for_rent', NULL, 1169.0569, -2582.7112, 45.3418, 0.9884364605, 0.1516361237, -0.0000119176, 0.1516361237, -0.9884364605, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(340, 'for_rent', NULL, 2030.8055, 3038.4866, 56.6732, -0.5919476748, -0.8059763908, -0.0000119176, -0.8059763908, 0.5919476748, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(341, 'for_rent', NULL, 854.8259, -1543.7390, 41.8896, 0.9659258127, -0.2588191926, 0.0000000000, -0.2588191926, -0.9659258127, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(342, 'for_rent', NULL, -1896.2365, -236.0635, 54.6414, 0.3420197368, -0.9396927953, 0.0000000000, -0.9396927953, -0.3420197368, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(343, 'for_rent', NULL, 2110.4910, 3024.1631, 54.4156, -0.9682334661, 0.2500480413, -0.0000119176, 0.2500480413, 0.9682334661, 0, 5.8000, 17.0000, 'BILLBOARD', '[]', '[]', 300),
+	(344, 'for_rent', NULL, -445.4546, 269.8839, 101.8826, -0.6214370131, 0.7834641337, 0.0000000000, 0.7834641337, 0.6214370131, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(345, 'for_rent', NULL, -503.5275, 283.7426, 100.0158, -0.6214370131, 0.7834641337, 0.0000000000, 0.7834641337, 0.6214370131, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(346, 'for_rent', NULL, -399.5619, 288.0780, 96.3622, -0.8943188787, 0.4474301636, 0.0000000000, 0.4474301636, 0.8943188787, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(347, 'for_rent', NULL, -400.1991, 264.2747, 95.5808, -0.8943188787, 0.4474301636, 0.0000000000, 0.4474301636, 0.8943188787, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(349, 'for_rent', NULL, 1291.9436, -2230.8118, 59.8104, -0.3420205116, 0.9396924973, 0.0000000000, 0.9396924973, 0.3420205116, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(350, 'for_rent', NULL, -109.2843, 281.0126, 108.4893, -0.7071059346, 0.7071076035, 0.0000000000, 0.7071076035, 0.7071059346, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(351, 'for_rent', NULL, -608.6161, -1753.1758, 49.3578, 0.9848108888, 0.1736306399, -0.0000062040, 0.1736306399, -0.9848108888, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(352, 'for_rent', NULL, -735.1431, -1681.7212, 42.1127, -1.0000000000, 0.0000179783, -0.0000062040, 0.0000179783, 1.0000000000, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(354, 'for_rent', NULL, -128.0997, 281.0128, 108.4893, 0.6427872181, 0.7660447955, 0.0000000000, 0.7660447955, -0.6427872181, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(355, 'for_rent', NULL, -608.6161, -1753.1758, 49.3578, 0.9848108888, 0.1736306399, -0.0000062040, 0.1736306399, -0.9848108888, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(356, 'for_rent', NULL, -213.7046, 322.0096, 106.9208, 0.0146816140, 0.9998922348, 0.0000000000, 0.9998922348, -0.0146816140, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(357, 'for_rent', NULL, -988.3391, -2106.3215, 22.8846, -0.7071059346, 0.7071076035, 0.0000000000, 0.7071076035, 0.7071059346, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(358, 'for_rent', NULL, -754.1005, -1975.3146, 28.8548, -0.7073091865, -0.7069042921, 0.0000923488, -0.7069042921, 0.7073091865, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(359, 'for_rent', NULL, -996.2799, -2112.1404, 22.8846, 0.8934035897, -0.4492550790, 0.0000000000, -0.4492550790, -0.8934035897, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(360, 'for_rent', NULL, -817.3416, -1973.6749, 18.9522, -0.9396927953, -0.3420197368, 0.0000000321, -0.3420197368, 0.9396927953, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(361, 'for_rent', NULL, -129.0461, -2108.4788, 36.8044, -0.8887205124, -0.4584493041, 0.0000016211, -0.4584493637, 0.8887206316, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(362, 'for_rent', NULL, -41.8827, -2078.0100, 32.5025, 0.9548321962, 0.2971456647, -0.0000062040, 0.2971456647, -0.9548321962, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(363, 'for_rent', NULL, -23.6504, -2019.5916, 32.5025, -0.7660417557, 0.6427908540, 0.0000016211, 0.6427908540, 0.7660417557, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(365, 'for_rent', NULL, -600.9517, 232.3556, 106.3000, -1.0000000000, 0.0000000000, 0.0000000000, 0.0000000000, 1.0000000000, 0, 25.0000, 10.0000, 'BILLBOARD', '[]', '[]', 300),
+	(366, 'for_rent', NULL, -1819.0472, 763.7781, 154.8734, -0.9285441041, -0.3707332909, 0.0190407857, -0.3708005250, 0.9287124872, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(367, 'for_rent', NULL, -1116.9960, -762.7779, 39.1808, 0.0000025705, 1.0000000000, 0.0000016211, 1.0000000000, -0.0000025705, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(368, 'for_rent', NULL, -1322.4939, -820.6566, 32.8352, -0.4383547306, 0.8988021016, -0.0000062040, 0.8988021016, 0.4383547306, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(369, 'for_rent', NULL, -213.9354, 292.4613, 104.5533, -0.4872311652, 0.8732730150, 0.0000000000, 0.8732730150, 0.4872311652, 0, 8.7000, 21.0000, 'BILLBOARD', '[]', '[]', 300),
+	(370, 'for_rent', NULL, -634.6953, 226.3073, 97.0080, 0.9660028219, -0.2585317194, 0.0000264512, -0.2585317194, -0.9660028219, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(371, 'for_rent', NULL, -624.2985, 236.4805, 97.0100, 0.2587929368, -0.9659328461, 0.0000000000, -0.9659328461, -0.2587929368, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(372, 'for_rent', NULL, 673.1750, 2717.2979, 54.0845, -0.9712718129, 0.2379727215, 0.0000000022, 0.2379727513, 0.9712719321, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(373, 'for_rent', NULL, 942.3580, 2676.9304, 54.3606, 0.9508689642, -0.3095936179, 0.0000000022, -0.3095936179, -0.9508689642, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(374, 'for_rent', NULL, 953.0258, 2717.1958, 54.0845, -0.9417926669, 0.3361943066, 0.0000000022, 0.3361943066, 0.9417926669, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(375, 'for_rent', NULL, 2132.5515, 3059.4050, 57.9013, -0.9400429726, 0.3410560787, 0.0000000022, 0.3410560787, 0.9400429726, 0, 7.4000, 15.0000, 'BILLBOARD', '[]', '[]', 300),
+	(376, 'for_rent', NULL, -14.3521, -1477.2432, 40.7168, -0.6560584307, -0.7547100782, 0.0000000000, -0.7547101974, 0.6560584903, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(377, 'for_rent', NULL, 215.2695, -1842.1951, 35.3011, -0.9071317315, -0.4205121100, -0.0167800151, -0.4205712974, 0.9072594643, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(378, 'for_rent', NULL, 422.9257, -1918.3524, 34.9000, 0.1105474532, 0.9938709140, 0.0001234036, 0.9938709140, -0.1105474532, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(379, 'for_rent', NULL, 422.9257, -1918.3524, 34.9000, 0.1105474532, 0.9938709140, 0.0001234036, 0.9938709140, -0.1105474532, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(380, 'for_rent', NULL, 465.3538, -1861.9325, 37.6172, -0.6257788539, -0.7800005078, 0.0000000000, -0.7800005078, 0.6257788539, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(381, 'for_rent', NULL, 506.5387, -1637.4094, 41.1765, -0.0174547974, 0.9998476505, 0.0000000000, 0.9998476505, 0.0174547974, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(382, 'for_rent', NULL, 557.8635, -1568.4579, 40.6965, 0.0538364425, -0.9985497594, 0.0000000000, -0.9985498786, -0.0538364500, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(383, 'for_rent', NULL, -567.0181, -1056.9410, 38.0646, -1.0000000000, -0.0000028238, 0.0000053730, -0.0000028238, 1.0000000000, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(384, 'for_rent', NULL, -587.2302, -989.2377, 38.0817, -0.7071053982, -0.7071081996, 0.0001823667, -0.7071081996, 0.7071053982, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(385, 'for_rent', NULL, -598.7225, -991.0128, 37.8439, 1.0000001192, 0.0000028227, -0.0000053730, 0.0000028227, -1.0000000000, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(386, 'for_rent', NULL, -681.4144, -1196.6577, 20.0110, 0.0871579424, 0.9961944818, 0.0000000000, 0.9961946011, -0.0871579498, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(387, 'for_rent', NULL, -678.7167, -1976.6558, 26.7256, 0.6434539557, -0.7654847503, -0.0000329368, -0.7654848695, -0.6434540153, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(388, 'for_rent', NULL, -675.6401, -1980.3044, 26.7256, -0.7658594847, 0.6430079341, 0.0000923488, 0.6430079341, 0.7658594847, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(389, 'for_rent', NULL, -244.0489, -1285.6980, 42.7000, 0.9271838665, -0.3746066093, 0.0000000000, -0.3746066093, -0.9271838665, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(390, 'for_rent', NULL, -510.5740, -1611.3251, 38.9326, -0.9452343583, -0.3263921738, -0.0000329368, -0.3263922036, 0.9452344775, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(391, 'for_rent', NULL, -514.7214, -1613.7035, 38.9325, 0.8747583032, 0.4845592678, 0.0000923488, 0.4845593274, -0.8747584224, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(392, 'for_rent', NULL, 33.1735, -2659.3220, 29.2500, 0.6970455647, -0.7170269489, 0.0000000000, -0.7170268893, -0.6970455050, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(393, 'for_rent', NULL, 1315.0924, -2322.0554, 61.2212, 0.1736472100, -0.9848079085, 0.0000000321, -0.9848080277, -0.1736472249, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(394, 'for_rent', NULL, 1316.8130, -2323.5315, 61.2212, -0.1736471951, 0.9848079085, 0.0000000000, 0.9848080277, 0.1736472100, 0, 5.8000, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(395, 'for_rent', NULL, -1302.5074, -391.6712, 47.2000, 0.0087074479, -0.9999619722, 0.0000028726, -0.9999620914, -0.0087074488, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(396, 'for_rent', NULL, 750.7020, -575.7344, 44.5334, -0.6618844867, 0.7496058345, 0.0000000000, 0.7496058345, 0.6618844867, 0, 6.2500, 14.0000, 'BILLBOARD', '[]', '[]', 300),
+	(397, 'for_rent', NULL, -499.5031, 275.2033, 92.4000, 0.0890057907, 0.9960312247, 0.0000000000, 0.9960311055, -0.0890057832, 0, 6.7400, 16.5000, 'BILLBOARD', '[]', '[]', 300),
+	(398, 'for_rent', NULL, -553.9569, 280.4819, 94.7000, -0.7078745365, 0.7063381672, -0.0000000362, 0.7063381672, 0.7078745365, 0, 6.2000, 17.5200, 'BILLBOARD', '[]', '[]', 300),
+	(399, 'for_rent', NULL, -228.5093, -29.9009, 63.6449, 0.9929557443, -0.1184855774, 0.0000016211, -0.1184855774, -0.9929557443, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(400, 'for_rent', NULL, -225.1266, -31.2930, 63.6449, -0.9572915435, 0.2891245782, -0.0000062040, 0.2891245782, 0.9572915435, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(401, 'for_rent', NULL, -634.9689, 319.2028, 120.7001, -0.9961948991, 0.0871501118, -0.0006874431, 0.0871501416, 0.9961952567, 0, 40.0000, 24.0000, 'BILLBOARD', '[]', '[\'space_monkey\']', 300),
+	(403, 'for_rent', NULL, -152.7255, -51.0131, 67.2500, -0.9751313329, 0.2216275781, 0.0000016211, 0.2216276079, 0.9751314521, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(404, 'for_rent', NULL, -156.0263, -49.6362, 67.2500, 0.9218260646, -0.3876039386, -0.0000062040, -0.3876039386, -0.9218260646, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(405, 'for_rent', NULL, -574.4994, -1843.9675, 39.6600, -0.8660240173, 0.5000023842, 0.0000016211, 0.5000023842, 0.8660240173, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(406, 'for_rent', NULL, -577.3091, -1841.7926, 39.6600, 0.7660331726, -0.6428010464, -0.0000062040, -0.6428010464, -0.7660331726, 0, 5.8000, 14.5000, 'BILLBOARD', '[]', '[]', 300),
+	(407, 'for_rent', NULL, 328.9909, 175.0746, 140.9044, 0.9063076973, 0.4226182401, 0.0000000000, 0.4226182997, -0.9063078165, 0, 5.9000, 16.0000, 'BILLBOARD', '[]', '[]', 300),
+	(408, 'for_rent', NULL, 278.3072, 148.0585, 119.3701, 0.6076980829, -0.7941681743, 0.0000000000, -0.7941681743, -0.6076980829, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300),
+	(409, 'for_rent', NULL, -367.8033, -1722.9114, 31.6473, 0.4375867546, 0.8991760612, -0.0000329368, 0.8991761804, -0.4375868142, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(410, 'for_rent', NULL, -366.0254, -1718.5045, 31.6473, -0.2759115994, -0.9611829519, 0.0000923488, -0.9611830711, 0.2759116292, 0, 6.2000, 17.8000, 'BILLBOARD', '[]', '[]', 300),
+	(526, 'for_rent', NULL, 81.5482, 6.4626, 80.0270, -0.7071062326, 0.7071073651, 0.0000000000, 0.7071073651, 0.7071062326, 0, 6.2400, 13.2500, 'BILLBOARD', '[]', '[]', 300);
+
+-- Dumping structure for table miamifres.rcore_banners_users_favorite
+CREATE TABLE IF NOT EXISTS `rcore_banners_users_favorite` (
+  `banners` longtext DEFAULT NULL,
+  `owner` varchar(255) NOT NULL,
+  PRIMARY KEY (`owner`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table miamifres.rcore_banners_users_favorite: ~0 rows (approximately)
 
 -- Dumping structure for table miamifres.rcore_clothing_current
 CREATE TABLE IF NOT EXISTS `rcore_clothing_current` (
@@ -166331,6 +167292,19 @@ INSERT INTO `rcore_clothing_purchased` (`id`, `identifier`, `rcore_clothing_item
 	(11, 'Y7823F94', 27207, '2025-10-17 20:46:16'),
 	(12, 'X86511N3', 19235, '2025-10-18 09:51:37');
 
+-- Dumping structure for table miamifres.rcore_companies
+CREATE TABLE IF NOT EXISTS `rcore_companies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_identifier` varchar(64) NOT NULL,
+  `owner_identifier` varchar(64) DEFAULT NULL,
+  `company_data` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_companies: ~1 rows (approximately)
+INSERT INTO `rcore_companies` (`id`, `company_identifier`, `owner_identifier`, `company_data`) VALUES
+	(1, 'MinigolfCompany0', NULL, '{"companyMoney":0,"forSale":true,"companyVariables":[],"maximumEmployees":3,"price":10000,"isOpen":true,"companyMoneyInStock":10000,"employees":[],"companyName":"Minigolf Professionals","grades":{"senior":{"salary":750,"label":"Senior employee"},"employee":{"salary":500,"label":"Employee"},"boss":{"label":"Boss","isBoss":true,"salary":1000}}}');
+
 -- Dumping structure for table miamifres.rcore_fuelshop
 CREATE TABLE IF NOT EXISTS `rcore_fuelshop` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -166342,33 +167316,33 @@ CREATE TABLE IF NOT EXISTS `rcore_fuelshop` (
 
 -- Dumping data for table miamifres.rcore_fuelshop: ~27 rows (approximately)
 INSERT INTO `rcore_fuelshop` (`id`, `shop_identifier`, `owner_identifier`, `data`) VALUES
-	(1, 'fuel_pump19', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(2, 'fuel_pump15', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(3, 'fuel_pump24', 'Z1JNC2H9', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":false,"open":true,"price":520000,"capacity":[7506.999999997332,10000],"companyMoney":124650.00000001343}'),
-	(4, 'fuel_pump26', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(5, 'fuel_pump18', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(6, 'fuel_pump3', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(7, 'fuel_pump25_airplanes', 'none', '{"fuel_only_employee":false,"7":500,"for_sale":true,"open":true,"companyMoney":0,"capacity":[null,null,null,null,null,null,30000],"price":520000}'),
-	(8, 'fuel_pump8', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(9, 'fuel_pump20', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(10, 'fuel_pump11', 'none', '{"fuel_only_employee":false,"3":50,"for_sale":true,"open":true,"companyMoney":0,"capacity":[null,null,10000],"price":520000}'),
-	(11, 'fuel_pump4', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(12, 'fuel_pump21', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(13, 'fuel_pump10', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(14, 'fuel_pump7', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(15, 'fuel_pump6', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(16, 'fuel_pump27', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(17, 'fuel_pump9', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(18, 'fuel_pump12_airplanes', 'none', '{"fuel_only_employee":false,"7":500,"for_sale":true,"open":true,"companyMoney":0,"capacity":[null,null,null,null,null,null,30000],"price":520000}'),
-	(19, 'fuel_pump22', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(20, 'fuel_pump23', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(21, 'fuel_pump5', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(22, 'fuel_pump13', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(23, 'fuel_pump14', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(24, 'fuel_pump16', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(25, 'fuel_pump17', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(26, 'fuel_pump1', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}'),
-	(27, 'fuel_pump2', 'none', '{"1":50,"2":50,"fuel_only_employee":false,"for_sale":true,"open":true,"price":520000,"capacity":[10000,10000],"companyMoney":0}');
+	(1, 'fuel_pump19', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(2, 'fuel_pump15', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(3, 'fuel_pump24', 'Z1JNC2H9', '{"1":50,"2":50,"price":520000,"capacity":[6582.333333331507,10000],"fuel_only_employee":false,"for_sale":false,"companyMoney":170883.33333332567,"open":true}'),
+	(4, 'fuel_pump26', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(5, 'fuel_pump18', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(6, 'fuel_pump3', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(7, 'fuel_pump25_airplanes', 'none', '{"price":520000,"7":500,"capacity":[null,null,null,null,null,null,30000],"companyMoney":0,"fuel_only_employee":false,"for_sale":true,"open":true}'),
+	(8, 'fuel_pump8', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(9, 'fuel_pump20', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(10, 'fuel_pump11', 'none', '{"price":520000,"companyMoney":0,"capacity":[null,null,10000],"3":50,"fuel_only_employee":false,"for_sale":true,"open":true}'),
+	(11, 'fuel_pump4', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(12, 'fuel_pump21', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(13, 'fuel_pump10', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(14, 'fuel_pump7', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(15, 'fuel_pump6', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(16, 'fuel_pump27', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(17, 'fuel_pump9', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(18, 'fuel_pump12_airplanes', 'none', '{"price":520000,"7":500,"capacity":[null,null,null,null,null,null,30000],"companyMoney":0,"fuel_only_employee":false,"for_sale":true,"open":true}'),
+	(19, 'fuel_pump22', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(20, 'fuel_pump23', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(21, 'fuel_pump5', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(22, 'fuel_pump13', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(23, 'fuel_pump14', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(24, 'fuel_pump16', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(25, 'fuel_pump17', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(26, 'fuel_pump1', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}'),
+	(27, 'fuel_pump2', 'none', '{"1":50,"2":50,"price":520000,"capacity":[10000,10000],"fuel_only_employee":false,"for_sale":true,"companyMoney":0,"open":true}');
 
 -- Dumping structure for table miamifres.rcore_prison
 CREATE TABLE IF NOT EXISTS `rcore_prison` (
@@ -166464,6 +167438,537 @@ CREATE TABLE IF NOT EXISTS `rcore_prison_stash` (
 
 -- Dumping data for table miamifres.rcore_prison_stash: ~0 rows (approximately)
 
+-- Dumping structure for table miamifres.rcore_shortcuts
+CREATE TABLE IF NOT EXISTS `rcore_shortcuts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) NOT NULL,
+  `player_name` varchar(50) NOT NULL,
+  `shortcut` varchar(15) DEFAULT NULL,
+  `action` text DEFAULT NULL,
+  `category` varchar(60) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `native` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_shortcuts: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_shortcuts_aliases
+CREATE TABLE IF NOT EXISTS `rcore_shortcuts_aliases` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) NOT NULL,
+  `command` varchar(60) NOT NULL,
+  `sequence` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_shortcuts_aliases: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_shortcuts_categories
+CREATE TABLE IF NOT EXISTS `rcore_shortcuts_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(60) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_shortcuts_categories: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_shortcuts_logger
+CREATE TABLE IF NOT EXISTS `rcore_shortcuts_logger` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) NOT NULL,
+  `type` varchar(15) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `shortcut` varchar(15) DEFAULT NULL,
+  `action` text DEFAULT NULL,
+  `category` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_shortcuts_logger: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_shortcuts_premade
+CREATE TABLE IF NOT EXISTS `rcore_shortcuts_premade` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(60) DEFAULT NULL,
+  `shortcut` varchar(15) DEFAULT NULL,
+  `action` text DEFAULT NULL,
+  `jobs` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_shortcuts_premade: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_stats_achievements
+CREATE TABLE IF NOT EXISTS `rcore_stats_achievements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `icon` varchar(50) NOT NULL,
+  `stat_key` varchar(255) NOT NULL,
+  `threshold` int(11) NOT NULL,
+  `attributes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '{}' CHECK (json_valid(`attributes`)),
+  PRIMARY KEY (`id`),
+  KEY `rcore_stats_achievements_rcore_stats_types_key_fk` (`stat_key`),
+  CONSTRAINT `rcore_stats_achievements_rcore_stats_types_key_fk` FOREIGN KEY (`stat_key`) REFERENCES `rcore_stats_types` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.rcore_stats_achievements: ~183 rows (approximately)
+INSERT INTO `rcore_stats_achievements` (`id`, `key`, `name`, `description`, `icon`, `stat_key`, `threshold`, `attributes`) VALUES
+	(1, 'deaths_1', 'Introduction to the Afterlife', 'You died! Surely not for the last time.', 'skull', 'deaths', 1, '{}'),
+	(2, 'deaths_8', 'One more left!', 'You died 8 times, lick some catnip to get back on your feet.', 'cat', 'deaths', 8, '{}'),
+	(3, 'deaths_20', 'He then greeted death as an old friend', 'First death was a coincidence, 19 more is just bad luck.', 'skull', 'deaths', 20, '{}'),
+	(4, 'death_by_vehicle_1', 'Roadkill', 'You got run over by a vehicle', 'car-front', 'death_by_vehicle', 1, '{}'),
+	(5, 'death_by_fall_1', 'Gravity sucks', 'Die by falling for the first time.', 'apple', 'death_by_fall', 1, '{}'),
+	(6, 'death_by_fall_10', 'I\'ve fallen, and I can\'t get up!', 'Die 10 times by falling', 'skull', 'death_by_fall', 10, '{}'),
+	(7, 'death_by_fall_50', 'I believe I can fly', 'Die 50 times by falling', 'bird', 'death_by_fall', 50, '{}'),
+	(8, 'death_by_hand_1', 'Beaten to death', 'Everybody has a plan until they get punched in the mouth', 'grab', 'death_by_hand', 1, '{}'),
+	(9, 'death_by_hand_5', 'Fight Club', 'Die 5 times by hand', 'skull', 'death_by_hand', 5, '{}'),
+	(10, 'death_by_hand_20', 'Punching bag', 'Die 20 times by hand', 'skull', 'death_by_hand', 20, '{}'),
+	(11, 'death_by_weapon_1', 'You can\'t dodge them all', 'You were killed by a weapon', 'skull', 'death_by_weapon', 1, '{}'),
+	(12, 'death_by_weapon_5', 'Bullet magnet', 'Die 5 times by weapon', 'skull', 'death_by_weapon', 5, '{}'),
+	(13, 'death_by_weapon_10', 'Walking target', 'Die 10 times by weapon', 'skull', 'death_by_weapon', 10, '{}'),
+	(14, 'death_by_suffocate_1', 'Death by Snu Snu', 'You suffocated to death', 'skull', 'death_by_suffocate', 1, '{}'),
+	(15, 'death_by_suicide_1', 'Call 988', 'You took your own life!', 'skull', 'death_by_suicide', 1, '{}'),
+	(16, 'distance_boat_10000', 'Aye-aye, Captain!', 'Drive a boat for 10km (6.2mi)', 'sailboat', 'distance_boat', 10000, '{}'),
+	(17, 'distance_boat_100000', 'Yacht Master', 'Drive a boat for 100km (62mi)', 'sailboat', 'distance_boat', 100000, '{}'),
+	(18, 'distance_bicycle_1000', 'Carl Johnson', 'Travel 1km (0.6mi) on a bike', 'bike', 'distance_bicycle', 1000, '{}'),
+	(19, 'distance_bicycle_5000', 'Around the hood', 'Travel 5km (3.1mi) on a bike', 'bike', 'distance_bicycle', 5000, '{}'),
+	(20, 'distance_bicycle_20000', 'Tour de San Andreas', 'Travel 20km (12.4mi) on a bike', 'bike', 'distance_bicycle', 20000, '{}'),
+	(21, 'distance_bike_10000', 'Easy Rider', 'Drive a motorcycle for 10km (6.2mi)', 'motorcycle', 'distance_bike', 10000, '{}'),
+	(22, 'distance_bike_50000', 'Biker Gang', 'Drive a motorcycle for 50km (31mi)', 'motorcycle', 'distance_bike', 50000, '{}'),
+	(23, 'distance_bike_100000', 'Born to Ride', 'Drive a motorcycle for 100km (62mi)', 'motorcycle', 'distance_bike', 100000, '{}'),
+	(24, 'distance_car_42000', 'Could\'ve been a marathon', 'Travel the length of a marathon... in a car', 'car-front', 'distance_car', 42000, '{}'),
+	(25, 'distance_car_100000', 'Roadtrip', 'Travel 100km (62mi) in a car', 'car-front', 'distance_car', 100000, '{}'),
+	(26, 'distance_car_1000000', 'Megameter', 'Travel 1000km (620mi) in a car', 'car-front', 'distance_car', 1000000, '{}'),
+	(27, 'distance_car_4846000', 'Cannonball Run', 'Travel the distance from Liberty City to Los Santos', 'car-front', 'distance_car', 4846000, '{}'),
+	(28, 'distance_car_10000000', '*Check engine light lit up*', 'Travel 10000km (6200mi) in a car', 'car-front', 'distance_car', 10000000, '{}'),
+	(29, 'distance_car_40000000', 'Around the world', 'Travel 40 000 Km (24 800 mi) in a vehicle', 'car-front', 'distance_car', 40000000, '{}'),
+	(30, 'distance_foot_5000', '5K', 'Travel 5km (3.1mi) on foot', 'footprints', 'distance_foot', 5000, '{}'),
+	(31, 'distance_foot_12800', 'This looks like a job for me', 'Travel 8 miles (12.8km) on foot', 'footprints', 'distance_foot', 12800, '{}'),
+	(32, 'distance_foot_21000', 'Half marathon', 'Travel 21km (13.1mi) on foot', 'footprints', 'distance_foot', 21000, '{}'),
+	(33, 'distance_foot_42000', 'Marathon', 'Travel 42km (26.2mi) on foot', 'footprints', 'distance_foot', 42000, '{}'),
+	(34, 'distance_plane_50000', 'Flight School Graduate', 'Fly for 50km (31mi) with a plane', 'plane', 'distance_plane', 50000, '{}'),
+	(35, 'distance_plane_100000', 'Certified Pilot', 'Fly for 100km (62mi) with a plane', 'plane', 'distance_plane', 100000, '{}'),
+	(36, 'distance_plane_500000', 'Skydweller', 'Fly for 500km (310mi) with a plane', 'plane', 'distance_plane', 500000, '{}'),
+	(37, 'entity_kills_10', 'Hunter', 'Murder 10 Locals or animals.', 'skull', 'entity_kills', 10, '{}'),
+	(38, 'entity_kills_50', 'Punisher', 'Murder 50 Locals or animals.', 'skull', 'entity_kills', 50, '{}'),
+	(39, 'entity_kills_200', 'Insane in the brain', 'Murder 200 Locals or animals with no remorse', 'skull', 'entity_kills', 200, '{}'),
+	(40, 'max_speed_car_22_22', 'Grand Theft Auto', 'Drive 80km/h (49mph) in a car', 'gauge', 'max_speed_car', 22, '{}'),
+	(41, 'max_speed_car_39_33', '88 miles per hour!', 'Roads? Where we\'re going, we don\'t need roads.', 'gauge', 'max_speed_car', 39, '{}'),
+	(42, 'max_speed_car_53_64', 'Stanley Rocket', 'You would\'ve broken the land speed record merely 100 years ago!', 'gauge', 'max_speed_car', 54, '{}'),
+	(43, 'money_earned_500', 'It ain\'t much, but it\'s honest work', 'Earn your first $500', 'circle-dollar-sign', 'money_earned', 500, '{}'),
+	(44, 'money_earned_10000', 'First paycheck', 'Earn $10 000 in total', 'circle-dollar-sign', 'money_earned', 10000, '{}'),
+	(45, 'money_earned_50000', 'Milburn Pennybags', 'Earn $50 000 in total', 'circle-dollar-sign', 'money_earned', 50000, '{}'),
+	(46, 'money_earned_500000', 'Get Rich or Die Tryin\'', 'Earn $500 000 in total', 'circle-dollar-sign', 'money_earned', 500000, '{}'),
+	(47, 'money_earned_1000000', 'Small loan of a million dollars', 'Earn $1 000 000 in total', 'circle-dollar-sign', 'money_earned', 1000000, '{}'),
+	(48, 'money_spent_1000', 'Rent money', 'Spend $1000 in total', 'hand-coins', 'money_spent', 1000, '{}'),
+	(49, 'money_spent_50000', 'Show me the money', 'Spend $50 000 in total', 'hand-coins', 'money_spent', 50000, '{}'),
+	(50, 'money_spent_100000', 'Make money money go $hoppin', 'Spend $100 000 in total', 'hand-coins', 'money_spent', 100000, '{}'),
+	(51, 'money_spent_1000000', 'Millionairn\'t', 'Spend $1 000 000 in total', 'hand-coins', 'money_spent', 1000000, '{}'),
+	(52, 'player_kills_1', 'Call an ambulance! But not for me.', 'Kill another player', 'skull', 'player_kills', 1, '{}'),
+	(53, 'player_kills_10', 'Killing spree', 'Kill 10 players', 'skull', 'player_kills', 10, '{}'),
+	(54, 'player_kills_100', 'Menace to society', 'Kill 100 players', 'skull', 'player_kills', 100, '{}'),
+	(55, 'time_played_60', 'Ah sh*t, here we go again.', 'Play for 1 hour', 'hourglass', 'time_played', 60, '{}'),
+	(56, 'time_played_480', 'Full-time job', 'Play for 8 hours', 'hourglass', 'time_played', 480, '{}'),
+	(57, 'time_played_6000', 'Giving it your 100', 'Play for 100 hours', 'hourglass', 'time_played', 6000, '{}'),
+	(58, 'time_played_1440', 'It was a good day', 'Play for 1 day', 'hourglass', 'time_played', 1440, '{}'),
+	(59, 'time_played_43200', 'Time flies when you\'re having fun!', 'Play for 1 month', 'hourglass', 'time_played', 43200, '{}'),
+	(60, 'vehicles_destroyed_1', 'Fender bender', 'Destroy first vehicle', 'bomb', 'vehicles_destroyed', 1, '{}'),
+	(61, 'vehicles_destroyed_10', 'Breathalyzer test', 'Destroy 10 vehicles', 'bomb', 'vehicles_destroyed', 10, '{}'),
+	(62, 'vehicles_destroyed_100', 'Crash Connoisseur', 'Destroy 100 vehicles', 'bomb', 'vehicles_destroyed', 100, '{}'),
+	(63, 'objects_destroyed_1', 'What\'s the red button for?', 'Destroy your first object', 'bomb', 'objects_destroyed', 1, '{}'),
+	(64, 'objects_destroyed_10', 'Should I cut the green wire?', 'Destroy 10 objects', 'bomb', 'objects_destroyed', 10, '{}'),
+	(65, 'objects_destroyed_100', 'Master of Destruction', 'Destroy 100 objects', 'bomb', 'objects_destroyed', 100, '{}'),
+	(66, 'weapon_headshots_1', 'Bullseye', 'Shoot a first headshot.', 'scan-face', 'weapon_headshots', 1, '{}'),
+	(67, 'weapon_headshots_10', 'Sharpshooter', '10 headshots - your accuracy is on point!', 'scan-face', 'weapon_headshots', 10, '{}'),
+	(68, 'weapon_headshots_100', 'Mind Blower', '100 headshots - truly mind-blowing precision!', 'scan-face', 'weapon_headshots', 100, '{}'),
+	(69, 'weapon_shots_1', 'Second Amendment FTW', 'Shoot a weapon', 'target', 'weapon_shots', 1, '{}'),
+	(70, 'weapon_shots_1000', 'Protecting Freedom', 'Shoot 1000 rounds from a weapon', 'target', 'weapon_shots', 1000, '{}'),
+	(71, 'weapon_shots_2000', '50 pounds of Freedom', 'Shoot 2000 rounds from a weapon', 'target', 'weapon_shots', 2000, '{}'),
+	(72, 'rcore_whiteboard_cleared-1', 'Clear the whiteboard for the first time', 'Even a master sometimes has to start over.', 'droplet', 'rcore_whiteboard_cleared', 1, '{}'),
+	(73, 'rcore_whiteboard_cleared-3', 'Perfectionist', 'It might have already been perfect, but it doesn\'t hurt to try again and make it better.', 'droplet', 'rcore_whiteboard_cleared', 50, '{}'),
+	(74, 'rcore_whiteboard_cleared-2', 'Clear the whiteboard again, again and again', 'Even a master sometimes has to start over. Again!', 'droplet', 'rcore_whiteboard_cleared', 20, '{}'),
+	(75, 'rcore_whiteboard_drew-1', 'Presentation for few friends', 'There is room for improvement, but it will be good enough for friends. Draw on the whiteboard for the first time!', 'brush', 'rcore_whiteboard_drew', 1, '{}'),
+	(76, 'rcore_whiteboard_drew-2', 'Ready to give a lecture', 'You already have 25 sketches done, that should be enough for the presentations.', 'brush', 'rcore_whiteboard_drew', 25, '{}'),
+	(77, 'rcore_whiteboard_drew-3', 'Artist', 'Drawing on the board is like art for you.', 'brush', 'rcore_whiteboard_drew', 50, '{}'),
+	(78, 'rcore_airhockey_games_played_ach1', 'Air Hockey Enthusiast', 'Play 10 games of air hockey. Starting to feel the rush!', 'mouse-pointer-2', 'rcore_airhockey_games_played', 10, '{}'),
+	(79, 'rcore_airhockey_games_played_ach2', 'Air Hockey Aficionado', 'Play 50 games of air hockey. Can’t get enough of the action!', 'mouse-pointer-2', 'rcore_airhockey_games_played', 50, '{}'),
+	(80, 'rcore_airhockey_games_played_ach3', 'Air Hockey Addict', 'Play 100 games of air hockey. Born for this!', 'mouse-pointer-2', 'rcore_airhockey_games_played', 100, '{}'),
+	(81, 'rcore_airhockey_shoots_on_net_ach1', 'Net Seeker', 'Take 10 shots on net. Aiming for glory!', 'square-dashed-mouse-pointer', 'rcore_airhockey_shoots_on_net', 10, '{}'),
+	(82, 'rcore_airhockey_shoots_on_net_ach2', 'Target Practice', 'Take 50 shots on net. Hitting your stride!', 'square-dashed-mouse-pointer', 'rcore_airhockey_shoots_on_net', 50, '{}'),
+	(83, 'rcore_airhockey_shoots_on_net_ach3', 'Goal Machine', 'Take 100 shots on net. Unstoppable force!', 'square-dashed-mouse-pointer', 'rcore_airhockey_shoots_on_net', 100, '{}'),
+	(84, 'rcore_airhockey_shoots_saves_ach1', 'Defensive Wall', 'Make 10 saves. Not on my watch!', 'mouse-pointer-ban', 'rcore_airhockey_shoots_saves', 10, '{}'),
+	(85, 'rcore_airhockey_shoots_saves_ach2', 'Save Master', 'Make 50 saves. Blocking everything!', 'mouse-pointer-ban', 'rcore_airhockey_shoots_saves', 50, '{}'),
+	(86, 'rcore_airhockey_shoots_saves_ach3', 'Goalie God', 'Make 100 saves. Nothing gets past you!', 'mouse-pointer-ban', 'rcore_airhockey_shoots_saves', 100, '{}'),
+	(87, 'rcore_airhockey_games_won_ach1', 'Puck Novice', 'Win 10 games of air hockey. Getting the hang of it', 'trophy', 'rcore_airhockey_games_won', 10, '{}'),
+	(88, 'rcore_airhockey_games_won_ach2', 'Puck Champ', 'Win 50 games of air hockey. Master of the table!', 'trophy', 'rcore_airhockey_games_won', 50, '{}'),
+	(89, 'rcore_airhockey_games_won_ach3', 'Puck Legend', 'Win 100 games of air hockey. Untouchable on the ice!', 'trophy', 'rcore_airhockey_games_won', 100, '{}'),
+	(90, 'rcore_casino_slots_time_spent_ach1', 'Slot Rookie', 'Play slots for 10 minutes. Getting the hang of it!', 'joystick', 'rcore_casino_slots_time_spent', 10, '{}'),
+	(91, 'rcore_casino_slots_time_spent_ach2', 'Slot Enthusiast', 'Play slots for 30 minutes. You\'re on a roll!', 'joystick', 'rcore_casino_slots_time_spent', 30, '{}'),
+	(92, 'rcore_casino_slots_time_spent_ach3', 'Slot Addict', 'Play slots for 60 minutes. Can\'t stop, won\'t stop!', 'joystick', 'rcore_casino_slots_time_spent', 60, '{}'),
+	(93, 'rcore_casino_slots_jackpots_ach1', 'Slot Machine Dream', 'Hit the jackpot on the slots.', 'party-popper', 'rcore_casino_slots_jackpots', 1, '{}'),
+	(94, 'rcore_casino_slots_jackpots_ach2', 'Triple Threat', 'Win the slots jackpot three times. Luck is on your side!', 'party-popper', 'rcore_casino_slots_jackpots', 3, '{}'),
+	(95, 'rcore_casino_slots_jackpots_ach3', 'High Roller Hustler', 'Score five jackpots on the slots. You own the casino!', 'party-popper', 'rcore_casino_slots_jackpots', 5, '{}'),
+	(96, 'rcore_casino_roulette_time_spent_ach1', 'Roulette Novice', 'Play roulette for 10 minutes. Feeling the spin!', 'spade', 'rcore_casino_roulette_time_spent', 10, '{}'),
+	(97, 'rcore_casino_roulette_time_spent_ach2', 'Roulette Fanatic', 'Play roulette for 30 minutes. Spin to win!', 'spade', 'rcore_casino_roulette_time_spent', 30, '{}'),
+	(98, 'rcore_casino_roulette_time_spent_ach3', 'Roulette Pro', 'Play roulette for 60 minutes. The wheel bows to you!', 'spade', 'rcore_casino_roulette_time_spent', 60, '{}'),
+	(99, 'rcore_casino_poker_time_spent_ach1', 'Poker Beginner', 'Play poker for 10 minutes. Learning the ropes!', 'diamond', 'rcore_casino_poker_time_spent', 10, '{}'),
+	(100, 'rcore_casino_poker_time_spent_ach2', 'Poker Enthusiast', 'Play poker for 30 minutes. Card shark in the making!', 'diamond', 'rcore_casino_poker_time_spent', 30, '{}'),
+	(101, 'rcore_casino_poker_time_spent_ach3', 'Poker Master', 'Play poker for 60 minutes. Bluffing legend!', 'diamond', 'rcore_casino_poker_time_spent', 60, '{}'),
+	(102, 'rcore_casino_bj_time_spent_ach1', 'Blackjack Newbie', 'Play blackjack for 10 minutes. Hit or stand?', 'club', 'rcore_casino_bj_time_spent', 10, '{}'),
+	(103, 'rcore_casino_bj_time_spent_ach2', 'Blackjack Buff', 'Play blackjack for 30 minutes. Counting cards!', 'club', 'rcore_casino_bj_time_spent', 30, '{}'),
+	(104, 'rcore_casino_bj_time_spent_ach3', 'Blackjack Ace', 'Play blackjack for 60 minutes. The house fears you!', 'club', 'rcore_casino_bj_time_spent', 60, '{}'),
+	(105, 'rcore_casino_track_time_spent_ach1', 'Pony Rookie', 'Play Inside Track for 10 minutes. Betting on the ponies!', 'paw-print', 'rcore_casino_track_time_spent', 10, '{}'),
+	(106, 'rcore_casino_track_time_spent_ach2', 'Track Enthusiast', 'Play Inside Track for 30 minutes. Eye on the prize!', 'paw-print', 'rcore_casino_track_time_spent', 30, '{}'),
+	(107, 'rcore_casino_track_time_spent_ach3', 'Derby Dominator', 'Play Inside Track for 60 minutes. The horse whisperer!', 'paw-print', 'rcore_casino_track_time_spent', 60, '{}'),
+	(108, 'rcore_casino_cashier_used_ach1', 'Quick Cash', 'Visit the cashier 10 times. Cashing in!', 'hand-coins', 'rcore_casino_cashier_used', 10, '{}'),
+	(109, 'rcore_casino_cashier_used_ach2', 'Frequent Flyer', 'Use the cashier 50 times. You\'re a regular!', 'hand-coins', 'rcore_casino_cashier_used', 50, '{}'),
+	(110, 'rcore_casino_cashier_used_ach3', 'Money Manager', 'Cash out 100 times. Master of your money!', 'hand-coins', 'rcore_casino_cashier_used', 100, '{}'),
+	(111, 'rcore_casino_visits_ach1', 'Casino Visitor', 'Visit the casino 10 times. Getting a taste of the high life!', 'coins', 'rcore_casino_visits', 10, '{}'),
+	(112, 'rcore_casino_visits_ach2', 'Casino Regular', 'Visit the casino 50 times. A familiar face at the tables!', 'coins', 'rcore_casino_visits', 50, '{}'),
+	(113, 'rcore_casino_visits_ach3', 'Casino VIP', 'Visit the casino 100 times. The casino is your second home!', 'coins', 'rcore_casino_visits', 100, '{}'),
+	(114, 'rcore_pingpong_games_played_ach1', 'Table Tennis Enthusiast', 'Play 10 games of table tennis. Getting into the swing of things!', 'mouse-pointer-2', 'rcore_pingpong_games_played', 10, '{}'),
+	(115, 'rcore_pingpong_games_played_ach2', 'Table Tennis Aficionado', 'Play 50 games of table tennis. Can\'t get enough of the game!', 'mouse-pointer-2', 'rcore_pingpong_games_played', 50, '{}'),
+	(116, 'rcore_pingpong_games_played_ach3', 'Table Tennis Addict', 'Play 100 games of table tennis. You live for the table!', 'mouse-pointer-2', 'rcore_pingpong_games_played', 100, '{}'),
+	(117, 'rcore_pingpong_games_won_ach1', 'Ping Pong Rookie', 'Win 10 games of table tennis. Starting to show your skills!', 'trophy', 'rcore_pingpong_games_won', 10, '{}'),
+	(118, 'rcore_pingpong_games_won_ach2', 'Ping Pong Pro', 'Win 50 games of table tennis. A force to be reckoned with!', 'trophy', 'rcore_pingpong_games_won', 50, '{}'),
+	(119, 'rcore_pingpong_games_won_ach3', 'Ping Pong Champion', 'Win 100 games of table tennis. The undisputed table tennis master!', 'trophy', 'rcore_pingpong_games_won', 100, '{}'),
+	(120, 'rcore_pingpong_games_against_player_ach1', 'Friendly Rivalry', 'Play 10 games against a player. Testing your skills with friends!', 'users-round', 'rcore_pingpong_games_against_player', 10, '{}'),
+	(121, 'rcore_pingpong_games_against_player_ach2', 'Match Master', 'Play 50 games against a player. Bringing out the best in competition!', 'users-round', 'rcore_pingpong_games_against_player', 50, '{}'),
+	(122, 'rcore_pingpong_games_against_player_ach3', 'Ping Pong Duelist', 'Play 100 games against a player. A seasoned competitor!', 'users-round', 'rcore_pingpong_games_against_player', 100, '{}'),
+	(123, 'rcore_pingpong_shoots_ach1', 'Speed Shooter', 'Take 100 shots. Finding your rhythm on the table!', 'activity', 'rcore_pingpong_shoots', 100, '{}'),
+	(124, 'rcore_pingpong_shoots_ach2', 'Precision Player', 'Take 1,000 shots. Aiming with accuracy and skill!', 'activity', 'rcore_pingpong_shoots', 1000, '{}'),
+	(125, 'rcore_pingpong_shoots_ach3', 'Ping Pong Sniper', 'Take 10,000 shots. The ultimate table tennis marksman!', 'activity', 'rcore_pingpong_shoots', 10000, '{}'),
+	(126, 'rcore_pingpong_games_against_ai_ach1', 'Robo Rally', 'Play 10 games against AI. Starting your training with the machine!', 'bot', 'rcore_pingpong_games_against_ai', 10, '{}'),
+	(127, 'rcore_pingpong_games_against_ai_ach2', 'Tech Tactician', 'Play 50 games against AI. Improving your strategy against AI!', 'bot', 'rcore_pingpong_games_against_ai', 50, '{}'),
+	(128, 'rcore_pingpong_games_against_ai_ach3', 'Cyber Champion', 'Play 100 games against AI. Master of the digital opponent!', 'bot', 'rcore_pingpong_games_against_ai', 100, '{}'),
+	(129, 'rcore_shortcuts_used-1', 'First shortcut used', 'Use your first shortcut!', 'fast-forward', 'rcore_shortcuts_used', 1, '{}'),
+	(130, 'rcore_shortcuts_used-2', 'Twenty shortcuts used', 'You definitely know how to save some time!', 'fast-forward', 'rcore_shortcuts_used', 20, '{}'),
+	(131, 'rcore_shortcuts_used-3', 'Shortcuts master', 'You mastered time saving skills!', 'fast-forward', 'rcore_shortcuts_used', 100, '{}'),
+	(132, 'rcore_report_created-1', 'Should it work like this?', 'Problems are meant to be solved. Submit your first report.', 'bug', 'rcore_report_created', 1, '{}'),
+	(133, 'rcore_report_created-2', 'A few more problems mean a few more reports', 'Submit more than 10 reports.', 'bug', 'rcore_report_created', 11, '{}'),
+	(134, 'rcore_report_created-3', 'Problem solver', 'No matter how many problems I encounter, I am happy to solve them all. Even 20.', 'bug', 'rcore_report_created', 20, '{}'),
+	(135, 'rcore_report_screenshot-1', 'Occasional photographer', 'Send your first screenshot.', 'camera', 'rcore_report_screenshot', 1, '{}'),
+	(136, 'rcore_report_screenshot-2', 'Documentalist', 'Sometimes it\'s nice to have a screenshot of your experiences with problems. Send 10 screenshots.', 'camera', 'rcore_report_screenshot', 10, '{}'),
+	(137, 'rcore_report_screenshot-3', 'I report, I take screenshots.', 'You will document every problem you encounter. Send 20 screenshots.', 'camera', 'rcore_report_screenshot', 20, '{}'),
+	(138, 'prison_recurring_citizen_1', 'Fresh Meat', 'Get sent to prison for the first time.', 'columns-4', 'prison_recurring_citizen', 1, '{}'),
+	(139, 'prison_recurring_citizen_2', 'Brooks was here', 'Get sent to prison 5 times.', 'columns-4', 'prison_recurring_citizen', 5, '{}'),
+	(140, 'prison_recurring_citizen_3', 'So was Red', 'Get sent to prison 10 times.', 'columns-4', 'prison_recurring_citizen', 10, '{}'),
+	(141, 'prison_recurring_citizen_4', 'Get busy living, or get busy dying', 'Get sent to prison 20 times.', 'columns-4', 'prison_recurring_citizen', 20, '{}'),
+	(142, 'rcore_golf_hole_in_one_1', 'One-hit wonder', 'Score your first hole-in-one!', 'land-plot', 'rcore_golf_hole_in_one', 1, '{}'),
+	(143, 'rcore_golf_hole_in_one_5', 'Ace of Clubs', 'Score 5 hole-in-ones!', 'land-plot', 'rcore_golf_hole_in_one', 5, '{}'),
+	(144, 'rcore_golf_hole_in_one_10', 'Eye of the Tiger', 'Score 10 hole-in-ones!', 'land-plot', 'rcore_golf_hole_in_one', 10, '{}'),
+	(145, 'rcore_golf_games_won_1', 'Beginner\'s luck', 'Win your first golf match!', 'land-plot', 'rcore_golf_games_won', 1, '{}'),
+	(146, 'rcore_golf_games_won_10', 'Swingers Club', 'Win 10 golf matches.', 'land-plot', 'rcore_golf_games_won', 10, '{}'),
+	(147, 'rcore_golf_games_won_20', 'PGA Ready', 'Win 20 golf matches.', 'land-plot', 'rcore_golf_games_won', 20, '{}'),
+	(148, 'rcore_golf_games_lost_1', 'Lost in the Sand Trap', 'Lose your first golf match!', 'land-plot', 'rcore_golf_games_lost', 1, '{}'),
+	(149, 'rcore_golf_games_lost_5', 'Just go play minigolf.', 'Lose 5 golf matches.', 'land-plot', 'rcore_golf_games_lost', 5, '{}'),
+	(150, 'rcore_golf_games_lost_10', 'Consider retiring.', 'Lose 10 golf matches.', 'land-plot', 'rcore_golf_games_lost', 10, '{}'),
+	(151, 'rcore_dance_games_played_5', 'Boogie Beginner', 'Play 5 dance minigames!', 'disc-3', 'rcore_dance_games_played', 5, '{}'),
+	(152, 'rcore_dance_games_played_10', 'Dance Enthusiast', 'Play 10 dance minigames!', 'disc-3', 'rcore_dance_games_played', 10, '{}'),
+	(153, 'rcore_dance_games_played_20', 'Shuffle Sensei', 'Play 20 dance minigames!', 'disc-3', 'rcore_dance_games_played', 20, '{}'),
+	(154, 'rcore_dance_games_won_5', 'Dance Star', 'Win 5 dance battles!', 'disc-3', 'rcore_dance_games_won', 5, '{}'),
+	(155, 'rcore_dance_games_won_10', 'Dance Master', 'Win 10 dance minigames!', 'disc-3', 'rcore_dance_games_won', 10, '{}'),
+	(156, 'rcore_dance_games_won_20', 'Dance Legend', 'Win 20 dance minigames!', 'disc-3', 'rcore_dance_games_won', 20, '{}'),
+	(157, 'rcore_dance_games_lost_5', 'Disco Disaster', 'Lose 5 dance battles!', 'disc-3', 'rcore_dance_games_lost', 5, '{}'),
+	(158, 'rcore_dance_games_lost_10', 'Two Left Feet', 'Lose 10 dance minigames!', 'disc-3', 'rcore_dance_games_lost', 10, '{}'),
+	(159, 'rcore_dance_games_lost_20', 'Waltz the Problem?', 'Lose 20 dance minigames!', 'disc-3', 'rcore_dance_games_lost', 20, '{}'),
+	(160, 'rcore_banners_business_produced_banners1', 'Banner Beginner', 'Produce a banner at a printer station.', 'columns-4', 'rcore_banners_business_produced_banners', 1, '{}'),
+	(161, 'rcore_banners_business_produced_banners2', 'The IT Guy', 'You\'re the only one who knows how the printer works - Produce 5 banners.', 'columns-4', 'rcore_banners_business_produced_banners', 5, '{}'),
+	(162, 'rcore_banners_business_produced_banners3', 'Printer Artist', 'Produce a banner at a printer station 10 times.', 'columns-4', 'rcore_banners_business_produced_banners', 10, '{}'),
+	(163, 'rcore_banners_business_produced_banners4', 'Out of Ink', 'Produce a banner at a printer station 20 times.', 'columns-4', 'rcore_banners_business_produced_banners', 20, '{}'),
+	(164, 'rcore_banners_business_produced_banners5', 'Picasso', 'Produce a banner at a printer station 40 times.', 'columns-4', 'rcore_banners_business_produced_banners', 40, '{}'),
+	(165, 'rcore_banners_placed_posters1', 'Fresh poster', 'Place a poster for the first time.', 'columns-4', 'rcore_banners_placed_posters', 1, '{}'),
+	(166, 'rcore_banners_placed_posters2', 'Neighboorhod Hero', 'Place a poster 5 times.', 'columns-4', 'rcore_banners_placed_posters', 5, '{}'),
+	(167, 'rcore_banners_placed_posters3', 'Street Artist', 'Place a poster 10 times.', 'columns-4', 'rcore_banners_placed_posters', 10, '{}'),
+	(168, 'rcore_banners_placed_posters4', 'Art Enthusiast', 'Place a poster 20 times.', 'columns-4', 'rcore_banners_placed_posters', 20, '{}'),
+	(169, 'tennis_won_1', 'Tennis - Game Won', 'Win 1 tennis game ', 'trophy', 'tennis_won', 1, '{}'),
+	(170, 'tennis_won_5', 'Tennis - Upcoming Pro', 'Win 5 tennis games', 'trophy', 'tennis_won', 5, '{}'),
+	(171, 'tennis_won_25', 'Tennis - Pro', 'Win 25 tennis games', 'trophy', 'tennis_won', 25, '{}'),
+	(172, 'bowling_won_1', 'Bowling - Game Won', 'Win 1 bowling game ', 'loader-pinwheel', 'bowling_won', 1, '{}'),
+	(173, 'bowling_won_5', 'Bowling - League Player', 'Win 5 bowling games', 'loader-pinwheel', 'bowling_won', 5, '{}'),
+	(174, 'bowling_won_25', 'Who do you think you are? I am!', 'Win 25 bowling games', 'loader-pinwheel', 'bowling_won', 25, '{}'),
+	(175, 'basket_hoops_won_1', 'Basketball - Game Won', 'Win 1 basketball game (not free throw)', 'loader-pinwheel', 'basket_hoops_won', 1, '{}'),
+	(176, 'basket_hoops_won_5', 'Basketball - Upcoming star', 'Win 5 basketball games (not free throw)', 'loader-pinwheel', 'basket_hoops_won', 5, '{}'),
+	(177, 'basket_hoops_won_25', 'Basketball - NBA Ready', 'Win 25 basketball games (not free throw)', 'loader-pinwheel', 'basket_hoops_won', 25, '{}'),
+	(178, 'beerpong_hit_cup_1', 'Welcome to the Beer Pong game!', 'Hit successfully a cup!', 'loader-pinwheel', 'beerpong_hit', 1, '{}'),
+	(179, 'beerpong_hit_cup_10', 'Do you even like alcohol?', 'Hit successfully ten cups!', 'loader-pinwheel', 'beerpong_hit', 10, '{}'),
+	(180, 'beerpong_hit_cup_25', 'Picasso of throwing!', 'Hit successfully twenty five cups!', 'loader-pinwheel', 'beerpong_hit', 25, '{}'),
+	(181, 'beerpong_won_games_1', 'Beginner', 'Win your first game of beer pong!', 'loader-pinwheel', 'beerpong_won', 1, '{}'),
+	(182, 'beerpong_won_games_2', 'Advanced', 'You have some skills! Win 10 games!', 'loader-pinwheel', 'beerpong_won', 10, '{}'),
+	(183, 'beerpong_won_games_3', 'Master', 'People will stop inviting you to their parties if you keep winning like this!', 'loader-pinwheel', 'beerpong_won', 25, '{}');
+
+-- Dumping structure for table miamifres.rcore_stats_categories
+CREATE TABLE IF NOT EXISTS `rcore_stats_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` enum('player','server') NOT NULL,
+  `order_number` int(11) DEFAULT 1,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `attributes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '{}' CHECK (json_valid(`attributes`)),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rcore_stats_categories_key_uindex` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.rcore_stats_categories: ~13 rows (approximately)
+INSERT INTO `rcore_stats_categories` (`id`, `key`, `name`, `type`, `order_number`, `updated_at`, `attributes`) VALUES
+	(1, 'distance', 'Distance', 'player', 1, '2025-12-06 05:48:58', '{}'),
+	(2, 'finance', 'Finance', 'player', 2, '2025-12-06 05:48:58', '{}'),
+	(3, 'speed', 'Speed', 'player', 3, '2025-12-06 05:48:58', '{}'),
+	(4, 'favorite', 'Favorite', 'player', 4, '2025-12-06 05:48:58', '{}'),
+	(5, 'combat', 'Combat', 'player', 5, '2025-12-06 05:48:58', '{}'),
+	(6, 'other', 'Other', 'player', 6, '2025-12-06 05:48:58', '{}'),
+	(7, 'rcore_whiteboard', 'Whiteboards', 'player', 7, '2025-12-06 05:48:59', '{}'),
+	(8, 'minigames', 'Minigames', 'player', 19, '2025-12-06 05:49:00', '{}'),
+	(9, 'casino', 'Casino', 'player', 9, '2025-12-06 05:48:59', '{}'),
+	(10, 'rcore_shortcuts', 'Shortcuts', 'player', 12, '2025-12-06 05:48:59', '{}'),
+	(11, 'rcore_report', 'Reports', 'player', 13, '2025-12-06 05:48:59', '{}'),
+	(12, 'prison', 'Prison', 'player', 14, '2025-12-06 05:48:59', '{}'),
+	(13, 'banners', 'Banners', 'player', 20, '2025-12-06 05:49:00', '{}');
+
+-- Dumping structure for table miamifres.rcore_stats_data
+CREATE TABLE IF NOT EXISTS `rcore_stats_data` (
+  `identifier` varchar(255) NOT NULL,
+  `stats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`stats`)),
+  `achievements` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`achievements`)),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`identifier`),
+  UNIQUE KEY `rcore_stats_data_identifier_uindex` (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.rcore_stats_data: ~3 rows (approximately)
+INSERT INTO `rcore_stats_data` (`identifier`, `stats`, `achievements`, `updated_at`) VALUES
+	('J85YFAHP', '{"favorite_vehicle":"Karin Sultan","favorite_weapon":"Unknown","distance_foot":609,"time_played":14,"max_speed_car":52.3,"distance_car":3514,"money_earned":50000,"max_speed_with":"Karin Sultan"}', '["money_earned_500","money_earned_10000","money_earned_50000","max_speed_car_22_22","max_speed_car_39_33"]', '2025-12-06 14:39:09'),
+	('rcore_stats_server', '{"total_time_played":340,"total_money_earned":51700,"total_deaths":1,"total_distance_foot":4185,"total_death_by_fall":1,"total_distance_car":3514}', '[]', '2025-12-07 02:02:18'),
+	('U4XD2430', '{"favorite_weapon":"Unknown","distance_foot":3576,"deaths":1,"money_earned":1700,"time_played":326,"death_by_fall":1}', '["deaths_1","death_by_fall_1","time_played_60","money_earned_500"]', '2025-12-07 01:45:17');
+
+-- Dumping structure for table miamifres.rcore_stats_types
+CREATE TABLE IF NOT EXISTS `rcore_stats_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` enum('player','server') NOT NULL,
+  `order_number` int(11) DEFAULT 1,
+  `category_key` varchar(255) NOT NULL,
+  `unit_type` varchar(255) DEFAULT NULL,
+  `is_enabled` tinyint(1) DEFAULT 1,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `calculated_from` varchar(255) DEFAULT NULL,
+  `attributes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '{}' CHECK (json_valid(`attributes`)),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rcore_stats_types_key_uindex` (`key`),
+  KEY `rcore_stats_types_rcore_stats_categories_key_fk` (`category_key`),
+  CONSTRAINT `rcore_stats_types_rcore_stats_categories_key_fk` FOREIGN KEY (`category_key`) REFERENCES `rcore_stats_categories` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.rcore_stats_types: ~170 rows (approximately)
+INSERT INTO `rcore_stats_types` (`id`, `key`, `name`, `type`, `order_number`, `category_key`, `unit_type`, `is_enabled`, `updated_at`, `calculated_from`, `attributes`) VALUES
+	(1, 'distance_foot', 'Distance on foot', 'player', 1, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(2, 'distance_car', 'Distance by car', 'player', 2, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(3, 'distance_bike', 'Distance by bike', 'player', 3, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(4, 'distance_heli', 'Distance by heli', 'player', 4, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(5, 'distance_plane', 'Distance by plane', 'player', 5, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(6, 'distance_boat', 'Distance by boat', 'player', 6, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(7, 'distance_bicycle', 'Distance by bicycle', 'player', 7, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(8, 'distance_other', 'Distance by other', 'player', 8, 'distance', 'distance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(9, 'money_earned', 'Money earned', 'player', 9, 'finance', 'finance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(10, 'money_spent', 'Money spent', 'player', 10, 'finance', 'finance', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(11, 'max_speed_with', 'Max speed achieved with', 'player', 11, 'speed', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(12, 'max_speed_car', 'Max speed in car', 'player', 12, 'speed', 'speed', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(13, 'max_speed_bike', 'Max speed on bike', 'player', 13, 'speed', 'speed', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(14, 'max_speed_heli', 'Max speed in heli', 'player', 14, 'speed', 'speed', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(15, 'max_speed_plane', 'Max speed in plane', 'player', 15, 'speed', 'speed', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(16, 'max_speed_boat', 'Max speed in boat', 'player', 16, 'speed', 'speed', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(17, 'max_speed_bicycle', 'Max speed on bicycle', 'player', 17, 'speed', 'speed', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(18, 'favorite_vehicle', 'Favorite vehicle', 'player', 18, 'favorite', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(19, 'favorite_weapon', 'Favorite weapon', 'player', 19, 'favorite', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(20, 'player_kills', 'Player kills', 'player', 20, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(21, 'entity_kills', 'Locals and animal kills', 'player', 21, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(22, 'vehicles_destroyed', 'Vehicles destroyed', 'player', 22, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(23, 'objects_destroyed', 'Objects destroyed', 'player', 23, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(24, 'deaths', 'Deaths', 'player', 24, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(25, 'death_by_weapon', 'Death by weapon', 'player', 25, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(26, 'death_by_animal', 'Death by animal', 'player', 26, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(27, 'death_by_fire', 'Death by fire', 'player', 27, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(28, 'death_by_suffocate', 'Death by suffocating', 'player', 28, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(29, 'death_by_vehicle', 'Death by vehicle', 'player', 29, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(30, 'death_by_fall', 'Death by fall', 'player', 30, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(31, 'death_by_suicide', 'Deat - suicide', 'player', 31, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(32, 'death_by_hand', 'Death by hand', 'player', 32, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(33, 'death_by_others', 'Death - other', 'player', 33, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(34, 'weapon_shots', 'Shot count', 'player', 34, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(35, 'weapon_hits', 'Hit count', 'player', 35, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(36, 'weapon_headshots', 'Headshots', 'player', 36, 'combat', NULL, 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(37, 'time_played', 'Time played', 'player', 37, 'other', 'time', 1, '2025-12-06 05:48:58', NULL, '{}'),
+	(38, 'total_weapon_shots', 'Total bullets shot', 'server', 38, 'combat', NULL, 1, '2025-12-06 05:48:58', 'weapon_shots', '{}'),
+	(39, 'total_weapon_hits', 'Total bullet hits', 'server', 39, 'combat', NULL, 1, '2025-12-06 05:48:58', 'weapon_hits', '{}'),
+	(40, 'total_weapon_headshots', 'Total headshots', 'server', 40, 'combat', NULL, 1, '2025-12-06 05:48:58', 'weapon_headshots', '{}'),
+	(41, 'total_deaths', 'Total deaths', 'server', 41, 'combat', NULL, 1, '2025-12-06 05:48:58', 'deaths', '{}'),
+	(42, 'total_death_by_weapon', 'Total deaths by weapon', 'server', 42, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_weapon', '{}'),
+	(43, 'total_death_by_animal', 'Total deaths by animal', 'server', 43, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_animal', '{}'),
+	(44, 'total_death_by_fire', 'Total deaths by fire', 'server', 44, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_fire', '{}'),
+	(45, 'total_death_by_suffocate', 'Total deaths by suffocating', 'server', 45, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_suffocate', '{}'),
+	(46, 'total_death_by_vehicle', 'Total deaths by vehicle', 'server', 46, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_vehicle', '{}'),
+	(47, 'total_death_by_fall', 'Total deaths by fall', 'server', 47, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_fall', '{}'),
+	(48, 'total_death_by_suicide', 'Total deaths - suicide', 'server', 48, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_suicide', '{}'),
+	(49, 'total_death_by_hand', 'Total deaths by hand', 'server', 49, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_hand', '{}'),
+	(50, 'total_death_by_others', 'Total deaths - other', 'server', 50, 'combat', NULL, 1, '2025-12-06 05:48:58', 'death_by_others', '{}'),
+	(51, 'total_vehicles_destroyed', 'Total vehicles destroyed', 'server', 51, 'combat', NULL, 1, '2025-12-06 05:48:58', 'vehicles_destroyed', '{}'),
+	(52, 'total_objects_destroyed', 'Total objects destroyed', 'server', 52, 'combat', NULL, 1, '2025-12-06 05:48:58', 'objects_destroyed', '{}'),
+	(53, 'total_player_kills', 'Total players kills', 'server', 53, 'combat', NULL, 1, '2025-12-06 05:48:58', 'player_kills', '{}'),
+	(54, 'total_entity_kills', 'Total locals and animal kills', 'server', 54, 'combat', NULL, 1, '2025-12-06 05:48:58', 'entity_kills', '{}'),
+	(55, 'total_money_earned', 'Total money earned', 'server', 55, 'finance', 'finance', 1, '2025-12-06 05:48:58', 'money_earned', '{}'),
+	(56, 'total_money_spent', 'Total money spent', 'server', 56, 'finance', 'finance', 1, '2025-12-06 05:48:58', 'money_spent', '{}'),
+	(57, 'total_time_played', 'Total time played', 'server', 57, 'other', 'time', 1, '2025-12-06 05:48:58', 'time_played', '{}'),
+	(58, 'total_distance_foot', 'Total distance on foot', 'server', 58, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_foot', '{}'),
+	(59, 'total_distance_car', 'Total distance by car', 'server', 59, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_car', '{}'),
+	(60, 'total_distance_bike', 'Total distance by bike', 'server', 60, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_bike', '{}'),
+	(61, 'total_distance_heli', 'Total distance by heli', 'server', 61, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_heli', '{}'),
+	(62, 'total_distance_plane', 'Total distance by plane', 'server', 62, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_plane', '{}'),
+	(63, 'total_distance_boat', 'Total distance by boat', 'server', 63, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_boat', '{}'),
+	(64, 'total_distance_bicycle', 'Total distance by bicycle', 'server', 64, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_bicycle', '{}'),
+	(65, 'total_distance_other', 'Total distance by other', 'server', 65, 'distance', 'distance', 1, '2025-12-06 05:48:58', 'distance_other', '{}'),
+	(66, 'rcore_whiteboard_drawing_time', 'Drawing time', 'player', 38, 'rcore_whiteboard', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(67, 'rcore_whiteboard_drew', 'Boards drew', 'player', 38, 'rcore_whiteboard', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(68, 'rcore_whiteboard_cleared', 'Boards cleared', 'player', 38, 'rcore_whiteboard', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(69, 'total_rcore_whiteboard_drawing_time', 'Total drawing time', 'server', 39, 'rcore_whiteboard', 'time', 1, '2025-12-06 05:48:59', 'rcore_whiteboard_drawing_time', '{}'),
+	(70, 'total_rcore_whiteboard_cleared', 'Total boards cleared', 'server', 39, 'rcore_whiteboard', NULL, 1, '2025-12-06 05:48:59', 'rcore_whiteboard_cleared', '{}'),
+	(71, 'total_rcore_whiteboard_drew', 'Total boards drew', 'server', 39, 'rcore_whiteboard', NULL, 1, '2025-12-06 05:48:59', 'rcore_whiteboard_drew', '{}'),
+	(72, 'rcore_airhockey_games_played', 'Air Hockey - Games Played', 'player', 39, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(73, 'rcore_airhockey_games_won', 'Air Hockey - Games Won', 'player', 39, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(74, 'rcore_airhockey_games_lost', 'Air Hockey - Games Lost', 'player', 39, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(75, 'rcore_airhockey_shoots_on_net', 'Air Hockey - Shoots on Net', 'player', 39, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(76, 'rcore_airhockey_shoots_saves', 'Air Hockey - Saves', 'player', 39, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(77, 'rcore_airhockey_total_games', 'Air Hockey - Total Games', 'server', 40, 'minigames', NULL, 1, '2025-12-06 05:48:59', 'rcore_airhockey_games_played', '{}'),
+	(78, 'rcore_casino_slots_time_spent', 'Casino - Slots - Time Spent', 'player', 40, 'casino', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(79, 'rcore_casino_slots_wins', 'Casino - Slots - Wins', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(80, 'rcore_casino_slots_loss', 'Casino - Slots - Loss', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(81, 'rcore_casino_slots_games_played', 'Casino - Slots - Games Played', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(82, 'rcore_casino_slots_profit', 'Casino - Slots - Winnings In Total', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(83, 'rcore_casino_slots_profitreal', 'Casino - Slots - Profit', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(84, 'rcore_casino_slots_jackpots', 'Casino - Slots - Jackpots', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(85, 'rcore_casino_roulette_time_spent', 'Casino - Roulette - Time Spent', 'player', 40, 'casino', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(86, 'rcore_casino_roulette_wins', 'Casino - Roulette - Wins', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(87, 'rcore_casino_roulette_loss', 'Casino - Roulette - Loss', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(88, 'rcore_casino_roulette_games_played', 'Casino - Roulette - Games Played', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(89, 'rcore_casino_roulette_profit', 'Casino - Roulette - Winnings In Total', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(90, 'rcore_casino_roulette_profitreal', 'Casino - Roulette - Profit', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(91, 'rcore_casino_poker_time_spent', 'Casino - Poker - Time Spent', 'player', 40, 'casino', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(92, 'rcore_casino_poker_wins', 'Casino - Poker - Wins', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(93, 'rcore_casino_poker_loss', 'Casino - Poker - Loss', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(94, 'rcore_casino_poker_games_played', 'Casino - Poker - Games Played', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(95, 'rcore_casino_poker_profit', 'Casino - Poker - Winnings In Total', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(96, 'rcore_casino_poker_profitreal', 'Casino - Roulette - Profit', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(97, 'rcore_casino_bj_time_spent', 'Casino - Blackjack - Time Spent', 'player', 40, 'casino', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(98, 'rcore_casino_bj_wins', 'Casino - Blackjack - Wins', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(99, 'rcore_casino_bj_loss', 'Casino - Blackjack - Loss', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(100, 'rcore_casino_bj_games_played', 'Casino - Blackjack - Games Played', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(101, 'rcore_casino_bj_profit', 'Casino - Blackjack - Winnings In Total', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(102, 'rcore_casino_bj_profitreal', 'Casino - Blackjack - Profit', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(103, 'rcore_casino_track_time_spent', 'Casino - Inside Track - Time Spent', 'player', 40, 'casino', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(104, 'rcore_casino_track_wins', 'Casino - Inside Track - Wins', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(105, 'rcore_casino_track_loss', 'Casino - Inside Track - Loss', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(106, 'rcore_casino_track_games_played', 'Casino - Inside Track - Games Played', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(107, 'rcore_casino_track_profit', 'Casino - Inside Track - Winnings In Total', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(108, 'rcore_casino_track_profitreal', 'Casino - Inside Track - Profit', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(109, 'rcore_casino_wheel_time_spent', 'Casino - Wheel - Time Spent', 'player', 40, 'casino', 'time', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(110, 'rcore_casino_wheel_wins', 'Casino - Wheel - Wins', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(111, 'rcore_casino_wheel_loss', 'Casino - Wheel - Loss', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(112, 'rcore_casino_wheel_games_played', 'Casino - Wheel - Games Played', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(113, 'rcore_casino_wheel_profit', 'Casino - Wheel - Winnings In Total', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(114, 'rcore_casino_wheel_profitreal', 'Casino - Wheel - Profit', 'player', 40, 'casino', 'finance', 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(115, 'rcore_casino_cashier_used', 'Casino - Cashier Used', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(116, 'rcore_casino_visits', 'Casino - Visits', 'player', 40, 'casino', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(117, 'rcore_pingpong_games_played', 'Table Tennis - Games Played', 'player', 41, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(118, 'rcore_pingpong_games_won', 'Table Tennis - Games Won', 'player', 41, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(119, 'rcore_pingpong_games_lost', 'Table Tennis - Games Lost', 'player', 41, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(120, 'rcore_pingpong_games_against_player', 'Table Tennis - Games Against Player', 'player', 41, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(121, 'rcore_pingpong_shoots', 'Table Tennis - Shoots', 'player', 41, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(122, 'rcore_pingpong_games_against_ai', 'Table Tennis - Games Against AI', 'player', 41, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(123, 'rcore_pingpong_total_games', 'Table Tennis - Total Games', 'server', 42, 'minigames', NULL, 1, '2025-12-06 05:48:59', 'rcore_pingpong_games_played', '{}'),
+	(124, 'tennis_won', 'Tennis - Games won', 'player', 42, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(125, 'tennis_played', 'Tennis - Games played', 'player', 42, 'minigames', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(126, 'rcore_shortcuts_used', 'Shortcuts used', 'player', 43, 'rcore_shortcuts', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(127, 'rcore_shortcuts_added', 'Shortcuts added', 'player', 43, 'rcore_shortcuts', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(128, 'total_rcore_shortcuts_used', 'Total shortcuts used', 'server', 44, 'rcore_shortcuts', NULL, 1, '2025-12-06 05:48:59', 'rcore_shortcuts_used', '{}'),
+	(129, 'total_rcore_shortcuts_added', 'Total shortcuts added', 'server', 44, 'rcore_shortcuts', NULL, 1, '2025-12-06 05:48:59', 'rcore_shortcuts_added', '{}'),
+	(130, 'rcore_report_created', 'Reports created', 'player', 44, 'rcore_report', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(131, 'rcore_report_screenshot', 'Screenshots uploaded', 'player', 44, 'rcore_report', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(132, 'total_rcore_report_created', 'Total reports created', 'server', 45, 'rcore_report', NULL, 1, '2025-12-06 05:48:59', 'rcore_report_created', '{}'),
+	(133, 'total_rcore_report_screenshot', 'Total screenshots uploaded', 'server', 45, 'rcore_report', NULL, 1, '2025-12-06 05:48:59', 'rcore_report_screenshot', '{}'),
+	(134, 'prison_recurring_citizen', 'Prison - times imprisoned', 'player', 45, 'prison', NULL, 1, '2025-12-06 05:48:59', NULL, '{}'),
+	(135, 'total_prison_recurring_citizen', 'Prison - Total imprisonments', 'server', 46, 'prison', NULL, 1, '2025-12-06 05:48:59', 'prison_recurring_citizen', '{}'),
+	(136, 'pool_8_played', 'Pool - 8-balls played', 'player', 46, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(137, 'pool_9_played', 'Pool - 9-balls played', 'player', 46, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(138, 'pool_pocketed', 'Pool - Balls pocketed', 'player', 46, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(139, 'rcore_golf_games_played', 'Golf - Games played', 'player', 47, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(140, 'rcore_golf_holes_made', 'Golf - Holes made', 'player', 47, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(141, 'rcore_golf_total_hits', 'Golf - Total hits', 'player', 47, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(142, 'rcore_golf_money_profit', 'Golf - Betting profit', 'player', 47, 'minigames', 'finance', 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(143, 'rcore_golf_hole_in_one', 'Golf - Holes in one', 'player', 47, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(144, 'rcore_golf_games_won', 'Golf - Games won', 'player', 47, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(145, 'rcore_golf_games_lost', 'Golf - Games lost', 'player', 47, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(146, 'rcore_dance_games_won', 'Dance - battles won', 'player', 48, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(147, 'rcore_dance_games_played', 'Dance - games played', 'player', 48, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(148, 'rcore_dance_games_lost', 'Dance - battles lost', 'player', 49, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(149, 'bowling_won', 'Bowling - Games won', 'player', 50, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(150, 'bowling_played', 'Bowling - Games played', 'player', 50, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(151, 'bowling_strikes', 'Bowling - Strikes', 'player', 50, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(152, 'bowling_spares', 'Bowling - Spares', 'player', 50, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(153, 'basket_hoops', 'Basketball - Points scored', 'player', 51, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(154, 'basket_hoops_won', 'Basketball - Games won', 'player', 51, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(155, 'basket_hoops_played', 'Basketball - Games played', 'player', 51, 'minigames', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(156, 'rcore_banners_business_produced_banners', 'Banners (Business) - produced banners', 'player', 52, 'banners', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(157, 'rcore_banners_placed_posters', 'Banners - placed posters', 'player', 52, 'banners', NULL, 1, '2025-12-06 05:49:00', NULL, '{}'),
+	(158, 'rcore_banners_total_business_produced_banners', 'Banners (Business) - total produced banners', 'server', 53, 'banners', NULL, 1, '2025-12-06 05:49:00', 'rcore_banners_business_produced_banners', '{}'),
+	(159, 'rcore_banners_total_placed_posters', 'Banners - total placed posters', 'server', 53, 'banners', NULL, 1, '2025-12-06 05:49:00', 'rcore_banners_placed_posters', '{}'),
+	(160, 'total_tennis_played', 'Tennis - Total games played', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'tennis_played', '{}'),
+	(161, 'total_pool_8_played', 'Tennis - Total 8-balls played', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'pool_8_played', '{}'),
+	(162, 'total_pool_9_played', 'Tennis - Total 9-balls played', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'pool_9_played', '{}'),
+	(163, 'total_pool_pocketed', 'Tennis - Total balls pocketed', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'pool_pocketed', '{}'),
+	(164, 'rcore_golf_total_games', 'Golf - Total games played', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'rcore_golf_games_played', '{}'),
+	(165, 'total_bowling_played', 'Bowling - Total games played', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'bowling_played', '{}'),
+	(166, 'total_bowling_strikes', 'Bowling - Total strikes', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'bowling_strikes', '{}'),
+	(167, 'total_bowling_spares', 'Bowling - Total spares', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'bowling_spares', '{}'),
+	(168, 'total_basket_played', 'Basketball - Total games played', 'server', 53, 'minigames', NULL, 1, '2025-12-06 05:50:15', 'basket_hoops_played', '{}'),
+	(169, 'beerpong_hit', 'Beer Pong: Hit Count', 'player', 53, 'minigames', NULL, 1, '2025-12-06 12:01:05', NULL, '{}'),
+	(170, 'beerpong_won', 'Beer Pong: Games Won', 'player', 53, 'minigames', NULL, 1, '2025-12-06 12:01:05', NULL, '{}');
+
+-- Dumping structure for table miamifres.rcore_whiteboard
+CREATE TABLE IF NOT EXISTS `rcore_whiteboard` (
+  `id` varchar(255) NOT NULL,
+  `data` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_whiteboard: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rcore_whiteboard_boards
+CREATE TABLE IF NOT EXISTS `rcore_whiteboard_boards` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `boardId` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `readOnly` tinyint(1) DEFAULT 0,
+  `rotationScaleform` varchar(255) DEFAULT NULL,
+  `position` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `rotation` varchar(255) DEFAULT NULL,
+  `ace` tinyint(1) DEFAULT 0,
+  `grades` text DEFAULT NULL,
+  `interactionDistance` varchar(5) DEFAULT NULL,
+  `pickable` tinyint(1) DEFAULT 0,
+  `jobs` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- Dumping data for table miamifres.rcore_whiteboard_boards: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.restaurants_menus
 CREATE TABLE IF NOT EXISTS `restaurants_menus` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -166491,6 +167996,26 @@ CREATE TABLE IF NOT EXISTS `restaurants_recipes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table miamifres.restaurants_recipes: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.rivalries
+CREATE TABLE IF NOT EXISTS `rivalries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone` varchar(32) NOT NULL,
+  `attacking_gang_id` int(11) NOT NULL,
+  `defending_gang_id` int(11) NOT NULL,
+  `funds` int(11) NOT NULL,
+  `attacker_sold` int(11) NOT NULL DEFAULT 0,
+  `defender_sold` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ends_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `rivalries_i_attacking_gang_id` (`attacking_gang_id`),
+  KEY `rivalries_i_defending_gang_id` (`defending_gang_id`),
+  CONSTRAINT `rivalries_fk_attacking_gang_id` FOREIGN KEY (`attacking_gang_id`) REFERENCES `gangs` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `rivalries_fk_defending_gang_id` FOREIGN KEY (`defending_gang_id`) REFERENCES `gangs` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table miamifres.rivalries: ~0 rows (approximately)
 
 -- Dumping structure for table miamifres.robberies_creator_cargo_robberies
 CREATE TABLE IF NOT EXISTS `robberies_creator_cargo_robberies` (
@@ -166610,6 +168135,32 @@ CREATE TABLE IF NOT EXISTS `spawnbookmarks` (
 /*!40000 ALTER TABLE `spawnbookmarks` DISABLE KEYS */;
 /*!40000 ALTER TABLE `spawnbookmarks` ENABLE KEYS */;
 
+-- Dumping structure for table miamifres.sprays
+CREATE TABLE IF NOT EXISTS `sprays` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(64) DEFAULT NULL,
+  `x` float(8,4) NOT NULL,
+  `y` float(8,4) NOT NULL,
+  `z` float(8,4) NOT NULL,
+  `origX` float(8,4) NOT NULL,
+  `origY` float(8,4) NOT NULL,
+  `origZ` float(8,4) NOT NULL,
+  `rx` float(8,4) NOT NULL,
+  `ry` float(8,4) NOT NULL,
+  `rz` float(8,4) NOT NULL,
+  `scale` float(8,4) NOT NULL,
+  `text` varchar(32) DEFAULT NULL,
+  `image` varchar(64) DEFAULT NULL,
+  `imageDict` varchar(64) DEFAULT NULL,
+  `font` varchar(32) DEFAULT NULL,
+  `color` varchar(32) DEFAULT NULL,
+  `interior` int(3) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+
+-- Dumping data for table miamifres.sprays: ~0 rows (approximately)
+
 -- Dumping structure for table miamifres.store_balance
 CREATE TABLE IF NOT EXISTS `store_balance` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -166693,11 +168244,13 @@ CREATE TABLE IF NOT EXISTS `store_users_theme` (
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table miamifres.store_users_theme: ~3 rows (approximately)
+-- Dumping data for table miamifres.store_users_theme: ~5 rows (approximately)
 INSERT INTO `store_users_theme` (`user_id`, `dark_theme`) VALUES
 	('CW55UZ0L', 1),
+	('D8E35P04', 1),
 	('K251H40I', 1),
-	('N71JNKEJ', 1);
+	('N71JNKEJ', 1),
+	('R9C0SPP1', 1);
 
 -- Dumping structure for table miamifres.tcd_starterpack
 CREATE TABLE IF NOT EXISTS `tcd_starterpack` (
@@ -166707,15 +168260,16 @@ CREATE TABLE IF NOT EXISTS `tcd_starterpack` (
   `received` tinyint(1) NOT NULL,
   `date_received` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table miamifres.tcd_starterpack: ~5 rows (approximately)
+-- Dumping data for table miamifres.tcd_starterpack: ~6 rows (approximately)
 INSERT INTO `tcd_starterpack` (`id`, `name`, `identifier`, `received`, `date_received`) VALUES
 	(1, 'Alex SRt', 'license:c0da2116c504d911d2cbe314ec88e991416e9fd7', 1, '2025-11-28 01:46:07'),
 	(2, 'TYLER JAMES', 'license:f49c68134af018f9c0a57bce0acef046ebd28a0d', 1, '2025-11-30 00:32:00'),
 	(3, 'Sari V', 'license:5cc8c5b96e0191be0d192c7b99d8103df84c53a0', 1, '2025-12-01 07:31:16'),
 	(4, 'SLIME BALL', 'license:f94814371b99087d54639a47a7fb2d1d9b6eab03', 1, '2025-12-01 22:18:58'),
-	(5, 'Tyb Fazo', 'license:f068a96c1d23d25e41125893c099286ddad06604', 1, '2025-12-01 22:50:50');
+	(5, 'Tyb Fazo', 'license:f068a96c1d23d25e41125893c099286ddad06604', 1, '2025-12-01 22:50:50'),
+	(6, 'Rob Stark', 'license:8dacb1a204e817aeb4cb50c8980753051d859929', 1, '2025-12-06 15:32:10');
 
 -- Dumping structure for table miamifres.trucker_available_contracts
 CREATE TABLE IF NOT EXISTS `trucker_available_contracts` (
@@ -166734,70 +168288,70 @@ CREATE TABLE IF NOT EXISTS `trucker_available_contracts` (
   `external_data` text DEFAULT NULL,
   `progress` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`contract_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7781 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13881 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table miamifres.trucker_available_contracts: ~60 rows (approximately)
 INSERT INTO `trucker_available_contracts` (`contract_id`, `contract_type`, `contract_name`, `coords_index`, `price_per_km`, `cargo_type`, `fragile`, `valuable`, `fast`, `illegal`, `truck`, `trailer`, `external_data`, `progress`) VALUES
-	(7721, 0, 'Scrap transport', 22, 1568, 0, 0, 0, 0, 0, 'packer', 'trailers3', NULL, NULL),
-	(7722, 1, 'Army secret materials', 108, 1834, 0, 0, 1, 1, 0, NULL, 'armytanker', NULL, NULL),
-	(7723, 0, 'Furniture transport', 138, 1275, 0, 0, 0, 0, 0, 'brickades', 'docktrailer', NULL, NULL),
-	(7724, 1, 'Army flammable gas tank', 9, 1279, 2, 0, 0, 0, 0, NULL, 'armytanker', NULL, NULL),
-	(7725, 0, 'Army water supply', 15, 1281, 0, 0, 0, 0, 0, 'blacktop', 'armytanker', NULL, NULL),
-	(7726, 1, 'Transport of armaments', 42, 1855, 0, 0, 1, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7727, 0, 'Illegal animal transport', 56, 2043, 0, 1, 1, 0, 1, 'brickades', 'trailers2', NULL, NULL),
-	(7728, 1, 'Rail transport', 84, 1746, 0, 0, 0, 0, 0, NULL, 'trailers3', NULL, NULL),
-	(7729, 0, 'Transport of event materials', 168, 1525, 0, 1, 1, 0, 0, 'vetirs', 'tvtrailer', NULL, NULL),
-	(7730, 1, 'Ammo transport', 179, 1345, 1, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7731, 0, 'Cheese transport', 183, 1258, 0, 0, 0, 0, 0, 'packer', 'trailers2', NULL, NULL),
-	(7732, 1, 'Illegal animal transport', 133, 2530, 0, 1, 1, 0, 1, NULL, 'trailers2', NULL, NULL),
-	(7733, 0, 'Illegal animal transport', 10, 2030, 0, 1, 1, 1, 1, 'hauler', 'trailers2', NULL, NULL),
-	(7734, 1, 'Transport of explosives', 45, 1201, 1, 1, 0, 0, 0, NULL, 'trailers4', NULL, NULL),
-	(7735, 0, 'Kerosene tank', 54, 1492, 3, 0, 0, 1, 0, 'vetirs', 'tanker2', NULL, NULL),
-	(7736, 1, 'Refrigerator transport', 98, 1584, 0, 1, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7737, 0, 'Boat trailer', 70, 1011, 0, 1, 1, 1, 0, 'hauler', 'trailers4', NULL, NULL),
-	(7738, 1, 'Chair transport', 192, 1603, 0, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7739, 0, 'Army Corrosive Materials Tank', 191, 1260, 6, 0, 1, 0, 0, 'vetirs', 'armytanker', NULL, NULL),
-	(7740, 1, 'Appliance transport', 87, 1846, 0, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7741, 0, 'Rubber transport', 150, 1593, 0, 0, 0, 0, 0, 'vetirs', 'trailers', NULL, NULL),
-	(7742, 1, 'Ceramic transport', 155, 1595, 0, 1, 0, 0, 0, NULL, 'trailers3', NULL, NULL),
-	(7743, 0, 'Milk transport', 95, 1016, 0, 0, 0, 0, 0, 'packer', 'trailers2', NULL, NULL),
-	(7744, 1, 'Unlicensed chemical tank', 58, 2412, 6, 1, 1, 1, 1, NULL, 'tanker', NULL, NULL),
-	(7745, 0, 'Frozen meat transport', 56, 1318, 0, 0, 0, 0, 0, 'hauler', 'trailers2', NULL, NULL),
-	(7746, 1, 'Stone transport', 9, 1693, 0, 0, 0, 1, 0, NULL, 'docktrailer', NULL, NULL),
-	(7747, 0, 'Scrap transport', 194, 1349, 0, 0, 0, 0, 0, 'packer', 'trailers3', NULL, NULL),
-	(7748, 1, 'Army water supply', 70, 1336, 0, 0, 0, 0, 0, NULL, 'armytanker', NULL, NULL),
-	(7749, 0, 'Transport of jewels', 115, 1008, 0, 1, 1, 0, 0, 'brickades', 'docktrailer', NULL, NULL),
-	(7750, 1, 'Tile transport', 19, 1235, 0, 0, 0, 0, 0, NULL, 'trailers3', NULL, NULL),
-	(7751, 0, 'Car carrier trailer', 39, 1375, 0, 1, 1, 0, 0, 'hauler', 'tr4', NULL, NULL),
-	(7752, 1, 'Black market pharmaceuticals', 123, 3060, 5, 1, 1, 0, 1, NULL, 'trailers3', NULL, NULL),
-	(7753, 0, 'Potato transport', 117, 1599, 0, 0, 0, 0, 0, 'brickades', 'trailers2', NULL, NULL),
-	(7754, 1, 'Vinegar transport', 138, 1716, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
-	(7755, 0, 'Transport of fireworks', 85, 1473, 1, 1, 0, 0, 0, 'packer', 'trailers4', NULL, NULL),
-	(7756, 1, 'Transport of vaccines', 169, 1447, 0, 1, 0, 0, 0, NULL, 'trailers', NULL, NULL),
-	(7757, 0, 'Illegal animal transport', 19, 2752, 0, 1, 1, 0, 1, 'vetirs', 'trailers2', NULL, NULL),
-	(7758, 1, 'Rubber transport', 184, 1638, 0, 0, 0, 0, 0, NULL, 'trailers', NULL, NULL),
-	(7759, 0, 'Transport of rare materials', 9, 1484, 0, 1, 1, 0, 0, 'blacktop', 'docktrailer', NULL, NULL),
-	(7760, 1, 'Potato transport', 35, 1660, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
-	(7761, 0, 'Brick transport', 174, 1342, 0, 0, 0, 0, 0, 'hauler', 'docktrailer', NULL, NULL),
-	(7762, 1, 'Chair transport', 42, 1798, 0, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7763, 0, 'Army Corrosive Materials Tank', 155, 1438, 6, 0, 1, 0, 0, 'brickades', 'armytanker', NULL, NULL),
-	(7764, 1, 'Transport of rare materials', 62, 1448, 0, 1, 1, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7765, 0, 'Glass transport', 5, 1191, 0, 1, 0, 0, 0, 'blacktop', 'docktrailer', NULL, NULL),
-	(7766, 1, 'Transport of jewels', 44, 1409, 0, 1, 1, 1, 0, NULL, 'docktrailer', NULL, NULL),
-	(7767, 0, 'Transport of event materials', 123, 1264, 0, 1, 1, 0, 0, 'hauler', 'tvtrailer', NULL, NULL),
-	(7768, 1, 'Potato transport', 84, 1368, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
-	(7769, 0, 'Army flammable gas tank', 96, 1579, 2, 0, 0, 0, 0, 'vetirs', 'armytanker', NULL, NULL),
-	(7770, 1, 'Glass transport', 161, 1825, 0, 1, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
-	(7771, 0, 'Vinegar transport', 102, 1309, 0, 0, 0, 0, 0, 'hauler', 'trailers2', NULL, NULL),
-	(7772, 1, 'Army water supply', 103, 1594, 0, 0, 0, 0, 0, NULL, 'armytanker', NULL, NULL),
-	(7773, 0, 'Clothing transport', 92, 1467, 0, 0, 0, 0, 0, 'vetirs', 'docktrailer', NULL, NULL),
-	(7774, 1, 'Potato transport', 161, 1500, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
-	(7775, 0, 'Army toxic gas tank', 144, 1392, 5, 0, 0, 0, 0, 'hauler', 'armytanker', NULL, NULL),
-	(7776, 1, 'Transport of materials for shows', 11, 1848, 0, 0, 1, 0, 0, NULL, 'tvtrailer', NULL, NULL),
-	(7777, 0, 'Appliance transport', 181, 1046, 0, 0, 0, 0, 0, 'vetirs', 'docktrailer', NULL, NULL),
-	(7778, 1, 'Bean transport', 127, 1379, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
-	(7779, 0, 'Appliance transportation', 53, 1136, 0, 1, 0, 0, 0, 'vetirs', 'trailers', NULL, NULL),
-	(7780, 1, 'Frozen meat transport', 78, 1516, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL);
+	(13821, 0, 'Transport of vaccines', 178, 1593, 0, 1, 0, 0, 0, 'brickades', 'trailers', NULL, NULL),
+	(13822, 1, 'Vinegar transport', 180, 1456, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13823, 0, 'Transport of construction materials', 69, 1090, 0, 0, 0, 0, 0, 'hauler', 'trailers', NULL, NULL),
+	(13824, 1, 'Common fuel tank', 36, 1757, 3, 0, 0, 0, 0, NULL, 'tanker2', NULL, NULL),
+	(13825, 0, 'Illegal animal transport', 101, 1832, 0, 1, 1, 0, 1, 'blacktop', 'trailers2', NULL, NULL),
+	(13826, 1, 'Transport of construction materials', 188, 1379, 0, 0, 0, 0, 0, NULL, 'trailers', NULL, NULL),
+	(13827, 0, 'Black market pharmaceuticals', 96, 2435, 5, 1, 1, 0, 1, 'vetirs', 'trailers3', NULL, NULL),
+	(13828, 1, 'Brick transport', 164, 1838, 0, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
+	(13829, 0, 'Black market pharmaceuticals', 79, 2187, 5, 1, 1, 0, 1, 'packer', 'trailers3', NULL, NULL),
+	(13830, 1, 'Appliance transportation', 117, 1318, 0, 1, 0, 0, 0, NULL, 'trailers', NULL, NULL),
+	(13831, 0, 'Car trailer empty', 89, 1296, 0, 0, 0, 0, 0, 'brickades', 'tr2', NULL, NULL),
+	(13832, 1, 'Brick transport', 59, 1913, 0, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL),
+	(13833, 0, 'Transport of canned goods', 188, 1191, 0, 0, 0, 0, 0, 'vetirs', 'trailers2', NULL, NULL),
+	(13834, 1, 'Transport of explosives', 146, 1206, 1, 1, 0, 0, 0, NULL, 'trailers', NULL, NULL),
+	(13835, 0, 'Bean transport', 79, 1141, 0, 0, 0, 0, 0, 'blacktop', 'trailers2', NULL, NULL),
+	(13836, 1, 'Refrigerator transport', 108, 1476, 0, 1, 0, 1, 0, NULL, 'docktrailer', NULL, NULL),
+	(13837, 0, 'Carrot transport', 4, 1504, 0, 0, 0, 0, 0, 'brickades', 'trailers2', NULL, NULL),
+	(13838, 1, 'Carrot transport', 60, 1873, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13839, 0, 'Pork transport', 129, 1271, 0, 0, 0, 0, 0, 'brickades', 'trailers2', NULL, NULL),
+	(13840, 1, 'Illegal animal transport', 24, 2822, 0, 1, 1, 0, 1, NULL, 'trailers2', NULL, NULL),
+	(13841, 0, 'Bean transport', 48, 1015, 0, 0, 0, 1, 0, 'vetirs', 'trailers2', NULL, NULL),
+	(13842, 1, 'White phosphorus transport', 77, 1688, 4, 1, 0, 0, 0, NULL, 'trailers4', NULL, NULL),
+	(13843, 0, 'Army water supply', 49, 1426, 0, 0, 0, 0, 0, 'vetirs', 'armytanker', NULL, NULL),
+	(13844, 1, 'Carrot transport', 180, 1201, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13845, 0, 'Transport of imported products', 167, 1115, 0, 0, 1, 1, 0, 'hauler', 'docktrailer', NULL, NULL),
+	(13846, 1, 'Bottled water transport', 61, 1344, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13847, 0, 'Army toxic gas tank', 91, 1478, 5, 0, 0, 0, 0, 'packer', 'armytanker', NULL, NULL),
+	(13848, 1, 'Car trailer empty', 130, 1883, 0, 0, 0, 0, 0, NULL, 'tr2', NULL, NULL),
+	(13849, 0, 'Transport of armaments', 39, 1544, 0, 0, 1, 0, 0, 'vetirs', 'docktrailer', NULL, NULL),
+	(13850, 1, 'Army flammable gas tank', 39, 1640, 2, 0, 0, 0, 0, NULL, 'armytanker', NULL, NULL),
+	(13851, 0, 'Rail transport', 90, 1374, 0, 0, 0, 0, 0, 'blacktop', 'trailers3', NULL, NULL),
+	(13852, 1, 'Common fuel tank', 140, 1279, 3, 0, 0, 0, 0, NULL, 'tanker2', NULL, NULL),
+	(13853, 0, 'Lemonade transport', 162, 1231, 0, 0, 0, 0, 0, 'packer', 'trailers2', NULL, NULL),
+	(13854, 1, 'Transport of cleaning supplies', 150, 1536, 0, 0, 0, 1, 0, NULL, 'docktrailer', NULL, NULL),
+	(13855, 0, 'Bean transport', 49, 1137, 0, 0, 0, 0, 0, 'packer', 'trailers2', NULL, NULL),
+	(13856, 1, 'Transport of explosives', 115, 1759, 1, 1, 0, 0, 0, NULL, 'trailers4', NULL, NULL),
+	(13857, 0, 'Transport of event materials', 87, 1414, 0, 1, 1, 0, 0, 'blacktop', 'tvtrailer', NULL, NULL),
+	(13858, 1, 'Bean transport', 164, 1714, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13859, 0, 'Vinegar transport', 25, 1149, 0, 0, 0, 0, 0, 'blacktop', 'trailers2', NULL, NULL),
+	(13860, 1, 'Transport of exotic materials', 144, 1693, 0, 1, 1, 1, 0, NULL, 'docktrailer', NULL, NULL),
+	(13861, 0, 'Rail transport', 144, 1274, 0, 0, 0, 0, 0, 'vetirs', 'trailers3', NULL, NULL),
+	(13862, 1, 'Transport of explosives', 61, 1874, 1, 1, 0, 0, 0, NULL, 'trailers4', NULL, NULL),
+	(13863, 0, 'Appliance transport', 97, 1289, 0, 0, 0, 0, 0, 'packer', 'docktrailer', NULL, NULL),
+	(13864, 1, 'Lemonade transport', 78, 1460, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13865, 0, 'Potato transport', 156, 1210, 0, 0, 0, 0, 0, 'brickades', 'trailers2', NULL, NULL),
+	(13866, 1, 'White phosphorus transport', 30, 1808, 4, 1, 0, 0, 0, NULL, 'trailers4', NULL, NULL),
+	(13867, 0, 'Lemonade transport', 35, 1536, 0, 0, 0, 0, 0, 'packer', 'trailers2', NULL, NULL),
+	(13868, 1, 'Rail transport', 74, 1848, 0, 0, 0, 0, 0, NULL, 'trailers3', NULL, NULL),
+	(13869, 0, 'Transport of plastics', 180, 1276, 0, 0, 0, 0, 0, 'vetirs', 'docktrailer', NULL, NULL),
+	(13870, 1, 'Floor plate transport', 108, 1699, 0, 0, 0, 0, 0, NULL, 'trailers3', NULL, NULL),
+	(13871, 0, 'Vinegar transport', 186, 1600, 0, 0, 0, 0, 0, 'packer', 'trailers2', NULL, NULL),
+	(13872, 1, 'Transport of construction materials', 100, 1668, 0, 0, 0, 0, 0, NULL, 'trailers', NULL, NULL),
+	(13873, 0, 'Unlicensed chemical tank', 151, 2799, 6, 1, 1, 0, 1, 'vetirs', 'tanker', NULL, NULL),
+	(13874, 1, 'Army toxic gas tank', 166, 1658, 5, 0, 0, 0, 0, NULL, 'armytanker', NULL, NULL),
+	(13875, 0, 'Contraband alcohol', 105, 2650, 3, 0, 0, 0, 1, 'brickades', 'trailers4', NULL, NULL),
+	(13876, 1, 'Frozen meat transport', 10, 1882, 0, 0, 0, 0, 0, NULL, 'trailers2', NULL, NULL),
+	(13877, 0, 'Chair transport', 135, 1035, 0, 0, 0, 0, 0, 'brickades', 'docktrailer', NULL, NULL),
+	(13878, 1, 'Boat trailer', 58, 1808, 0, 1, 1, 0, 0, NULL, 'trailers4', NULL, NULL),
+	(13879, 0, 'Transport of explosives', 72, 1455, 1, 1, 0, 1, 0, 'vetirs', 'trailers4', NULL, NULL),
+	(13880, 1, 'Transport of plastics', 24, 1214, 0, 0, 0, 0, 0, NULL, 'docktrailer', NULL, NULL);
 
 -- Dumping structure for table miamifres.trucker_deliveries
 CREATE TABLE IF NOT EXISTS `trucker_deliveries` (
@@ -166825,30 +168379,30 @@ CREATE TABLE IF NOT EXISTS `trucker_drivers` (
   `price` int(10) unsigned NOT NULL DEFAULT 0,
   `img` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`driver_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=392 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table miamifres.trucker_drivers: ~20 rows (approximately)
 INSERT INTO `trucker_drivers` (`driver_id`, `user_id`, `name`, `product_type`, `distance`, `valuable`, `fragile`, `fast`, `price`, `img`) VALUES
-	(208, NULL, 'Doug Watson', 0, 5, 3, 5, 5, 3240, 'img/avatar/avatar4.png'),
-	(209, NULL, 'Brett Perry', 4, 0, 1, 3, 3, 1894, 'img/avatar/avatar4.png'),
-	(210, NULL, 'Ryder Foster', 3, 3, 2, 4, 0, 2252, 'img/avatar/avatar6.png'),
-	(211, NULL, 'Jane Adams', 2, 3, 6, 0, 2, 3787, 'img/avatar/avatar8.png'),
-	(212, NULL, 'Isabelle Clark', 4, 3, 1, 2, 1, 3443, 'img/avatar/avatar8.png'),
-	(213, NULL, 'Paisley Bailey', 1, 0, 3, 2, 5, 2190, 'img/avatar/avatar3.png'),
-	(214, NULL, 'Nathan Brooks', 1, 0, 2, 4, 1, 1713, 'img/avatar/avatar1.png'),
-	(215, NULL, 'Lawrence Cooper', 5, 5, 3, 0, 0, 3523, 'img/avatar/avatar1.png'),
-	(216, NULL, 'Leonard West', 0, 3, 4, 0, 1, 1893, 'img/avatar/avatar4.png'),
-	(217, NULL, 'Adam Mitchell', 5, 0, 2, 0, 1, 2790, 'img/avatar/avatar7.png'),
-	(218, NULL, 'Clayton Carter', 4, 6, 1, 4, 2, 3150, 'img/avatar/avatar4.png'),
-	(219, NULL, 'Trey Evans', 4, 0, 3, 6, 4, 3549, 'img/avatar/avatar4.png'),
-	(220, NULL, 'Ross Green', 0, 0, 4, 0, 0, 1634, 'img/avatar/avatar1.png'),
-	(221, NULL, 'Sophia Ross', 4, 0, 3, 5, 3, 3962, 'img/avatar/avatar8.png'),
-	(222, NULL, 'Clara Lopez', 4, 0, 1, 0, 2, 1647, 'img/avatar/avatar8.png'),
-	(223, NULL, 'Jonah James', 0, 1, 4, 1, 0, 2208, 'img/avatar/avatar6.png'),
-	(224, NULL, 'Reese Henderson', 2, 6, 0, 5, 1, 3119, 'img/avatar/avatar8.png'),
-	(225, NULL, 'Malik Henderson', 2, 2, 2, 5, 2, 2673, 'img/avatar/avatar4.png'),
-	(226, NULL, 'Evan Jenkins', 0, 0, 5, 4, 6, 4185, 'img/avatar/avatar7.png'),
-	(227, NULL, 'Hector Adams', 2, 1, 5, 5, 0, 3681, 'img/avatar/avatar1.png');
+	(372, NULL, 'William Moore', 4, 1, 3, 6, 1, 4228, 'img/avatar/avatar7.png'),
+	(373, NULL, 'Alec Young', 1, 2, 3, 5, 3, 2628, 'img/avatar/avatar4.png'),
+	(374, NULL, 'Melanie Stewart', 6, 0, 0, 6, 0, 3972, 'img/avatar/avatar8.png'),
+	(375, NULL, 'Naomi Bryant', 1, 3, 4, 2, 0, 2919, 'img/avatar/avatar8.png'),
+	(376, NULL, 'Miles Rivera', 2, 6, 0, 4, 2, 3573, 'img/avatar/avatar1.png'),
+	(377, NULL, 'Stella Cooper', 4, 3, 3, 0, 3, 3379, 'img/avatar/avatar3.png'),
+	(378, NULL, 'Trey Evans', 5, 1, 6, 0, 2, 4217, 'img/avatar/avatar4.png'),
+	(379, NULL, 'Curtis Gray', 5, 3, 3, 0, 5, 4175, 'img/avatar/avatar5.png'),
+	(380, NULL, 'Thomas Reed', 4, 4, 4, 3, 0, 2603, 'img/avatar/avatar7.png'),
+	(381, NULL, 'Beau Martin', 1, 4, 3, 0, 4, 3784, 'img/avatar/avatar2.png'),
+	(382, NULL, 'Tucker Carter', 1, 4, 2, 2, 0, 1856, 'img/avatar/avatar2.png'),
+	(383, NULL, 'Jonathan Carter', 3, 3, 5, 3, 2, 4335, 'img/avatar/avatar7.png'),
+	(384, NULL, 'Bryce Perry', 0, 5, 3, 3, 2, 2193, 'img/avatar/avatar6.png'),
+	(385, NULL, 'Sean Ramirez', 0, 3, 4, 5, 0, 3608, 'img/avatar/avatar7.png'),
+	(386, NULL, 'Eli Edwards', 2, 3, 4, 1, 4, 3155, 'img/avatar/avatar4.png'),
+	(387, NULL, 'Jude Campbell', 0, 4, 1, 0, 5, 3437, 'img/avatar/avatar2.png'),
+	(388, NULL, 'Simon Anderson', 4, 5, 0, 5, 0, 3254, 'img/avatar/avatar1.png'),
+	(389, NULL, 'Dean Cooper', 6, 4, 5, 3, 2, 4596, 'img/avatar/avatar6.png'),
+	(390, NULL, 'Violet Davis', 5, 6, 3, 4, 0, 4472, 'img/avatar/avatar3.png'),
+	(391, NULL, 'Rachel Carter', 1, 0, 6, 3, 2, 2872, 'img/avatar/avatar8.png');
 
 -- Dumping structure for table miamifres.trucker_loans
 CREATE TABLE IF NOT EXISTS `trucker_loans` (
@@ -166940,9 +168494,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `weapon_exp` text DEFAULT '[]',
   `iban` char(50) DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table miamifres.users: ~32 rows (approximately)
+-- Dumping data for table miamifres.users: ~33 rows (approximately)
 INSERT INTO `users` (`userId`, `username`, `license`, `license2`, `fivem`, `discord`, `weapon_exp`, `iban`) VALUES
 	(1, 'Galib Mahin', 'license:c8904d0b0a4cb4aa3f32b1ace4189fb777f79494', 'license2:b3adf49a8709938adfb26ce6859fd996c8deb25a', NULL, 'discord:1159468436905275432', '[]', NULL),
 	(2, 'GoJo', 'license:3886b4b7de0b6aeb2ba767b21b07936dfb63276e', 'license2:267977cc8e916d2ca01f69e37ec4a80daabaf0b6', 'fivem:3755063', 'discord:454581126128861184', '[]', NULL),
@@ -166975,7 +168529,8 @@ INSERT INTO `users` (`userId`, `username`, `license`, `license2`, `fivem`, `disc
 	(29, 'Virxlヅ', 'license:f068a96c1d23d25e41125893c099286ddad06604', 'license2:f068a96c1d23d25e41125893c099286ddad06604', NULL, 'discord:603780145165107208', '[]', NULL),
 	(30, 'minahh<3', 'license:10b3a8bb00679c8c4d321e9fce24218a9a2fc7d0', 'license2:10b3a8bb00679c8c4d321e9fce24218a9a2fc7d0', 'fivem:16595451', 'discord:1225212107960750142', '[]', NULL),
 	(31, 'Jaslina', 'license:c7e58468de71398cdb8437ee14cb3dcf7da3a052', 'license2:c7e58468de71398cdb8437ee14cb3dcf7da3a052', 'fivem:6673340', 'discord:479686541363380225', '[]', NULL),
-	(32, 'tyler', 'license:f49c68134af018f9c0a57bce0acef046ebd28a0d', 'license2:f49c68134af018f9c0a57bce0acef046ebd28a0d', 'fivem:15327721', 'discord:570070756990517258', '[]', NULL);
+	(32, 'tyler', 'license:f49c68134af018f9c0a57bce0acef046ebd28a0d', 'license2:f49c68134af018f9c0a57bce0acef046ebd28a0d', 'fivem:15327721', 'discord:570070756990517258', '[]', NULL),
+	(33, 'Toby', 'license:8dacb1a204e817aeb4cb50c8980753051d859929', 'license2:8dacb1a204e817aeb4cb50c8980753051d859929', NULL, 'discord:1397352189911109692', '[]', NULL);
 
 -- Dumping structure for table miamifres.vehicle_financing
 CREATE TABLE IF NOT EXISTS `vehicle_financing` (
@@ -167015,8 +168570,9 @@ CREATE TABLE IF NOT EXISTS `vrp_empresas` (
   PRIMARY KEY (`local`,`user_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table miamifres.vrp_empresas: ~2 rows (approximately)
+-- Dumping data for table miamifres.vrp_empresas: ~3 rows (approximately)
 INSERT INTO `vrp_empresas` (`local`, `user_id`, `produtos`, `pesquisa`, `suprimentos`, `funcionarios`, `upgrade1`, `upgrade2`, `upgrade3`, `ganhos`, `vendas`) VALUES
+	('escritorio_3', 'D8E35P04', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	('motoclube_1', 'R9C0SPP1', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	('motoclube_1', 'U4XD2430', 40, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -167067,6 +168623,28 @@ CREATE TABLE IF NOT EXISTS `wsb_speedtraps` (
 -- Dumping data for table miamifres.wsb_speedtraps: ~1 rows (approximately)
 INSERT INTO `wsb_speedtraps` (`id`, `data`) VALUES
 	(1, '{"prop":"prop_cctv_pole_01a","name":"a","coords":{"x":-60.10580444335937,"y":-1066.6842041015626,"z":26.47626876831054},"heading":10.51416015625,"speedLimit":45,"job":"police"}');
+
+-- Dumping structure for table miamifres.xmas_presentshunt
+CREATE TABLE IF NOT EXISTS `xmas_presentshunt` (
+  `player` varchar(512) NOT NULL,
+  `present` varchar(52) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table miamifres.xmas_presentshunt: ~0 rows (approximately)
+
+-- Dumping structure for table miamifres.xmas_trees
+CREATE TABLE IF NOT EXISTS `xmas_trees` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `model` varchar(52) NOT NULL,
+  `owner` varchar(512) NOT NULL,
+  `coords` longtext NOT NULL,
+  `rotation` longtext NOT NULL,
+  `heading` float NOT NULL DEFAULT 0,
+  `bucket` int(10) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table miamifres.xmas_trees: ~0 rows (approximately)
 
 -- Dumping structure for table miamifres.xt_prison
 CREATE TABLE IF NOT EXISTS `xt_prison` (
