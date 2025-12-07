@@ -7,6 +7,14 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 games { 'gta5', 'rdr3' }
 lua54 'yes'
 
+
+shared_scripts {
+	'@ox_lib/init.lua',
+	'@prism_uipack/init.lua',
+
+}
+
+
 files {
     'starter.lua',
     'shared/*.lua',
