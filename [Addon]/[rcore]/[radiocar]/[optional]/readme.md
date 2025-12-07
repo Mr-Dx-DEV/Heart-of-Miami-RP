@@ -1,0 +1,1 @@
+# This is only for esx/qbcore and its optional to start! Do not start it if you dont want it on your server.

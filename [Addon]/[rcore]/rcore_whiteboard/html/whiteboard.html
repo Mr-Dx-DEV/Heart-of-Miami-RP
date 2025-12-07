@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="referrer" content="no-referrer"/>
+    <title></title>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script src="./jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/bootstrap.min.css"/>
+    <link href="./assets/font-awesome.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" href="./drawerJs.css"/>
+    <script src="./drawerJs.standalone.js"></script>
+    <style>
+        .loader {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            font-size: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function sendNuiMessage(event, data) {
+            $.post(`https://${GetParentResourceName()}/${event}`, JSON.stringify({data}))
+        }
+    </script>
+    <div id="editor-wrapper">
+        <div id="canvas-editor" style="position: absolute; left: 0px; top: 0px;"></div>
+    </div>
+    <div id="loader" class="loader" style="display: none;">
+        Loading data ...
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var drawerPlugins = [
+                // Drawing tools
+                'Pencil',
+                'Eraser',
+                'Text',
+                'Line',
+                'ArrowOneSide',
+                'ArrowTwoSide',
+                'Triangle',
+                'Rectangle',
+                'Circle',
+                'Image',
+                'BackgroundImage',
+                'Polygon',
+                'ImageCrop',
+
+                // Drawing options
+                //'ColorHtml5',
+                'Color',
+                'ShapeBorder',
+                'BrushSize',
+                'OpacityOption',
+
+                'LineWidth',
+                'StrokeWidth',
+
+                // 'Resize',
+                'ShapeContextMenu',
+                // 'CloseButton',
+                'OvercanvasPopup',
+                'OpenPopupButton',
+                // 'MinimizeButton',
+                'ToggleVisibilityButton',
+                // 'MovableFloatingMode',
+                // 'FullscreenModeButton',
+
+                'TextLineHeight',
+                'TextAlign',
+
+                'TextFontFamily',
+                'TextFontSize',
+                'TextFontWeight',
+                'TextFontStyle',
+                'TextDecoration',
+                'TextColor',
+                'TextBackgroundColor'
+            ];
+
+            // drawer is created as global property solely for debug purposes.
+            // doing  in production is considered as bad practice
+            window.drawer = null
+            function createDrawer(size) {
+                window.drawer = new DrawerJs.Drawer(null, {
+                    exitOnOutsideClick: false,
+                    plugins: drawerPlugins,
+                    corePlugins: [
+                        'Zoom' // use null here if you want to disable Zoom completely
+                    ],
+                    pluginsConfig: {
+                        Image: {
+                            scaleDownLargeImage: true,
+                            maxImageSizeKb: 10240, //1MB
+                            cropIsActive: true
+                        },
+                        BackgroundImage: {
+                            scaleDownLargeImage: true,
+                            maxImageSizeKb: 10240, //1MB
+                            //fixedBackgroundUrl: '/examples/redactor/images/vanGogh.jpg',
+                            imagePosition: 'center',  // one of  'center', 'stretch', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
+                            acceptedMIMETypes: ['image/jpeg', 'image/png', 'image/gif'] ,
+                            dynamicRepositionImage: true,
+                            dynamicRepositionImageThrottle: 100,
+                            cropIsActive: false
+                        },
+                        Text: {
+                            editIconMode : false,
+                            editIconSize : 'large',
+                            defaultValues : {
+                                fontSize: 72,
+                                lineHeight: 2,
+                                textFontWeight: 'bold'
+                            },
+                            predefined: {
+                                fontSize: [8, 12, 14, 16, 32, 40, 72],
+                                lineHeight: [1, 2, 3, 4, 6]
+                            }
+                        },
+                        Zoom: {
+                            enabled: true, 
+                            showZoomTooltip: true, 
+                            useWheelEvents: true,
+                            zoomStep: 1.05, 
+                            defaultZoom: 1, 
+                            maxZoom: 32,
+                            minZoom: 1, 
+                            smoothnessOfWheel: 0,
+                            //Moving:
+                            enableMove: true,
+                            enableWhenNoActiveTool: true,
+                            enableButton: true
+                        }
+                    },
+                    toolbars: {
+                        drawingTools: {
+                            position: 'top',         
+                            positionType: 'outside',
+                            customAnchorSelector: '#custom-toolbar-here',  
+                            compactType: 'scrollable',   
+                            hidden: true,     
+                            toggleVisibilityButton: false,
+                            fullscreenMode: {
+                                position: 'top', 
+                                hidden: false,
+                                toggleVisibilityButton: false
+                            }
+                        },
+                        toolOptions: {
+                            position: 'bottom', 
+                            positionType: 'outside',
+                            compactType: 'popup',
+                            hidden: true,
+                            toggleVisibilityButton: false,
+                            fullscreenMode: {
+                                position: 'bottom', 
+                                compactType: 'popup',
+                                hidden: false,
+                                toggleVisibilityButton: false
+                            }
+                        },
+                        settings : {
+                            position : 'right', 
+                            positionType: 'outside',
+                            compactType : 'scrollable',
+                            hidden: true,	
+                            toggleVisibilityButton: false,
+                            fullscreenMode: {
+                                position : 'right', 
+                                hidden: false,
+                                toggleVisibilityButton: false
+                            }
+                        }
+                    },
+                    defaultImageUrl: '/examples/redactor/images/drawer.jpg',
+                    defaultActivePlugin : { name : 'Pencil', mode : 'lastUsed'},
+                    debug: false,
+                    activeColor: '#a1be13',
+                    transparentBackground: true,
+                    align: 'floating',  //one of 'left', 'right', 'center', 'inline', 'floating'
+                    lineAngleTooltip: { enabled: true, color: 'blue',  fontSize: 15}
+                }, size.width, size.height);
+
+                $('#canvas-editor').append(window.drawer.getHtml());
+                window.drawer.onInsert();
+            }
+            function onLoad(data) {
+                window.drawer.api.loadCanvasFromData(data)
+            }
+
+            function setIsLoading(isLoading) {
+                if (isLoading) {
+                    document.getElementById('loader').style.display = 'flex';
+                } else {
+                    document.getElementById('loader').style.display = 'none';
+                }
+            }
+
+            window.addEventListener('message', function(event) {
+                const {action, data, isLoadingByDefault} = event.data
+
+                if (action === 'LOAD_DATA') {
+                    onLoad(data)
+                    setIsLoading(false)
+                }
+                if (action === 'SET_IS_LOADING') {
+                    setIsLoading(data)
+                }
+                if (isLoadingByDefault) {
+                    setIsLoading(true)
+                }
+            });
+
+            createDrawer({width: '1920px', height: '1080px'})
+            // setCanvasPosition('0', '0')
+            window.drawer.api.startEditing()
+        });
+    </script>
+</body>
+</html>

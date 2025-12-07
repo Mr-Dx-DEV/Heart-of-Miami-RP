@@ -1,0 +1,64 @@
+["piano"] = {
+    ["name"] = "piano",
+    ["label"] = "Pocket piano!",
+    ["weight"] = 0,
+    ["type"] = "item",
+    ["image"] = "piano.png",
+    ["unique"] = true,
+    ["useable"] = true,
+    ["shouldClose"] = true,
+    ["combinable"] = nil,
+    ["description"] = "Pocket piano that can... fit to your pocket!"
+},
+
+["musicdesk1"] = {
+    ["name"] = "musicdesk1",
+    ["label"] = "Never gonna give you up",
+    ["weight"] = 0,
+    ["type"] = "item",
+    ["image"] = "musicdesk1.png",
+    ["unique"] = true,
+    ["useable"] = false,
+    ["shouldClose"] = false,
+    ["combinable"] = nil,
+    ["description"] = "A desk that contains note for music"
+},
+
+["musicdesk2"] = {
+    ["name"] = "musicdesk2",
+    ["label"] = "He´s a Pirate!",
+    ["weight"] = 0,
+    ["type"] = "item",
+    ["image"] = "musicdesk1.png",
+    ["unique"] = true,
+    ["useable"] = false,
+    ["shouldClose"] = false,
+    ["combinable"] = nil,
+    ["description"] = "A desk that contains note for music"
+},
+
+["musicdesk3"] = {
+    ["name"] = "musicdesk3",
+    ["label"] = "Ra-Ra-Rasputin!",
+    ["weight"] = 0,
+    ["type"] = "item",
+    ["image"] = "musicdesk1.png",
+    ["unique"] = true,
+    ["useable"] = false,
+    ["shouldClose"] = false,
+    ["combinable"] = nil,
+    ["description"] = "A desk that contains note for music"
+},
+
+["musicdesk4"] = {
+    ["name"] = "musicdesk4",
+    ["label"] = "Revenge!",
+    ["weight"] = 0,
+    ["type"] = "item",
+    ["image"] = "musicdesk1.png",
+    ["unique"] = true,
+    ["useable"] = false,
+    ["shouldClose"] = false,
+    ["combinable"] = nil,
+    ["description"] = "A desk that contains note for music"
+},

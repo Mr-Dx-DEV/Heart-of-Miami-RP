@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title data-i18n="title">Darts Game</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							'dart-orange': '#ff5e2d',
+							'dart-orange-dark': '#e55a2b',
+							'modal-bg': 'rgba(25, 25, 25, 0.95)',
+							'card-bg': 'rgba(40, 40, 40, 0.3)',
+							'card-hover': 'rgba(255, 107, 53, 0.1)',
+							'card-selected': 'rgba(255, 107, 53, 0.2)',
+						},
+					},
+				},
+			};
+
+			/**
+			 * Loads localization strings into the DOM.
+			 * strings: { key: translatedString, ... }
+			 * Supports:
+			 *  - elements with `data-i18n` -> textContent
+			 *  - elements with `data-i18n-placeholder` -> placeholder attr
+			 *  - elements with `data-i18n-alt` -> alt attr
+			 */
+			window.loadStrings = function (strings) {
+				if (!strings || typeof strings !== 'object') return;
+
+				// Store the strings for later reuse
+				window.lastLoadedStrings = strings;
+
+				// data-i18n -> replace text content
+				document.querySelectorAll('[data-i18n]').forEach((el) => {
+					const key = el.getAttribute('data-i18n');
+					if (!key) return;
+					const val = strings[key];
+					if (typeof val === 'undefined') return;
+					// preserve HTML for elements that explicitly opt-in via data-i18n-html
+					if (el.hasAttribute('data-i18n-html')) {
+						el.innerHTML = val;
+					} else {
+						el.textContent = val;
+					}
+				});
+
+				// data-i18n-placeholder -> replace placeholder attribute
+				document
+					.querySelectorAll('[data-i18n-placeholder]')
+					.forEach((el) => {
+						const key = el.getAttribute('data-i18n-placeholder');
+						if (!key) return;
+						const val = strings[key];
+						if (typeof val === 'undefined') return;
+						el.setAttribute('placeholder', val);
+					});
+
+				// data-i18n-alt -> replace alt attribute
+				document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+					const key = el.getAttribute('data-i18n-alt');
+					if (!key) return;
+					const val = strings[key];
+					if (typeof val === 'undefined') return;
+					el.setAttribute('alt', val);
+				});
+			};
+
+			const GAME_NUMBERS = [201, 301, 501];
+
+			const SHOW_NAME_UI = false;
+		</script>
+		<style>
+			.dart-icon::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 8px;
+				height: 8px;
+				background: white;
+				border-radius: 50%;
+			}
+
+			.inverted-img {
+				filter: invert(1) hue-rotate(0deg);
+			}
+
+			.game-option {
+				background-color: rgba(40, 40, 40, 0.3);
+			}
+
+			.game-option:hover {
+				background-color: rgba(255, 107, 53, 0.1);
+			}
+
+			.game-option.selected {
+				background-color: rgba(255, 107, 53, 0.2);
+			}
+
+			/* ensure mode buttons receive pointer events even if layout shifts */
+			.mode-btn {
+				pointer-events: auto;
+				z-index: 9999;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			id="name-modal"
+			class="fixed inset-0 flex items-center justify-center z-50 hidden"
+		>
+			<div
+				class="bg-neutral-950 bg-opacity-95 rounded-lg p-8 w-[400px] max-w-[90vw] border-2 border-gray-600 relative"
+			>
+				<div class="border-b-2 border-orange-600 pb-1 mb-5">
+					<div class="flex items-center justify-between mb-5">
+						<div
+							class="flex items-center text-white text-xl font-bold"
+						>
+							<img
+								src="./assets/target.png"
+								alt="Target"
+								data-i18n-alt="target_alt"
+								class="w-6 h-6 mr-3 inverted-img"
+							/>
+							<span
+								id="name-modal-title"
+								data-i18n="player_name"
+								>PLAYER NAME</span
+							>
+						</div>
+						<button
+							class="close-btn bg-transparent border-none text-gray-400 text-2xl cursor-pointer p-0 w-8 h-8 flex items-center justify-center hover:text-white transition-colors"
+						>
+							&times;
+						</button>
+					</div>
+
+					<div
+						id="name-modal-desc"
+						class="text-gray-400 text-sm mb-2"
+						data-i18n="enter_name"
+					>
+						Enter your name to continue
+					</div>
+				</div>
+
+				<div class="mb-5">
+					<label
+						id="name-modal-label"
+						class="block text-white text-base mb-2"
+						data-i18n="your_name_label"
+						>Your name!</label
+					>
+					<input
+						type="text"
+						id="player-name-input"
+						class="w-full p-3 bg-neutral-800 bg-opacity-80 border-2 border-gray-600 rounded text-white text-base focus:outline-none focus:border-dart-orange"
+						placeholder="Enter your name..."
+						data-i18n-placeholder="player_name_placeholder"
+						maxlength="20"
+					/>
+				</div>
+
+				<button
+					id="continue-btn"
+					class="w-full p-4 bg-dart-orange border-none rounded text-white text-base font-bold cursor-pointer transition-colors duration-300 hover:bg-dart-orange-dark disabled:bg-neutral-600 disabled:cursor-not-allowed"
+					disabled
+					data-i18n="continue_btn"
+				>
+					CONTINUE
+				</button>
+			</div>
+		</div>
+
+		<div
+			id="game-modal"
+			class="fixed inset-0 flex items-center justify-center z-50 hidden"
+		>
+			<div
+				class="bg-neutral-950 bg-opacity-95 rounded-lg p-8 w-[500px] max-w-[90vw] border-2 border-gray-600 relative"
+			>
+				<div class="border-b-2 border-orange-600 pb-1 mb-5">
+					<div class="flex items-center justify-between mb-5">
+						<div
+							class="flex items-center text-white text-xl font-bold"
+						>
+							<img
+								src="./assets/target.png"
+								alt="Target"
+								data-i18n-alt="target_alt"
+								class="w-6 h-6 mr-3 inverted-img"
+							/>
+							<span data-i18n="create_game">CREATE A GAME</span>
+						</div>
+						<button
+							class="close-btn bg-transparent border-none text-gray-400 text-2xl cursor-pointer p-0 w-8 h-8 flex items-center justify-center hover:text-white transition-colors"
+							id="close-game-modal-btn"
+						>
+							&times;
+						</button>
+					</div>
+
+					<div
+						class="text-gray-400 text-sm mb-2"
+						data-i18n="fill_options"
+					>
+						Fill out the options and start the game
+					</div>
+				</div>
+				<div class="mb-5">
+					<label
+						class="block text-white text-base mb-2"
+						data-i18n="mode_label"
+						>Mode:</label
+					>
+					<div class="flex gap-2 mb-5">
+						<button
+							type="button"
+							class="mode-btn px-5 py-2 border-2 border-gray-600 bg-transparent text-gray-400 cursor-pointer rounded transition-all duration-300 hover:border-dart-orange hover:text-dart-orange"
+							data-mode="alone"
+						>
+							<span data-i18n="mode_alone">Alone</span>
+						</button>
+						<button
+							type="button"
+							class="mode-btn px-5 py-2 border-2 border-gray-600 bg-transparent text-gray-400 cursor-pointer rounded transition-all duration-300 hover:border-dart-orange hover:text-dart-orange"
+							data-mode="coop"
+						>
+							<span data-i18n="mode_coop">COOP</span>
+						</button>
+					</div>
+
+					<!-- Bets: visible only for coop mode -->
+					<div
+						id="bets-container"
+						class="mb-5 hidden"
+					>
+						<label
+							class="flex items-center gap-3 text-white text-base mb-2"
+						>
+							<input
+								type="checkbox"
+								id="bets-checkbox"
+								class="w-4 h-4"
+							/>
+							<span data-i18n="bets_opt">Enable bets</span>
+						</label>
+
+						<div
+							id="bets-amount-row"
+							class="mt-2 hidden"
+						>
+							<label
+								class="block text-white text-sm mb-2"
+								data-i18n="your_bet_label"
+								>Bet amount</label
+							>
+							<input
+								type="number"
+								id="bets-amount-input"
+								class="w-full p-3 bg-neutral-800 bg-opacity-80 border-2 border-gray-600 rounded text-white text-base focus:outline-none focus:border-dart-orange"
+								placeholder="Enter bet amount"
+								data-i18n-placeholder="bet_amount_placeholder"
+								min="0"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="mb-5"
+					id="number-input-container"
+				>
+					<div
+						id="reach0-input"
+						class="number-input-section"
+					>
+						<label
+							class="block text-white text-base mb-2"
+							data-i18n="starting_number"
+							>Starting Number:</label
+						>
+						>
+						<select
+							class="start-number-input w-full p-3 bg-neutral-800 bg-opacity-80 border-2 border-gray-600 rounded text-white text-base cursor-pointer focus:outline-none focus:border-dart-orange"
+						></select>
+					</div>
+					<div
+						id="reachmax-input"
+						class="number-input-section hidden"
+					>
+						<label
+							class="block text-white text-base mb-2"
+							data-i18n="target_number"
+							>Target Number:</label
+						>
+						>
+						<select
+							class="target-number-dropdown w-full p-3 bg-neutral-800 bg-opacity-80 border-2 border-gray-600 rounded text-white text-base cursor-pointer focus:outline-none focus:border-dart-orange"
+						></select>
+					</div>
+				</div>
+
+				<div class="mb-5">
+					<label
+						class="block text-white text-base mb-2"
+						data-i18n="game_type"
+						>Game Type:</label
+					>
+					>
+					<div class="flex gap-4 my-6">
+						<div
+							class="game-option flex-1 p-5 border-2 border-gray-600 rounded-lg cursor-pointer transition-all duration-300 hover:border-dart-orange"
+							data-gamemode="reach0"
+						>
+							<div
+								class="text-2xl font-bold text-dart-orange mb-2"
+							>
+								<span data-i18n="reach0_title">Reach 0</span>
+							</div>
+							<div class="text-gray-300 text-xs leading-relaxed">
+								<span data-i18n="reach0_desc"
+									>Start with a number and try to reach
+									exactly 0. Classic countdown darts where
+									precision matters!</span
+								>
+							</div>
+						</div>
+						<div
+							class="game-option flex-1 p-5 border-2 border-gray-600 rounded-lg cursor-pointer transition-all duration-300 hover:border-dart-orange"
+							data-gamemode="reachmax"
+						>
+							<div
+								class="text-2xl font-bold text-dart-orange mb-2"
+							>
+								<span data-i18n="reachmax_title"
+									>Reach Max</span
+								>
+							</div>
+							<div class="text-gray-300 text-xs leading-relaxed">
+								<span data-i18n="reachmax_desc"
+									>Start from 0 and try to reach your target
+									number. Build up your score to
+									victory!</span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<button
+					class="confirm-btn w-full p-4 bg-dart-orange border-none rounded text-white text-base font-bold cursor-pointer transition-colors duration-300 hover:bg-dart-orange-dark disabled:bg-neutral-600 disabled:cursor-not-allowed mt-5"
+					data-i18n="confirm_start"
+				>
+					CONFIRM AND START
+				</button>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(function () {
+				let selectedMode = 'alone';
+				let selectedGamemode = 'reach0';
+				let playerName = '';
+				let NAME_MODAL_ACTIVE = false;
+				let betsEnabledUi = false;
+
+				if (!SHOW_NAME_UI) {
+					initializeGameDefaults();
+				}
+
+				function updateUIVisibility() {
+					if (SHOW_NAME_UI) {
+						$('#name-modal').removeClass('hidden');
+						$('#game-modal').addClass('hidden');
+					} else {
+						$('#name-modal').addClass('hidden');
+						$('#game-modal').removeClass('hidden');
+					}
+				}
+
+				function populateNumberDropdowns(numbers) {
+					const nums =
+						Array.isArray(numbers) && numbers.length
+							? numbers
+							: GAME_NUMBERS;
+					const startSelect = $('.start-number-input');
+					startSelect.empty();
+					nums.forEach((num) => {
+						startSelect.append(
+							`<option value="${num}" ${
+								num === 301 ? 'selected' : ''
+							}>${num}</option>`
+						);
+					});
+
+					const targetSelect = $('.target-number-dropdown');
+					targetSelect.empty();
+					nums.forEach((num) => {
+						targetSelect.append(
+							`<option value="${num}" ${
+								num === 301 ? 'selected' : ''
+							}>${num}</option>`
+						);
+					});
+				}
+
+				let keyboardMode = 'name';
+
+				function configureKeyboardModal(prompt, promptType) {
+					keyboardMode = promptType === 'bet' ? 'bet' : 'name';
+					const $title = $('#name-modal-title');
+					const $desc = $('#name-modal-desc');
+					const $label = $('#name-modal-label');
+					const $input = $('#player-name-input');
+					if (keyboardMode === 'bet') {
+						$label.attr('data-i18n', 'your_bet_label');
+						$label.text('Bet amount');
+
+						$title.attr('data-i18n', 'YOUR_BET');
+						$title.text('YOUR BET');
+						$input.attr('type', 'number');
+						$input.attr(
+							'data-i18n-placeholder',
+							'bet_amount_placeholder'
+						);
+						$input.attr('placeholder', 'Enter bet amount');
+						$input.removeAttr('maxlength');
+						$input.val('');
+						$desc.attr('data-i18n', 'enter_bet_amount');
+						$desc.text(prompt || 'Enter your bet amount');
+					} else {
+						$label.attr('data-i18n', 'your_name_label');
+						$label.text('Your name!');
+
+						$title.attr('data-i18n', 'player_name');
+						$title.text('PLAYER NAME');
+						$input.attr('type', 'text');
+						$input.attr(
+							'data-i18n-placeholder',
+							'player_name_placeholder'
+						);
+						$input.attr('placeholder', 'Enter your name...');
+						$input.attr('maxlength', '20');
+						$input.val('');
+						$desc.attr('data-i18n', 'enter_name');
+						$desc.text(prompt || 'Enter your name to continue');
+					}
+
+					if (window.lastLoadedStrings) {
+						window.loadStrings(window.lastLoadedStrings);
+					}
+
+					$('#continue-btn').prop('disabled', true);
+				}
+
+				$('#player-name-input').on('input', function () {
+					const raw = $(this).val();
+					if (keyboardMode === 'bet') {
+						const n = parseInt(raw, 10);
+						if (!isNaN(n) && n >= 0) {
+							$('#continue-btn').prop('disabled', false);
+						} else {
+							$('#continue-btn').prop('disabled', true);
+						}
+					} else {
+						const name = raw.trim();
+						if (name.length >= 2) {
+							$('#continue-btn').prop('disabled', false);
+						} else {
+							$('#continue-btn').prop('disabled', true);
+						}
+					}
+				});
+
+				$('#continue-btn').on('click', function () {
+					const val = $('#player-name-input').val();
+					if (keyboardMode === 'bet') {
+						const n = parseInt(val, 10);
+						if (isNaN(n)) return;
+						if (NAME_MODAL_ACTIVE) {
+							fetch('https://rcore_darts/setName', {
+								method: 'POST',
+								headers: {
+									'Content-Type':
+										'application/json; charset=UTF-8',
+								},
+								body: JSON.stringify({ playerName: n }),
+							}).catch((e) =>
+								console.warn('setName NUI call failed', e)
+							);
+							$('#name-modal').addClass('hidden');
+							NAME_MODAL_ACTIVE = false;
+							if (window.invokeNative)
+								invokeNative('setNuiFocus', false, false);
+						} else {
+							startGame();
+						}
+					} else {
+						playerName = val.trim();
+						if (!playerName || playerName.length < 1) return;
+						if (NAME_MODAL_ACTIVE) {
+							fetch('https://rcore_darts/setName', {
+								method: 'POST',
+								headers: {
+									'Content-Type':
+										'application/json; charset=UTF-8',
+								},
+								body: JSON.stringify({ playerName }),
+							}).catch((e) =>
+								console.warn('setName NUI call failed', e)
+							);
+							$('#name-modal').addClass('hidden');
+							NAME_MODAL_ACTIVE = false;
+							if (window.invokeNative)
+								invokeNative('setNuiFocus', false, false);
+						} else {
+							startGame();
+						}
+					}
+				});
+
+				$('#close-game-modal-btn').on('click', function () {
+					closeModal();
+				});
+
+				$('#player-name-input').on('keypress', function (e) {
+					if (
+						e.which === 13 &&
+						!$('#continue-btn').prop('disabled')
+					) {
+						$('#continue-btn').click();
+					}
+				});
+
+				function initializeGameDefaults() {
+					$('.mode-btn[data-mode="alone"]').addClass(
+						'border-dart-orange text-dart-orange'
+					);
+					$('.game-option[data-gamemode="reach0"]').addClass(
+						'border-dart-orange selected'
+					);
+				}
+
+				$('.mode-btn').on('click', function () {
+					selectedMode = $(this).data('mode');
+					$('.mode-btn')
+						.removeClass('border-dart-orange text-dart-orange')
+						.addClass('border-gray-600 text-gray-400');
+					$(this)
+						.removeClass('border-gray-600 text-gray-400')
+						.addClass('border-dart-orange text-dart-orange');
+
+					if (selectedMode === 'coop') {
+						if (betsEnabledUi) {
+							$('#bets-container').removeClass('hidden');
+						}
+					} else {
+						$('#bets-container').addClass('hidden');
+						$('#bets-amount-row').addClass('hidden');
+						$('#bets-checkbox').prop('checked', false);
+					}
+				});
+
+				$('#bets-checkbox').on('change', function () {
+					if ($(this).is(':checked')) {
+						$('#bets-amount-row').removeClass('hidden');
+					} else {
+						$('#bets-amount-row').addClass('hidden');
+					}
+				});
+
+				$('.game-option').on('click', function () {
+					selectedGamemode = $(this).data('gamemode');
+
+					$('.game-option').removeClass(
+						'border-dart-orange selected'
+					);
+					$(this).addClass('border-dart-orange selected');
+
+					$('.number-input-section').addClass('hidden');
+					if (selectedGamemode === 'reachmax') {
+						fetch('https://rcore_darts/requestNumbersReach', {
+							method: 'POST',
+							headers: {
+								'Content-Type':
+									'application/json; charset=UTF-8',
+							},
+							body: JSON.stringify({}),
+						});
+					} else {
+						fetch('https://rcore_darts/requestNumbers0', {
+							method: 'POST',
+							headers: {
+								'Content-Type':
+									'application/json; charset=UTF-8',
+							},
+							body: JSON.stringify({}),
+						});
+					}
+					if (selectedGamemode === 'reach0') {
+						$('#reach0-input').removeClass('hidden');
+					} else if (selectedGamemode === 'reachmax') {
+						$('#reachmax-input').removeClass('hidden');
+					}
+				});
+
+				$('.close-btn').on('click', function () {
+					closeModal();
+				});
+
+				$('.confirm-btn').on('click', function () {
+					$('#game-modal').addClass('hidden');
+					$('#name-modal').removeClass('hidden');
+					if (window.invokeNative)
+						invokeNative('setNuiFocus', true, true);
+				});
+
+				$(document).on('keydown', function (event) {
+					if (event.key === 'Escape') {
+						closeModal();
+					}
+				});
+
+				function closeModal() {
+					$('#name-modal').addClass('hidden');
+					$('#game-modal').addClass('hidden');
+					fetch('https://rcore_darts/closeModal', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json; charset=UTF-8',
+						},
+						body: JSON.stringify({}),
+					}).catch((e) =>
+						console.warn('closeModal NUI call failed', e)
+					);
+
+					resetToDefaults();
+				}
+
+				function resetToDefaults() {
+					selectedMode = 'alone';
+					selectedGamemode = 'reach0';
+					playerName = '';
+					NAME_MODAL_ACTIVE = false;
+					betsEnabledUi = false;
+					keyboardMode = 'name';
+
+					// reset mode buttons
+					$('.mode-btn')
+						.removeClass('border-dart-orange text-dart-orange')
+						.addClass('border-gray-600 text-gray-400');
+					$('.mode-btn[data-mode="alone"]')
+						.removeClass('border-gray-600 text-gray-400')
+						.addClass('border-dart-orange text-dart-orange');
+
+					// reset game options
+					$('.game-option').removeClass(
+						'border-dart-orange selected'
+					);
+					$('.game-option[data-gamemode="reach0"]').addClass(
+						'border-dart-orange selected'
+					);
+
+					// ensure number input sections are in default state
+					$('.number-input-section').addClass('hidden');
+					$('#reach0-input').removeClass('hidden');
+					$('#reachmax-input').addClass('hidden');
+
+					// bets UI
+					$('#bets-container').addClass('hidden');
+					$('#bets-amount-row').addClass('hidden');
+					$('#bets-checkbox').prop('checked', false);
+					$('#bets-amount-input').val('');
+
+					// player input
+					$('#player-name-input').val('');
+					$('#continue-btn').prop('disabled', true);
+
+					// repopulate dropdowns to base set and default selection
+					populateNumberDropdowns(GAME_NUMBERS);
+
+					// ensure modals hidden
+					$('#name-modal').addClass('hidden');
+					$('#game-modal').addClass('hidden');
+				}
+
+				function startGame() {
+					let customNumber = null;
+
+					if (selectedGamemode === 'reach0') {
+						customNumber = parseInt($('.start-number-input').val());
+					} else if (selectedGamemode === 'reachmax') {
+						customNumber = parseInt(
+							$('.target-number-dropdown').val()
+						);
+					}
+
+					const betsEnabled = $('#bets-checkbox').is(':checked');
+					const betAmount = betsEnabled
+						? parseInt($('#bets-amount-input').val()) || 0
+						: 0;
+
+					const gameData = {
+						playerName: playerName,
+						mode: selectedMode,
+						gamemode: selectedGamemode,
+						customNumber: customNumber,
+						bets: betsEnabled,
+						betAmount: betAmount,
+					};
+
+					fetch('https://rcore_darts/startGame', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json; charset=UTF-8',
+						},
+						body: JSON.stringify(gameData),
+					}).catch((e) =>
+						console.warn('startGame NUI call failed', e)
+					);
+
+					closeModal();
+				}
+
+				window.addEventListener('message', function (event) {
+					const msg = event.data;
+					if (!msg || !msg.type) return;
+
+					switch (msg.type) {
+						case 'loadStrings':
+							window.loadStrings(msg.strings || {});
+							break;
+						case 'openUI':
+							if (
+								msg.strings &&
+								typeof msg.strings === 'object'
+							) {
+								window.loadStrings(msg.strings || {});
+							}
+							if (typeof msg.showName !== 'undefined') {
+								if (msg.showName) {
+									const prompt = msg.prompt || '';
+									const promptType = msg.promptType || 'name';
+									configureKeyboardModal(prompt, promptType);
+									$('#name-modal').removeClass('hidden');
+									NAME_MODAL_ACTIVE = true;
+									$('#game-modal').addClass('hidden');
+								} else {
+									$('#name-modal').addClass('hidden');
+									$('#game-modal').removeClass('hidden');
+								}
+							} else {
+								$('#name-modal').addClass('hidden');
+								$('#game-modal').removeClass('hidden');
+							}
+
+							if (!msg.strings) {
+								fetch('https://rcore_darts/requestStrings', {
+									method: 'POST',
+									headers: {
+										'Content-Type':
+											'application/json; charset=UTF-8',
+									},
+									body: JSON.stringify({}),
+								})
+									.then(() => {})
+									.catch((e) =>
+										console.warn(
+											'requestStrings NUI call failed',
+											e
+										)
+									);
+							}
+							if (window.invokeNative)
+								invokeNative('setNuiFocus', true, true);
+							break;
+						case 'closeUI':
+							$('#name-modal').addClass('hidden');
+							$('#game-modal').addClass('hidden');
+							if (window.invokeNative)
+								invokeNative('setNuiFocus', false, false);
+							break;
+						case 'enableBets':
+							if (msg.enable) {
+								betsEnabledUi = true;
+							} else {
+								betsEnabledUi = false;
+							}
+							break;
+						case 'setPlayerName':
+							if (typeof msg.playerName === 'string') {
+								playerName = msg.playerName;
+								$('#player-name-input').val(playerName);
+								if (playerName.trim().length >= 2) {
+									$('#continue-btn').prop('disabled', false);
+								}
+							}
+							break;
+						case 'setNumbers':
+							if (Array.isArray(msg.numbers)) {
+								populateNumberDropdowns(msg.numbers);
+							}
+							break;
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+.size-container canvas,
+.size-container .canvas-container,
+.size-container .drawer-instance-container,
+.size-container .editable-canvas-image {
+    width: 1920px!important;
+    height: 1080px!important;
+}
+
+.size-container #canvas-editor {
+    left: calc((100% - 1920px) / 2) !important;
+    top: calc((100% - 1080px) / 2) !important;
+}
+
+@media (max-width: 2000px) {
+    .canvas-container,
+    #editor-control-buttons,
+    .toolbars-wrapper {
+        scale: 0.66;
+    }
+
+    .image-crop-wrapper {
+        top: calc((100% - 650px) / 2) !important;
+        left: calc((100% - 1150px) / 2);
+        width: 1150px;
+        height: 650px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .canvas-container,
+    #editor-control-buttons,
+    .toolbars-wrapper {
+        scale: 0.5;
+    }
+
+    .image-crop-wrapper {
+        top: calc((100% - 500px) / 2) !important;
+        left: calc((100% - 900px) / 2);
+        width: 900px;
+        height: 500px;
+    }
+}

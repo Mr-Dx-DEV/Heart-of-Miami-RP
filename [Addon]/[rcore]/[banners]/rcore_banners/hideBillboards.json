@@ -1,0 +1,333 @@
+[
+    {
+        "pos": {
+            "z": 47.51,
+            "y": -970.82,
+            "z": 47.51
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "resource": "nopixel4_memorial_park"
+    },
+    {
+        "pos": {
+            "z": 50.49,
+            "y": -973.23,
+            "z": 50.49
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "resource": "lodstudios_starlight_park"
+    },
+    {
+        "pos": {
+            "x": 382.0536193847656,
+            "y": -971.0675659179688,
+            "z": 48.8962287902832
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "resource": "lodstudios_starlight_park",
+        "billboardModel": "rcore_vanillaunicorn_billboard_03"
+    },
+    {
+        "pos": {
+            "z": 78.105,
+            "y": -1010.54,
+            "z": 78.105
+        },
+        "model": "rcore_milehighclub_billboard",
+        "resource": "nopixel4_casino"
+    },
+    {
+        "pos": {
+            "z": 23.23,
+            "y": -1741.17,
+            "z": 23.23
+        },
+        "model": "rcore_billboard_04",
+        "resource": "energy_prestigemotorsport"
+    },
+    {
+        "pos": {
+            "z": 64.19,
+            "y": -220.6,
+            "z": 64.19
+        },
+        "model": "rcore_billboard_02",
+        "resource": "energy_prestigemotorsport"
+    },
+    {
+        "pos": {
+            "z": 56.76,
+            "y": -204.34,
+            "z": 56.76
+        },
+        "model": "rcore_billboard_02",
+        "resource": "energy_prestigemotorsport"
+    },
+    {
+        "pos": {
+            "z": 44.744,
+            "y": -355.591,
+            "z": 44.744
+        },
+        "model": "rcore_pdm_billboard_01",
+        "resource": "NONE"
+    },
+    {
+        "pos": {
+            "z": 80.377,
+            "y": -1010.339,
+            "z": 80.377
+        },
+        "model": "rcore_milehighclub_billboard",
+        "resource": "parco_napoli"
+    },
+    {
+        "pos": {
+            "z": 28.315,
+            "y": -2418.162,
+            "z": 28.315
+        },
+        "model": "rcore_billboard_03",
+        "resource": "tstudio_lsi_square"
+    },
+    {
+        "pos": {
+            "z": 36.922,
+            "y": -1745.532,
+            "z": 36.922
+        },
+        "model": "rcore_billboard_04",
+        "resource": "NONE"
+    },
+    {
+        "pos": {
+            "z": 77.0,
+            "y": -1009.886,
+            "z": 77.0
+        },
+        "model": "rcore_milehighclub_billboard",
+        "resource": "cfx-nteam-milehigh"
+    },
+    {
+        "pos": {
+            "z": 15.48,
+            "y": -1826.04,
+            "z": 15.48
+        },
+        "model": "rcore_billboard_02",
+        "resource": "MilosT_ChicagoBlock6"
+    },
+    {
+        "pos": {
+            "z": 34.81,
+            "y": -1827.6,
+            "z": 34.81
+        },
+        "model": "rcore_billboard_02",
+        "resource": "MilosT_ChicagoBlock6"
+    },
+    {
+        "pos": {
+            "z": 32.195,
+            "y": -1838.193,
+            "z": 32.195
+        },
+        "model": "rcore_billboard_04",
+        "resource": "MilosT_ChicagoBlock2"
+    },
+    {
+        "pos": {
+            "z": 30.055,
+            "y": -2011.118,
+            "z": 30.055
+        },
+        "model": "rcore_billboard_02",
+        "resource": "MilosT_ChicagoBlock4"
+    },
+    {
+        "pos": {
+            "z": 40.343,
+            "y": -1808.667,
+            "z": 40.343
+        },
+        "model": "rcore_billboard_05",
+        "resource": "MilosT_ChicagoBlock4"
+    },
+    {
+        "pos": {
+            "z": 47.293,
+            "y": -1858.863,
+            "z": 47.293
+        },
+        "model": "rcore_billboard_02",
+        "resource": "MilosT_ChicagoBlock3"
+    },
+    {
+        "pos": {
+            "z": 33.377,
+            "y": -2060.949,
+            "z": 33.377
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "resource": "MilosT_ChicagoBlock9"
+    },
+    {
+        "pos": {
+            "z": 33.77718353271484,
+            "y": -1838.2855224609376,
+            "z": 33.77718353271484
+        },
+        "model": "rcore_billboard_04",
+        "resource": "Inglewood-Grizmowe-flashbackrp",
+        "billboardModel": "prop_billboard_04"
+    },
+    {
+        "pos": {
+            "z": 37.54790115356445,
+            "y": -1827.737548828125,
+            "z": 37.54790115356445
+        },
+        "model": "rcore_billboard_02",
+        "resource": "Inglewood-Grizmowe-flashbackrp",
+        "billboardModel": "prop_billboard_04"
+    },
+    {
+        "pos": {
+            "z": 37.668,
+            "y": -1392.418,
+            "z": 37.668
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "resource": "NONE",
+        "billboardModel": "prop_billboard_03"
+    },
+    {
+        "pos": {
+            "z": 40.013,
+            "y": -1452.891,
+            "z": 40.013
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "resource": "NONE",
+        "billboardModel": ""
+    },
+    {
+        "pos": {
+            "x": -298.9373474121094,
+            "y": -1339.2100830078126,
+            "z": 43.7137336730957
+        },
+        "model": "rcore_billboard_05",
+        "resource": "cfx-nteam-mechanic",
+        "billboardModel": "prop_billboard_05"
+    },
+    {
+        "pos": {
+            "z": 50.3758544921875,
+            "y": -973.7670288085938,
+            "x": 269.98681640625
+        },
+        "resource": "NONE",
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "heading": 224.9999237060547,
+        "billboardModel": "rcore_vanillaunicorn_billboard_03"
+    },
+    {
+        "pos": {
+            "z": 52.0,
+            "y": -1078.6,
+            "x": 258.2
+        },
+        "resource": "nopixel4_mission_row_police_department",
+        "model": "rcore_billboard_04",
+        "heading": 224.9999237060547,
+        "billboardModel": ""
+    },
+    {
+        "pos": {
+            "x": 388.065185546875,
+            "y": -876.89111328125,
+            "z": 41.99725341796875
+        },
+        "model": "rcore_vanillaunicorn_billboard_03",
+        "pos": {
+            "x": 269.98681640625,
+            "y": -973.7670288085938,
+            "z": 50.3758544921875
+        },
+        "heading": 224.9999237060547,
+        "resource": "NONE",
+        "billboardModel": "rcore_vanillaunicorn_billboard_03"
+    },
+    {
+        "model": "rcore_billboard_04",
+        "pos": {
+            "x": 382.28955078125,
+            "y": -971.3035278320313,
+            "z": 50.72103500366211
+        },
+        "heading": 224.9999237060547,
+        "resource": "nopixel4_mission_row_police_department",
+        "billboardModel": ""
+    },
+    {
+        "pos": {
+            "x": 856.0068359375,
+            "y": -1545.290283203125,
+            "z": 45.20344161987305
+        },
+        "model": "rcore_billboard_11",
+        "resource": "grs_towing",
+        "billboardModel": "prop_billboard_11"
+    },
+    {
+        "pos": {
+            "x": -38.98387908935547,
+            "y": -220.30076599121098,
+            "z": 62.70028305053711
+        },
+        "model": "rcore_billboard_02",
+        "resource": "energy_prestigemotorsport",
+        "billboardModel": "prop_billboard_02"
+    },
+    {
+        "pos": {
+            "x": -37.0834846496582,
+            "y": -225.52236938476569,
+            "z": 61.71102142333984
+        },
+        "model": "rcore_billboard_02",
+        "resource": "energy_prestigemotorsport",
+        "billboardModel": "prop_billboard_02"
+    },
+    {
+        "pos": {
+            "x": 191.8074493408203,
+            "y": 6640.5341796875,
+            "z": 42.36608123779297
+        },
+        "model": "rcore_billboard_06",
+        "resource": "Patoche_PaletoGasStation",
+        "billboardModel": ""
+    },
+    {
+        "pos": {
+            "x": 1356.952880859375,
+            "y": 675.306640625,
+            "z": 95.27275848388672
+        },
+        "model": "rcore_billboard_05",
+        "resource": "NONE",
+        "billboardModel": "prop_billboard_05"
+    },
+    {
+        "pos": {
+            "x": -526.9922485351563,
+            "y": -60.50579452514648,
+            "z": 50.27159118652344
+        },
+        "model": "rcore_billboard_04",
+        "resource": "schmann_DoJ",
+        "billboardModel": "prop_billboard_04"
+    }
+]

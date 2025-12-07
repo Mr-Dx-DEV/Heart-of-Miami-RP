@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image service</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #stickyImage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const queryString = window.location.search;
+        
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+            const results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        const bgColor = getParameterByName('bgColor') || '#FFFFFF';
+        const width = parseInt(getParameterByName('width')) || 300;
+        const height = parseInt(getParameterByName('height')) || 200;
+        const textParam = getParameterByName('text') || 'Text';
+
+        const textArray = textParam.split(','); // Split the 'text' parameter into an array
+
+        const canvas = document.createElement('canvas');
+        
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = '#' + bgColor;
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = 'white';
+        ctx.font = '40px Arial';
+        ctx.textAlign = 'center';
+
+        const lineHeight = 60;
+        const startY = (height - (lineHeight * textArray.length)) / 2;
+
+        textArray.forEach((text, index) => {
+            const y = startY + index * lineHeight;
+            ctx.fillText(text, width / 2, y);
+        });
+
+        const imgDataUrl = canvas.toDataURL('image/png');
+        const imgElement = document.createElement('img');
+        imgElement.id = 'stickyImage';
+        imgElement.src = imgDataUrl;
+        document.body.appendChild(imgElement);
+    </script>
+</body>
+
+</html>

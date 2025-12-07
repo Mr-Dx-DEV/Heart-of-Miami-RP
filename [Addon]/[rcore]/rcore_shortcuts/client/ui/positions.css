@@ -1,0 +1,36 @@
+.keyboard {
+	bottom: 5%;
+	left: 35%;
+}
+
+.nativeShortcutPreview {
+	width: 614px;
+	bottom: calc(5% + 120px);
+	left: calc((100% - 614px) / 2);
+}
+
+.runningSequencePreview {
+	width: 614px;
+	bottom: calc(5% + 120px);
+	left: calc((100% - 614px) / 2);
+}
+
+.shortcutsOverview {
+	width: 1200px;
+	min-height: 600px;
+	top: 10%;
+	left: calc((100% - 1200px) / 2);
+}
+
+.shortcutsAdmin {
+	width: 1200px;
+	min-height: 500px;
+	top: 10%;
+	left: calc((100% - 1200px) / 2);
+}
+
+.admin-players-list {
+	max-height: 400px;
+}
+
+.

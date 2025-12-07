@@ -1,0 +1,2 @@
+1. Follow the installation [link](https://documentation.rcore.cz/paid-resources/rcore_banners/installation)
+2. Follow the how to begin to navigate through script how it works [link](https://documentation.rcore.cz/paid-resources/rcore_banners/how_to_begin)

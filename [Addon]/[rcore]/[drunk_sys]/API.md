@@ -1,0 +1,1 @@
+https://documentation.rcore.cz/paid-resources/rcore_drunk/api

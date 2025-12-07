@@ -1,0 +1,15 @@
+Locales['en'] = {
+    ['not_permission'] = 'You don\'t have sufficient authorization',
+    ['max_limit'] = 'You have reached max shortcuts limit',
+    ['max_native_limit'] = 'You have reached max native shortcuts limit',
+    ['blocked_shortcut'] = 'This action is not allowed to be used as shorcut',
+    ['edited_shortcut_missing'] = 'Editation failed. The shortcut does not exist',
+    ['deleted_shortcut_missing'] = 'Deletion failed. The shortcut does not exist',
+    ['edited_category_missing'] = 'Editation failed. The category does not exist',
+    ['deleted_category_missing'] = 'Deletion failed. The category does not exist',
+    ['edited_alias_missing'] = 'Editation failed. The alias does not exist',
+    ['deleted_alias_missing'] = 'Deletion failed. The alias does not exist',
+    ['edited_premade_shortcut_missing'] = 'Editation failed. The premade shortcut does not exist',
+    ['deleted_premade_shortcut_missing'] = 'Deletion failed. The premade shortcut does not exist',
+    ['another_alias_already_running'] = 'Another alias is already running',
+}

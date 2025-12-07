@@ -1,0 +1,2 @@
+SConfig = {}
+SConfig.Webhook = 'WEBHOOK'
