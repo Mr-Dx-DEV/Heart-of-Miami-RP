@@ -1,14 +1,16 @@
 ## You CAN edit the following:
 endpoint_add_tcp "0.0.0.0:30120"
 endpoint_add_udp "0.0.0.0:30120"
+sv_useDirectListing true
+sv_listingIPOverride "23.26.135.24"
 sv_maxclients 10
 set steam_webApiKey "99880BA896E5122449EDFF7AA9C5A035"
 sets tags "default, deployer, qbox"
 
 ## You MAY edit the following:
 sv_licenseKey "cfxk_xvnhk8EcAPOoGNbQmzFU_j80I0"
-sv_hostname "Heart of Miami RP | GRAND OPENING | Semi-Serious Roleplay | Hiring All Departments"
-sets sv_projectName "[Heart of Miami RP] Grand Opening"
+sv_hostname "Heart of Miami RolePlay | GRAND OPENING | Semi-Serious Roleplay | Hiring All Departments"
+sets sv_projectName "Heart of Miami RolePlay - Grand Opening"
 sets sv_projectDesc "GRAND OPENING! Welcome to Heart of Miami RP - Experience the best of Miami roleplay powered by Qbox Framework. Active staff, realistic economy, custom features, and a welcoming community. Join now for exclusive launch bonuses!"
 sets locale "en-US" # replace with your language and location code, like en-US, pt-BR, etc
 load_server_icon myLogo.png
@@ -48,7 +50,7 @@ increase_pool_size "TxdStore" 26000               # Max: 26000
 increase_pool_size "AnimStore" 20000
 increase_pool_size "AttachmentExtension" 430
 
-sv_enforceGameBuild 3095
+
 
 # Voice config
 exec voice.cfg
@@ -78,7 +80,7 @@ setr qbx:motd "<p style='padding: 1rem; background-color: #141517; border: 1px s
 setr illenium-appearance:locale "en"
 
 # Renewed-Weathersync config
-setr weather_disablecd true
+#setr weather_disablecd true
 
 # Ox resources config
 exec ox.cfg
@@ -120,7 +122,7 @@ ensure [MEV]
 
 ensure zdiscord
 stop MRP-Moneywash
-ensure [HOMMLOS}
+
 
 ## Permissions ##
 add_principal identifier.fivem:8771348 group.admin #Mr_Dx_DEV
@@ -175,3 +177,8 @@ setr prism:textUIPosition "left-right"
 setr prism:progressBar "primary"
 setr prism:radialOpenMode "press"
 setr prism:radialOpenKey "f1"
+
+
+fileserver_add ".*" "http://cdn.fivem-server.net/28814/files"
+adhesive_cdnKey "28814"
+endpoint_add_tcp "0.0.0.0:9999"
