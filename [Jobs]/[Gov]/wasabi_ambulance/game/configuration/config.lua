@@ -467,7 +467,7 @@ Config.StandaloneCheckIns = {
 Config.Locations = {
     Pillbox = {
         RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-            coords = vec3(-452.69, -991.87, 29.42),
+            coords = vec3(-512.18, -329.47, 34.64),
             heading = 268.75,
             -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
             -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
@@ -476,7 +476,7 @@ Config.Locations = {
 
         Blip = {
             Enabled = true,
-            Coords = vec3(-467.44, -996.57, 23.70),
+            Coords = vec3(-512.18, -329.47, 34.64),
             Sprite = 61,
             Color = 2,
             Scale = 1.0,
@@ -487,7 +487,7 @@ Config.Locations = {
             enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
             locations = {                          -- Location of where to go on and off duty(If not using target)
                 {
-                    coords = vec3(-460.55, -999.44, 23.74),
+                    coords = vec3(-442.79, -324.03, 34.79),
                     jobLock = false                 -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
                 -- Add more non-target locations here if needed (if target is not enabled)
@@ -499,12 +499,12 @@ Config.Locations = {
                 label = 'Go On/Off Duty',
                 locationsArray = {
                     {
-                        coords = vec3(-460.55, -999.44, 23.74),
-                        heading = 177.09,
+                        coords = vec3(-442.79, -324.03, 34.79),
+                        heading = 20.84,
                         width = 2.0,
                         length = 1.0,
-                        minZ = 23.02 - 0.9,
-                        maxZ = 23.99 + 0.9,
+                        minZ = 34.79 - 0.9,
+                        maxZ = 34.79 + 0.9,
                         jobLock = false
                     },
 
@@ -582,8 +582,8 @@ Config.Locations = {
             locations = {
                 {
                     ped = 's_m_m_scientist_01',                     -- Check in ped (false for no ped)
-                    coords = vec3(-467.44, -996.57, 23.02),
-                    heading = 96.07,
+                    coords = vec3(-503.84, -335.64, 34.60),
+                    heading = 257.22,
                     jobLock = false                      -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
 
@@ -638,17 +638,17 @@ Config.Locations = {
 
             },
             DisableHospitalBeds = false,                                                       -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-            RespawnNoBedLocation = { coords = vec3(-452.89, -996.57, 29.50), heading = 276.77 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
+            RespawnNoBedLocation = { coords = vec3(-512.18, -329.47, 34.64), heading = 81.86 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
             HospitalBeds = {
                 --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-                { coords = vec3(-452.89, -996.57, 29.50), heading = 276.77 },  
-                { coords = vec3(-452.69, -991.87, 29.42), heading = 268.75 },  
-                { coords = vec3(-453.05, -1001.80, 29.29),  heading = 273.32},  
-                { coords = vec3(-453.16, -1006.37, 29.28), heading = 272.22 },  
-                { coords = vec3(-459.80, -1006.84, 29.19), heading = 92.69 },
-                { coords = vec3(-459.87, -1002.04, 29.19), heading = 89.62 }, 
-                { coords = vec3(-459.81, -995.87, 29.16), heading = 98.44 }, 
-                { coords = vec3(-460.02, -991.23, 29.22),  heading = 88.83 }, 
+                { coords = vec3(-512.90, -334.32, 34.64), heading = 77.92 },   
+                { coords = vec3(-513.40, -339.58, 34.64), heading = 79.34 },   
+                { coords = vec3(-513.96, -344.31, 34.64),  heading = 75.01}, 
+                { coords = vec3(-512.18, -329.47, 34.64), heading = 81.86 },  
+                -- { coords = vec3(-459.80, -1006.84, 29.19), heading = 92.69 },
+                -- { coords = vec3(-459.87, -1002.04, 29.19), heading = 89.62 }, 
+                -- { coords = vec3(-459.81, -995.87, 29.16), heading = 98.44 }, 
+                -- { coords = vec3(-460.02, -991.23, 29.22),  heading = 88.83 }, 
                 -- { coords = vec3(359.54, -586.23, 42.84 + 0.3), heading = 250.0 },
                 -- { coords = vec3(354.44, -600.19, 42.85 + 0.3), heading = 250.0 },
                 -- { coords = vec3(324.26, -582.8, 42.84 + 0.3),  heading = 340.0 },
@@ -780,8 +780,8 @@ Config.Locations = {
             locations = {                                                      -- Coords of ped/target
                 {
                     ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
-                    coords = vec3(-456.98, -1000.03, 23.93),
-                    heading = 357.93,
+                    coords = vec3(-446.82, -319.76, 34.61),
+                    heading = 273.71,
                     jobLock = false                                             -- Set to false to allow all jobs to access, or set to job name to restrict access
                 },
                 -- Add more non-target locations here if needed (if target is not enabled)
@@ -793,13 +793,13 @@ Config.Locations = {
                 locationsArray = {
                     {
                         ped = 's_m_m_doctor_01',                                    -- Ped to target (false for no ped)
-                        coords = vec3(-456.98, -1000.03, 23.93),
-                        heading = 357.93,
+                        coords = vec3(-446.82, -319.76, 34.61),
+                        heading = 273.71,
                         distance = 5.0,
                         width = 2.0,
                         length = 1.0,
-                        minZ = 22.02 - 0.9,
-                        maxZ = 25.99 + 0.9,
+                        minZ = 34.61 - 0.9,
+                        maxZ = 34.61 + 0.9,
                         jobLock = false
                     },
 

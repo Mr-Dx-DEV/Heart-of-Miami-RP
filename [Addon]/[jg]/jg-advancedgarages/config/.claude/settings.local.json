@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"E:\\FiveM_Server\\Miami_RP\\resources\\[MEV]\\[cars\\[DL]\\Debadged450\\Per-pack-spawn-names\\DLDebadgedPD10\")",
+      "Bash(dir:*)"
+    ]
+  }
+}
