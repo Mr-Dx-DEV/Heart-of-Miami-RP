@@ -351,11 +351,12 @@ BlackMarketArms = {
 			{ name = 'at_suppressor_light', price = 50000, currency = 'black_money' },
 			{ name = 'ammo-rifle', price = 1000, currency = 'black_money' },
 			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' },
-            { name = 'kq_airdrop_flare', price = 1000, currency = 'black_money' },
+           
 		}, locations = {
-			vec3(309.09, -913.75, 56.46)
+			vec3(309.71, -913.94, 56.83)
 		}, targets = {
-
+            { loc = vec3(309.71, -913.94, 56.83), length = 2.8, width = 3.0, heading = 74.57, minZ = 55.02, maxZ = 57.98, distance = 3 },
+       
 		}
 	},
     BRDD = {
