@@ -312,8 +312,8 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     vehiclesType = "owned", -- Use owned vehicles that can anyone in this society can access - more details: https://docs.jgscripts.com/advanced-garages/job-and-gang-garages
   },
   ["Police"] = {
-    coords = vector3(434.48, -1016.97, 28.83),
-    spawn = vector4(434.55, -1014.54, 28.49, 91.56),
+    coords = vector3(65.01, -390.64, 38.37),
+    spawn = vector4(65.01, -390.64, 38.37, 255.44),
     distance = 15,
     job = {"police"},
     type = "car",
