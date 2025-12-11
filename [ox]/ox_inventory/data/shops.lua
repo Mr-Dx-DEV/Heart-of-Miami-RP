@@ -139,7 +139,7 @@ return {
 
 
             { name = 'lockpick',         price = 500 },
-           -- { name = 'repairkit',        price = 2000 },
+            -- { name = 'repairkit',        price = 2000 },
             { name = 'cleaningkit',      price = 1000 },
             { name = 'binoculars',       price = 1500 },
             { name = 'skateboard_01',    price = 15000 },
@@ -149,20 +149,20 @@ return {
             -- { name = 'diving_fill',   price = 500 },
             { name = 'WEAPON_PETROLCAN', price = 1000 },
 
-            { name = 'condom',   price = 500 },
+            { name = 'condom',           price = 500 },
             { name = 'levonorgestrel',   price = 500 },
-            { name = 'mifepristone',   price = 500 },
-            { name = 'testpack',   price = 500 },
-            { name = 'viagra',   price = 500 },
+            { name = 'mifepristone',     price = 500 },
+            { name = 'testpack',         price = 500 },
+            { name = 'viagra',           price = 500 },
 
 
 
-            { name = 'pregtest',   price = 500 },
-            { name = 'planb',   price = 500 },
+            { name = 'pregtest',         price = 500 },
+            { name = 'planb',            price = 500 },
 
 
-            { name = 'notepad',   price = 500 },
-            { name = 'notepad_slip',   price = 500 },
+            { name = 'notepad',          price = 500 },
+            { name = 'notepad_slip',     price = 500 },
 
         },
         locations = {
@@ -224,9 +224,9 @@ return {
     --     },
     --     inventory = {
     --         { name = 'ammo-9', price = 5, },
-	-- 		{ name = 'WEAPON_KNIFE', price = 200 },
-	-- 		{ name = 'WEAPON_BAT', price = 100 },
-	-- 		{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true } }
+    -- 		{ name = 'WEAPON_KNIFE', price = 200 },
+    -- 		{ name = 'WEAPON_BAT', price = 100 },
+    -- 		{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true } }
 
 
     --     },
@@ -263,7 +263,7 @@ return {
             { name = 'gps_tracker',             price = 100,  grade = 0 },
             { name = 'harness',                 price = 20,   grade = 0 },
             { name = 'parachute',               price = 20,   grade = 0 },
-            { name = 'tunerchecker',                 price = 20,   grade = 0 },
+            { name = 'tunerchecker',            price = 20,   grade = 0 },
             { name = 'diving_gear',             price = 20,   grade = 0 },
             { name = 'diving_fill',             price = 20,   grade = 0 },
             { name = 'WEAPON_FIREEXTINGUISHER', price = 50,   metadata = { registered = true, serial = 'POL' }, grade = 0 },
@@ -297,43 +297,76 @@ return {
 
             --{ name = "policecard",               price = 1000,  grade = 0 },
             { name = "weapon_nightstick",       price = 1000, grade = 0,                                        weapon = true },
-            { name = 'WEAPON_STUNGUN',          price = 1500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0, weapon = true }, -- Probationary Officer - Chief
+            { name = 'WEAPON_STUNGUN',          price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Probationary Officer - Chief
             ---- 		 Pistols
-            { name = 'WEAPON_GLOCK22',          price = 1800, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1, weapon = true }, -- Probationary Officer - Chief
-            -- { name = 'WEAPON_GLOCK18C',          price = 1800,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 4, weapon = true }, -- Lieutenant - Chief
-            { name = 'WEAPON_DE',               price = 2500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 7, weapon = true }, -- PD Desert Eagle (Lieutenant - Chief)
-            -- { name = 'WEAPON_PD509',             price = 1600,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 1, weapon = true }, -- Sergeant - Chief
+            { name = 'WEAPON_GLOCK22',          price = 1800, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Probationary Officer - Chief
+            -- { name = 'WEAPON_GLOCK18C',          price = 1800,  metadata = {registered = true, serial = 'POL' },  grade = 4, weapon = true }, -- Lieutenant - Chief
+            { name = 'WEAPON_DE',               price = 2500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- PD Desert Eagle (Lieutenant - Chief)
+            -- { name = 'WEAPON_PD509',             price = 1600,  metadata = {registered = true, serial = 'POL' },  grade = 1, weapon = true }, -- Sergeant - Chief
 
-            { name = 'WEAPON_MP5',              price = 4000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 1, weapon = true }, -- Officer - Chief
-            --{ name = 'WEAPON_MAC10',             price = 3500,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 3, weapon = true }, -- Senior Officer - Chief
-            --{ name = 'WEAPON_MAC4A1',            price = 3800,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 6, weapon = true }, -- Corporal - Chief
+            { name = 'WEAPON_MP5',              price = 4000, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Officer - Chief
+            --{ name = 'WEAPON_MAC10',             price = 3500,  metadata = {registered = true, serial = 'POL' },  grade = 3, weapon = true }, -- Senior Officer - Chief
+            --{ name = 'WEAPON_MAC4A1',            price = 3800,  metadata = {registered = true, serial = 'POL' },  grade = 6, weapon = true }, -- Corporal - Chief
 
-            -- { name = 'WEAPON_M4',                price = 7000,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 3, weapon = true }, -- Officer - Chief
-            { name = 'WEAPON_HK416',            price = 8000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 7, weapon = true }, -- Corporal - Chief
-            { name = 'WEAPON_CZBREN',           price = 6500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 4, weapon = true }, -- Sergeant - Chief
-            { name = 'WEAPON_RAM9D',            price = 6500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 2, weapon = true }, -- Senior Officer - Chief
-            { name = 'WEAPON_MK47',             price = 8500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 7, weapon = true }, -- Lieutenant - Chief
+            -- { name = 'WEAPON_M4',                price = 7000,  metadata = {registered = true, serial = 'POL' },  grade = 3, weapon = true }, -- Officer - Chief
+            { name = 'WEAPON_HK416',            price = 8000, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Corporal - Chief
+            { name = 'WEAPON_CZBREN',           price = 6500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Sergeant - Chief
+            { name = 'WEAPON_RAM9D',            price = 6500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Senior Officer - Chief
+            { name = 'WEAPON_MK47',             price = 8500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Lieutenant - Chief
 
-            --{ name = 'WEAPON_680',               price = 3200,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 4, weapon = true }, -- Corporal - Chief (Model 680)
-            { name = 'WEAPON_BERETTA1301',      price = 3000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 9, weapon = true }, -- Corporal - Chief (Remington)
-            -- { name = 'WEAPON_M32S',                price = 2800,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 8, weapon = true }, -- Officer - Chief (Remington)
-            --{ name = 'WEAPON_M32S',              price = 12000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 4, weapon = true }, -- Smoke launcher (Corporal - Chief)
-            --{ name = 'at_launcher_attachment',   price = 1200,  metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 6 },       -- Attachment for launcher (Operational Sergeant - Chief)
+            --{ name = 'WEAPON_680',               price = 3200,  metadata = {registered = true, serial = 'POL' },  grade = 4, weapon = true }, -- Corporal - Chief (Model 680)
+            { name = 'WEAPON_BERETTA1301',      price = 3000, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true }, -- Corporal - Chief (Remington)
+            -- { name = 'WEAPON_M32S',                price = 2800,  metadata = {registered = true, serial = 'POL' },  grade = 8, weapon = true }, -- Officer - Chief (Remington)
+            --{ name = 'WEAPON_M32S',              price = 12000, metadata = { registered = true, serial = 'POL' },  grade = 4, weapon = true }, -- Smoke launcher (Corporal - Chief)
+            --{ name = 'at_launcher_attachment',   price = 1200,  metadata = { registered = true, serial = 'POL' },  grade = 6 },       -- Attachment for launcher (Operational Sergeant - Chief)
 
             -- Melee / utility
-            --{ name = 'WEAPON_PDBATON',           price = 100,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 0, weapon = true }, -- PD Baton (Cadet+)
+            --{ name = 'WEAPON_PDBATON',           price = 100,   metadata = {registered = true, serial = 'POL' },  grade = 0, weapon = true }, -- PD Baton (Cadet+)
 
             -- Attachments
-            -- { name = 'at_clip_extended_rifle',   price = 500,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 4 }, -- Extended Rifle Clip (Corporal - Chief)
-            -- { name = 'at_clip_extended_pistol',  price = 150,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 1 }, -- Extended Pistol Clip (Probationary Officer - Chief)
-            -- { name = 'at_clip_extended_smg',     price = 200,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 3 }, -- Extended SMG Clip (Senior Officer - Chief)
-            -- { name = 'at_clip_extended_shotgun', price = 300,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 4 }, -- Extended Shotgun Clip (Corporal - Chief)
+            -- { name = 'at_clip_extended_rifle',   price = 500,   metadata = {registered = true, serial = 'POL' },  grade = 4 }, -- Extended Rifle Clip (Corporal - Chief)
+            -- { name = 'at_clip_extended_pistol',  price = 150,   metadata = {registered = true, serial = 'POL' },  grade = 1 }, -- Extended Pistol Clip (Probationary Officer - Chief)
+            -- { name = 'at_clip_extended_smg',     price = 200,   metadata = {registered = true, serial = 'POL' },  grade = 3 }, -- Extended SMG Clip (Senior Officer - Chief)
+            -- { name = 'at_clip_extended_shotgun', price = 300,   metadata = {registered = true, serial = 'POL' },  grade = 4 }, -- Extended Shotgun Clip (Corporal - Chief)
 
-            -- { name = 'at_suppressor_light',      price = 1200,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 4 }, -- Suppressor (light) (Corporal - Chief)
-            -- { name = 'at_suppressor_heavy',      price = 2000,  metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 7 }, -- Tactical Suppressor (heavy) (Lieutenant - Chief)
+            -- { name = 'at_suppressor_light',      price = 1200,  metadata = {registered = true, serial = 'POL' },  grade = 4 }, -- Suppressor (light) (Corporal - Chief)
+            -- { name = 'at_suppressor_heavy',      price = 2000,  metadata = {registered = true, serial = 'POL' },  grade = 7 }, -- Tactical Suppressor (heavy) (Lieutenant - Chief)
 
-            -- { name = 'at_flashlight',            price = 100,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 1 }, -- Tactical Flashlight (Probationary Officer - Chief)
-            -- { name = 'at_muzzle_tactical',       price = 250,   metadata = {registered = true, serial = 'POL' }, license = 'weapon', grade = 2 }, -- Tactical Muzzle (Officer - Chief)
+            -- { name = 'at_flashlight',            price = 100,   metadata = {registered = true, serial = 'POL' },  grade = 1 }, -- Tactical Flashlight (Probationary Officer - Chief)
+            -- { name = 'at_muzzle_tactical',       price = 250,   metadata = {registered = true, serial = 'POL' },  grade = 2 }, -- Tactical Muzzle (Officer - Chief)
+
+
+            { name = 'WEAPON_TITAN19X',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN19',          price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN40',          price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN40S',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_DDM4V5',           price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_MMX',              price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_PP614',            price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_SAPS',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_WPKX',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_PITVIPER',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_BARP',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_HRDP',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_WLOX15',           price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_PLR16',            price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_XMK9',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_WPSX',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_XDME',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_FF15',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN17S',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN18C',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN19S',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_ARPISTOL',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_TITAN26S',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_GRENADES',         price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_M32S',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_MDRAGON',          price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_RR67',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_MK18',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_G680',             price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+            { name = 'WEAPON_ZIPTIE',           price = 1500, metadata = { registered = true, serial = 'POL' }, grade = 0,    weapon = true },
+
         },
         locations = {
             vec3(79.53, -362.18, 41.19)
@@ -343,22 +376,24 @@ return {
         }
     },
 
-BlackMarketArms = {
-		name = 'Black Market (Arms)',
-		inventory = {
-			{ name = 'WEAPON_DAGGER', price = 5000, metadata = { registered = false	}, currency = 'black_money' },
-			{ name = 'WEAPON_CERAMICPISTOL', price = 50000, metadata = { registered = false }, currency = 'black_money' },
-			{ name = 'at_suppressor_light', price = 50000, currency = 'black_money' },
-			{ name = 'ammo-rifle', price = 1000, currency = 'black_money' },
-			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' },
-           
-		}, locations = {
-			vec3(309.71, -913.94, 56.83)
-		}, targets = {
+    BlackMarketArms = {
+        name = 'Black Market (Arms)',
+        inventory = {
+            { name = 'WEAPON_DAGGER',        price = 5000,  metadata = { registered = false }, currency = 'black_money' },
+            { name = 'WEAPON_CERAMICPISTOL', price = 50000, metadata = { registered = false }, currency = 'black_money' },
+            { name = 'at_suppressor_light',  price = 50000, currency = 'black_money' },
+            { name = 'ammo-rifle',           price = 1000,  currency = 'black_money' },
+            { name = 'ammo-rifle2',          price = 1000,  currency = 'black_money' },
+
+        },
+        locations = {
+            vec3(309.71, -913.94, 56.83)
+        },
+        targets = {
             { loc = vec3(309.71, -913.94, 56.83), length = 2.8, width = 3.0, heading = 74.57, minZ = 55.02, maxZ = 57.98, distance = 3 },
-       
-		}
-	},
+
+        }
+    },
     BRDD = {
         name = 'BRDD',
         inventory = {
