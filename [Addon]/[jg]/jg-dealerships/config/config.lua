@@ -97,7 +97,7 @@ Config.Categories = {
 
 Config.DealershipLocations = {
   ["pdm"] = {
-    type = "owned", -- or "owned", "self-service"
+    type = "self-service", -- or "owned", "self-service"
     openShowroom = {
       coords = vector3(-317.45, -812.69, 32.75),
       size = 5
