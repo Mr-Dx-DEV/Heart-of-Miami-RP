@@ -311,6 +311,37 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
     vehiclesType = "owned", -- Use owned vehicles that can anyone in this society can access - more details: https://docs.jgscripts.com/advanced-garages/job-and-gang-garages
   },
+  ["EMS"] = {
+    coords = vector3(-487.59, -331.07, 34.36),
+    spawn = vector4(-487.59, -331.07, 34.36, 264.02),
+    distance = 15,
+    job = {"ambulance"},
+    type = "car",
+    hideBlip = false,
+    blip = {
+      id = 357,
+      color = 0,
+      scale = 0.7
+    },
+    hideMarkers = true,
+    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+    vehiclesType = "spawner", -- Spawn a basic vehicle from a list
+    showLiveriesExtrasMenu = true, -- Allow player to select a livery and extras before pulling vehicle out
+    vehicles = {
+      -- DL Debadged EMS
+      [1] = { model = "DLAmbulance", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [2] = { model = "DLAmbulance2", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [3] = { model = "DLAmbulance3", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [4] = { model = "DLYAMAHAEMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [5] = { model = "DLM5EMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [6] = { model = "DLM7EMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [7] = { model = "DLRAMEMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [8] = { model = "DLRS6EMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [9] = { model = "DLRS7EMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [10] = { model = "DLRSQ8EMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [11] = { model = "DLX5EMS", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true }
+    }
+  },
   ["Police"] = {
     coords = vector3(65.01, -390.64, 38.37),
     spawn = vector4(65.01, -390.64, 38.37, 255.44),
@@ -328,23 +359,56 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     vehiclesType = "spawner", -- Spawn a basic vehicle from a list
     showLiveriesExtrasMenu = true, -- Allow player to select a livery and extras before pulling vehicle out 
     vehicles = {
-      [1] = {
-        model = "police", -- spawn code for vehicle
-        plate = "PD", -- set as false for a random plate; do not use a plate already in use in the DB!
-        minJobGrade = 0, -- only available to players with set minimum grade
-        nickname = "Police car", -- Show a custom name instead of the vehicle's real name
-        livery = 1,
-        extras = {1, 2},
-        maxMods = true
-      },
-      [2] = {
-        model = "police2",
-        plate = false,
-        minJobGrade = 3,
-        livery = 2,
-        extras = {},
-        maxMods = true
-      }
+      -- DL Debadged PD10
+      [1] = { model = "polbmwm3", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [2] = { model = "polbmwm5", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [3] = { model = "polbmwm7", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [4] = { model = "polcoach", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [5] = { model = "poldurango", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [6] = { model = "polgt63", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [7] = { model = "polheli", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [8] = { model = "polmustang", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [9] = { model = "polrs6", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [10] = { model = "polsilverado19", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      -- DL Debadged Sheriff15
+      [11] = { model = "gurkharb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [12] = { model = "Prisonvan2rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [13] = { model = "speeddemonrb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [14] = { model = "valor1rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [15] = { model = "valor3rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [16] = { model = "valor5rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [17] = { model = "valor6rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [18] = { model = "valor9rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [19] = { model = "valor10rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [20] = { model = "valor12rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [21] = { model = "valor13rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [22] = { model = "valor15rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [23] = { model = "valorharley", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [24] = { model = "17silvk9rb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [25] = { model = "eheli", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [26] = { model = "policeboat", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      -- DL Debadged SWAT
+      [27] = { model = "sw_bearcat", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [28] = { model = "sw_charg", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [29] = { model = "sw_durango", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [30] = { model = "sw_sprinter", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [31] = { model = "sw_subrb", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      -- DL Debadged Unmarked
+      [32] = { model = "dlrs6um", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [33] = { model = "nm_ctsv", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [34] = { model = "nm_z71", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [35] = { model = "owlalpina", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [36] = { model = "pd_escalader", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [37] = { model = "rrhycadeevoxpd", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [38] = { model = "trhawk", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [39] = { model = "unmarkedjl", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [40] = { model = "zm_rocket900", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [41] = { model = "zm_s500", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [42] = { model = "22g63", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [43] = { model = "DL_a45", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [44] = { model = "DL_rs6", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [45] = { model = "DL_RS7", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true },
+      [46] = { model = "dlr34um", plate = false, minJobGrade = 0, extras = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, maxMods = true }
     }
   }
 }
